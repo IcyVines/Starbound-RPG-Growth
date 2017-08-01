@@ -39,8 +39,8 @@ function init()
     4: Arc
     5: Cryo
     6: Aer
-    7: Aqua
-    8: Herba
+    7: Victus
+    8: Kinetic
     ]]
 
     --initiating possible Level Change
