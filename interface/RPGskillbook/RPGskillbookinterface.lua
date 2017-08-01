@@ -96,6 +96,7 @@ function updateLevel()
       player.addCurrency("statpoint", 1)
       self.level = self.level+1
     end
+    widget.setText("statslayout.statpointsleft",player.currency("statpoint"))
   end
   updateBottomBar()
 end
@@ -120,7 +121,7 @@ function changeToOverview()
 end
 
 function changeToStats()
-    checkStatPoints()
+    updateStats()
     widget.setText("tabLabel", "Stats Tab")
     widget.setVisible("statslayout", true)
 end
@@ -143,7 +144,6 @@ function raiseStat(name)
 end
 
 function checkStatPoints()
-  
   if player.currency("statpoint") == 0 then
     enableStatButtons(false)
   elseif player.currency("statpoint") ~= 0 then
@@ -176,7 +176,13 @@ function updateStats()
   widget.setText("statslayout.enduranceamount",self.endurance)
   self.dexterity = player.currency("dexteritypoint")
   widget.setText("statslayout.dexterityamount",self.dexterity)
+  widget.setText("statslayout.statpointsleft",player.currency("statpoint"))
+  widget.setText("statslayout.totalstatsamount", addStats())
   checkStatPoints()
+end
+
+function addStats()
+  return self.strength+self.agility+self.vitality+self.vigor+self.intelligence+self.endurance+self.dexterity
 end
 
 function uncheckStatIcons(name)
