@@ -1,0 +1,25 @@
+{
+  "input" : [
+    {
+      "item" : "livingroot",
+      "count" : 1
+    },
+    {
+      "item" : "leather",
+      "count" : 2
+    },
+    {
+      "item" : "paper",
+      "count" : 4
+    },
+    {
+      "item" : "experienceorb",
+      "count" : 100
+    }
+  ],
+  "output" : {
+    "item" : "RPGskillbook",
+    "count" : 1
+  },
+  "groups" : [ "plain" ]
+}

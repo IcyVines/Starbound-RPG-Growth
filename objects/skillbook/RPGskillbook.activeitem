@@ -6,7 +6,7 @@
   "shortdescription" : "Mysterious Book",
   "race" : "generic",
   "twoHanded" : true,
-  "price" : 1,
+  "price" : 100,
   "maxStack" : 1,
   "itemTags" : [],
 

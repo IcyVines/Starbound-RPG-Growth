@@ -87,8 +87,12 @@ end
 
 function updateLevel()
   self.xp = player.currency("experienceorb")
-  if self.xp == 0 then
-    self.level = 0
+  if self.xp < 100 then
+    player.consumeCurrency("experienceorb",self.xp)
+    player.addCurrency("experienceorb",100)
+    self.xp = 100
+    self.level = 1
+    player.addCurrency("currentlevel",1)
   else
     self.newLevel = math.floor(math.sqrt(self.xp/100))
     while self.newLevel > self.level do
@@ -97,6 +101,7 @@ function updateLevel()
       self.level = self.level+1
     end
     widget.setText("statslayout.statpointsleft",player.currency("statpoint"))
+    updateStats()
   end
   updateBottomBar()
 end
