@@ -1,0 +1,22 @@
+{
+  "itemName" : "RPGskillbook",
+  "printable" : false,
+  "rarity" : "Legendary",
+  "description" : "A mystical book that seems to emanate power. Perhaps it can be used somehow.",
+  "shortdescription" : "Mysterious Book",
+  "race" : "generic",
+  "twoHanded" : true,
+  "price" : 1,
+  "maxStack" : 1,
+  "itemTags" : [],
+
+  "inventoryIcon" : "RPGskillbook.png",
+  "animation" : "RPGskillbook.animation",
+  "animationParts" : {
+    "transponder" : "RPGskillbook.png"
+  },
+  "scripts" : ["RPGskillbook.lua"],
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/RPGskillbook/RPGskillbook.config"
+}

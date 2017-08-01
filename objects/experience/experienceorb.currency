@@ -1,0 +1,15 @@
+{
+  "itemName" : "experienceorb",
+  "rarity" : "Rare",
+  "inventoryIcon" : "experienceorb.png",
+  "description" : "Experience orbs used to level up.",
+  "shortdescription" : "Experience Orb",
+  "currency" : "experienceorb",
+  "value" : 1,
+  "pickupSoundsSmall" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "pickupSoundsMedium" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "pickupSoundsLarge" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "smallStackLimit" : 999,
+  "mediumStackLimit" : 4999,
+  "maxStack" : 16777216
+}

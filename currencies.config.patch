@@ -1,0 +1,16 @@
+[
+  { "op" : "add",
+    "path" : "/experienceorb",
+    "value" : {
+      "representativeItem" : "experienceorb",
+      "playerMax" : 999999
+    }
+  },
+  { "op" : "add",
+    "path" : "/skillbookopen",
+    "value" : {
+      "representativeItem" : "skillbookopen",
+      "playerMax" : 2
+    }
+  }
+]

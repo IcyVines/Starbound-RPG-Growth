@@ -1,0 +1,15 @@
+{
+  "itemName" : "skillbookopen",
+  "rarity" : "Legendary",
+  "inventoryIcon" : "skillbookopen.png",
+  "description" : "Prevents the Skill Book from being opened multiple times.",
+  "shortdescription" : "Dev Hack",
+  "currency" : "skillbookopen",
+  "value" : 1,
+  "pickupSoundsSmall" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "pickupSoundsMedium" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "pickupSoundsLarge" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "smallStackLimit" : 2,
+  "mediumStackLimit" : 2,
+  "maxStack" : 2
+}
