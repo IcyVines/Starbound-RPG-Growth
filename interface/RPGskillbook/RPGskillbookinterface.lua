@@ -19,8 +19,8 @@ function init()
   
   self.mpos = {0,0}
 
-  self.xp = player.currency("experienceorb")
-  --self.level = sqrt(self.xp/100)
+  updateAll()
+
   self.strength = 0
   self.intelligence = 0
   self.dexterity = 0
@@ -50,6 +50,7 @@ function init()
     7: Aqua
     8: Herba
     ]]
+    
 
 end
 
@@ -87,6 +88,15 @@ function takeInputEvents()
   local clicks = self.clickEvents
   self.clickEvents = {}
   return clicks
+end
+
+function updateAll()
+  self.xp = player.currency("experienceorb")
+  self.level = math.floor(math.sqrt(self.xp/100))
+  self.toNext = 2*self.level*100+100
+  widget.setText("levelLabel", "Level " .. tostring(self.level))
+  widget.setText("xpLabel",tostring(math.floor((self.xp-self.level^2*100))) .. "/" .. tostring(self.toNext))
+  widget.setProgress("experiencebar",(self.xp-self.level^2*100)/self.toNext)
 end
 
 
