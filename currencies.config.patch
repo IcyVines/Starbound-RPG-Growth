@@ -7,6 +7,13 @@
     }
   },
   { "op" : "add",
+    "path" : "/statpoint",
+    "value" : {
+      "representativeItem" : "statpoint",
+      "playerMax" : 100
+    }
+  },
+  { "op" : "add",
     "path" : "/agilitypoint",
     "value" : {
       "representativeItem" : "agilitypoint",

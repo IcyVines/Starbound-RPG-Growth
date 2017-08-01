@@ -72,6 +72,12 @@ function update(dt)
     updateBottomBar()
   end
 
+  if player.currency("statpoint") == 0 then
+    enableStatButtons(false)
+  elseif player.currency("statpoint") ~= 0 then
+    enableStatButtons(true)
+  end
+
   self.state:update(dt)
 end
 
@@ -131,8 +137,46 @@ function changeToAffinities()
     widget.setVisible("affinitieslayout", true)
 end
 
+function raiseStat(name)
+  name = string.gsub(name,"raise","") .. "point"
+  --player.addCurrency(name)
+  changeStatDescription(name)
+end
+
+function checkStatDescription(name)
+  name = string.gsub(name,"icon","")
+  uncheckStatIcons(name)
+  changeStatDescription(name)
+end
+
+function uncheckStatIcons(name)
+  if name ~= "strength" then widget.setChecked("statslayout.strengthicon", false) end
+  if name ~= "agility" then widget.setChecked("statslayout.agilityicon", false) end
+  if name ~= "vitality" then widget.setChecked("statslayout.vitalityicon", false) end
+  if name ~= "vigor" then widget.setChecked("statslayout.vigoricon", false) end
+  if name ~= "intelligence" then widget.setChecked("statslayout.intelligenceicon", false) end
+  if name ~= "endurance" then widget.setChecked("statslayout.enduranceicon", false) end
+  if name ~= "dexterity" then widget.setChecked("statslayout.dexterityicon", false) end
+end
+
+function changeStatDescription(name)
+  widget.setText("statslayout.statdescription", name)
+end
+
+function enableStatButtons(enable)
+  widget.setButtonEnabled("statslayout.raisestrength", enable)
+  widget.setButtonEnabled("statslayout.raisedexterity", enable)
+  widget.setButtonEnabled("statslayout.raiseendurance", enable)
+  widget.setButtonEnabled("statslayout.raiseintelligence", enable)
+  widget.setButtonEnabled("statslayout.raisevigor", enable)
+  widget.setButtonEnabled("statslayout.raisevitality", enable)
+  widget.setButtonEnabled("statslayout.raiseagility", enable)
+end
+
+
 function resetSkillBook()
   player.consumeCurrency("experienceorb", self.xp)
+  player.consumeCurrency("statpoint", player.currency("statpoint"))
 end
 
   --pane.playSound(self.sounds.dispatch, -1)

@@ -1,0 +1,15 @@
+{
+  "itemName" : "statpoint",
+  "rarity" : "Rare",
+  "inventoryIcon" : "agility.png",
+  "description" : "Stat Point",
+  "shortdescription" : "Stat Point",
+  "currency" : "statpoint",
+  "value" : 1,
+  "pickupSoundsSmall" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "pickupSoundsMedium" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "pickupSoundsLarge" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "smallStackLimit" : 10,
+  "mediumStackLimit" : 50,
+  "maxStack" : 100
+}
