@@ -18,7 +18,7 @@ function init()
 
   --initiating stats
   updateStats()
-
+  self.classTo = 0
   self.class = player.currency("classtype")
     --[[
     0: No Class
@@ -133,7 +133,13 @@ end
 
 function changeToClasses()
     widget.setText("tabLabel", "Classes Tab")
-    widget.setVisible("classeslayout", true)
+    if player.currency("classtype") == 0 then
+      widget.setVisible("classlayout", false)
+      widget.setVisible("classeslayout", true)
+    else
+      widget.setVisible("classeslayout", false)
+      widget.setVisible("classlayout", true)
+    end
 end
 
 function changeToAffinities()
@@ -163,6 +169,18 @@ function checkStatDescription(name)
     changeStatDescription(name)
   else
     changeStatDescription("default")
+  end
+end
+
+function checkClassDescription(name)
+  name = string.gsub(name,"icon","")
+  uncheckClassIcons(name)
+  if (widget.getChecked("classeslayout."..name.."icon")) then
+    changeClassDescription(name)
+    widget.setButtonEnabled("classeslayout.selectclass", true)
+  else
+    changeClassDescription("default")
+    widget.setButtonEnabled("classeslayout.selectclass", false)
   end
 end
 
@@ -200,6 +218,33 @@ function uncheckStatIcons(name)
   if name ~= "dexterity" then widget.setChecked("statslayout.dexterityicon", false) end
 end
 
+function uncheckClassIcons(name)
+  if name ~= "knight" then
+    widget.setChecked("classeslayout.knighticon", false)
+    widget.setFontColor("classeslayout.knighttitle", "white")
+  end
+  if name ~= "wizard" then
+    widget.setChecked("classeslayout.wizardicon", false)
+    widget.setFontColor("classeslayout.wizardtitle", "white")
+  end
+  if name ~= "ninja" then
+    widget.setChecked("classeslayout.ninjaicon", false)
+    widget.setFontColor("classeslayout.ninjatitle", "white")
+  end
+  if name ~= "soldier" then
+    widget.setChecked("classeslayout.soldiericon", false)
+    widget.setFontColor("classeslayout.soldiertitle", "white")
+  end
+  if name ~= "rogue" then
+    widget.setChecked("classeslayout.rogueicon", false)
+    widget.setFontColor("classeslayout.roguetitle", "white")
+  end
+  if name ~= "explorer" then
+    widget.setChecked("classeslayout.explorericon", false)
+    widget.setFontColor("classeslayout.explorertitle", "white")
+  end
+end
+
 function changeStatDescription(name)
   if name == "strength" then widget.setText("statslayout.statdescription", "Each point in Strength increases your Block Meter by 1 and damage with all Melee Weapons by 2%.") end
   if name == "agility" then widget.setText("statslayout.statdescription", "Each point in Agility increases Speed by 3% and Jump Height by 1%.") end
@@ -209,6 +254,44 @@ function changeStatDescription(name)
   if name == "endurance" then widget.setText("statslayout.statdescription", "Each point in Endurance increases Resistance to all damage by 2%.") end
   if name == "dexterity" then widget.setText("statslayout.statdescription", "Each point in Dexterity increases damage with all One-Handed Weapons, Guns, Bows, and Thrown Weapons by 2%.") end
   if name == "default" then widget.setText("statslayout.statdescription", "Click a stat's icon to see what occurs when that stat is raised.") end
+end
+
+function changeClassDescription(name)
+  if name == "knight" then
+    widget.setText("classeslayout.classdescription", "The Knight is a melee tank with a focus on swords and shields. Great for players who want to survive many hits and deal moderate damage.") 
+    widget.setFontColor("classeslayout.knighttitle", "blue")
+    self.classTo = 1
+  end
+  if name == "wizard" then
+    widget.setText("classeslayout.classdescription", "The Wizard is a mixed dps character with a focus on wands and staffs. Great for players who want to maximize damage and ability use.") 
+    widget.setFontColor("classeslayout.wizardtitle", "magenta")
+    self.classTo = 2
+  end
+  if name == "ninja" then
+    widget.setText("classeslayout.classdescription", "The Ninja is a fast, ranged dps character with a focus on thrown weapons and explosives. Great for players who enjoy fast, explosive play and doing massive damage.") 
+    widget.setFontColor("classeslayout.ninjatitle", "red")
+    self.classTo = 3
+  end
+  if name == "soldier" then
+    widget.setText("classeslayout.classdescription", "The Soldier is a ranged tank with a focus on guns. Great for players who want to maximize distance and stay alive.") 
+    widget.setFontColor("classeslayout.soldiertitle", "orange")
+    self.classTo = 4
+  end
+  if name == "rogue" then
+    widget.setText("classeslayout.classdescription", "The Rogue is a melee dps character with a focus on daggers and fist weapons. Great for players who enjoy afflicting status and getting up close.") 
+    widget.setFontColor("classeslayout.roguetitle", "green")
+    self.classTo = 5
+  end
+  if name == "explorer" then
+    widget.setText("classeslayout.classdescription", "The Explorer is a fast, defensive character with a focus on rope, grappling hooks, torches, and flares. Great for players who prefer to run away from encounters and explore.") 
+    widget.setFontColor("classeslayout.explorertitle", "yellow")
+    self.classTo = 6
+  end
+  if name == "default" then
+    widget.setText("classeslayout.classdescription", "Click a Class' icon to see how that Class plays.")
+    uncheckClassIcons("default")
+    self.classTo = 0
+  end
 end
 
 function enableStatButtons(enable)
@@ -221,6 +304,11 @@ function enableStatButtons(enable)
   widget.setButtonEnabled("statslayout.raiseagility", enable)
 end
 
+function chooseClass()
+  player.addCurrency("classtype", self.classTo)
+  self.class = self.classTo
+  changeToClasses()
+end
 
 function resetSkillBook()
   player.consumeCurrency("experienceorb", self.xp)
