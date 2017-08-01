@@ -7,6 +7,13 @@
     }
   },
   { "op" : "add",
+    "path" : "/currentlevel",
+    "value" : {
+      "representativeItem" : "currentlevel",
+      "playerMax" : 50
+    }
+  },
+  { "op" : "add",
     "path" : "/statpoint",
     "value" : {
       "representativeItem" : "statpoint",

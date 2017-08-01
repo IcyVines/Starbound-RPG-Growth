@@ -1,15 +1,15 @@
 {
-  "itemName" : "experienceorb",
+  "itemName" : "currentlevel",
   "rarity" : "Rare",
   "inventoryIcon" : "experienceorb.png",
-  "description" : "Experience orbs used to level up.",
-  "shortdescription" : "Experience Orb",
-  "currency" : "experienceorb",
+  "description" : "Levels.",
+  "shortdescription" : "Levels.",
+  "currency" : "currentlevel",
   "value" : 1,
   "pickupSoundsSmall" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "pickupSoundsMedium" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "pickupSoundsLarge" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
-  "smallStackLimit" : 100,
-  "mediumStackLimit" : 1000,
-  "maxStack" : 16777216
+  "smallStackLimit" : 2,
+  "mediumStackLimit" : 10,
+  "maxStack" : 50
 }

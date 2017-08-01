@@ -7,28 +7,19 @@ require "/scripts/drawingutil.lua"
 function init()
   --View:init()
   self.clickEvents = {}
-
   self.state = FSM:new()
   self.state:set(splashScreenState)
-
   self.system = celestial.currentSystem()
-
-  self.sounds = config.getParameter("sounds")
-  self.color = "white"
   self.pane = pane
-  
-  self.mpos = {0,0}
 
-  self.xp = 0
-  self.level = 1
-  self.strength = 0
-  self.intelligence = 0
-  self.dexterity = 0
-  self.endurance = 0
-  self.agility = 0
-  self.vitality = 0
-  self.vigor = 0
-  self.class = 0
+  --initiating level and xp
+  self.xp = player.currency("experienceorb")
+  self.level = player.currency("currentlevel")--math.floor(math.sqrt(self.xp/100))
+
+  --initiating stats
+  updateStats()
+
+  self.class = player.currency("classtype")
     --[[
     0: No Class
     1: Knight
@@ -38,7 +29,8 @@ function init()
     5: Soldier
     6: Explorer
     ]]
-  self.affinity = 0
+
+  self.affinity = player.currency("affinitytype")
   --[[
     0: No Affinity
     1: Infernal
@@ -50,16 +42,12 @@ function init()
     7: Aqua
     8: Herba
     ]]
-    updateBottomBar()
 
+    --initiating possible Level Change
+    updateLevel()
 end
 
 function dismissed()
-  for soundName,sound in pairs(self.sounds) do
-    if soundName ~= "success" then
-      pane.stopAllSounds(sound)
-    end
-  end
   player.consumeCurrency("skillbookopen", player.currency("skillbookopen"))
 end
 
@@ -69,14 +57,10 @@ function update(dt)
   end
 
   if player.currency("experienceorb") ~= self.xp then
-    updateBottomBar()
+    updateLevel()
   end
 
-  if player.currency("statpoint") == 0 then
-    enableStatButtons(false)
-  elseif player.currency("statpoint") ~= 0 then
-    enableStatButtons(true)
-  end
+  checkStatPoints()
 
   self.state:update(dt)
 end
@@ -101,9 +85,22 @@ function takeInputEvents()
   return clicks
 end
 
-function updateBottomBar()
+function updateLevel()
   self.xp = player.currency("experienceorb")
-  self.level = math.floor(math.sqrt(self.xp/100))
+  if self.xp == 0 then
+    self.level = 0
+  else
+    self.newLevel = math.floor(math.sqrt(self.xp/100))
+    while self.newLevel > self.level do
+      player.addCurrency("currentlevel", 1)
+      player.addCurrency("statpoint", 1)
+      self.level = self.level+1
+    end
+  end
+  updateBottomBar()
+end
+
+function updateBottomBar()
   self.toNext = 2*self.level*100+100
   widget.setText("levelLabel", "Level " .. tostring(self.level))
   widget.setText("xpLabel",tostring(math.floor((self.xp-self.level^2*100))) .. "/" .. tostring(self.toNext))
@@ -123,6 +120,7 @@ function changeToOverview()
 end
 
 function changeToStats()
+    checkStatPoints()
     widget.setText("tabLabel", "Stats Tab")
     widget.setVisible("statslayout", true)
 end
@@ -138,15 +136,47 @@ function changeToAffinities()
 end
 
 function raiseStat(name)
+  player.consumeCurrency("statpoint", 1)
   name = string.gsub(name,"raise","") .. "point"
-  --player.addCurrency(name)
-  changeStatDescription(name)
+  player.addCurrency(name, 1)
+  updateStats()
+end
+
+function checkStatPoints()
+  
+  if player.currency("statpoint") == 0 then
+    enableStatButtons(false)
+  elseif player.currency("statpoint") ~= 0 then
+    enableStatButtons(true)
+  end
 end
 
 function checkStatDescription(name)
   name = string.gsub(name,"icon","")
   uncheckStatIcons(name)
-  changeStatDescription(name)
+  if (widget.getChecked("statslayout."..name.."icon")) then
+    changeStatDescription(name)
+  else
+    changeStatDescription("default")
+  end
+end
+
+function updateStats()
+  self.strength = player.currency("strengthpoint")
+  widget.setText("statslayout.strengthamount",self.strength)
+  self.agility = player.currency("agilitypoint")
+  widget.setText("statslayout.agilityamount",self.agility)
+  self.vitality = player.currency("vitalitypoint")
+  widget.setText("statslayout.vitalityamount",self.vitality)
+  self.vigor = player.currency("vigorpoint")
+  widget.setText("statslayout.vigoramount",self.vigor)
+  self.intelligence = player.currency("intelligencepoint")
+  widget.setText("statslayout.intelligenceamount",self.intelligence)
+  self.endurance = player.currency("endurancepoint")
+  widget.setText("statslayout.enduranceamount",self.endurance)
+  self.dexterity = player.currency("dexteritypoint")
+  widget.setText("statslayout.dexterityamount",self.dexterity)
+  checkStatPoints()
 end
 
 function uncheckStatIcons(name)
@@ -160,7 +190,14 @@ function uncheckStatIcons(name)
 end
 
 function changeStatDescription(name)
-  widget.setText("statslayout.statdescription", name)
+  if name == "strength" then widget.setText("statslayout.statdescription", "Each point in Strength increases your Block Meter by 1 and damage with all Melee Weapons by 2%.") end
+  if name == "agility" then widget.setText("statslayout.statdescription", "Each point in Agility increases Speed by 3% and Jump Height by 1%.") end
+  if name == "vitality" then widget.setText("statslayout.statdescription", "Each point in Vitality increases Max Health by 2.") end
+  if name == "vigor" then widget.setText("statslayout.statdescription", "Each point in Vigor increases Max Energy by 2.") end
+  if name == "intelligence" then widget.setText("statslayout.statdescription", "Each point in Intelligence increases Energy Recharge Rate by 1% and damage with Magic Weapons by 2%.") end
+  if name == "endurance" then widget.setText("statslayout.statdescription", "Each point in Endurance increases Resistance to all damage by 2%.") end
+  if name == "dexterity" then widget.setText("statslayout.statdescription", "Each point in Dexterity increases damage with all One-Handed Weapons, Guns, Bows, and Thrown Weapons by 2%.") end
+  if name == "default" then widget.setText("statslayout.statdescription", "Click a stat's icon to see what occurs when that stat is raised.") end
 end
 
 function enableStatButtons(enable)
@@ -176,7 +213,18 @@ end
 
 function resetSkillBook()
   player.consumeCurrency("experienceorb", self.xp)
+  player.consumeCurrency("currentlevel", self.level)
   player.consumeCurrency("statpoint", player.currency("statpoint"))
+  player.consumeCurrency("strengthpoint",player.currency("strengthpoint"))
+  player.consumeCurrency("agilitypoint",player.currency("agilitypoint"))
+  player.consumeCurrency("vitalitypoint",player.currency("vitalitypoint"))
+  player.consumeCurrency("vigorpoint",player.currency("vigorpoint"))
+  player.consumeCurrency("intelligencepoint",player.currency("intelligencepoint"))
+  player.consumeCurrency("endurancepoint",player.currency("endurancepoint"))
+  player.consumeCurrency("dexteritypoint",player.currency("dexteritypoint"))
+  player.consumeCurrency("classtype",player.currency("classtype"))
+  player.consumeCurrency("affinitytype",player.currency("affinitytype"))
+  updateStats()
 end
 
   --pane.playSound(self.sounds.dispatch, -1)
