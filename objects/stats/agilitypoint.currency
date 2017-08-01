@@ -1,0 +1,15 @@
+{
+  "itemName" : "agilitypoint",
+  "rarity" : "Rare",
+  "inventoryIcon" : "agility.png",
+  "description" : "Agility.",
+  "shortdescription" : "Agility",
+  "currency" : "agilitypoint",
+  "value" : 1,
+  "pickupSoundsSmall" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "pickupSoundsMedium" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "pickupSoundsLarge" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
+  "smallStackLimit" : 50,
+  "mediumStackLimit" : 50,
+  "maxStack" : 100
+}

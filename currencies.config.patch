@@ -7,6 +7,69 @@
     }
   },
   { "op" : "add",
+    "path" : "/agilitypoint",
+    "value" : {
+      "representativeItem" : "agilitypoint",
+      "playerMax" : 100
+    }
+  },
+  { "op" : "add",
+    "path" : "/dexteritypoint",
+    "value" : {
+      "representativeItem" : "dexteritypoint",
+      "playerMax" : 100
+    }
+  },
+  { "op" : "add",
+    "path" : "/endurancepoint",
+    "value" : {
+      "representativeItem" : "endurancepoint",
+      "playerMax" : 100
+    }
+  },
+  { "op" : "add",
+    "path" : "/intelligencepoint",
+    "value" : {
+      "representativeItem" : "intelligencepoint",
+      "playerMax" : 100
+    }
+  },
+  { "op" : "add",
+    "path" : "/strengthpoint",
+    "value" : {
+      "representativeItem" : "strengthpoint",
+      "playerMax" : 100
+    }
+  },
+  { "op" : "add",
+    "path" : "/vigorpoint",
+    "value" : {
+      "representativeItem" : "vigorpoint",
+      "playerMax" : 100
+    }
+  },
+  { "op" : "add",
+    "path" : "/vitalitypoint",
+    "value" : {
+      "representativeItem" : "vitalitypoint",
+      "playerMax" : 100
+    }
+  },
+  { "op" : "add",
+    "path" : "/affinitytype",
+    "value" : {
+      "representativeItem" : "affinitytype",
+      "playerMax" : 8
+    }
+  },
+  { "op" : "add",
+    "path" : "/classtype",
+    "value" : {
+      "representativeItem" : "classtype",
+      "playerMax" : 6
+    }
+  },
+  { "op" : "add",
     "path" : "/skillbookopen",
     "value" : {
       "representativeItem" : "skillbookopen",

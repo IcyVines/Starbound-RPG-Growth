@@ -19,8 +19,8 @@ function init()
   
   self.mpos = {0,0}
 
-  updateAll()
-
+  self.xp = 0
+  self.level = 1
   self.strength = 0
   self.intelligence = 0
   self.dexterity = 0
@@ -50,7 +50,7 @@ function init()
     7: Aqua
     8: Herba
     ]]
-    
+    updateBottomBar()
 
 end
 
@@ -68,18 +68,23 @@ function update(dt)
     self.pane.dismiss()
   end
 
+  if player.currency("experienceorb") ~= self.xp then
+    updateBottomBar()
+  end
+
   self.state:update(dt)
 end
 
 function updateBookTab()
+  removeLayouts()
   if widget.getChecked("bookTabs.0") then
-    widget.setText("tabLabel", "Overview")
+    changeToOverview()
   elseif widget.getChecked("bookTabs.1") then
-    widget.setText("tabLabel", "Stats Tab")
+    changeToStats()
   elseif widget.getChecked("bookTabs.2") then
-    widget.setText("tabLabel", "Classes Tab")
+    changeToClasses()
   elseif widget.getChecked("bookTabs.3") then
-    widget.setText("tabLabel", "Affinities Tab")
+    changeToAffinities()
   end
 end
 
@@ -90,7 +95,7 @@ function takeInputEvents()
   return clicks
 end
 
-function updateAll()
+function updateBottomBar()
   self.xp = player.currency("experienceorb")
   self.level = math.floor(math.sqrt(self.xp/100))
   self.toNext = 2*self.level*100+100
@@ -99,6 +104,36 @@ function updateAll()
   widget.setProgress("experiencebar",(self.xp-self.level^2*100)/self.toNext)
 end
 
+function removeLayouts()
+  widget.setVisible("overviewlayout",false)
+  widget.setVisible("statslayout",false)
+  widget.setVisible("classeslayout",false)
+  widget.setVisible("affinitieslayout",false)
+end
+
+function changeToOverview()
+    widget.setText("tabLabel", "Overview")
+    widget.setVisible("overviewlayout", true)
+end
+
+function changeToStats()
+    widget.setText("tabLabel", "Stats Tab")
+    widget.setVisible("statslayout", true)
+end
+
+function changeToClasses()
+    widget.setText("tabLabel", "Classes Tab")
+    widget.setVisible("classeslayout", true)
+end
+
+function changeToAffinities()
+    widget.setText("tabLabel", "Affinities Tab")
+    widget.setVisible("affinitieslayout", true)
+end
+
+function resetSkillBook()
+  player.consumeCurrency("experienceorb", self.xp)
+end
 
   --pane.playSound(self.sounds.dispatch, -1)
   --pane.stopAllSounds(self.sounds.dispatch)
