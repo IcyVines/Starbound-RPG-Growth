@@ -116,8 +116,8 @@ end
 
 function updateOverview(toNext)
   widget.setText("overviewlayout.levellabel","Level " .. tostring(self.level))
-  widget.setText("overviewlayout.xptglabel",tostring(math.floor((self.xp-self.level^2*100))) .. "/" .. tostring(toNext))
-  widget.setText("overviewlayout.xptotallabel","Level " .. tostring(self.xp))
+  widget.setText("overviewlayout.xptglabel","Experience Needed For Level-Up: " .. tostring(toNext - (math.floor(self.xp-self.level^2*100))))
+  widget.setText("overviewlayout.xptotallabel","Total Experience Orbs Collected: " .. tostring(self.xp))
   widget.setText("overviewlayout.statpointsremaining","Stat Points Available: " .. tostring(player.currency("statpoint")))
   if player.currency("classtype") == 0 then
     widget.setText("overviewlayout.classtitle","No Class Yet")
@@ -154,6 +154,7 @@ end
 function changeToOverview()
     widget.setText("tabLabel", "Overview")
     widget.setVisible("overviewlayout", true)
+    updateOverview(2*self.level*100+100)
 end
 
 function changeToStats()
