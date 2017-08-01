@@ -39,7 +39,7 @@ function init()
     4: Arc
     5: Cryo
     6: Aer
-    7: Victus
+    7: Victus 
     8: Kinetic
     ]]
 
@@ -78,12 +78,12 @@ function updateBookTab()
   end
 end
 
-
-function takeInputEvents()
+--[[function takeInputEvents()
   local clicks = self.clickEvents
   self.clickEvents = {}
   return clicks
 end
+--]]
 
 function updateLevel()
   self.xp = player.currency("experienceorb")
@@ -103,15 +103,46 @@ function updateLevel()
     widget.setText("statslayout.statpointsleft",player.currency("statpoint"))
     updateStats()
   end
-  updateBottomBar()
+  self.toNext = 2*self.level*100+100
+  updateOverview(self.toNext)
+  updateBottomBar(self.toNext)
 end
 
-function updateBottomBar()
-  self.toNext = 2*self.level*100+100
+function updateBottomBar(toNext)
   widget.setText("levelLabel", "Level " .. tostring(self.level))
-  widget.setText("xpLabel",tostring(math.floor((self.xp-self.level^2*100))) .. "/" .. tostring(self.toNext))
-  widget.setProgress("experiencebar",(self.xp-self.level^2*100)/self.toNext)
+  widget.setText("xpLabel",tostring(math.floor((self.xp-self.level^2*100))) .. "/" .. tostring(toNext))
+  widget.setProgress("experiencebar",(self.xp-self.level^2*100)/toNext)
 end
+
+function updateOverview(toNext)
+  widget.setText("overviewlayout.levellabel","Level " .. tostring(self.level))
+  widget.setText("overviewlayout.xptglabel",tostring(math.floor((self.xp-self.level^2*100))) .. "/" .. tostring(toNext))
+  widget.setText("overviewlayout.xptotallabel","Level " .. tostring(self.xp))
+  widget.setText("overviewlayout.statpointsremaining","Stat Points Available: " .. tostring(player.currency("statpoint")))
+  if player.currency("classtype") == 0 then
+    widget.setText("overviewlayout.classtitle","No Class Yet")
+    widget.setImage("overviewlayout.classicon","/objects/class/noclass.png")
+  elseif player.currency("classtype") == 1 then
+    widget.setText("overviewlayout.classtitle","Knight")
+    widget.setImage("overviewlayout.classicon","/objects/class/knight.png")
+  elseif player.currency("classtype") == 2 then
+    widget.setText("overviewlayout.classtitle","Wizard")
+    widget.setImage("overviewlayout.classicon","/objects/class/wizard.png")
+  elseif player.currency("classtype") == 3 then
+    widget.setText("overviewlayout.classtitle","Ninja")
+    widget.setImage("overviewlayout.classicon","/objects/class/ninja.png")
+  elseif player.currency("classtype") == 4 then
+    widget.setText("overviewlayout.classtitle","Soldier")
+    widget.setImage("overviewlayout.classicon","/objects/class/soldier.png")
+  elseif player.currency("classtype") == 5 then
+    widget.setText("overviewlayout.classtitle","Rogue")
+    widget.setImage("overviewlayout.classicon","/objects/class/rogue.png")
+  elseif player.currency("classtype") == 6 then
+    widget.setText("overviewlayout.classtitle","Explorer")
+    widget.setImage("overviewlayout.classicon","/objects/class/explorer.png")
+  end
+end
+
 
 function removeLayouts()
   widget.setVisible("overviewlayout",false)
@@ -310,7 +341,22 @@ function chooseClass()
   changeToClasses()
 end
 
+function areYouSure()
+  widget.setVisible("overviewlayout.resetbutton", false)
+  widget.setVisible("overviewlayout.yesbutton", true)
+  widget.setVisible("overviewlayout.nobutton", true)
+  widget.setVisible("overviewlayout.areyousure", true)  
+end
+
+function notSure()
+  widget.setVisible("overviewlayout.resetbutton", true)
+  widget.setVisible("overviewlayout.yesbutton", false)
+  widget.setVisible("overviewlayout.nobutton", false)
+  widget.setVisible("overviewlayout.areyousure", false)  
+end
+
 function resetSkillBook()
+  notSure()
   player.consumeCurrency("experienceorb", self.xp)
   player.consumeCurrency("currentlevel", self.level)
   player.consumeCurrency("statpoint", player.currency("statpoint"))
