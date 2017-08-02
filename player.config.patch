@@ -1,5 +1,3 @@
 [
-{ "op" : "add", "path" : "/statusControllerSettings/persistentEffectCategories/-", "value" : "modEffect" },
-{ "op" : "add", "path" : "/statusControllerSettings/primaryScriptSources/-", "value" : "/scripts/RPGeffects.lua" },
-{ "op" : "add", "path" : "/statusControllerSettings/statusProperties/modSetup", "value" :  0 }
+{ "op" : "add", "path" : "/statusControllerSettings/primaryScriptSources/-", "value" : "/scripts/RPGeffects.lua" }
 ]

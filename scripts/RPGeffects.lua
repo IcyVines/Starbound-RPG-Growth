@@ -1,3 +1,5 @@
+
+
 function init()
     script.setUpdateDelta(1)
 end
@@ -25,7 +27,7 @@ function update(dt)
 
 	-- Intelligence
 	{stat = "energyRegenPercentageRate", baseMultiplier = 1 + .02*intelligence},
-	{stat = "energyRegenBlockTime", baseMultiplier = .98*intelligence}
+	{stat = "energyRegenBlockTime", baseMultiplier = .98*intelligence},
 
 	-- Dexterity
 
@@ -36,13 +38,13 @@ function update(dt)
 	{stat = "maxHealth", baseMultiplier = 1 + vigor*.02},
 
 	-- Vigor
-	{stat = "maxEnergy", baseMultiplier = 1 + intelligence*.02},
+	{stat = "maxEnergy", baseMultiplier = 1 + intelligence*.02}
 
   })
 
   -- Agility
   mcontroller.controlModifiers({
-	speedModifier = 1 + agility*.02
+	     speedModifier = 1 + agility*.02,
     	airJumpModifier = 1 + agility*.02
   })
 
