@@ -5,47 +5,41 @@ function init()
 end
 
 function update(dt)
-
-  self.strength = player.currency("strengthpoint")
-  widget.setText("statslayout.strengthamount",self.strength)
-  self.agility = player.currency("agilitypoint")
-  widget.setText("statslayout.agilityamount",self.agility)
-  self.vitality = player.currency("vitalitypoint")
-  widget.setText("statslayout.vitalityamount",self.vitality)
-  self.vigor = player.currency("vigorpoint")
-  widget.setText("statslayout.vigoramount",self.vigor)
-  self.intelligence = player.currency("intelligencepoint")
-  widget.setText("statslayout.intelligenceamount",self.intelligence)
-  self.endurance = player.currency("endurancepoint")
-  widget.setText("statslayout.enduranceamount",self.endurance)
-  self.dexterity = player.currency("dexteritypoint")  
-  status.addPersistentEffect( "RPGeffect",
+  self.id = entity.id()
+  self.strength = world.entityCurrency(self.id, "strengthpoint")
+  self.agility = world.entityCurrency(self.id,"agilitypoint")
+  self.vitality = world.entityCurrency(self.id,"vitalitypoint")
+  self.vigor = world.entityCurrency(self.id,"vigorpoint")
+  self.intelligence = world.entityCurrency(self.id,"intelligencepoint")
+  self.endurance = world.entityCurrency(self.id,"endurancepoint")
+  self.dexterity = world.entityCurrency(self.id,"dexteritypoint")  
+  status.setPersistentEffects( "RPGeffect",
   {
 
 	-- Strength
-	{stat = "maxShieldHealth", baseMultiplier = 1 + strength*.02},
+	{stat = "maxShieldHealth", baseMultiplier = 1 + self.strength*.02},
 
 	-- Intelligence
-	{stat = "energyRegenPercentageRate", baseMultiplier = 1 + .02*intelligence},
-	{stat = "energyRegenBlockTime", baseMultiplier = .98*intelligence},
+	{stat = "energyRegenPercentageRate", baseMultiplier = 1 + .02*self.intelligence},
+	{stat = "energyRegenBlockTime", baseMultiplier = .98*self.intelligence},
 
 	-- Dexterity
 
 	-- Endurance
-	{stat = "protection", baseMultiplier = 1 + endurance*.02},
+	{stat = "protection", baseMultiplier = 1 + self.endurance*.02},
 
 	-- Vitality
-	{stat = "maxHealth", baseMultiplier = 1 + vigor*.02},
+	{stat = "maxHealth", baseMultiplier = 1 + self.vitality*.02},
 
 	-- Vigor
-	{stat = "maxEnergy", baseMultiplier = 1 + intelligence*.02}
+	{stat = "maxEnergy", baseMultiplier = 1 + self.vigor*.02}
 
   })
 
   -- Agility
   mcontroller.controlModifiers({
-	     speedModifier = 1 + agility*.02,
-    	airJumpModifier = 1 + agility*.02
+	     speedModifier = 1 + self.agility*.02,
+    	airJumpModifier = 1 + self.agility*.02
   })
 
 end
