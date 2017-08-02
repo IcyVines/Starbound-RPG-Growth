@@ -1,0 +1,32 @@
+[
+    {
+        "op" : "add",
+        "path" : "/basicMonsterTreasure/0/1/pool/-",
+        "value" : {"weight" : 1.0, "pool" : "experienceorbpool"}
+    },
+    {
+        "op" : "add",
+        "path" : "/flyingMonsterTreasure/0/1/pool/-",
+        "value" : {"weight" : 1.0, "pool" : "experienceorbpool"}
+    },
+    {
+        "op" : "add",
+        "path" : "/noMeatMonsterTreasure/0/1/pool/-",
+        "value" : {"weight" : 1.0, "pool" : "experienceorbpool"}
+    },
+    {
+        "op" : "add",
+        "path" : "/weaklingMonsterTreasure/0/1/pool/-",
+        "value" : {"weight" : 1.0, "pool" : "experienceorbpool"}
+    },
+    {
+        "op" : "add",
+        "path" : "/generatedGroundMonsterTreasure/0/1/pool/-",
+        "value" : {"weight" : 1.0, "pool" : "experienceorbpool"}
+    },
+    {
+        "op" : "add",
+        "path" : "/generatedFlyingMonsterTreasure/0/1/pool/-",
+        "value" : {"weight" : 1.0, "pool" : "experienceorbpool"}
+    }
+]
