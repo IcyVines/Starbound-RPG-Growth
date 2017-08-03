@@ -19,22 +19,22 @@ function update(dt)
 
 	-- Strength
     --Increases Shield Health, Damage with melee weapons, and physical resistance
-	{stat = "maxShieldHealth", baseMultiplier = 1 + self.strength*.02},
+	{stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.02},
 
 	-- Intelligence
-	{stat = "energyRegenPercentageRate", baseMultiplier = 1 + .02*self.intelligence},
-	{stat = "energyRegenBlockTime", baseMultiplier = .98*self.intelligence},
+	--{stat = "energyRegenPercentageRate", effectiveMultiplier = 1+.02*self.intelligence},
+	{stat = "energyRegenBlockTime", effectiveMultiplier = 1-.01*self.intelligence},
 
 	-- Dexterity
 
 	-- Endurance
-	{stat = "protection", baseMultiplier = 1 + self.endurance*.02},
+	{stat = "physicalResistance", effectiveMultiplier = 1 + self.endurance*.02},
 
 	-- Vitality
-	{stat = "maxHealth", baseMultiplier = 1 + self.vitality*.02},
+	{stat = "maxHealth", effectiveMultiplier = 1 + self.vitality*.02},
 
 	-- Vigor
-	{stat = "maxEnergy", baseMultiplier = 1 + self.vigor*.02}
+	{stat = "maxEnergy", effectiveMultiplier = 1 + self.vigor*.02}
 
   })
 
