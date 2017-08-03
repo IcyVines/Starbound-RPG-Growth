@@ -1,0 +1,13 @@
+{
+  "name" : "sparks",
+  "type" : "head",
+
+  "scripts" : ["ivrpgsparks.lua"],
+
+  "description" : "Tap ^green;[F]^white; to shoot sparks!",
+  "shortDescription" : "Sparks",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/walljump.png",
+
+  "chipCost" : 2
+}
