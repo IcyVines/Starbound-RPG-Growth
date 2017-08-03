@@ -1,0 +1,13 @@
+{
+  "name" : "ivrpgstatboosts",
+  "effectConfig" : {
+    "healthBonus" : 0,
+    "energyBonus" : 0
+  },
+  "defaultDuration" : 3,
+
+  "scripts" : [
+    "ivrpgstatboosts.lua"
+  ]
+
+}
