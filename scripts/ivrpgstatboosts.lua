@@ -6,23 +6,23 @@ end
 
 function update(dt)
   self.id = entity.id()
-  self.strength = world.entityCurrency(self.id, "strengthpoint")
-  self.agility = world.entityCurrency(self.id,"agilitypoint")
-  self.vitality = world.entityCurrency(self.id,"vitalitypoint")
-  self.vigor = world.entityCurrency(self.id,"vigorpoint")
-  self.intelligence = world.entityCurrency(self.id,"intelligencepoint")
-  self.endurance = world.entityCurrency(self.id,"endurancepoint")
-  self.dexterity = world.entityCurrency(self.id,"dexteritypoint")
+  self.strength = world.entityCurrency(self.id, "strengthpoint")^1.1
+  self.agility = world.entityCurrency(self.id,"agilitypoint")^1.1
+  self.vitality = world.entityCurrency(self.id,"vitalitypoint")^1.1
+  self.vigor = world.entityCurrency(self.id,"vigorpoint")^1.1
+  self.intelligence = world.entityCurrency(self.id,"intelligencepoint")^1.1
+  self.endurance = world.entityCurrency(self.id,"endurancepoint")^1.1
+  self.dexterity = world.entityCurrency(self.id,"dexteritypoint")^1.1
   status.setPersistentEffects( "ivrpgstatboosts",
   {
 
 	-- Strength
     --Increases Shield Health, Damage with melee weapons, and physical resistance
-	{stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.02},
+	{stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.01},
 
 	-- Intelligence
-	--{stat = "energyRegenPercentageRate", effectiveMultiplier = 1+.02*self.intelligence},
-	{stat = "energyRegenBlockTime", effectiveMultiplier = 1-.01*self.intelligence},
+	{stat = "energyRegenPercentageRate", effectiveMultiplier = 1+.2*self.intelligence},
+	{stat = "energyRegenBlockTime", effectiveMultiplier = 1-.015*self.intelligence},
 
 	-- Dexterity
 
