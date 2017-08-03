@@ -1,7 +1,8 @@
-require "/scripts/keybinds.lua"
+require "/scripts/vec2.lua"
+--require "/scripts/keybinds.lua"
 
 function init()
-	Bind.create("f", function() sb.logInfo("You pressed the F key!") end)
+	--Bind.create("f", function() sb.logInfo("You pressed the F key!") end)
 end
 
 --function uninit()
