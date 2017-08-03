@@ -1,4 +1,3 @@
-require("/scripts/raceEffects.lua")
 local fuoldInit = init
 local fuoldUpdate = update
 local fuoldUninit = uninit

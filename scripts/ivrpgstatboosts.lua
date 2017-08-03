@@ -1,4 +1,3 @@
-require("/scripts/vec2.lua")
 
 function init()
   local bounds = mcontroller.boundBox()
