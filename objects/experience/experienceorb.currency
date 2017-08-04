@@ -14,5 +14,5 @@
   ],
   "smallStackLimit" : 100,
   "mediumStackLimit" : 1000,
-  "maxStack" : 16777216
+  "maxStack" : 250000
 }

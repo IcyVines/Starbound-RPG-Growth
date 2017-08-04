@@ -87,12 +87,12 @@ end
 
 function updateLevel()
   self.xp = player.currency("experienceorb")
-  if self.xp < 100 then
-    player.consumeCurrency("experienceorb",self.xp)
-    player.addCurrency("experienceorb",100)
-    self.xp = 100
+  if player.currency("currentlevel") == 0 then
     self.level = 1
     player.addCurrency("currentlevel",1)
+    player.addCurrency("experienceorb",100)
+    self.xp = player.currency("experienceorb")
+    startingStats()
   else
     self.newLevel = math.floor(math.sqrt(self.xp/100))
     while self.newLevel > self.level do
@@ -100,9 +100,9 @@ function updateLevel()
       player.addCurrency("statpoint", 1)
       self.level = self.level+1
     end
-    widget.setText("statslayout.statpointsleft",player.currency("statpoint"))
-    updateStats()
   end
+  widget.setText("statslayout.statpointsleft",player.currency("statpoint"))
+  updateStats()
   self.toNext = 2*self.level*100+100
   updateOverview(self.toNext)
   updateBottomBar(self.toNext)
@@ -110,14 +110,24 @@ end
 
 function updateBottomBar(toNext)
   widget.setText("levelLabel", "Level " .. tostring(self.level))
-  widget.setText("xpLabel",tostring(math.floor((self.xp-self.level^2*100))) .. "/" .. tostring(toNext))
-  widget.setProgress("experiencebar",(self.xp-self.level^2*100)/toNext)
+  if self.level == 50 then
+    widget.setText("xpLabel","Max XP!")
+    widget.setProgress("experiencebar",1)
+  else
+    widget.setText("xpLabel",tostring(math.floor((self.xp-self.level^2*100))) .. "/" .. tostring(toNext))
+    widget.setProgress("experiencebar",(self.xp-self.level^2*100)/toNext)
+  end
 end
 
 function updateOverview(toNext)
   widget.setText("overviewlayout.levellabel","Level " .. tostring(self.level))
-  widget.setText("overviewlayout.xptglabel","Experience Needed For Level-Up: " .. tostring(toNext - (math.floor(self.xp-self.level^2*100))))
-  widget.setText("overviewlayout.xptotallabel","Total Experience Orbs Collected: " .. tostring(self.xp))
+  if self.level == 50 then
+    widget.setText("overviewlayout.xptglabel","Experience Needed For Level-Up: N/A.")
+    widget.setText("overviewlayout.xptotallabel","Total Experience Orbs Collected: " .. tostring(self.xp))
+  else
+    widget.setText("overviewlayout.xptglabel","Experience Needed For Level-Up: " .. tostring(toNext - (math.floor(self.xp-self.level^2*100))))
+    widget.setText("overviewlayout.xptotallabel","Total Experience Orbs Collected: " .. tostring(self.xp))
+  end
   widget.setText("overviewlayout.statpointsremaining","Stat Points Available: " .. tostring(player.currency("statpoint")))
   if player.currency("classtype") == 0 then
     widget.setText("overviewlayout.classtitle","No Class Yet")
@@ -214,6 +224,16 @@ function checkClassDescription(name)
     changeClassDescription("default")
     widget.setButtonEnabled("classeslayout.selectclass", false)
   end
+end
+
+function startingStats()
+  player.addCurrency("strengthpoint",1)
+  player.addCurrency("dexteritypoint",1)
+  player.addCurrency("intelligencepoint",1)
+  player.addCurrency("agilitypoint",1)
+  player.addCurrency("endurancepoint",1)
+  player.addCurrency("vitalitypoint",1)
+  player.addCurrency("vigorpoint",1)
 end
 
 function updateStats()

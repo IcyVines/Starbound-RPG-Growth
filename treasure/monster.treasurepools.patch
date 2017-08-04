@@ -26,6 +26,21 @@
     },
     {
         "op" : "add",
+        "path" : "/largefishtreasure/0/1/pool/-",
+        "value" : {"weight" : 1.0, "pool" : "experienceorbpool"}
+    },
+    {
+        "op" : "add",
+        "path" : "/smallfishtreasure/0/1/pool/-",
+        "value" : {"weight" : 1.0, "pool" : "experienceorbpool"}
+    },
+    {
+        "op" : "add",
+        "path" : "/robotTreasure/0/1/pool/-",
+        "value" : {"weight" : 1.0, "pool" : "experienceorbpool"}
+    },
+    {
+        "op" : "add",
         "path" : "/generatedFlyingMonsterTreasure/0/1/pool/-",
         "value" : {"weight" : 1.0, "pool" : "experienceorbpool"}
     }

@@ -3,7 +3,7 @@
     "path" : "/experienceorb",
     "value" : {
       "representativeItem" : "experienceorb",
-      "playerMax" : 999999
+      "playerMax" : 250000
     }
   },
   { "op" : "add",
@@ -17,56 +17,56 @@
     "path" : "/statpoint",
     "value" : {
       "representativeItem" : "statpoint",
-      "playerMax" : 100
+      "playerMax" : 49
     }
   },
   { "op" : "add",
     "path" : "/agilitypoint",
     "value" : {
       "representativeItem" : "agilitypoint",
-      "playerMax" : 100
+      "playerMax" : 50
     }
   },
   { "op" : "add",
     "path" : "/dexteritypoint",
     "value" : {
       "representativeItem" : "dexteritypoint",
-      "playerMax" : 100
+      "playerMax" : 50
     }
   },
   { "op" : "add",
     "path" : "/endurancepoint",
     "value" : {
       "representativeItem" : "endurancepoint",
-      "playerMax" : 100
+      "playerMax" : 50
     }
   },
   { "op" : "add",
     "path" : "/intelligencepoint",
     "value" : {
       "representativeItem" : "intelligencepoint",
-      "playerMax" : 100
+      "playerMax" : 50
     }
   },
   { "op" : "add",
     "path" : "/strengthpoint",
     "value" : {
       "representativeItem" : "strengthpoint",
-      "playerMax" : 100
+      "playerMax" : 50
     }
   },
   { "op" : "add",
     "path" : "/vigorpoint",
     "value" : {
       "representativeItem" : "vigorpoint",
-      "playerMax" : 100
+      "playerMax" : 50
     }
   },
   { "op" : "add",
     "path" : "/vitalitypoint",
     "value" : {
       "representativeItem" : "vitalitypoint",
-      "playerMax" : 100
+      "playerMax" : 50
     }
   },
   { "op" : "add",
