@@ -1,0 +1,277 @@
+[00:34:47.951] [Info] Root: Preparing Root...
+[00:34:47.951] [Info] Root: Done preparing Root.
+[00:34:47.951] [Info] Client Version 1.3.2 (windows x86_64) Source ID: 4d70cfed23093a8e5abe06d662c6a5610fefc596 Protocol: 743
+[00:34:47.951] [Info] Root: Scanning for asset sources in directory '..\assets\'
+[00:34:48.188] [Info] Root: Scanning for asset sources in directory '..\mods\'
+[00:34:48.199] [Warn] Root: Unrecognized file in asset directory 'mods_go_here', skipping
+[00:34:48.206] [Info] Root: Detected asset source named 'base' at '..\assets\packed.pak'
+[00:34:48.206] [Info] Root: Detected asset source named 'RPG_Growth' at '..\mods\Starbound-RPG-Growth'
+[00:34:48.206] [Info] Root: Detected asset source named 'SlimeRaceMod' at '..\mods\slimemod.pak'
+[00:34:48.206] [Info] Root: Detected unnamed asset source at '..\assets\user'
+[00:34:48.206] [Info] Loading assets from: '..\assets\packed.pak'
+[00:34:48.532] [Info] Loading assets from: '..\mods\Starbound-RPG-Growth'
+[00:34:48.543] [Info] Loading assets from: '..\mods\slimemod.pak'
+[00:34:48.551] [Info] Loading assets from: '..\assets\user'
+[00:34:49.081] [Info] Assets digest is 11eb06bedc1179d4cd97adc691ba6c293c0856cf03ee2e5c03d177161af73c20
+[00:34:49.081] [Info] Root: Loaded Assets in 1.13073 seconds
+[00:34:49.085] [Info] Application: Initializing SDL Video
+[00:34:49.089] [Info] Application: Initializing SDL Joystick
+[00:34:49.107] [Info] Application: Initializing SDL Sound
+[00:34:49.184] [Info] Initialized Steam services
+[00:34:49.186] [Info] Application: Creating SDL Window
+[00:34:50.136] [Info] Application: Enabling VSync with late swap tearing
+[00:34:50.162] [Info] Application: Opened default audio device with 44.1khz / 16 bit stereo audio, 2048 sample size buffer
+[00:34:50.168] [Info] OpenGL version: '4.5.0 NVIDIA 382.33' vendor: 'NVIDIA Corporation' renderer: 'GeForce GTX 1060 3GB/PCIe/SSE2' shader: '4.50 NVIDIA'
+[00:34:50.171] [Info] Application: initialization...
+[00:34:50.171] [Info] Root: Loaded Configuration in 0.000599274 seconds
+[00:34:50.182] [Info] Application: renderer initialization...
+[00:34:50.186] [Info] detected supported OpenGL texture size 32768, using atlasNumCells 128
+[00:34:50.186] [Info] detected supported OpenGL texture size 32768, using atlasNumCells 64
+[00:34:50.187] [Info] Root: Loaded ImageMetadataDatabase in 1.10827e-06 seconds
+[00:34:50.200] [Info] Application: main update loop...
+[00:34:50.203] [Info] Loading mods from user generated content with id '895865334' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\895865334'
+[00:34:50.203] [Info] Loading mods from user generated content with id '946515757' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\946515757'
+[00:34:50.203] [Info] Loading mods from user generated content with id '729426722' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729426722'
+[00:34:50.203] [Info] Loading mods from user generated content with id '937184219' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\937184219'
+[00:34:50.203] [Info] Loading mods from user generated content with id '876684273' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\876684273'
+[00:34:50.203] [Info] Loading mods from user generated content with id '948458702' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\948458702'
+[00:34:50.203] [Info] Loading mods from user generated content with id '736587210' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\736587210'
+[00:34:50.203] [Info] Loading mods from user generated content with id '823522792' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\823522792'
+[00:34:50.204] [Info] Loading mods from user generated content with id '825806617' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\825806617'
+[00:34:50.204] [Info] Loading mods from user generated content with id '1082333529' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\1082333529'
+[00:34:50.204] [Info] Loading mods from user generated content with id '729426797' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729426797'
+[00:34:50.204] [Info] Loading mods from user generated content with id '729427264' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729427264'
+[00:34:50.204] [Info] Loading mods from user generated content with id '729427606' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729427606'
+[00:34:50.204] [Info] Loading mods from user generated content with id '729428037' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729428037'
+[00:34:50.204] [Info] Loading mods from user generated content with id '729524482' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729524482'
+[00:34:50.204] [Info] Loading mods from user generated content with id '729726478' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729726478'
+[00:34:50.204] [Info] Loading mods from user generated content with id '731354142' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\731354142'
+[00:34:50.204] [Info] Loading mods from user generated content with id '733139672' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\733139672'
+[00:34:50.204] [Info] Loading mods from user generated content with id '731592371' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\731592371'
+[00:34:50.205] [Info] Loading mods from user generated content with id '729492703' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729492703'
+[00:34:50.205] [Info] Loading mods from user generated content with id '730378641' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\730378641'
+[00:34:50.205] [Info] Loading mods from user generated content with id '744492975' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\744492975'
+[00:34:50.205] [Info] Loading mods from user generated content with id '823739640' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\823739640'
+[00:34:50.205] [Info] Loading mods from user generated content with id '949533967' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\949533967'
+[00:34:50.205] [Info] Loading mods from user generated content with id '729427436' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729427436'
+[00:34:50.205] [Info] Loading mods from user generated content with id '732892354' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\732892354'
+[00:34:50.205] [Info] Loading mods from user generated content with id '763259329' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\763259329'
+[00:34:50.205] [Info] Loading mods from user generated content with id '939383290' from directory 'G:\SteamLibrary\steamapps\workshop\content\211820\939383290'
+[00:34:50.205] [Info] Reloading to include all user generated content
+[00:34:50.205] [Info] Root: Reloading from disk
+[00:34:50.205] [Info] Root: Writing runtime configuration to '..\storage\starbound.config'
+[00:34:50.248] [Info] Root: Loaded Configuration in 0.000761075 seconds
+[00:34:50.248] [Info] Root: Scanning for asset sources in directory '..\assets\'
+[00:34:50.464] [Info] Root: Scanning for asset sources in directory '..\mods\'
+[00:34:50.473] [Warn] Root: Unrecognized file in asset directory 'mods_go_here', skipping
+[00:34:50.479] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\895865334'
+[00:34:50.480] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\946515757'
+[00:34:50.481] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729426722'
+[00:34:50.481] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\937184219'
+[00:34:50.482] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\876684273'
+[00:34:50.483] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\948458702'
+[00:34:50.484] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\736587210'
+[00:34:50.485] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\823522792'
+[00:34:50.485] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\825806617'
+[00:34:50.485] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\1082333529'
+[00:34:50.486] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729426797'
+[00:34:50.486] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729427264'
+[00:34:50.486] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729427606'
+[00:34:50.488] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729428037'
+[00:34:50.489] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729524482'
+[00:34:50.489] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729726478'
+[00:34:50.489] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\731354142'
+[00:34:50.489] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\733139672'
+[00:34:50.490] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\731592371'
+[00:34:50.490] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729492703'
+[00:34:50.491] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\730378641'
+[00:34:50.491] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\744492975'
+[00:34:50.492] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\823739640'
+[00:34:50.493] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\949533967'
+[00:34:50.493] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\729427436'
+[00:34:50.495] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\732892354'
+[00:34:50.495] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\763259329'
+[00:34:50.517] [Info] Root: Scanning for asset sources in directory 'G:\SteamLibrary\steamapps\workshop\content\211820\939383290'
+[00:34:50.518] [Info] Root: Detected asset source named 'base' at '..\assets\packed.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'xbawks' at 'G:\SteamLibrary\steamapps\workshop\content\211820\729426722\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'RPG_Growth' at '..\mods\Starbound-RPG-Growth'
+[00:34:50.518] [Info] Root: Detected asset source named 'SlimeRaceMod' at '..\mods\slimemod.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Brawler's Coat and Arms' at 'G:\SteamLibrary\steamapps\workshop\content\211820\895865334\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Borderlands Random-Gen Weapons' at 'G:\SteamLibrary\steamapps\workshop\content\211820\946515757\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Telvakian Race Mod' at 'G:\SteamLibrary\steamapps\workshop\content\211820\937184219\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Slime Sphere Techs' at 'G:\SteamLibrary\steamapps\workshop\content\211820\876684273\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'SlimyHairs' at 'G:\SteamLibrary\steamapps\workshop\content\211820\948458702\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Starsuits' at 'G:\SteamLibrary\steamapps\workshop\content\211820\736587210\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Dye Station' at 'G:\SteamLibrary\steamapps\workshop\content\211820\823522792\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'craftablemf' at 'G:\SteamLibrary\steamapps\workshop\content\211820\825806617\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Pocket World Mod' at 'G:\SteamLibrary\steamapps\workshop\content\211820\1082333529\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Extended GUI' at 'G:\SteamLibrary\steamapps\workshop\content\211820\729426797\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Extended Songbook' at 'G:\SteamLibrary\steamapps\workshop\content\211820\729427264\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Improved Containers' at 'G:\SteamLibrary\steamapps\workshop\content\211820\729427606\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'ContainerUITweak' at 'G:\SteamLibrary\steamapps\workshop\content\211820\729524482\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Weapon Stats' at 'G:\SteamLibrary\steamapps\workshop\content\211820\729726478\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Improved Food Descriptions' at 'G:\SteamLibrary\steamapps\workshop\content\211820\731354142\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Earth's Finest - Crew Improvements' at 'G:\SteamLibrary\steamapps\workshop\content\211820\733139672\contents.pak'
+[00:34:50.518] [Info] Root: Detected unnamed asset source at 'G:\SteamLibrary\steamapps\workshop\content\211820\731592371\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'FrackinMusic' at 'G:\SteamLibrary\steamapps\workshop\content\211820\729492703\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'PerennialCrops' at 'G:\SteamLibrary\steamapps\workshop\content\211820\730378641\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'betterupgrades7' at 'G:\SteamLibrary\steamapps\workshop\content\211820\823739640\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'RFW-FU' at 'G:\SteamLibrary\steamapps\workshop\content\211820\949533967\contents.pak'
+[00:34:50.518] [Info] Root: Detected unnamed asset source at 'G:\SteamLibrary\steamapps\workshop\content\211820\732892354\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'fr telvak' at 'G:\SteamLibrary\steamapps\workshop\content\211820\939383290\content.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'skippable_cinematics' at 'G:\SteamLibrary\steamapps\workshop\content\211820\729428037\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'food_stack' at 'G:\SteamLibrary\steamapps\workshop\content\211820\729427436\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'Weapon Reinforcer' at 'G:\SteamLibrary\steamapps\workshop\content\211820\744492975\contents.pak'
+[00:34:50.518] [Info] Root: Detected asset source named 'FrackinRaces' at 'G:\SteamLibrary\steamapps\workshop\content\211820\763259329\contents.pak'
+[00:34:50.518] [Info] Root: Detected unnamed asset source at '..\assets\user'
+[00:34:50.518] [Info] Loading assets from: '..\assets\packed.pak'
+[00:34:50.822] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\729426722\contents.pak'
+[00:34:50.822] [Info] Loading assets from: '..\mods\Starbound-RPG-Growth'
+[00:34:50.832] [Info] Loading assets from: '..\mods\slimemod.pak'
+[00:34:50.840] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\895865334\contents.pak'
+[00:34:50.841] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\946515757\contents.pak'
+[00:34:50.842] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\937184219\contents.pak'
+[00:34:50.843] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\876684273\contents.pak'
+[00:34:50.844] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\948458702\contents.pak'
+[00:34:50.845] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\736587210\contents.pak'
+[00:34:50.847] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\823522792\contents.pak'
+[00:34:50.847] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\825806617\contents.pak'
+[00:34:50.847] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\1082333529\contents.pak'
+[00:34:50.847] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\729426797\contents.pak'
+[00:34:50.848] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\729427264\contents.pak'
+[00:34:50.848] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\729427606\contents.pak'
+[00:34:50.851] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\729524482\contents.pak'
+[00:34:50.851] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\729726478\contents.pak'
+[00:34:50.851] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\731354142\contents.pak'
+[00:34:50.852] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\733139672\contents.pak'
+[00:34:50.852] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\731592371\contents.pak'
+[00:34:50.852] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\729492703\contents.pak'
+[00:34:50.853] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\730378641\contents.pak'
+[00:34:50.854] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\823739640\contents.pak'
+[00:34:50.856] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\949533967\contents.pak'
+[00:34:50.856] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\732892354\contents.pak'
+[00:34:50.856] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\939383290\content.pak'
+[00:34:50.856] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\729428037\contents.pak'
+[00:34:50.857] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\729427436\contents.pak'
+[00:34:50.859] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\744492975\contents.pak'
+[00:34:50.860] [Info] Loading assets from: 'G:\SteamLibrary\steamapps\workshop\content\211820\763259329\contents.pak'
+[00:34:50.892] [Info] Loading assets from: '..\assets\user'
+[00:34:51.520] [Info] Assets digest is dd47fd7527da40e50cc607b380d5bc50d0addedd9ee9a42874eb39d6c7282dc6
+[00:34:51.520] [Info] Root: Loaded Assets in 1.27213 seconds
+[00:34:51.532] [Info] Root: Loaded ImageMetadataDatabase in 1.38511e-06 seconds
+[00:34:51.535] [Info] Root: Loaded NameGenerator in 0.0144901 seconds
+[00:34:51.628] [Info] Root: Loaded PlantDatabase in 0.0934393 seconds
+[00:34:52.107] [Info] Root: Loaded ProjectileDatabase in 0.478548 seconds
+[00:34:52.331] [Info] Root: Loaded MonsterDatabase in 0.22353 seconds
+[00:34:52.408] [Info] Root: Loaded NpcDatabase in 0.0774534 seconds
+[00:34:52.409] [Info] Root: Loaded StagehandDatabase in 0.001408 seconds
+[00:34:52.413] [Info] Root: Loaded VehicleDatabase in 0.00379706 seconds
+[00:34:52.425] [Info] Root: Loaded PlayerFactory in 0.0121545 seconds
+[00:34:52.982] [Info] Root: Loaded ObjectDatabase in 1.46132 seconds
+[00:34:52.983] [Info] Root: Loaded VersioningDatabase in 0.00119716 seconds
+[00:34:52.983] [Info] Root: Loaded EntityFactory in 0.557435 seconds
+[00:34:53.014] [Info] Root: Loaded ParticleDatabase in 0.0307508 seconds
+[00:34:53.228] [Info] Root: Loaded MaterialDatabase in 0.2443 seconds
+[00:34:53.233] [Info] Root: Loaded TerrainDatabase in 0.00488783 seconds
+[00:34:53.275] [Info] Root: Loaded BiomeDatabase in 0.0427881 seconds
+[00:34:53.276] [Info] Root: Loaded LiquidsDatabase in 0.000715915 seconds
+[00:34:53.287] [Info] Root: Loaded StatusEffectDatabase in 0.0104988 seconds
+[00:34:53.556] [Info] Root: Loaded DamageDatabase in 0.269961 seconds
+[00:34:53.565] [Info] Root: Loaded EffectSourceDatabase in 0.00865054 seconds
+[00:34:53.569] [Info] Root: Loaded FunctionDatabase in 0.00370203 seconds
+[00:34:53.649] [Info] Root: Loaded TreasureDatabase in 0.0799203 seconds
+[00:34:53.923] [Info] Root: Loaded DungeonDefinitions in 0.274229 seconds
+[00:34:53.923] [Info] Root: Loaded TilesetDatabase in 2.43809e-05 seconds
+[00:34:53.925] [Info] Root: Loaded StatisticsDatabase in 0.00171055 seconds
+[00:34:53.925] [Info] Root: Loaded EmoteProcessor in 7.95154e-05 seconds
+[00:34:53.971] [Error] Could not apply patch from file /species/slimenpc.species.patch in source: G:\SteamLibrary\steamapps\workshop\content\211820\948458702\contents.pak.  Caused by: (JsonPatchException) Could not apply patch to base. (JsonPatchException) Could not apply operation to base. (TraversalException) Could not remove element after end of array
+[00:34:53.975] [Error] Could not apply patch from file /species/slimeperson.species.patch in source: G:\SteamLibrary\steamapps\workshop\content\211820\948458702\contents.pak.  Caused by: (JsonPatchException) Could not apply patch to base. (JsonPatchException) Could not apply operation to base. (TraversalException) Could not remove element after end of array
+[00:34:54.002] [Error] Could not apply patch from file /species/slimenpchuman.species.patch in source: G:\SteamLibrary\steamapps\workshop\content\211820\948458702\contents.pak.  Caused by: (JsonPatchException) Could not apply patch to base. (JsonPatchException) Could not apply operation to base. (TraversalException) Could not remove element after end of array
+[00:34:54.009] [Info] Root: Loaded SpeciesDatabase in 0.0832708 seconds
+[00:34:54.024] [Info] Root: Loaded QuestTemplateDatabase in 0.015616 seconds
+[00:34:54.026] [Info] Root: Loaded AiDatabase in 0.00158283 seconds
+[00:34:54.028] [Info] Root: Loaded TechDatabase in 0.00234168 seconds
+[00:34:54.034] [Info] Root: Loaded CodexDatabase in 0.00522778 seconds
+[00:34:54.321] [Info] Root: Loaded BehaviorDatabase in 0.287372 seconds
+[00:34:54.324] [Info] Root: Loaded DanceDatabase in 0.00321885 seconds
+[00:34:54.331] [Info] Root: Loaded SpawnTypeDatabase in 0.00689954 seconds
+[00:34:54.335] [Info] Root: Loaded RadioMessageDatabase in 0.0039439 seconds
+[00:34:55.728] [Info] Root: Loaded ItemDatabase in 2.7459 seconds
+[00:34:55.832] [Info] Root: Loaded CollectionDatabase in 1.49659 seconds
+[00:34:56.573] [Info] detected supported OpenGL texture size 32768, using atlasNumCells 256
+[00:34:59.273] [Info] UniverseServer: Acquiring universe lock file
+[00:34:59.274] [Info] UniverseServer: Loading settings
+[00:34:59.275] [Info] UniverseServer: Starting UniverseServer with UUID: 89be048d4dc8dd55b2202022280e163b
+[00:34:59.282] [Info] UniverseServer: Logged in player 'Farady' locally
+[00:34:59.282] [Info] UniverseServer: Logged in account '<anonymous>' as player 'Farady' from address local
+[00:34:59.331] [Info] UniverseServer: Loading system world (-495258335, -932639985, 82899034) from disk storage
+[00:34:59.341] [Info] UniverseClient: Joined server as client 1
+[00:34:59.368] [Info] UniverseServer: Player revive position is expired, spawning back at own ship
+[00:34:59.368] [Info] UniverseServer: Client 'Farady' <1> (local) connected
+[00:34:59.431] [Info] UniverseServer: Loading client ship world ClientShipWorld:7e16ffff2dbb574b446c93d14664129b
+[00:34:59.508] [Info] Protected dungeonIds for world set to (65524)
+[00:34:59.598] [Info] detected supported OpenGL texture size 32768, using atlasNumCells 64
+[00:34:59.598] [Info] detected supported OpenGL texture size 32768, using atlasNumCells 128
+[00:34:59.604] [Info] detected supported OpenGL texture size 32768, using atlasNumCells 256
+[00:34:59.604] [Info] detected supported OpenGL texture size 32768, using atlasNumCells 256
+[00:34:59.639] [Info] Setting steam rich presence connection as steam id 76561198051761942
+[00:34:59.733] [Info] UniverseServer: Warping player 1 to ClientShipWorld:7e16ffff2dbb574b446c93d14664129b
+[00:34:59.816] [Info] Keybinds v1.3.0 initialized.
+[00:35:06.071] [Info] Strength: 0
+[00:35:06.071] [Info] Dexterity: 0
+[00:35:06.071] [Info] Agility: 0
+[00:35:06.071] [Info] Intelligence: 0
+[00:35:06.071] [Info] Endurance: 0
+[00:35:06.071] [Info] Vitality: 0
+[00:35:06.071] [Info] Vigor: 0
+[00:35:06.071] [Info] shieldHealth: 0.0
+[00:35:06.071] [Info] physicalResistance: -0.15000000596046
+[00:35:06.071] [Info] energyRegenPercentageRate: 0.70200002193451
+[00:35:06.071] [Info] energyRegenBlockTime: 1.5
+[00:35:06.071] [Info] fallDamageMultiplier: 1.0
+[00:35:06.071] [Info] critChance: 0.0
+[00:35:06.071] [Info] fireTime: 0.0
+[00:35:06.071] [Info] poisonResistance: 0.0
+[00:35:06.071] [Info] fireResistance: 0.25
+[00:35:06.071] [Info] electricResistance: -0.20000000298023
+[00:35:06.071] [Info] iceResistance: 0.20000000298023
+[00:35:06.071] [Info] shadowResistance: -0.40000000596046
+[00:35:06.071] [Info] cosmicResistance: 0.0
+[00:35:06.071] [Info] radioactiveResistance: 0.40000000596046
+[00:35:06.071] [Info] grit: 0.20000000298023
+[00:35:06.071] [Info] foodDelta: -0.058299999684095
+[00:35:20.238] [Info] Strength: 1
+[00:35:20.238] [Info] Dexterity: 1
+[00:35:20.238] [Info] Agility: 1
+[00:35:20.238] [Info] Intelligence: 1
+[00:35:20.239] [Info] Endurance: 1
+[00:35:20.239] [Info] Vitality: 1
+[00:35:20.239] [Info] Vigor: 1
+[00:35:20.239] [Info] shieldHealth: 0.0
+[00:35:20.239] [Info] physicalResistance: -0.15225751698017
+[00:35:20.239] [Info] energyRegenPercentageRate: 0.81081002950668
+[00:35:20.239] [Info] energyRegenBlockTime: 1.477499961853
+[00:35:20.239] [Info] fallDamageMultiplier: 0.99494999647141
+[00:35:20.239] [Info] critChance: 0.5
+[00:35:20.239] [Info] fireTime: 0.0
+[00:35:20.239] [Info] poisonResistance: 0.0
+[00:35:20.239] [Info] fireResistance: 0.25124999880791
+[00:35:20.239] [Info] electricResistance: -0.20100000500679
+[00:35:20.239] [Info] iceResistance: 0.20100000500679
+[00:35:20.239] [Info] shadowResistance: -0.40200001001358
+[00:35:20.239] [Info] cosmicResistance: 0.0
+[00:35:20.239] [Info] radioactiveResistance: 0.40200001001358
+[00:35:20.239] [Info] grit: 0.20200000703335
+[00:35:20.239] [Info] foodDelta: -0.057134002447128
+[00:35:22.207] [Info] UniverseClient: Client disconnecting...
+[00:35:22.271] [Info] Client received world stop packet, leaving: Removed
+[00:35:22.476] [Info] UniverseServer: Client 'Farady' <1> (local) disconnected for reason: 
+[00:35:22.476] [Info] UniverseServer: Stopping idle world ClientShipWorld:7e16ffff2dbb574b446c93d14664129b
+[00:35:22.690] [Info] UniverseServer: Stopping UniverseServer
+[00:35:22.734] [Info] Clearing steam rich presence connection
+[00:35:24.016] [Info] Application: quit requested
+[00:35:24.017] [Info] Application: quitting...
+[00:35:24.017] [Info] Application: shutdown...
+[00:35:24.169] [Info] Root: Shutting down Root
+[00:35:24.385] [Info] Application: Destroying SDL Window
+[00:35:24.451] [Info] Application: stopped gracefully
