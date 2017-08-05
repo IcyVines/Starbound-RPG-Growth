@@ -2,16 +2,16 @@
     {
         "op" : "add",
         "path" : "/lowValueQuestRewards/0/1/pool/-",
-        "value" : {"weight" : 1.0, "item" : ["experienceorb", 100]}
+        "value" : {"weight" : 0.3, "item" : ["experienceorb", 100]}
     },
     {
         "op" : "add",
         "path" : "/mediumValueQuestRewards/0/1/pool/-",
-        "value" : {"weight" : 1.0, "item" : ["experienceorb", 250]}
+        "value" : {"weight" : 0.3, "item" : ["experienceorb", 250]}
     },
     {
         "op" : "add",
         "path" : "/highValueQuestRewards/0/1/pool/-",
-        "value" : {"weight" : 1.0, "item" : ["experienceorb", 500]}
+        "value" : {"weight" : 0.3, "item" : ["experienceorb", 500]}
     }
 ]

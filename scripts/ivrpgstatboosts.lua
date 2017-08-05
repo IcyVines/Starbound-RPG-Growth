@@ -15,51 +15,50 @@ function update(dt)
   self.endurance = math.floor(world.entityCurrency(self.id,"endurancepoint")^1.1)
   self.dexterity = math.floor(world.entityCurrency(self.id,"dexteritypoint")^1.1)
   self.classType = world.entityCurrency(self.id, "classtype")
-  if self.strength > 0 then
-    status.setPersistentEffects( "ivrpgstatboosts",
-    {
 
-  	-- Strength
-      --Increases Shield Health, Damage with melee weapons, and physical resistance
-  	{stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.05},
-    {stat = "physicalResistance", amount = self.strength*.0025},
-    --still needs melee weapon bonus damage
+  status.setPersistentEffects( "ivrpgstatboosts",
+  {
 
-  	-- Intelligence
-  	{stat = "energyRegenPercentageRate", amount = .05*self.intelligence},
-  	{stat = "energyRegenBlockTime", amount = -.01*self.intelligence},
-    --still needs magic bonus damage
+	-- Strength
+    --Increases Shield Health, Damage with melee weapons, and physical resistance
+	{stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.05},
+  {stat = "physicalResistance", amount = self.strength*.0025},
+  --still needs melee weapon bonus damage
 
-  	-- Dexterity
-    {stat = "fallDamageMultiplier", amount = -self.dexterity*.01},
-    {stat = "critChance", amount = self.dexterity},
-    {stat = "critBonus", effectiveMultiplier = 1 + self.dexterity*.01},
-    --still needs one-handed weapon bonus damage
+	-- Intelligence
+	{stat = "energyRegenPercentageRate", amount = .05*self.intelligence},
+	{stat = "energyRegenBlockTime", amount = -.01*self.intelligence},
+  --still needs magic bonus damage
 
-  	-- Endurance
-  	{stat = "physicalResistance", amount = self.endurance*.005},
-    {stat = "poisonResistance", amount = self.endurance*.0025},
-    {stat = "fireResistance", amount = self.endurance*.0025},
-    {stat = "electricResistance", amount = self.endurance*.0025},
-    {stat = "iceResistance", amount = self.endurance*.0025},
-    {stat = "shadowResistance", amount = self.endurance*.0025},
-    {stat = "cosmicResistance", amount = self.endurance*.0025},
-    {stat = "radioactiveResistance", amount = self.endurance*.0025},
-    {stat = "grit", amount = self.endurance*.01}, --not tested
+	-- Dexterity
+  {stat = "fallDamageMultiplier", amount = -self.dexterity*.01},
+  {stat = "critChance", amount = self.dexterity},
+  {stat = "critBonus", effectiveMultiplier = 1 + self.dexterity*.01},
+  --still needs one-handed weapon bonus damage
 
-    --Agility
-    {stat = "fallDamageMultiplier", amount = -self.agility*.005},
+	-- Endurance
+	{stat = "physicalResistance", amount = self.endurance*.005},
+  {stat = "poisonResistance", amount = self.endurance*.0025},
+  {stat = "fireResistance", amount = self.endurance*.0025},
+  {stat = "electricResistance", amount = self.endurance*.0025},
+  {stat = "iceResistance", amount = self.endurance*.0025},
+  {stat = "shadowResistance", amount = self.endurance*.0025},
+  {stat = "cosmicResistance", amount = self.endurance*.0025},
+  {stat = "radioactiveResistance", amount = self.endurance*.0025},
+  {stat = "grit", amount = self.endurance*.01}, --not tested
 
-  	-- Vitality
-  	{stat = "maxHealth", amount = math.floor(self.vitality^1.1*3)},
-    {stat = "foodDelta", amount = math.floor(self.vitality^1.1)*.02},
+  --Agility
+  {stat = "fallDamageMultiplier", amount = -self.agility*.005},
 
-  	-- Vigor
-  	{stat = "maxEnergy", amount = math.floor(self.vigor^1.1*3)},
-    {stat = "energyRegenPercentageRate", amount = .02*math.floor(self.vigor^1.1)}
+	-- Vitality
+	{stat = "maxHealth", amount = math.floor(self.vitality^1.1*3)},
+  {stat = "foodDelta", amount = math.floor(self.vitality^1.1)*.02},
 
-    })
-  end
+	-- Vigor
+	{stat = "maxEnergy", amount = math.floor(self.vigor^1.1*3)},
+  {stat = "energyRegenPercentageRate", amount = .02*math.floor(self.vigor^1.1)}
+
+  })
 
   -- Agility
   mcontroller.controlModifiers({
@@ -304,8 +303,6 @@ function updateClassEffects(classType)
     end
     self.energy = status.resource("energy")
     self.maxEnergy = status.stat("maxEnergy")
-    sb.logInfo("Energy : " .. tostring(self.energy))
-    sb.logInfo("Max Energy : " .. tostring(self.maxEnergy))
     if self.maxEnergy ~= 0 and self.energy/self.maxEnergy >= .5 then
       status.addEphemeralEffect("explorerglow", math.huge)
     else
