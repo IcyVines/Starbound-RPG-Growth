@@ -1,0 +1,14 @@
+{
+  "name" : "ninjaglow",
+  "effectConfig" : {},
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ninjaglow.lua"
+  ],
+
+  "animationConfig" : "ninjaglow.animation",
+
+  "label" : "Ninja Vision",
+  "icon" : "/scripts/ninjaglow/ninjaglow.png"
+}
