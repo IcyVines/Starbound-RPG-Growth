@@ -128,16 +128,18 @@ function updateClassEffects(classType)
       {stat = "critBonus", effectiveMultiplier = 1.2}
     })
     status.addEphemeralEffect("ninjaglow", math.huge)
-
+    self.checkDualWield = true
     if holdingWeaponsCheck(heldItem, heldItem2, false) then
       if (heldItem and root.itemHasTag(heldItem, "ninja")) then
+        self.checkDualWield = false
         status.addPersistentEffects("ivrpgclassboosts",
           {
             {stat = "powerMultiplier", baseMultiplier = 1.2}
           })
       end
-    elseif holdingWeaponsCheck(heldItem2, heldItem, false) then
-      if (heldItem2 and root.itemHasTag(heldItem2, "ninja")) then
+    end
+    if holdingWeaponsCheck(heldItem2, heldItem, false) then
+      if (heldItem2 and root.itemHasTag(heldItem2, "ninja")) and self.checkDualWield then
         status.addPersistentEffects("ivrpgclassboosts",
           {
             {stat = "powerMultiplier", baseMultiplier = 1.2}
