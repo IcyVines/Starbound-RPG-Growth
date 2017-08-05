@@ -178,10 +178,50 @@ function changeToClasses()
     if player.currency("classtype") == 0 then
       widget.setVisible("classlayout", false)
       widget.setVisible("classeslayout", true)
+      return
     else
       widget.setVisible("classeslayout", false)
       widget.setVisible("classlayout", true)
     end
+    if player.currency("classtype") == 1 then
+      --Knight
+      player.addCurrency("strengthpoint", 5)
+      player.addCurrency("endurancepoint", 4)
+      player.addCurrency("vitalitypoint", 3)
+      player.addCurrency("vigorpoint", 1)
+    elseif player.currency("classtype") == 2 then
+      --Wizard
+      player.addCurrency("intelligencepoint", 7)
+      player.addCurrency("dexteritypoint", 2)
+      player.addCurrency("vigorpoint", 4)
+    elseif player.currency("classtype") == 3 then
+      --Ninja
+      player.addCurrency("agilitypoint", 6)
+      player.addCurrency("endurancepoint", 2)
+      player.addCurrency("dexteritypoint", 4)
+      player.addCurrency("intelligencepoint", 1)
+    elseif player.currency("classtype") == 4 then
+      --Soldier
+      player.addCurrency("vitalitypoint", 3)
+      player.addCurrency("endurancepoint", 1)
+      player.addCurrency("dexteritypoint", 5)
+      player.addCurrency("strengthpoint", 1)
+      player.addCurrency("vigorpoint", 3)
+    elseif player.currency("classtype") == 5 then
+      --Rogue
+      player.addCurrency("agilitypoint", 3)
+      player.addCurrency("endurancepoint", 2)
+      player.addCurrency("dexteritypoint", 3)
+      player.addCurrency("strengthpoint", 3)
+      player.addCurrency("vigorpoint", 2)
+    elseif player.currency("classtype") == 6 then
+      --Explorer
+      player.addCurrency("agilitypoint", 4)
+      player.addCurrency("endurancepoint", 3)
+      player.addCurrency("vitalitypoint", 3)
+      player.addCurrency("vigorpoint", 3)
+    end
+    updateStats()
 end
 
 function changeToAffinities()

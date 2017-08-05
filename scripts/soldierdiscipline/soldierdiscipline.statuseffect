@@ -1,0 +1,16 @@
+{
+  "name" : "soldierdiscipline",
+  "effectConfig" : {
+    "powerModifier" : 1.20
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "soldierdiscipline.lua"
+  ],
+
+  "animationConfig" : "soldierdiscipline.animation",
+
+  "label" : "Wizard's Affinity",
+  "icon" : "/scripts/soldierdiscipline/soldierdiscipline.png"
+}

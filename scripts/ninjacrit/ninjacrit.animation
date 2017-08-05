@@ -1,13 +1,13 @@
 {
   "particleEmitters" : {
     "embers" : {
-      "enabled" : true,
+      "enabled" : false,
       "emissionRate" : 25.0,
       "particles" : [
         {
           "particle" : {
             "type" : "ember",
-            "size" : 2.0,
+            "size" : 1.5,
             "color" : [50, 50, 170, 230],
             "fade" : 0.9,
             "destructionAction" : "shrink",
@@ -26,7 +26,7 @@
     }
     /*
     "statustext" : {
-      "enabled" : true,
+      "enabled" : false,
       "emissionRate" : 1.0,
       "particles" : [
         {

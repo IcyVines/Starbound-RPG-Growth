@@ -1,3 +1,4 @@
+require "/scripts/vec2.lua"
 
 function init()
   local bounds = mcontroller.boundBox()
@@ -52,7 +53,7 @@ function update(dt)
 
   	-- Vitality
   	{stat = "maxHealth", amount = math.floor(self.vitality^1.1*3)},
-    {stat = "foodDelta", amount = math.floor(self.vitality^1.1)*.02}, --not tested
+    {stat = "foodDelta", amount = math.floor(self.vitality^1.1)*.02},
 
   	-- Vigor
   	{stat = "maxEnergy", amount = math.floor(self.vigor^1.1*3)},
@@ -80,6 +81,11 @@ function updateClassEffects(classType)
     status.clearPersistentEffects("ivrpgclassboosts")
     status.removeEphemeralEffect("explorerglow")
     status.removeEphemeralEffect("knightblock")
+    status.removeEphemeralEffect("ninjacrit")
+    status.removeEphemeralEffect("explorerresist")
+    status.removeEphemeralEffect("wizardaffinity")
+    status.removeEphemeralEffect("roguepoison")
+    status.removeEphemeralEffect("soldierdiscipline")
   elseif classType == 1 then
     --Knight
     status.setPersistentEffects("ivrpgclassboosts",
@@ -89,7 +95,7 @@ function updateClassEffects(classType)
 
     self.notifications = status.damageTakenSince(5)
     if self.notifications then
-      sb.logInfo("Damage Taken!!!")
+      --sb.logInfo("Damage Taken!!!")
       for _,notification in pairs(self.notifications) do
         if notification.hitType == "ShieldHit" then
           if status.resourcePositive("perfectBlock") then
@@ -116,16 +122,63 @@ function updateClassEffects(classType)
     --Wizard
     status.setPersistentEffects("ivrpgclassboosts",
     {
-
-
+      --purposefully left empty
     })
+    --arcane chance in monster.lua
+    self.checkDualWield = true
+    self.wizardaffinityAdded = false
+    if heldItem and root.itemHasTag(heldItem, "staff") or (heldItem and root.itemHasTag(heldItem, "wand") and heldItem2 and root.itemHasTag(heldItem2,"wand")) then
+      status.addPersistentEffects("ivrpgclassboosts",
+      {
+        {stat = "powerMultiplier", baseMultiplier = 1.1},
+      })
+      status.addEphemeralEffect("wizardaffinity", math.huge)
+      self.wizardaffinityAdded = true
+    elseif holdingWeaponsCheck(heldItem, heldItem2, true) then
+      if (heldItem2 and root.itemHasTag(heldItem2, "wand")) or (heldItem and root.itemHasTag(heldItem, "wand")) then
+        status.addEphemeralEffect("wizardaffinity", math.huge)
+        self.wizardaffinityAdded = true
+      end
+    end
+    if holdingWeaponsCheck(heldItem, heldItem2, false) then
+      if (heldItem and root.itemHasTag(heldItem, "wand")) then
+        self.checkDualWield = false
+        status.addPersistentEffects("ivrpgclassboosts",
+        {
+          {stat = "powerMultiplier", baseMultiplier = 1.1}
+        })
+        status.addEphemeralEffect("wizardaffinity", math.huge)
+        self.wizardaffinityAdded = true
+      end
+    end
+    if holdingWeaponsCheck(heldItem2, heldItem, false) then
+      if (heldItem2 and root.itemHasTag(heldItem2, "wand")) and self.checkDualWield then
+        status.addPersistentEffects("ivrpgclassboosts",
+        {
+          {stat = "powerMultiplier", baseMultiplier = 1.1}
+        })
+        status.addEphemeralEffect("wizardaffinity", math.huge)
+        self.wizardaffinityAdded = true
+      end
+    end
+    if not self.wizardaffinityAdded then
+      status.removeEphemeralEffect("wizardaffinity")
+    end
   elseif classType == 3 then
     --Ninja
     --ThrowingStar, ThrowingKunai, SnowflakeShuriken, ThrowingKnife, ThrowingDagger
+    nighttime = nighttimeCheck()
+    underground = undergroundCheck()
+    if nighttime or underground then
+      status.addEphemeralEffect("ninjacrit", math.huge)
+    else
+      status.removeEphemeralEffect("ninjacrit")
+    end
     status.setPersistentEffects("ivrpgclassboosts",
     {
       {stat = "critChance", amount = 20},
-      {stat = "critBonus", effectiveMultiplier = 1.2}
+      {stat = "critBonus", effectiveMultiplier = 1.2},
+      {stat = "fallDamageMultiplier", amount = -.5}
     })
     self.checkDualWield = true
     if holdingWeaponsCheck(heldItem, heldItem2, false) then
@@ -141,8 +194,7 @@ function updateClassEffects(classType)
       if (heldItem2 and root.itemHasTag(heldItem2, "ninja")) and self.checkDualWield then
         status.addPersistentEffects("ivrpgclassboosts",
           {
-            {stat = "powerMultiplier", baseMultiplier = 1.2},
-            {stat = "fallDamageMultiplier", amount = -.5}
+            {stat = "powerMultiplier", baseMultiplier = 1.2}
           })
       end
     end
@@ -150,31 +202,82 @@ function updateClassEffects(classType)
       speedModifier = 1.2,
       airJumpModifier = 1.2
     })
-
   elseif classType == 4 then
     --Soldier
     --Molotov, Thorn Grenade, Bomb
     status.setPersistentEffects("ivrpgclassboosts",
     {
-
-
+      --Purposefully Empty
     })
+    self.health = world.entityHealth(self.id)
+    if self.health[1] ~= 0 and self.health[2] ~= 0 and self.health[1]/self.health[2]*100 >= 98 then
+      status.addEphemeralEffect("soldierdiscipline", math.huge)
+    else
+      status.removeEphemeralEffect("soldierdiscipline")
+    end
+    if heldItem and (root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "rocketlauncher") or root.itemHasTag(heldItem, "assaultrifle")) then
+        status.addPersistentEffects("ivrpgclassboosts",
+        {
+          {stat = "powerMultiplier", baseMultiplier = 1.1}
+        })
+    elseif holdingWeaponsCheck(heldItem, heldItem2, true) then
+      if (root.itemHasTag(heldItem,"soldier") and root.itemHasTag(heldItem2,"ranged")) or (root.itemHasTag(heldItem,"ranged") and root.itemHasTag(heldItem2,"soldier")) then
+        status.addPersistentEffects("ivrpgclassboosts",
+        {
+          {stat = "powerMultiplier", baseMultiplier = 1.1}
+        })
+      end
+    end
   elseif classType == 5 then
     --Rogue
     status.setPersistentEffects("ivrpgclassboosts",
     {
-
-
+      --Purposefully empty
     })
+    self.foodValue = status.resource("food")
+    if self.foodValue >= 34 then
+      status.addEphemeralEffect("roguepoison",math.huge)
+    else
+      status.removeEphemeralEffect("roguepoison")
+    end
+    --poison is finished in monster.lua
+    if holdingWeaponsCheck(heldItem, heldItem2, true) then
+      if root.itemHasTag(heldItem, "weapon") and root.itemHasTag(heldItem2, "weapon") then
+        status.addPersistentEffects("ivrpgclassboosts",
+          {
+            {stat = "powerMultiplier", baseMultiplier = 1.2}
+          })
+      end
+    end
   elseif classType == 6 then
     --Explorer
-    --Flare, Glow Bomb, GlowStick (green, blue, orange, yellow), 
     status.setPersistentEffects("ivrpgclassboosts",
     {
-
-
+      {stat = "physicalResistance", amount = .1}
     })
-    status.addEphemeralEffect("explorerglow", math.huge)
+    if (heldItem and root.itemHasTag(heldItem, "explorer")) or (heldItem2 and root.itemHasTag(heldItem2, "explorer")) then
+      --still need to patch flashlights and torch
+      status.addPersistentEffects("ivrpgclassboosts",
+        {
+          {stat = "physicalResistance", amount = .05},
+          {stat = "poisonResistance", amount = .05},
+          {stat = "fireResistance", amount = .05},
+          {stat = "electricResistance", amount = .05},
+          {stat = "iceResistance", amount = .05},
+          {stat = "shadowResistance", amount = .05},
+          {stat = "cosmicResistance", amount = .05},
+          {stat = "radioactiveResistance", amount = .05}
+        })
+    end
+    self.energy = status.resource("energy")
+    self.maxEnergy = status.stat("maxEnergy")
+    sb.logInfo("Energy : " .. tostring(self.energy))
+    sb.logInfo("Max Energy : " .. tostring(self.maxEnergy))
+    if self.maxEnergy ~= 0 and self.energy/self.maxEnergy >= .5 then
+      status.addEphemeralEffect("explorerglow", math.huge)
+    else
+      status.removeEphemeralEffect("explorerglow")
+    end
   end 
 end
 
@@ -208,6 +311,27 @@ function holdingWeaponsCheck(heldItem, heldItem2, dualWield)
     --no item
     return false
   end
+end
+
+function getLight()
+  local position = mcontroller.position()
+  position[1] = math.floor(position[1])
+  position[2] = math.floor(position[2])
+  local lightLevel = world.lightLevel(position)
+  lightLevel = math.floor(lightLevel * 100)
+  return lightLevel
+end
+
+function nighttimeCheck()
+  return world.timeOfDay() > 0.5 -- true if night
+end
+
+function daytimeCheck()
+  return world.timeOfDay() < 0.5 -- true if daytime
+end
+
+function undergroundCheck()
+  return world.underground(mcontroller.position()) 
 end
 
 function uninit()

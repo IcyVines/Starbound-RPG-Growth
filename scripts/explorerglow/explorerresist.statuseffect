@@ -1,0 +1,14 @@
+{
+  "name" : "explorerresist",
+  "effectConfig" : {},
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "explorerresist.lua"
+  ],
+
+  "animationConfig" : "explorerresist.animation",
+
+  "label" : "Explorer's Discovery",
+  "icon" : "/scripts/explorerglow/explorerresist.png"
+}

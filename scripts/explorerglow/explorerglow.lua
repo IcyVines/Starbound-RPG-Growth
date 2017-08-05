@@ -1,7 +1,5 @@
 function init()
-  animator.setParticleEmitterOffsetRegion("sparkles", mcontroller.boundBox())
-  animator.setParticleEmitterActive("sparkles", config.getParameter("particles", true))
-  sb.logInfo("Explorer Glow Lua")
+  effect.setParentDirectives("border=2;f4ed1820;a09b0b00")
 end
 
 function update(dt)
@@ -9,5 +7,5 @@ function update(dt)
 end
 
 function uninit()
-  
+
 end

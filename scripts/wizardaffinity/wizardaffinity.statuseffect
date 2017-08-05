@@ -1,0 +1,16 @@
+{
+  "name" : "wizardaffinity",
+  "effectConfig" : {
+    "powerModifier" : 1.20
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "wizardaffinity.lua"
+  ],
+
+  "animationConfig" : "wizardaffinity.animation",
+
+  "label" : "Wizard's Affinity",
+  "icon" : "/scripts/wizardaffinity/wizardaffinity.png"
+}
