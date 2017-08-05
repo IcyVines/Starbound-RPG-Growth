@@ -78,7 +78,7 @@ function updateClassEffects(classType)
   if classType == 0 then
     --No Class
     status.clearPersistentEffects("ivrpgclassboosts")
-    status.removeEphemeralEffect("ninjaglow")
+    status.removeEphemeralEffect("explorerglow")
     status.removeEphemeralEffect("knightblock")
   elseif classType == 1 then
     --Knight
@@ -141,11 +141,15 @@ function updateClassEffects(classType)
       if (heldItem2 and root.itemHasTag(heldItem2, "ninja")) and self.checkDualWield then
         status.addPersistentEffects("ivrpgclassboosts",
           {
-            {stat = "powerMultiplier", baseMultiplier = 1.2}
+            {stat = "powerMultiplier", baseMultiplier = 1.2},
+            {stat = "fallDamageMultiplier", amount = -.5}
           })
       end
     end
-
+    mcontroller.controlModifiers({
+      speedModifier = 1.2,
+      airJumpModifier = 1.2
+    })
 
   elseif classType == 4 then
     --Soldier
