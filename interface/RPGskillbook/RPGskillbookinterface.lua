@@ -153,11 +153,87 @@ function updateOverview(toNext)
   end
 end
 
+function updateClassTab(toNext)
+  if player.currency("classtype") ~= 4 then
+    widget.setPosition("classlayout.weapontext",{154,240})
+    widget.setPosition("classlayout.weapontitle",{89,240})
+  end
+  if player.currency("classtype") == 0 then
+    widget.setText("classlayout.classtitle","No Class Yet")
+    widget.setImage("classlayout.classicon","/objects/class/noclass.png")
+    widget.setImage("classlayout.effecticon","/objects/class/noclassicon.png")
+    widget.setImage("classlayout.effecticon","/objects/class/noclassicon.png")
+  elseif player.currency("classtype") == 1 then
+    widget.setText("classlayout.classtitle","Knight")
+    widget.setFontColor("classlayout.classtitle","blue")
+    widget.setImage("classlayout.classicon","/objects/class/knight.png")
+    widget.setText("classlayout.weapontext","+20% Damage while using Shortsword and Shield in combination. +20% Damage with Broadswords.")
+    widget.setText("classlayout.passivetext","+20% Knockback Resistance.")
+    widget.setFontColor("classlayout.effecttext","blue")
+    widget.setText("classlayout.effecttext","Perfect Blocks increase Damage by 20% for a short period.")
+    widget.setImage("classlayout.effecticon","/scripts/knightblock/knightblock.png")
+    widget.setImage("classlayout.effecticon2","/scripts/knightblock/knightblock.png")
+  elseif player.currency("classtype") == 2 then
+    widget.setText("classlayout.classtitle","Wizard")
+    widget.setFontColor("classlayout.classtitle","magenta")
+    widget.setImage("classlayout.classicon","/objects/class/wizard.png")
+    widget.setFontColor("classlayout.effecttext","magenta")
+    widget.setText("classlayout.weapontext","+10% (Scales With Intelligence) Damage while using a Wand in either hand without any other weapon equipped. +10% Damage with Staves.")
+    widget.setText("classlayout.passivetext","+6% Chance to Freeze, Burn, or Electry monsters on hit. These effects can stack.")
+    widget.setText("classlayout.effecttext","While using Wands or Staves, gain +10% Fire, Poison, and Ice Resistance.")
+    widget.setImage("classlayout.effecticon","/scripts/wizardaffinity/wizardaffinity.png")
+    widget.setImage("classlayout.effecticon2","/scripts/wizardaffinity/wizardaffinity.png")
+  elseif player.currency("classtype") == 3 then
+    widget.setText("classlayout.classtitle","Ninja")
+    widget.setImage("classlayout.classicon","/objects/class/ninja.png")
+    widget.setFontColor("classlayout.classtitle","red")
+    widget.setFontColor("classlayout.effecttext","red")
+    widget.setText("classlayout.weapontext","+20% Damage while using Throwing Stars, Knives, Kunai, or Daggers, or Snowflake or Titanium Shurikens without any weapons equipped.")
+    widget.setText("classlayout.passivetext","+20% Speed and Jump Height. -30% Fall Damage.")
+    widget.setText("classlayout.effecttext","During Nighttime, or while Underground, gain +20% Crit Chance and Crit Damage.")
+    widget.setImage("classlayout.effecticon","/scripts/ninjacrit/ninjacrit.png")
+    widget.setImage("classlayout.effecticon2","/scripts/ninjacrit/ninjacrit.png")
+  elseif player.currency("classtype") == 4 then
+    widget.setText("classlayout.classtitle","Soldier")
+    widget.setFontColor("classlayout.classtitle","orange")
+    widget.setFontColor("classlayout.effecttext","orange")
+    widget.setImage("classlayout.classicon","/objects/class/soldier.png")
+    widget.setText("classlayout.weapontext","+10% Damage while using One-Handed Guns and Bombs, Molotovs, or Thorn Grenades in combination. +10% Damage with Sniper Rifles, Assault Rifles, Shotguns, and Rocket Launchers.")
+    widget.setText("classlayout.passivetext","+20% Chance to Stun monsters on hit.")
+    widget.setText("classlayout.effecttext","While Health is greater than half, your Food Meter decreases 10% slower.")
+    widget.setImage("classlayout.effecticon","/scripts/soldierdiscipline/soldierdiscipline.png")
+    widget.setImage("classlayout.effecticon2","/scripts/soldierdiscipline/soldierdiscipline.png")
+    widget.setPosition("classlayout.weapontext",{154,251})
+    widget.setPosition("classlayout.weapontitle",{89,251})
+  elseif player.currency("classtype") == 5 then
+    widget.setText("classlayout.classtitle","Rogue")
+    widget.setFontColor("classlayout.classtitle","green")
+    widget.setFontColor("classlayout.effecttext","green")
+    widget.setImage("classlayout.classicon","/objects/class/rogue.png")
+    widget.setText("classlayout.weapontext","+20% Damage while dual-wielding One-Handed Weapons.")
+    widget.setText("classlayout.passivetext","+20% Chance to Poison monsters on hit.")
+    widget.setText("classlayout.effecttext","While your Food Meter is filled at least halfway, gain +20% Poison Resistance.")
+    widget.setImage("classlayout.effecticon","/scripts/roguepoison/roguepoison.png")
+    widget.setImage("classlayout.effecticon2","/scripts/roguepoison/roguepoison.png")
+  elseif player.currency("classtype") == 6 then
+    widget.setText("classlayout.classtitle","Explorer")
+    widget.setImage("classlayout.classicon","/objects/class/explorer.png")
+    widget.setFontColor("classlayout.classtitle","yellow")
+    widget.setFontColor("classlayout.effecttext","yellow")
+    widget.setText("classlayout.weapontext","+5% Resistance to all Damage Types while using Grappling Hooks, Rope, Mining Tools, Throwable Light Sources, or Flashlights.")
+    widget.setText("classlayout.passivetext","+10% Physical Resistance.")
+    widget.setText("classlayout.effecttext","While Energy is greater than half, provide a bright yellow Glow.")
+    widget.setImage("classlayout.effecticon","/scripts/explorerglow/explorerglow.png")
+    widget.setImage("classlayout.effecticon2","/scripts/explorerglow/explorerglow.png")
+  end
+end
+
 
 function removeLayouts()
   widget.setVisible("overviewlayout",false)
   widget.setVisible("statslayout",false)
   widget.setVisible("classeslayout",false)
+  widget.setVisible("classlayout",false)
   widget.setVisible("affinitieslayout",false)
 end
 
@@ -181,47 +257,9 @@ function changeToClasses()
       return
     else
       widget.setVisible("classeslayout", false)
+      updateClassTab()
       widget.setVisible("classlayout", true)
     end
-    if player.currency("classtype") == 1 then
-      --Knight
-      player.addCurrency("strengthpoint", 5)
-      player.addCurrency("endurancepoint", 4)
-      player.addCurrency("vitalitypoint", 3)
-      player.addCurrency("vigorpoint", 1)
-    elseif player.currency("classtype") == 2 then
-      --Wizard
-      player.addCurrency("intelligencepoint", 7)
-      player.addCurrency("dexteritypoint", 2)
-      player.addCurrency("vigorpoint", 4)
-    elseif player.currency("classtype") == 3 then
-      --Ninja
-      player.addCurrency("agilitypoint", 6)
-      player.addCurrency("endurancepoint", 2)
-      player.addCurrency("dexteritypoint", 4)
-      player.addCurrency("intelligencepoint", 1)
-    elseif player.currency("classtype") == 4 then
-      --Soldier
-      player.addCurrency("vitalitypoint", 3)
-      player.addCurrency("endurancepoint", 1)
-      player.addCurrency("dexteritypoint", 5)
-      player.addCurrency("strengthpoint", 1)
-      player.addCurrency("vigorpoint", 3)
-    elseif player.currency("classtype") == 5 then
-      --Rogue
-      player.addCurrency("agilitypoint", 3)
-      player.addCurrency("endurancepoint", 2)
-      player.addCurrency("dexteritypoint", 3)
-      player.addCurrency("strengthpoint", 3)
-      player.addCurrency("vigorpoint", 2)
-    elseif player.currency("classtype") == 6 then
-      --Explorer
-      player.addCurrency("agilitypoint", 4)
-      player.addCurrency("endurancepoint", 3)
-      player.addCurrency("vitalitypoint", 3)
-      player.addCurrency("vigorpoint", 3)
-    end
-    updateStats()
 end
 
 function changeToAffinities()
@@ -338,13 +376,13 @@ function uncheckClassIcons(name)
 end
 
 function changeStatDescription(name)
-  if name == "strength" then widget.setText("statslayout.statdescription", "Each point in Strength increases your Block Meter by 1 and damage with all Melee Weapons by 2%.") end
-  if name == "agility" then widget.setText("statslayout.statdescription", "Each point in Agility increases Speed by 3% and Jump Height by 1%.") end
-  if name == "vitality" then widget.setText("statslayout.statdescription", "Each point in Vitality increases Max Health by 2.") end
-  if name == "vigor" then widget.setText("statslayout.statdescription", "Each point in Vigor increases Max Energy by 2.") end
-  if name == "intelligence" then widget.setText("statslayout.statdescription", "Each point in Intelligence increases Energy Recharge Rate by 1% and damage with Magic Weapons by 2%.") end
-  if name == "endurance" then widget.setText("statslayout.statdescription", "Each point in Endurance increases Resistance to all damage by 2%.") end
-  if name == "dexterity" then widget.setText("statslayout.statdescription", "Each point in Dexterity increases damage with all One-Handed Weapons, Guns, Bows, and Thrown Weapons by 2%.") end
+  if name == "strength" then widget.setText("statslayout.statdescription", "Greatly Increases Shield Health.\nSignificantly Increases Two-Handed Melee Damage.\nMinimally Increases Physical Resistance.") end
+  if name == "agility" then widget.setText("statslayout.statdescription", "Significantly Increases Speed.\nIncreases Jump Height.\nSlightly Decreases Fall Damage.") end
+  if name == "vitality" then widget.setText("statslayout.statdescription", "Significantly Decreases Hunger Rate.\nIncreases Max Health.") end
+  if name == "vigor" then widget.setText("statslayout.statdescription", "Significantly Increases Energy Recharge Rate.\nIncreases Max Energy.") end
+  if name == "intelligence" then widget.setText("statslayout.statdescription", "Greatly Increases Energy Recharge Rate.\nGreatly Increases Staff Damage.\nDecreases Energy Recharge Delay.") end
+  if name == "endurance" then widget.setText("statslayout.statdescription", "Increases Knockback Resistance.\nSlightly Increases Physical Resistance.\nMinimally Increases All Other Resistances.") end
+  if name == "dexterity" then widget.setText("statslayout.statdescription", "Increases One-Handed Weapon (Not Wands) and Ranged Weapon Damage.\nIncreases Critical Chance and Damage.\nDecreases Fall Damage.") end
   if name == "default" then widget.setText("statslayout.statdescription", "Click a stat's icon to see what occurs when that stat is raised.") end
 end
 
@@ -355,12 +393,12 @@ function changeClassDescription(name)
     self.classTo = 1
   end
   if name == "wizard" then
-    widget.setText("classeslayout.classdescription", "The Wizard is a mixed dps character with a focus on wands and staffs. Great for players who want to maximize damage and ability use.") 
+    widget.setText("classeslayout.classdescription", "The Wizard is a ranged dps character with a focus on wands and staffs. Great for players who want to maximize damage and ability use.") 
     widget.setFontColor("classeslayout.wizardtitle", "magenta")
     self.classTo = 2
   end
   if name == "ninja" then
-    widget.setText("classeslayout.classdescription", "The Ninja is a fast, ranged dps character with a focus on thrown weapons and explosives. Great for players who enjoy fast, explosive play and doing massive damage.") 
+    widget.setText("classeslayout.classdescription", "The Ninja is a evasive dps character with a focus on thrown weapons. Great for players who enjoy fast, technical play and doing massive damage at the cost of materials.") 
     widget.setFontColor("classeslayout.ninjatitle", "red")
     self.classTo = 3
   end
@@ -370,12 +408,12 @@ function changeClassDescription(name)
     self.classTo = 4
   end
   if name == "rogue" then
-    widget.setText("classeslayout.classdescription", "The Rogue is a melee dps character with a focus on daggers and fist weapons. Great for players who enjoy afflicting status and getting up close.") 
+    widget.setText("classeslayout.classdescription", "The Rogue is a melee dps character with a focus on one-handed weapons. Great for players who enjoy afflicting status and getting up close.") 
     widget.setFontColor("classeslayout.roguetitle", "green")
     self.classTo = 5
   end
   if name == "explorer" then
-    widget.setText("classeslayout.classdescription", "The Explorer is a fast, defensive character with a focus on rope, grappling hooks, torches, and flares. Great for players who prefer to run away from encounters and explore.") 
+    widget.setText("classeslayout.classdescription", "The Explorer is a evasive tank character with a focus on grappling hooks and lighting up the way. Great for players who prefer to run away from encounters and explore.") 
     widget.setFontColor("classeslayout.explorertitle", "yellow")
     self.classTo = 6
   end
@@ -399,25 +437,128 @@ end
 function chooseClass()
   player.addCurrency("classtype", self.classTo)
   self.class = self.classTo
+  addClassStats()
   changeToClasses()
 end
 
-function areYouSure()
-  widget.setVisible("overviewlayout.resetbutton", false)
-  widget.setVisible("overviewlayout.yesbutton", true)
-  widget.setVisible("overviewlayout.nobutton", true)
-  widget.setVisible("overviewlayout.areyousure", true)  
+function addClassStats()
+  if player.currency("classtype") == 1 then
+      --Knight
+    player.addCurrency("strengthpoint", 5)
+    player.addCurrency("endurancepoint", 4)
+    player.addCurrency("vitalitypoint", 3)
+    player.addCurrency("vigorpoint", 1)
+  elseif player.currency("classtype") == 2 then
+    --Wizard
+    player.addCurrency("intelligencepoint", 7)
+    player.addCurrency("dexteritypoint", 2)
+    player.addCurrency("vigorpoint", 4)
+  elseif player.currency("classtype") == 3 then
+    --Ninja
+    player.addCurrency("agilitypoint", 6)
+    player.addCurrency("endurancepoint", 2)
+    player.addCurrency("dexteritypoint", 4)
+    player.addCurrency("intelligencepoint", 1)
+  elseif player.currency("classtype") == 4 then
+    --Soldier
+    player.addCurrency("vitalitypoint", 3)
+    player.addCurrency("endurancepoint", 1)
+    player.addCurrency("dexteritypoint", 5)
+    player.addCurrency("strengthpoint", 1)
+    player.addCurrency("vigorpoint", 3)
+  elseif player.currency("classtype") == 5 then
+    --Rogue
+    player.addCurrency("agilitypoint", 3)
+    player.addCurrency("endurancepoint", 2)
+    player.addCurrency("dexteritypoint", 3)
+    player.addCurrency("strengthpoint", 3)
+    player.addCurrency("vigorpoint", 2)
+  elseif player.currency("classtype") == 6 then
+    --Explorer
+    player.addCurrency("agilitypoint", 4)
+    player.addCurrency("endurancepoint", 3)
+    player.addCurrency("vitalitypoint", 3)
+    player.addCurrency("vigorpoint", 3)
+  end
+  updateStats()
+  uncheckClassIcons("default")
+  changeClassDescription("default")
 end
 
-function notSure()
-  widget.setVisible("overviewlayout.resetbutton", true)
-  widget.setVisible("overviewlayout.yesbutton", false)
-  widget.setVisible("overviewlayout.nobutton", false)
-  widget.setVisible("overviewlayout.areyousure", false)  
+function consumeClassStats()
+  if player.currency("classtype") == 1 then
+      --Knight
+    player.consumeCurrency("strengthpoint", 5)
+    player.consumeCurrency("endurancepoint", 4)
+    player.consumeCurrency("vitalitypoint", 3)
+    player.consumeCurrency("vigorpoint", 1)
+  elseif player.currency("classtype") == 2 then
+    --Wizard
+    player.consumeCurrency("intelligencepoint", 7)
+    player.consumeCurrency("dexteritypoint", 2)
+    player.consumeCurrency("vigorpoint", 4)
+  elseif player.currency("classtype") == 3 then
+    --Ninja
+    player.consumeCurrency("agilitypoint", 6)
+    player.consumeCurrency("endurancepoint", 2)
+    player.consumeCurrency("dexteritypoint", 4)
+    player.consumeCurrency("intelligencepoint", 1)
+  elseif player.currency("classtype") == 4 then
+    --Soldier
+    player.consumeCurrency("vitalitypoint", 3)
+    player.consumeCurrency("endurancepoint", 1)
+    player.consumeCurrency("dexteritypoint", 5)
+    player.consumeCurrency("strengthpoint", 1)
+    player.consumeCurrency("vigorpoint", 3)
+  elseif player.currency("classtype") == 5 then
+    --Rogue
+    player.consumeCurrency("agilitypoint", 3)
+    player.consumeCurrency("endurancepoint", 2)
+    player.consumeCurrency("dexteritypoint", 3)
+    player.consumeCurrency("strengthpoint", 3)
+    player.consumeCurrency("vigorpoint", 2)
+  elseif player.currency("classtype") == 6 then
+    --Explorer
+    player.consumeCurrency("agilitypoint", 4)
+    player.consumeCurrency("endurancepoint", 3)
+    player.consumeCurrency("vitalitypoint", 3)
+    player.consumeCurrency("vigorpoint", 3)
+  end
+  updateStats()
+end
+
+function areYouSure(name)
+  name = string.gsub(name,"resetbutton","")
+  name2 = ""
+  if name == "" then name2 = "overviewlayout"
+  elseif name == "cl" then name2 = "classlayout" end
+  --sb.logInfo(name.."test"..name2)
+  widget.setVisible(name2..".resetbutton"..name, false)
+  widget.setVisible(name2..".yesbutton", true)
+  widget.setVisible(name2..".nobutton"..name, true)
+  widget.setVisible(name2..".areyousure", true)  
+end
+
+function notSure(name)
+  name = string.gsub(name,"nobutton","")
+  name2 = ""
+  if name == "" then name2 = "overviewlayout"
+  elseif name == "cl" then name2 = "classlayout" end
+  widget.setVisible(name2..".resetbutton"..name, true)
+  widget.setVisible(name2..".yesbutton", false)
+  widget.setVisible(name2..".nobutton"..name, false)
+  widget.setVisible(name2..".areyousure", false)  
+end
+
+function resetClass()
+  notSure("nobuttoncl")
+  consumeClassStats()
+  player.consumeCurrency("classtype",player.currency("classtype"))
+  changeToClasses()
 end
 
 function resetSkillBook()
-  notSure()
+  notSure("nobutton")
   player.consumeCurrency("experienceorb", self.xp)
   player.consumeCurrency("currentlevel", self.level)
   player.consumeCurrency("statpoint", player.currency("statpoint"))

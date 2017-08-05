@@ -11,6 +11,6 @@
 
   "animationConfig" : "soldierdiscipline.animation",
 
-  "label" : "Wizard's Affinity",
+  "label" : "Soldier's Discipline",
   "icon" : "/scripts/soldierdiscipline/soldierdiscipline.png"
 }
