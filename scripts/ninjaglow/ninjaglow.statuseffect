@@ -9,6 +9,6 @@
 
   "animationConfig" : "ninjaglow.animation",
 
-  "label" : "Ninja Vision",
+  "label" : "Ninja's Vision",
   "icon" : "/scripts/ninjaglow/ninjaglow.png"
 }
