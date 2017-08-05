@@ -1,0 +1,14 @@
+{
+  "name" : "explorerglow",
+  "effectConfig" : {},
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "explorerglow.lua"
+  ],
+
+  "animationConfig" : "explorerglow.animation",
+
+  "label" : "Explorer's Discovery",
+  "icon" : "/scripts/explorerglow/explorerglow.png"
+}

@@ -127,7 +127,6 @@ function updateClassEffects(classType)
       {stat = "critChance", amount = 20},
       {stat = "critBonus", effectiveMultiplier = 1.2}
     })
-    status.addEphemeralEffect("ninjaglow", math.huge)
     self.checkDualWield = true
     if holdingWeaponsCheck(heldItem, heldItem2, false) then
       if (heldItem and root.itemHasTag(heldItem, "ninja")) then
@@ -171,6 +170,7 @@ function updateClassEffects(classType)
 
 
     })
+    status.addEphemeralEffect("explorerglow", math.huge)
   end 
 end
 
