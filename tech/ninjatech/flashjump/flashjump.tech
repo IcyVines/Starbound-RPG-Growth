@@ -5,12 +5,12 @@
   "scripts" : ["flashjump.lua"],
   "animator" : "flashjump.animation",
 
-  "description" : "Two additional jumps that teleport the player forward!",
+  "description" : "Two additional jumps that flashes the player forward!",
   "shortDescription" : "Flash Jump",
   "rarity" : "Rare",
-  "icon" : "/tech/ninjatech/flashjump.png",
+  "icon" : "/tech/ninjatech/flashjump/flashjump.png",
 
   "chipCost" : 0,
-
+  "cost" : 10,
   "multiJumpCount" : 2
 }

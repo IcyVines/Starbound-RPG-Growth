@@ -1,6 +1,7 @@
 function init()
   self.multiJumpCount = config.getParameter("multiJumpCount")
   self.multiJumpModifier = config.getParameter("multiJumpModifier")
+  self.cost = config.getParameter("cost")
 
   refreshJumps()
 end
@@ -12,9 +13,14 @@ function update(args)
   updateJumpModifier()
 
   if jumpActivated and canMultiJump() then
-    doMultiJump()
+    if status.overConsumeResource("energy", self.cost) then
+      doMultiJump()
+    end
   else
-    if mcontroller.groundMovement() or mcontroller.liquidMovement() then
+    if mcontroller.groundMovement() or mcontroller.liquidMovement() or status.resource("energy") < 1 then
+      status.removeEphemeralEffect("camouflage25")
+      status.removeEphemeralEffect("invulnerable")
+      status.removeEphemeralEffect("nofalldamage")
       refreshJumps()
     end
   end
@@ -44,10 +50,24 @@ function canMultiJump()
 end
 
 function doMultiJump()
+  --set flashjump player changes
+
+  status.addEphemeralEffect("camouflage25", 20)
+  status.addEphemeralEffect("invulnerable", 20)
+  status.addEphemeralEffect("nofalldamage", 20)
+
   mcontroller.controlJump(true)
   mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()))
+  self.facing = mcontroller.facingDirection()
+  --self.facing = tech.aimPosition()[1]-mcontroller.position()[1]
+  if self.facing < 0 then
+    mcontroller.setXVelocity(-50 + math.min(0, mcontroller.xVelocity()))
+    animator.burstParticleEmitter("jumpLeftParticles")
+  else
+    mcontroller.setXVelocity(50 + math.max(0, mcontroller.xVelocity()))
+    animator.burstParticleEmitter("jumpRightParticles")
+  end
   self.multiJumps = self.multiJumps - 1
-  animator.burstParticleEmitter("multiJumpParticles")
   animator.playSound("multiJumpSound")
 end
 

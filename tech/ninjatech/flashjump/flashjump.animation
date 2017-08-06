@@ -1,11 +1,18 @@
 {
   "particleEmitters" : {
-    "multiJumpParticles" : {
+    "jumpRightParticles" : {
       "burstCount" : 8,
       "particles" : [
         {
-          "particle" : "doublejump",
-          "offset" : [0.2, -3]
+          "particle" : "flashjumpright"
+        }
+      ]
+    },
+    "jumpLeftParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "flashjumpleft"
         }
       ]
     }
