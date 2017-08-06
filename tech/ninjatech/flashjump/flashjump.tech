@@ -1,0 +1,16 @@
+{
+  "name" : "flashjump",
+  "type" : "legs",
+
+  "scripts" : ["flashjump.lua"],
+  "animator" : "flashjump.animation",
+
+  "description" : "Two additional jumps that teleport the player forward!",
+  "shortDescription" : "Flash Jump",
+  "rarity" : "Rare",
+  "icon" : "/tech/ninjatech/flashjump.png",
+
+  "chipCost" : 0,
+
+  "multiJumpCount" : 2
+}
