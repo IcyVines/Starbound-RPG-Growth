@@ -38,9 +38,9 @@
 
   "ignorePlatforms" : true,
 
-  "ballSpeed" : 12,
-
-  "energyCost" : 10,
+  "ballSpeed" : 13,
+  "energyCostPerSecond" : 25,
+  "energyCost" : 25,
 
   "ballRadius" : 1,
   "ballFrames" : 4,

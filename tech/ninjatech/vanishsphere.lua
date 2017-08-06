@@ -5,7 +5,7 @@ require "/scripts/status.lua"
 
 function init()
   initCommonParameters()
-
+  self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.ignorePlatforms = config.getParameter("ignorePlatforms")
   self.damageDisableTime = config.getParameter("damageDisableTime")
   self.damageDisableTimer = 0
@@ -35,16 +35,17 @@ function update(args)
 
   self.damageDisableTimer = math.max(0, self.damageDisableTimer - args.dt)
 
+  self.energyRegenBlock = status.resource("energyRegenBlock")
   if self.active then
-    status.addEphemeralEffect("camouflage50",math.huge)
-    status.setPersistentEffects("vanishsphere",
-    {
-      {stat = "invulnerable", amount = 1}
-    })
     local groundDirection
     if self.damageDisableTimer == 0 then
       groundDirection = findGroundDirection()
     end
+    --invulnerable while active
+    status.setPersistentEffects("vanishsphere",
+    {
+      {stat = "invulnerable", amount = 1}
+    })
 
     if groundDirection then
       if not self.headingAngle then
@@ -57,6 +58,11 @@ function update(args)
       if moveX ~= 0 then
         -- find any collisions in the moving direction, and adjust heading angle *up* until there is no collision
         -- this makes the heading direction follow concave corners
+
+        --consume energy only when moving
+        status.setResourcePercentage("energyRegenBlock", 1.0)
+        status.overConsumeResource("energy", self.energyCostPerSecond * args.dt)
+        
         local adjustment = 0
         for a = 0, math.pi, math.pi / 4 do
           local testPos = vec2.add(mcontroller.position(), vec2.rotate({moveX * 0.25, 0}, self.headingAngle + (moveX * a)))
@@ -90,6 +96,8 @@ function update(args)
 
         self.angularVelocity = -moveX * self.ballSpeed
       else
+        status.overConsumeResource("energy", 0)
+        status.setResource("energyRegenBlock", self.energyRegenBlock)
         mcontroller.controlApproachVelocity({0,0}, 2000)
         self.angularVelocity = 0
       end
@@ -103,16 +111,19 @@ function update(args)
       self.transformedMovementParameters.gravityEnabled = true
     end
 
+    if status.resource("energy") == 0 then
+      deactivate()
+    end
+
     mcontroller.controlParameters(self.transformedMovementParameters)
-    status.setResourcePercentage("energyRegenBlock", 1.0)
 
     updateRotationFrame(args.dt)
 
     checkForceDeactivate(args.dt)
   else
     status.clearPersistentEffects("vanishsphere")
-    status.removeEphemeralEffect("camouflage50")
     self.headingAngle = nil
+    status.overConsumeResource("energy", 0)
   end
 
   updateTransformFade(args.dt)

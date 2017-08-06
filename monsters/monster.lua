@@ -69,6 +69,7 @@ function init()
         elseif self.classType == 4 then
           if math.random(10) < 3 then
             status.addEphemeralEffect("soldierstun")
+            self.suppressDamageTimer = 1.5
           end
         elseif self.classType == 5 then
           if math.random(10) < 3 then
