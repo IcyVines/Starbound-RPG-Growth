@@ -1,0 +1,32 @@
+{
+  "particleEmitters" : {
+    "jumpParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "doublejump"
+        }
+      ]
+    },
+    "slamParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "doublejump"
+        }
+      ]
+    },
+    "downParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "doublejump"
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "multiJumpSound" : ["/sfx/tech/tech_multijump.ogg"]
+  }
+}
