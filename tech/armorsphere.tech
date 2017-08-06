@@ -1,0 +1,49 @@
+{
+  "name" : "armorsphere",
+  "type" : "head",
+
+  "scripts" : ["armorsphere.lua"],
+  "animator" : "armorsphere.animation",
+
+  "description" : "A Spike Sphere that deals damage on contact and provides protection! ^green;[F]",
+  "shortDescription" : "Armor Sphere",
+  "rarity" : "Legendary",
+  "icon" : "armorsphereicon.png",
+
+  "chipCost" : 0,
+
+  "animationParts" : {
+    "ballGlow" : "armorsphereglow.png",
+    "ball" : "armorsphere.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.85, -0.35], [-0.35, -0.85], [0.35, -0.85], [0.85, -0.35], [0.85, 0.35], [0.35, 0.85], [-0.35, 0.85], [-0.85, 0.35] ],
+
+    "airForce" : 0.0,
+    "liquidForce" : 0.0,
+
+    "airJumpProfile" : {
+      "jumpSpeed" : 0.0
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 0.0,
+      "jumpControlForce" : 0.0,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ignorePlatforms" : true,
+
+  "ballSpeed" : 10,
+
+  "energyCost" : 50,
+
+  "ballRadius" : 1,
+  "ballFrames" : 4,
+
+  "damageDisableTime" : 0.2
+}

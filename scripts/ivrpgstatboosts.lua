@@ -45,7 +45,7 @@ function update(dt)
   {stat = "shadowResistance", amount = self.endurance*.0025},
   {stat = "cosmicResistance", amount = self.endurance*.0025},
   {stat = "radioactiveResistance", amount = self.endurance*.0025},
-  {stat = "grit", amount = self.endurance*.01}, --not tested
+  {stat = "grit", amount = self.endurance*.01},
 
   --Agility
   {stat = "fallDamageMultiplier", amount = -self.agility*.005},
