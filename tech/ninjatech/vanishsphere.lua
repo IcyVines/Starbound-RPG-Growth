@@ -111,15 +111,16 @@ function update(args)
       self.transformedMovementParameters.gravityEnabled = true
     end
 
-    if status.resource("energy") == 0 then
-      deactivate()
-    end
-
     mcontroller.controlParameters(self.transformedMovementParameters)
 
     updateRotationFrame(args.dt)
 
     checkForceDeactivate(args.dt)
+
+    if status.resource("energy") == 0 then
+      uninit()
+    end
+
   else
     status.clearPersistentEffects("vanishsphere")
     self.headingAngle = nil
