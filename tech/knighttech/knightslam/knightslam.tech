@@ -1,16 +1,16 @@
 {
-  "name" : "flashjump",
+  "name" : "knightslam",
   "type" : "legs",
 
-  "scripts" : ["flashjump.lua"],
-  "animator" : "flashjump.animation",
+  "scripts" : ["knightslam.lua"],
+  "animator" : "knightslam.animation",
 
   "description" : "Two additional jumps that flashes the player forward!",
   "shortDescription" : "Flash Jump",
   "rarity" : "Rare",
-  "icon" : "/tech/ninjatech/flashjump/flashjump.png",
+  "icon" : "/tech/knighttech/knightslam/knightslam.png",
 
   "chipCost" : 0,
-  "cost" : 10,
-  "multiJumpCount" : 2
+  "cost" : 30,
+  "multiJumpCount" : 1
 }

@@ -62,10 +62,10 @@ function doMultiJump()
   --self.facing = tech.aimPosition()[1]-mcontroller.position()[1]
   if self.facing < 0 then
     mcontroller.setXVelocity(-50 + math.min(0, mcontroller.xVelocity()))
-    animator.burstParticleEmitter("jumpLeftParticles")
+    animator.burstParticleEmitter("jumpParticles")
   else
     mcontroller.setXVelocity(50 + math.max(0, mcontroller.xVelocity()))
-    animator.burstParticleEmitter("jumpRightParticles")
+    animator.burstParticleEmitter("jumpParticles")
   end
   self.multiJumps = self.multiJumps - 1
   animator.playSound("multiJumpSound")

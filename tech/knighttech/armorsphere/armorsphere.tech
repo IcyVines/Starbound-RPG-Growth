@@ -8,7 +8,7 @@
   "description" : "A Spike Sphere that deals damage on contact and provides protection! ^green;[F]",
   "shortDescription" : "Armor Sphere",
   "rarity" : "Legendary",
-  "icon" : "/tech/knighttech/armorsphereicon.png",
+  "icon" : "/tech/knighttech/armorsphere/armorsphereicon.png",
 
   "chipCost" : 0,
 

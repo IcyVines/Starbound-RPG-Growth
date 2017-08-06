@@ -10,7 +10,7 @@
   "defaultDuration" : 60,
 
   "scripts" : [
-    "/tech/knighttech/spikes.lua"
+    "/tech/knighttech/armorsphere/spikes.lua"
   ],
 
   "label" : "Spikes",
