@@ -8,7 +8,7 @@
   "description" : "Transform into an invisible sphere that can climb walls! ^green;[F]",
   "shortDescription" : "Vanish Sphere",
   "rarity" : "Common",
-  "icon" : "/tech/ninjatech/vanishsphereicon.png",
+  "icon" : "/tech/ninjatech/vanishsphere/vanishsphereicon.png",
 
   "chipCost" : 0,
 

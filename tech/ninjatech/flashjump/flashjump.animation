@@ -1,0 +1,24 @@
+{
+  "particleEmitters" : {
+    "jumpRightParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "flashjumpright"
+        }
+      ]
+    },
+    "jumpLeftParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "flashjumpleft"
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "multiJumpSound" : ["/sfx/tech/tech_multijump.ogg"]
+  }
+}
