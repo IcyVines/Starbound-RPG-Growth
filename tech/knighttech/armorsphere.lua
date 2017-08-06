@@ -48,7 +48,7 @@ function update(args)
   if self.active then
 
     -- Armor Sphere Stat Effects --
-    status.addEphemeralEffect("thorns", math.huge)
+    status.addEphemeralEffect("spikes", math.huge)
     status.setPersistentEffects("ivrpgarmorsphereboost",{
 	    {stat = "grit", amount = 1},
 	    {stat = "protection", effectiveMultiplier = 1.5}
@@ -125,7 +125,7 @@ function update(args)
   else
     self.headingAngle = nil
      -- DisableEffects --
-    status.removeEphemeralEffect("thorns")
+    status.removeEphemeralEffect("spikes")
     status.clearPersistentEffects("ivrpgarmorsphereboost")
   end
  
