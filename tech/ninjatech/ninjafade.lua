@@ -1,5 +1,5 @@
 function init()
-  effect.setParentDirectives("fade=0.5")
+  effect.setParentDirectives("fade=FFFFFF=0.5")
 end
 
 function update(dt)
