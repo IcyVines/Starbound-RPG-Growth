@@ -36,7 +36,7 @@ function update(args)
   self.damageDisableTimer = math.max(0, self.damageDisableTimer - args.dt)
 
   if self.active then
-    status.addEphemeralEffect("camouflage50",math.huge)
+    status.addEphemeralEffect("ninjafade",math.huge)
     status.setPersistentEffects("vanishsphere",
     {
       {stat = "invulnerable", amount = 1}
@@ -111,7 +111,7 @@ function update(args)
     checkForceDeactivate(args.dt)
   else
     status.clearPersistentEffects("vanishsphere")
-    status.removeEphemeralEffect("camouflage50")
+    status.removeEphemeralEffect("ninjafade")
     self.headingAngle = nil
   end
 
