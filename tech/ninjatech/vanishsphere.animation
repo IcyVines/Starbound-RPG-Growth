@@ -56,14 +56,14 @@
               "properties" : {
                 "offset" : [0, 0],
                 "fullbright" : true,
-                "image" : "transform.png:deactivate.<frame>"
+                "image" : "/tech/distortionsphere/transform.png:deactivate.<frame>"
               }
             },
             "activate" : {
               "properties" : {
                 "offset" : [0, 1.5],
                 "fullbright" : true,
-                "image" : "transform.png:activate.<frame>"
+                "image" : "/tech/distortionsphere/transform.png:activate.<frame>"
               }
             },
             "on" : {
