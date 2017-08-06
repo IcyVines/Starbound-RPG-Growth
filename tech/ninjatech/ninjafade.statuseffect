@@ -1,0 +1,14 @@
+{
+  "name" : "ninjafade",
+  "effectConfig" : {},
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ninjafade.lua"
+  ],
+
+  "animationConfig" : "ninjafade.animation",
+
+  "label" : "Ninja's Fade",
+  "icon" : "/tech/ninjatech/ninjafade.png"
+}
