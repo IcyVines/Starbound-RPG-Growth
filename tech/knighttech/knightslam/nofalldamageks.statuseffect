@@ -1,0 +1,14 @@
+{
+  "name" : "nofalldamageks",
+  "effectConfig" : {},
+  "defaultDuration" : 1.0,
+
+  "scripts" : [
+    "nofalldamageks.lua"
+  ],
+
+  "animationConfig" : "nofalldamageks.animation",
+
+  "label" : "Knight's Slam",
+  "icon" : "/tech/knighttech/knightslam/knightslameffect.png"
+}

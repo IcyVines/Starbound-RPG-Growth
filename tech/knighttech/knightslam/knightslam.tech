@@ -5,8 +5,8 @@
   "scripts" : ["knightslam.lua"],
   "animator" : "knightslam.animation",
 
-  "description" : "Two additional jumps that flashes the player forward!",
-  "shortDescription" : "Flash Jump",
+  "description" : "Press down while in midiar to perform a quick slam that does massive damage!",
+  "shortDescription" : "Slam",
   "rarity" : "Rare",
   "icon" : "/tech/knighttech/knightslam/knightslam.png",
 

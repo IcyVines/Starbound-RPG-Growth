@@ -1,9 +1,12 @@
+require "/scripts/keybinds.lua"
+
 function init()
   self.multiJumpCount = config.getParameter("multiJumpCount")
   self.multiJumpModifier = config.getParameter("multiJumpModifier")
   self.cost = config.getParameter("cost")
-
   refreshJumps()
+
+  --Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doMultiJump)
 end
 
 function update(args)

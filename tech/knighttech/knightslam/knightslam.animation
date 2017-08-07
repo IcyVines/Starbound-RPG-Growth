@@ -4,7 +4,8 @@
       "burstCount" : 8,
       "particles" : [
         {
-          "particle" : "doublejump"
+          "particle" : "doublejump",
+          "offset" : [0.2, -3]
         }
       ]
     },
@@ -20,7 +21,8 @@
       "burstCount" : 8,
       "particles" : [
         {
-          "particle" : "doublejump"
+          "particle" : "knightslamdown",
+          "offset" : [0, 3]
         }
       ]
     }

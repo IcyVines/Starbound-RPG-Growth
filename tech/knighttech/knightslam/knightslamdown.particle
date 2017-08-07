@@ -1,0 +1,18 @@
+{
+  "kind" : "knightslamdown",
+  "definition" : {
+    "type" : "animated",
+    "animation" : "/tech/knighttech/knightslam/knightslamdown.animation",
+    "position" : [0, 0],
+    "finalVelocity" : [0, 0],
+    "approach" : [0, 50],
+    "size" : 1.3,
+    "timeToLive" : 0.85,
+    "layer" : "back",
+    "light" : [30, 20, 220],
+    "fade" : 0.5,
+    "variance" : {
+      "initialVelocity" : [0.0, 0.0]
+    }
+  }
+}
