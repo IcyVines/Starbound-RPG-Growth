@@ -50,9 +50,9 @@ function update(args)
     -- Armor Sphere Stat Effects --
     status.addEphemeralEffect("spikes", math.huge)
     status.setPersistentEffects("ivrpgarmorsphereboost",{
-	    {stat = "grit", amount = 1},
-	    {stat = "protection", effectiveMultiplier = 1.5},
-	    {stat = "protection", amount = 5}
+      {stat = "grit", amount = 1},
+      {stat = "protection", effectiveMultiplier = 1.5},
+      {stat = "protection", amount = 5}
     })
 
     local groundDirection

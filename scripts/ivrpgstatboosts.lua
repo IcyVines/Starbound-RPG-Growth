@@ -28,41 +28,41 @@ function update(dt)
   status.setPersistentEffects( "ivrpgstatboosts",
   {
 
-	-- Strength
+    -- Strength
     --Increases Shield Health, Damage with melee weapons, and physical resistance
-	{stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.05},
-  {stat = "physicalResistance", amount = self.strength*.0025},
+    {stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.05},
+    {stat = "physicalResistance", amount = self.strength*.0025},
 
-	-- Intelligence
-	{stat = "energyRegenPercentageRate", amount = .05*self.intelligence},
-	{stat = "energyRegenBlockTime", amount = -.01*self.intelligence},
+    -- Intelligence
+    {stat = "energyRegenPercentageRate", amount = .05*self.intelligence},
+    {stat = "energyRegenBlockTime", amount = -.01*self.intelligence},
 
-	-- Dexterity
-  {stat = "fallDamageMultiplier", amount = -self.dexterity*.01},
-  {stat = "critChance", amount = self.dexterity},
-  {stat = "critBonus", effectiveMultiplier = 1 + self.dexterity*.01},
+    -- Dexterity
+    {stat = "fallDamageMultiplier", amount = -self.dexterity*.01},
+    {stat = "critChance", amount = self.dexterity},
+    {stat = "critBonus", effectiveMultiplier = 1 + self.dexterity*.01},
 
-	-- Endurance
-	{stat = "physicalResistance", amount = self.endurance*.005},
-  {stat = "poisonResistance", amount = self.endurance*.005},
-  {stat = "fireResistance", amount = self.endurance*.005},
-  {stat = "electricResistance", amount = self.endurance*.005},
-  {stat = "iceResistance", amount = self.endurance*.005},
-  {stat = "shadowResistance", amount = self.endurance*.005},
-  {stat = "cosmicResistance", amount = self.endurance*.005},
-  {stat = "radioactiveResistance", amount = self.endurance*.005},
-  {stat = "grit", amount = self.endurance*.01},
+    -- Endurance
+    {stat = "physicalResistance", amount = self.endurance*.005},
+    {stat = "poisonResistance", amount = self.endurance*.005},
+    {stat = "fireResistance", amount = self.endurance*.005},
+    {stat = "electricResistance", amount = self.endurance*.005},
+    {stat = "iceResistance", amount = self.endurance*.005},
+    {stat = "shadowResistance", amount = self.endurance*.005},
+    {stat = "cosmicResistance", amount = self.endurance*.005},
+    {stat = "radioactiveResistance", amount = self.endurance*.005},
+    {stat = "grit", amount = self.endurance*.01},
 
-  --Agility
-  {stat = "fallDamageMultiplier", amount = -self.agility*.005},
+    --Agility
+    {stat = "fallDamageMultiplier", amount = -self.agility*.005},
 
-	-- Vitality
-	{stat = "maxHealth", amount = math.floor(self.vitality*4)},
-  {stat = "foodDelta", amount = self.vitality*.02},
+    -- Vitality
+    {stat = "maxHealth", amount = math.floor(self.vitality*4)},
+    {stat = "foodDelta", amount = self.vitality*.02},
 
-	-- Vigor
-	{stat = "maxEnergy", amount = math.floor(self.vigor*4)},
-  {stat = "energyRegenPercentageRate", amount = math.floor(.02*self.vigor)}
+    -- Vigor
+    {stat = "maxEnergy", amount = math.floor(self.vigor*4)},
+    {stat = "energyRegenPercentageRate", amount = math.floor(.02*self.vigor)}
 
   })
 
