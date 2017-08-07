@@ -13,5 +13,5 @@
   "chipCost" : 0,
 
   "dashDistance" : 13,
-  "dashCooldown" : 2.0,
+  "dashCooldown" : 2.0
 }
