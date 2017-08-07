@@ -1,0 +1,17 @@
+{
+  "name" : "translocate",
+  "type" : "body",
+
+  "scripts" : ["translocate.lua"],
+  "animator" : "translocate.animation",
+
+  "description" : "A dash that translocates where you point! Cooldown: 2.5s",
+  "shortDescription" : "Translocate",
+  "rarity" : "Legendary",
+  "icon" : "/tech/wizardtech/translocate/translocate.png",
+
+  "chipCost" : 0,
+
+  "dashDistance" : 13,
+  "dashCooldown" : 2.0,
+}
