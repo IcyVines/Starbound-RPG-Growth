@@ -5,7 +5,7 @@
   "scripts" : ["armorsphere.lua"],
   "animator" : "armorsphere.animation",
 
-  "description" : "A Spike Sphere that deals damage on contact and provides protection! ^green;[F]",
+  "description" : "Press ^green;[F]^reset; to transform into an armored Spike Ball!",
   "shortDescription" : "Armor Sphere",
   "rarity" : "Legendary",
   "icon" : "/tech/knighttech/armorsphere/armorsphereicon.png",

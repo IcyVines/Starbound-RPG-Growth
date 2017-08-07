@@ -5,7 +5,7 @@
   "scripts" : ["knightslam.lua"],
   "animator" : "knightslam.animation",
 
-  "description" : "Press down while in midiar to perform a quick slam that does massive damage!",
+  "description" : "Press ^green;[S]^reset; while midair to perform slam into the ground!",
   "shortDescription" : "Slam",
   "rarity" : "Rare",
   "icon" : "/tech/knighttech/knightslam/knightslam.png",

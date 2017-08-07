@@ -7,14 +7,23 @@ end
 
 function update(dt)
   self.id = entity.id()
-  self.strength = math.floor(world.entityCurrency(self.id, "strengthpoint")^1.1)
-  self.agility = math.floor(world.entityCurrency(self.id,"agilitypoint")^1.1)
-  self.vitality = math.floor(world.entityCurrency(self.id,"vitalitypoint"))
-  self.vigor = math.floor(world.entityCurrency(self.id,"vigorpoint"))
-  self.intelligence = math.floor(world.entityCurrency(self.id,"intelligencepoint")^1.1)
-  self.endurance = math.floor(world.entityCurrency(self.id,"endurancepoint")^1.1)
-  self.dexterity = math.floor(world.entityCurrency(self.id,"dexteritypoint")^1.1)
   self.classType = world.entityCurrency(self.id, "classtype")
+
+  self.strengthBonus = self.classType == 1 and 1.15 or (self.classType == 5 and 1.1 or (self.classType == 4 and 1.05 or 1))
+  self.agilityBonus = self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1))
+  self.vitalityBonus = self.classType == 4 and 1.15 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.05 or 1))
+  self.vigorBonus = self.classType == 6 and 1.15 or (self.classType == 2 and 1.1 or 1)
+  self.intelligenceBonus = self.classType == 2 and 1.2 or 1
+  self.enduranceBonus = self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1))
+  self.dexterityBonus = self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))
+
+  self.strength = world.entityCurrency(self.id, "strengthpoint")^self.strengthBonus
+  self.agility = world.entityCurrency(self.id,"agilitypoint")^self.agilityBonus
+  self.vitality = world.entityCurrency(self.id,"vitalitypoint")^self.vitalityBonus
+  self.vigor = world.entityCurrency(self.id,"vigorpoint")^self.vigorBonus
+  self.intelligence = world.entityCurrency(self.id,"intelligencepoint")^self.intelligenceBonus
+  self.endurance = world.entityCurrency(self.id,"endurancepoint")^self.enduranceBonus
+  self.dexterity = world.entityCurrency(self.id,"dexteritypoint")^self.dexterityBonus
 
   status.setPersistentEffects( "ivrpgstatboosts",
   {
@@ -23,40 +32,37 @@ function update(dt)
     --Increases Shield Health, Damage with melee weapons, and physical resistance
 	{stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.05},
   {stat = "physicalResistance", amount = self.strength*.0025},
-  --still needs melee weapon bonus damage
 
 	-- Intelligence
 	{stat = "energyRegenPercentageRate", amount = .05*self.intelligence},
 	{stat = "energyRegenBlockTime", amount = -.01*self.intelligence},
-  --still needs magic bonus damage
 
 	-- Dexterity
   {stat = "fallDamageMultiplier", amount = -self.dexterity*.01},
   {stat = "critChance", amount = self.dexterity},
   {stat = "critBonus", effectiveMultiplier = 1 + self.dexterity*.01},
-  --still needs one-handed weapon bonus damage
 
 	-- Endurance
 	{stat = "physicalResistance", amount = self.endurance*.005},
-  {stat = "poisonResistance", amount = self.endurance*.0025},
-  {stat = "fireResistance", amount = self.endurance*.0025},
-  {stat = "electricResistance", amount = self.endurance*.0025},
-  {stat = "iceResistance", amount = self.endurance*.0025},
-  {stat = "shadowResistance", amount = self.endurance*.0025},
-  {stat = "cosmicResistance", amount = self.endurance*.0025},
-  {stat = "radioactiveResistance", amount = self.endurance*.0025},
+  {stat = "poisonResistance", amount = self.endurance*.005},
+  {stat = "fireResistance", amount = self.endurance*.005},
+  {stat = "electricResistance", amount = self.endurance*.005},
+  {stat = "iceResistance", amount = self.endurance*.005},
+  {stat = "shadowResistance", amount = self.endurance*.005},
+  {stat = "cosmicResistance", amount = self.endurance*.005},
+  {stat = "radioactiveResistance", amount = self.endurance*.005},
   {stat = "grit", amount = self.endurance*.01},
 
   --Agility
   {stat = "fallDamageMultiplier", amount = -self.agility*.005},
 
 	-- Vitality
-	{stat = "maxHealth", amount = math.floor(self.vitality^1.1*3)},
-  {stat = "foodDelta", amount = math.floor(self.vitality^1.1)*.02},
+	{stat = "maxHealth", amount = math.floor(self.vitality*4)},
+  {stat = "foodDelta", amount = self.vitality*.02},
 
 	-- Vigor
-	{stat = "maxEnergy", amount = math.floor(self.vigor^1.1*3)},
-  {stat = "energyRegenPercentageRate", amount = .02*math.floor(self.vigor^1.1)}
+	{stat = "maxEnergy", amount = math.floor(self.vigor*4)},
+  {stat = "energyRegenPercentageRate", amount = math.floor(.02*self.vigor)}
 
   })
 
@@ -105,7 +111,6 @@ function updateClassEffects(classType)
     status.removeEphemeralEffect("explorerglow")
     status.removeEphemeralEffect("knightblock")
     status.removeEphemeralEffect("ninjacrit")
-    status.removeEphemeralEffect("explorerresist")
     status.removeEphemeralEffect("wizardaffinity")
     status.removeEphemeralEffect("roguepoison")
     status.removeEphemeralEffect("soldierdiscipline")

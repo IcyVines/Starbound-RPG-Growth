@@ -5,7 +5,7 @@
   "scripts" : ["flashjump.lua"],
   "animator" : "flashjump.animation",
 
-  "description" : "Two additional jumps that flashes the player forward!",
+  "description" : "Two additional jumps that burst the player forwards!",
   "shortDescription" : "Flash Jump",
   "rarity" : "Rare",
   "icon" : "/tech/ninjatech/flashjump/flashjump.png",

@@ -5,7 +5,7 @@
   "scripts" : ["vanishsphere.lua"],
   "animator" : "vanishsphere.animation",
 
-  "description" : "Transform into an invisible sphere that can climb walls! ^green;[F]",
+  "description" : "Press ^green;[F]^reset; to transform into an invisible Spike Sphere!",
   "shortDescription" : "Vanish Sphere",
   "rarity" : "Common",
   "icon" : "/tech/ninjatech/vanishsphere/vanishsphereicon.png",
