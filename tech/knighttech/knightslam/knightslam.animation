@@ -9,14 +9,6 @@
         }
       ]
     },
-    "slamParticles" : {
-      "burstCount" : 8,
-      "particles" : [
-        {
-          "particle" : "doublejump"
-        }
-      ]
-    },
     "downParticles" : {
       "burstCount" : 8,
       "particles" : [
@@ -29,6 +21,8 @@
   },
 
   "sounds" : {
-    "multiJumpSound" : ["/sfx/tech/tech_multijump.ogg"]
+    "multiJumpSound" : ["/sfx/tech/tech_multijump.ogg"],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "slamSound" : [ "/sfx/gun/grenadeblast3.ogg" ]
   }
 }

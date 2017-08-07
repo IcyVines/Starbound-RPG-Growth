@@ -2,49 +2,26 @@ require "/scripts/keybinds.lua"
 
 function init()
   self.multiJumpCount = config.getParameter("multiJumpCount")
-  self.multiJumpModifier = config.getParameter("multiJumpModifier")
   self.cost = config.getParameter("cost")
   refreshJumps()
-
-  --Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doMultiJump)
+  Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doMultiJump)
 end
 
 function update(args)
-  local jumpActivated = args.moves["jump"] and not self.lastJump
-  self.lastJump = args.moves["jump"]
-
-  updateJumpModifier()
-
-  if jumpActivated and canMultiJump() then
-    if status.overConsumeResource("energy", self.cost) then
-      doMultiJump()
-    end
-  else
-    if mcontroller.groundMovement() or mcontroller.liquidMovement() or status.resource("energy") < 1 then
-      status.removeEphemeralEffect("camouflage25")
-      status.removeEphemeralEffect("invulnerable")
-      status.removeEphemeralEffect("nofalldamage")
-      refreshJumps()
-    end
-  end
-end
-
--- after the original ground jump has finished, start applying the new jump modifier
-function updateJumpModifier()
-  if self.multiJumpModifier then
-    if not self.applyJumpModifier
-        and not mcontroller.jumping()
-        and not mcontroller.groundMovement() then
-
-      self.applyJumpModifier = true
-    end
-
-    if self.applyJumpModifier then mcontroller.controlModifiers({airJumpModifier = self.multiJumpModifier}) end
+  if mcontroller.groundMovement() or mcontroller.liquidMovement() then
+    status.removeEphemeralEffect("camouflage25")
+    status.removeEphemeralEffect("invulnerable")
+    status.removeEphemeralEffect("nofalldamage")
+    refreshJumps()
+  elseif status.resource("energy") < 1 or status.statPositive("activeMovementAbilities") then
+    status.removeEphemeralEffect("camouflage25")
+    status.removeEphemeralEffect("invulnerable")
+    status.removeEphemeralEffect("nofalldamage")
   end
 end
 
 function canMultiJump()
-  return self.multiJumps > 0
+  return self.multiJumpCount > 0
       and not mcontroller.jumping()
       and not mcontroller.canJump()
       and not mcontroller.liquidMovement()
@@ -54,27 +31,30 @@ end
 
 function doMultiJump()
   --set flashjump player changes
+  if canMultiJump() then
+    if status.overConsumeResource("energy", self.cost) then
+      status.addEphemeralEffect("camouflage25", 20)
+      status.addEphemeralEffect("invulnerable", 20)
+      status.addEphemeralEffect("nofalldamage", 20)
 
-  status.addEphemeralEffect("camouflage25", 20)
-  status.addEphemeralEffect("invulnerable", 20)
-  status.addEphemeralEffect("nofalldamage", 20)
-
-  mcontroller.controlJump(true)
-  mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()))
-  self.facing = mcontroller.facingDirection()
-  --self.facing = tech.aimPosition()[1]-mcontroller.position()[1]
-  if self.facing < 0 then
-    mcontroller.setXVelocity(-50 + math.min(0, mcontroller.xVelocity()))
-    animator.burstParticleEmitter("jumpLeftParticles")
-  else
-    mcontroller.setXVelocity(50 + math.max(0, mcontroller.xVelocity()))
-    animator.burstParticleEmitter("jumpRightParticles")
+      mcontroller.controlJump(true)
+      mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()))
+      self.facing = mcontroller.facingDirection()
+      --self.facing = tech.aimPosition()[1]-mcontroller.position()[1]
+      if self.facing < 0 then
+        mcontroller.setXVelocity(-50 + math.min(0, mcontroller.xVelocity()))
+        animator.burstParticleEmitter("jumpLeftParticles")
+      else
+        mcontroller.setXVelocity(50 + math.max(0, mcontroller.xVelocity()))
+        animator.burstParticleEmitter("jumpRightParticles")
+      end
+      self.multiJumpCount = self.multiJumpCount - 1
+      animator.playSound("multiJumpSound")
+    end
   end
-  self.multiJumps = self.multiJumps - 1
-  animator.playSound("multiJumpSound")
 end
 
 function refreshJumps()
-  self.multiJumps = self.multiJumpCount
+  self.multiJumpCount = config.getParameter("multiJumpCount")
   self.applyJumpModifier = false
 end
