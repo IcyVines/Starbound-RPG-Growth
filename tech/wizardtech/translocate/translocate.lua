@@ -22,8 +22,7 @@ function translocate()
         tech.aimPosition(),
         entity.id(),
         {0,0},
-        false,
-        {physics = "paperplane"}
+        false
       )
     sb.logInfo("projectile created: " .. tostring(projectileId)) 
     if projectileId then

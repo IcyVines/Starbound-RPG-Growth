@@ -72,8 +72,8 @@ function updateBookTab()
     changeToClasses()
   elseif widget.getChecked("bookTabs.3") then
     changeToAffinities()
-  elseif widget.getChecked("booktabs.4") then
-    changeToAffinities()
+  elseif widget.getChecked("bookTabs.4") then
+    changeToInfo()
   end
 end
 
@@ -241,6 +241,7 @@ function removeLayouts()
   widget.setVisible("classeslayout",false)
   widget.setVisible("classlayout",false)
   widget.setVisible("affinitieslayout",false)
+  widget.setVisible("infolayout",false)
 end
 
 function changeToOverview()
@@ -271,6 +272,19 @@ end
 function changeToAffinities()
     widget.setText("tabLabel", "Affinities Tab")
     widget.setVisible("affinitieslayout", true)
+end
+
+function changeToInfo()
+    widget.setText("tabLabel", "Info Tab")
+    widget.setVisible("infolayout", true)
+    updateInfo()
+end
+
+function updateInfo()
+  physicalResistance = status.stat("physicalResistance")
+  widget.setText("infolayout.display", 
+    "Physical Resistance: "..physicalResistance ..
+    "\nPoison Resistance: ")
 end
 
 function raiseStat(name)
