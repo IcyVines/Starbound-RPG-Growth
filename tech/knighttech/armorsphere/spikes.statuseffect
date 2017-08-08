@@ -2,7 +2,7 @@
   "name" : "spikes",
   "effectConfig" : {
 
-    "damageProjectileType" : "armorthornburst",
+    "damageProjectileType" : "novadamage",
 
     "cooldown" : 1
 
