@@ -54,6 +54,7 @@ function init()
     for _,notification in pairs(notifications) do
       if notification.healthLost > 0 then
         -- IVRPGMod
+        --sb.logInfo("Damage Taken!!")
         self.id = notification.sourceEntityId
         self.classType = world.entityCurrency(self.id, "classtype")
         if self.classType == 2 then

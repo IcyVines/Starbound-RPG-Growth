@@ -15,8 +15,8 @@ function init()
 end
 
 function translocate()
-  sb.logInfo("Cooldown: " .. tostring(self.dashCooldownTimer))
-  if self.dashCooldownTimer == 0 and status.overConsumeResource("energy", self.cost) then
+  --sb.logInfo("Cooldown: " .. tostring(self.dashCooldownTimer))
+  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and status.overConsumeResource("energy", self.cost) then
     local projectileId = world.spawnProjectile(
         "invtransdisc",
         tech.aimPosition(),
@@ -24,7 +24,7 @@ function translocate()
         {0,0},
         false
       )
-    sb.logInfo("projectile created: " .. tostring(projectileId)) 
+    --sb.logInfo("projectile created: " .. tostring(projectileId)) 
     if projectileId then
       world.callScriptedEntity(projectileId, "setOwnerId", entity.id())
       status.setStatusProperty("translocatorDiscId", projectileId)

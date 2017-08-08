@@ -1,20 +1,20 @@
 {
-  "name" : "armorsphere",
+  "name" : "knightarmorsphere",
   "type" : "head",
 
-  "scripts" : ["armorsphere.lua"],
-  "animator" : "armorsphere.animation",
+  "scripts" : ["knightarmorsphere.lua"],
+  "animator" : "knightarmorsphere.animation",
 
   "description" : "Press ^green;[F]^reset; to transform into an armored Spike Ball!",
   "shortDescription" : "Armor Sphere",
   "rarity" : "Legendary",
-  "icon" : "/tech/knighttech/armorsphere/armorsphereicon.png",
+  "icon" : "/tech/knighttech/armorsphere/knightarmorsphereicon.png",
 
   "chipCost" : 0,
 
   "animationParts" : {
-    "ballGlow" : "armorsphereglow.png",
-    "ball" : "armorsphere.png"
+    "ballGlow" : "knightarmorsphereglow.png",
+    "ball" : "knightarmorsphere.png"
   },
 
   "transformedMovementParameters" : {

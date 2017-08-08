@@ -1,0 +1,13 @@
+{
+  "name" : "ivcrithit",
+  "blockingStat" : "critImmunity",
+  
+  "effectConfig" : {},
+  "defaultDuration" : 0.3,
+
+  "scripts" : [
+    "ivcrithit.lua"
+  ],
+
+  "animationConfig" : "ivcrithit.animation"
+}

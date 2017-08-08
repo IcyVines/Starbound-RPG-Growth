@@ -40,7 +40,8 @@ function update(dt)
     -- Dexterity
     {stat = "fallDamageMultiplier", amount = -self.dexterity*.01},
     {stat = "critChance", amount = self.dexterity},
-    {stat = "critBonus", effectiveMultiplier = 1 + self.dexterity*.01},
+    {stat = "critBonus", amount = self.dexterity/2},
+    --critical hits not working!!!!!!!!!!
 
     -- Endurance
     {stat = "physicalResistance", amount = self.endurance*.005},
@@ -96,7 +97,7 @@ function update(dt)
       {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.01}
     })
   end
-
+  
   updateClassEffects(self.classType)
 
 end

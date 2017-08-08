@@ -281,10 +281,30 @@ function changeToInfo()
 end
 
 function updateInfo()
-  physicalResistance = status.stat("physicalResistance")
   widget.setText("infolayout.display", 
-    "Physical Resistance: "..physicalResistance ..
-    "\nPoison Resistance: ")
+    "Stat:                   Amount\n" ..
+    "Physical Resistance:    " .. getStatPercent(status.stat("physicalResistance")) ..
+    "Poison Resistance:      " .. getStatPercent(status.stat("poisonResistance")) ..
+    "Frost Resistance:       " .. getStatPercent(status.stat("iceResistance")) ..
+    "Fire Resistance:        " .. getStatPercent(status.stat("fireResistance")) ..
+    "Electric Resistance:    " .. getStatPercent(status.stat("electricResistance")) ..
+    "Bonus Health:           " .. status.stat("maxHealth") .. "\n" ..
+    "Bonus Energy:           " .. status.stat("maxEnergy") .. "\n" ..
+    "Fall Damage Multiplier: " .. status.stat("fallDamageMultiplier") .. "\n" ..
+    --"Bonus Speed: " .. getStatPercent(status.stat("speed")) ..
+    --"Bonus Jump Height: " .. getStatPercent(status.stat("jumpHeight")) ..
+    "Knockback Resistance:   " .. getStatPercent(status.stat("grit")) ..
+    "Shield Health Bonus:    " .. getStatPercent(status.stat("shieldHealth")) ..
+    "Energy Recharge Rate:   " .. getStatPercent(status.stat("energyRechargePercentageRate")) ..
+    "Energy Recharge Delay:  " .. getStatPercent(status.stat("energyBlockTime")) ..
+    "Critical Chance:        " .. math.floor(status.stat("critChance")+.5) .. "%\n" ..
+    "Extra Critical Damage:  " .. status.stat("critBonus") .. "%\n" ..
+    "Hunger Rate:            " .. getStatPercent(status.stat("foodDelta")))
+end
+
+function getStatPercent(stat)
+  stat = math.floor(stat*10000+.50)/100
+  return stat >= 100 and "Immune!\n" or (stat < 0 and stat .. "%\n" or (stat == 0 and "0%\n" or "+" .. stat .. "%\n"))
 end
 
 function raiseStat(name)
