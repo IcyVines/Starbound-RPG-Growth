@@ -18,8 +18,9 @@ function damage(args)
       --sb.logInfo("Damage Taken!!")
   self.id = args.sourceId
   self.damage = args.damage
+  self.allDamage = args.sourceDamage
   self.classType = world.entityCurrency(self.id, "classtype")
-  self.dexterity = world.entityCurrency(self.id, "dexterity")
+  self.dexterity = world.entityCurrency(self.id, "dexteritypoint")
   if self.classType == 2 then
     if math.random(100) < 7 then
       status.addEphemeralEffect("electrified")
@@ -40,12 +41,17 @@ function damage(args)
       status.addEphemeralEffect("weakpoison")
     end
   elseif self.classType == 3 then
-    if nighttimeCheck() or undergroundCheck(self.id) then
+    if nighttimeCheck() or undergroundCheck(world.entityPosition(self.id)) then
       self.dexterity = self.dexterity + 20
     end
   end
   if math.random(100) <= self.dexterity then
-    status.addEphemeralEffect("ivrpgweaken", (self.dexterity/50))
+    status.addEphemeralEffect("ivrpgweaken", (self.dexterity/25))
+    status.applySelfDamageRequest({
+      damageType = "IgnoresDef",
+      damage = self.allDamage,
+      sourceEntityId = self.id
+    })
   end
   --End IVRPGMod
 end

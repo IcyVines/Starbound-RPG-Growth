@@ -1,5 +1,13 @@
 {
   "particleEmitters" : {
+    "bloodparticles" : {
+      "active" : true,
+      "emissionRate" : 6,
+      "particles" : [
+        { "particle" : "lightredphaseparticle" },
+        { "particle" : "darkredphaseparticle" }
+      ]
+    },
     "smoke" : {
       "enable" : true,
       "emissionRate" : 15,

@@ -282,24 +282,24 @@ end
 
 function updateInfo()
   widget.setText("infolayout.display", 
-    "Stat:                   Amount\n" ..
-    "Physical Resistance:    " .. getStatPercent(status.stat("physicalResistance")) ..
-    "Poison Resistance:      " .. getStatPercent(status.stat("poisonResistance")) ..
-    "Frost Resistance:       " .. getStatPercent(status.stat("iceResistance")) ..
-    "Fire Resistance:        " .. getStatPercent(status.stat("fireResistance")) ..
-    "Electric Resistance:    " .. getStatPercent(status.stat("electricResistance")) ..
-    "Bonus Health:           " .. status.stat("maxHealth") .. "\n" ..
-    "Bonus Energy:           " .. status.stat("maxEnergy") .. "\n" ..
-    "Fall Damage Multiplier: " .. status.stat("fallDamageMultiplier") .. "\n" ..
+    "Stat:                               Amount\n" ..
+    "Physical Resistance:     " .. getStatPercent(status.stat("physicalResistance")) ..
+    "Poison Resistance:        " .. getStatPercent(status.stat("poisonResistance")) ..
+    "Frost Resistance:         " .. getStatPercent(status.stat("iceResistance")) ..
+    "Fire Resistance:            " .. getStatPercent(status.stat("fireResistance")) ..
+    "Electric Resistance:      " .. getStatPercent(status.stat("electricResistance")) ..
+    "Bonus Health:               " .. status.stat("maxHealth") .. "\n" ..
+    "Bonus Energy:               " .. status.stat("maxEnergy") .. "\n" ..
+    "Fall Damage Multiplier:    " .. status.stat("fallDamageMultiplier") .. "\n" ..
     --"Bonus Speed: " .. getStatPercent(status.stat("speed")) ..
     --"Bonus Jump Height: " .. getStatPercent(status.stat("jumpHeight")) ..
     "Knockback Resistance:   " .. getStatPercent(status.stat("grit")) ..
-    "Shield Health Bonus:    " .. getStatPercent(status.stat("shieldHealth")) ..
-    "Energy Recharge Rate:   " .. getStatPercent(status.stat("energyRechargePercentageRate")) ..
-    "Energy Recharge Delay:  " .. getStatPercent(status.stat("energyBlockTime")) ..
-    "Bleed Chance:        " .. player.currency("dexteritypoint") + status.stat("ninjaBleed") .. "%\n" ..
-    "Bleed Length:  " .. (player.currency("dexteritypoint") + status.stat("ninjaBleed"))/50 .. "%\n" ..
-    "Hunger Rate:            " .. getStatPercent(status.stat("foodDelta")))
+    "Shield Health Bonus:         " .. getStatPercent(status.stat("shieldHealth")) ..
+    "Energy Recharge Rate:       " .. getStatPercent(status.stat("energyRegenPercentageRate")) ..
+    "Energy Recharge Delay:         " .. status.stat("energyRegenBlockTime") .. "\n" ..
+    "Bleed Chance:                  " .. player.currency("dexteritypoint") + status.stat("ninjaBleed") .. "%\n" ..
+    "Bleed Length:                  " .. (player.currency("dexteritypoint") + status.stat("ninjaBleed"))/50 .. "\n" ..
+    "Hunger:                       " .. getStatPercent(status.stat("foodDelta")))
 end
 
 function getStatPercent(stat)

@@ -7,5 +7,7 @@
 
   "scripts" : [
     "ivrpgweaken.lua"
-  ]
+  ],
+
+  "animationConfig" : "ivrpgweaken.animation"
 }
