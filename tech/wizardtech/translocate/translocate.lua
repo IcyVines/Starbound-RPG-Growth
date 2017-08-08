@@ -4,10 +4,11 @@ function init()
   self.dashCooldownTimer = 0
   self.rechargeEffectTimer = 0
 
+  self.cost = config.getParameter("cost")
   self.dashMaxDistance = config.getParameter("dashDistance")
   self.dashCooldown = config.getParameter("dashCooldown")
   sb.logInfo("ConfigCooldown: " .. tostring(self.dashCooldown))
-  self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=CCCCFFFF=0.25")
+  self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=B880FCFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
 
   Bind.create("Up", translocate)
@@ -15,14 +16,14 @@ end
 
 function translocate()
   sb.logInfo("Cooldown: " .. tostring(self.dashCooldownTimer))
-  if self.dashCooldownTimer == 0 then
+  if self.dashCooldownTimer == 0 and status.overConsumeResource("energy", self.cost) then
     local projectileId = world.spawnProjectile(
-        "translocatordisc",
+        "invtransdisc",
         tech.aimPosition(),
         entity.id(),
-        {0,1},
+        {0,0},
         false,
-        {speed = 10}
+        {physics = "paperplane"}
       )
     sb.logInfo("projectile created: " .. tostring(projectileId)) 
     if projectileId then

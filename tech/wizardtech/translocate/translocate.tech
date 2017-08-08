@@ -11,7 +11,7 @@
   "icon" : "/tech/wizardtech/translocate/translocate.png",
 
   "chipCost" : 0,
-
+  "cost" : 30,   
   "dashDistance" : 13,
   "dashCooldown" : 2.0
 }
