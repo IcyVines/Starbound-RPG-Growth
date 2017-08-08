@@ -39,9 +39,6 @@ function update(dt)
 
     -- Dexterity
     {stat = "fallDamageMultiplier", amount = -self.dexterity*.01},
-    {stat = "critChance", amount = self.dexterity},
-    {stat = "critBonus", amount = self.dexterity/2},
-    --critical hits not working!!!!!!!!!!
 
     -- Endurance
     {stat = "physicalResistance", amount = self.endurance*.005},
@@ -91,7 +88,7 @@ function update(dt)
     {
       {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.01}
     })
-  elseif (heldItem and not root.itemHasTag(heldItem,"wand") and root.itemHasTag(heldItem,"weapon")) or (heldItem2 and not root.itemHasTag(heldItem2,"wand") and root.itemHasTag(heldItem2,"weapon")) then
+  elseif (heldItem and root.itemHasTag(heldItem,"weapon")) or (heldItem2 and root.itemHasTag(heldItem2,"weapon")) then
     status.addPersistentEffects("ivrpgstatboosts",
     {
       {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.01}
@@ -202,17 +199,21 @@ function updateClassEffects(classType)
   elseif classType == 3 then
     --Ninja
     --ThrowingStar, ThrowingKunai, SnowflakeShuriken, ThrowingKnife, ThrowingDagger
-    nighttime = nighttimeCheck()
-    underground = undergroundCheck()
-    if nighttime or underground then
-      status.addEphemeralEffect("ninjacrit", math.huge)
-    else
-      status.removeEphemeralEffect("ninjacrit")
-    end
     status.setPersistentEffects("ivrpgclassboosts",
     {
       {stat = "fallDamageMultiplier", amount = -.3}
     })
+    nighttime = nighttimeCheck()
+    underground = undergroundCheck()
+    if nighttime or underground then
+      status.addEphemeralEffect("ninjacrit", math.huge)
+      status.addPersistentEffects("ivrpgclassboosts",
+      {
+        {stat = "ninjaBleed", amount = 20}
+      })
+    else
+      status.removeEphemeralEffect("ninjacrit")
+    end
     self.checkDualWield = true
     if heldItem and root.itemHasTag(heldItem, "bow") then
       status.addPersistentEffects("ivrpgclassboosts",

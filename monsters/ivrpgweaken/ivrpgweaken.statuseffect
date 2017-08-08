@@ -1,0 +1,11 @@
+{
+  "name" : "ivrpgweaken",
+  "effectConfig" : {
+  	"protectionModifier" : 0.01
+  },
+  "defaultDuration" : 2,
+
+  "scripts" : [
+    "ivrpgweaken.lua"
+  ]
+}

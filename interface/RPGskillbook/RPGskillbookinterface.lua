@@ -297,8 +297,8 @@ function updateInfo()
     "Shield Health Bonus:    " .. getStatPercent(status.stat("shieldHealth")) ..
     "Energy Recharge Rate:   " .. getStatPercent(status.stat("energyRechargePercentageRate")) ..
     "Energy Recharge Delay:  " .. getStatPercent(status.stat("energyBlockTime")) ..
-    "Critical Chance:        " .. math.floor(status.stat("critChance")+.5) .. "%\n" ..
-    "Extra Critical Damage:  " .. status.stat("critBonus") .. "%\n" ..
+    "Bleed Chance:        " .. player.currency("dexteritypoint") + status.stat("ninjaBleed") .. "%\n" ..
+    "Bleed Length:  " .. (player.currency("dexteritypoint") + status.stat("ninjaBleed"))/50 .. "%\n" ..
     "Hunger Rate:            " .. getStatPercent(status.stat("foodDelta")))
 end
 
