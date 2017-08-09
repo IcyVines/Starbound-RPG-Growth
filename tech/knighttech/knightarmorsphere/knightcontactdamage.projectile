@@ -1,0 +1,13 @@
+{
+  "projectileName" : "knightcontactdamage",
+  "image" : "knightcontactdamage.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "timeToLive" : 0.75,
+  "power" : 5.0,
+  "damageKind" : "default",
+  "piercing" : true,
+  "damagePoly" : [[-9.5, 0], [-6.7, -6.7], [0, -9.5], [6.7, -6.7], [9.5, 0], [6.7, 6.7], [0, 9.5], [-6.7, 6.7]]
+}

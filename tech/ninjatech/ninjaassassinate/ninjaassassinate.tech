@@ -1,0 +1,18 @@
+{
+  "name" : "ninjaassassinate",
+  "type" : "body",
+
+  "scripts" : ["ninjaassassinate.lua"],
+  "animator" : "ninjaassassinate.animation",
+
+  "description" : "Vanish for 3s and then appear where you point! Cooldown: 2.5s",
+  "shortDescription" : "Assassinate",
+  "rarity" : "Legendary",
+  "icon" : "/tech/ninjatech/ninjaassassinate/ninjaassassinate.png",
+
+  "chipCost" : 0,
+  "cost" : 50,   
+  "dashDistance" : 13,
+  "dashCooldown" : 2.0,
+  "vanishTime" : 2
+}

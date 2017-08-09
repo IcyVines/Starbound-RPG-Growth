@@ -15,15 +15,13 @@ end
 
 function update(dt)
   self.id = entity.id()
-  self.level = world.entityCurrency(self.id,"currentlevel")
-  self.level = self.level == 0 and 1 or self.level
   self.strength = world.entityCurrency(self.id,"strengthpoint")
   self.strength = self.strength == 0 and 1 or self.strength
   if self.cooldownTimer <= 0 then
     local entities = world.entityQuery(entity.position(), 1.5, {withoutEntityId = self.id})
     for _, e in ipairs(entities) do
       if world.entityAggressive(e) then
-        triggerThorns(self.level * self.strength)
+        triggerThorns(self.strength)
         self.cooldownTimer = self.cooldown
       end
     end
@@ -36,7 +34,6 @@ function update(dt)
 end
 
 function triggerThorns(damage)
-
   local damageConfig = {
     power = damage,
     speed = 0,

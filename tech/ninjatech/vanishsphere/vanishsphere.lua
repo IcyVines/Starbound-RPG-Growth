@@ -9,7 +9,6 @@ function init()
   self.ignorePlatforms = config.getParameter("ignorePlatforms")
   self.damageDisableTime = config.getParameter("damageDisableTime")
   self.damageDisableTimer = 0
-
   self.headingAngle = nil
 
   self.normalCollisionSet = {"Block", "Dynamic"}
@@ -18,7 +17,6 @@ function init()
   else
     self.platformCollisionSet = {"Block", "Dynamic", "Platform"}
   end
-
 end
 
 function update(args)

@@ -1,0 +1,12 @@
+{
+  "name" : "ninjatranslocate",
+  "effectConfig" : {
+  },
+  "defaultDuration" : 0.5,
+
+  "scripts" : [
+    "ninjatranslocate.lua"
+  ],
+
+  "animationConfig" : "ninjatranslocate.animation"
+}

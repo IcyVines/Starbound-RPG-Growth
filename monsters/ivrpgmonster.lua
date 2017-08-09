@@ -19,6 +19,8 @@ function damage(args)
   self.id = args.sourceId
   self.damage = args.damage
   self.allDamage = args.sourceDamage
+  self.source = args.sourceKind
+  self.bleedBonus = 0
   self.classType = world.entityCurrency(self.id, "classtype")
   self.dexterity = world.entityCurrency(self.id, "dexteritypoint")
   if self.classType == 2 then
@@ -40,12 +42,18 @@ function damage(args)
     if math.random(10) < 3 then
       status.addEphemeralEffect("weakpoison")
     end
-  elseif self.classType == 3 then
+  end
+
+  --Bleed Checks!
+  if self.classType == 3 then
     if nighttimeCheck() or undergroundCheck(world.entityPosition(self.id)) then
       self.dexterity = self.dexterity + 20
     end
   end
-  if math.random(100) <= self.dexterity then
+  if self.source == "alwaysbleed" then
+    self.bleedBonus = 100
+  end
+  if math.random(100) <= self.dexterity + self.bleedBonus then
     status.addEphemeralEffect("ivrpgweaken", (self.dexterity/25))
     status.applySelfDamageRequest({
       damageType = "IgnoresDef",
