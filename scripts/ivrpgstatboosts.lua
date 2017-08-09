@@ -207,10 +207,6 @@ function updateClassEffects(classType)
     underground = undergroundCheck()
     if nighttime or underground then
       status.addEphemeralEffect("ninjacrit", math.huge)
-      status.addPersistentEffects("ivrpgclassboosts",
-      {
-        {stat = "ninjaBleed", amount = 20}
-      })
     else
       status.removeEphemeralEffect("ninjacrit")
     end

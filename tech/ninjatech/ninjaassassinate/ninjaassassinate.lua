@@ -19,12 +19,11 @@ function init()
 end
 
 function assassinate()
-  --sb.logInfo("Cooldown: " .. tostring(self.dashCooldownTimer))
   if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and status.overConsumeResource("energy", self.cost) then
-    --sb.logInfo("projectile created: " .. tostring(projectileId))
       self.vanishTimer = self.vanishTime
       self.vanished = true
       status.addEphemeralEffect("invisible", math.huge)
+      tech.setToolUsageSuppressed(true)
       status.setPersistentEffects("ninjaassassinate", {
         {stat = "invulnerable", amount = 1},
         {stat = "activeMovementAbilities", amount = 1}
@@ -37,8 +36,6 @@ function uninit()
 end
 
 function update(args)
-
-  --status.clearPersistentEffects("ninjaassassinate")
 
   if self.dashCooldownTimer > 0 then
     self.dashCooldownTimer = math.max(0, self.dashCooldownTimer - args.dt)
@@ -83,6 +80,7 @@ function update(args)
         status.addEphemeralEffect("ninjatranslocate")
       end
       self.vanished = false
+      tech.setToolUsageSuppressed(false)
       status.clearPersistentEffects("ninjaassassinate")
       status.removeEphemeralEffect("invisible")
       self.dashCooldownTimer = self.dashCooldown

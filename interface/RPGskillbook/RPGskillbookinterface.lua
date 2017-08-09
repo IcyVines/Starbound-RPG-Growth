@@ -190,9 +190,9 @@ function updateClassTab()
     widget.setImage("classlayout.classicon","/objects/class/ninja.png")
     widget.setFontColor("classlayout.classtitle","red")
     widget.setFontColor("classlayout.effecttext","red")
-    widget.setText("classlayout.weapontext","+20% Damage while using Throwing Stars, Knives, Kunai, or Daggers, or Snowflake or Titanium Shurikens without any weapons equipped.")
+    widget.setText("classlayout.weapontext","+20% Damage while using Throwing Stars, Knives, Kunai, or Daggers, or any type of Shuriken without any weapons equipped.")
     widget.setText("classlayout.passivetext","+20% Speed and Jump Height. -30% Fall Damage.")
-    widget.setText("classlayout.effecttext","During Nighttime, or while Underground, gain +20% Crit Chance and Crit Damage.")
+    widget.setText("classlayout.effecttext","During Nighttime, or while Underground, gain +20% Bleed Chance and +0.8s Bleed Length.")
     widget.setImage("classlayout.effecticon","/scripts/ninjacrit/ninjacrit.png")
     widget.setImage("classlayout.effecticon2","/scripts/ninjacrit/ninjacrit.png")
     widget.setText("classlayout.statincreasetext", "Dexterity and Agility provide much better effects per point increase.")
@@ -422,7 +422,7 @@ function changeStatDescription(name)
   if name == "vigor" then widget.setText("statslayout.statdescription", "Significantly Increases Energy Recharge Rate.\nIncreases Max Energy.") end
   if name == "intelligence" then widget.setText("statslayout.statdescription", "Greatly Increases Energy Recharge Rate.\nGreatly Increases Staff Damage.\nDecreases Energy Recharge Delay.") end
   if name == "endurance" then widget.setText("statslayout.statdescription", "Increases Knockback Resistance.\nModerately Increases All Other Resistances.\nSlightly Increases Physical Resistance.") end
-  if name == "dexterity" then widget.setText("statslayout.statdescription", "Increases One-Handed Weapon (Not Wands) Damage.\n Increases Gun and Bow Damage.\nIncreases Critical Chance and Critical Damage.\nDecreases Fall Damage.") end
+  if name == "dexterity" then widget.setText("statslayout.statdescription", "Increases One-Handed Weapon Damage.\n Increases Gun and Bow Damage.\nIncreases Bleed Chance and Bleed Length.\nDecreases Fall Damage.") end
   if name == "default" then widget.setText("statslayout.statdescription", "Click a stat's icon to see what occurs\nwhen that stat is raised.") end
 end
 
