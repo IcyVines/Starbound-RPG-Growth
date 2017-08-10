@@ -343,7 +343,10 @@ function getTechText(num)
   elseif classType == 2 then
     return num == 1 and "WizardTech.1" or (num == 2 and "WizardTech.2" or (num == 3 and "WizardTech.3" or "WizardTech.4"))
   elseif classType == 3 then
-    return num == 1 and "NinjaTech.1" or (num == 2 and "NinjaTech.2" or (num == 3 and "NinjaTech.3" or "NinjaTech.4"))
+    return num == 1 and "Flash Jump: a Leg Tech. Press [Space] while midair to burst forward. As long as you remain in the air with energy remaining, you are invulnerable to all damage. You may do this twice while midair." 
+    or (num == 2 and "Vanish Sphere: a Head Tech. Press [F] to morph into an invulnerable spike ball. Energy drains quickly while moving but recharges while staying still. The transformation ends if you run out of energy or press [F] while transformed." 
+    or (num == 3 and "Assassinate: a Body Tech. Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. The slash scales with weapon damage and your damage bonus." 
+    or "Wall Cling: a Leg Tech. An upgrade to Flash Jump, this Tech keeps the two midair bursts. However, you may also cling to walls, and refresh your jumps upon doing so. Press [S] to slide down while clinging."))
   elseif classType == 4 then
     return num == 1 and "SoldierTech.1" or (num == 2 and "SoldierTech.2" or (num == 3 and "SoldierTech.3" or "SoldierTech.4"))
   elseif classType == 5 then
