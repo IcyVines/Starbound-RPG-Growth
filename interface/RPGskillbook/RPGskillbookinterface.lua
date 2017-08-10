@@ -57,6 +57,9 @@ function update(dt)
   end
 
   updateStats()
+  if widget.getChecked("bookTabs.4") then
+    updateInfo()
+  end
   --checkStatPoints()
 
   self.state:update(dt)
@@ -281,25 +284,32 @@ function changeToInfo()
 end
 
 function updateInfo()
-  widget.setText("infolayout.display", 
-    "Stat:                               Amount\n" ..
-    "Physical Resistance:     " .. getStatPercent(status.stat("physicalResistance")) ..
-    "Poison Resistance:        " .. getStatPercent(status.stat("poisonResistance")) ..
-    "Frost Resistance:         " .. getStatPercent(status.stat("iceResistance")) ..
-    "Fire Resistance:            " .. getStatPercent(status.stat("fireResistance")) ..
-    "Electric Resistance:      " .. getStatPercent(status.stat("electricResistance")) ..
-    "Bonus Health:               " .. status.stat("maxHealth") .. "\n" ..
-    "Bonus Energy:               " .. status.stat("maxEnergy") .. "\n" ..
-    "Fall Damage Multiplier:    " .. status.stat("fallDamageMultiplier") .. "\n" ..
-    --"Bonus Speed: " .. getStatPercent(status.stat("speed")) ..
-    --"Bonus Jump Height: " .. getStatPercent(status.stat("jumpHeight")) ..
-    "Knockback Resistance:   " .. getStatPercent(status.stat("grit")) ..
-    "Shield Health Bonus:         " .. getStatPercent(status.stat("shieldHealth")) ..
-    "Energy Recharge Rate:       " .. getStatPercent(status.stat("energyRegenPercentageRate")) ..
-    "Energy Recharge Delay:         " .. status.stat("energyRegenBlockTime") .. "\n" ..
-    "Bleed Chance:                  " .. player.currency("dexteritypoint") + status.stat("ninjaBleed") .. "%\n" ..
-    "Bleed Length:                  " .. (player.currency("dexteritypoint") + status.stat("ninjaBleed"))/50 .. "\n" ..
-    "Hunger:                       " .. getStatPercent(status.stat("foodDelta")))
+  self.classType = player.currency("classtype")
+  self.strengthBonus = self.classType == 1 and 1.15 or (self.classType == 5 and 1.1 or (self.classType == 4 and 1.05 or 1))
+  self.agilityBonus = self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1))
+  self.vitalityBonus = self.classType == 4 and 1.15 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.05 or 1))
+  self.vigorBonus = self.classType == 6 and 1.15 or (self.classType == 2 and 1.1 or 1)
+  self.intelligenceBonus = self.classType == 2 and 1.2 or 1
+  self.enduranceBonus = self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1))
+  self.dexterityBonus = self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))
+
+  widget.setText("infolayout.displaystats", 
+    "Amount\n" ..
+    "^red;" .. math.floor(self.vitality^self.vitalityBonus*4) .. "^reset;" .. "\n" ..
+    "^green;" .. math.floor(self.vigor^self.vigorBonus*4) .. "\n" ..
+    getStatPercent(status.stat("energyRegenPercentageRate")) ..
+    math.floor(status.stat("energyRegenBlockTime")*100+.5)/100 .. "^reset;" .. "\n" ..
+    "^orange;" .. getStatPercent(status.stat("foodDelta")) .. "^reset;" ..
+    "^gray;" .. getStatPercent(status.stat("physicalResistance")) .. "^reset;" ..
+    "^magenta;" .. getStatPercent(status.stat("poisonResistance")) .. "^reset;" ..
+    "^blue;" .. getStatPercent(status.stat("iceResistance")) .. "^reset;" .. 
+    "^red;" .. getStatPercent(status.stat("fireResistance")) .."^reset;" .. 
+    "^yellow;" .. getStatPercent(status.stat("electricResistance")) .. "^reset;" ..
+    "^gray;" .. getStatPercent(status.stat("grit")) ..
+    math.floor(status.stat("fallDamageMultiplier")*100+.5)/100 .. "\n" ..    
+    math.floor((1 + self.strength^self.strengthBonus*.05)*100+.5)/100 .. "^reset;" .. "\n" ..
+    "^red;" .. (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed")) .. "%\n" ..
+    (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed"))/50 .. "^reset;" .. "\n")
 end
 
 function getStatPercent(stat)

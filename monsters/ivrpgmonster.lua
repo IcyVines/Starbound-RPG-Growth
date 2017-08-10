@@ -34,11 +34,13 @@ function damage(args)
       status.addEphemeralEffect("burning")
     end
   elseif self.classType == 4 then
+    self.dexterity = self.dexterity^1.1
     if math.random(10) < 3 then
       status.addEphemeralEffect("soldierstun")
       self.suppressDamageTimer = 1.5
     end
   elseif self.classType == 5 then
+    self.dexterity = self.dexterity^1.15
     if math.random(10) < 3 then
       status.addEphemeralEffect("weakpoison")
     end
@@ -46,6 +48,7 @@ function damage(args)
 
   --Bleed Checks!
   if self.classType == 3 then
+    self.dexterity = self.dexterity^1.2
     if nighttimeCheck() or undergroundCheck(world.entityPosition(self.id)) then
       self.dexterity = self.dexterity + 20
     end
