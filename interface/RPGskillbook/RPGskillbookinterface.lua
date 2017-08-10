@@ -164,8 +164,7 @@ function updateClassTab()
     widget.setText("classlayout.classtitle","No Class Yet")
     widget.setImage("classlayout.classicon","/objects/class/noclass.png")
     widget.setImage("classlayout.effecticon","/objects/class/noclassicon.png")
-    widget.setImage("classlayout.effecticon","/objects/class/noclassicon.png")
-    widget.setText("classlayout.statincreasetext", "The 'How Are You Here?' Class has a stat bonus with unexpectedness.")
+    widget.setImage("classlayout.effecticon2","/objects/class/noclassicon.png")
   elseif player.currency("classtype") == 1 then
     widget.setText("classlayout.classtitle","Knight")
     widget.setFontColor("classlayout.classtitle","blue")
@@ -176,7 +175,8 @@ function updateClassTab()
     widget.setText("classlayout.effecttext","Perfect Blocks increase Damage by 20% for a short period.")
     widget.setImage("classlayout.effecticon","/scripts/knightblock/knightblock.png")
     widget.setImage("classlayout.effecticon2","/scripts/knightblock/knightblock.png")
-    widget.setText("classlayout.statincreasetext", "Strength, Endurance, and Vitality provide\nbetter effects per point increase.")
+    widget.setImage("classlayout.classweaponicon","/objects/class/knight.png")
+    widget.setText("classlayout.statscalingtext","^green;Great:^reset;\nStrength\n^blue;Good:^reset;\nEndurance\nVitality")
   elseif player.currency("classtype") == 2 then
     widget.setText("classlayout.classtitle","Wizard")
     widget.setFontColor("classlayout.classtitle","magenta")
@@ -187,7 +187,8 @@ function updateClassTab()
     widget.setText("classlayout.effecttext","While using Wands or Staves, gain +10% Fire, Poison, and Ice Resistance.")
     widget.setImage("classlayout.effecticon","/scripts/wizardaffinity/wizardaffinity.png")
     widget.setImage("classlayout.effecticon2","/scripts/wizardaffinity/wizardaffinity.png")
-    widget.setText("classlayout.statincreasetext", "Intelligence and Vigor provide much better effects per point increase.")
+    widget.setImage("classlayout.classweaponicon","/objects/class/wizard.png")
+    widget.setText("classlayout.statscalingtext","^green;Amazing:^reset;\nIntelligence\n^magenta;Good:^reset;\nVigor")
   elseif player.currency("classtype") == 3 then
     widget.setText("classlayout.classtitle","Ninja")
     widget.setImage("classlayout.classicon","/objects/class/ninja.png")
@@ -195,10 +196,11 @@ function updateClassTab()
     widget.setFontColor("classlayout.effecttext","red")
     widget.setText("classlayout.weapontext","+20% Damage while using Throwing Stars, Knives, Kunai, or Daggers, or any type of Shuriken without any weapons equipped.")
     widget.setText("classlayout.passivetext","+20% Speed and Jump Height. -30% Fall Damage.")
-    widget.setText("classlayout.effecttext","During Nighttime, or while Underground, gain +20% Bleed Chance and +0.8s Bleed Length.")
+    widget.setText("classlayout.effecttext","+20% Bleed Chance and 0.8s Bleed Length during Nighttime or while Underground.")
     widget.setImage("classlayout.effecticon","/scripts/ninjacrit/ninjacrit.png")
     widget.setImage("classlayout.effecticon2","/scripts/ninjacrit/ninjacrit.png")
-    widget.setText("classlayout.statincreasetext", "Dexterity and Agility provide much better effects per point increase.")
+    widget.setImage("classlayout.classweaponicon","/objects/class/ninja.png")
+    widget.setText("classlayout.statscalingtext","^green;Amazing:^reset;\nDexterity\n^magenta;Good:^reset;\nAgility")
   elseif player.currency("classtype") == 4 then
     widget.setText("classlayout.classtitle","Soldier")
     widget.setFontColor("classlayout.classtitle","orange")
@@ -211,7 +213,8 @@ function updateClassTab()
     widget.setImage("classlayout.effecticon2","/scripts/soldierdiscipline/soldierdiscipline.png")
     widget.setPosition("classlayout.weapontext",{154,251})
     widget.setPosition("classlayout.weapontitle",{89,251})
-    widget.setText("classlayout.statincreasetext", "Vitality, Dexterity, Strength, and Endurance provide\nslightly better effects per point increase.")
+    widget.setImage("classlayout.classweaponicon","/objects/class/soldier.png")
+    widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nVitality\n^magenta;Good:^reset;\nDexterity\n^gray;OK:^reset;\nStrength\nEndurance")
   elseif player.currency("classtype") == 5 then
     widget.setText("classlayout.classtitle","Rogue")
     widget.setFontColor("classlayout.classtitle","green")
@@ -222,7 +225,8 @@ function updateClassTab()
     widget.setText("classlayout.effecttext","While your Food Meter is filled at least halfway, gain +20% Poison Resistance.")
     widget.setImage("classlayout.effecticon","/scripts/roguepoison/roguepoison.png")
     widget.setImage("classlayout.effecticon2","/scripts/roguepoison/roguepoison.png")
-    widget.setText("classlayout.statincreasetext", "Dexterity, Strength, and Agility provide\nbetter effects per point increase.")
+    widget.setImage("classlayout.classweaponicon","/objects/class/rogue.png")
+    widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nDexterity\n^magenta;Good:^reset;\nStrength\nAgility")
   elseif player.currency("classtype") == 6 then
     widget.setText("classlayout.classtitle","Explorer")
     widget.setImage("classlayout.classicon","/objects/class/explorer.png")
@@ -233,8 +237,10 @@ function updateClassTab()
     widget.setText("classlayout.effecttext","While Energy is greater than half, provide a bright yellow Glow.")
     widget.setImage("classlayout.effecticon","/scripts/explorerglow/explorerglow.png")
     widget.setImage("classlayout.effecticon2","/scripts/explorerglow/explorerglow.png")
-    widget.setText("classlayout.statincreasetext", "Vigor, Agility, Endurance, and Vitality provide\nslightly better effects per point increase.")
+    widget.setImage("classlayout.classweaponicon","/objects/class/explorer.png")
+    widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nVigor\n^magenta;Good:^reset;\nAgility\n^gray;OK:^reset;\nVitality\nEndurance")
   end
+  updateTechImages()
 end
 
 
@@ -263,7 +269,9 @@ function changeToClasses()
     widget.setText("tabLabel", "Classes Tab")
     if player.currency("classtype") == 0 then
       widget.setVisible("classlayout", false)
+      checkClassDescription("default")
       widget.setVisible("classeslayout", true)
+      updateTechText("default")
       return
     else
       widget.setVisible("classeslayout", false)
@@ -310,6 +318,104 @@ function updateInfo()
     math.floor((1 + self.strength^self.strengthBonus*.05)*100+.5)/100 .. "^reset;" .. "\n" ..
     "^red;" .. (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed")) .. "%\n" ..
     (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed"))/50 .. "^reset;" .. "\n")
+end
+
+function updateTechText(name)
+  uncheckTechButtons(name)
+  if name == "techicon1" then
+    widget.setText("classlayout.techtext", getTechText(1))
+  elseif name == "techicon2" then
+    widget.setText("classlayout.techtext",  getTechText(2))
+  elseif name == "techicon3" then
+    widget.setText("classlayout.techtext",  getTechText(3))
+  elseif name == "techicon4" then
+    widget.setText("classlayout.techtext",  getTechText(4))
+  end
+  if not widget.getChecked("classlayout.techicon1") and not widget.getChecked("classlayout.techicon2") and not widget.getChecked("classlayout.techicon3") and not widget.getChecked("classlayout.techicon4") then
+    widget.setText("classlayout.techtext", "Select a Tech to read about it and unlock it if possible.")
+  end
+end
+
+function getTechText(num)
+  local classType = player.currency("classtype")
+  if classType == 1 then
+    return num == 1 and "KnightTech.1" or (num == 2 and "KnightTech.2" or (num == 3 and "KnightTech.3" or "KnightTech.4"))
+  elseif classType == 2 then
+    return num == 1 and "WizardTech.1" or (num == 2 and "WizardTech.2" or (num == 3 and "WizardTech.3" or "WizardTech.4"))
+  elseif classType == 3 then
+    return num == 1 and "NinjaTech.1" or (num == 2 and "NinjaTech.2" or (num == 3 and "NinjaTech.3" or "NinjaTech.4"))
+  elseif classType == 4 then
+    return num == 1 and "SoldierTech.1" or (num == 2 and "SoldierTech.2" or (num == 3 and "SoldierTech.3" or "SoldierTech.4"))
+  elseif classType == 5 then
+    return num == 1 and "RogueTech.1" or (num == 2 and "RogueTech.2" or (num == 3 and "RogueTech.3" or "RogueTech.4"))
+  elseif classType == 6 then
+    return num == 1 and "ExplorerTech.1" or (num == 2 and "ExplorerTech.2" or (num == 3 and "ExplorerTech.3" or "ExplorerTech.4"))
+  end
+end
+
+function uncheckTechButtons(name)
+  if name ~= "techicon1" then widget.setChecked("classlayout.techicon1", false) end
+  if name ~= "techicon2" then widget.setChecked("classlayout.techicon2", false) end
+  if name ~= "techicon3" then widget.setChecked("classlayout.techicon3", false) end
+  if name ~= "techicon4" then widget.setChecked("classlayout.techicon4", false) end
+end
+
+function updateTechImages()
+  local classType = player.currency("classtype")
+  local className = ""
+  if classType == 1 then
+    className = "knight"
+  elseif classType == 2 then
+    className = "wizard"
+  elseif classType == 3 then
+    className = "ninja"
+  elseif classType == 4 then
+    className = "soldier"
+  elseif classType == 5 then
+    className = "rogue"
+  elseif classType == 6 then
+    className = "explorer"
+  end
+  widget.setButtonImages("classlayout.techicon1", {
+    base = "/interface/RPGskillbook/techbuttons/" .. className .. "1.png",
+    hover = "/interface/RPGskillbook/techbuttons/" .. className .. "1hover.png",
+    pressed = "/interface/RPGskillbook/techbuttons/" .. className .. "1pressed.png",
+    disabled = "/interface/RPGskillbook/techbuttons/techbuttonbackground.png"
+  })
+  widget.setButtonCheckedImages("classlayout.techicon1", {
+    base = "/interface/RPGskillbook/techbuttons/" .. className .. "1pressed.png",
+    hover = "/interface/RPGskillbook/techbuttons/" .. className .. "1hover.png"
+  })
+  widget.setButtonImages("classlayout.techicon2", {
+    base = "/interface/RPGskillbook/techbuttons/" .. className .. "2.png",
+    hover = "/interface/RPGskillbook/techbuttons/" .. className .. "2hover.png",
+    pressed = "/interface/RPGskillbook/techbuttons/" .. className .. "2pressed.png",
+    disabled = "/interface/RPGskillbook/techbuttons/techbuttonbackground.png"
+  })
+  widget.setButtonCheckedImages("classlayout.techicon2", {
+    base = "/interface/RPGskillbook/techbuttons/" .. className .. "2pressed.png",
+    hover = "/interface/RPGskillbook/techbuttons/" .. className .. "2hover.png"
+  })
+  widget.setButtonImages("classlayout.techicon3", {
+    base = "/interface/RPGskillbook/techbuttons/" .. className .. "3.png",
+    hover = "/interface/RPGskillbook/techbuttons/" .. className .. "3hover.png",
+    pressed = "/interface/RPGskillbook/techbuttons/" .. className .. "3pressed.png",
+    disabled = "/interface/RPGskillbook/techbuttons/techbuttonbackground.png"
+  })
+  widget.setButtonCheckedImages("classlayout.techicon3", {
+    base = "/interface/RPGskillbook/techbuttons/" .. className .. "3pressed.png",
+    hover = "/interface/RPGskillbook/techbuttons/" .. className .. "3hover.png"
+  })
+  widget.setButtonImages("classlayout.techicon4", {
+    base = "/interface/RPGskillbook/techbuttons/" .. className .. "4.png",
+    hover = "/interface/RPGskillbook/techbuttons/" .. className .. "4hover.png",
+    pressed = "/interface/RPGskillbook/techbuttons/" .. className .. "4pressed.png",
+    disabled = "/interface/RPGskillbook/techbuttons/techbuttonbackground.png"
+  })
+  widget.setButtonCheckedImages("classlayout.techicon4", {
+    base = "/interface/RPGskillbook/techbuttons/" .. className .. "4pressed.png",
+    hover = "/interface/RPGskillbook/techbuttons/" .. className .. "4hover.png"
+  })
 end
 
 function getStatPercent(stat)

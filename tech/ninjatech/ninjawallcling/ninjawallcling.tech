@@ -1,0 +1,27 @@
+{
+  "name" : "ninjawallcling",
+  "type" : "legs",
+
+  "scripts" : ["ninjawallcling.lua"],
+  "animator" : "ninjawallcling.animation",
+
+  "description" : "One Flash Jump, but with with the ability to cling to walls!",
+  "shortDescription" : "Wall Cling",
+  "rarity" : "Rare",
+  "icon" : "/tech/ninjatech/ninjawallcling/ninjawallcling.png",
+
+  "chipCost" : 0,
+  "cost" : 15,
+  "multiJumpCount" : 2,
+  "wallSensors" : [1.0, 1.75, 2.5],
+  "wallDetectThreshold" : 1,
+
+  "wallJumpXVelocity" : 25,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1.0
+    },
+    "airForce" : 0,
+    "airFriction" : 10.0
+  }
+}
