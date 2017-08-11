@@ -1,0 +1,36 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+              "properties" : {
+                "persistentSound" : "/sfx/tech/tech_sprint_loop2.ogg",
+                "immediateSound" : "/sfx/tech/tech_dash.ogg"
+              }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : "sprint",
+          "flip" : true,
+          "offset" : [0, 0.0]
+        },
+        {
+          "particle" : "sprint",
+          "flip" : true,
+          "offset" : [0, -0.75]
+        }
+      ]
+    }
+  }
+}
