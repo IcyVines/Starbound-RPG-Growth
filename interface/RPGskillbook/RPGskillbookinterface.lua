@@ -343,7 +343,7 @@ function getTechEnableName(classType, checked)
   elseif classType == 4 then
     return checked == 1 and "soldierstimulant" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldiermissilestrike"))
   elseif classType == 5 then
-    return checked == 1 and "roguepoisonsphere" or (checked == 2 and "roguepoisondash" or (checked == 3 and "roguecloudjump" or "roguebladeoil"))
+    return checked == 1 and "roguepoisondash" or (checked == 2 and "roguepoisonsphere" or (checked == 3 and "roguecloudjump" or "roguebladeoil"))
   elseif classType == 6 then
     return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedsprint" or (checked == 3 and "explorerdrill" or "explorerenhancedjump"))
   end
@@ -417,7 +417,7 @@ function getTechText(num)
   local classType = player.currency("classtype")
   if classType == 1 then
     return num == 1 and "An upgrade to Sprint, while running, enemies receive damage and knockback. Damage is doubled when holding up a shield."
-    or (num == 2 and "An upgrade to Double Jump, press [S] while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies."
+    or (num == 2 and "An upgrade to Double Jump, press [S] while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies. Damage scales with Strength and distance fallen from activatation."
       or (num == 3 and "An upgrade to Spike Sphere, while transformed, ignore knockback and deal contact damage to enemies." 
         or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit."))
   elseif classType == 2 then
@@ -428,7 +428,7 @@ function getTechText(num)
   elseif classType == 3 then
     return num == 1 and "Press [Space] while midair to burst forward. As long as you remain in the air with energy remaining, you are invulnerable to all damage. You may do this twice while midair." 
     or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while moving but recharges while staying still. The transformation ends if you run out of energy or press [F] while transformed." 
-    or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. The slash scales with weapon damage and your damage bonus." 
+    or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS." 
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
     return num == 1 and "Press [F] to instantly gain food and health. This Tech has a long cooldown." 
@@ -436,7 +436,7 @@ function getTechText(num)
       or (num == 3 and "An upgrade to Double Jump, press [S] to instantly refill energy and gain a slight jump boost for a short period. You can prematurely cancel this effect, but cooldown is not shortened if so." 
         or "Press [F] to call down a missile strike at your cursor's location. Upon exploding, the missile releases seven incendiary grenades. Try not to get hit, will you?"))
   elseif classType == 5 then
-    return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind." 
+    return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind. The damage from the toxic clouds scale with your Poison Resistance and Power Multiplier. Deals massive damage if immune to Poison." 
     or (num == 2 and "RogueTech.2" 
       or (num == 3 and "An upgrade to Double Jump, press [W] to create a cloudy platform beneath you. The cloud disappears after 5 seconds." 
         or "Press [G] to deal toxic damage with all weapons for a short time. Toxic damage deals more damage than poison damage. You can prematurely cancel the effect by pressing [G] again. The cooldown shortens if so."))
