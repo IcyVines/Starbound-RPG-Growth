@@ -1,0 +1,16 @@
+{
+  "name" : "wizardshield",
+  "effectConfig" : {
+    "powerModifier" : 1.20
+  },
+  "defaultDuration" : 10,
+
+  "scripts" : [
+    "wizardshield.lua"
+  ],
+
+  "animationConfig" : "wizardshield.animation",
+
+  "label" : "Magic Shield",
+  "icon" : "/tech/wizardtech/wizardmagicshield/wizardmagicshield.png"
+}

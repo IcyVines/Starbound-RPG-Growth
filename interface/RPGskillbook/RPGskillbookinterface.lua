@@ -335,14 +335,11 @@ end
 
 function getTechEnableName(classType, checked)
   if classType == 1 then
-   return checked == 1 and "knightbash" or (checked == 2 and "knightslam" or (checked == 3 and "knightarmorsphere" or "knightcharge"))
+    return checked == 1 and "knightbash" or (checked == 2 and "knightslam" or (checked == 3 and "knightarmorsphere" or "knightcharge"))
   elseif classType == 2 then
     return checked == 1 and "wizardrepulsionsphere" or (checked == 2 and "wizardhover" or (checked == 3 and "wizardtranslocate" or "wizardmagicshield"))
   elseif classType == 3 then
-    if checked == 1 then return "ninjaflashjump"
-    elseif checked == 2 then return "ninjavanishsphere"
-    elseif checked == 3 then return "ninjaassassinate"
-    elseif checked == 4 then return "ninjawallcling" end
+    return checked == 1 and "ninjaflashjump" or (checked == 2 and "ninjavanishsphere" or (checked == 3 and "ninjaassassinate" or "ninjawallcling"))
   elseif classType == 4 then
     return checked == 1 and "soldierstimulant" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldiermissilestrike"))
   elseif classType == 5 then
@@ -419,26 +416,35 @@ end
 function getTechText(num)
   local classType = player.currency("classtype")
   if classType == 1 then
-    return num == 1 and "Double tap [A] or [D] to run quickly in that direction. Enemies take damage and are knocked back. Damage is doubled when holding up a shield."
-    or (num == 2 and "An upgrade to the regular double jump, press [S] while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies."
-      or (num == 3 and "Press [F] to transform into an armored spike sphere that negates knockback and increases protection. In addition, the spike spher deals contact damage to enemies." or "KnightTech.4"))
+    return num == 1 and "An upgrade to Sprint, while running, enemies receive damage and knockback. Damage is doubled when holding up a shield."
+    or (num == 2 and "An upgrade to Double Jump, press [S] while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies."
+      or (num == 3 and "An upgrade to Spike Sphere, while transformed, ignore knockback and deal contact damage to enemies." 
+        or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit."))
   elseif classType == 2 then
     return num == 1 and "WizardTech.1" 
     or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
-      or (num == 3 and "Press [W] to teleport to your cursor. There is a slight cooldown before you can use it again." 
-        or "WizardTech.4"))
+      or (num == 3 and "Press [W] to teleport to your cursor. There is a slight cooldown before you can teleport again." 
+        or "Press [F] to negate all damage for a short time. Energy does not recharge while this effect is active. You can prematurely cancel the effect by pressing [F] again. The cooldown shortens if so."))
   elseif classType == 3 then
     return num == 1 and "Press [Space] while midair to burst forward. As long as you remain in the air with energy remaining, you are invulnerable to all damage. You may do this twice while midair." 
     or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while moving but recharges while staying still. The transformation ends if you run out of energy or press [F] while transformed." 
     or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. The slash scales with weapon damage and your damage bonus." 
-    or "An upgrade to Flash Jump, this Tech keeps the two midair bursts. However, you may also cling to walls, and refresh your jumps upon doing so. Press [S] to slide down while clinging."))
+    or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
-    return num == 1 and "SoldierTech.1" or (num == 2 and "SoldierTech.2" or (num == 3 and "SoldierTech.3" or "SoldierTech.4"))
+    return num == 1 and "Press [F] to instantly gain food and health. This Tech has a long cooldown." 
+    or (num == 2 and "Press [W] to gain improved weapon damage with ranged weapons, and decreased energy regen block time. However, while this effect is active, speed and resistance are decreased. You can prematurely cancel the effect by pressing [G] again. The cooldown shortens if so." 
+      or (num == 3 and "An upgrade to Double Jump, press [S] to instantly refill energy and gain a slight jump boost for a short period. You can prematurely cancel this effect, but cooldown is not shortened if so." 
+        or "Press [F] to call down a missile strike at your cursor's location. Upon exploding, the missile releases seven incendiary grenades. Try not to get hit, will you?"))
   elseif classType == 5 then
-    return num == 1 and "RogueTech.1" 
-    or (num == 2 and "RogueTech.2" or (num == 3 and "An upgrade to the regular double jump, press [W] to leave behind a cloudy platform underneath you. The Cloud disappears after 5 seconds." or "RogueTech.4"))
+    return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind." 
+    or (num == 2 and "RogueTech.2" 
+      or (num == 3 and "An upgrade to Double Jump, press [W] to create a cloudy platform beneath you. The cloud disappears after 5 seconds." 
+        or "Press [G] to deal toxic damage with all weapons for a short time. Toxic damage deals more damage than poison damage. You can prematurely cancel the effect by pressing [G] again. The cooldown shortens if so."))
   elseif classType == 6 then
-    return num == 1 and "ExplorerTech.1" or (num == 2 and "ExplorerTech.2" or (num == 3 and "ExplorerTech.3" or "ExplorerTech.4"))
+    return num == 1 and "An upgrade to Double Jump, hold [W] to glide forward, slowly losing altitude. This costs no energy." 
+    or (num == 2 and "An upgrade to Sprint. Speed and Jump Height are improved, and energy consumption is decreased. It is now possible to sprint in liquid." 
+      or (num == 3 and "Hold [F] to drill down at incredible speeds, destroying the blocks beneath you." 
+        or "An upgrade to Glide. Gain another three midair jumps and a wall jump."))
   end
 end
 
@@ -446,7 +452,7 @@ function getTechName(num)
   local classType = player.currency("classtype")
   if classType == 1 then
     widget.setFontColor("classlayout.techname", "blue")
-    return num == 1 and "Bash" or (num == 2 and "Slam" or (num == 3 and "Armor Sphere" or "Heavy Charge"))
+    return num == 1 and "Bash" or (num == 2 and "Slam" or (num == 3 and "Armor Sphere" or "Charge!"))
   elseif classType == 2 then
     widget.setFontColor("classlayout.techname", "magenta")
     return num == 1 and "Repulsion Sphere" or (num == 2 and "Hover" or (num == 3 and "Translocate" or "Magic Shield"))
@@ -461,7 +467,7 @@ function getTechName(num)
     return num == 1 and "Poison Dash" or (num == 2 and "Poison Sphere" or (num == 3 and "Cloud Jump" or "Blade Oil"))
   elseif classType == 6 then
     widget.setFontColor("classlayout.techname", "yellow")
-    return num == 1 and "Glide" or (num == 2 and "ExplorerTech.2" or (num == 3 and "Enhanced Sprint" or "ExplorerTech.4"))
+    return num == 1 and "Glide" or (num == 2 and "Traveler's Sprint" or (num == 3 and "Drill" or "Traveler's Jump"))
   end
 end
 

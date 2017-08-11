@@ -26,6 +26,10 @@ function assassinate()
       tech.setToolUsageSuppressed(true)
       status.setPersistentEffects("ninjaassassinate", {
         {stat = "invulnerable", amount = 1},
+        {stat = "lavaImmunity", amount = 1},
+        {stat = "poisonStatusImmunity", amount = 1},
+        {stat = "tarImmunity", amount = 1},
+        {stat = "waterImmunity", amount = 1},
         {stat = "activeMovementAbilities", amount = 1}
       })
   end
@@ -33,6 +37,9 @@ end
 
 function uninit()
   tech.setParentDirectives()
+  status.clearPersistentEffects("ninjaassassinate")
+  status.removeEphemeralEffect("invisible")
+  tech.setToolUsageSuppressed(false)
 end
 
 function update(args)

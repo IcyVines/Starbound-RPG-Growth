@@ -64,6 +64,11 @@ function update(args)
 
 end
 
+function uninit()
+  status.clearPersistentEffects("movementAbility")
+  status.removeEphemeralEffect("nofalldamageks")
+end
+
 function spawnExplosions(x, y)
     self.strength = world.entityCurrency(entity.id(), "strengthpoint")
     local visualConfig = {power = math.min(200, self.lastYPosition^2*self.strength/50+1), timeToLive = .4, speed = 6.66, physics = "default"}

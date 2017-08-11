@@ -78,7 +78,7 @@ function doMultiJump()
 end
 
 function platform()
-  if self.cooldownTimer == 0 then
+  if self.cooldownTimer == 0 and not mcontroller.groundMovement() and not mcontroller.liquidMovement() and not status.statPositive("activeMovementAbilities") then
     mcontroller.setYVelocity(0)
     world.spawnVehicle("cloudplatform", vec2.sub(mcontroller.position(),{0,3}))
     self.cooldownTimer = self.cooldown

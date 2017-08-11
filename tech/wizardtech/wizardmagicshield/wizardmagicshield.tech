@@ -1,0 +1,18 @@
+{
+  "name" : "wizardmagicshield",
+  "type" : "head",
+
+  "rarity" : "Legendary",
+  "icon" : "/tech/wizardtech/wizardmagicshield/wizardmagicshield.png",
+  "description" : "Press [F] to become invulnerable for a short time. Cost: 50",
+  "shortDescription" : "Magic Shield",
+  "chipCost" : 0,
+
+  "scripts" : ["wizardmagicshield.lua"],
+  "animator" : "wizardmagicshield.animation",
+
+  "cost" : 10,
+  "cooldown" : 20,
+  "duration" : 10
+
+}
