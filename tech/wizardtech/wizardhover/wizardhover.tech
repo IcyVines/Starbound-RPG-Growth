@@ -4,7 +4,7 @@
 
   "rarity" : "Legendary",
   "icon" : "/tech/wizardtech/wizardhover/wizardhover.png",
-  "description" : "Press and hold Jump to hover towards cursor. Cost: 75 energy per second.",
+  "description" : "Press and hold Jump to hover towards cursor. Cost: 75 eps",
   "shortDescription" : "Controlled Hover",
   "chipCost" : 0,
 

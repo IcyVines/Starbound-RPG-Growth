@@ -1,4 +1,5 @@
 require "/scripts/vec2.lua"
+require "/scripts/keybinds.lua"
 
 function init()
   self.multiJumpCount = config.getParameter("multiJumpCount")
@@ -10,6 +11,8 @@ function init()
   self.cooldown = config.getParameter("cooldown", 2)
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=3CB34CFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
+
+  Bind.create("Up", platform)
 end
 
 function update(args)
@@ -18,9 +21,8 @@ function update(args)
 
   updateJumpModifier()
 
-  if jumpActivated and canMultiJump() and self.cooldownTimer == 0 then
+  if jumpActivated and canMultiJump() then
     doMultiJump()
-    self.cooldownTimer = self.cooldown
   else
     if mcontroller.groundMovement() or mcontroller.liquidMovement() then
       refreshJumps()
@@ -68,10 +70,19 @@ function canMultiJump()
 end
 
 function doMultiJump()
-  mcontroller.setYVelocity(0)
-  world.spawnVehicle("cloudplatform", vec2.sub(mcontroller.position(),{0,3}))
+  mcontroller.controlJump(true)
+  mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()))
   self.multiJumps = self.multiJumps - 1
+  animator.burstParticleEmitter("multiJumpParticles")
   animator.playSound("multiJumpSound")
+end
+
+function platform()
+  if self.cooldownTimer == 0 then
+    mcontroller.setYVelocity(0)
+    world.spawnVehicle("cloudplatform", vec2.sub(mcontroller.position(),{0,3}))
+    self.cooldownTimer = self.cooldown
+  end
 end
 
 function refreshJumps()
