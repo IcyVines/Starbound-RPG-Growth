@@ -1,0 +1,5 @@
+{
+  "sounds" : {
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ]
+  }
+}

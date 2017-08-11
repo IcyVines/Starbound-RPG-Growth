@@ -1,0 +1,13 @@
+{
+  "name" : "roguecapsule",
+  "defaultDuration" : 10,
+
+  "scripts" : [
+    "roguecapsule.lua"
+  ],
+
+  "animationConfig" : "roguecapsule.animation",
+
+  "label" : "Toxic Capsule",
+  "icon" : "/tech/roguetech/roguetoxiccapsule/roguetoxiccapsule.png"
+}
