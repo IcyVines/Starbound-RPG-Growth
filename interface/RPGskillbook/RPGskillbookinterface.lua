@@ -337,7 +337,7 @@ function getTechEnableName(classType, checked)
   if classType == 1 then
     return checked == 1 and "knightbash" or (checked == 2 and "knightslam" or (checked == 3 and "knightarmorsphere" or "knightcharge"))
   elseif classType == 2 then
-    return checked == 1 and "wizardrepulsionsphere" or (checked == 2 and "wizardhover" or (checked == 3 and "wizardtranslocate" or "wizardmagicshield"))
+    return checked == 1 and "wizardgravitysphere" or (checked == 2 and "wizardhover" or (checked == 3 and "wizardtranslocate" or "wizardmagicshield"))
   elseif classType == 3 then
     return checked == 1 and "ninjaflashjump" or (checked == 2 and "ninjavanishsphere" or (checked == 3 and "ninjaassassinate" or "ninjawallcling"))
   elseif classType == 4 then
@@ -421,7 +421,7 @@ function getTechText(num)
       or (num == 3 and "An upgrade to Spike Sphere, while transformed, ignore knockback and deal contact damage to enemies." 
         or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit."))
   elseif classType == 2 then
-    return num == 1 and "WizardTech.1" 
+    return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity." 
     or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
       or (num == 3 and "Press [W] to teleport to your cursor. There is a slight cooldown before you can teleport again." 
         or "Press [F] to negate all damage for a short time. Energy does not recharge while this effect is active. You can prematurely cancel the effect by pressing [F] again. The cooldown shortens if so."))
@@ -455,7 +455,7 @@ function getTechName(num)
     return num == 1 and "Bash" or (num == 2 and "Slam" or (num == 3 and "Armor Sphere" or "Charge!"))
   elseif classType == 2 then
     widget.setFontColor("classlayout.techname", "magenta")
-    return num == 1 and "Repulsion Sphere" or (num == 2 and "Hover" or (num == 3 and "Translocate" or "Magic Shield"))
+    return num == 1 and "Gravity Sphere" or (num == 2 and "Hover" or (num == 3 and "Translocate" or "Magic Shield"))
   elseif classType == 3 then
     widget.setFontColor("classlayout.techname", "red")
     return num == 1 and "Flash Jump" or (num == 2 and "Vanish Sphere" or (num == 3 and "Assassinate" or "Wall Cling"))

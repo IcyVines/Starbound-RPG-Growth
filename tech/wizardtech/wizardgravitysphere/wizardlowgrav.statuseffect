@@ -1,0 +1,16 @@
+{
+  "name" : "wizardlowgrav",
+  "effectConfig" : {
+    "gravityModifier" : 0.2
+  },
+  "defaultDuration" : 15,
+
+  "scripts" : [
+    "wizardlowgrav.lua"
+  ],
+
+  "animationConfig" : "wizardlowgrav.animation",
+
+  "label" : "Light",
+  "icon" : "/tech/wizardtech/wizardgravitysphere/wizardlowgrav.png"
+}
