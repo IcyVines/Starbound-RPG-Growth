@@ -335,7 +335,7 @@ end
 
 function getTechEnableName(classType, checked)
   if classType == 1 then
-   return checked == 1 and "knightcharge" or (checked == 2 and "knightslam" or (checked == 3 and "knightarmorsphere" or "knightfourthtech"))
+   return checked == 1 and "knightbash" or (checked == 2 and "knightslam" or (checked == 3 and "knightarmorsphere" or "knightcharge"))
   elseif classType == 2 then
     return checked == 1 and "wizardrepulsionsphere" or (checked == 2 and "wizardhover" or (checked == 3 and "wizardtranslocate" or "wizardmagicshield"))
   elseif classType == 3 then
@@ -344,11 +344,11 @@ function getTechEnableName(classType, checked)
     elseif checked == 3 then return "ninjaassassinate"
     elseif checked == 4 then return "ninjawallcling" end
   elseif classType == 4 then
-    return checked == 1 and "soldierstimulant" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldierfourthtech"))
+    return checked == 1 and "soldierstimulant" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldiermissilestrike"))
   elseif classType == 5 then
-    return checked == 1 and "roguepoisonsphere" or (checked == 2 and "roguepoisondash" or (checked == 3 and "roguethirdtech" or "roguefourthtech"))
+    return checked == 1 and "roguepoisonsphere" or (checked == 2 and "roguepoisondash" or (checked == 3 and "roguecloudjump" or "roguebladeoil"))
   elseif classType == 6 then
-    return checked == 1 and "explorerglide" or (checked == 2 and "explorersecondtech" or (checked == 3 and "explorerenhancedsprint" or "explorerfourthtech"))
+    return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedsprint" or (checked == 3 and "explorerdrill" or "explorerenhancedjump"))
   end
 end
 
@@ -419,9 +419,14 @@ end
 function getTechText(num)
   local classType = player.currency("classtype")
   if classType == 1 then
-    return num == 1 and "KnightTech.1" or (num == 2 and "KnightTech.2" or (num == 3 and "KnightTech.3" or "KnightTech.4"))
+    return num == 1 and "Double tap [A] or [D] to run quickly in that direction. Enemies take damage and are knocked back. Damage is doubled when holding up a shield."
+    or (num == 2 and "An upgrade to the regular double jump, press [S] while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies."
+      or (num == 3 and "Press [F] to transform into an armored spike sphere that negates knockback and increases protection. In addition, the spike spher deals contact damage to enemies." or "KnightTech.4"))
   elseif classType == 2 then
-    return num == 1 and "WizardTech.1" or (num == 2 and "WizardTech.2" or (num == 3 and "WizardTech.3" or "WizardTech.4"))
+    return num == 1 and "WizardTech.1" 
+    or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
+      or (num == 3 and "Press [W] to teleport to your cursor. There is a slight cooldown before you can use it again." 
+        or "WizardTech.4"))
   elseif classType == 3 then
     return num == 1 and "Press [Space] while midair to burst forward. As long as you remain in the air with energy remaining, you are invulnerable to all damage. You may do this twice while midair." 
     or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while moving but recharges while staying still. The transformation ends if you run out of energy or press [F] while transformed." 
@@ -430,7 +435,8 @@ function getTechText(num)
   elseif classType == 4 then
     return num == 1 and "SoldierTech.1" or (num == 2 and "SoldierTech.2" or (num == 3 and "SoldierTech.3" or "SoldierTech.4"))
   elseif classType == 5 then
-    return num == 1 and "RogueTech.1" or (num == 2 and "RogueTech.2" or (num == 3 and "RogueTech.3" or "RogueTech.4"))
+    return num == 1 and "RogueTech.1" 
+    or (num == 2 and "RogueTech.2" or (num == 3 and "An upgrade to the regular double jump, press [W] to leave behind a cloudy platform underneath you. The Cloud disappears after 5 seconds." or "RogueTech.4"))
   elseif classType == 6 then
     return num == 1 and "ExplorerTech.1" or (num == 2 and "ExplorerTech.2" or (num == 3 and "ExplorerTech.3" or "ExplorerTech.4"))
   end
@@ -440,7 +446,7 @@ function getTechName(num)
   local classType = player.currency("classtype")
   if classType == 1 then
     widget.setFontColor("classlayout.techname", "blue")
-    return num == 1 and "Charge" or (num == 2 and "Slam" or (num == 3 and "Armor Sphere" or "KnightTech.4"))
+    return num == 1 and "Bash" or (num == 2 and "Slam" or (num == 3 and "Armor Sphere" or "Heavy Charge"))
   elseif classType == 2 then
     widget.setFontColor("classlayout.techname", "magenta")
     return num == 1 and "Repulsion Sphere" or (num == 2 and "Hover" or (num == 3 and "Translocate" or "Magic Shield"))
@@ -449,10 +455,10 @@ function getTechName(num)
     return num == 1 and "Flash Jump" or (num == 2 and "Vanish Sphere" or (num == 3 and "Assassinate" or "Wall Cling"))
   elseif classType == 4 then
     widget.setFontColor("classlayout.techname", "orange")
-    return num == 1 and "Grenade Sphere" or (num == 2 and "Marksman" or (num == 3 and "Stimulant" or "SoldierTech.4"))
+    return num == 1 and "Stimulant" or (num == 2 and "Marksman" or (num == 3 and "Energy Pack" or "Missile Strike"))
   elseif classType == 5 then
     widget.setFontColor("classlayout.techname", "green")
-    return num == 1 and "Poison Sphere" or (num == 2 and "Poison Dash" or (num == 3 and "RogueTech.3" or "RogueTech.4"))
+    return num == 1 and "Poison Dash" or (num == 2 and "Poison Sphere" or (num == 3 and "Cloud Jump" or "Blade Oil"))
   elseif classType == 6 then
     widget.setFontColor("classlayout.techname", "yellow")
     return num == 1 and "Glide" or (num == 2 and "ExplorerTech.2" or (num == 3 and "Enhanced Sprint" or "ExplorerTech.4"))
