@@ -337,7 +337,7 @@ function getTechEnableName(classType, checked)
   if classType == 1 then
    return checked == 1 and "knightcharge" or (checked == 2 and "knightslam" or (checked == 3 and "knightarmorsphere" or "knightfourthtech"))
   elseif classType == 2 then
-    return checked == 1 and "wizardtranslocate" or (checked == 2 and "wizardhover" or (checked == 3 and "wizardrepulsionsphere" or "wizardmagicshield"))
+    return checked == 1 and "wizardrepulsionsphere" or (checked == 2 and "wizardhover" or (checked == 3 and "wizardtranslocate" or "wizardmagicshield"))
   elseif classType == 3 then
     if checked == 1 then return "ninjaflashjump"
     elseif checked == 2 then return "ninjavanishsphere"
@@ -443,7 +443,7 @@ function getTechName(num)
     return num == 1 and "Charge" or (num == 2 and "Slam" or (num == 3 and "Armor Sphere" or "KnightTech.4"))
   elseif classType == 2 then
     widget.setFontColor("classlayout.techname", "magenta")
-    return num == 1 and "Translocate" or (num == 2 and "Hover" or (num == 3 and "Repulsion Sphere" or "Magic Shield"))
+    return num == 1 and "Repulsion Sphere" or (num == 2 and "Hover" or (num == 3 and "Translocate" or "Magic Shield"))
   elseif classType == 3 then
     widget.setFontColor("classlayout.techname", "red")
     return num == 1 and "Flash Jump" or (num == 2 and "Vanish Sphere" or (num == 3 and "Assassinate" or "Wall Cling"))
@@ -464,15 +464,15 @@ function getTechType(num)
   if classType == 1 then
     return num == 1 and "Body" or (num == 2 and "Leg" or (num == 3 and "Head" or "Body"))
   elseif classType == 2 then
-    return num == 1 and "Body" or (num == 2 and "Leg" or (num == 3 and "Head" or "Body"))
+    return num == 1 and "Head" or (num == 2 and "Leg" or (num == 3 and "Body" or "Head"))
   elseif classType == 3 then
     return num == 1 and "Leg" or (num == 2 and "Head" or (num == 3 and "Body" or "Leg"))
   elseif classType == 4 then
     return num == 1 and "Head" or (num == 2 and "Body" or (num == 3 and "Leg" or "Head"))
   elseif classType == 5 then
-    return num == 1 and "Head" or (num == 2 and "Body" or (num == 3 and "Leg" or "Head"))
+    return num == 1 and "Body" or (num == 2 and "Head" or (num == 3 and "Leg" or "Body"))
   elseif classType == 6 then
-    return num == 1 and "Leg" or (num == 2 and "Head" or (num == 3 and "Body" or "Leg"))
+    return num == 1 and "Leg" or (num == 2 and "Body" or (num == 3 and "Head" or "Leg"))
   end
 end
 
