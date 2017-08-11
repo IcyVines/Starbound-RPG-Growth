@@ -4,7 +4,7 @@
 
   "rarity" : "Legendary",
   "icon" : "/tech/wizardtech/wizardhover/wizardhover.png",
-  "description" : "Press and hold Jump while in the air to hover in the direction of your aim. Cost: 75 energy per second.",
+  "description" : "Press and hold Jump to hover towards cursor. Cost: 75 energy per second.",
   "shortDescription" : "Controlled Hover",
   "chipCost" : 0,
 
