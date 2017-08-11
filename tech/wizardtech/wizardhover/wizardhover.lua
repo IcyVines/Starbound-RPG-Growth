@@ -23,7 +23,7 @@ function update(args)
   local action = input(args)
   local energyUsagePerSecond = config.getParameter("energyUsagePerSecond")
 
-  if action == "wizardhover" and status.consumeResource("energy", energyUsagePerSecond * args.dt) then
+  if action == "wizardhover" and status.overConsumeResource("energy", energyUsagePerSecond * args.dt) then
     animator.setAnimationState("hover", "on")
 
     local velocity = vec2.sub(tech.aimPosition(),mcontroller.position())

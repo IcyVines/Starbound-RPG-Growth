@@ -1,0 +1,21 @@
+{
+  "name" : "knightbash",
+  "type" : "body",
+
+  "scripts" : ["knightbash.lua"],
+  "animator" : "knightbash.animation",
+
+  "description" : "Bash into enemies with this fast sprint!",
+  "shortDescription" : "Bash",
+  "rarity" : "Legendary",
+  "icon" : "/tech/knighttech/knightbash/knightbash.png",
+
+  "chipCost" : 0,
+
+  "energyCostPerSecond" : 75,
+  "maximumDoubleTapTime" : 0.25,
+  "dashControlForce" : 1000,
+  "dashSpeedModifier" : 5.0,
+  "stopAfterDash" : true,
+  "groundOnly" : true
+}

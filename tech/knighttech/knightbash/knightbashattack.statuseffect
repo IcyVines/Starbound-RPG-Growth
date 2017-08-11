@@ -1,0 +1,18 @@
+{
+  "name" : "knightbashattack",
+  "effectConfig" : {
+
+    "damageProjectileType" : "knightbashdamage",
+
+    "cooldown" : 1
+
+  },
+  "defaultDuration" : 60,
+
+  "scripts" : [
+    "/tech/knighttech/knightbash/knightbashattack.lua"
+  ],
+
+  "label" : "Cause Contact Damage",
+  "icon" : "/interface/statuses/thorns.png"
+}

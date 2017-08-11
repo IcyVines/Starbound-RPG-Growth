@@ -55,6 +55,8 @@ function damage(args)
   end
   if self.source == "alwaysbleed" then
     self.bleedBonus = 100
+  elseif self.source == "bluntforce" then
+    self.bleedBonus = -50
   end
   if math.random(100) <= self.dexterity + self.bleedBonus then
     status.addEphemeralEffect("ivrpgweaken", (self.dexterity/25))

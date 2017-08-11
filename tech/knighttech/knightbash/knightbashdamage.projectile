@@ -1,6 +1,6 @@
 {
-  "projectileName" : "knightcontactdamage",
-  "image" : "knightcontactdamage.png",
+  "projectileName" : "knightbashdamage",
+  "image" : "knightbashdamage.png",
   "animationCycle" : 0.25,
   "frameNumber" : 1,
   "damageKindImage" : "icon.png",
@@ -8,8 +8,8 @@
   "timeToLive" : 0.75,
   "power" : 5.0,
   "damageKind" : "bluntforce",
-  "knockback" : 10,
+  "knockback" : 30,
   "knockbackDirection" : true,
   "piercing" : true,
-  "damagePoly" : [[-9.5, 0], [-6.7, -6.7], [0, -9.5], [6.7, -6.7], [9.5, 0], [6.7, 6.7], [0, 9.5], [-6.7, 6.7]]
+  "damagePoly" : [[-9.5, 19], [9.5, 19], [9.5, -19], [-9.5, -19]]
 }
