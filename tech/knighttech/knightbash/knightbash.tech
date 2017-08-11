@@ -6,7 +6,7 @@
   "animator" : "knightbash.animation",
 
   "description" : "Bash into enemies with this fast sprint!",
-  "shortDescription" : "Sprint",
+  "shortDescription" : "Bash",
   "rarity" : "Legendary",
   "icon" : "/tech/knighttech/knightbash/knightbash.png",
 
