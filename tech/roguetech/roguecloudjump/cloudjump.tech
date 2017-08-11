@@ -1,0 +1,17 @@
+{
+  "name" : "roguecloudjump",
+  "type" : "legs",
+
+  "scripts" : ["cloudjump.lua"],
+  "animator" : "cloudjump.animation",
+
+  "description" : "Summon a cloud below you while in air!",
+  "shortDescription" : "Cloud Jump",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/roguetech/roguecloudjump/cloudjump.png",
+
+  "chipCost" : 0,
+  "cooldown": 2.5,
+
+  "multiJumpCount" : 1
+}

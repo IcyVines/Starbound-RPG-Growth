@@ -1,0 +1,6 @@
+{
+  "sounds" : {
+    "multiJumpSound" : ["/sfx/tech/tech_doublejump.ogg"],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ]
+  }
+}

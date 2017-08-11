@@ -1,0 +1,38 @@
+{
+  "name" : "cloudplatform",
+  "boundBox" : [-2, -0.25, 2, 0.75],
+  "slaveControlTimeout" : 2.0,
+  "slaveControlHeartbeat" : 1.0,
+  "canBeHit" : false,
+
+  "persistent" : false,
+
+  "script" : "/tech/roguetech/roguecloudjump/cloudplatform.lua",
+  "animation" : "/tech/roguetech/roguecloudjump/cloudplatform.animation",
+
+  "animationPartTags" : {
+    "platform" : {
+      "partImage" : "/tech/roguetech/roguecloudjump/cloudplatform.png"
+    }
+  },
+
+  "movementSettings" : {
+    "collisionPoly" : [ [-2.0, 0.75], [2.0, 0.75], [0.0, -0.25] ],
+    "mass" : 0,
+    "ignorePlatformCollision" : true,
+    "physicsEffectCategories" : []
+  },
+
+  "loungePositions" : {},
+
+  "physicsCollisions" : {
+    "platform" : {
+      "collision" : [ [-2.0, 0.75], [2.0, 0.75] ],
+      "collisionKind" : "platform",
+      "attachToPart" : "platform"
+    }
+  },
+
+  "liveTime": 5
+
+}
