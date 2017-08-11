@@ -54,6 +54,10 @@ function update(dt)
 
   if player.currency("experienceorb") ~= self.xp then
     updateLevel()
+    if widget.getChecked("bookTabs.2") then
+      local checked = widget.getChecked("classlayout.techicon1") and 1 or (widget.getChecked("classlayout.techicon2") and 2 or (widget.getChecked("classlayout.techicon3") and 3 or (widget.getChecked("classlayout.techicon4") and 4 or 0))) 
+      if checked ~= 0 then unlockTechVisible(("techicon" .. tostring(checked)), 2^(checked+1)) end
+    end
   end
 
   updateStats()
@@ -320,19 +324,95 @@ function updateInfo()
     (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed"))/50 .. "^reset;" .. "\n")
 end
 
+function unlockTech()
+  local classType = player.currency("classtype")
+  local checked = widget.getChecked("classlayout.techicon1") and 1 or (widget.getChecked("classlayout.techicon2") and 2 or (widget.getChecked("classlayout.techicon3") and 3 or 4))
+  local tech = getTechEnableName(classType, checked)
+  player.makeTechAvailable(tech)
+  player.enableTech(tech)
+  unlockTechVisible(("techicon" .. tostring(checked)), 2^(checked+1))
+end
+
+function getTechEnableName(classType, checked)
+  if classType == 1 then
+   return checked == 1 and "knightcharge" or (checked == 2 and "knightslam" or (checked == 3 and "knightarmorsphere" or "knightfourthtech"))
+  elseif classType == 2 then
+    return checked == 1 and "wizardtranslocate" or (checked == 2 and "wizardhover" or (checked == 3 and "wizardrepulsionsphere" or "wizardmagicshield"))
+  elseif classType == 3 then
+    if checked == 1 then return "ninjaflashjump"
+    elseif checked == 2 then return "ninjavanishsphere"
+    elseif checked == 3 then return "ninjaassassinate"
+    elseif checked == 4 then return "ninjawallcling" end
+  elseif classType == 4 then
+    return checked == 1 and "soldierstimulant" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldierfourthtech"))
+  elseif classType == 5 then
+    return checked == 1 and "roguepoisonsphere" or (checked == 2 and "roguepoisondash" or (checked == 3 and "roguethirdtech" or "roguefourthtech"))
+  elseif classType == 6 then
+    return checked == 1 and "explorerglide" or (checked == 2 and "explorersecondtech" or (checked == 3 and "explorerenhancedsprint" or "explorerfourthtech"))
+  end
+end
+
+function hasValue(table, value)
+  for index, val in ipairs(table) do
+    if value == val then return true end
+  end
+  return false
+end
+
+function unlockTechVisible(tech, amount)
+  local check = player.currency("experienceorb") >= amount^2*100
+  if check then
+    local classType = player.currency("classtype")
+    local techName = getTechEnableName(classType, tonumber(string.sub(tech,9,9)))
+    if hasValue(player.availableTechs(), techName) then
+      widget.setButtonEnabled("classlayout.unlockbutton", false)
+      widget.setVisible("classlayout.unlockedtext", true)
+      widget.setVisible("classlayout.reqlvl", false)
+    else
+      widget.setButtonEnabled("classlayout.unlockbutton", true)
+    end
+  else
+    widget.setButtonEnabled("classlayout.unlockbutton", false)
+    widget.setVisible("classlayout.reqlvl", true)
+    widget.setText("classlayout.reqlvl", "Required Level: " .. math.floor(amount))
+  end
+  widget.setVisible("classlayout.unlockbutton", true)
+end
+
 function updateTechText(name)
   uncheckTechButtons(name)
+  if not widget.getChecked("classlayout.techicon1") and not widget.getChecked("classlayout.techicon2") and not widget.getChecked("classlayout.techicon3") and not widget.getChecked("classlayout.techicon4") then
+    widget.setText("classlayout.techtext", "Select a skill to read about it and unlock it if possible.")
+    widget.setVisible("classlayout.techname", false)
+    widget.setVisible("classlayout.techtype", false)
+    widget.setVisible("classlayout.reqlvl", false)
+    widget.setVisible("classlayout.unlockbutton", false)
+    widget.setVisible("classlayout.unlockedtext", false)
+    return
+  else
+    widget.setVisible("classlayout.techname", true)
+    widget.setVisible("classlayout.techtype", true)
+  end
   if name == "techicon1" then
     widget.setText("classlayout.techtext", getTechText(1))
+    widget.setText("classlayout.techname", getTechName(1))
+    widget.setText("classlayout.techtype", getTechType(1) .. " Tech")
+    unlockTechVisible(name, 4)
   elseif name == "techicon2" then
     widget.setText("classlayout.techtext",  getTechText(2))
+    widget.setText("classlayout.techname", getTechName(2))
+    widget.setText("classlayout.techtype", getTechType(2) .. " Tech")
+    unlockTechVisible(name, 8)
   elseif name == "techicon3" then
     widget.setText("classlayout.techtext",  getTechText(3))
+    widget.setText("classlayout.techname", getTechName(3))
+    widget.setText("classlayout.techtype", getTechType(3) .. " Tech")
+    unlockTechVisible(name, 16)
   elseif name == "techicon4" then
     widget.setText("classlayout.techtext",  getTechText(4))
-  end
-  if not widget.getChecked("classlayout.techicon1") and not widget.getChecked("classlayout.techicon2") and not widget.getChecked("classlayout.techicon3") and not widget.getChecked("classlayout.techicon4") then
-    widget.setText("classlayout.techtext", "Select a Tech to read about it and unlock it if possible.")
+    widget.setText("classlayout.techname", getTechName(4))
+    widget.setText("classlayout.techtype", getTechType(4) .. " Tech")
+    unlockTechVisible(name, 32)
   end
 end
 
@@ -343,10 +423,10 @@ function getTechText(num)
   elseif classType == 2 then
     return num == 1 and "WizardTech.1" or (num == 2 and "WizardTech.2" or (num == 3 and "WizardTech.3" or "WizardTech.4"))
   elseif classType == 3 then
-    return num == 1 and "Flash Jump: a Leg Tech. Press [Space] while midair to burst forward. As long as you remain in the air with energy remaining, you are invulnerable to all damage. You may do this twice while midair." 
-    or (num == 2 and "Vanish Sphere: a Head Tech. Press [F] to morph into an invulnerable spike ball. Energy drains quickly while moving but recharges while staying still. The transformation ends if you run out of energy or press [F] while transformed." 
-    or (num == 3 and "Assassinate: a Body Tech. Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. The slash scales with weapon damage and your damage bonus." 
-    or "Wall Cling: a Leg Tech. An upgrade to Flash Jump, this Tech keeps the two midair bursts. However, you may also cling to walls, and refresh your jumps upon doing so. Press [S] to slide down while clinging."))
+    return num == 1 and "Press [Space] while midair to burst forward. As long as you remain in the air with energy remaining, you are invulnerable to all damage. You may do this twice while midair." 
+    or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while moving but recharges while staying still. The transformation ends if you run out of energy or press [F] while transformed." 
+    or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. The slash scales with weapon damage and your damage bonus." 
+    or "An upgrade to Flash Jump, this Tech keeps the two midair bursts. However, you may also cling to walls, and refresh your jumps upon doing so. Press [S] to slide down while clinging."))
   elseif classType == 4 then
     return num == 1 and "SoldierTech.1" or (num == 2 and "SoldierTech.2" or (num == 3 and "SoldierTech.3" or "SoldierTech.4"))
   elseif classType == 5 then
@@ -356,7 +436,50 @@ function getTechText(num)
   end
 end
 
+function getTechName(num)
+  local classType = player.currency("classtype")
+  if classType == 1 then
+    widget.setFontColor("classlayout.techname", "blue")
+    return num == 1 and "Charge" or (num == 2 and "Slam" or (num == 3 and "Armor Sphere" or "KnightTech.4"))
+  elseif classType == 2 then
+    widget.setFontColor("classlayout.techname", "magenta")
+    return num == 1 and "Translocate" or (num == 2 and "Hover" or (num == 3 and "Repulsion Sphere" or "Magic Shield"))
+  elseif classType == 3 then
+    widget.setFontColor("classlayout.techname", "red")
+    return num == 1 and "Flash Jump" or (num == 2 and "Vanish Sphere" or (num == 3 and "Assassinate" or "Wall Cling"))
+  elseif classType == 4 then
+    widget.setFontColor("classlayout.techname", "orange")
+    return num == 1 and "Grenade Sphere" or (num == 2 and "Marksman" or (num == 3 and "Stimulant" or "SoldierTech.4"))
+  elseif classType == 5 then
+    widget.setFontColor("classlayout.techname", "green")
+    return num == 1 and "Poison Sphere" or (num == 2 and "Poison Dash" or (num == 3 and "RogueTech.3" or "RogueTech.4"))
+  elseif classType == 6 then
+    widget.setFontColor("classlayout.techname", "yellow")
+    return num == 1 and "Glide" or (num == 2 and "ExplorerTech.2" or (num == 3 and "Enhanced Sprint" or "ExplorerTech.4"))
+  end
+end
+
+function getTechType(num)
+  local classType = player.currency("classtype")
+  if classType == 1 then
+    return num == 1 and "Body" or (num == 2 and "Leg" or (num == 3 and "Head" or "Body"))
+  elseif classType == 2 then
+    return num == 1 and "Body" or (num == 2 and "Leg" or (num == 3 and "Head" or "Body"))
+  elseif classType == 3 then
+    return num == 1 and "Leg" or (num == 2 and "Head" or (num == 3 and "Body" or "Leg"))
+  elseif classType == 4 then
+    return num == 1 and "Head" or (num == 2 and "Body" or (num == 3 and "Leg" or "Head"))
+  elseif classType == 5 then
+    return num == 1 and "Head" or (num == 2 and "Body" or (num == 3 and "Leg" or "Head"))
+  elseif classType == 6 then
+    return num == 1 and "Leg" or (num == 2 and "Head" or (num == 3 and "Body" or "Leg"))
+  end
+end
+
 function uncheckTechButtons(name)
+  widget.setVisible("classlayout.reqlvl", false)
+  widget.setVisible("classlayout.unlockbutton", false)
+  widget.setVisible("classlayout.unlockedtext", false)
   if name ~= "techicon1" then widget.setChecked("classlayout.techicon1", false) end
   if name ~= "techicon2" then widget.setChecked("classlayout.techicon2", false) end
   if name ~= "techicon3" then widget.setChecked("classlayout.techicon3", false) end

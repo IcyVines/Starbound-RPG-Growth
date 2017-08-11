@@ -1,5 +1,5 @@
 {
-  "name" : "vanishsphere",
+  "name" : "ninjavanishsphere",
   "type" : "head",
 
   "scripts" : ["vanishsphere.lua"],
