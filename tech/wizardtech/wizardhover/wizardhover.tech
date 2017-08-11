@@ -1,0 +1,17 @@
+{
+  "name" : "wizardhover",
+  "type" : "legs",
+
+  "rarity" : "Legendary",
+  "icon" : "/tech/wizardtech/wizardhover/wizardhover.png",
+  "description" : "Press and hold Jump while in the air to hover in the direction of your aim. Cost: 75 energy per second.",
+  "shortDescription" : "Controlled Hover",
+  "chipCost" : 0,
+
+  "scripts" : ["wizardhover.lua"],
+  "actions" : [ "wizardhover" ],
+  "animator" : "wizardhover.animation",
+
+  "hoverControlForce" : 400.0,
+  "energyUsagePerSecond" : 75.0
+}
