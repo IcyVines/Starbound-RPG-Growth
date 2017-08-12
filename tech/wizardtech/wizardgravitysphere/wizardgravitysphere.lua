@@ -29,6 +29,7 @@ function init()
       end
     end
   end)
+
 end
 
 function update(args)
@@ -50,10 +51,20 @@ function update(args)
   if self.active then
 
     -- Gravity Sphere Stat Effects --
+    if not self.pushzone then
+      self.pushzone = world.spawnProjectile("wizardpushzone",
+                                            mcontroller.position(),
+                                            entity.id(),
+                                            {0,0},
+                                            true,
+                                            {}
+                                           )
+    end
     animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
     animator.setParticleEmitterActive("healing", true)
     status.modifyResourcePercentage("health", self.healingRate * args.dt)
     status.addEphemeralEffect("wizardlowgrav", math.huge)
+    
 
     local groundDirection
     if self.damageDisableTimer == 0 then
@@ -126,6 +137,15 @@ function update(args)
   else
     self.headingAngle = nil
      -- DisableEffects --
+    if self.pushzone then
+      world.entityQuery(mcontroller.position(),1,
+       {withoutEntityId = entity.id(),
+        includedTypes = {"projectile"},
+        callScript = "removeZone",
+        callScriptArgs = {self.pushzone}
+       })
+      self.pushzone = nil
+    end
     status.removeEphemeralEffect("wizardlowgrav")
     animator.setParticleEmitterActive("healing", false)
   end

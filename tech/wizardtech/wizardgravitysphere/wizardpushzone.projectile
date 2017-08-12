@@ -1,7 +1,7 @@
 {
   "projectileName" : "wizardpushzone",
   "physics" : "laser",
-  "timeToLive" : 10,
+  "timeToLive" : 999999999,
   "image" : "wizardpushzone.png",
   "animationCycle" : 0.8,
   "frameNumber" : 12,
@@ -33,15 +33,15 @@
     }
   },
 
-  "renderLayer" : "Player+1",
+  "renderLayer" : "Player-1",
   "orientationLocked" : true,
   "fullbright" : true,
   "emitters" : [ ],
 
+  "scripts": ["/tech/wizardtech/wizardgravitysphere/wizardpushzone.lua"],
+
   "piercing" : true,
   "bounces" : -1,
-
-  "scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
 
   "persistentAudio" : "/sfx/projectiles/zone_push_loop.ogg"
 }
