@@ -2,6 +2,8 @@ function init()
   self.gravityModifier = config.getParameter("gravityModifier")
   self.movementParams = mcontroller.baseParameters()
 
+  --self.pushZone = world.spawnProjectile("wizardpushzone", mcontroller.position(), entity.id(), {0,0}, true, {timeToLive = math.huge})
+
   setGravityMultiplier()
 
   activateVisualEffects()

@@ -343,7 +343,7 @@ function getTechEnableName(classType, checked)
   elseif classType == 4 then
     return checked == 1 and "soldierstimulant" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldiermissilestrike"))
   elseif classType == 5 then
-    return checked == 1 and "roguepoisondash" or (checked == 2 and "roguetoxiccapsule" or (checked == 3 and "roguecloudjump" or "roguebladeoil"))
+    return checked == 1 and "roguepoisondash" or (checked == 2 and "roguetoxiccapsule" or (checked == 3 and "roguecloudjump" or "roguetoxicaura"))
   elseif classType == 6 then
     return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedsprint" or (checked == 3 and "explorerdrill" or "explorerenhancedjump"))
   end
@@ -417,7 +417,7 @@ function getTechText(num)
   local classType = player.currency("classtype")
   if classType == 1 then
     return num == 1 and "An upgrade to Sprint, while running, enemies receive damage and knockback. Damage is doubled when holding up a shield."
-    or (num == 2 and "An upgrade to Double Jump, press [S] while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies. Damage scales with Strength and distance fallen from activation."
+    or (num == 2 and "An upgrade to Double Jump, press [G] while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies. Damage scales with Strength and distance fallen from activation."
       or (num == 3 and "An upgrade to Spike Sphere, while transformed, ignore knockback and deal contact damage to enemies." 
         or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit."))
   elseif classType == 2 then
@@ -432,8 +432,8 @@ function getTechText(num)
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
     return num == 1 and "Press [F] to instantly gain food and health. This Tech has a long cooldown." 
-    or (num == 2 and "Press [W] to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
-      or (num == 3 and "An upgrade to Double Jump, press [S] to instantly refill energy and gain a slight jump boost for a short period. You can prematurely end this effect, but cooldown is not shortened if so." 
+    or (num == 2 and "Press [G] to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
+      or (num == 3 and "An upgrade to Double Jump, press [W] to instantly refill energy and gain a slight jump boost for a short period. You can prematurely end this effect, but cooldown is not shortened if so." 
         or "Press [F] to call down a missile strike at your cursor's location. Upon exploding, the missile releases seven incendiary grenades. Try not to get hit, will you?"))
   elseif classType == 5 then
     return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind. The damage from the toxic clouds scale with your Poison Resistance and Power Multiplier. Deals massive damage if immune to Poison." 

@@ -1,0 +1,18 @@
+[
+	{ 
+		"op" : "add", 
+		"path" : "/keyActions/player/-",
+		"value" : {
+			"label" : "RPG Second Action ^green;[G]^reset;",
+			"action" : "PlayerTechAction2"
+		} 
+	},
+	{ 
+		"op" : "add", 
+		"path" : "/keyActions/player/-",
+		"value" : {
+			"label" : "RPG Third Action ^green;[H]^reset;",
+			"action" : "PlayerTechAction3"
+		} 
+	}
+]

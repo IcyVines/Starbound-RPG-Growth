@@ -1,0 +1,14 @@
+{
+  "name" : "rogueweaken",
+  "effectConfig" : {
+    "cooldown" : 1
+  },
+  "defaultDuration" : 2,
+
+  "scripts" : [
+    "/tech/roguetech/roguetoxicaura/rogueweaken.lua"
+  ],
+
+  "label" : "Weakened!",
+  "icon" : "/tech/roguetech/roguetoxicaura/roguetoxicaura.png"
+}

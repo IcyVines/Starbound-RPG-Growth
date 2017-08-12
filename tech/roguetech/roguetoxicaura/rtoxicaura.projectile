@@ -1,0 +1,15 @@
+{
+  "projectileName" : "rtoxicaura",
+  "image" : "rtoxicaura.png",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "power" : 0,
+  "timeToLive" : 15,
+  "bounces" : -1,
+  "damageKind" : "applystatus",
+  "statusEffects" : [
+    "rogueweaken"
+  ],
+  "piercing" : true,
+  "damagePoly" : [[-125, 0], [-88.3, 88.3], [0, 125], [88.3, 88.3], [125, 0], [88.3, -88.3], [0, -125], [-88.3, -88.3]]
+}

@@ -17,7 +17,7 @@ function init()
   refreshJumps()
 
   Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doMultiJump)
-  Bind.create({down = true, onGround = false, liquidPercentage = 0}, doSlam)
+  Bind.create({g = true, onGround = false, liquidPercentage = 0}, doSlam)
 end
 
 function update(args)
