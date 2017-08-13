@@ -1,0 +1,21 @@
+{
+  "name" : "knightcharge!",
+  "type" : "body",
+
+  "scripts" : ["knightcharge!.lua"],
+  "animator" : "knightcharge!.animation",
+
+  "description" : "Charge into enemies to knock them back!",
+  "shortDescription" : "Charge!",
+  "rarity" : "Legendary",
+  "icon" : "/tech/knighttech/knightcharge!/knightcharge!.png",
+
+  "chipCost" : 0,
+
+  "energyCostPerSecond" : 125,
+  "maximumDoubleTapTime" : 0.25,
+  "dashControlForce" : 1000,
+  "dashSpeedModifier" : 8.0,
+  "stopAfterDash" : false,
+  "groundOnly" : true
+}

@@ -1,5 +1,5 @@
 {
-  "name" : "knightbashattack",
+  "name" : "knightchargeattack",
   "effectConfig" : {
 
     "damageProjectileType" : "knightbashdamage",
@@ -15,5 +15,5 @@
 
   "label" : "Cause Contact Damage",
   "icon" : "/interface/statuses/thorns.png",
-  "knockback" : 30
+  "knockback" : 360
 }
