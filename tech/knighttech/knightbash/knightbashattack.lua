@@ -7,8 +7,6 @@ function init()
   self.cooldownTimer = 0
 
   self.queryDamageSince = 0
-  self.knockback = config.getParameter("knockback")
-
 end
 
 function resetThorns()
@@ -39,11 +37,12 @@ function triggerThorns(damage)
   if status.stat("shieldHealth") > 0 then
     damage = damage*2
   end
+  self.xV = math.abs(mcontroller.xVelocity())^0.2
+  self.xV = self.xV > 1 and self.xV or 1
   local damageConfig = {
-    power = damage*2,
+    power = damage*self.xV,
     speed = 0,
-    physics = "default",
-    knockback = self.knockback
+    physics = "default"
   }
   world.spawnProjectile(self.damageProjectileType, mcontroller.position(), entity.id(), {0, 0}, true, damageConfig)
 end

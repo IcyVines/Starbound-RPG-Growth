@@ -1,0 +1,18 @@
+{
+  "projectileName" : "knightchargedamage",
+  "image" : "knightchargedamage.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "timeToLive" : 0.75,
+  "power" : 5.0,
+  "damageKind" : "bluntforce",
+  "knockback" : 60,
+  "knockbackDirection" : true,
+  "piercing" : true,
+  "statusEffects" : [
+    "soldierstun"
+  ],
+  "damagePoly" : [[-9.5, 19], [9.5, 19], [9.5, -19], [-9.5, -19]]
+}

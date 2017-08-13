@@ -416,10 +416,10 @@ end
 function getTechText(num)
   local classType = player.currency("classtype")
   if classType == 1 then
-    return num == 1 and "An upgrade to Sprint, while running, enemies receive damage and knockback. Damage is doubled when holding up a shield."
+    return num == 1 and "An upgrade to Sprint, while running, enemies receive damage and knockback. Damage is doubled when holding up a shield. Damage scales with Strength and Run Speed."
     or (num == 2 and "An upgrade to Double Jump, press [G] while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies. Damage scales with Strength and distance fallen from activation."
       or (num == 3 and "An upgrade to Spike Sphere, while transformed, ignore knockback and deal contact damage to enemies." 
-        or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit."))
+        or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit. Damage scales with Strength and Run Speed."))
   elseif classType == 2 then
     return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity. In addition, a constant push barrier will surround you, pushing enemies away." 
     or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
