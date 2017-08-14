@@ -1,0 +1,10 @@
+{
+  "name" : "soldiermarksman",
+  "effectConfig" : {
+    "powerModifier" : 1.20
+  },
+  "defaultDuration" : 10,
+
+  "label" : "Extra Damage With Firearms",
+  "icon" : "/tech/soldiertech/soldiermarksman/soldiermarksmann.png"
+}

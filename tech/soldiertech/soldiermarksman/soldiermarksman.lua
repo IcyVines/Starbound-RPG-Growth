@@ -10,7 +10,7 @@ function init()
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=B7862CFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
 
-  Bind.create("Up", eat)
+  Bind.create("g", eat)
   --Bind.create("Down", test)
 end
 

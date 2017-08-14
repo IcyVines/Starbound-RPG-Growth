@@ -1,0 +1,16 @@
+{
+  "name" : "soldiermarksman",
+  "type" : "body",
+
+  "scripts" : ["soldiermarksman.lua"],
+  "animator" : "soldiermarksman.animation",
+
+  "description" : "Press [G] to increase damage with guns. Cooldown: 30s",
+  "shortDescription" : "MRE",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/soldiertech/soldiermarksman/soldiermarksman.png",
+
+  "chipCost" : 0, 
+  "foodGain" : 10,
+  "cooldown" : 90.0
+}

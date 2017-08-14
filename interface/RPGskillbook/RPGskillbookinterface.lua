@@ -431,7 +431,7 @@ function getTechText(num)
     or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS." 
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
-    return num == 1 and "Press [F] to instantly gain food." 
+    return num == 1 and "Press [F] to eat an MRE, gaining a bit of food. There is a cooldown of 90 seconds before you can do this again." 
     or (num == 2 and "Press [G] to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
       or (num == 3 and "An upgrade to Double Jump, press [W] to instantly refill energy and gain a slight jump boost for a short period. You can prematurely end this effect, but cooldown is not shortened if so." 
         or "Press [F] to call down a missile strike at your cursor's location. Upon exploding, the missile releases seven incendiary grenades. Try not to get hit, will you?"))
