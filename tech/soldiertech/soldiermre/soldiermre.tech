@@ -1,0 +1,16 @@
+{
+  "name" : "soldiermre",
+  "type" : "head",
+
+  "scripts" : ["soldiermre.lua"],
+  "animator" : "soldiermre.animation",
+
+  "description" : "Press [F] to increase your food bar. Cooldown: 30s",
+  "shortDescription" : "MRE",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/soldiertech/soldiermre/soldiermre.png",
+
+  "chipCost" : 0, 
+  "foodGain" : 10,
+  "cooldown" : 90.0
+}

@@ -1,0 +1,10 @@
+{
+  "name" : "soldiermre",
+  "effectConfig" : {
+    "powerModifier" : 1.20
+  },
+  "defaultDuration" : 10,
+
+  "label" : "Nutrient-Full",
+  "icon" : "/tech/soldiertech/soldiermre/soldiermrecooldown.png"
+}
