@@ -2,6 +2,7 @@ require "/tech/distortionsphere/distortionsphere.lua"
 require "/scripts/rect.lua"
 require "/scripts/poly.lua"
 require "/scripts/status.lua"
+require "/scripts/keybinds.lua"
 
 function init()
   initCommonParameters()
@@ -20,17 +21,26 @@ function init()
   end
 
   self.healingRate = config.getParameter("healingRate")/60
+  self.enableZone = false
+  Bind.create("g", 
+    function()
+      self.enableZone = not self.enableZone
+    end
+  )
 
-  self.damageListener = damageListener("damageTaken", function(notifications)
-    for _, notification in pairs(notifications) do
-      if notification.healthLost > 0 and notification.sourceEntityId ~= entity.id() then
-        damaged()
-        return
+  self.damageListener = damageListener("damageTaken", 
+    function(notifications)
+      for _, notification in pairs(notifications) do
+        if notification.healthLost > 0 and notification.sourceEntityId ~= entity.id() then
+          damaged()
+          return
+        end
       end
     end
-  end)
+  )
 
 end
+
 
 function update(args)
   restoreStoredPosition()
@@ -51,14 +61,10 @@ function update(args)
   if self.active then
 
     -- Gravity Sphere Stat Effects --
-    if not self.pushzone then
-      self.pushzone = world.spawnProjectile("wizardpushzone",
-                                            mcontroller.position(),
-                                            entity.id(),
-                                            {0,0},
-                                            true,
-                                            {}
-                                           )
+    if self.enableZone then
+      activateZone()
+    else
+      deactivateZone()
     end
     animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
     animator.setParticleEmitterActive("healing", true)
@@ -137,15 +143,7 @@ function update(args)
   else
     self.headingAngle = nil
      -- DisableEffects --
-    if self.pushzone then
-      world.entityQuery(mcontroller.position(),1,
-       {withoutEntityId = entity.id(),
-        includedTypes = {"projectile"},
-        callScript = "removeZone",
-        callScriptArgs = {self.pushzone}
-       })
-      self.pushzone = nil
-    end
+    deactivateZone()
     status.removeEphemeralEffect("wizardlowgrav")
     animator.setParticleEmitterActive("healing", false)
   end
@@ -153,6 +151,32 @@ function update(args)
   updateTransformFade(args.dt)
 
   self.lastPosition = mcontroller.position()
+end
+
+function activateZone()
+    if not self.pushzone then
+      self.pushzone = world.spawnProjectile("wizardpushzone",
+                                            mcontroller.position(),
+                                            entity.id(),
+                                            {0,0},
+                                            true,
+                                            {}
+                                           )
+    end
+end
+
+function deactivateZone()
+    if self.pushzone then
+      world.entityQuery(mcontroller.position(),1,
+        {
+         withoutEntityId = entity.id(),
+         includedTypes = {"projectile"},
+         callScript = "removeZone",
+         callScriptArgs = {self.pushzone}
+        }
+      )
+      self.pushzone = nil
+    end
 end
 
 function damaged()
