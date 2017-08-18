@@ -1,0 +1,18 @@
+{
+  "name" : "explorerglide",
+  "type" : "legs",
+
+  "rarity" : "Uncommon",
+  "icon" : "/tech/explorertech/explorerglide/explorerglide.png",
+  "description" : "Press and hold [W] to glide.",
+  "shortDescription" : "Controlled Hover",
+  "chipCost" : 0,
+
+  "scripts" : ["explorerglide.lua"],
+  "actions" : [ "explorerglide" ],
+  "animator" : "explorerglide.animation",
+
+  "hoverControlForce" : 400.0,
+  "energyUsagePerSecond" : 5.0,
+  "multiJumpCount" : 1
+}
