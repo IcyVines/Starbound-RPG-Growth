@@ -434,7 +434,7 @@ function getTechText(num)
     return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food. There is a cooldown of 90 seconds before you can do this again." 
     or (num == 2 and "Press [G] to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
       or (num == 3 and "An upgrade to Double Jump, press [W] to instantly refill energy and gain a slight jump boost for a short period. You can prematurely end this effect, but cooldown is not shortened if so." 
-        or "Press [F] to call down a missile strike at your cursor's location. Upon exploding, the missile releases seven incendiary grenades. Try not to get hit, will you?"))
+        or "Press [F] to call down a missile strike from your cursor's location. Upon exploding, the missile releases seven incendiary grenades."))
   elseif classType == 5 then
     return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind. The damage from the toxic clouds scale with your Poison Resistance and Power Multiplier. Deals massive damage if immune to Poison." 
     or (num == 2 and "Press [F] to gain +33% Physical Resistance and Poison Immunity, but lose health, for a short period. You can prematurely end the effect by pressing [F] again. If so, you emit a ring of toxic clouds whose damage scales with Power Multiplier and Time Passed." 

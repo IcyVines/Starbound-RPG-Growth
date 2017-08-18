@@ -1,0 +1,6 @@
+{
+  "sounds" : {
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "spawn" : [ "/sfx/tech/vehicle_appear2.ogg" ]
+  }
+}
