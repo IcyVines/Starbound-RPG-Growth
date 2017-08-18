@@ -4,30 +4,27 @@ function init()
   self.cooldownTimer = 0
   self.rechargeEffectTimer = 0
 
-  self.foodGain = config.getParameter("foodGain")
   self.cooldown = config.getParameter("cooldown")
+  self.duration = config.getParameter("duration")
 
-  self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=B7862CFF=0.25")
+  self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=A85A16FF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
 
-  Bind.create("g", eat)
-  --Bind.create("Down", test)
+  Bind.create("g", marksman)
 end
 
-function eat()
+function marksman()
   if self.cooldownTimer == 0 and not status.statPositive("activeMovementAbilities") then
-      self.cooldownTimer = self.cooldown
-      status.addEphemeralEffect("soldiermre", self.cooldown)
-      animator.playSound("eat")
-      status.modifyResourcePercentage("food", self.foodGain/100)
+    self.cooldownTimer = self.cooldown + self.duration
+    status.addEphemeralEffect("soldierfocus", self.duration)
+  elseif self.cooldownTimer > self.cooldown then
+    self.cooldownTimer = 2*self.cooldown - self.cooldownTimer
+    status.removeEphemeralEffect("soldierfocus")
   end
 end
 
-function test()
-  --status.modifyResourcePercentage("food", -2*self.foodGain/100)
-end
-
 function uninit()
+  status.removeEphemeralEffect("soldierfocus")
   tech.setParentDirectives()
 end
 

@@ -1,0 +1,13 @@
+{
+  "name" : "soldierfocus",
+  "effectConfig" : {
+    "powerModifier" : 1.30
+  },
+  "defaultDuration" : 10,
+  
+  "scripts" : ["soldierfocus.lua"],
+  "animationConfig" : "soldierfocus.animation",
+
+  "label" : "Extra Damage With Firearms",
+  "icon" : "/tech/soldiertech/soldiermarksman/soldiermarksman.png"
+}

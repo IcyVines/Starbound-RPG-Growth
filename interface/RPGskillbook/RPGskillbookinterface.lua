@@ -341,7 +341,7 @@ function getTechEnableName(classType, checked)
   elseif classType == 3 then
     return checked == 1 and "ninjaflashjump" or (checked == 2 and "ninjavanishsphere" or (checked == 3 and "ninjaassassinate" or "ninjawallcling"))
   elseif classType == 4 then
-    return checked == 1 and "soldierstimulant" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldiermissilestrike"))
+    return checked == 1 and "soldiermre" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldiermissilestrike"))
   elseif classType == 5 then
     return checked == 1 and "roguepoisondash" or (checked == 2 and "roguetoxiccapsule" or (checked == 3 and "roguecloudjump" or "roguetoxicaura"))
   elseif classType == 6 then
@@ -364,10 +364,10 @@ function unlockTechVisible(tech, amount)
     if hasValue(player.availableTechs(), techName) then
       widget.setButtonEnabled("classlayout.unlockbutton", false)
       widget.setVisible("classlayout.unlockedtext", true)
-      widget.setVisible("classlayout.reqlvl", false)
     else
       widget.setButtonEnabled("classlayout.unlockbutton", true)
     end
+    widget.setVisible("classlayout.reqlvl", false)
   else
     widget.setButtonEnabled("classlayout.unlockbutton", false)
     widget.setVisible("classlayout.reqlvl", true)
@@ -421,7 +421,7 @@ function getTechText(num)
       or (num == 3 and "An upgrade to Spike Sphere, while transformed, ignore knockback and deal contact damage to enemies." 
         or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit. Damage scales with Strength and Run Speed."))
   elseif classType == 2 then
-    return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity. In addition, a constant push barrier will surround you, pushing enemies away." 
+    return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity. In addition, toggle a barrier that pushes enemies away by pressing [G]." 
     or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
       or (num == 3 and "Press [W] to teleport to your cursor. There is a slight cooldown before you can teleport again." 
         or "Press [F] to negate all damage for a short time. Energy does not recharge while this effect is active. You can prematurely end the effect by pressing [F] again. The cooldown shortens if so."))
@@ -431,7 +431,7 @@ function getTechText(num)
     or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS." 
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
-    return num == 1 and "Press [F] to eat an MRE, gaining a bit of food. There is a cooldown of 90 seconds before you can do this again." 
+    return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food. There is a cooldown of 90 seconds before you can do this again." 
     or (num == 2 and "Press [G] to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
       or (num == 3 and "An upgrade to Double Jump, press [W] to instantly refill energy and gain a slight jump boost for a short period. You can prematurely end this effect, but cooldown is not shortened if so." 
         or "Press [F] to call down a missile strike at your cursor's location. Upon exploding, the missile releases seven incendiary grenades. Try not to get hit, will you?"))
@@ -461,7 +461,7 @@ function getTechName(num)
     return num == 1 and "Flash Jump" or (num == 2 and "Vanish Sphere" or (num == 3 and "Assassinate" or "Wall Cling"))
   elseif classType == 4 then
     widget.setFontColor("classlayout.techname", "orange")
-    return num == 1 and "Stimulant" or (num == 2 and "Marksman" or (num == 3 and "Energy Pack" or "Missile Strike"))
+    return num == 1 and "MRE" or (num == 2 and "Marksman" or (num == 3 and "Energy Pack" or "Missile Strike"))
   elseif classType == 5 then
     widget.setFontColor("classlayout.techname", "green")
     return num == 1 and "Poison Dash" or (num == 2 and "Toxic Capsule" or (num == 3 and "Cloud Jump" or "Blade Oil"))

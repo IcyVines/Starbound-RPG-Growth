@@ -6,11 +6,11 @@
   "animator" : "soldiermarksman.animation",
 
   "description" : "Press [G] to increase damage with guns. Cooldown: 30s",
-  "shortDescription" : "MRE",
+  "shortDescription" : "Marksman",
   "rarity" : "Uncommon",
   "icon" : "/tech/soldiertech/soldiermarksman/soldiermarksman.png",
 
   "chipCost" : 0, 
-  "foodGain" : 10,
-  "cooldown" : 90.0
+  "cooldown" : 30.0,
+  "duration" : 10
 }

@@ -11,6 +11,6 @@
 
   "animationConfig" : "wizardlowgrav.animation",
 
-  "label" : "Light",
+  "label" : "Low Grav",
   "icon" : "/tech/wizardtech/wizardgravitysphere/wizardlowgrav.png"
 }

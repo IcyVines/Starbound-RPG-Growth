@@ -1,0 +1,17 @@
+{
+  "name" : "soldierenergypack",
+  "type" : "legs",
+
+  "scripts" : ["soldierenergypack.lua"],
+  "animator" : "soldierenergypack.animation",
+
+  "description" : "Press [W] to give yourself a jump boost. Cooldown: 30s",
+  "shortDescription" : "Energy Pack",
+  "rarity" : "Legendary",
+  "icon" : "/tech/soldiertech/soldierenergypack/soldierenergypack.png",
+
+  "chipCost" : 0, 
+  "cooldown" : 30.0,
+  "duration" : 20.0,
+  "multiJumpCount" : 1
+}
