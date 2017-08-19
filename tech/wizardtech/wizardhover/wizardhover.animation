@@ -25,31 +25,31 @@
       "emissionRate" : 14.0,
       "particles" : [
         {
-          "particle" : "defaultblue",
+          "particle" : "defaultmagenta",
           "offset" : [0.2, -2]
         },
         {
-          "particle" : "defaultblue",
+          "particle" : "defaultmagenta",
           "offset" : [0.2, -2]
         },
         {
-          "particle" : "defaultblue",
+          "particle" : "defaultmagenta",
           "offset" : [0.2, -2]
         },
         {
-          "particle" : "defaultblue",
+          "particle" : "defaultmagenta",
           "offset" : [0.2, -2]
         },
         {
-          "particle" : "defaultblue",
+          "particle" : "defaultmagenta",
           "offset" : [0.2, -2]
         },
         {
-          "particle" : "defaultblue",
+          "particle" : "defaultmagenta",
           "offset" : [0.2, -2]
         },
         {
-          "particle" : "defaultblue",
+          "particle" : "defaultmagenta",
           "offset" : [0.2, -2]
         }
       ]
