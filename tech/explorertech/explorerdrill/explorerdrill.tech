@@ -1,0 +1,19 @@
+{
+  "name" : "explorerdrill",
+  "type" : "head",
+
+  "rarity" : "Rare",
+  "icon" : "/tech/explorertech/explorerdrill/explorerdrill.png",
+  "description" : "Cost: 10eps.",
+  "shortDescription" : "Drill",
+  "chipCost" : 0,
+
+  "scripts" : ["explorerdrill.lua"],
+  "actions" : [ "explorerdrill" ],
+  "animator" : "explorerdrill.animation",
+
+  "cost" : 10,
+  "fallTime" : 0.1,
+  "power" : 2
+
+}

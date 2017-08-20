@@ -345,7 +345,7 @@ function getTechEnableName(classType, checked)
   elseif classType == 5 then
     return checked == 1 and "roguepoisondash" or (checked == 2 and "roguetoxiccapsule" or (checked == 3 and "roguecloudjump" or "roguetoxicaura"))
   elseif classType == 6 then
-    return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedmovement" or (checked == 3 and "explorerinspection" or "explorerenhancedjump"))
+    return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedmovement" or (checked == 3 and "explorerdrill" or "explorerenhancedjump"))
   end
 end
 
@@ -443,7 +443,7 @@ function getTechText(num)
   elseif classType == 6 then
     return num == 1 and "An upgrade to Double Jump, hold [W] to glide forward, slowly losing altitude. You can use your double jump while gliding." 
     or (num == 2 and "Press [G] to switch between Enhanced Airdash and Enhanced Sprint. Enhanced Airdash travels further than Air Dash, and has a shorter cooldown. Enhanced Sprint is faster and costs less energy than Sprint." 
-      or (num == 3 and "As long as you have at least 50 of any Rock, Stone, Obsidian, or Gravel Blocks, pressing [F] consumes 50 and replaces it with a random ore. The quality of the ore is determned by the block's rarity, and more common blocks will be consumed first." 
+      or (num == 3 and "Hold [F] to drill downwards at incredible speed, draining your energy." 
         or "An upgrade to Glide. Gain another three midair jumps and a wall jump. Midair jumps are 85% as effective. You cling to walls slightly longer than the normal Wall Jump and slide down slower as well. "))
   end
 end
@@ -467,7 +467,7 @@ function getTechName(num)
     return num == 1 and "Poison Dash" or (num == 2 and "Toxic Capsule" or (num == 3 and "Cloud Jump" or "Toxic Aura"))
   elseif classType == 6 then
     widget.setFontColor("classlayout.techname", "yellow")
-    return num == 1 and "Glide" or (num == 2 and "Utility Dash" or (num == 3 and "Inspection" or "Enhanced Glide"))
+    return num == 1 and "Glide" or (num == 2 and "Enhanced Dash" or (num == 3 and "Drill" or "Enhanced Glide"))
   end
 end
 

@@ -24,6 +24,14 @@ function init()
   
 end
 
+function input(args)
+  if args.moves["down"] then
+    return "slide"
+  else
+    return nil
+  end
+end
+
 function update(args)
   local jumpActivated = args.moves["jump"] and not self.lastJump
   self.lastJump = args.moves["jump"]
@@ -35,6 +43,7 @@ function update(args)
     lrInput = "right"
   end
 
+  local action = input(args)
 
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
     status.removeEphemeralEffect("camouflage25")
