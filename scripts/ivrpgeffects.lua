@@ -16,5 +16,6 @@ function update(dt)
 end
 
 function uninit()
+	fuoldUninit()
 	status.removeEphemeralEffect("ivrpgstatboosts")
 end
