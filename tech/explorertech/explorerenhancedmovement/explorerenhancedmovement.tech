@@ -1,0 +1,27 @@
+{
+  "name" : "explorerenhancedmovement",
+  "type" : "body",
+
+  "scripts" : ["explorerenhancedmovement.lua"],
+  "animator" : "explorerenhancedmovement.animation",
+
+  "description" : "Airdash Cooldown: 5s. Sprint Cost: 10eps.",
+  "shortDescription" : "Enhanced Movement",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/explorertech/explorerenhancedmovement/explorerenhancedmovement.png",
+
+  "chipCost" : 0,
+
+  "energyCostPerSecond" : 10,
+  "maximumDoubleTapTime" : 0.25,
+  "sprintControlForce" : 1000,
+  "sprintSpeedModifier" : 2.0,
+
+  "dashControlForce" : 2000,
+  "dashSpeed" : 75,
+  "dashDuration" : 0.25,
+  "dashCooldown" : 0.5,
+  
+  "stopAfterDash" : true,
+  "groundOnly" : true
+}

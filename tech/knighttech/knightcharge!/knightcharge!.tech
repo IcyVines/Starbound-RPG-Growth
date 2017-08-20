@@ -5,7 +5,7 @@
   "scripts" : ["knightcharge!.lua"],
   "animator" : "knightcharge!.animation",
 
-  "description" : "Charge into enemies to knock them back!",
+  "description" : "Charge Cost: 125eps.",
   "shortDescription" : "Charge!",
   "rarity" : "Legendary",
   "icon" : "/tech/knighttech/knightcharge!/knightcharge!.png",

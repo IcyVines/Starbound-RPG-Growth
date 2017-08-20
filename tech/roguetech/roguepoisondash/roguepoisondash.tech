@@ -5,9 +5,9 @@
   "scripts" : ["roguepoisondash.lua"],
   "animator" : "roguepoisondash.animation",
 
-  "description" : "A dash that leaves poison clouds behind! Cooldown: 0.8s",
+  "description" : "Dash Cooldown: 1.5s.",
   "shortDescription" : "Poison Dash",
-  "rarity" : "Legendary",
+  "rarity" : "Uncommon",
   "icon" : "/tech/roguetech/roguepoisondash/roguepoisondash.png",
 
   "chipCost" : 0,

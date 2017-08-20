@@ -1,0 +1,8 @@
+{
+  "name" : "explorermovementdash",
+  "defaultDuration" : 10,
+
+
+  "label" : "Enhanced Dash",
+  "icon" : "/tech/explorertech/explorerenhancedmovement/explorermovementdash.png"
+}

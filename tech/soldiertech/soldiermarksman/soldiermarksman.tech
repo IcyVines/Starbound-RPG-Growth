@@ -5,9 +5,9 @@
   "scripts" : ["soldiermarksman.lua"],
   "animator" : "soldiermarksman.animation",
 
-  "description" : "Press [G] to increase damage with guns. Cooldown: 30s",
+  "description" : "Duration/Cooldown: 10s/30s.",
   "shortDescription" : "Marksman",
-  "rarity" : "Uncommon",
+  "rarity" : "Rare",
   "icon" : "/tech/soldiertech/soldiermarksman/soldiermarksman.png",
 
   "chipCost" : 0, 

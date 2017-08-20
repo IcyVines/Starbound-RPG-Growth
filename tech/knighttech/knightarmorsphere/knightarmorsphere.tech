@@ -5,7 +5,7 @@
   "scripts" : ["knightarmorsphere.lua"],
   "animator" : "knightarmorsphere.animation",
 
-  "description" : "Press ^green;[F]^reset; to transform into an armored Spike Sphere!",
+  "description" : "Transformation Cost: 50e.",
   "shortDescription" : "Armor Sphere",
   "rarity" : "Legendary",
   "icon" : "/tech/knighttech/knightarmorsphere/knightarmorsphereicon.png",

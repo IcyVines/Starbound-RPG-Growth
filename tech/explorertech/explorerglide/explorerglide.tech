@@ -4,8 +4,8 @@
 
   "rarity" : "Uncommon",
   "icon" : "/tech/explorertech/explorerglide/explorerglide.png",
-  "description" : "Press and hold [W] to glide.",
-  "shortDescription" : "Controlled Hover",
+  "description" : "Glide Cost: 5eps.",
+  "shortDescription" : "Glide",
   "chipCost" : 0,
 
   "scripts" : ["explorerglide.lua"],

@@ -2,9 +2,9 @@
   "name" : "roguetoxiccapsule",
   "type" : "head",
 
-  "rarity" : "Legendary",
+  "rarity" : "Rare",
   "icon" : "/tech/roguetech/roguetoxiccapsule/roguetoxiccapsule.png",
-  "description" : "Press [F] to become immune to poison but lose health.",
+  "description" : "Cost: 5e. Duration/Cooldown: 10s/10s.",
   "shortDescription" : "Toxic Capsule",
   "chipCost" : 0,
 

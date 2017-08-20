@@ -5,7 +5,7 @@
   "scripts" : ["vanishsphere.lua"],
   "animator" : "vanishsphere.animation",
 
-  "description" : "Press ^green;[F]^reset; to transform into an invisible Spike Sphere!",
+  "description" : "Transformation Cost: 25e. Movement Cost: 25eps.",
   "shortDescription" : "Vanish Sphere",
   "rarity" : "Common",
   "icon" : "/tech/ninjatech/vanishsphere/vanishsphereicon.png",

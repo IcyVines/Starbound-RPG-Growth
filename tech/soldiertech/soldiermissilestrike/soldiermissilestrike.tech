@@ -5,15 +5,15 @@
   "scripts" : ["soldiermissilestrike.lua"],
   "animator" : "soldiermissilestrike.animation",
 
-  "description" : "Press [F] to call a missile strike. Cooldown: 30s",
+  "description" : "Cost: 50e. Cooldown: 30s.",
   "shortDescription" : "Missile Strike",
   "rarity" : "Legendary",
   "icon" : "/tech/soldiertech/soldiermissilestrike/soldiermissilestrike.png",
 
   "chipCost" : 0, 
-  "cooldown" : 1.0,
+  "cooldown" : 30.0,
   "cost" : 50,
-  "damage" : 100,
+  "damage" : 200,
   "grenades" : 7
   
 }

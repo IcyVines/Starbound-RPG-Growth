@@ -5,9 +5,9 @@
   "scripts" : ["soldierenergypack.lua"],
   "animator" : "soldierenergypack.animation",
 
-  "description" : "Press [W] to give yourself a jump boost. Cooldown: 30s",
+  "description" : "Duration/Cooldown: 20s/30s.",
   "shortDescription" : "Energy Pack",
-  "rarity" : "Legendary",
+  "rarity" : "Rare",
   "icon" : "/tech/soldiertech/soldierenergypack/soldierenergypack.png",
 
   "chipCost" : 0, 

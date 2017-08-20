@@ -1,0 +1,33 @@
+{
+  "name" : "explorerenhancedjump",
+  "type" : "legs",
+
+  "rarity" : "Legendary",
+  "icon" : "/tech/explorertech/explorerenhancedjump/explorerenhancedjump.png",
+  "description" : "Glide Cost: 5eps.",
+  "shortDescription" : "Enhanced Jump",
+  "chipCost" : 0,
+
+  "scripts" : ["explorerenhancedjump.lua"],
+  "actions" : [ "explorerenhancedjump" ],
+  "animator" : "explorerenhancedjump.animation",
+
+  "hoverControlForce" : 400.0,
+  "energyUsagePerSecond" : 5.0,
+  "multiJumpCount" : 4,
+  "multiJumpModifier" : 0.85,
+  "wallSensors" : [1.0, 1.75, 2.5],
+  "wallDetectThreshold" : 1,
+
+  "wallReleaseTime" : 0.15,
+
+  "wallGrabFreezeTime" : 0.30,
+  "wallJumpXVelocity" : 15,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1.0
+    },
+    "airForce" : 0,
+    "airFriction" : 15.0
+  }
+}

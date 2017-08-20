@@ -5,7 +5,7 @@
   "scripts" : ["ninjawallcling.lua"],
   "animator" : "ninjawallcling.animation",
 
-  "description" : "One Flash Jump, but with with the ability to cling to walls!",
+  "description" : "Jump Cost: 15e.",
   "shortDescription" : "Wall Cling",
   "rarity" : "Rare",
   "icon" : "/tech/ninjatech/ninjawallcling/ninjawallcling.png",
@@ -16,7 +16,7 @@
   "wallSensors" : [1.0, 1.75, 2.5],
   "wallDetectThreshold" : 1,
 
-  "wallJumpXVelocity" : 25,
+  "wallJumpXVelocity" : 20,
   "wallSlideParameters" : {
     "airJumpProfile" : {
       "jumpInitialPercentage" : 1.0

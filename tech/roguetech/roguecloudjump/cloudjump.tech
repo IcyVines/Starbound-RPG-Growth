@@ -5,9 +5,9 @@
   "scripts" : ["cloudjump.lua"],
   "animator" : "cloudjump.animation",
 
-  "description" : "Summon a cloud below you while in air! Cooldown: 2.5s",
+  "description" : "Cooldown: 2s",
   "shortDescription" : "Cloud Jump",
-  "rarity" : "Uncommon",
+  "rarity" : "Rare",
   "icon" : "/tech/roguetech/roguecloudjump/cloudjump.png",
 
   "chipCost" : 0,

@@ -5,7 +5,7 @@
   "scripts" : ["ninjaassassinate.lua"],
   "animator" : "ninjaassassinate.animation",
 
-  "description" : "Vanish before appearing where you point! Cooldown: 3s",
+  "description" : "Cost: 50e. Vanish Time: 2s. Cooldown: 3s.",
   "shortDescription" : "Assassinate",
   "rarity" : "Legendary",
   "icon" : "/tech/ninjatech/ninjaassassinate/ninjaassassinate.png",

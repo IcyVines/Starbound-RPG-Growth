@@ -345,7 +345,7 @@ function getTechEnableName(classType, checked)
   elseif classType == 5 then
     return checked == 1 and "roguepoisondash" or (checked == 2 and "roguetoxiccapsule" or (checked == 3 and "roguecloudjump" or "roguetoxicaura"))
   elseif classType == 6 then
-    return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedsprint" or (checked == 3 and "explorerdrill" or "explorerenhancedjump"))
+    return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedmovement" or (checked == 3 and "explorerinspection" or "explorerenhancedjump"))
   end
 end
 
@@ -434,17 +434,17 @@ function getTechText(num)
     return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food. There is a cooldown of 90 seconds before you can do this again." 
     or (num == 2 and "Press [G] to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
       or (num == 3 and "An upgrade to Double Jump, press [W] to instantly refill energy and gain a slight jump boost for a short period. You can prematurely end this effect, but cooldown is not shortened if so." 
-        or "Press [F] to call down a missile strike from your cursor's location. Upon exploding, the missile releases seven incendiary grenades."))
+        or "Press [F] to call down a missile strike from your cursor's location. Upon exploding, the missile releases a carpet of fire that sticks to the ground. Try not to kill yourself..."))
   elseif classType == 5 then
     return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind. The damage from the toxic clouds scale with your Poison Resistance and Power Multiplier. Deals massive damage if immune to Poison." 
-    or (num == 2 and "Press [F] to gain +33% Physical Resistance and Poison Immunity, but lose health, for a short period. You can prematurely end the effect by pressing [F] again. If so, you emit a ring of toxic clouds whose damage scales with Power Multiplier and Time Passed." 
+    or (num == 2 and "Press [F] to gain +33% Physical Resistance and Poison Immunity but lose health for a short period. You can prematurely end the effect by pressing [F] again. If so, you emit a ring of toxic clouds whose damage scales with Power Multiplier and Time Passed." 
       or (num == 3 and "An upgrade to Double Jump, press [W] to create a cloudy platform beneath you. The cloud disappears after 5 seconds." 
         or "Press [G] to deal toxic damage with all weapons for a short time. Toxic damage deals more damage than poison damage. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so."))
   elseif classType == 6 then
-    return num == 1 and "An upgrade to Double Jump, hold [W] to glide forward, slowly losing altitude. This costs no energy." 
-    or (num == 2 and "An upgrade to Sprint. Speed and Jump Height are improved, and energy consumption is decreased. It is now possible to sprint in liquid." 
-      or (num == 3 and "Hold [F] to drill down at incredible speeds, destroying the blocks beneath you." 
-        or "An upgrade to Glide. Gain another three midair jumps and a wall jump."))
+    return num == 1 and "An upgrade to Double Jump, hold [W] to glide forward, slowly losing altitude. You can use your double jump while gliding." 
+    or (num == 2 and "Press [G] to switch between Enhanced Airdash and Enhanced Sprint. Enhanced Airdash travels further than Air Dash, and has a shorter cooldown. Enhanced Sprint is faster and costs less energy than Sprint." 
+      or (num == 3 and "As long as you have at least 50 of any Rock, Stone, Obsidian, or Gravel Blocks, pressing [F] consumes 50 and replaces it with a random ore. The quality of the ore is determned by the block's rarity, and more common blocks will be consumed first." 
+        or "An upgrade to Glide. Gain another three midair jumps and a wall jump. Midair jumps are 85% as effective. You cling to walls slightly longer than the normal Wall Jump and slide down slower as well. "))
   end
 end
 
@@ -464,10 +464,10 @@ function getTechName(num)
     return num == 1 and "MRE" or (num == 2 and "Marksman" or (num == 3 and "Energy Pack" or "Missile Strike"))
   elseif classType == 5 then
     widget.setFontColor("classlayout.techname", "green")
-    return num == 1 and "Poison Dash" or (num == 2 and "Toxic Capsule" or (num == 3 and "Cloud Jump" or "Blade Oil"))
+    return num == 1 and "Poison Dash" or (num == 2 and "Toxic Capsule" or (num == 3 and "Cloud Jump" or "Toxic Aura"))
   elseif classType == 6 then
     widget.setFontColor("classlayout.techname", "yellow")
-    return num == 1 and "Glide" or (num == 2 and "Traveler's Sprint" or (num == 3 and "Drill" or "Traveler's Jump"))
+    return num == 1 and "Glide" or (num == 2 and "Utility Dash" or (num == 3 and "Inspection" or "Enhanced Glide"))
   end
 end
 

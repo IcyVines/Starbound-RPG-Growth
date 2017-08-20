@@ -14,9 +14,9 @@ function init()
   self.wallCollisionSet = {"Dynamic", "Block"}
 
   Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doMultiJump)
-  self.wallBind = Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doWallJump, false)
+  --self.wallBind = Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doWallJump, false)
   self.slideBind = Bind.create("Down=true", beginSlide)
-  self.wallBind:unbind()
+  --self.wallBind:unbind()
   self.slideBind:unbind()
 
   refreshJumps()
@@ -25,6 +25,8 @@ function init()
 end
 
 function update(args)
+  local jumpActivated = args.moves["jump"] and not self.lastJump
+  self.lastJump = args.moves["jump"]
 
   local lrInput
   if args.moves["left"] and not args.moves["right"] then
@@ -46,10 +48,12 @@ function update(args)
     --mcontroller.controlParameters(self.wallSlideParameters)
     mcontroller.controlParameters(self.wallSlideParameters)
     refreshJumps()
-    self.wallBind:rebind()
+    --self.wallBind:rebind()
 
     if not checkWall(self.wall) or status.statPositive("activeMovementAbilities") or ((lrInput == "right" or lrInput == "left") and lrInput ~= self.wall) then
       releaseWall()
+    elseif jumpActivated then
+      doWallJump()
     elseif not self.sliding then
       self.slideBind:rebind()
       mcontroller.controlFace(self.wall == "left" and 1 or -1)
@@ -173,7 +177,7 @@ end
 
 function releaseWall()
   self.slideBind:unbind()
-  self.wallBind:unbind()
+  --self.wallBind:unbind()
   self.wall = nil
   tech.setToolUsageSuppressed(false)
   tech.setParentState()

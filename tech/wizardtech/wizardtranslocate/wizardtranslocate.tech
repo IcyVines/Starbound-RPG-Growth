@@ -5,9 +5,9 @@
   "scripts" : ["wizardtranslocate.lua"],
   "animator" : "wizardtranslocate.animation",
 
-  "description" : "A dash that translocates where you point! Cooldown: 2.0s",
+  "description" : "Cost: 30e. Cooldown: 2s.",
   "shortDescription" : "Translocate",
-  "rarity" : "Legendary",
+  "rarity" : "Rare",
   "icon" : "/tech/wizardtech/wizardtranslocate/wizardtranslocate.png",
 
   "chipCost" : 0,

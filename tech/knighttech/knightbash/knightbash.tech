@@ -5,7 +5,7 @@
   "scripts" : ["knightbash.lua"],
   "animator" : "knightbash.animation",
 
-  "description" : "Bash into enemies with this fast sprint!",
+  "description" : "Bash Cost: 75eps.",
   "shortDescription" : "Bash",
   "rarity" : "Legendary",
   "icon" : "/tech/knighttech/knightbash/knightbash.png",

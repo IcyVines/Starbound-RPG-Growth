@@ -5,14 +5,14 @@
   "scripts" : ["roguetoxicaura.lua"],
   "animator" : "roguetoxicaura.animation",
 
-  "description" : "A dash that leaves poison clouds behind! Cooldown: 0.8s",
+  "description" : "Aura Duration/Cooldown: 15s/60s. Dash Cooldown: 1.8s.",
   "shortDescription" : "Toxic Aura",
   "rarity" : "Legendary",
   "icon" : "/tech/roguetech/roguetoxicaura/roguetoxicaura.png",
 
   "chipCost" : 0,
   "duration" : 15,
-  "cooldown" : 1,
+  "cooldown" : 60,
   "maximumDoubleTapTime" : 0.25,
   "dashControlForce" : 2000,
   "dashSpeed" : 80,

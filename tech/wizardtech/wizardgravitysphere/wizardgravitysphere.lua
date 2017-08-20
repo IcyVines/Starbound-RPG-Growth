@@ -20,7 +20,7 @@ function init()
     self.platformCollisionSet = {"Block", "Dynamic", "Platform"}
   end
 
-  self.healingRate = config.getParameter("healingRate")/60
+  self.healingRate = config.getParameter("healingRate")/100
   self.enableZone = false
   Bind.create("g", 
     function()
