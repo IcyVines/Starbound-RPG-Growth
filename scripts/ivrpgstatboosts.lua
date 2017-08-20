@@ -367,7 +367,7 @@ function undergroundCheck()
   return world.underground(mcontroller.position()) 
 end
 
-function uninit()
+--[[function uninit()
   status.clearPersistentEffects("ivrpgstatboosts")
   status.clearPersistentEffects("ivrpgclassboosts")
   status.removeEphemeralEffect("explorerglow")
@@ -376,4 +376,4 @@ function uninit()
   status.removeEphemeralEffect("wizardaffinity")
   status.removeEphemeralEffect("roguepoison")
   status.removeEphemeralEffect("soldierdiscipline")
-end
+end]]
