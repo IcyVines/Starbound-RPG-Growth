@@ -17,6 +17,9 @@ function damage(args)
 -- IVRPGMod
       --sb.logInfo("Damage Taken!!")
   self.id = args.sourceId
+  if world.isMonster(self.id) or world.isNpc(self.id) then
+    return
+  end
   self.damage = args.damage
   self.allDamage = args.sourceDamage
   self.source = args.sourceKind
@@ -60,6 +63,9 @@ function damage(args)
   end
   if status.stat("bleedMultiplier") > 0 then
     self.allDamage = self.allDamage*status.stat("bleedMultiplier")
+  end
+  if self.dexterity == nil then
+    return
   end
   if math.random(100) <= self.dexterity + self.bleedBonus then
     status.addEphemeralEffect("ivrpgweaken", (self.dexterity/25))
