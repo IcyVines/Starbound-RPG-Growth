@@ -370,5 +370,10 @@ end
 function uninit()
   status.clearPersistentEffects("ivrpgstatboosts")
   status.clearPersistentEffects("ivrpgclassboosts")
-  status.removeEphemeralEffect("ninjaglow")
+  status.removeEphemeralEffect("explorerglow")
+  status.removeEphemeralEffect("knightblock")
+  status.removeEphemeralEffect("ninjacrit")
+  status.removeEphemeralEffect("wizardaffinity")
+  status.removeEphemeralEffect("roguepoison")
+  status.removeEphemeralEffect("soldierdiscipline")
 end

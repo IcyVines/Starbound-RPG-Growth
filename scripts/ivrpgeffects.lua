@@ -12,5 +12,9 @@ end
 
 function update(dt)
   fuoldUpdate(dt)
-  status.addEphemeralEffect("ivrpgstatboosts",math.huge)
+  status.addEphemeralEffect("ivrpgstatboosts", math.huge)
+end
+
+function uninit()
+	status.removeEphemeralEffect("ivrpgstatboosts")
 end
