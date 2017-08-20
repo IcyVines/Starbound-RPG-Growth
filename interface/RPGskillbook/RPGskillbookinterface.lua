@@ -103,7 +103,7 @@ function updateLevel()
     self.newLevel = math.floor(math.sqrt(self.xp/100))
     while self.newLevel > self.level do
       player.addCurrency("currentlevel", 1)
-      player.addCurrency("statpoint", 1)
+      player.addCurrency("statpoint", math.floor(player.currency("currentlevel")/20)+1)
       self.level = self.level+1
     end
   end

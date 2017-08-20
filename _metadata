@@ -1,7 +1,9 @@
 {
- "author" : "IcyVines",
- "description" : "Adds RPG elements to Starbound.",
- "friendlyName" : "RPG Growth",
- "name" : "RPG_Growth",
- "version" : "1"
+  "author" : "IcyVines",
+  "description" : "Welcome to a brand new way to play Starbound!\n\nThis mod adds the ability to raise stats to make your character stronger. Simply go out there and fight monsters, and once some xp drops, you'll learn how to craft the Mysterious Book, which enables you to do a whole bunch of cool things.\n\nWith each level you gain through collecting XP, you'll be able to allocate stat points and unlock new techs. In order to start adding stats, pick from 6 classes: Knight, Wizard, Ninja, Soldier, Rogue, and Explorer. Each one has their own style of play and special abilities and techs.\n\nCurrently, you can:\nCheck your level and need XP in the Overview Tab (O).\nCheck your stats and raise them if possible in the Stats Tab (S).\nChoose and then check your current class, as well as unlock techs when possible in the Class Tab (C).\nCheck the actual effects of your raised stats by going to the Info Tab (I).\n\nTo Do:\nCreate Class Weapons to fill the gap in the Class Tab.\nCreate Affinities to fill the Affinities Tab (A).\nBalance the stats, classes, and techs depending on feedback.\n\nWarning:\nThis mod adds effects to your characters, and as such, you will not see your characters if you remove this mod after using it. Because of this, I recommend you backup your current storage, or start a new character. As I update this mod, stat distribution may change slightly, so your character may become under or overpowered.\n\nHere are some things you can do to test the stats, or to forcibly raise your level:\nYou can spawn in the different stats. They are simply called 'stat'point, where 'stat' is replaced with the stat name.\nFor example, if I wanted to increase Dexterity, I could type \"spawnitem dexteritypoint (amount)\".\nIn addition, you can spawn XP by typing \"spawnitem experienceorb (amount)\".\nIf you would like to spawn in the Mysterious Book, type \"spawnitem RPGskillbook\"\n\nPlease enjoy, and tell me if you have any suggestions or concerns about leveling!",
+  "friendlyName" : "RPG Growth",
+  "link" : "steam://url/CommunityFilePage/1115920474",
+  "name" : "RPG_Growth",
+  "steamContentId" : "1115920474",
+  "version" : "1"
 }
