@@ -1,6 +1,6 @@
-local monsterOldInit = init
-local monsterOldUpdate = update
-local monsterOldUninit = uninit
+local npcOldInit = init
+local npcOldUpdate = update
+local npcOldUninit = uninit
 
   -- Listen to damage taken
   --[[self.damageTaken = damageListener("damageTaken", function(notifications)
@@ -75,6 +75,10 @@ function damage(args)
       sourceEntityId = self.id
     })
   end
+
+  if world.entityHealth(entity.id())[1] <= 0 then
+    spawnXP()
+  end
   --End IVRPGMod
 end
 
@@ -86,38 +90,10 @@ function undergroundCheck(position)
   return world.underground(position) 
 end
 
-function die()
-  self.type = monster.type()
-  local xp = 1
-  if self.type == "crystalboss" then
-    xp = 100
-  elseif self.type == "spiderboss" then
-    xp = 150
-  elseif self.type == "cultistboss" then
-    xp = 200
-  elseif self.type == "kluexboss" then
-    xp = 250
-  elseif self.type == "bigape" then
-    xp = 300
-  elseif self.type == "dragonboss" then
-    xp = 350
-  elseif self.type == "eyeboss" then
-    xp = 400
-  elseif self.type == "penguinUfo" then
-    xp = 250
-  elseif self.type == "robotboss" then
-    xp = 250
-  elseif self.type == "electricguardianboss" then
-    xp = 500
-  elseif self.type == "fireguardianboss" then
-    xp = 500
-  elseif self.type == "iceguardianboss" then
-    xp = 500
-  elseif self.type == "poisonguardianboss" then
-    xp = 500
-  else
-    self.level = monster.level()*15
-    xp = self.level + math.random(-self.level/3, self.level/3)
+function spawnXP()
+  self.level = npc.level()*15
+  local xp = self.level + math.random(-self.level/3, self.level/3)
+  if world.entityAggressive(entity.id()) then
+    world.spawnItem("experienceorb", entity.position(), xp)
   end
-  world.spawnItem("experienceorb", entity.position(), xp)
 end

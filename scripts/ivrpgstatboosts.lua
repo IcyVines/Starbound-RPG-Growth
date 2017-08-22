@@ -56,7 +56,7 @@ function update(dt)
 
     -- Vitality
     {stat = "maxHealth", amount = math.floor(self.vitality*4)},
-    {stat = "foodDelta", amount = self.vitality*.02},
+    {stat = "foodDelta", amount = self.vitality*.0002},
 
     -- Vigor
     {stat = "maxEnergy", amount = math.floor(self.vigor*4)},

@@ -1,7 +1,7 @@
 function init()
   --Power
   effect.addStatModifierGroup({
-    {stat = "foodDelta", amount = .1}
+    {stat = "foodDelta", amount = .05}
   })
   effect.setParentDirectives("border=2;d8a23c20;63481400")
 end
