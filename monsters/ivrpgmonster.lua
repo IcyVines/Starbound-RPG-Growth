@@ -1,6 +1,7 @@
 local monsterOldInit = init
 local monsterOldUpdate = update
 local monsterOldUninit = uninit
+local monsterOldDie = die
 
   -- Listen to damage taken
   --[[self.damageTaken = damageListener("damageTaken", function(notifications)
@@ -87,6 +88,7 @@ function undergroundCheck(position)
 end
 
 function die()
+  monsterOldDie()
   self.type = monster.type()
   local xp = 1
   if self.type == "crystalboss" then
