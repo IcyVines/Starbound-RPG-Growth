@@ -1,0 +1,62 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "drill" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "drillParticles" ]
+            }
+          },
+          "on" : {
+            "properties" : {
+              "persistentSound" : "/sfx/tools/drill_hit.ogg",
+              "particleEmittersOn" : [ "drillParticles" ]
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "drillParticles" : {
+      "emissionRate" : 14.0,
+      "particles" : [
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        }
+      ]
+    }
+  },
+  "sounds" : {
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "activate" : []
+  }
+}

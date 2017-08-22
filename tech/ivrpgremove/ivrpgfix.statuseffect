@@ -1,0 +1,12 @@
+{
+  "name" : "ivrpgfix",
+  "effectConfig" : {
+  },
+  "defaultDuration" : 0.2,
+
+  "scripts" : [
+    "ivrpgfix.lua"
+  ],
+
+  "animationConfig" : "ivrpgfix.animation"
+}

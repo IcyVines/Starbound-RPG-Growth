@@ -1,7 +1,6 @@
 local monsterOldInit = init
 local monsterOldUpdate = update
 local monsterOldUninit = uninit
-local monsterOldDie = die
 
   -- Listen to damage taken
   --[[self.damageTaken = damageListener("damageTaken", function(notifications)
@@ -77,6 +76,10 @@ function damage(args)
     })
   end
   --End IVRPGMod
+
+  if world.entityHealth(entity.id())[1] <= 0 then
+    spawnXP()
+  end
 end
 
 function nighttimeCheck()
@@ -87,8 +90,7 @@ function undergroundCheck(position)
   return world.underground(position) 
 end
 
-function die()
-  monsterOldDie()
+function spawnXP()
   self.type = monster.type()
   local xp = 1
   if self.type == "crystalboss" then
@@ -121,5 +123,7 @@ function die()
     self.level = monster.level()*15
     xp = self.level + math.random(-self.level/3, self.level/3)
   end
-  world.spawnItem("experienceorb", entity.position(), xp)
+  if world.entityAggressive(entity.id()) then
+  	world.spawnItem("experienceorb", entity.position(), xp)
+  end
 end

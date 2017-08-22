@@ -6,6 +6,19 @@ function init()
 end
 
 function update(dt)
+  
+  --[[if status.statPositive("ivrpgremove") then
+  	script.setUpdateDelta(0)
+  	status.clearPersistentEffects("ivrpgstatboosts")
+    status.clearPersistentEffects("ivrpgclassboosts")
+    status.removeEphemeralEffect("explorerglow")
+    status.removeEphemeralEffect("knightblock")
+    status.removeEphemeralEffect("ninjacrit")
+    status.removeEphemeralEffect("wizardaffinity")
+    status.removeEphemeralEffect("roguepoison")
+    status.removeEphemeralEffect("soldierdiscipline")
+  	return
+  end]]
   self.id = entity.id()
   self.classType = world.entityCurrency(self.id, "classtype")
 
@@ -366,14 +379,3 @@ end
 function undergroundCheck()
   return world.underground(mcontroller.position()) 
 end
-
---[[function uninit()
-  status.clearPersistentEffects("ivrpgstatboosts")
-  status.clearPersistentEffects("ivrpgclassboosts")
-  status.removeEphemeralEffect("explorerglow")
-  status.removeEphemeralEffect("knightblock")
-  status.removeEphemeralEffect("ninjacrit")
-  status.removeEphemeralEffect("wizardaffinity")
-  status.removeEphemeralEffect("roguepoison")
-  status.removeEphemeralEffect("soldierdiscipline")
-end]]

@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgremove",
+  "type" : "head",
+
+  "rarity" : "Rare",
+  "icon" : "/tech/ivrpgremove/ivrpgremove.png",
+  "description" : "Press [F] and then quit.",
+  "shortDescription" : "Character Fix",
+  "chipCost" : 0,
+
+  "scripts" : ["ivrpgremove.lua"],
+  "animator" : "ivrpgremove.animation",
+
+  "cost" : 0
+
+}
