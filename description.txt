@@ -8,6 +8,7 @@ If you would like to see more information about classes, stats, experience, leve
 
 Currently, you can:
 [list]
+[*]Collect XP from monsters and raise your level. After collecting some XP, press [C] to open your player's crafting menu so that you may craft the Mysterious Book.
 [*]Check your level and needed XP in the Overview Tab (O).
 [*]Check your stats and raise them if possible in the Stats Tab (S).
 [*]Choose and then check your current class, as well as unlock techs when possible, in the Class Tab (C).
@@ -22,15 +23,29 @@ To Do:
 [/list]
 
 Warning:
-This mod adds effects to your characters, and as such, you will not see your characters if you remove this mod after using it. Because of this, I recommend you backup your current storage, or start a new character. As I update this mod, stat distribution may change slightly, so your character may become under or overpowered.
+This mod adds effects to your characters, and as such, you will not see your characters if you remove this mod after using it without going through a couple of steps (listed below). Because of this, I recommend you backup your current storage, or start a new character. As I update this mod, stat distribution may change slightly, so your character may become under or overpowered.
+If you would like to keep your character after unsubscribing, simply follow these steps:
+[list]
+[*]First, go into admin and type 'enableTech ivrpgremove'.
+[*]Then select it as your tech and remove the Mysterious Book from your inventory.
+[*]Make sure you are not being affected by any effects, like Rogue's Toxic Aura.
+[*]Lastly, press F. If you had any class effects, you should see them disappear.
+[*]Quit immediately.
+[*]Unsubscribe and restart your game. If you don't see your character, you may need to load the game with the mod again and simply wait a few minutes before trying the above steps again.
+[*]If you see your character, load it. If the game crashes, load again. You should be able to load your character now.
+[/list]
 
 Compatibility:
-Yes, this mod should work with Frackin Universe and Frackin Races. If there are any problems, just tell me. I will fix them as soon as possible.
+[list]
+[*]Yes, this mod should work with Frackin Universe and Frackin Races.
+[*]It is important to note however that FU Monsters do not drop experience. I will make a RPG Growth - FU Patch Mod that will remedy this.
+[*]If there are any problems, just tell me. I will fix them as soon as possible.
+[/list]
 
 Here are some things you can do to test the stats, or to forcibly raise your level:
 [list]
 [*]You can spawn in the different stats. They are simply called 'stat'point, where 'stat' is replaced with the stat name.
-For example, if I wanted to increase Dexterity, I could type "spawnitem dexteritypoint (amount)".
+[*]For example, if I wanted to increase Dexterity, I could type "spawnitem dexteritypoint (amount)".
 [*]In addition, you can spawn XP by typing "spawnitem experienceorb (amount)".
 [*]If you would like to spawn in the Mysterious Book, type "spawnitem RPGskillbook"
 [/list]

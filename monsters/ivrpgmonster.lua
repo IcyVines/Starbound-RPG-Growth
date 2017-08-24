@@ -78,7 +78,7 @@ function damage(args)
   --End IVRPGMod
 
   if world.entityHealth(entity.id())[1] <= 0 then
-    spawnXP()
+    spawnXP(self.id)
   end
 end
 
@@ -90,12 +90,10 @@ function undergroundCheck(position)
   return world.underground(position) 
 end
 
-function spawnXP()
+function spawnXP(source)
   self.type = monster.type()
-  local xp = 1
-  if self.type == "crystalboss" then
-    xp = 100
-  elseif self.type == "spiderboss" then
+  local xp = 0
+  if self.type == "spiderboss" then
     xp = 150
   elseif self.type == "cultistboss" then
     xp = 200
@@ -121,9 +119,9 @@ function spawnXP()
     xp = 500
   else
     self.level = monster.level()*15
-    xp = self.level + math.random(-self.level/3, self.level/3)
+    xp = self.level + math.random(math.ceil(-self.level/3), math.floor(self.level/3))
   end
-  if world.entityAggressive(entity.id()) then
-  	world.spawnItem("experienceorb", entity.position(), xp)
+  if world.entityAggressive(entity.id()) or world.entityCanDamage(source, entity.id()) then
+  	world.spawnItem("experienceorb", entity.position(), xp, {}, mcontroller.velocity())
   end
 end

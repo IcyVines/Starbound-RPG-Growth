@@ -3,7 +3,7 @@ function init()
   effect.addStatModifierGroup({
     {stat = "ninjaBleed", amount = 20}
   })
-  effect.setParentDirectives("border=2;d8111120;59050500")
+  effect.setParentDirectives("border=1;d8111120;59050500")
 end
 
 

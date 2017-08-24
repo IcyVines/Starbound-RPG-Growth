@@ -6,11 +6,13 @@ require "/scripts/drawingutil.lua"
 -- engine callbacks
 function init()
   --View:init()
+  
   self.clickEvents = {}
   self.state = FSM:new()
   self.state:set(splashScreenState)
   self.system = celestial.currentSystem()
   self.pane = pane
+  player.addCurrency("skillbookopen", 1)
   --initiating level and xp
   self.xp = player.currency("experienceorb")
   self.level = player.currency("currentlevel")--math.floor(math.sqrt(self.xp/100))
@@ -48,7 +50,8 @@ function dismissed()
 end
 
 function update(dt)
-  if not world.sendEntityMessage(player.id(), "holdingSkillBook"):result() then
+  --if not world.sendEntityMessage(player.id(), "holdingSkillBook"):result() then
+  if player.currency("skillbookopen") == 2 then
     self.pane.dismiss()
   end
 
@@ -96,9 +99,12 @@ function updateLevel()
   if player.currency("currentlevel") == 0 then
     self.level = 1
     player.addCurrency("currentlevel",1)
-    player.addCurrency("experienceorb",100)
+    player.addCurrency("experienceorb",100 - player.currency("experienceorb"))
     self.xp = player.currency("experienceorb")
     startingStats()
+  elseif player.currency("experienceorb") < 100 then
+    player.addCurrency("experienceorb",100 - player.currency("experienceorb"))
+    self.xp = player.currency("experienceorb")
   else
     self.newLevel = math.floor(math.sqrt(self.xp/100))
     while self.newLevel > self.level do

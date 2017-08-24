@@ -44,5 +44,12 @@
                 {"weight" : 0.1, "item" : ["experienceorb", 50]}
             ]
         }]
+    ],
+    "experienceorbbosspool" : [
+        [0, {
+            "pool" : [
+                {"weight" : 1, "item" : ["experienceorb", 100]}
+            ]
+        }]
     ]
 }

@@ -1,0 +1,9 @@
+[
+
+  {  
+    "op" : "add", 
+    "path" : "/normal/-",
+    "value" :  { "label" : "Mysterious Book", "pane" : "/interface/RPGskillbook/RPGskillbook.config", "icon" : "/interface/RPGskillbook/RPGskillbook_NEW.png" }
+  }
+
+]

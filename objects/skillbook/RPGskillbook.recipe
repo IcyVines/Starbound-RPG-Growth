@@ -1,20 +1,8 @@
 {
   "input" : [
     {
-      "item" : "livingroot",
-      "count" : 1
-    },
-    {
-      "item" : "leather",
-      "count" : 2
-    },
-    {
-      "item" : "paper",
-      "count" : 4
-    },
-    {
       "item" : "experienceorb",
-      "count" : 100
+      "count" : 1
     }
   ],
   "output" : {

@@ -5,7 +5,7 @@ function init()
     {stat = "fireResistance", amount = .1},
     {stat = "electricResistance", amount = .1}
   })
-  effect.setParentDirectives("border=2;c132bf20;38093700")
+  effect.setParentDirectives("border=1;c132bf20;38093700")
 end
 
 

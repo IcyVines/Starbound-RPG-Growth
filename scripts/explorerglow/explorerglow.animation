@@ -3,7 +3,7 @@
     "glow" : {
       "active" : true,
       "position" : [0, 0],
-      "color" : [245, 233, 145],
+      "color" : [170, 160, 30],
       "pointLight" : false
     }
   }

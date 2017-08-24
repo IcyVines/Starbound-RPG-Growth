@@ -92,8 +92,8 @@ end
 
 function spawnXP()
   self.level = npc.level()*15
-  local xp = self.level + math.random(-self.level/3, self.level/3)
-  if world.entityAggressive(entity.id()) then
-    world.spawnItem("experienceorb", entity.position(), xp)
+  local xp = self.level + math.random(math.ceil(-self.level/3), math.floor(self.level/3))
+  if world.entityAggressive(entity.id()) or world.entityCanDamage(source, entity.id()) then
+    world.spawnItem("experienceorb", entity.position(), xp, {}, mcontroller.velocity())
   end
 end

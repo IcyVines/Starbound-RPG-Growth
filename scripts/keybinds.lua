@@ -103,7 +103,7 @@ function keybinds.initialize()
       end
     end
 
-    sb.logInfo("Keybinds v%s initialized.", keybinds.version)
+    --sb.logInfo("Keybinds v%s initialized.", keybinds.version)
   end
 end
 
