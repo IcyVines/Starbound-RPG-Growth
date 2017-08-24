@@ -82,10 +82,15 @@ function platform()
     mcontroller.setYVelocity(0)
     world.spawnVehicle("cloudplatform", vec2.sub(mcontroller.position(),{0,3}))
     self.cooldownTimer = self.cooldown
+    status.addEphemeralEffect("roguecloudjumpcooldown", self.cooldownTimer)
   end
 end
 
 function refreshJumps()
   self.multiJumps = self.multiJumpCount
   self.applyJumpModifier = false
+end
+
+function uninit()
+  status.removeEphemeralEffect("roguecloudjumpcooldown")
 end

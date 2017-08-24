@@ -3,6 +3,7 @@ require "/scripts/vec2.lua"
 function init()
   local bounds = mcontroller.boundBox()
   script.setUpdateDelta(10)
+  self.damageUpdate = 1
 end
 
 function update(dt)
@@ -51,10 +52,10 @@ function update(dt)
     {stat = "energyRegenBlockTime", amount = -.01*self.intelligence},
 
     -- Dexterity
-    {stat = "fallDamageMultiplier", amount = -self.dexterity*.01},
+    {stat = "fallDamageMultiplier", amount = -self.dexterity*.005},
 
     -- Endurance
-    {stat = "physicalResistance", amount = self.endurance*.005},
+    {stat = "physicalResistance", amount = self.endurance*.0075},
     {stat = "poisonResistance", amount = self.endurance*.005},
     {stat = "fireResistance", amount = self.endurance*.005},
     {stat = "electricResistance", amount = self.endurance*.005},
@@ -65,14 +66,14 @@ function update(dt)
     {stat = "grit", amount = self.endurance*.01},
 
     --Agility
-    {stat = "fallDamageMultiplier", amount = -self.agility*.005},
+    {stat = "fallDamageMultiplier", amount = -self.agility*.01},
 
     -- Vitality
-    {stat = "maxHealth", amount = math.floor(self.vitality*4)},
+    {stat = "maxHealth", effectiveMultiplier = math.floor(100*(1 + self.vitality*.05))/100},
     {stat = "foodDelta", amount = self.vitality*.0002},
 
     -- Vigor
-    {stat = "maxEnergy", amount = math.floor(self.vigor*4)},
+    {stat = "maxEnergy", effectiveMultiplier = math.floor(100*(1 + self.vigor*.05))/100},
     {stat = "energyRegenPercentageRate", amount = math.floor(.02*self.vigor)}
 
   })
@@ -85,7 +86,7 @@ function update(dt)
 
   local heldItem = world.entityHandItem(self.id, "primary")
   local heldItem2 = world.entityHandItem(self.id, "alt")
-
+  --two handed
   if heldItem and (root.itemHasTag(heldItem, "broadsword") or root.itemHasTag(heldItem, "spear") or root.itemHasTag(heldItem, "hammer")) then
     status.addPersistentEffects("ivrpgstatboosts",
     {
@@ -99,13 +100,33 @@ function update(dt)
   elseif heldItem and (root.itemHasTag(heldItem, "bow") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "assaultrifle") or root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "rocketlauncher")) then
     status.addPersistentEffects("ivrpgstatboosts",
     {
-      {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.01}
+      {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.015}
     })
-  elseif (heldItem and root.itemHasTag(heldItem,"weapon")) or (heldItem2 and root.itemHasTag(heldItem2,"weapon")) then
-    status.addPersistentEffects("ivrpgstatboosts",
-    {
-      {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.01}
-    })
+  else
+    --one-handed primary
+    if (heldItem and root.itemHasTag(heldItem,"wand")) then
+      status.addPersistentEffects("ivrpgstatboosts",
+      {
+        {stat = "powerMultiplier", effectiveMultiplier = 1 + self.intelligence*0.0075}
+      })
+    elseif (heldItem and root.itemHasTag(heldItem,"weapon")) then
+      status.addPersistentEffects("ivrpgstatboosts",
+      {
+        {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.0075}
+      })
+    end
+    --one-handed primary
+    if (heldItem2 and root.itemHasTag(heldItem2,"wand")) then
+      status.addPersistentEffects("ivrpgstatboosts",
+      {
+        {stat = "powerMultiplier", effectiveMultiplier = 1 + self.intelligence*0.0075}
+      })
+    elseif (heldItem2 and root.itemHasTag(heldItem2,"weapon")) then
+      status.addPersistentEffects("ivrpgstatboosts",
+      {
+        {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.0075}
+      })
+    end
   end
   
   updateClassEffects(self.classType)
@@ -131,7 +152,8 @@ function updateClassEffects(classType)
     {
       {stat = "grit", amount = .2},
     })
-    self.notifications = status.damageTakenSince(5)
+
+    self.notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
     if self.notifications then
       --sb.logInfo("Damage Taken!!!")
       for _,notification in pairs(self.notifications) do
@@ -139,10 +161,12 @@ function updateClassEffects(classType)
           if status.resourcePositive("perfectBlock") then
             --increased damage after perfect blocks
             status.addEphemeralEffect("knightblock")
+            --sb.logInfo("Perfect Block: " .. tostring(status.resource("perfectBlock")) .. ", " .. tostring(status.resource("prefectBlockLimit")))
           end
         end
       end
     end
+
     if heldItem and root.itemHasTag(heldItem, "broadsword") then
       status.addPersistentEffects("ivrpgclassboosts",
           {
@@ -175,7 +199,7 @@ function updateClassEffects(classType)
     elseif (heldItem and root.itemHasTag(heldItem, "wand") and heldItem2 and root.itemHasTag(heldItem2,"wand")) then
       status.addPersistentEffects("ivrpgclassboosts",
       {
-        {stat = "powerMultiplier", effectiveMultiplier = 1.1 + self.intelligence*.0075},
+        {stat = "powerMultiplier", effectiveMultiplier = 1.1},
       })
       status.addEphemeralEffect("wizardaffinity", math.huge)
       self.wizardaffinityAdded = true
@@ -190,7 +214,7 @@ function updateClassEffects(classType)
         self.checkDualWield = false
         status.addPersistentEffects("ivrpgclassboosts",
         {
-          {stat = "powerMultiplier", effectiveMultiplier = 1.1 + self.intelligence*.0075}
+          {stat = "powerMultiplier", effectiveMultiplier = 1.1}
         })
         status.addEphemeralEffect("wizardaffinity", math.huge)
         self.wizardaffinityAdded = true
@@ -200,7 +224,7 @@ function updateClassEffects(classType)
       if (heldItem2 and root.itemHasTag(heldItem2, "wand")) and self.checkDualWield then
         status.addPersistentEffects("ivrpgclassboosts",
         {
-          {stat = "powerMultiplier", effectiveMultiplier = 1.1 + self.intelligence*.0075}
+          {stat = "powerMultiplier", effectiveMultiplier = 1.1}
         })
         status.addEphemeralEffect("wizardaffinity", math.huge)
         self.wizardaffinityAdded = true
@@ -224,12 +248,12 @@ function updateClassEffects(classType)
       status.removeEphemeralEffect("ninjacrit")
     end
     self.checkDualWield = true
-    if heldItem and root.itemHasTag(heldItem, "bow") then
-      status.addPersistentEffects("ivrpgclassboosts",
-      {
-        {stat = "powerMultiplier", effectiveMultiplier = 1.1}
-      })
-    end
+    --if heldItem and root.itemHasTag(heldItem, "bow") then
+      --status.addPersistentEffects("ivrpgclassboosts",
+      --{
+        --{stat = "powerMultiplier", effectiveMultiplier = 1.1}
+      --})
+    --end
     if holdingWeaponsCheck(heldItem, heldItem2, false) then
       if (heldItem and root.itemHasTag(heldItem, "ninja")) then
         self.checkDualWield = false
@@ -258,13 +282,14 @@ function updateClassEffects(classType)
     {
       --Purposefully Empty
     })
-    self.health = world.entityHealth(self.id)
-    if self.health[1] ~= 0 and self.health[2] ~= 0 and self.health[1]/self.health[2]*100 >= 50 then
+    self.energy = status.resource("energy")
+    self.maxEnergy = status.stat("maxEnergy")
+    if self.energy == self.maxEnergy then
       status.addEphemeralEffect("soldierdiscipline", math.huge)
     else
       status.removeEphemeralEffect("soldierdiscipline")
     end
-    if heldItem and (root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "rocketlauncher") or root.itemHasTag(heldItem, "assaultrifle")) then
+    if heldItem and (root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "assaultrifle")) then
         status.addPersistentEffects("ivrpgclassboosts",
         {
           {stat = "powerMultiplier", effectiveMultiplier = 1.1}
@@ -317,9 +342,8 @@ function updateClassEffects(classType)
           {stat = "radioactiveResistance", amount = .05}
         })
     end
-    self.energy = status.resource("energy")
-    self.maxEnergy = status.stat("maxEnergy")
-    if self.maxEnergy ~= 0 and self.energy/self.maxEnergy >= .5 then
+    self.health = world.entityHealth(self.id)
+    if self.health[1] ~= 0 and self.health[2] ~= 0 and self.health[1]/self.health[2]*100 >= 50 then
       status.addEphemeralEffect("explorerglow", math.huge)
     else
       status.removeEphemeralEffect("explorerglow")

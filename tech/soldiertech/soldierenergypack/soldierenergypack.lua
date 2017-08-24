@@ -7,6 +7,7 @@ function init()
 
   self.cooldown = config.getParameter("cooldown")
   self.duration = config.getParameter("duration")
+  self.cooldownActive = false
 
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=21A81AFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
@@ -25,12 +26,14 @@ function energize()
     status.modifyResourcePercentage("energy", 1)
   elseif self.cooldownTimer > self.cooldown then
     self.cooldownTimer = self.cooldown
+    status.addEphemeralEffect("soldierenergypackcooldown", self.cooldownTimer)
     status.removeEphemeralEffect("jumpboost")
   end
 end
 
 function uninit()
   status.removeEphemeralEffect("jumpboost")
+  status.removeEphemeralEffect("soldierenergypackcooldown")
   tech.setParentDirectives()
 end
 
@@ -39,9 +42,13 @@ function update(args)
   if self.cooldownTimer > 0 then
     self.cooldownTimer = math.max(0, self.cooldownTimer - args.dt)
     if self.cooldownTimer == 0 then
+      self.cooldownActive = false
       self.rechargeEffectTimer = self.rechargeEffectTime
       tech.setParentDirectives(self.rechargeDirectives)
       animator.playSound("recharge")
+    elseif self.cooldownTimer <= self.cooldown and not self.cooldownActive then
+      self.cooldownActive = true
+      status.addEphemeralEffect("soldierenergypackcooldown", self.cooldownTimer)
     end
   end
 

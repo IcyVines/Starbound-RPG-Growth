@@ -1,6 +1,6 @@
 function init()
   effect.addStatModifierGroup({
-    {stat = "protection", amount = -50}
+    {stat = "protection", amount = -20}
   })
   activateVisualEffects()
   effect.setParentDirectives("fade=770000=0.25")

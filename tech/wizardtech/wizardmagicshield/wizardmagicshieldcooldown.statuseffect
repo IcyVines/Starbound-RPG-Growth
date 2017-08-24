@@ -1,0 +1,8 @@
+{
+  "name" : "wizardmagicshieldcooldown",
+
+  "defaultDuration" : 10,
+
+  "label" : "Magic Shield Cooldown",
+  "icon" : "/tech/wizardtech/wizardmagicshield/cooldown.png"
+}

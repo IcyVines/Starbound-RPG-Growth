@@ -5,7 +5,7 @@ function init()
   local enableParticles = config.getParameter("particles", true)
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
   animator.setParticleEmitterActive("embers", enableParticles)
-  effect.setParentDirectives("border=1;51b1ba20;05385900")
+  --effect.setParentDirectives("border=1;51b1ba20;05385900")
 end
 
 

@@ -25,6 +25,7 @@ function init()
   self.cooldownTimer = 0
   self.cooldown = config.getParameter("cooldown")
   self.duration = config.getParameter("duration")
+  self.cooldownActive = false
 
   self.doubleTap = DoubleTap:new({"left", "right"}, config.getParameter("maximumDoubleTapTime"), function(dashKey)
       if self.dashTimer == 0
@@ -43,6 +44,8 @@ end
 function uninit()
   status.clearPersistentEffects("movementAbility")
   status.removeEphemeralEffect("rtoxicaura")
+  status.removeEphemeralEffect("roguetoxicauracooldown")
+  deactivateAura()
   tech.setParentDirectives()
 end
 
@@ -50,6 +53,7 @@ function toxicAura()
   if self.cooldownTimer <= 0 then
     self.cooldownTimer = self.cooldown + self.duration
     status.addEphemeralEffect("rtoxicaura", self.duration)
+    activateAura()
   end
 end
 
@@ -58,9 +62,13 @@ function update(args)
   if self.cooldownTimer > 0 then
     self.cooldownTimer = math.max(0, self.cooldownTimer - args.dt)
     if self.cooldownTimer == 0 then
+      self.cooldownActive = false
       self.auraRechargeEffectTimer = self.auraRechargeEffectTime
       tech.setParentDirectives(self.auraRechargeDirectives)
       animator.playSound("recharge")
+    elseif self.cooldownTimer <= self.cooldown and not self.cooldownActive then
+      self.cooldownActive = true
+      status.addEphemeralEffect("roguetoxicauracooldown", self.cooldownTimer)
     end
   end
 
@@ -148,4 +156,33 @@ function endDash()
 
   animator.setAnimationState("dashing", "off")
   animator.setParticleEmitterActive("dashParticles", false)
+end
+
+function activateAura()
+    if not self.aura then
+      self.timeConfig = {
+        timeToLive = self.duration
+      }
+      self.aura = world.spawnProjectile("rtoxicaura",
+                                            mcontroller.position(),
+                                            entity.id(),
+                                            {0,0},
+                                            true,
+                                            self.timeConfig
+                                           )
+    end
+end
+
+function deactivateAura()
+    if self.aura then
+      world.entityQuery(mcontroller.position(),1,
+        {
+         withoutEntityId = entity.id(),
+         includedTypes = {"projectile"},
+         callScript = "removeAura",
+         callScriptArgs = {self.aura}
+        }
+      )
+      self.aura = nil
+    end
 end

@@ -21,6 +21,7 @@ function magicShield()
     status.removeEphemeralEffect("wizardshield")
     if self.cooldownTimer > self.cooldown then
       self.cooldownTimer = 2*self.cooldown - self.cooldownTimer
+      status.addEphemeralEffect("wizardmagicshieldcooldown", self.cooldownTimer)
     end
   else
     if self.cooldownTimer <= 0 and status.overConsumeResource("energy", self.cost) then
@@ -34,9 +35,10 @@ end
 function update(args)
   if self.cooldownTimer > 0 then
     self.cooldownTimer = math.max(0, self.cooldownTimer - args.dt)
-    if self.cooldownTimer <= self.cooldown then
+    if self.cooldownTimer <= self.cooldown and self.active == true then
       self.active = false
       status.removeEphemeralEffect("wizardshield")
+      status.addEphemeralEffect("wizardmagicshieldcooldown", self.cooldownTimer)
     end
     if self.cooldownTimer == 0 then
       self.rechargeEffectTimer = self.rechargeEffectTime
@@ -54,5 +56,6 @@ function update(args)
 end
 
 function uninit()
+  status.removeEphemeralEffect("wizardmagicshieldcooldown")
   status.removeEphemeralEffect("wizardshield")
 end

@@ -5,6 +5,6 @@
   },
   "defaultDuration" : 10,
 
-  "label" : "Nutrient-Full",
+  "label" : "MRE Cooldown",
   "icon" : "/tech/soldiertech/soldiermre/soldiermrecooldown.png"
 }

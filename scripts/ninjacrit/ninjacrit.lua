@@ -1,9 +1,9 @@
 function init()
   --Crit
   effect.addStatModifierGroup({
-    {stat = "ninjaBleed", amount = 20}
+    {stat = "ninjaBleed", amount = 10}
   })
-  effect.setParentDirectives("border=1;d8111120;59050500")
+  --effect.setParentDirectives("border=1;d8111120;59050500")
 end
 
 

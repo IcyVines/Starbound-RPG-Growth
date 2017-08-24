@@ -1,0 +1,8 @@
+{
+  "name" : "ninjaassassinatecooldown",
+
+  "defaultDuration" : 10,
+
+  "label" : "Assassinate Cooldown",
+  "icon" : "/tech/ninjatech/ninjaassassinate/cooldown.png"
+}

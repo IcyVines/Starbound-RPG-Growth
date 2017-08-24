@@ -1,0 +1,8 @@
+{
+  "name" : "roguecloudjumpcooldown",
+
+  "defaultDuration" : 10,
+
+  "label" : "Cloud Jump Cooldown",
+  "icon" : "/tech/roguetech/roguecloudjump/cooldown.png"
+}

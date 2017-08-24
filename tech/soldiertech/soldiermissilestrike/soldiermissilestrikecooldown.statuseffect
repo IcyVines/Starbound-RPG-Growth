@@ -1,0 +1,8 @@
+{
+  "name" : "soldiermissilestrikecooldown",
+
+  "defaultDuration" : 10,
+
+  "label" : "Missile Strike Cooldown",
+  "icon" : "/tech/soldiertech/soldiermissilestrike/soldiercooldown.png"
+}

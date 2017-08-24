@@ -1,7 +1,262 @@
 [
-    {
-        "op" : "add",
-        "path" : "/erchiushorrorTreasure/0/1/fill",
-        "value" : [{"item" : ["experienceorb", 200]}]
-    }
+	[{
+			"op": "test",
+			"path": "/erchiushorrorTreasure/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/erchiushorrorTreasure/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 100]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/erchiushorrorTreasure/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/erchiushorrorTreasure/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 100]
+				}
+			]
+
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/ixodoomTreasure/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/ixodoomTreasure/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 150]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/ixodoomTreasure/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/ixodoomTreasure/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 150]
+				}
+			]
+
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/asranoxTreasure/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/asranoxTreasure/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 200]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/asranoxTreasure/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/asranoxTreasure/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 200]
+				}
+			]
+
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/kluexavatarTreasure/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/kluexavatarTreasure/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 250]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/kluexavatarTreasure/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/kluexavatarTreasure/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 250]
+				}
+			]
+
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/bigapeTreasure/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/bigapeTreasure/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 300]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/bigapeTreasure/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/bigapeTreasure/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 300]
+				}
+			]
+
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/bonedragonTreasure/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/bonedragonTreasure/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 350]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/bonedragonTreasure/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/bonedragonTreasure/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 350]
+				}
+			]
+
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/guardianTreasure/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/guardianTreasure/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 500]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/guardianTreasure/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/guardianTreasure/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 500]
+				}
+			]
+
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/dreadwingDrop/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/dreadwingDrop/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 250]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/dreadwingDrop/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/dreadwingDrop/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 250]
+				}
+			]
+
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/shockhopperDrop/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/shockhopperDrop/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 250]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/shockhopperDrop/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/shockhopperDrop/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 250]
+				}
+			]
+
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/essenceDrop/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/essenceDrop/0/1/fill/-",
+			"value": {
+				"pool": "experienceorbpool"
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/essenceDrop/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/essenceDrop/0/1/fill",
+			"value": [{
+					"pool": "experienceorbpool"
+				}
+			]
+
+		}
+	]
 ]

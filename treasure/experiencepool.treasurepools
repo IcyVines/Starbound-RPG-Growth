@@ -2,46 +2,58 @@
     "experienceorbpool" : [
         [1, {
             "pool" : [
-                {"weight" : 0.7, "item" : ["experienceorb", 1]},
-                {"weight" : 0.29, "item" : ["experienceorb", 2]},
-                {"weight" : 0.01, "item" : ["experienceorb", 5]}
+                {"weight" : 0.33, "item" : ["experienceorb", 10]},
+                {"weight" : 0.34, "item" : ["experienceorb", 15]},
+                {"weight" : 0.33, "item" : ["experienceorb", 20]}
             ]
         }],
         [2, {
             "pool" : [
-                {"weight" : 0.7, "item" : ["experienceorb", 2]},
-                {"weight" : 0.29, "item" : ["experienceorb", 5]},
-                {"weight" : 0.01, "item" : ["experienceorb", 10]}
+                {"weight" : 0.33, "item" : ["experienceorb", 25]},
+                {"weight" : 0.34, "item" : ["experienceorb", 30]},
+                {"weight" : 0.33, "item" : ["experienceorb", 35]}
             ]
         }],
         [3, {
             "pool" : [
-                {"weight" : 0.7, "item" : ["experienceorb", 5]},
-                {"weight" : 0.2, "item" : ["experienceorb", 10]},
-                {"weight" : 0.09, "item" : ["experienceorb", 15]},
-                {"weight" : 0.01, "item" : ["experienceorb", 25]}
+                {"weight" : 0.33, "item" : ["experienceorb", 40]},
+                {"weight" : 0.34, "item" : ["experienceorb", 45]},
+                {"weight" : 0.33, "item" : ["experienceorb", 50]}
             ]
         }],
         [4, {
             "pool" : [
-                {"weight" : 0.6, "item" : ["experienceorb", 10]},
-                {"weight" : 0.3, "item" : ["experienceorb", 15]},
-                {"weight" : 0.09, "item" : ["experienceorb", 25]},
-                {"weight" : 0.01, "item" : ["experienceorb", 50]}
+                {"weight" : 0.33, "item" : ["experienceorb", 55]},
+                {"weight" : 0.34, "item" : ["experienceorb", 60]},
+                {"weight" : 0.33, "item" : ["experienceorb", 65]}
             ]
         }],
         [5, {
             "pool" : [
-                {"weight" : 0.6, "item" : ["experienceorb", 25]},
-                {"weight" : 0.38, "item" : ["experienceorb", 30]},
-                {"weight" : 0.02, "item" : ["experienceorb", 50]}
+                {"weight" : 0.33, "item" : ["experienceorb", 70]},
+                {"weight" : 0.34, "item" : ["experienceorb", 75]},
+                {"weight" : 0.33, "item" : ["experienceorb", 80]}
             ]
         }],
         [6, {
             "pool" : [
-                {"weight" : 0.45, "item" : ["experienceorb", 25]},
-                {"weight" : 0.45, "item" : ["experienceorb", 30]},
-                {"weight" : 0.1, "item" : ["experienceorb", 50]}
+                {"weight" : 0.33, "item" : ["experienceorb", 85]},
+                {"weight" : 0.34, "item" : ["experienceorb", 90]},
+                {"weight" : 0.33, "item" : ["experienceorb", 95]}
+            ]
+        }],
+        [7, {
+            "pool" : [
+                {"weight" : 0.33, "item" : ["experienceorb", 100]},
+                {"weight" : 0.34, "item" : ["experienceorb", 105]},
+                {"weight" : 0.33, "item" : ["experienceorb", 110]}
+            ]
+        }],
+        [8, {
+            "pool" : [
+                {"weight" : 0.33, "item" : ["experienceorb", 115]},
+                {"weight" : 0.34, "item" : ["experienceorb", 120]},
+                {"weight" : 0.33, "item" : ["experienceorb", 125]}
             ]
         }]
     ],

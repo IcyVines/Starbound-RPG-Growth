@@ -38,9 +38,10 @@ function damage(args)
     end
   elseif self.classType == 4 then
     self.dexterity = self.dexterity^1.1
-    if math.random(10) < 3 then
-      status.addEphemeralEffect("soldierstun")
-      self.suppressDamageTimer = 1.5
+    if math.random(10) < 2 then
+      status.addEphemeralEffect("soldierstun", 100.0*self.damage/world.entityHealth(entity.id())[2])
+      --sb.logInfo(1.0*self.damage/world.entityHealth(entity.id())[2])
+      --self.suppressDamageTimer = 1.5
     end
   elseif self.classType == 5 then
     self.dexterity = self.dexterity^1.15

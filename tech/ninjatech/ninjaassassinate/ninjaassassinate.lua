@@ -19,7 +19,7 @@ function init()
 end
 
 function assassinate()
-  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and status.overConsumeResource("energy", self.cost) then
+  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and status.consumeResource("health", self.cost) then
       self.vanishTimer = self.vanishTime
       self.vanished = true
       status.addEphemeralEffect("invisible", math.huge)
@@ -39,6 +39,7 @@ function uninit()
   tech.setParentDirectives()
   status.clearPersistentEffects("ninjaassassinate")
   status.removeEphemeralEffect("invisible")
+  status.removeEphemeralEffect("ninjaassassinatecooldown")
   tech.setToolUsageSuppressed(false)
 end
 
@@ -91,6 +92,7 @@ function update(args)
       status.clearPersistentEffects("ninjaassassinate")
       status.removeEphemeralEffect("invisible")
       self.dashCooldownTimer = self.dashCooldown
+      status.addEphemeralEffect("ninjaassassinatecooldown", self.dashCooldownTimer)
     end
   end
 

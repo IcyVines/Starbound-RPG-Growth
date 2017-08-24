@@ -10,6 +10,7 @@
   "statusEffects" : [
     "rogueweaken"
   ],
+  "scripts": ["/tech/roguetech/roguetoxicaura/removeaura.lua"],
   "piercing" : true,
   "damagePoly" : [[-125, 0], [-88.3, 88.3], [0, 125], [88.3, 88.3], [125, 0], [88.3, -88.3], [0, -125], [-88.3, -88.3]]
 }

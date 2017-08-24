@@ -1,0 +1,44 @@
+{
+  "itemName" : "knightaegissword",
+  "price" : 750,
+  "level" : 3,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "Aegis, a sword made of tempered steel that can absorb heavy blows.",
+  "shortdescription" : "Aegis",
+  "tooltipKind" : "sword",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","shield"],
+
+  "inventoryIcon" : "aegis_sword15.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "aegis_sword15.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.70,
+    "baseDps" : 10,
+    "damageConfig" : {
+      "damageSourceKind" : "broadsword"
+    }
+  },
+
+  "altAbilityType" : "parryshield",
+  "altAbility" : {
+    "damageConfig" : {
+      "damageSourceKind" : "shield"
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -1,0 +1,8 @@
+{
+  "name" : "roguetoxiccapsulecooldown",
+
+  "defaultDuration" : 10,
+
+  "label" : "Toxic Capsule Cooldown",
+  "icon" : "/tech/roguetech/roguetoxiccapsule/cooldown.png"
+}

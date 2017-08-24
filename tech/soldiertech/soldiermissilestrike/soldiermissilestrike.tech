@@ -13,7 +13,7 @@
   "chipCost" : 0, 
   "cooldown" : 30.0,
   "cost" : 50,
-  "damage" : 200,
+  "damage" : 150,
   "grenades" : 7
   
 }

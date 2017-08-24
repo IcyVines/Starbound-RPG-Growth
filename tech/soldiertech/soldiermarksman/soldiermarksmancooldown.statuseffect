@@ -1,0 +1,8 @@
+{
+  "name" : "soldiermarksmancooldown",
+
+  "defaultDuration" : 10,
+
+  "label" : "Marksman Cooldown",
+  "icon" : "/tech/soldiertech/soldiermarksman/soldiercooldown.png"
+}

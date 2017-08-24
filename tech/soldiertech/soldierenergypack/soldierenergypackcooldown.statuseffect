@@ -1,0 +1,8 @@
+{
+  "name" : "soldierenergypackcooldown",
+
+  "defaultDuration" : 10,
+
+  "label" : "Energy Pack Cooldown",
+  "icon" : "/tech/soldiertech/soldierenergypack/soldiercooldown.png"
+}

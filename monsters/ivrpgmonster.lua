@@ -38,9 +38,9 @@ function damage(args)
     end
   elseif self.classType == 4 then
     self.dexterity = self.dexterity^1.1
-    if math.random(10) < 3 then
-      status.addEphemeralEffect("soldierstun")
-      self.suppressDamageTimer = 1.5
+    if math.random(10) < 2 then
+      status.addEphemeralEffect("soldierstun", 100*self.damage/world.entityHealth(entity.id())[2])
+      --sb.logInfo(50.0*self.damage/world.entityHealth(entity.id())[2])
     end
   elseif self.classType == 5 then
     self.dexterity = self.dexterity^1.15
@@ -78,7 +78,7 @@ function damage(args)
   --End IVRPGMod
 
   if world.entityHealth(entity.id())[1] <= 0 then
-    spawnXP(self.id)
+    --spawnXP(self.id)
   end
 end
 

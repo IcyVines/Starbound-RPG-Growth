@@ -31,5 +31,41 @@
         }
       }
     }
+  },
+
+  "particleEmitters" : {
+    "cloudParticles" : {
+      "emissionRate" : 0.5,
+      "particles" : [
+        {
+          "particle" : "defaultgreen",
+          "offset" : [-1.2, -0.5]
+        },
+        {
+          "particle" : "defaultgreen",
+          "offset" : [-0.8, -0.5]
+        },
+        {
+          "particle" : "defaultgreen",
+          "offset" : [-0.4, -0.5]
+        },
+        {
+          "particle" : "defaultgreen",
+          "offset" : [0, -0.5]
+        },
+        {
+          "particle" : "defaultgreen",
+          "offset" : [0.4, -0.5]
+        },
+        {
+          "particle" : "defaultgreen",
+          "offset" : [0.8, -0.5]
+        },
+        {
+          "particle" : "defaultgreen",
+          "offset" : [1.2, -0.5]
+        }
+      ]
+    }
   }
 }

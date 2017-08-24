@@ -33,8 +33,8 @@ function doMultiJump()
   --set flashjump player changes
   if canMultiJump() then
     if status.overConsumeResource("energy", self.cost) then
-      status.addEphemeralEffect("camouflage25", math.huge)
-      status.addEphemeralEffect("invulnerable", math.huge)
+      status.addEphemeralEffect("camouflage25", .25)
+      status.addEphemeralEffect("invulnerable", .25)
       status.addEphemeralEffect("nofalldamage", math.huge)
 
       mcontroller.controlJump(true)

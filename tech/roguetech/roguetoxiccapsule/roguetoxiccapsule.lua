@@ -20,6 +20,7 @@ function toxicCapsule()
     self.active = false
     status.removeEphemeralEffect("roguecapsule")
     spawnPoison(self.cooldown + self.duration - self.cooldownTimer)
+    status.addEphemeralEffect("roguetoxiccapsulecooldown", self.cooldownTimer)
   else
     if self.cooldownTimer <= 0 and status.overConsumeResource("energy", self.cost) then
       self.active = true
@@ -32,9 +33,10 @@ end
 function update(args)
   if self.cooldownTimer > 0 then
     self.cooldownTimer = math.max(0, self.cooldownTimer - args.dt)
-    if self.cooldownTimer <= self.cooldown then
+    if self.cooldownTimer <= self.cooldown and self.active then
       self.active = false
       status.removeEphemeralEffect("roguecapsule")
+      status.addEphemeralEffect("roguetoxiccapsulecooldown", self.cooldownTimer)
     end
     if self.cooldownTimer == 0 then
       self.rechargeEffectTimer = self.rechargeEffectTime
@@ -73,4 +75,5 @@ end
 
 function uninit()
   status.removeEphemeralEffect("roguecapsule")
+  status.removeEphemeralEffect("roguetoxiccapsulecooldown")
 end

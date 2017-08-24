@@ -1,0 +1,8 @@
+{
+  "name" : "roguetoxicauracooldown",
+
+  "defaultDuration" : 10,
+
+  "label" : "Toxic Aura Cooldown",
+  "icon" : "/tech/roguetech/roguetoxicaura/cooldown.png"
+}

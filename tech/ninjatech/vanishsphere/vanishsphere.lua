@@ -35,6 +35,7 @@ function update(args)
 
   self.energyRegenBlock = status.resource("energyRegenBlock")
   if self.active then
+    status.setResourcePercentage("energyRegenBlock", 1.0)
     local groundDirection
     if self.damageDisableTimer == 0 then
       groundDirection = findGroundDirection()
@@ -58,7 +59,7 @@ function update(args)
         -- this makes the heading direction follow concave corners
 
         --consume energy only when moving
-        status.setResourcePercentage("energyRegenBlock", 1.0)
+        --status.setResourcePercentage("energyRegenBlock", 1.0)
         status.overConsumeResource("energy", self.energyCostPerSecond * args.dt)
         
         local adjustment = 0
@@ -87,20 +88,22 @@ function update(args)
         -- apply a gravitation like force in the ground direction, while moving in the controlled direction
         -- Note: this ground force causes weird collision when moving up slopes, result is you move faster up slopes
         local groundAngle = self.headingAngle - (math.pi / 2)
-        mcontroller.controlApproachVelocity(vec2.withAngle(groundAngle, self.ballSpeed), 300)
+        mcontroller.controlApproachVelocity(vec2.withAngle(groundAngle, self.ballSpeed), 3800)
 
         local moveDirection = vec2.rotate({moveX, 0}, self.headingAngle)
         mcontroller.controlApproachVelocityAlongAngle(math.atan(moveDirection[2], moveDirection[1]), self.ballSpeed, 2000)
 
         self.angularVelocity = -moveX * self.ballSpeed
       else
-        status.overConsumeResource("energy", 0)
-        status.setResource("energyRegenBlock", self.energyRegenBlock)
+        --status.overConsumeResource("energy", 0)
+        --status.setResource("energyRegenBlock", self.energyRegenBlock)
         mcontroller.controlApproachVelocity({0,0}, 2000)
         self.angularVelocity = 0
       end
 
       mcontroller.controlDown()
+
+      status.setResourcePercentage("energyRegenBlock", 1.0)
       updateAngularVelocity(args.dt)
 
       self.transformedMovementParameters.gravityEnabled = false
@@ -122,7 +125,7 @@ function update(args)
   else
     status.clearPersistentEffects("vanishsphere")
     self.headingAngle = nil
-    status.overConsumeResource("energy", 0)
+    --status.overConsumeResource("energy", 0)
   end
 
   updateTransformFade(args.dt)

@@ -192,7 +192,7 @@ function updateClassTab()
     widget.setFontColor("classlayout.classtitle","magenta")
     widget.setImage("classlayout.classicon","/objects/class/wizard.png")
     widget.setFontColor("classlayout.effecttext","magenta")
-    widget.setText("classlayout.weapontext","+10% (Scales With Intelligence) Damage while using a Wand in either hand without any other weapon equipped. +10% Damage with Staves.")
+    widget.setText("classlayout.weapontext","+10% Damage while using a Wand in either hand without any other weapon equipped. +10% Damage with Staves.")
     widget.setText("classlayout.passivetext","+6% Chance to Freeze, Burn, or Electry monsters on hit. These effects can stack.")
     widget.setText("classlayout.effecttext","While using Wands or Staves, gain +10% Fire, Poison, and Ice Resistance.")
     widget.setImage("classlayout.effecticon","/scripts/wizardaffinity/wizardaffinity.png")
@@ -206,7 +206,7 @@ function updateClassTab()
     widget.setFontColor("classlayout.effecttext","red")
     widget.setText("classlayout.weapontext","+20% Damage while using Throwing Stars, Knives, Kunai, or Daggers, or any type of Shuriken without any weapons equipped.")
     widget.setText("classlayout.passivetext","+20% Speed and Jump Height. -30% Fall Damage.")
-    widget.setText("classlayout.effecttext","+20% Bleed Chance and 0.8s Bleed Length during Nighttime or while Underground.")
+    widget.setText("classlayout.effecttext","+10% Bleed Chance and 0.4s Bleed Length during Nighttime or while Underground.")
     widget.setImage("classlayout.effecticon","/scripts/ninjacrit/ninjacrit.png")
     widget.setImage("classlayout.effecticon2","/scripts/ninjacrit/ninjacrit.png")
     widget.setImage("classlayout.classweaponicon","/objects/class/ninja.png")
@@ -216,9 +216,9 @@ function updateClassTab()
     widget.setFontColor("classlayout.classtitle","orange")
     widget.setFontColor("classlayout.effecttext","orange")
     widget.setImage("classlayout.classicon","/objects/class/soldier.png")
-    widget.setText("classlayout.weapontext","+10% Damage while using One-Handed Guns and Bombs, Molotovs, or Thorn Grenades in combination. +10% Damage with Sniper Rifles, Assault Rifles, Shotguns, and Rocket Launchers.")
-    widget.setText("classlayout.passivetext","+20% Chance to Stun monsters on hit.")
-    widget.setText("classlayout.effecttext","While Health is greater than half, your Food Meter decreases 10% slower.")
+    widget.setText("classlayout.weapontext","+10% Damage while using One-Handed Guns and Bombs, Molotovs, or Thorn Grenades in combination. +10% Damage with Sniper Rifles, Assault Rifles, and Shotguns.")
+    widget.setText("classlayout.passivetext","+10% Chance to Stun monsters on hit. Stun Length depends on percentage of damage done to target.")
+    widget.setText("classlayout.effecttext","While Energy is full, your Food Meter decreases 10% slower.")
     widget.setImage("classlayout.effecticon","/scripts/soldierdiscipline/soldierdiscipline.png")
     widget.setImage("classlayout.effecticon2","/scripts/soldierdiscipline/soldierdiscipline.png")
     widget.setPosition("classlayout.weapontext",{154,251})
@@ -244,7 +244,7 @@ function updateClassTab()
     widget.setFontColor("classlayout.effecttext","yellow")
     widget.setText("classlayout.weapontext","+5% Resistance to all Damage Types while using Grappling Hooks, Rope, Mining Tools, Throwable Light Sources, or Flashlights.")
     widget.setText("classlayout.passivetext","+10% Physical Resistance.")
-    widget.setText("classlayout.effecttext","While Energy is greater than half, provide a bright yellow Glow.")
+    widget.setText("classlayout.effecttext","While Health is greater than half, provide a bright yellow Glow.")
     widget.setImage("classlayout.effecticon","/scripts/explorerglow/explorerglow.png")
     widget.setImage("classlayout.effecticon2","/scripts/explorerglow/explorerglow.png")
     widget.setImage("classlayout.classweaponicon","/objects/class/explorer.png")
@@ -313,8 +313,8 @@ function updateInfo()
 
   widget.setText("infolayout.displaystats", 
     "Amount\n" ..
-    "^red;" .. math.floor(self.vitality^self.vitalityBonus*4) .. "^reset;" .. "\n" ..
-    "^green;" .. math.floor(self.vigor^self.vigorBonus*4) .. "\n" ..
+    "^red;" .. math.floor(100*(1 + self.vitality^self.vitalityBonus*.05))/100 .. "^reset;" .. "\n" ..
+    "^green;" .. math.floor(100*(1 + self.vigor^self.vigorBonus*.05))/100 .. "\n" ..
     getStatPercent(status.stat("energyRegenPercentageRate")) ..
     math.floor(status.stat("energyRegenBlockTime")*100+.5)/100 .. "^reset;" .. "\n" ..
     "^orange;" .. getStatPercent(status.stat("foodDelta")) .. "^reset;" ..
@@ -432,9 +432,9 @@ function getTechText(num)
       or (num == 3 and "Press [W] to teleport to your cursor. There is a slight cooldown before you can teleport again." 
         or "Press [F] to negate all damage for a short time. Energy does not recharge while this effect is active. You can prematurely end the effect by pressing [F] again. The cooldown shortens if so."))
   elseif classType == 3 then
-    return num == 1 and "Press [Space] while midair to burst forward. As long as you remain in the air with energy remaining, you are invulnerable to all damage. You may do this twice while midair." 
-    or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while moving but recharges while staying still. The transformation ends if you run out of energy or press [F] while transformed." 
-    or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS." 
+    return num == 1 and "Press [Space] while midair to burst forward. For a short time after jumping, you are invulnerable to damage. As long as you remain in the air with energy remaining, you are invulnerable to fall damage. You may do this twice while midair." 
+    or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while moving. The transformation ends if you run out of energy or press [F] while transformed." 
+    or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS. This costs 20 Health." 
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
     return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food. There is a cooldown of 90 seconds before you can do this again." 
@@ -677,12 +677,12 @@ end
 
 function changeStatDescription(name)
   if name == "strength" then widget.setText("statslayout.statdescription", "Greatly Increases Shield Health.\nSignificantly Increases Two-Handed Melee Damage.\nMinimally Increases Physical Resistance.") end
-  if name == "agility" then widget.setText("statslayout.statdescription", "Significantly Increases Speed.\nIncreases Jump Height.\nSlightly Decreases Fall Damage.") end
-  if name == "vitality" then widget.setText("statslayout.statdescription", "Significantly Decreases Hunger Rate.\nIncreases Max Health.") end
-  if name == "vigor" then widget.setText("statslayout.statdescription", "Significantly Increases Energy Recharge Rate.\nIncreases Max Energy.") end
-  if name == "intelligence" then widget.setText("statslayout.statdescription", "Greatly Increases Energy Recharge Rate.\nGreatly Increases Staff Damage.\nDecreases Energy Recharge Delay.") end
-  if name == "endurance" then widget.setText("statslayout.statdescription", "Increases Knockback Resistance.\nModerately Increases All Other Resistances.\nSlightly Increases Physical Resistance.") end
-  if name == "dexterity" then widget.setText("statslayout.statdescription", "Increases One-Handed Weapon Damage.\n Increases Gun and Bow Damage.\nIncreases Bleed Chance and Bleed Length.\nDecreases Fall Damage.") end
+  if name == "agility" then widget.setText("statslayout.statdescription", "Significantly Increases Speed.\nIncreases Jump Height.\nDecreases Fall Damage.") end
+  if name == "vitality" then widget.setText("statslayout.statdescription", "Significantly Increases Max Health.\nDecreases Hunger Rate.") end
+  if name == "vigor" then widget.setText("statslayout.statdescription", "Significantly Increases Max Energy.\nGreatly Increases Energy Recharge Rate.") end
+  if name == "intelligence" then widget.setText("statslayout.statdescription", "Greatly Increases Energy Recharge Rate.\nGreatly Increases Staff Damage.\nDecreases Energy Recharge Delay.\nSlightly Increases Wand Damage.") end
+  if name == "endurance" then widget.setText("statslayout.statdescription", "Increases Knockback Resistance.\nIncreases Physical Resistance.\nModerately Increases All Other Resistances.") end
+  if name == "dexterity" then widget.setText("statslayout.statdescription", "Increases Gun and Bow Damage.\nIncreases Bleed Chance and Bleed Length.\nSlightly Increases One-Handed Weapon Damage.\nSlightly Decreases Fall Damage.") end
   if name == "default" then widget.setText("statslayout.statdescription", "Click a stat's icon to see what occurs\nwhen that stat is raised.") end
 end
 

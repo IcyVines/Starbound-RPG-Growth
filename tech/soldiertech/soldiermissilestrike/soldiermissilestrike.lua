@@ -19,6 +19,7 @@ end
 function strike()
   if self.cooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and not world.pointTileCollision(tech.aimPosition()) and status.overConsumeResource("energy", self.cost) then
       self.cooldownTimer = self.cooldown
+      status.addEphemeralEffect("soldiermissilestrikecooldown", self.cooldownTimer)
       spawnMissile()
   end
 end
@@ -29,11 +30,12 @@ function spawnMissile()
   self.damageConfig = {
     power = self.damage
   }
-  world.spawnProjectile("soldiermissile", self.cursor, entity.id(), {0.5, -1}, false, self.damageConfig)
+  world.spawnProjectile("soldiermissile", self.cursor, entity.id(), {0, -1}, false, self.damageConfig)
 end
 
 function uninit()
   tech.setParentDirectives()
+  status.removeEphemeralEffect("soldiermissilestrikecooldown")
 end
 
 function update(args)
