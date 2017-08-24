@@ -1,0 +1,17 @@
+{
+  "input" : [
+    {
+      "item" : "venomsample",
+      "count" : 1
+    },
+    {
+      "item" : "titaniumbar",
+      "count" : 2
+    }
+  ],
+  "output" : {
+    "item" : "toxicshuriken",
+    "count" : 50
+  },
+  "groups" : [ "craftinganvil2", "consumables", "all" ]
+}

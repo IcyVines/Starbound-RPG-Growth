@@ -109,7 +109,7 @@ function update(dt)
       {
         {stat = "powerMultiplier", effectiveMultiplier = 1 + self.intelligence*0.0075}
       })
-    elseif (heldItem and root.itemHasTag(heldItem,"weapon")) then
+    elseif (heldItem and (root.itemHasTag(heldItem,"weapon") or root.itemHasTag(heldItem,"ninja"))) then
       status.addPersistentEffects("ivrpgstatboosts",
       {
         {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.0075}
@@ -121,7 +121,7 @@ function update(dt)
       {
         {stat = "powerMultiplier", effectiveMultiplier = 1 + self.intelligence*0.0075}
       })
-    elseif (heldItem2 and root.itemHasTag(heldItem2,"weapon")) then
+    elseif (heldItem2 and (root.itemHasTag(heldItem2,"weapon") or root.itemHasTag(heldItem2,"ninja"))) then
       status.addPersistentEffects("ivrpgstatboosts",
       {
         {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.0075}

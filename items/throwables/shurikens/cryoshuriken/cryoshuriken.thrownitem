@@ -1,0 +1,33 @@
+{
+  "itemName" : "cryoshuriken",
+  "rarity" : "rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "cryoshuriken.png",
+  "image" : "cryoshuriken.png",
+  "shortdescription" : "Cryo Shuriken",
+  "description" : "A freezing shuriken, sure to stop enemies in their tracks.",
+  "itemTags" : ["ninja"],
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : false,
+  "windupTime" : 0.0,
+  "cooldown" : 0.3,
+
+  "projectileType" : "cryoshuriken",
+  "projectileConfig" : {
+    "speed" : 60,
+    "power" : 9,
+    "knockback" : 15,
+
+    "persistentAudio" : "/sfx/projectiles/throwingstar_loop.ogg",
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

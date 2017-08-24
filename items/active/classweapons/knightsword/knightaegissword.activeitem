@@ -3,7 +3,7 @@
   "price" : 750,
   "level" : 3,
   "maxStack" : 1,
-  "rarity" : "Rare",
+  "rarity" : "rare",
   "description" : "Aegis, a sword made of tempered steel that can absorb heavy blows.",
   "shortdescription" : "Aegis",
   "tooltipKind" : "sword",

@@ -3,7 +3,7 @@
   "price" : 1500,
   "level" : 5,
   "maxStack" : 1,
-  "rarity" : "Rare",
+  "rarity" : "legendary",
   "description" : "Prsimatic Aegis, a sword made of tempered steel and embedded with diamond and gold that can absorb heavy blows.",
   "shortdescription" : "Prismatic Aegis",
   "tooltipKind" : "sword",

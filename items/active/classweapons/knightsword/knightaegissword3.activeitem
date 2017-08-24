@@ -3,7 +3,7 @@
   "price" : 2250,
   "level" : 7,
   "maxStack" : 1,
-  "rarity" : "Rare",
+  "rarity" : "legendary",
   "description" : "Vital Aegis, a sword made of tempered steel and embedded with diamond and gold that can absorb heavy blows. It seems to... vitalize... competent wielders.",
   "shortdescription" : "Vital Aegis",
   "tooltipKind" : "sword",

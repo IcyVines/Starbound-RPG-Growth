@@ -1,0 +1,33 @@
+{
+  "itemName" : "arcshuriken",
+  "rarity" : "rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "arcshuriken.png",
+  "image" : "arcshuriken.png",
+  "shortdescription" : "Arc Shuriken",
+  "description" : "A humming shuriken, sure to shock enemies.",
+  "itemTags" : ["ninja"],
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : false,
+  "windupTime" : 0.0,
+  "cooldown" : 0.20,
+
+  "projectileType" : "arcshuriken",
+  "projectileConfig" : {
+    "speed" : 90,
+    "power" : 7.5,
+    "knockback" : 5,
+
+    "persistentAudio" : "/sfx/projectiles/throwingstar_loop.ogg",
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "input" : [
+    {
+      "item" : "durasteelbar",
+      "count" : 1
+    }
+  ],
+  "output" : {
+    "item" : "durasteelshuriken",
+    "count" : 25
+  },
+  "groups" : [ "craftinganvil3", "consumables", "all" ]
+}

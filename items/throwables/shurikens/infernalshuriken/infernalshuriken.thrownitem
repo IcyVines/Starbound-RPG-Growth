@@ -1,0 +1,33 @@
+{
+  "itemName" : "infernalshuriken",
+  "rarity" : "rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "infernalshuriken.png",
+  "image" : "infernalshuriken.png",
+  "shortdescription" : "Infernal Shuriken",
+  "description" : "A fiery shuriken, sure to burn enemies.",
+  "itemTags" : ["ninja"],
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : false,
+  "windupTime" : 0.0,
+  "cooldown" : 0.25,
+
+  "projectileType" : "infernalshuriken",
+  "projectileConfig" : {
+    "speed" : 80,
+    "power" : 10,
+    "knockback" : 12,
+
+    "persistentAudio" : "/sfx/projectiles/throwingstar_loop.ogg",
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

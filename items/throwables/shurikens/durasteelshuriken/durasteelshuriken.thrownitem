@@ -1,0 +1,33 @@
+{
+  "itemName" : "durasteelshuriken",
+  "rarity" : "legendary",
+  "category" : "throwableItem",
+  "inventoryIcon" : "durasteelshuriken.png",
+  "image" : "durasteelshuriken.png",
+  "shortdescription" : "Durasteel Shuriken",
+  "description" : "A shuriken, pocket-sized and deadly.",
+  "itemTags" : ["ninja"],
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : false,
+  "windupTime" : 0.0,
+  "cooldown" : 0.25,
+
+  "projectileType" : "durasteelshuriken",
+  "projectileConfig" : {
+    "speed" : 70,
+    "power" : 12,
+    "knockback" : 20,
+
+    "persistentAudio" : "/sfx/projectiles/throwingstar_loop.ogg",
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

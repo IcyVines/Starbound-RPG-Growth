@@ -1,3 +1,9 @@
 [
-{ "op" : "add", "path" : "/statusControllerSettings/primaryScriptSources/-", "value" : "/scripts/ivrpgeffects.lua" }
+{ "op" : "add", "path" : "/statusControllerSettings/primaryScriptSources/-", "value" : "/scripts/ivrpgeffects.lua" },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "throwingstar" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "durasteelshuriken" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "infernalshuriken" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "cryoshuriken" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "arcshuriken" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "toxicshuriken" } }
 ]

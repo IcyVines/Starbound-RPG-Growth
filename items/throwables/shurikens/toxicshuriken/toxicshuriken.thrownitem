@@ -1,0 +1,33 @@
+{
+  "itemName" : "toxicshuriken",
+  "rarity" : "rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "toxicshuriken.png",
+  "image" : "toxicshuriken.png",
+  "shortdescription" : "Toxic Shuriken",
+  "description" : "An infested shuriken, sure to poison enemies.",
+  "itemTags" : ["ninja"],
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : false,
+  "windupTime" : 0.0,
+  "cooldown" : 0.3,
+
+  "projectileType" : "toxicshuriken",
+  "projectileConfig" : {
+    "speed" : 50,
+    "power" : 10,
+    "knockback" : 20,
+
+    "persistentAudio" : "/sfx/projectiles/throwingstar_loop.ogg",
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

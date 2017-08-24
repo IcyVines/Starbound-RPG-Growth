@@ -1,0 +1,17 @@
+{
+  "input" : [
+    {
+      "item" : "staticcell",
+      "count" : 1
+    },
+    {
+      "item" : "titaniumbar",
+      "count" : 2
+    }
+  ],
+  "output" : {
+    "item" : "arcshuriken",
+    "count" : 50
+  },
+  "groups" : [ "craftinganvil2", "consumables", "all" ]
+}
