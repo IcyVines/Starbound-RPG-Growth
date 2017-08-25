@@ -1,0 +1,30 @@
+ [
+  [
+    {
+      "op": "test",
+      "path": "/cultisttreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/cultisttreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/cultisttreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/cultisttreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ]
+]

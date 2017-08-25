@@ -1,0 +1,478 @@
+[  
+  [
+    {
+      "op": "test",
+      "path": "/villagertreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/villagertreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/villagertreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/villagertreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/wizardtreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/wizardtreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/wizardtreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/wizardtreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/shroomguardtreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/shroomguardtreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/shroomguardtreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/shroomguardtreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/eyeguardtreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/eyeguardtreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/eyeguardtreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/eyeguardtreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/guardtreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/guardtreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/guardtreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/guardtreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/airshipguardtreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/airshipguardtreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/airshipguardtreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/airshipguardtreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/airshipcaptaintreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/airshipcaptaintreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/airshipcaptaintreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/airshipcaptaintreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/prisonbruisertreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/prisonbruisertreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/prisonbruisertreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/prisonbruisertreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/prisonberserkertreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/prisonberserkertreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/prisonberserkertreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/prisonberserkertreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/prisongunmantreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/prisongunmantreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/prisongunmantreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/prisongunmantreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/floranwildhuntertreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/floranwildhuntertreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/floranwildhuntertreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/floranwildhuntertreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/castleguardtreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/castleguardtreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/castleguardtreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/castleguardtreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/castlelordtreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/castlelordtreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/castlelordtreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/castlelordtreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/bunkerguardtreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/bunkerguardtreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/bunkerguardtreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/bunkerguardtreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/hellguardtreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/hellguardtreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/hellguardtreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/hellguardtreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/templeguardtreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/templeguardtreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/templeguardtreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/templeguardtreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/banditTreasure/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/banditTreasure/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/banditTreasure/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/banditTreasure/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ]
+]

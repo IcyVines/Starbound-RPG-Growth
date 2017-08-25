@@ -1,0 +1,1710 @@
+[  
+  [
+    {
+      "op": "test",
+      "path": "/hunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/hunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/hunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/hunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/huntingquadruped/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/huntingquadruped/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/huntingquadruped/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/huntingquadruped/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/huntingflying/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/huntingflying/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/huntingflying/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/huntingflying/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/adultpoptopHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/adultpoptopHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/adultpoptopHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/adultpoptopHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/anglureHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/anglureHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/anglureHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/anglureHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/agrobatHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/agrobatHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/agrobatHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/agrobatHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/batongHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/batongHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/batongHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/batongHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/bobfaeHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/bobfaeHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/bobfaeHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/bobfaeHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/bobotHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/bobotHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/bobotHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/bobotHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/bulbopHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/bulbopHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/bulbopHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/bulbopHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/capricoatHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/capricoatHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/capricoatHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/capricoatHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/crabcanoHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/crabcanoHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/crabcanoHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/crabcanoHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/crustoiseHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/crustoiseHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/crustoiseHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/crustoiseHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/crutterHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/crutterHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/crutterHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/crutterHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/fennixHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/fennixHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/fennixHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/fennixHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gleapHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/gleapHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gleapHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/gleapHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/hemogoblinHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/hemogoblinHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/hemogoblinHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/hemogoblinHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/hypnareHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/hypnareHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/hypnareHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/hypnareHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ignomeHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ignomeHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ignomeHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ignomeHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/iguarmorHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/iguarmorHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/iguarmorHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/iguarmorHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/lilodonHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/lilodonHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/lilodonHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/lilodonHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/lumothHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/lumothHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/lumothHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/lumothHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/mandrafloraHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/mandrafloraHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/mandrafloraHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/mandrafloraHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/miasmopHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/miasmopHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/miasmopHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/miasmopHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/monopusHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/monopusHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/monopusHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/monopusHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/narfinHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/narfinHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/narfinHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/narfinHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/nautileechHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/nautileechHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/nautileechHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/nautileechHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/nutmidgelingHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/nutmidgelingHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/nutmidgelingHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/nutmidgelingHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/oculobHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/oculobHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/oculobHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/oculobHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ooglerHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ooglerHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ooglerHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ooglerHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/orbideHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/orbideHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/orbideHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/orbideHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/paraspriteHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/paraspriteHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/paraspriteHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/paraspriteHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/paratailHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/paratailHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/paratailHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/paratailHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/peblitHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/peblitHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/peblitHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/peblitHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/petricubHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/petricubHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/petricubHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/petricubHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/pipkinHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/pipkinHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/pipkinHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/pipkinHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/poptopHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/poptopHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/poptopHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/poptopHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/pteropodHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/pteropodHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/pteropodHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/pteropodHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/pulpinHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/pulpinHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/pulpinHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/pulpinHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/pyromantleHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/pyromantleHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/pyromantleHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/pyromantleHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/quagmuttHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/quagmuttHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/quagmuttHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/quagmuttHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ringramHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ringramHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ringramHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ringramHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/scandroidHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/scandroidHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/scandroidHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/scandroidHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/scaveranHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/scaveranHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/scaveranHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/scaveranHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/skimbusHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/skimbusHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/skimbusHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/skimbusHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/smoglinHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/smoglinHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/smoglinHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/smoglinHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/snagglerHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/snagglerHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/snagglerHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/snagglerHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/snauntHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/snauntHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/snauntHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/snauntHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/spookitHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/spookitHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/spookitHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/spookitHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/snuffishHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/snuffishHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/snuffishHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/snuffishHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/sporgusHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/sporgusHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/sporgusHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/sporgusHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/squeemHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/squeemHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/squeemHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/squeemHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gosmetHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/gosmetHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gosmetHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/gosmetHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/taroniHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/taroniHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/taroniHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/taroniHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/tinticHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/tinticHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/tinticHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/tinticHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/toumingoHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/toumingoHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/toumingoHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/toumingoHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/trictusHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/trictusHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/trictusHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/trictusHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/triplodHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/triplodHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/triplodHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/triplodHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/voltipHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/voltipHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/voltipHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/voltipHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/wisperHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/wisperHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/wisperHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/wisperHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/yokatHunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/yokatHunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/yokatHunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/yokatHunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ]
+]

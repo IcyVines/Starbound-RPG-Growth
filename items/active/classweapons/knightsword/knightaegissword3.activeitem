@@ -9,7 +9,7 @@
   "tooltipKind" : "sword",
   "category" : "broadsword",
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","shield"],
+  "itemTags" : ["weapon","melee","broadsword","shield","vitalaegis"],
 
   "inventoryIcon" : "aegis_sword50.png",
 

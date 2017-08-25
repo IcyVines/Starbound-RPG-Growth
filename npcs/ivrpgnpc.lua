@@ -76,11 +76,6 @@ function damage(args)
       sourceEntityId = self.id
     })
   end
-
-  if world.entityHealth(entity.id())[1] <= 0 then
-    spawnXP()
-  end
-  --End IVRPGMod
 end
 
 function nighttimeCheck()
@@ -89,12 +84,4 @@ end
 
 function undergroundCheck(position)
   return world.underground(position) 
-end
-
-function spawnXP()
-  self.level = npc.level()*15
-  local xp = self.level + math.random(math.ceil(-self.level/3), math.floor(self.level/3))
-  if world.entityAggressive(entity.id()) or world.entityCanDamage(source, entity.id()) then
-    world.spawnItem("experienceorb", entity.position(), xp, {}, mcontroller.velocity())
-  end
 end

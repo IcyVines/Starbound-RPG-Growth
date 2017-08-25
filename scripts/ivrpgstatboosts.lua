@@ -146,6 +146,7 @@ function updateClassEffects(classType)
     status.removeEphemeralEffect("wizardaffinity")
     status.removeEphemeralEffect("roguepoison")
     status.removeEphemeralEffect("soldierdiscipline")
+    status.removeEphemeralEffect("regeneration")
   elseif classType == 1 then
     --Knight
     status.setPersistentEffects("ivrpgclassboosts",
@@ -160,6 +161,9 @@ function updateClassEffects(classType)
         if notification.hitType == "ShieldHit" then
           if status.resourcePositive("perfectBlock") then
             --increased damage after perfect blocks
+            if heldItem and root.itemHasTag(heldItem, "vitalaegis") then
+              status.addEphemeralEffect("regeneration1", 2)
+            end
             status.addEphemeralEffect("knightblock")
             --sb.logInfo("Perfect Block: " .. tostring(status.resource("perfectBlock")) .. ", " .. tostring(status.resource("prefectBlockLimit")))
           end

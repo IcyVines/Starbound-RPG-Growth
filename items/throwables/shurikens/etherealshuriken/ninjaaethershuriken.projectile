@@ -14,12 +14,12 @@
   ],
   "power" : 100.0,
   "knockback" : 10,
-  "damageKind" : "firedagger",
+  "damageKind" : "applystatus",
   "statusEffects" : [
-    "burning"
+    "ivrpgweaken"
   ],
   "damagePoly" : [ [-5, 0], [-3.3, -3.3], [0, -5], [3.3, -3.3], [5, 0], [3.3, 3.3], [0, 5], [-3.3, 3.3] ],
-  "emitters" : [ "smoke", "flames" ]
+  "emitters" : [ "shadowsmoke" ]
 }
 
 

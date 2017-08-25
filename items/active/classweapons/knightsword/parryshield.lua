@@ -103,9 +103,6 @@ function Parry:parry()
     for _,notification in pairs(notifications) do
       if notification.sourceEntityId ~= -65536 and notification.healthLost == 0 then
         if status.resourcePositive("perfectBlock") then
-          if self.bonus == 2 then
-             
-          end
           animator.playSound("perfectBlock")
           --animator.burstParticleEmitter("perfectBlock")
           self:refreshPerfectBlock()

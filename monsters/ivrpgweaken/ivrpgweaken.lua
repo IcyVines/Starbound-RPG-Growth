@@ -1,6 +1,11 @@
 function init()
   effect.addStatModifierGroup({
-    {stat = "protection", amount = -20}
+    {stat = "physicalResistance", amount = -.20},
+    {stat = "poisonResistance", amount = -.30},
+    {stat = "iceResistance", amount = -.10},
+    {stat = "shadowResistance", amount = -.10},
+    {stat = "cosmicResistance", amount = -.10},
+    {stat = "radiationResistance", amount = -.20}
   })
   activateVisualEffects()
   effect.setParentDirectives("fade=770000=0.25")

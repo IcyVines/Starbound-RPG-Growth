@@ -40,7 +40,7 @@ function damage(args)
     self.dexterity = self.dexterity^1.1
     if math.random(10) < 2 then
       status.addEphemeralEffect("soldierstun", 100*self.damage/world.entityHealth(entity.id())[2])
-      --sb.logInfo(50.0*self.damage/world.entityHealth(entity.id())[2])
+      -- sb.logInfo(50.0*self.damage/world.entityHealth(entity.id())[2])
     end
   elseif self.classType == 5 then
     self.dexterity = self.dexterity^1.15
@@ -76,10 +76,6 @@ function damage(args)
     })
   end
   --End IVRPGMod
-
-  if world.entityHealth(entity.id())[1] <= 0 then
-    --spawnXP(self.id)
-  end
 end
 
 function nighttimeCheck()
@@ -88,40 +84,4 @@ end
 
 function undergroundCheck(position)
   return world.underground(position) 
-end
-
-function spawnXP(source)
-  self.type = monster.type()
-  local xp = 0
-  if self.type == "spiderboss" then
-    xp = 150
-  elseif self.type == "cultistboss" then
-    xp = 200
-  elseif self.type == "kluexboss" then
-    xp = 250
-  elseif self.type == "bigape" then
-    xp = 300
-  elseif self.type == "dragonboss" then
-    xp = 350
-  elseif self.type == "eyeboss" then
-    xp = 400
-  elseif self.type == "penguinUfo" then
-    xp = 250
-  elseif self.type == "robotboss" then
-    xp = 250
-  elseif self.type == "electricguardianboss" then
-    xp = 500
-  elseif self.type == "fireguardianboss" then
-    xp = 500
-  elseif self.type == "iceguardianboss" then
-    xp = 500
-  elseif self.type == "poisonguardianboss" then
-    xp = 500
-  else
-    self.level = monster.level()*15
-    xp = self.level + math.random(math.ceil(-self.level/3), math.floor(self.level/3))
-  end
-  if world.entityAggressive(entity.id()) or world.entityCanDamage(source, entity.id()) then
-  	world.spawnItem("experienceorb", entity.position(), xp, {}, mcontroller.velocity())
-  end
 end
