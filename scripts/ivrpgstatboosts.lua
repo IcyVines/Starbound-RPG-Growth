@@ -242,7 +242,7 @@ function updateClassEffects(classType)
     --ThrowingStar, ThrowingKunai, SnowflakeShuriken, ThrowingKnife, ThrowingDagger
     status.setPersistentEffects("ivrpgclassboosts",
     {
-      {stat = "fallDamageMultiplier", amount = -.3}
+      {stat = "fallDamageMultiplier", amount = -.1}
     })
     nighttime = nighttimeCheck()
     underground = undergroundCheck()
@@ -276,8 +276,8 @@ function updateClassEffects(classType)
       end
     end
     mcontroller.controlModifiers({
-      speedModifier = 1.2,
-      airJumpModifier = 1.2
+      speedModifier = 1.1,
+      airJumpModifier = 1.1
     })
   elseif classType == 4 then
     --Soldier
