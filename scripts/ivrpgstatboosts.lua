@@ -336,14 +336,14 @@ function updateClassEffects(classType)
     if (heldItem and root.itemHasTag(heldItem, "explorer")) or (heldItem2 and root.itemHasTag(heldItem2, "explorer")) then
       status.addPersistentEffects("ivrpgclassboosts",
         {
-          {stat = "physicalResistance", amount = .05},
-          {stat = "poisonResistance", amount = .05},
-          {stat = "fireResistance", amount = .05},
-          {stat = "electricResistance", amount = .05},
-          {stat = "iceResistance", amount = .05},
-          {stat = "shadowResistance", amount = .05},
-          {stat = "cosmicResistance", amount = .05},
-          {stat = "radioactiveResistance", amount = .05}
+          {stat = "physicalResistance", amount = .1},
+          {stat = "poisonResistance", amount = .1},
+          {stat = "fireResistance", amount = .1},
+          {stat = "electricResistance", amount = .1},
+          {stat = "iceResistance", amount = .1},
+          {stat = "shadowResistance", amount = .1},
+          {stat = "cosmicResistance", amount = .1},
+          {stat = "radioactiveResistance", amount = .1}
         })
     end
     self.health = world.entityHealth(self.id)

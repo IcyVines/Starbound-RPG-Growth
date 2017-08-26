@@ -2,11 +2,11 @@
   "input" : [
     {
       "item" : "venomsample",
-      "count" : 1
+      "count" : 2
     },
     {
       "item" : "titaniumbar",
-      "count" : 2
+      "count" : 5
     }
   ],
   "output" : {
