@@ -2,14 +2,14 @@
   "itemName" : "affinitytype",
   "rarity" : "Rare",
   "inventoryIcon" : "experienceorb.png",
-  "description" : "Experience orbs used to level up.",
-  "shortdescription" : "Experience Orb",
+  "description" : "Points that change your Affinity.",
+  "shortdescription" : "Affinity Type",
   "currency" : "affinitytype",
   "value" : 1,
   "pickupSoundsSmall" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "pickupSoundsMedium" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "pickupSoundsLarge" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
-  "smallStackLimit" : 8,
-  "mediumStackLimit" : 8,
-  "maxStack" : 8
+  "smallStackLimit" : 1,
+  "mediumStackLimit" : 5,
+  "maxStack" : 10
 }

@@ -97,9 +97,9 @@
   "primaryAbilityType" : "novastaffexplosion",
   "primaryAbility" : {
     "maxCastRange" : 35,
-    "energyCost" : 40,
+    "energyCost" : 45,
     "projectileParameters" : {
-      "baseDamage" : 60
+      "baseDamage" : 25
     }
   },
 

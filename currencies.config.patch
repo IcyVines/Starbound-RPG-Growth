@@ -73,7 +73,7 @@
     "path" : "/affinitytype",
     "value" : {
       "representativeItem" : "affinitytype",
-      "playerMax" : 8
+      "playerMax" : 10
     }
   },
   { "op" : "add",
