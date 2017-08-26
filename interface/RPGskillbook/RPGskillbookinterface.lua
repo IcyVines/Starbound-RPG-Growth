@@ -96,6 +96,54 @@ end
 
 function updateLevel()
   self.xp = player.currency("experienceorb")
+  if self.xp < 100 then
+    player.addCurrency("experienceorb", 100)
+  end
+  self.level = player.currency("currentlevel")
+  self.newLevel = math.floor(math.sqrt(self.xp/100))
+  if self.newLevel > self.level then
+    addStatPoints(self.newLevel, self.level)
+  elseif self.newLevel < self.level then
+    player.consumeCurrency("currentlevel", self.level - self.newLevel)
+  end
+  self.level = player.currency("currentlevel")
+  widget.setText("statslayout.statpointsleft", player.currency("statpoint"))
+  updateStats()
+  self.toNext = 2*self.level*100+100
+  updateOverview(self.toNext)
+  updateBottomBar(self.toNext)
+end
+
+function startingStats()
+  player.addCurrency("strengthpoint",1)
+  player.addCurrency("dexteritypoint",1)
+  player.addCurrency("intelligencepoint",1)
+  player.addCurrency("agilitypoint",1)
+  player.addCurrency("endurancepoint",1)
+  player.addCurrency("vitalitypoint",1)
+  player.addCurrency("vigorpoint",1)
+end
+
+function addStatPoints(newLevel, oldLevel)
+  player.addCurrency("currentlevel", newLevel - oldLevel)
+  while newLevel > oldLevel do
+    if oldLevel > 48 then
+      player.addCurrency("statpoint", 4)
+    elseif oldLevel > 38 then
+      player.addCurrency("statpoint", 3)
+    elseif oldLevel > 18 then
+      player.addCurrency("statpoint", 2)
+    elseif oldLevel > 0 then
+      player.addCurrency("statpoint", 1)
+    else
+      startingStats()
+    end
+    oldLevel = oldLevel + 1
+  end
+end
+
+--[[function updateLevel()
+  self.xp = player.currency("experienceorb")
   if player.currency("currentlevel") == 0 then
     self.level = 1
     player.addCurrency("currentlevel",1)
@@ -118,7 +166,7 @@ function updateLevel()
   self.toNext = 2*self.level*100+100
   updateOverview(self.toNext)
   updateBottomBar(self.toNext)
-end
+end]]
 
 function updateBottomBar(toNext)
   widget.setText("levelLabel", "Level " .. tostring(self.level))
@@ -167,8 +215,8 @@ end
 
 function updateClassTab()
   if player.currency("classtype") ~= 4 then
-    widget.setPosition("classlayout.weapontext",{154,240})
-    widget.setPosition("classlayout.weapontitle",{89,240})
+    --widget.setPosition("classlayout.weapontext",{154,240})
+    --widget.setPosition("classlayout.weapontitle",{89,240})
   end
   if player.currency("classtype") == 0 then
     widget.setText("classlayout.classtitle","No Class Yet")
@@ -217,12 +265,12 @@ function updateClassTab()
     widget.setFontColor("classlayout.effecttext","orange")
     widget.setImage("classlayout.classicon","/objects/class/soldier.png")
     widget.setText("classlayout.weapontext","+10% Damage while using One-Handed Guns and Bombs, Molotovs, or Thorn Grenades in combination. +10% Damage with Sniper Rifles, Assault Rifles, and Shotguns.")
-    widget.setText("classlayout.passivetext","+10% Chance to Stun monsters on hit. Stun Length depends on percentage of damage done to target.")
+    widget.setText("classlayout.passivetext","+10% Chance to Stun monsters on hit. Stun Length depends on damage dealt.")
     widget.setText("classlayout.effecttext","While Energy is full, your Food Meter decreases 10% slower.")
     widget.setImage("classlayout.effecticon","/scripts/soldierdiscipline/soldierdiscipline.png")
     widget.setImage("classlayout.effecticon2","/scripts/soldierdiscipline/soldierdiscipline.png")
-    widget.setPosition("classlayout.weapontext",{154,251})
-    widget.setPosition("classlayout.weapontitle",{89,251})
+    --widget.setPosition("classlayout.weapontext",{154,251})
+    --widget.setPosition("classlayout.weapontitle",{89,251})
     widget.setImage("classlayout.classweaponicon","/objects/class/soldier.png")
     widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nVitality\n^magenta;Good:^reset;\nDexterity\n^gray;OK:^reset;\nStrength\nEndurance")
   elseif player.currency("classtype") == 5 then
@@ -604,7 +652,7 @@ function checkClassDescription(name)
   end
 end
 
-function startingStats()
+--[[function startingStats()
   player.addCurrency("strengthpoint",1)
   player.addCurrency("dexteritypoint",1)
   player.addCurrency("intelligencepoint",1)
@@ -612,7 +660,7 @@ function startingStats()
   player.addCurrency("endurancepoint",1)
   player.addCurrency("vitalitypoint",1)
   player.addCurrency("vigorpoint",1)
-end
+end]]
 
 function updateStats()
   self.strength = player.currency("strengthpoint")

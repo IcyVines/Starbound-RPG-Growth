@@ -28,24 +28,24 @@ function damage(args)
   self.dexterity = world.entityCurrency(self.id, "dexteritypoint")
   if self.classType == 2 then
     if math.random(100) < 7 then
-      status.addEphemeralEffect("electrified")
+      status.addEphemeralEffect("electrified", 5, self.id)
     end
     if math.random(100) < 7 then
-      status.addEphemeralEffect("frostslow")
+      status.addEphemeralEffect("frostslow", 5, self.id)
     end
     if math.random(100) < 7 then
-      status.addEphemeralEffect("burning")
+      status.addEphemeralEffect("burning", 5, self.id)
     end
   elseif self.classType == 4 then
     self.dexterity = self.dexterity^1.1
     if math.random(10) < 2 then
-      status.addEphemeralEffect("soldierstun", 100*self.damage/world.entityHealth(entity.id())[2])
+      status.addEphemeralEffect("soldierstun", 100*self.damage/world.entityHealth(entity.id())[2], self.id)
       -- sb.logInfo(50.0*self.damage/world.entityHealth(entity.id())[2])
     end
   elseif self.classType == 5 then
     self.dexterity = self.dexterity^1.15
     if math.random(10) < 3 then
-      status.addEphemeralEffect("weakpoison")
+      status.addEphemeralEffect("weakpoison", 5, self.id)
     end
   end
 
@@ -68,7 +68,7 @@ function damage(args)
     return
   end
   if math.random(100) <= self.dexterity + self.bleedBonus then
-    status.addEphemeralEffect("ivrpgweaken", (self.dexterity/25))
+    status.addEphemeralEffect("ivrpgweaken", (self.dexterity/25), self.id)
     status.applySelfDamageRequest({
       damageType = "IgnoresDef",
       damage = self.allDamage,
