@@ -52,7 +52,7 @@ function init()
 end
 
 function changeDashType()
-  if not status.statPositive("activeMovementAbilities") then
+  if not status.statPositive("activeMovementAbilities") and self.dashCooldownTimer == 0 then
     status.removeEphemeralEffect("explorermovement" .. self.dashType)
     self.dashType = self.dashType == "dash" and "sprint" or "dash"
     self.groundOnly = self.dashType == "sprint"

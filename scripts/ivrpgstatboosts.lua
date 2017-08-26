@@ -180,7 +180,7 @@ function updateClassEffects(classType)
       if (root.itemHasTag(heldItem, "shortsword") and root.itemHasTag(heldItem2, "shield")) or (root.itemHasTag(heldItem, "shield") and root.itemHasTag(heldItem2, "shortsword")) then
         status.addPersistentEffects("ivrpgclassboosts",
           {
-            {stat = "powerMultiplier", baseMultiplier = 1.2}
+            {stat = "powerMultiplier", baseMultiplier = 1.2 + self.strength*.015}
           })
       end
     end

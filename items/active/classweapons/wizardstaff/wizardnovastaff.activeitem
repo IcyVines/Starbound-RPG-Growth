@@ -30,7 +30,7 @@
         "emissionRate" : 10,
         "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
         "particles" : [
-          {"particle" : "kluexstaff"}
+          {"particle" : "wizardnovastaff"}
         ]
       }
     },
