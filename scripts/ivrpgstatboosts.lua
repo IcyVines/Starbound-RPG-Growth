@@ -44,7 +44,7 @@ function update(dt)
 
     -- Strength
     --Increases Shield Health, Damage with melee weapons, and physical resistance
-    {stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.05},
+    {stat = "shieldHealth", baseMultiplier = 1 + self.strength*.05},
     {stat = "physicalResistance", amount = self.strength*.0025},
 
     -- Intelligence
@@ -69,11 +69,11 @@ function update(dt)
     {stat = "fallDamageMultiplier", amount = -self.agility*.01},
 
     -- Vitality
-    {stat = "maxHealth", effectiveMultiplier = math.floor(100*(1 + self.vitality*.05))/100},
+    {stat = "maxHealth", baseMultiplier = math.floor(100*(1 + self.vitality*.05))/100},
     {stat = "foodDelta", amount = self.vitality*.0002},
 
     -- Vigor
-    {stat = "maxEnergy", effectiveMultiplier = math.floor(100*(1 + self.vigor*.05))/100},
+    {stat = "maxEnergy", baseMultiplier = math.floor(100*(1 + self.vigor*.05))/100},
     {stat = "energyRegenPercentageRate", amount = math.floor(.02*self.vigor)}
 
   })
@@ -90,41 +90,41 @@ function update(dt)
   if heldItem and (root.itemHasTag(heldItem, "broadsword") or root.itemHasTag(heldItem, "spear") or root.itemHasTag(heldItem, "hammer")) then
     status.addPersistentEffects("ivrpgstatboosts",
     {
-      {stat = "powerMultiplier", effectiveMultiplier = 1 + self.strength*0.02}
+      {stat = "powerMultiplier", baseMultiplier = 1 + self.strength*0.02}
     })
   elseif heldItem and root.itemHasTag(heldItem, "staff") then
     status.addPersistentEffects("ivrpgstatboosts",
     {
-      {stat = "powerMultiplier", effectiveMultiplier = 1 + self.intelligence*0.02}
+      {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.02}
     })
   elseif heldItem and (root.itemHasTag(heldItem, "bow") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "assaultrifle") or root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "rocketlauncher")) then
     status.addPersistentEffects("ivrpgstatboosts",
     {
-      {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.015}
+      {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
     })
   else
     --one-handed primary
     if (heldItem and root.itemHasTag(heldItem,"wand")) then
       status.addPersistentEffects("ivrpgstatboosts",
       {
-        {stat = "powerMultiplier", effectiveMultiplier = 1 + self.intelligence*0.0075}
+        {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.0075}
       })
     elseif (heldItem and (root.itemHasTag(heldItem,"weapon") or root.itemHasTag(heldItem,"ninja"))) then
       status.addPersistentEffects("ivrpgstatboosts",
       {
-        {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.0075}
+        {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.0075}
       })
     end
     --one-handed primary
     if (heldItem2 and root.itemHasTag(heldItem2,"wand")) then
       status.addPersistentEffects("ivrpgstatboosts",
       {
-        {stat = "powerMultiplier", effectiveMultiplier = 1 + self.intelligence*0.0075}
+        {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.0075}
       })
     elseif (heldItem2 and (root.itemHasTag(heldItem2,"weapon") or root.itemHasTag(heldItem2,"ninja"))) then
       status.addPersistentEffects("ivrpgstatboosts",
       {
-        {stat = "powerMultiplier", effectiveMultiplier = 1 + self.dexterity*0.0075}
+        {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.0075}
       })
     end
   end
@@ -174,13 +174,13 @@ function updateClassEffects(classType)
     if heldItem and root.itemHasTag(heldItem, "broadsword") then
       status.addPersistentEffects("ivrpgclassboosts",
           {
-            {stat = "powerMultiplier", effectiveMultiplier = 1.2}
+            {stat = "powerMultiplier", baseMultiplier = 1.2}
           })
     elseif holdingWeaponsCheck(heldItem, heldItem2, true) then
       if (root.itemHasTag(heldItem, "shortsword") and root.itemHasTag(heldItem2, "shield")) or (root.itemHasTag(heldItem, "shield") and root.itemHasTag(heldItem2, "shortsword")) then
         status.addPersistentEffects("ivrpgclassboosts",
           {
-            {stat = "powerMultiplier", effectiveMultiplier = 1.2}
+            {stat = "powerMultiplier", baseMultiplier = 1.2}
           })
       end
     end
@@ -196,14 +196,14 @@ function updateClassEffects(classType)
     if heldItem and root.itemHasTag(heldItem, "staff") then
       status.addPersistentEffects("ivrpgclassboosts",
       {
-        {stat = "powerMultiplier", effectiveMultiplier = 1.1},
+        {stat = "powerMultiplier", baseMultiplier = 1.1},
       })
       status.addEphemeralEffect("wizardaffinity", math.huge)
       self.wizardaffinityAdded = true
     elseif (heldItem and root.itemHasTag(heldItem, "wand") and heldItem2 and root.itemHasTag(heldItem2,"wand")) then
       status.addPersistentEffects("ivrpgclassboosts",
       {
-        {stat = "powerMultiplier", effectiveMultiplier = 1.1},
+        {stat = "powerMultiplier", baseMultiplier = 1.1},
       })
       status.addEphemeralEffect("wizardaffinity", math.huge)
       self.wizardaffinityAdded = true
@@ -218,7 +218,7 @@ function updateClassEffects(classType)
         self.checkDualWield = false
         status.addPersistentEffects("ivrpgclassboosts",
         {
-          {stat = "powerMultiplier", effectiveMultiplier = 1.1}
+          {stat = "powerMultiplier", baseMultiplier = 1.1}
         })
         status.addEphemeralEffect("wizardaffinity", math.huge)
         self.wizardaffinityAdded = true
@@ -228,7 +228,7 @@ function updateClassEffects(classType)
       if (heldItem2 and root.itemHasTag(heldItem2, "wand")) and self.checkDualWield then
         status.addPersistentEffects("ivrpgclassboosts",
         {
-          {stat = "powerMultiplier", effectiveMultiplier = 1.1}
+          {stat = "powerMultiplier", baseMultiplier = 1.1}
         })
         status.addEphemeralEffect("wizardaffinity", math.huge)
         self.wizardaffinityAdded = true
@@ -263,7 +263,7 @@ function updateClassEffects(classType)
         self.checkDualWield = false
         status.addPersistentEffects("ivrpgclassboosts",
         {
-          {stat = "powerMultiplier", effectiveMultiplier = 1.2}
+          {stat = "powerMultiplier", baseMultiplier = 1.2}
         })
       end
     end
@@ -271,7 +271,7 @@ function updateClassEffects(classType)
       if (heldItem2 and root.itemHasTag(heldItem2, "ninja")) and self.checkDualWield then
         status.addPersistentEffects("ivrpgclassboosts",
         {
-          {stat = "powerMultiplier", effectiveMultiplier = 1.2}
+          {stat = "powerMultiplier", baseMultiplier = 1.2}
         })
       end
     end
@@ -296,13 +296,13 @@ function updateClassEffects(classType)
     if heldItem and (root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "assaultrifle")) then
         status.addPersistentEffects("ivrpgclassboosts",
         {
-          {stat = "powerMultiplier", effectiveMultiplier = 1.1}
+          {stat = "powerMultiplier", baseMultiplier = 1.1}
         })
     elseif holdingWeaponsCheck(heldItem, heldItem2, true) then
       if (root.itemHasTag(heldItem,"soldier") and root.itemHasTag(heldItem2,"ranged")) or (root.itemHasTag(heldItem,"ranged") and root.itemHasTag(heldItem2,"soldier")) then
         status.addPersistentEffects("ivrpgclassboosts",
         {
-          {stat = "powerMultiplier", effectiveMultiplier = 1.1}
+          {stat = "powerMultiplier", baseMultiplier = 1.1}
         })
       end
     end
@@ -323,7 +323,7 @@ function updateClassEffects(classType)
       if root.itemHasTag(heldItem, "weapon") and root.itemHasTag(heldItem2, "weapon") then
         status.addPersistentEffects("ivrpgclassboosts",
           {
-            {stat = "powerMultiplier", effectiveMultiplier = 1.2}
+            {stat = "powerMultiplier", baseMultiplier = 1.2}
           })
       end
     end

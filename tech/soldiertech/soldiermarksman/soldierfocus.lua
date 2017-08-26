@@ -33,7 +33,7 @@ function update(dt)
   if (heldItem and root.itemHasTag(heldItem, "ranged")) or (heldItem2 and root.itemHasTag(heldItem2, "ranged")) then
     status.setPersistentEffects("soldierfocus",
     {
-      {stat = "powerMultiplier", effectiveMultiplier = self.damageModifier}
+      {stat = "powerMultiplier", baseMultiplier = self.damageModifier}
     })
   else
     status.clearPersistentEffects("soldierfocus")
