@@ -44,7 +44,7 @@ function update(dt)
 
     -- Strength
     --Increases Shield Health, Damage with melee weapons, and physical resistance
-    {stat = "shieldHealth", baseMultiplier = 1 + self.strength*.05},
+    {stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.05},
     {stat = "physicalResistance", amount = self.strength*.0025},
 
     -- Intelligence
