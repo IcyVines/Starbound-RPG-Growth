@@ -1,3 +1,5 @@
 [
-{ "op" : "add", "path" : "/parryshield", "value" : "/items/active/classweapons/knightsword/parryshield.weaponability" }
+{ "op" : "add", "path" : "/parryshield", "value" : "/items/active/classweapons/knightsword/parryshield.weaponability" },
+{ "op" : "add", "path" : "/novastaffexplosion", "value" : "/items/active/classweapons/wizardstaff/novastaffexplosion.weaponability" },
+{ "op" : "add", "path" : "/novastaffswitch", "value" : "/items/active/classweapons/wizardstaff/novastaffswitch.weaponability" }
 ]

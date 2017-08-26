@@ -1,11 +1,11 @@
 {
-  "itemName" : "wizardnovastaff",
-  "price" : 750,
+  "itemName" : "wizardnovastaff3",
+  "price" : 2250,
   "maxStack" : 1,
-  "level" : 5,
-  "rarity" : "uncommon",
-  "description" : "Nova, a staff that holds limitless elemental energy.",
-  "shortdescription" : "Nova",
+  "level" : 7,
+  "rarity" : "legendary",
+  "description" : "Nova, a staff that holds limitless, highly volatile, elemental energy.",
+  "shortdescription" : "Primed Nova",
   "tooltipKind" : "base",
   "category" : "staff",
   "twoHanded" : true,
@@ -13,9 +13,9 @@
 
   "animation" : "/items/active/classweapons/wizardstaff/wizardnovastaff.animation",
   "animationParts" : {
-    "staff" : "nova_staff15.png",
-    "stone" : "nova_stone15.png",
-    "chargeEffect" : "staffglow.png"
+    "staff" : "nova_staff50.png",
+    "stone" : "nova_stone50.png",
+    "chargeEffect" : "staffglow_50.png"
   },
 
   "animationCustom" : {
@@ -42,7 +42,7 @@
     }
   },
 
-  "inventoryIcon" : "nova_staff15.png",
+  "inventoryIcon" : "nova_staff50.png",
 
   "scripts" : ["/items/active/weapons/staff/staff.lua"],
 
@@ -96,10 +96,10 @@
 
   "primaryAbilityType" : "novastaffexplosion",
   "primaryAbility" : {
-    "maxCastRange" : 25,
-    "energyCost" : 50,
+    "maxCastRange" : 40,
+    "energyCost" : 40,
     "projectileParameters" : {
-      "baseDamage" : 50
+      "baseDamage" : 70
     }
   },
 

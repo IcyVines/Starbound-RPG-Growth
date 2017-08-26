@@ -2114,6 +2114,35 @@
 	    "pool": "experienceorbpool"
 	    }]
 	  }
+	],
+
+	[
+	  {
+	    "op": "test",
+	    "path": "/moontantTreasure/0/1/fill",
+	    "inverse": false
+	  }, 
+	  {
+	    "op": "add",
+	    "path": "/moontantTreasure/0/1/fill/-",
+	    "value": {
+	    "pool": "experienceorbpool"
+	    } 
+	  }
+	],
+	[
+	  {
+	    "op": "test",
+	    "path": "/moontantTreasure/0/1/fill",
+	    "inverse": true
+	  }, 
+	  {
+	    "op": "add",
+	    "path": "/moontantTreasure/0/1/fill",
+	    "value": [{
+	    "pool": "experienceorbpool"
+	    }]
+	  }
 	]
 
 ]

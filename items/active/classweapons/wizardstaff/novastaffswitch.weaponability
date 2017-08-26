@@ -1,0 +1,164 @@
+{
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "elementalType" : {
+          "default" : "1",
+          "states" : {
+            "1" : {
+              "frames" : 1,
+              "properties" : {                
+                "lightsOn" : [ "novaGlow" ],
+                "lightsOff" : [ "electricGlow", "iceGlow", "fireGlow" ]
+              }
+            },
+            "2" : {
+              "frames" : 1,
+              "properties" : {                
+                "lightsOn" : [ "fireGlow" ],
+                "lightsOff" : [ "novaGlow", "iceGlow", "electricGlow" ]
+              }
+            },
+            "3" : {
+              "frames" : 1,
+              "properties" : {
+                "lightsOn" : [ "electricGlow" ],
+                "lightsOff" : [ "novaGlow", "iceGlow", "fireGlow" ]
+              }
+            },
+            "4" : {
+              "frames" : 1,
+              "properties" : {                
+                "lightsOn" : [ "iceGlow" ],
+                "lightsOff" : [ "novaGlow", "electricGlow", "fireGlow" ]
+              }
+            }
+          }
+        }
+      },
+
+      "parts" : {
+        "stone" : {
+          "properties" : {
+            "image" : null
+          },
+
+          "partStates" : {
+            "elementalType" : {
+              "1" : {
+                "properties" : {
+                  "image" : "<partImage>:nova.<frame><paletteSwaps>"
+                }
+              },
+              "2" : {
+                "properties" : {
+                  "image" : "<partImage>:fire.<frame><paletteSwaps>"
+                }
+              },
+              "3" : {
+                "properties" : {
+                  "image" : "<partImage>:electric.<frame><paletteSwaps>"
+                }
+              },
+              "4" : {
+                "properties" : {
+                  "image" : "<partImage>:ice.<frame><paletteSwaps>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "particleEmitters" : {
+      "novaCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 10,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "wizardnovastaffnova"}
+        ]
+      },
+      "fireCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 10,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "wizardnovastafffire"}
+        ]
+      },
+      "electricCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 10,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "wizardnovastaffelectric"}
+        ]
+      },
+      "iceCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 10,
+        "offsetRegion" : [-0.5, 1.0, 0.5, 2.5],
+        "particles" : [
+          {"particle" : "wizardnovastaffice"}
+        ]
+      }
+    },
+
+    "sounds" : {
+      "switchElement" : [ "/sfx/gun/reload/shotgun_reload_clip3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "type" : "novastaffswitch",
+    "name" : "Element Switch",
+    "scripts" : ["/items/active/classweapons/wizardstaff/novastaffswitch.lua"],
+    "class" : "AdaptableAmmo",
+
+    "adaptedAbilityIndex" : 1,
+
+    "elementalTypes" : [
+      {
+        "elementalType" : "physical"
+      },
+      {
+        "elementalType" : "fire"
+      },
+      {
+        "elementalType" : "electric"
+      },
+      {
+        "elementalType" : "ice"
+      }
+    ],
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+  
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "switch" : {
+        "aimAngle" : 0,
+        "armRotation" : -40,
+        "weaponRotation" : 30,
+        "weaponAngularVelocity" : -150,
+        "armAngularVelocity" : 100,
+        "twoHanded" : true,
+        "duration" : 0.4,
+  
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  }
+}

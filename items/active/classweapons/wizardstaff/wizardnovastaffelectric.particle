@@ -1,10 +1,10 @@
 {
-  "kind" : "wizardnovastaff",
+  "kind" : "wizardnovastaffelectric",
   "definition" : {
     "type" : "ember",
     "size" : 1,
-    "color" : [234, 66, 180],
-    "light" : [160, 24, 180],
+    "color" : [200, 200, 15],
+    "light" : [130, 130, 15],
     "position" : [0, 0],
     "destructionAction" : "shrink",
     "destructionTime" : 0.5,
