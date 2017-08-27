@@ -37,7 +37,7 @@ end
 function ControlProjectile:charge()
   self.weapon:setStance(self.stances.charge)
 
-  --animator.playSound(self.elementalType.."charge")
+  animator.playSound(self.elementalType.."charge")
   animator.setAnimationState(self.element.."charge", "charge")
   animator.setParticleEmitterActive((self.elementalType == "physical" and "nova" or self.elementalType) .. "Charge", true)
   activeItem.setCursor("/cursors/charge2.cursor")
@@ -51,12 +51,12 @@ function ControlProjectile:charge()
     coroutine.yield()
   end
 
-  --animator.stopAllSounds(self.elementalType.."charge")
+  animator.stopAllSounds(self.elementalType.."charge")
 
   if chargeTimer <= 0 then
     self:setState(self.charged)
   else
-    --animator.playSound(self.elementalType.."discharge")
+    animator.playSound(self.elementalType.."discharge")
     self:setState(self.cooldown)
   end
 end
@@ -64,8 +64,8 @@ end
 function ControlProjectile:charged()
   self.weapon:setStance(self.stances.charged)
 
-  --animator.playSound(self.elementalType.."fullcharge")
-  --animator.playSound(self.elementalType.."chargedloop", -1)
+  animator.playSound(self.elementalType.."fullcharge")
+  animator.playSound(self.elementalType.."chargedloop", -1)
   animator.setParticleEmitterActive((self.elementalType == "physical" and "nova" or self.elementalType) .. "Charge", true)
 
   local targetValid
@@ -87,10 +87,10 @@ function ControlProjectile:discharge()
   activeItem.setCursor("/cursors/reticle0.cursor")
 
   if self:targetValid(activeItem.ownerAimPosition()) and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
-    --animator.playSound(self.elementalType.."activate")
+    animator.playSound(self.elementalType.."activate")
     self:createProjectiles()
   else
-    --animator.playSound(self.elementalType.."discharge")
+    animator.playSound(self.elementalType.."discharge")
     self:setState(self.cooldown)
     return
   end
@@ -109,8 +109,8 @@ function ControlProjectile:discharge()
     coroutine.yield()
   end
 
-  --animator.playSound(self.elementalType.."discharge")
-  --animator.stopAllSounds(self.elementalType.."chargedloop")
+  animator.playSound(self.elementalType.."discharge")
+  animator.stopAllSounds(self.elementalType.."chargedloop")
 
   self:setState(self.cooldown)
 end
@@ -149,7 +149,7 @@ function ControlProjectile:createProjectiles()
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(
-        (self.elementalType == "physical" and "poison" or self.elementalType) .. self.projectileType,
+        (self.elementalType == "physical" and "nova" or self.elementalType) .. self.projectileType,
         vec2.add(basePos, pOffset),
         activeItem.ownerEntityId(),
         pOffset,
@@ -202,10 +202,9 @@ end
 
 function ControlProjectile:reset()
   self.weapon:setStance(self.stances.idle)
-  --animator.stopAllSounds(self.elementalType.."chargedloop")
-  --animator.stopAllSounds(self.elementalType.."fullcharge")
+  animator.stopAllSounds(self.elementalType.."chargedloop")
+  animator.stopAllSounds(self.elementalType.."fullcharge")
   animator.setAnimationState(self.element.."charge", "idle")
-  sb.logInfo(self.element)
   animator.setParticleEmitterActive((self.elementalType == "physical" and "nova" or self.elementalType) .. "Charge", false)
   activeItem.setCursor("/cursors/reticle0.cursor")
 end

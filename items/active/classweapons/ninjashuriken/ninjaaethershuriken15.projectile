@@ -1,7 +1,7 @@
 {
   "projectileName" : "ninjaaethershuriken",
-  "image" : "ninjaaethershurikenthrown.png",
-  "animationCycle" : 0.05,
+  "image" : "ninjaaethershurikenthrown15.png",
+  "animationCycle" : 0.1,
   "physics" : "bullet",
   "frameNumber" : 2,
   "pointLight" : true,
@@ -14,10 +14,7 @@
   ],
   "power" : 100.0,
   "knockback" : 10,
-  "damageKind" : "applystatus",
-  "statusEffects" : [
-    "ivrpgweaken"
-  ],
+  "damageKind" : "alwaysbleed",
   "damagePoly" : [ [-5, 0], [-3.3, -3.3], [0, -5], [3.3, -3.3], [5, 0], [3.3, 3.3], [0, 5], [-3.3, 3.3] ],
   "emitters" : [ "shadowsmoke" ]
 }

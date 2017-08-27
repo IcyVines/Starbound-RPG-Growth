@@ -1,3 +1,7 @@
 [
-{ "op" : "add", "path" : "/dropPools/-", "value" : "experienceorbpool" }
+{
+    "op": "replace",
+    "path": "/dropPools/0",
+    "value": "shroomguardtreasure"
+}
 ]

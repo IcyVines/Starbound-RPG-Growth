@@ -1,0 +1,36 @@
+{
+  "itemName" : "ninjaaethershuriken3",
+  "price" : 1500,
+  "level" : 7,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "category" : "throwableItem",
+  "inventoryIcon" : "aether_shuriken50.png",
+  "image" : "aether_shuriken50.png",
+  "shortdescription" : "Blood Aether",
+  "description" : "Blood Aether, a sharper, shadowy shuriken that duplicates using dark energy.",
+  "itemTags" : ["ninja"],
+
+  "ammoUsage" : 0,
+
+  "edgeTrigger" : false,
+  "windupTime" : 0.0,
+  "cooldown" : 1.0,
+
+  "projectileType" : "ninjaaethershuriken50",
+  "projectileConfig" : {
+    "speed" : 60,
+    "power" : 3,
+    "knockback" : 0,
+
+    "persistentAudio" : "/sfx/projectiles/throwingstar_loop.ogg",
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

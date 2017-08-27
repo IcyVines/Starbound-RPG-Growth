@@ -29,20 +29,11 @@ function AdaptableAmmo:switch()
   util.wait(self.stances.switch.duration)
 end
 
-function AdaptableAmmo:removeLights()
-  animator.setLightActive(self.eType.."Glow", true)
-  if self.eType ~= "nova" then animator.setLightActive("novaGlow", false) end
-  if self.eType ~= "fire" then animator.setLightActive("fireGlow", false) end
-  if self.eType ~= "electric" then animator.setLightActive("electricGlow", false) end
-  if self.eType ~= "ice" then animator.setLightActive("iceGlow", false) end
-end
-
 function AdaptableAmmo:adaptAbility()
   local ability = self.weapon.abilities[self.adaptedAbilityIndex]
   util.mergeTable(ability, self.elementalTypes[self.ammoIndex])
   self.eType = self.ammoIndex == 1 and "nova" or (self.ammoIndex == 2 and "fire" or (self.ammoIndex == 3 and "electric" or "ice"))
   animator.setAnimationState("elementalType", self.ammoIndex)
-  --self:removeLights()
 end
 
 function AdaptableAmmo:uninit()

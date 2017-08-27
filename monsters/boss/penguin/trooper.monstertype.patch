@@ -1,2 +1,7 @@
 [ { "op" : "add", "path" : "/baseParameters/scripts/-", "value" : "/monsters/ivrpgmonster.lua" },
-{ "op" : "add", "path" : "/dropPools/-", "value" : { "default" : "experienceorbpool" } }]
+	{
+	    "op": "replace",
+	    "path": "/dropPools/0",
+	    "value": "shroomguardtreasure"
+  	}
+]

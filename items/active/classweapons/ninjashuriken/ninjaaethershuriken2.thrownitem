@@ -1,0 +1,36 @@
+{
+  "itemName" : "ninjaaethershuriken2",
+  "price" : 1000,
+  "level" : 5,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "aether_shuriken30.png",
+  "image" : "aether_shuriken30.png",
+  "shortdescription" : "Shadow Aether",
+  "description" : "Shadow Aether, a sharper, shadowy shuriken that duplicates using dark energy.",
+  "itemTags" : ["ninja"],
+
+  "ammoUsage" : 0,
+
+  "edgeTrigger" : false,
+  "windupTime" : 0.0,
+  "cooldown" : 1.0,
+
+  "projectileType" : "ninjaaethershuriken30",
+  "projectileConfig" : {
+    "speed" : 55,
+    "power" : 2,
+    "knockback" : 0,
+
+    "persistentAudio" : "/sfx/projectiles/throwingstar_loop.ogg",
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}
