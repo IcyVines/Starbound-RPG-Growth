@@ -1,4 +1,5 @@
 require "/scripts/vec2.lua"
+require "/scripts/util.lua"
 
 function init()
   local bounds = mcontroller.boundBox()
@@ -139,9 +140,9 @@ function update(dt)
   if self.affinity == 0 then
     status.clearPersistentEffects("ivrpgaffinityeffects")
   else
-      local frost = (status.stat("frostslow") ~= 0) and 1 or 0
-      local wet = (status.stat("wet") ~= 0) and 1 or 0
-      local isSuborWet = wet or isInLiquid()
+      local frost = hasEphemeralStat("frostslow")
+      local wet = hasEphemeralStat("wet")
+      local isSuborWet = isInLiquid() | wet
       sb.logInfo("FROST: "..frost)
       sb.logInfo("WET: "..wet)
       sb.logInfo("ISSUBORWET: "..isSuborWet)
@@ -214,11 +215,31 @@ function update(dt)
   end
 end
 
+function hasEphemeralStat(stat)
+  ephStats = util.map(status.activeUniqueStatusEffectSummary(),
+    function (elem)
+      return elem[1]
+    end)
+  for _,v in pairs(ephStats) do
+    if v == stat then return 1 end
+  end
+  return 0
+end
+
 function isInLiquid()
   local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
   local mouthful = world.liquidAt(mouthposition)
-
-    if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 12) or (mcontroller.liquidId()== 5) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 55) or (mcontroller.liquidId()== 69) or (mcontroller.liquidId()== 43) or (mcontroller.liquidId()== 60) or (mcontroller.liquidId()== 58) then
+    if (world.liquidAt(mouthPosition)) and
+	    (mcontroller.liquidId()== 1) or 
+	    (mcontroller.liquidId()== 5) or 
+	    (mcontroller.liquidId()== 6) or 
+	    (mcontroller.liquidId()== 12) or 
+	    (mcontroller.liquidId()== 43) or 
+	    (mcontroller.liquidId()== 55) or 
+	    (mcontroller.liquidId()== 58) or
+	    (mcontroller.liquidId()== 60) or 
+	    (mcontroller.liquidId()== 69) 
+    then
       return 1
     end 
   return 0
