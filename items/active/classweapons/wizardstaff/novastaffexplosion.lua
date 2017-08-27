@@ -38,7 +38,7 @@ function ControlProjectile:charge()
   self.weapon:setStance(self.stances.charge)
 
   animator.playSound(self.elementalType.."charge")
-  animator.setAnimationState(self.element.."charge", "charge")
+  animator.setAnimationState((self.elementalType == "physical" and "nova" or self.elementalType).."charge", "charge")
   animator.setParticleEmitterActive((self.elementalType == "physical" and "nova" or self.elementalType) .. "Charge", true)
   activeItem.setCursor("/cursors/charge2.cursor")
 
@@ -119,7 +119,7 @@ function ControlProjectile:cooldown()
   self.weapon:setStance(self.stances.cooldown)
   self.weapon.aimAngle = 0
 
-  animator.setAnimationState(self.element.."charge", "discharge")
+  animator.setAnimationState((self.elementalType == "physical" and "nova" or self.elementalType).."charge", "discharge")
   animator.setParticleEmitterActive((self.elementalType == "physical" and "nova" or self.elementalType) .. "Charge", false)
   activeItem.setCursor("/cursors/reticle0.cursor")
 
@@ -204,7 +204,7 @@ function ControlProjectile:reset()
   self.weapon:setStance(self.stances.idle)
   animator.stopAllSounds(self.elementalType.."chargedloop")
   animator.stopAllSounds(self.elementalType.."fullcharge")
-  animator.setAnimationState(self.element.."charge", "idle")
+  animator.setAnimationState((self.elementalType == "physical" and "nova" or self.elementalType).."charge", "idle")
   animator.setParticleEmitterActive((self.elementalType == "physical" and "nova" or self.elementalType) .. "Charge", false)
   activeItem.setCursor("/cursors/reticle0.cursor")
 end

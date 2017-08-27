@@ -950,6 +950,10 @@ function removeTechs()
   player.makeTechUnavailable("explorerglide")
 end
 
+function chooseAffinity()
+
+end
+
 
   --pane.playSound(self.sounds.dispatch, -1)
   --pane.stopAllSounds(self.sounds.dispatch)

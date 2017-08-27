@@ -1,7 +1,7 @@
 {
   "itemName" : "affinitytype",
   "rarity" : "Rare",
-  "inventoryIcon" : "experienceorb.png",
+  "inventoryIcon" : "/objects/experience/experienceorb.png",
   "description" : "Points that change your Affinity.",
   "shortdescription" : "Affinity Type",
   "currency" : "affinitytype",
@@ -11,5 +11,5 @@
   "pickupSoundsLarge" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "smallStackLimit" : 1,
   "mediumStackLimit" : 5,
-  "maxStack" : 10
+  "maxStack" : 8
 }
