@@ -129,8 +129,99 @@ function update(dt)
     end
   end
   
-  updateClassEffects(self.classType)
 
+  updateClassEffects(self.classType)
+  
+  -- Affinity Effects
+  
+  self.affinity = world.entityCurrency(self.id, "affinitytype")
+  
+  if self.affinity == 0 then
+    status.clearPersistentEffects("ivrpgaffinityeffects")
+  else
+      local frost = (status.stat("frostslow") ~= 0) and 1 or 0
+      local wet = (status.stat("wet") ~= 0) and 1 or 0
+      local isSuborWet = wet or isInLiquid()
+      sb.logInfo("FROST: "..frost)
+      sb.logInfo("WET: "..wet)
+      sb.logInfo("ISSUBORWET: "..isSuborWet)
+      effs = {
+        { -- Flame --
+          {stat = "fireStatusImmunity", amount = 1},
+          {stat = "biomeheatImmunity", amount = 1},
+          {stat = "health", effectiveMultiplier = 0.7*isSuborWet},
+          {stat = "energy", effectiveMultiplier = 0.7*isSuborWet},
+        },
+        { -- Venom --
+          {stat = "poisonStatusImmunity", amount = 1},
+          {stat = "tarStatusImmunity", amount = 1},
+        },
+        { -- Frost --
+          {stat = "iceStatusImmunity", amount = 1},
+          {stat = "wetImmunity", amount = 1},
+          {stat = "biomecoldImmunity", amount = 1},
+          {stat = "burning", effectiveMultiplier = 1.5},
+        },
+        { -- Shock --
+          {stat = "electricStatusImmunity", amount = 1},
+          {stat = "tarStatusImmunity", amount = 1},
+          {stat = "slimeImmunity", amount = 1},
+          {stat = "iceStatusImmunity", amount = 1},
+    	  {stat = "maxEnergy", effectiveMultiplier = 1 + .25*wet + .5*frost},
+        },
+        --{ -- Aer --
+        --  {stat = "breathprotectionvehicle", amount = 1},
+        --  {stat = "jumpModifier", effectiveMultiplier = 1.5},
+        --  {stat = "fallDamageMultiplier", effectiveMultiplier = 0.5},
+        --},
+        { -- Infernal --
+          {stat = "fireStatusImmunity", amount = 1},
+          {stat = "biomeheatImmunity", amount = 1},
+          {stat = "lavaImmunity", amount = 1},
+          {stat = "health", effectiveMultiplier = 0.7*isSuborWet},
+          {stat = "energy", effectiveMultiplier = 0.7*isSuborWet},
+        },
+        { -- Toxic --
+          {stat = "poisonStatusImmunity", amount = 1},
+          {stat = "tarStatusImmunity", amount = 1},
+        },
+        { -- Cryo --
+          {stat = "iceStatusImmunity", amount = 1},
+          {stat = "wetImmunity", amount = 1},
+          {stat = "biomecoldImmunity", amount = 1},
+          {stat = "burning", effectiveMultiplier = 1.5},
+        },
+        { -- Arc --
+          {stat = "electricStatusImmunity", amount = 1},
+          {stat = "tarStatusImmunity", amount = 1},
+          {stat = "slimeImmunity", amount = 1},
+          {stat = "iceStatusImmunity", amount = 1},
+    	  {stat = "maxEnergy", effectiveMultiplier = 1 + .25*wet + .5*frost},
+        },
+        --{ -- Void --
+        --  {stat = "breathprotectionvehicle", amount = 1},
+        --  {stat = "jumpModifier", effectiveMultiplier = 1.5},
+        --  {stat = "fallDamageMultiplier", effectiveMultiplier = 0.5},
+        --  {stat = "biomeradiationImmunity", amount = 1},
+        --}
+      }
+      status.setPersistentEffects("ivrpgaffinityeffects",effs[self.affinity])
+      if self.affinity == 8 then
+        mcontroller.controlModifiers({
+          speedModifier = 1.5,
+        })
+      end 
+  end
+end
+
+function isInLiquid()
+  local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
+  local mouthful = world.liquidAt(mouthposition)
+
+    if (world.liquidAt(mouthPosition)) and (inWater == 0) and (mcontroller.liquidId()== 1) or (mcontroller.liquidId()== 12) or (mcontroller.liquidId()== 5) or (mcontroller.liquidId()== 6) or (mcontroller.liquidId()== 55) or (mcontroller.liquidId()== 69) or (mcontroller.liquidId()== 43) or (mcontroller.liquidId()== 60) or (mcontroller.liquidId()== 58) then
+      return 1
+    end 
+  return 0
 end
 
 function updateClassEffects(classType)
