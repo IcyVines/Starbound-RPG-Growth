@@ -1,7 +1,26 @@
 [ 
-{
-    "op": "replace",
-    "path": "/dropPools/0",
-    "value": "shroomguardtreasure"
-}
+	[
+	  {
+	    "op": "test",
+	    "path": "/dropPools/0",
+	    "inverse": false
+	  }, 
+	  {
+	    "op": "replace",
+	    "path": "/dropPools/0",
+	    "value": "shroomguardtreasure"
+	  }
+	],
+	[
+	  {
+	    "op": "test",
+	    "path": "/dropPools/0",
+	    "inverse": true
+	  }, 
+	  {
+	    "op": "add",
+	    "path": "/dropPools/-",
+	    "value": "shroomguardtreasure"
+	  }
+	]
 ]
