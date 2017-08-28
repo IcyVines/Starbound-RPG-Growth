@@ -9,7 +9,7 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+      "file" : "/projectiles/explosions/smokeexplosion/smokeexplosion.config"
     }
   ],
   "power" : 100.0,

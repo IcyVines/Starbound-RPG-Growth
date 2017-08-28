@@ -3,6 +3,8 @@
   "effectConfig" : {
   	"protectionModifier" : -50
   },
+  "blockingStat" : "bleedStatusImmunity",
+
   "defaultDuration" : 5,
 
   "scripts" : [

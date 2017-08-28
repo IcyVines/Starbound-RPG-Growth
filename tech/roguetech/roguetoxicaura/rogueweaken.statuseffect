@@ -3,6 +3,9 @@
   "effectConfig" : {
     "cooldown" : 1
   },
+
+  "blockingStat" : "poisonStatusImmunity",
+  
   "defaultDuration" : 2,
 
   "scripts" : [

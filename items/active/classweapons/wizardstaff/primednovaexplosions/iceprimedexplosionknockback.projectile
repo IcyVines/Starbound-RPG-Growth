@@ -1,17 +1,17 @@
 {
-  "projectileName" : "novaexplosionknockback",
-  "image" : "novaexplosion.png",
+  "projectileName" : "iceprimedexplosionknockback",
+  "image" : "iceexplosion.png",
   "animationCycle" : 0.2,
   "frameNumber" : 6,
   "speed" : 0,
-  "lightColor" : [152, 10, 160],
+  "lightColor" : [82, 82, 160],
   "pointLight" : true,
+  "statusEffects" : [ ],
   "damagePoly" : [ [-37, 0], [-28, -28], [0, -37], [28, -28], [37, 0], [28, 28], [0, 37], [-28, 28] ],
   "animationLoops" : false,
   "piercing" : true,
   "bounces" : -1,
   "flippable" : true,
-  "damageKind" : "nova",
-  "statusEffects" : ["wizardnovastatus"],
+  "damageKind" : "iceplasma",
   "knockback" : 30
 }

@@ -1,14 +1,11 @@
 function init()
   effect.addStatModifierGroup({
-    {stat = "physicalResistance", amount = -.20},
-    {stat = "poisonResistance", amount = -.30},
-    {stat = "iceResistance", amount = -.10},
-    {stat = "shadowResistance", amount = -.10},
-    {stat = "cosmicResistance", amount = -.10},
-    {stat = "radiationResistance", amount = -.20}
+    {stat = "iceResistance", amount = -.50},
+    {stat = "fireResistance", amount = -.50},
+    {stat = "electricResistance", amount = -.50},
   })
   activateVisualEffects()
-  effect.setParentDirectives("fade=770000=0.25")
+  effect.setParentDirectives("fade=77005F=0.25")
 end
 
 function update(dt)
@@ -24,5 +21,5 @@ end
 
 
 function uninit()
-  
+
 end

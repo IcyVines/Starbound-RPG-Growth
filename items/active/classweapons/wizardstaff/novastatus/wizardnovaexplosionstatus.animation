@@ -1,0 +1,22 @@
+{
+  "particleEmitters" : {
+    "bloodparticles" : {
+      "active" : false,
+      "emissionRate" : 6,
+      "particles" : [
+        { "particle" : "astraltearsparkle1" },
+        { "particle" : "astraltearsparkle2" },
+        { "particle" : "astraltearsparkle3" }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "smoke" : { "interpolated" : true }
+  },
+
+
+  "sounds" : {
+    "burn" : [ "/sfx/statuseffects/powerup.ogg" ]
+  }
+}

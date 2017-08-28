@@ -1,0 +1,13 @@
+{
+  "projectileName" : "electricprimednovaexplosion",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "damageKindImage" : "icon.png",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/classweapons/wizardstaff/primednovaexplosions/electricprimedexplosionknockbackstatus.config"
+    }
+  ],
+  "damageKind" : "electricplasma",
+  "timeToLive" : 0
+}

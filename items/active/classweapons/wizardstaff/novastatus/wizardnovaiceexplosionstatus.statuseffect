@@ -1,0 +1,15 @@
+{
+  "name" : "wizardnovaiceexplosionstatus",
+  "effectConfig" : {
+  	"protectionModifier" : -50
+  },
+  "blockingStat" : "novaStatusImmunity",
+
+  "defaultDuration" : 0.02,
+
+  "scripts" : [
+    "wizardnovaiceexplosionstatus.lua"
+  ],
+
+  "animationConfig" : "wizardnovaiceexplosionstatus.animation"
+}

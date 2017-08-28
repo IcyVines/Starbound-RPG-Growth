@@ -5,6 +5,6 @@
     "scripts" : ["/items/active/classweapons/wizardstaff/novastaffexplosion.lua"],
     "class" : "ControlProjectile",
 
-    "projectileType" : "plasmaexplosion"
+    "projectileType" : "novaexplosion"
   }
 }

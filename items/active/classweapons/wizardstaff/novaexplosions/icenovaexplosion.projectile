@@ -1,13 +1,13 @@
 {
-  "projectileName" : "novaplasmaexplosion",
+  "projectileName" : "icenovaexplosion",
   "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
   "damageKindImage" : "icon.png",
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/items/active/classweapons/wizardstaff/novaexplosionprojectiles/novaexplosionknockback.config"
+      "file" : "/projectiles/explosions/regularexplosion2/iceexplosionknockbackstatus.config"
     }
   ],
-  "damageKind" : "electricplasma",
+  "damageKind" : "iceplasma",
   "timeToLive" : 0
 }

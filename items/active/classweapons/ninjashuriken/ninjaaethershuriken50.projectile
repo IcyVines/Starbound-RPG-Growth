@@ -2,23 +2,26 @@
   "projectileName" : "ninjaaethershuriken50",
   "image" : "ninjaaethershurikenthrown50.png",
   "animationCycle" : 0.05,
-  "physics" : "bullet",
+  
   "frameNumber" : 2,
   "pointLight" : true,
   "speed" : 180,
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+      "file" : "/projectiles/explosions/smokeexplosion/smokeexplosion.config"
     }
   ],
-  "power" : 100.0,
+
+  "timeToLive" : 2.4,
+  "hitTimer" : 0.15,
   "knockback" : 10,
-  "damageKind" : "applystatus",
-  "statusEffects" : [
-    "ivrpgweaken"
-  ],
-  "damagePoly" : [ [-5, 0], [-3.3, -3.3], [0, -5], [3.3, -3.3], [5, 0], [3.3, 3.3], [0, 5], [-3.3, 3.3] ],
+  "piercing" : true,
+  "bounces" : -1,
+  "controlForce" : 1000,
+  "damageKind" : "alwaysbleed",
+  "scripts" : [ "ninjashurikentracking.lua" ],
+  "damagePoly" : [ [-7.5, 0], [-5, -5], [0, -7.5], [5, -5], [7.5, 0], [5, 5], [0, 7.5], [-5, 5] ],
   "emitters" : [ "shadowsmoke" ]
 }
 

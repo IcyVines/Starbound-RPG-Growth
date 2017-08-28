@@ -1,0 +1,13 @@
+{
+  "projectileName" : "novanovaexplosion",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "damageKindImage" : "icon.png",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/classweapons/wizardstaff/novaexplosionprojectiles/novaexplosionknockback.config"
+    }
+  ],
+  "damageKind" : "nova",
+  "timeToLive" : 0
+}

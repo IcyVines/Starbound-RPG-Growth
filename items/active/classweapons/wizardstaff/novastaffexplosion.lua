@@ -6,6 +6,9 @@ ControlProjectile = WeaponAbility:new()
 function ControlProjectile:init()
   storage.projectiles = storage.projectiles or {}
 
+  self.item = world.entityHandItemDescriptor(activeItem.ownerEntityId(), activeItem.hand())
+  self.name = "wizardnovastaff"
+
   self.elementalType = self.elementalType or self.weapon.elementalType
 
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
@@ -23,6 +26,15 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
   self.element = self.elementalType == "physical" and "nova" or self.elementalType
   self:updateProjectiles()
+
+  if not self.item then
+    self.item = world.entityHandItemDescriptor(activeItem.ownerEntityId(), activeItem.hand())
+  end
+    
+  if self.item then
+    self.itemConf = root.itemConfig(self.item)
+    self.name = self.itemConf.config.itemName
+  end
 
   world.debugPoint(self:focusPosition(), "blue")
 
@@ -144,6 +156,8 @@ function ControlProjectile:createProjectiles()
   local pCount = self.projectileCount or 1
 
   local pParams = copy(self.projectileParameters)
+  --pParams.statusEffects = {"wizardnovastatus"}
+  self.projectileType = self.name == "wizardnovastaff3" and "primednovaexplosion" or self.projectileType
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
 

@@ -1,17 +1,17 @@
 {
-  "projectileName" : "novaexplosionknockback",
-  "image" : "novaexplosion.png",
+  "projectileName" : "fireprimedexplosionknockback",
+  "image" : "fireexplosion.png",
   "animationCycle" : 0.2,
   "frameNumber" : 6,
   "speed" : 0,
-  "lightColor" : [152, 10, 160],
+  "lightColor" : [160, 30, 30],
   "pointLight" : true,
+  "statusEffects" : [ ],
   "damagePoly" : [ [-37, 0], [-28, -28], [0, -37], [28, -28], [37, 0], [28, 28], [0, 37], [-28, 28] ],
   "animationLoops" : false,
   "piercing" : true,
   "bounces" : -1,
   "flippable" : true,
-  "damageKind" : "nova",
-  "statusEffects" : ["wizardnovastatus"],
+  "damageKind" : "fireplasma",
   "knockback" : 30
 }

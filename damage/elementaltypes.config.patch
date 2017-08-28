@@ -1,0 +1,16 @@
+[
+  {
+    "op" : "add",
+    "path" : "/nova",
+    "value" : {
+      "resistanceStat" : "novaResistance",
+      "damageNumberParticles" : {
+        "hit" : "novadamagenumber",
+        "stronghit" : "novadamagenumberstrong",
+        "weakhit" : "novadamagenumberweak",
+        "shieldhit" : "novadamagenumber",
+        "kill" : "novadamagenumber"
+      }
+    }
+  }
+]

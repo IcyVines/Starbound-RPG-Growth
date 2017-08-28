@@ -143,9 +143,9 @@ function update(dt)
       local frost = hasEphemeralStat("frostslow")
       local wet = hasEphemeralStat("wet")
       local isSuborWet = isInLiquid() | wet
-      sb.logInfo("FROST: "..frost)
-      sb.logInfo("WET: "..wet)
-      sb.logInfo("ISSUBORWET: "..isSuborWet)
+      --sb.logInfo("FROST: "..frost)
+      --sb.logInfo("WET: "..wet)
+      --sb.logInfo("ISSUBORWET: "..isSuborWet)
       effs = {
         { -- Flame --
           {stat = "fireStatusImmunity", amount = 1},
@@ -160,6 +160,8 @@ function update(dt)
         { -- Frost --
           {stat = "iceStatusImmunity", amount = 1},
           {stat = "wetImmunity", amount = 1},
+          {stat = "snowslowImmunity", amount = 1},
+          {stat = "iceslipImmunity", amount = 1},
           {stat = "biomecoldImmunity", amount = 1},
           {stat = "burning", effectiveMultiplier = 1.5},
         },
@@ -167,8 +169,11 @@ function update(dt)
           {stat = "electricStatusImmunity", amount = 1},
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "slimeImmunity", amount = 1},
-          {stat = "iceStatusImmunity", amount = 1},
-    	  {stat = "maxEnergy", effectiveMultiplier = 1 + .25*wet + .5*frost},
+          {stat = "fumudslowImmunity", amount = 1 },
+          {stat = "jungleslowImmunity", amount = 1 },
+          {stat = "spiderwebImmunity", amount = 1 },
+          {stat = "sandstormImmunity", amount = 1 },
+    	    {stat = "maxEnergy", effectiveMultiplier = 1 + .25*wet + .5*frost},
         },
         --{ -- Aer --
         --  {stat = "breathprotectionvehicle", amount = 1},
@@ -189,16 +194,22 @@ function update(dt)
         { -- Cryo --
           {stat = "iceStatusImmunity", amount = 1},
           {stat = "wetImmunity", amount = 1},
+          {stat = "snowslowImmunity", amount = 1},
+          {stat = "iceslipImmunity", amount = 1},
           {stat = "biomecoldImmunity", amount = 1},
-          {stat = "burning", effectiveMultiplier = 1.5},
+          {stat = "fireResistance", amount = -.5},
         },
         { -- Arc --
           {stat = "electricStatusImmunity", amount = 1},
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "slimeImmunity", amount = 1},
-          {stat = "iceStatusImmunity", amount = 1},
-    	  {stat = "maxEnergy", effectiveMultiplier = 1 + .25*wet + .5*frost},
-        },
+          {stat = "fumudslowImmunity", amount = 1 },
+          {stat = "jungleslowImmunity", amount = 1 },
+          {stat = "spiderwebImmunity", amount = 1 },
+          {stat = "sandstormImmunity", amount = 1 },
+          --{stat = "iceStatusImmunity", amount = 1},
+    	    {stat = "maxEnergy", effectiveMultiplier = 1 + .25*wet + .5*frost},
+        }
         --{ -- Void --
         --  {stat = "breathprotectionvehicle", amount = 1},
         --  {stat = "jumpModifier", effectiveMultiplier = 1.5},

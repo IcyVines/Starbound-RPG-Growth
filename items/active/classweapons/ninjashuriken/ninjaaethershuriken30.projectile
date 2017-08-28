@@ -9,15 +9,12 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+      "file" : "/projectiles/explosions/smokeexplosion/smokeexplosion.config"
     }
   ],
   "power" : 100.0,
   "knockback" : 10,
-  "damageKind" : "applystatus",
-  "statusEffects" : [
-    "ivrpgweaken"
-  ],
+  "damageKind" : "alwaysbleed",
   "damagePoly" : [ [-5, 0], [-3.3, -3.3], [0, -5], [3.3, -3.3], [5, 0], [3.3, 3.3], [0, 5], [-3.3, 3.3] ],
   "emitters" : [ "shadowsmoke" ]
 }

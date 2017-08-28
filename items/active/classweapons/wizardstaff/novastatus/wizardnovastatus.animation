@@ -1,0 +1,61 @@
+{
+  "particleEmitters" : {
+    "bloodparticles" : {
+      "active" : true,
+      "emissionRate" : 6,
+      "particles" : [
+        { "particle" : "astraltearsparkle1" },
+        { "particle" : "astraltearsparkle2" },
+        { "particle" : "astraltearsparkle3" }
+      ]
+    },
+    "smoke" : {
+      "enable" : true,
+      "emissionRate" : 15,
+      "offsetRegion" : [ 3.0, 1.0, 3.0, 1.0 ],
+      "particles" : [
+        { "particle" : "bluecartoonstar" },
+        { "particle" : "redcartoonstar" },
+        { "particle" : "greencartoonstar" },
+        { "particle" : "bluecartoonstar" },
+        { "particle" : "redcartoonstar" },
+        { "particle" : "greencartoonstar" },
+        { "particle" : "bluecartoonstar" },
+        { "particle" : "redcartoonstar" }
+      ]
+    },
+    "statustext" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "Nova!",
+            "size" : 0.4,
+            "color" : [160, 10, 180, 255],
+            "fade" : 0.4,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.5,
+            "position" : [0.0, 1.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 6],
+            "finalVelocity" : [0, 3],
+            "approach" : [0, 10],
+            "timeToLive" : 0.5,
+            "variance" : {}
+          }
+        }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "smoke" : { "interpolated" : true }
+  },
+
+
+  "sounds" : {
+    "burn" : [ "/sfx/statuseffects/powerup.ogg" ]
+  }
+}

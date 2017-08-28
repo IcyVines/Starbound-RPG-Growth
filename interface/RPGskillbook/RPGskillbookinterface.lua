@@ -363,7 +363,7 @@ function updateInfo()
     "Amount\n" ..
     "^red;" .. math.floor(100*(1 + self.vitality^self.vitalityBonus*.05))/100 .. "^reset;" .. "\n" ..
     "^green;" .. math.floor(100*(1 + self.vigor^self.vigorBonus*.05))/100 .. "\n" ..
-    getStatPercent(status.stat("energyRegenPercentageRate")) ..
+    math.floor(status.stat("energyRegenPercentageRate")*100+.5)/100 .. "^reset;" .. "\n" ..
     math.floor(status.stat("energyRegenBlockTime")*100+.5)/100 .. "^reset;" .. "\n" ..
     "^orange;" .. getStatPercent(status.stat("foodDelta")) .. "^reset;" ..
     "^gray;" .. getStatPercent(status.stat("physicalResistance")) .. "^reset;" ..
@@ -951,6 +951,10 @@ function removeTechs()
 end
 
 function chooseAffinity()
+
+end
+
+function checkAffinityDescription()
 
 end
 
