@@ -150,8 +150,8 @@ function update(dt)
         { -- Flame --
           {stat = "fireStatusImmunity", amount = 1},
           {stat = "biomeheatImmunity", amount = 1},
-          {stat = "health", effectiveMultiplier = 0.7*isSuborWet},
-          {stat = "energy", effectiveMultiplier = 0.7*isSuborWet},
+          {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isSuborWet},
+          {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isSuborWet},
         },
         { -- Venom --
           {stat = "poisonStatusImmunity", amount = 1},
@@ -163,7 +163,7 @@ function update(dt)
           {stat = "snowslowImmunity", amount = 1},
           {stat = "iceslipImmunity", amount = 1},
           {stat = "biomecoldImmunity", amount = 1},
-          {stat = "burning", effectiveMultiplier = 1.5},
+          {stat = "fireResistance", amount = -0.5},
         },
         { -- Shock --
           {stat = "electricStatusImmunity", amount = 1},
@@ -173,7 +173,7 @@ function update(dt)
           {stat = "jungleslowImmunity", amount = 1 },
           {stat = "spiderwebImmunity", amount = 1 },
           {stat = "sandstormImmunity", amount = 1 },
-    	    {stat = "maxEnergy", effectiveMultiplier = 1 + .25*wet + .5*frost},
+    	    {stat = "maxEnergy", effectiveMultiplier = 1 - 0.25*wet - 0.5*frost},
         },
         --{ -- Aer --
         --  {stat = "breathprotectionvehicle", amount = 1},
@@ -184,8 +184,8 @@ function update(dt)
           {stat = "fireStatusImmunity", amount = 1},
           {stat = "biomeheatImmunity", amount = 1},
           {stat = "lavaImmunity", amount = 1},
-          {stat = "health", effectiveMultiplier = 0.7*isSuborWet},
-          {stat = "energy", effectiveMultiplier = 0.7*isSuborWet},
+          {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isSuborWet},
+          {stat = "maxEnergy", effectiveMultiplier = 1- 0.3*isSuborWet},
         },
         { -- Toxic --
           {stat = "poisonStatusImmunity", amount = 1},
@@ -208,7 +208,7 @@ function update(dt)
           {stat = "spiderwebImmunity", amount = 1 },
           {stat = "sandstormImmunity", amount = 1 },
           --{stat = "iceStatusImmunity", amount = 1},
-    	    {stat = "maxEnergy", effectiveMultiplier = 1 + .25*wet + .5*frost},
+    	    {stat = "maxEnergy", effectiveMultiplier = 1 - 0.25*wet - 0.5*frost},
         }
         --{ -- Void --
         --  {stat = "breathprotectionvehicle", amount = 1},

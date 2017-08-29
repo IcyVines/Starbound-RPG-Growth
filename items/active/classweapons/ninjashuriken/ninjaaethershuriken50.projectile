@@ -14,7 +14,7 @@
   ],
 
   "timeToLive" : 2.4,
-  "hitTimer" : 0.15,
+  "hitTimer" : 0.8,
   "knockback" : 10,
   "piercing" : true,
   "bounces" : -1,

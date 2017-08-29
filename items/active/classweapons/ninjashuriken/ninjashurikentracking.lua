@@ -7,6 +7,16 @@ function init()
   self.maxSpeed = config.getParameter("speed", 60)
   self.hitTimer = config.getParameter("hitTimer")
   self.cooldown = 0
+
+  if world.isMonster(self.playerId) or world.isNpc(self.playerId) then
+    self.agility = 10
+  else
+    self.agility = world.entityCurrency(self.playerId, "agilitypoint")
+  end
+
+  projectile.setTimeToLive(2+self.agility/25)
+  self.hitTimer = 1 - self.agility/100
+
   mcontroller.applyParameters(
   	{
   		collisionEnabled = false
@@ -17,6 +27,7 @@ end
 function update(dt)
 
   if self.cooldown > 0 then
+    mcontroller.accelerate({mcontroller.yVelocity()*10,-mcontroller.xVelocity()*10})
   	self.cooldown = math.max(0, self.cooldown - dt)
   	return
   end
