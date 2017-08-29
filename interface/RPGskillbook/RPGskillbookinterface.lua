@@ -29,17 +29,18 @@ function init()
     5: Rogue
     6: Explorer
     ]]
+  self.affinityTo = 0
   self.affinity = player.currency("affinitytype")
   --[[
     0: No Affinity
-    1: Infernal
-    2: Void
-    3: Toxic
-    4: Arc
-    5: Cryo
-    6: Aer
-    7: Victus 
-    8: Kinetic
+    1: Flame
+    2: Venom
+    3: Frost
+    4: Shock
+    5: Infernal
+    6: Toxic
+    7: Cryo 
+    8: Arc
     ]]
     --initiating possible Level Change (thus, level currency should not be used in another script!!!)
     updateLevel()
@@ -340,7 +341,16 @@ end
 
 function changeToAffinities()
     widget.setText("tabLabel", "Affinities Tab")
-    widget.setVisible("affinitieslayout", true)
+    if player.currency("affinitytype") == 0 then
+      widget.setVisible("affinitylayout", false)
+      checkAffinityDescription("default")
+      widget.setVisible("affinitieslayout", true)
+      return
+    else
+      widget.setVisible("affinitieslayout", false)
+      updateAffinityTab()
+      widget.setVisible("affinitylayout", true)
+    end
 end
 
 function changeToInfo()
@@ -951,11 +961,152 @@ function removeTechs()
 end
 
 function chooseAffinity()
-
+  player.addCurrency("affinitytype", self.affinityTo)
+  self.affinity = self.affinityTo
+  addAffinityStats()
+  changeToAffinities()
 end
 
-function checkAffinityDescription()
+function checkAffinityDescription(name)
+  name = string.gsub(name,"icon","")
+  uncheckAffinityIcons(name)
+  if (widget.getChecked("affinitieslayout."..name.."icon")) then
+    changeAffinityDescription(name)
+    widget.setButtonEnabled("affinitieslayout.selectaffinity", true)
+  else
+    changeAffinityDescription("default")
+    widget.setButtonEnabled("affinitieslayout.selectaffinity", false)
+  end
+end
 
+function uncheckAffinityIcons(name)
+  if name ~= "fire" then
+    widget.setChecked("affinitieslayout.fireicon", false)
+    widget.setFontColor("affinitieslayout.firetitle", "white")
+  end
+  if name ~= "ice" then
+    widget.setChecked("affinitieslayout.iceicon", false)
+    widget.setFontColor("affinitieslayout.icetitle", "white")
+  end
+  if name ~= "electric" then
+    widget.setChecked("affinitieslayout.electricicon", false)
+    widget.setFontColor("affinitieslayout.electrictitle", "white")
+  end
+  if name ~= "poison" then
+    widget.setChecked("affinitieslayout.poisonicon", false)
+    widget.setFontColor("affinitieslayout.poisontitle", "white")
+  end
+end
+
+function changeAffinityDescription(name)
+  if name == "fire" then
+    widget.setText("affinitieslayout.affinitydescription", "Bend fire to your will.") 
+    widget.setFontColor("affinitieslayout.firetitle", "red")
+    self.affinityTo = 1
+  end
+  if name == "ice" then
+    widget.setText("affinitieslayout.affinitydescription", "Bend ice to your will.") 
+    widget.setFontColor("affinitieslayout.icetitle", "blue")
+    self.affinityTo = 2
+  end
+  if name == "electric" then
+    widget.setText("affinitieslayout.affinitydescription", "Bend lightning to your will.") 
+    widget.setFontColor("affinitieslayout.electrictitle", "yellow")
+    self.affinityTo = 3
+  end
+  if name == "poison" then
+    widget.setText("affinitieslayout.affinitydescription", "Bend poison to your will.") 
+    widget.setFontColor("affinitieslayout.poisontitle", "green")
+    self.affinityTo = 4
+  end
+  if name == "default" then
+    widget.setText("affinitieslayout.affinitydescription", "Click an Affinity's icon to see what that Affinity does.")
+    uncheckAffinityIcons("default")
+    self.affinityTo = 0
+  end
+end
+
+function updateAffinityTab()
+end
+
+function addAffinityStats()
+  --[[if player.currency("classtype") == 1 then
+      --Flame
+    player.addCurrency("strengthpoint", 5)
+    player.addCurrency("endurancepoint", 4)
+    player.addCurrency("vitalitypoint", 3)
+    player.addCurrency("vigorpoint", 1)
+  elseif player.currency("classtype") == 2 then
+    --Venom
+    player.addCurrency("intelligencepoint", 7)
+    player.addCurrency("vigorpoint", 6)
+  elseif player.currency("classtype") == 3 then
+    --Frost
+    player.addCurrency("agilitypoint", 5)
+    player.addCurrency("dexteritypoint", 6)
+    player.addCurrency("intelligencepoint", 2)
+  elseif player.currency("classtype") == 4 then
+    --Shock
+    player.addCurrency("vitalitypoint", 5)
+    player.addCurrency("endurancepoint", 2)
+    player.addCurrency("dexteritypoint", 4)
+    player.addCurrency("strengthpoint", 2)
+  elseif player.currency("classtype") == 5 then
+    --Infernal
+    player.addCurrency("agilitypoint", 3)
+    player.addCurrency("endurancepoint", 2)
+    player.addCurrency("dexteritypoint", 3)
+    player.addCurrency("strengthpoint", 3)
+    player.addCurrency("vigorpoint", 2)
+  elseif player.currency("classtype") == 6 then
+    --Toxic
+    player.addCurrency("agilitypoint", 4)
+    player.addCurrency("endurancepoint", 2)
+    player.addCurrency("vitalitypoint", 3)
+    player.addCurrency("vigorpoint", 4)
+  end
+  updateStats()
+  uncheckClassIcons("default")
+  changeClassDescription("default")]]
+end
+
+function consumeAffinityStats()
+  --[[if player.currency("classtype") == 1 then
+      --Knight
+    player.consumeCurrency("strengthpoint", 5)
+    player.consumeCurrency("endurancepoint", 4)
+    player.consumeCurrency("vitalitypoint", 3)
+    player.consumeCurrency("vigorpoint", 1)
+  elseif player.currency("classtype") == 2 then
+    --Wizard
+    player.consumeCurrency("intelligencepoint", 7)
+    player.consumeCurrency("vigorpoint", 6)
+  elseif player.currency("classtype") == 3 then
+    --Ninja
+    player.consumeCurrency("agilitypoint", 5)
+    player.consumeCurrency("dexteritypoint", 6)
+    player.consumeCurrency("intelligencepoint", 2)
+  elseif player.currency("classtype") == 4 then
+    --Soldier
+    player.consumeCurrency("vitalitypoint", 5)
+    player.consumeCurrency("endurancepoint", 2)
+    player.consumeCurrency("dexteritypoint", 4)
+    player.consumeCurrency("strengthpoint", 2)
+  elseif player.currency("classtype") == 5 then
+    --Rogue
+    player.consumeCurrency("agilitypoint", 3)
+    player.consumeCurrency("endurancepoint", 2)
+    player.consumeCurrency("dexteritypoint", 3)
+    player.consumeCurrency("strengthpoint", 3)
+    player.consumeCurrency("vigorpoint", 2)
+  elseif player.currency("classtype") == 6 then
+    --Explorer
+    player.consumeCurrency("agilitypoint", 4)
+    player.consumeCurrency("endurancepoint", 2)
+    player.consumeCurrency("vitalitypoint", 3)
+    player.consumeCurrency("vigorpoint", 4)
+  end
+  updateStats()]]
 end
 
 
