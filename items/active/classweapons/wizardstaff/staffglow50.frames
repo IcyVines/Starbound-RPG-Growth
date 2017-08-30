@@ -1,0 +1,21 @@
+{
+  "frameGrid" : {
+    "size" : [30, 50],
+    "dimensions" : [92, 1],
+    "names" : [
+      [
+        "novacharging.1", "novacharging.2", "novacharging.3", "novacharging.4", "novacharging.5", "novacharging.6", "novacharging.7", "novacharging.8", "novacharging.9", "novacharging.10",
+        "novaspark.1", "novaspark.2", "novaspark.3", "novaloop.1", "novaloop.2", "novaloop.3", "novaloop.4", "novadischarge.1", "novadischarge.2", "novadischarge.3",
+
+        "firecharging.1", "firecharging.2", "firecharging.3", "firecharging.4", "firecharging.5", "firecharging.6", "firecharging.7", "firecharging.8", "firecharging.9", "firecharging.10",
+        "firespark.1", "firespark.2", "firespark.3", "fireloop.1", "fireloop.2", "fireloop.3", "fireloop.4", "firedischarge.1", "firedischarge.2", "firedischarge.3",
+
+        "electriccharging.1", "electriccharging.2", "electriccharging.3", "electriccharging.4", "electriccharging.5", "electriccharging.6", "electriccharging.7", "electriccharging.8", "electriccharging.9", "electriccharging.10",
+        "electricspark.1", "electricspark.2", "electricspark.3", "electricloop.1", "electricloop.2", "electricloop.3", "electricloop.4", "electricdischarge.1", "electricdischarge.2", "electricdischarge.3",
+
+        "icecharging.1", "icecharging.2", "icecharging.3", "icecharging.4", "icecharging.5", "icecharging.6", "icecharging.7", "icecharging.8", "icecharging.9", "icecharging.10",
+        "icespark.1", "icespark.2", "icespark.3", "iceloop.1", "iceloop.2", "iceloop.3", "iceloop.4", "icedischarge.1", "icedischarge.2", "icedischarge.3"
+      ]
+    ]
+  }
+}

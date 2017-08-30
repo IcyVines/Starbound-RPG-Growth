@@ -285,7 +285,7 @@ function updateClassEffects(classType)
           if status.resourcePositive("perfectBlock") then
             --increased damage after perfect blocks
             if heldItem and root.itemHasTag(heldItem, "vitalaegis") then
-              status.addEphemeralEffect("regeneration1", 2)
+              status.addEphemeralEffect("regeneration4", 2)
             end
             status.addEphemeralEffect("knightblock")
             --sb.logInfo("Perfect Block: " .. tostring(status.resource("perfectBlock")) .. ", " .. tostring(status.resource("prefectBlockLimit")))

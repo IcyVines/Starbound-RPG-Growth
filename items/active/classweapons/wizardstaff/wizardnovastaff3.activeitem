@@ -15,7 +15,7 @@
   "animationParts" : {
     "staff" : "nova_staff50.png",
     "stone" : "nova_stone50.png",
-    "chargeEffect" : "staffglow_50.png"
+    "chargeEffect" : "staffglow50.png"
   },
 
   "animationCustom" : {

@@ -61,6 +61,7 @@ function update(dt)
     if widget.getChecked("bookTabs.2") then
       local checked = widget.getChecked("classlayout.techicon1") and 1 or (widget.getChecked("classlayout.techicon2") and 2 or (widget.getChecked("classlayout.techicon3") and 3 or (widget.getChecked("classlayout.techicon4") and 4 or 0))) 
       if checked ~= 0 then unlockTechVisible(("techicon" .. tostring(checked)), 2^(checked+1)) end
+      updateClassWeapon()
     end
   end
 
@@ -215,10 +216,6 @@ function updateOverview(toNext)
 end
 
 function updateClassTab()
-  if player.currency("classtype") ~= 4 then
-    --widget.setPosition("classlayout.weapontext",{154,240})
-    --widget.setPosition("classlayout.weapontitle",{89,240})
-  end
   if player.currency("classtype") == 0 then
     widget.setText("classlayout.classtitle","No Class Yet")
     widget.setImage("classlayout.classicon","/objects/class/noclass.png")
@@ -234,7 +231,7 @@ function updateClassTab()
     widget.setText("classlayout.effecttext","Perfect Blocks increase Damage by 20% for a short period.")
     widget.setImage("classlayout.effecticon","/scripts/knightblock/knightblock.png")
     widget.setImage("classlayout.effecticon2","/scripts/knightblock/knightblock.png")
-    widget.setImage("classlayout.classweaponicon","/objects/class/knight.png")
+    widget.setImage("classlayout.classweaponicon","/interface/RPGskillbook/weapons/knight.png")
     widget.setText("classlayout.statscalingtext","^green;Great:^reset;\nStrength\n^blue;Good:^reset;\nEndurance\nVitality")
   elseif player.currency("classtype") == 2 then
     widget.setText("classlayout.classtitle","Wizard")
@@ -246,7 +243,7 @@ function updateClassTab()
     widget.setText("classlayout.effecttext","While using Wands or Staves, gain +10% Fire, Poison, and Ice Resistance.")
     widget.setImage("classlayout.effecticon","/scripts/wizardaffinity/wizardaffinity.png")
     widget.setImage("classlayout.effecticon2","/scripts/wizardaffinity/wizardaffinity.png")
-    widget.setImage("classlayout.classweaponicon","/objects/class/wizard.png")
+    widget.setImage("classlayout.classweaponicon","/interface/RPGskillbook/weapons/wizard.png")
     widget.setText("classlayout.statscalingtext","^green;Amazing:^reset;\nIntelligence\n^magenta;Good:^reset;\nVigor")
   elseif player.currency("classtype") == 3 then
     widget.setText("classlayout.classtitle","Ninja")
@@ -258,7 +255,7 @@ function updateClassTab()
     widget.setText("classlayout.effecttext","+10% Bleed Chance and 0.4s Bleed Length during Nighttime or while Underground.")
     widget.setImage("classlayout.effecticon","/scripts/ninjacrit/ninjacrit.png")
     widget.setImage("classlayout.effecticon2","/scripts/ninjacrit/ninjacrit.png")
-    widget.setImage("classlayout.classweaponicon","/objects/class/ninja.png")
+    widget.setImage("classlayout.classweaponicon","/interface/RPGskillbook/weapons/ninja.png")
     widget.setText("classlayout.statscalingtext","^green;Amazing:^reset;\nDexterity\n^magenta;Good:^reset;\nAgility")
   elseif player.currency("classtype") == 4 then
     widget.setText("classlayout.classtitle","Soldier")
@@ -270,9 +267,7 @@ function updateClassTab()
     widget.setText("classlayout.effecttext","While Energy is full, your Food Meter decreases 10% slower.")
     widget.setImage("classlayout.effecticon","/scripts/soldierdiscipline/soldierdiscipline.png")
     widget.setImage("classlayout.effecticon2","/scripts/soldierdiscipline/soldierdiscipline.png")
-    --widget.setPosition("classlayout.weapontext",{154,251})
-    --widget.setPosition("classlayout.weapontitle",{89,251})
-    widget.setImage("classlayout.classweaponicon","/objects/class/soldier.png")
+    widget.setImage("classlayout.classweaponicon","/interface/RPGskillbook/weapons/soldier.png")
     widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nVitality\n^magenta;Good:^reset;\nDexterity\n^gray;OK:^reset;\nStrength\nEndurance")
   elseif player.currency("classtype") == 5 then
     widget.setText("classlayout.classtitle","Rogue")
@@ -284,7 +279,7 @@ function updateClassTab()
     widget.setText("classlayout.effecttext","While your Food Meter is filled at least halfway, gain +20% Poison Resistance.")
     widget.setImage("classlayout.effecticon","/scripts/roguepoison/roguepoison.png")
     widget.setImage("classlayout.effecticon2","/scripts/roguepoison/roguepoison.png")
-    widget.setImage("classlayout.classweaponicon","/objects/class/rogue.png")
+    widget.setImage("classlayout.classweaponicon","/interface/RPGskillbook/weapons/rogue.png")
     widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nDexterity\n^magenta;Good:^reset;\nStrength\nAgility")
   elseif player.currency("classtype") == 6 then
     widget.setText("classlayout.classtitle","Explorer")
@@ -296,9 +291,10 @@ function updateClassTab()
     widget.setText("classlayout.effecttext","While Health is greater than half, provide a bright yellow Glow.")
     widget.setImage("classlayout.effecticon","/scripts/explorerglow/explorerglow.png")
     widget.setImage("classlayout.effecticon2","/scripts/explorerglow/explorerglow.png")
-    widget.setImage("classlayout.classweaponicon","/objects/class/explorer.png")
+    widget.setImage("classlayout.classweaponicon","/interface/RPGskillbook/weapons/explorer.png")
     widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nVigor\n^magenta;Good:^reset;\nAgility\n^gray;OK:^reset;\nVitality\nEndurance")
   end
+  updateClassWeapon()
   updateTechImages()
 end
 
@@ -373,7 +369,7 @@ function updateInfo()
     "Amount\n" ..
     "^red;" .. math.floor(100*(1 + self.vitality^self.vitalityBonus*.05))/100 .. "^reset;" .. "\n" ..
     "^green;" .. math.floor(100*(1 + self.vigor^self.vigorBonus*.05))/100 .. "\n" ..
-    math.floor(status.stat("energyRegenPercentageRate")*100+.5)/100 .. "^reset;" .. "\n" ..
+    math.floor(status.stat("energyRegenPercentageRate")*100+.5)/100 .. "\n" ..
     math.floor(status.stat("energyRegenBlockTime")*100+.5)/100 .. "^reset;" .. "\n" ..
     "^orange;" .. getStatPercent(status.stat("foodDelta")) .. "^reset;" ..
     "^gray;" .. getStatPercent(status.stat("physicalResistance")) .. "^reset;" ..
@@ -382,10 +378,27 @@ function updateInfo()
     "^red;" .. getStatPercent(status.stat("fireResistance")) .."^reset;" .. 
     "^yellow;" .. getStatPercent(status.stat("electricResistance")) .. "^reset;" ..
     "^gray;" .. getStatPercent(status.stat("grit")) ..
-    math.floor(status.stat("fallDamageMultiplier")*100+.5)/100 .. "\n" ..    
+    getStatMultiplier(status.stat("fallDamageMultiplier")) ..  
     math.floor((1 + self.strength^self.strengthBonus*.05)*100+.5)/100 .. "^reset;" .. "\n" ..
     "^red;" .. (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed")) .. "%\n" ..
-    (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed"))/50 .. "^reset;" .. "\n")
+    (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed"))/50 .. "^reset;" .. "\n" ..
+    "\nStatus:\n" ..
+    "^red;" .. getStatImmunity(status.stat("lavaImmunity")) ..
+    getStatImmunity(status.stat("heatbiomeImmunity")) .. "^reset;" ..
+    "^blue;" .. getStatImmunity(status.stat("coldbiomeImmunity")) .. "^reset;" ..
+    "^green;" .. getStatImmunity(status.stat("radiationbiomeImmunity")) .. "^reset;" ..
+    "^black;" .. getStatImmunity(status.stat("tarImmunity")) .. "^reset;" ..
+    "^blue;" .. getStatImmunity(status.stat("breathingProtection")) .. "^reset;")
+
+  widget.setText("infolayout.displaystatsFU", 
+    "Amount\n" ..
+    "^green;" .. getStatPercent(status.stat("radioactiveResistance")) .. "^reset;" ..
+    "^black;" .. getStatPercent(status.stat("shadowResistance")) .. "^reset;" ..
+    "^magenta;" .. getStatPercent(status.stat("cosmicResistance")) .. "^reset;" ..
+    "\nStatus:\n" ..
+    "^red;" .. getStatImmunity(status.stat("extremeheatbiomeImmunity")) .. "^reset;" .. 
+    "^blue;" .. getStatImmunity(status.stat("extremecoldbiomeImmunity")) .. "^reset;" .. 
+   "^green;" ..  getStatImmunity(status.stat("extremeradiationbiomeImmunity")) .. "^reset;")
 end
 
 function unlockTech()
@@ -623,6 +636,15 @@ end
 function getStatPercent(stat)
   stat = math.floor(stat*10000+.50)/100
   return stat >= 100 and "Immune!\n" or (stat < 0 and stat .. "%\n" or (stat == 0 and "0%\n" or "+" .. stat .. "%\n"))
+end
+
+function getStatMultiplier(stat)
+  stat = math.floor(stat*100+.5)/100
+  return stat <= 0 and "0\n" or (stat .. "\n")
+end
+
+function getStatImmunity(stat)
+  return tostring(stat == 1):gsub("^%l",string.upper) .. "\n"
 end
 
 function raiseStat(name)
@@ -958,6 +980,28 @@ function removeTechs()
   player.makeTechUnavailable("explorerenhancedmovement")
   player.makeTechUnavailable("explorerdrill")
   player.makeTechUnavailable("explorerglide")
+end
+
+function updateClassWeapon()
+  if self.level < 15 then
+    widget.setText("classlayout.weaponreqlvl", "Required Level: 15")
+    widget.setVisible("classlayout.weaponreqlvl", true)
+    widget.setVisible("classlayout.unlockquestbutton", false)
+  else
+    widget.setVisible("classlayout.unlockquestbutton", true)
+    widget.setVisible("classlayout.weaponreqlvl", false)
+  end
+  --[[if self.level < 30 then
+    widget.setText("classlayout.weaponreqlvl", "Required Level: 30")
+    widget.setVisible("classlayout.unlockquestbutton", false)
+  elseif self.level < 50 then
+    widget.setText("classlayout.weaponreqlvl", "Required Level: 50")
+    widget.setVisible("classlayout.unlockquestbutton", false)
+  end]]
+end
+
+function unlockQuest()
+  
 end
 
 function chooseAffinity()

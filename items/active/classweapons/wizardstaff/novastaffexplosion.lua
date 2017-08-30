@@ -158,7 +158,8 @@ function ControlProjectile:createProjectiles()
   local pParams = copy(self.projectileParameters)
   --pParams.statusEffects = {"wizardnovastatus"}
   self.projectileType = self.name == "wizardnovastaff3" and "primednovaexplosion" or self.projectileType
-  pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
+  self.powerMod = self.elementalType == "ice" and 20 or (self.elementalType == "fire" and -20 or 0)
+  pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount + self.powerMod
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
 
   for i = 1, pCount do

@@ -15,7 +15,7 @@ function init()
   end
 
   projectile.setTimeToLive(2+self.agility/25)
-  self.hitTimer = 1 - self.agility/100
+  self.hitTimer = 1.3 - self.agility/100
 
   mcontroller.applyParameters(
   	{
@@ -27,7 +27,7 @@ end
 function update(dt)
 
   if self.cooldown > 0 then
-    mcontroller.accelerate({mcontroller.yVelocity()*10,-mcontroller.xVelocity()*10})
+    mcontroller.accelerate({mcontroller.yVelocity()*8,-mcontroller.xVelocity()*8})
   	self.cooldown = math.max(0, self.cooldown - dt)
   	return
   end

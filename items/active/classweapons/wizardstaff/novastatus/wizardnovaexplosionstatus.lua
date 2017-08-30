@@ -14,16 +14,21 @@ function activateVisualEffects()
   --animator.burstParticleEmitter("smoke")
 end
 
-
 function uninit()
+  self.id = effect.sourceEntity()
+  if world.isMonster(self.id) or world.isNpc(self.id) then
+    self.powerMod = 1
+  else
+    self.powerMod = 1 + world.entityCurrency(self.id, "intelligencepoint")*0.02
+  end
   if status.resource("health") <= 0 then
     local projectileId = world.spawnProjectile(
         "novaprimednovaexplosion",
         mcontroller.position(),
-        effect.sourceEntity(),
+        self.id,
         {0,0},
         false,
-        {timeToLive = 0.25, power = 120}
+        {timeToLive = 0.25, power = 120, powerMultiplier = self.powerMod}
       )
   end
 end
