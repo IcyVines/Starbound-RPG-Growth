@@ -1,0 +1,102 @@
+{
+  "itemName" : "soldierversagun2",
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "Versa Impact, a gun that can decimate enemies from both up close and far away.",
+  "shortdescription" : "Versa Impact",
+  "tooltipKind" : "gun",
+  "category" : "uniqueWeapon",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","ranged","shotgun", "assaultrifle", "sniperrifle", "soldier"],
+  "level" : 5,
+
+  "inventoryIcon" : [
+    { "image" : "spaceplasmarifle.png" }
+  ],
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "spaceplasmarifle.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["/sfx/gun/shotgun2.ogg"],
+      "charge" : ["/sfx/tools/energypickaxe_idle.ogg"],
+      "charged" : ["/sfx/tools/energypickaxe_stop1.ogg"]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [150, 0, 0]
+      }
+    }
+  },
+  "baseOffset" : [-1.25, 0.25],
+  "muzzleOffset" : [1.75, 0.3125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/classweapons/soldiergun/soldierversaswitch.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.0,
+    "baseDps" : 15,
+    "energyUsage" : 29,
+    "projectileCount" : 7,
+    "inaccuracy" : 0.15,
+    "fireType" : "auto",
+    "chargeTime" : 1.0,
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "damageKind" : "shotgunbullet",
+      "knockback" : 10,
+      "knockbackRange" : 30
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 8,
+        "weaponRotation" : 8,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.2,
+        "armRotation" : 8,
+        "weaponRotation" : 8,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "versaarfire",
+  "altAbility" : {
+    "baseDps" : 12,
+    "energyUsage" : 20
+  },
+
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

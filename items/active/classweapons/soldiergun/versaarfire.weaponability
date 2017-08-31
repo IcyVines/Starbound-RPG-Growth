@@ -1,0 +1,57 @@
+{
+  "animationCustom" : {
+    "sounds" : {
+      "arfire" : [ "/sfx/gun/ar5.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "type" : "versaarfire",
+    "name" : "Gatling Gun",
+    "scripts" : ["/items/active/classweapons/soldiergun/soldiergunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.3,
+    "baseDps" : 10,
+    "energyUsage" : 20,
+    "inaccuracy" : 0.02,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockbackRange" : 4,
+      "knockback" : 1
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 3,
+        "weaponRotation" : 3,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+
+}
