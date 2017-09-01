@@ -1096,22 +1096,22 @@ end
 
 function changeAffinityDescription(name)
   if name == "fire" then
-    widget.setText("affinitieslayout.affinitydescription", "Flame, the Powerful Affinity.\n") 
+    widget.setText("affinitieslayout.affinitydescription", "Flame, the Powerful Affinity. This Affinity grants Fire-based Immunities and Resistances, and a Medium Vigor Stat Boost. Provides better Immunities and a Large Strength Stat Boost when upgraded.\n") 
     widget.setFontColor("affinitieslayout.firetitle", "red")
     self.affinityTo = 1
   end
   if name == "poison" then
-    widget.setText("affinitieslayout.affinitydescription", "Venom, the Proficient Affinity.\n") 
+    widget.setText("affinitieslayout.affinitydescription", "Venom, the Proficient Affinity. This Affinity grants Poison-based Immunities and Resistances, and a Small Vigor, Dexterity, and Agility Stat Boost. Provides better Immunities and a Large Dexterity Stat Boost when upgraded.\n") 
     widget.setFontColor("affinitieslayout.poisontitle", "green")
     self.affinityTo = 2
   end
   if name == "ice" then
-    widget.setText("affinitieslayout.affinitydescription", "Frost, the Protective Affinity.\n") 
+    widget.setText("affinitieslayout.affinitydescription", "Frost, the Protective Affinity. This Affinity grants Ice-based Immunities and Resistances, and a Medium Vitality Stat Boost. Provides better Immunities and a Large Endurance Stat Boost when upgraded.\n") 
     widget.setFontColor("affinitieslayout.icetitle", "blue")
     self.affinityTo = 3
   end
   if name == "electric" then
-    widget.setText("affinitieslayout.affinitydescription", "Shock, the Perceptive Affinity.\n") 
+    widget.setText("affinitieslayout.affinitydescription", "Shock, the Perceptive Affinity. This Affinity grants Electric-based Immunities and Resistances, and a Medium Agility Stat Boost. Provides better Immunities and a Large Intelligence Stat Boost when upgraded.\n") 
     widget.setFontColor("affinitieslayout.electrictitle", "yellow")
     self.affinityTo = 4
   end
@@ -1132,8 +1132,7 @@ function updateAffinityTab()
     widget.setFontColor("affinitylayout.affinitytitle","red")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/flame.png")
 
-    widget.setText("affinitylayout.passivetext","+10% chance to sear enemies when dealing damage. Seared enemies deal -25% damage and start burning.")
-    widget.setFontColor("affinitylayout.effecttext","red")
+    widget.setText("affinitylayout.passivetext","+10% chance to Sear enemies when dealing damage. Seared enemies have -25% Power and are Burned for the duration of Sear.")
     widget.setText("affinitylayout.statscalingtext","+3 Vigor")
 
     widget.setText("affinitylayout.immunitytext", "Fire\nHeat")
@@ -1144,8 +1143,7 @@ function updateAffinityTab()
     widget.setFontColor("affinitylayout.affinitytitle","green")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/venom.png")
 
-    widget.setText("affinitylayout.passivetext","+10% chance to toxify enemies when dealing damage. Toxified enemies have -25% max health and become poisoned.")
-    widget.setFontColor("affinitylayout.effecttext","green")
+    widget.setText("affinitylayout.passivetext","+10% chance to Toxify enemies when dealing damage. Toxified enemies have -25% Max Health and are Poisoned for the duration of Toxify.")
     widget.setText("affinitylayout.statscalingtext","+1 Vigor\n+1 Dexterity\n+1 Agility")
 
     widget.setText("affinitylayout.immunitytext", "Poison\nTar")
@@ -1156,8 +1154,7 @@ function updateAffinityTab()
     widget.setFontColor("affinitylayout.affinitytitle","blue")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/frost.png")
 
-    widget.setText("affinitylayout.passivetext","+10% chance to embrittle enemies when dealing damage. Embrittled enemies have -25% physical resistance and shatter when killed, dealing damage to nearby enemies.")
-    widget.setFontColor("affinitylayout.effecttext","blue")
+    widget.setText("affinitylayout.passivetext","+10% chance to Embrittle enemies when dealing damage. Embrittled enemies have -25% Physical Resistance and shatter when killed. This Ice Explosion deals Cold Damage and Frost Slows enemies.")
     widget.setText("affinitylayout.statscalingtext","+3 Vitality")
 
     widget.setText("affinitylayout.immunitytext", "Wet\nCold")
@@ -1168,8 +1165,7 @@ function updateAffinityTab()
     widget.setFontColor("affinitylayout.affinitytitle","yellow")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/shock.png")
 
-    widget.setText("affinitylayout.passivetext","+10% chance to overload enemies when dealing damage. Overloaded enemies are 25% slower and chain electrifying lightning to nearby enemies.")
-    widget.setFontColor("affinitylayout.effecttext","yellow")
+    widget.setText("affinitylayout.passivetext","+10% chance to Overload enemies when dealing damage. Overloaded enemies have -25% Speed and chain lightning to nearby enemies. This Lightning deals Electric Damage and Electrifies enemies.")
     widget.setText("affinitylayout.statscalingtext","+3 Agility")
 
     widget.setText("affinitylayout.immunitytext", "Slow\nElectricity")
@@ -1179,18 +1175,46 @@ function updateAffinityTab()
     widget.setText("affinitylayout.affinitytitle","Infernal")
     widget.setFontColor("affinitylayout.affinitytitle","red")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/flame.png")
+
+    widget.setText("affinitylayout.passivetext","+30% chance to Sear enemies when dealing damage. Seared enemies have -25% Power and are Burned for the duration of Sear.")
+    widget.setText("affinitylayout.statscalingtext","+3 Vigor\n+5 Strength")
+
+    widget.setText("affinitylayout.immunitytext", "Fire\nHeat\nLava\nExtreme Heat (Frackin Universe)")
+    widget.setText("affinitylayout.weaknesstext", "-25% Poison Resistance\n-30% Energy while submerged\n-1 HP/s while submerged")
+    widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   elseif affinity == 6 then
     widget.setText("affinitylayout.affinitytitle","Toxic")
     widget.setFontColor("affinitylayout.affinitytitle","green")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/venom.png")
+
+    widget.setText("affinitylayout.passivetext","+30% chance to Toxify enemies when dealing damage. Toxified enemies have -25% Max Health and are Poisoned for the duration of Toxify.")
+    widget.setText("affinitylayout.statscalingtext","+1 Vigor\n+1 Agility\n+6 Dexterity")
+
+    widget.setText("affinitylayout.immunitytext", "Poison\nTar\nRadiation\nProto (Frackin Universe)")
+    widget.setText("affinitylayout.weaknesstext", "-25% Electric Resistance\n-15% Health")
+    widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   elseif affinity == 7 then
     widget.setText("affinitylayout.affinitytitle","Cryo")
     widget.setFontColor("affinitylayout.affinitytitle","blue")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/frost.png")
+
+    widget.setText("affinitylayout.passivetext","+30% chance to Embrittle enemies when dealing damage. Embrittled enemies have -25% Physical Resistance and shatter when killed. This Ice Explosion deals Cold Damage and Frost Slows enemies.")
+    widget.setText("affinitylayout.statscalingtext","+3 Vitality\n+5 Endurance")
+
+    widget.setText("affinitylayout.immunitytext", "Wet\nCold\nBreathing\nExtreme Cold (Frackin Universe)")
+    widget.setText("affinitylayout.weaknesstext", "-25% Fire Resistance\n-15% Speed\n-15% Jump")
+    widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   elseif affinity == 8 then
     widget.setText("affinitylayout.affinitytitle","Arc")
     widget.setFontColor("affinitylayout.affinitytitle","yellow")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/shock.png")
+
+    widget.setText("affinitylayout.passivetext","+30% chance to Overload enemies when dealing damage. Overloaded enemies have -25% Speed and chain lightning to nearby enemies. This Lightning deals Electric Damage and Electrifies enemies.")
+    widget.setText("affinitylayout.statscalingtext","+3 Agility\n+5 Intelligence")
+
+    widget.setText("affinitylayout.immunitytext", "Slow\nElectricity\nRadiation\nShadow (Frackin Universe)")
+    widget.setText("affinitylayout.weaknesstext", "-25% Ice Resistance\n-30% Health while submerged\n-1 E/s while submerged")
+    widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   end
 
   if status.statPositive("ivrpgaesthetics") then

@@ -10,7 +10,11 @@ end
 
 
 function update(dt)
-  
+  if not status.statPositive("ivrpgclassability") then
+  	effect.setParentDirectives("border=1;51b1ba20;51b1ba00")
+  else
+  	effect.setParentDirectives()
+  end
 end
 
 function uninit()
