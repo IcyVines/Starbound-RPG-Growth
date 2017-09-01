@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgembrittle",
+  "blockingStat" : "iceStatusImmunity",
+
+  "effectConfig" : {
+    "healthDamageFactor" : 0.25
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgembrittle.lua"
+  ],
+
+  "animationConfig" : "ivrpgembrittle.animation",
+
+  "label" : "Slow",
+  "icon" : "/interface/statuses/ice.png"
+}

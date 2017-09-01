@@ -50,6 +50,25 @@ function damage(args)
     end
   end
 
+  --Affinity Checks
+  if self.affinityType == 1 then
+    if math.random(10) < 2 then
+      status.addEphemeralEffect("ivrpgsear", 5, self.id)
+    end
+  elseif self.affinityType == 2 then
+    if math.random(10) < 2 then
+      status.addEphemeralEffect("ivrpgtoxify", 5, self.id)
+    end
+  elseif self.affinityType == 3 then
+    if math.random(10) < 2 then
+      status.addEphemeralEffect("ivrpgembrittle", 5, self.id)
+    end
+  elseif self.affinityType == 4 then
+    if math.random(10) < 2 then
+      status.addEphemeralEffect("ivrpgoverload", 5, self.id)
+    end
+  end
+
   --Bleed Checks!
   if self.classType == 3 then
     self.dexterity = self.dexterity^1.2

@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgsear",
+  "blockingStat" : "fireStatusImmunity",
+
+  "effectConfig" : {},
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgsear.lua"
+  ],
+
+  "animationConfig" : "ivrpgsear.animation",
+
+  "label" : "Burning",
+  "icon" : "/interface/statuses/fire.png"
+}

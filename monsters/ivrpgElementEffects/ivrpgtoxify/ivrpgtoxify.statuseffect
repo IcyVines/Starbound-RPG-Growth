@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgtoxify",
+  "blockingStat" : "poisonStatusImmunity",
+
+  "effectConfig" : {},
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgtoxify.lua"
+  ],
+
+  "animationConfig" : "ivrpgtoxify.animation",
+
+  "label" : "Poisoned",
+  "icon" : "/interface/statuses/poison.png"
+}

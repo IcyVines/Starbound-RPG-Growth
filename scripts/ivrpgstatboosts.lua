@@ -149,31 +149,38 @@ function update(dt)
       effs = {
         { -- Flame --
           {stat = "fireStatusImmunity", amount = 1},
+          {stat = "fireResistance", amount = 3},
           {stat = "biomeheatImmunity", amount = 1},
-          {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isSuborWet},
-          {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isSuborWet},
+          {stat = "maxEnergy", baseMultiplier = 1 - 0.3*isInLiquid()}
         },
         { -- Venom --
           {stat = "poisonStatusImmunity", amount = 1},
           {stat = "tarStatusImmunity", amount = 1},
+          {stat = "poisonResistance", amount = 3},
+          {stat = "electricResistance", amount = -0.25},
+          {stat = "maxHealth", baseMultiplier = 0.5}
         },
         { -- Frost --
           {stat = "iceStatusImmunity", amount = 1},
+          {stat = "iceResistance", amount = 3},
           {stat = "wetImmunity", amount = 1},
           {stat = "snowslowImmunity", amount = 1},
           {stat = "iceslipImmunity", amount = 1},
           {stat = "biomecoldImmunity", amount = 1},
-          {stat = "fireResistance", amount = -0.5},
+          {stat = "fireResistance", amount = -0.25}
         },
         { -- Shock --
           {stat = "electricStatusImmunity", amount = 1},
+          {stat = "electricResistance", amount = 3},
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "slimeImmunity", amount = 1},
           {stat = "fumudslowImmunity", amount = 1 },
           {stat = "jungleslowImmunity", amount = 1 },
           {stat = "spiderwebImmunity", amount = 1 },
           {stat = "sandstormImmunity", amount = 1 },
-    	    {stat = "maxEnergy", effectiveMultiplier = 1 - 0.25*wet - 0.5*frost},
+          {stat = "snowslowImmunity", amount = 1},
+          {stat = "iceResistance", amount = -0.25},
+    	    {stat = "maxHealth", baseMultiplier = 1 - 0.3*isInLiquid()}
         },
         --{ -- Aer --
         --  {stat = "breathprotectionvehicle", amount = 1},
@@ -182,33 +189,50 @@ function update(dt)
         --},
         { -- Infernal --
           {stat = "fireStatusImmunity", amount = 1},
+          {stat = "fireResistance", amount = 3},
           {stat = "biomeheatImmunity", amount = 1},
-          {stat = "lavaImmunity", amount = 1},
-          {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isSuborWet},
-          {stat = "maxEnergy", effectiveMultiplier = 1- 0.3*isSuborWet},
+          {stat = "maxEnergy", baseMultiplier = 1 - 0.3*isInLiquid()},
+
+          {stat = "ffextremeheatImmunity", amount = 1},
+          {stat = "lavaImmunity", amount = 1}
         },
         { -- Toxic --
           {stat = "poisonStatusImmunity", amount = 1},
           {stat = "tarStatusImmunity", amount = 1},
+          {stat = "poisonResistance", amount = 3},
+          {stat = "electricResistance", amount = -0.25},
+          {stat = "maxHealth", baseMultiplier = 0.5},
+
+          {stat = "biomeradiationImmunity", amount = 1},
+          {stat = "protoImmunity", amount = 1}
         },
         { -- Cryo --
           {stat = "iceStatusImmunity", amount = 1},
+          {stat = "iceResistance", amount = 3},
           {stat = "wetImmunity", amount = 1},
           {stat = "snowslowImmunity", amount = 1},
           {stat = "iceslipImmunity", amount = 1},
           {stat = "biomecoldImmunity", amount = 1},
-          {stat = "fireResistance", amount = -.5},
+          {stat = "fireResistance", amount = -0.25},
+
+          {stat = "ffextremecoldImmunity", amount = 1},
+          {stat = "breathingProtection", amount = 1},
         },
         { -- Arc --
           {stat = "electricStatusImmunity", amount = 1},
+          {stat = "electricResistance", amount = 3},
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "slimeImmunity", amount = 1},
           {stat = "fumudslowImmunity", amount = 1 },
           {stat = "jungleslowImmunity", amount = 1 },
           {stat = "spiderwebImmunity", amount = 1 },
           {stat = "sandstormImmunity", amount = 1 },
-          --{stat = "iceStatusImmunity", amount = 1},
-    	    {stat = "maxEnergy", effectiveMultiplier = 1 - 0.25*wet - 0.5*frost},
+          {stat = "snowslowImmunity", amount = 1},
+          {stat = "iceResistance", amount = -0.25},
+          {stat = "maxHealth", baseMultiplier = 1 - 0.3*isInLiquid()},
+
+          {stat = "shadowResistance", amount = 3},
+          {stat = "biomeradiationImmunity", amount = 1}
         }
         --{ -- Void --
         --  {stat = "breathprotectionvehicle", amount = 1},
@@ -218,11 +242,29 @@ function update(dt)
         --}
       }
       status.setPersistentEffects("ivrpgaffinityeffects",effs[self.affinity])
-      if self.affinity == 8 then
-        mcontroller.controlModifiers({
-          speedModifier = 1.5,
-        })
-      end 
+
+      local aestheticType = {"fire", "poison", "ice", "electric"}
+      if self.affinity > 0 then
+        local affinityMod = (self.affinity-1)%4
+        if status.statPositive("ivrpgaesthetics") and (mcontroller.xVelocity() > 1 or mcontroller.xVelocity() < -1) and not status.statPositive("activeMovementAbility") then
+          world.spawnProjectile(aestheticType[affinityMod+1].."trail", {mcontroller.xPosition(), mcontroller.yPosition()-2}, self.id, {0,0}, false, {power = 0, knockback = 0, timeToLive = 0.5})
+        end
+
+        if isInLiquid() == 1 then
+          if affinityMod == 0 then
+            status.overConsumeResource("health", dt)
+          elseif affinityMod == 3 then
+            status.overConsumeResource("energy", dt)
+          end
+        end
+
+        if affinityMod == 2 then
+          mcontroller.controlModifiers({
+            speedModifier = 0.85,
+            airJumpModifier = 0.85
+          })
+        end
+      end
   end
 end
 
@@ -241,7 +283,7 @@ function isInLiquid()
   local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
   local mouthful = world.liquidAt(mouthposition)
     if (world.liquidAt(mouthPosition)) and
-	    (mcontroller.liquidId()== 1) or 
+	    ((mcontroller.liquidId()== 1) or 
 	    (mcontroller.liquidId()== 5) or 
 	    (mcontroller.liquidId()== 6) or 
 	    (mcontroller.liquidId()== 12) or 
@@ -249,7 +291,7 @@ function isInLiquid()
 	    (mcontroller.liquidId()== 55) or 
 	    (mcontroller.liquidId()== 58) or
 	    (mcontroller.liquidId()== 60) or 
-	    (mcontroller.liquidId()== 69) 
+	    (mcontroller.liquidId()== 69))
     then
       return 1
     end 
@@ -259,7 +301,7 @@ end
 function updateClassEffects(classType)
   local heldItem = world.entityHandItem(self.id, "primary")
   local heldItem2 = world.entityHandItem(self.id, "alt")
-  
+  local hardcore = status.statPositive("ivrpghardcore")
   if classType == 0 then
     --No Class
     status.clearPersistentEffects("ivrpgclassboosts")
@@ -307,6 +349,19 @@ function updateClassEffects(classType)
           })
       end
     end
+
+    --Hardcore
+    if hardcore then
+      status.addPersistentEffects("ivrpgclassboosts", 
+        {
+          {stat = "maxEnergy", baseMultiplier = 0.75}
+        })
+      mcontroller.controlModifiers({
+        speedModifier = 0.9,
+        airJumpModifier = 0.7
+      })
+    end
+
   elseif classType == 2 then
     --Wizard
     status.setPersistentEffects("ivrpgclassboosts",
@@ -360,6 +415,18 @@ function updateClassEffects(classType)
     if not self.wizardaffinityAdded then
       status.removeEphemeralEffect("wizardaffinity")
     end
+
+    --Hardcore
+    if hardcore then
+      status.addPersistentEffects("ivrpgclassboosts", 
+        {
+          {stat = "physicalResistance", amount = -.2}
+        })
+      mcontroller.controlModifiers({
+        speedModifier = 0.8,
+        airJumpModifier = 0.8
+      })
+    end
   elseif classType == 3 then
     --Ninja
     --ThrowingStar, ThrowingKunai, SnowflakeShuriken, ThrowingKnife, ThrowingDagger
@@ -402,6 +469,14 @@ function updateClassEffects(classType)
       speedModifier = 1.1,
       airJumpModifier = 1.1
     })
+
+    --Hardcore
+    if hardcore then
+      status.addPersistentEffects("ivrpgclassboosts", 
+        {
+          {stat = "maxHealth", baseMultiplier = 0.5}
+        })
+    end
   elseif classType == 4 then
     --Soldier
     --Molotov, Thorn Grenade, Bomb
@@ -429,6 +504,20 @@ function updateClassEffects(classType)
         })
       end
     end
+
+    --Hardcore
+    if hardcore then
+      status.addPersistentEffects("ivrpgclassboosts", 
+        {
+          {stat = "poisonResistance", amount = -.2},
+          {stat = "fireResistance", amount = -.2},
+          {stat = "electricResistance", amount = -.2},
+          {stat = "iceResistance", amount = -.2}
+        })
+      mcontroller.controlModifiers({
+        airJumpModifier = 0.9
+      })
+    end
   elseif classType == 5 then
     --Rogue
     status.setPersistentEffects("ivrpgclassboosts",
@@ -450,6 +539,15 @@ function updateClassEffects(classType)
           })
       end
     end
+
+    --Hardcore
+    if hardcore then
+      status.addPersistentEffects("ivrpgclassboosts", 
+        {
+          {stat = "maxHealth", baseMultiplier = 0.8},
+          {stat = "foodDelta", amount = -0.002}
+        })
+    end
   elseif classType == 6 then
     --Explorer
     status.setPersistentEffects("ivrpgclassboosts",
@@ -459,6 +557,7 @@ function updateClassEffects(classType)
     if (heldItem and root.itemHasTag(heldItem, "explorer")) or (heldItem2 and root.itemHasTag(heldItem2, "explorer")) then
       status.addPersistentEffects("ivrpgclassboosts",
         {
+          {stat = "powerMultiplier", baseMultiplier = 1.1},
           {stat = "physicalResistance", amount = .1},
           {stat = "poisonResistance", amount = .1},
           {stat = "fireResistance", amount = .1},
@@ -470,10 +569,18 @@ function updateClassEffects(classType)
         })
     end
     self.health = world.entityHealth(self.id)
-    if self.health[1] ~= 0 and self.health[2] ~= 0 and self.health[1]/self.health[2]*100 >= 50 then
+    if self.health[1] ~= 0 and self.health[2] ~= 0 and self.health[1]/self.health[2]*100 >= 50 and not status.statPositive("ivrpgclassability") then
       status.addEphemeralEffect("explorerglow", math.huge)
     else
       status.removeEphemeralEffect("explorerglow")
+    end
+
+    --Hardcore
+    if hardcore then
+      status.addPersistentEffects("ivrpgclassboosts", 
+        {
+          {stat = "powerMultiplier", baseMultiplier = 0.75}
+        })
     end
   end 
 end

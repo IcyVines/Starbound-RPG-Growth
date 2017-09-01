@@ -1,0 +1,21 @@
+{
+  "name" : "ivrpgoverload",
+  "blockingStat" : "electricStatusImmunity",
+
+  "effectConfig" : {
+    "boltInterval" : 1.0,
+    "jumpDistance" : 8,
+    "healthDamageFactor" : 0.1,
+    "damageClampRange" : [2, 20]
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgoverload.lua"
+  ],
+
+  "animationConfig" : "ivrpgoverload.animation",
+
+  "label" : "Electrified",
+  "icon" : "/interface/statuses/electric.png"
+}

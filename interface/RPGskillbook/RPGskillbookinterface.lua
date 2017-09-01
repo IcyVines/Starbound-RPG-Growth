@@ -213,6 +213,43 @@ function updateOverview(toNext)
     widget.setText("overviewlayout.classtitle","Explorer")
     widget.setImage("overviewlayout.classicon","/objects/class/explorer.png")
   end
+
+  local affinity = player.currency("affinitytype")
+  if affinity == 0 then
+    widget.setText("overviewlayout.affinitytitle","No Affinity Yet")
+    widget.setImage("overviewlayout.affinityicon","/objects/class/noclass.png")
+  elseif affinity == 1 then
+    widget.setText("overviewlayout.affinitytitle","Flame")
+    widget.setImage("overviewlayout.affinityicon","/objects/affinity/flame.png")
+  elseif affinity == 2 then
+    widget.setText("overviewlayout.affinitytitle","Venom")
+    widget.setImage("overviewlayout.affinityicon","/objects/affinity/venom.png")
+  elseif affinity == 3 then
+    widget.setText("overviewlayout.affinitytitle","Frost")
+    widget.setImage("overviewlayout.affinityicon","/objects/affinity/frost.png")
+  elseif affinity == 4 then
+    widget.setText("overviewlayout.affinitytitle","Shock")
+    widget.setImage("overviewlayout.affinityicon","/objects/affinity/shock.png")
+  elseif affinity == 5 then
+    widget.setText("overviewlayout.affinitytitle","Infernal")
+    widget.setImage("overviewlayout.affinityicon","/objects/affinity/flame.png")
+  elseif affinity == 6 then
+    widget.setText("overviewlayout.affinitytitle","Toxic")
+    widget.setImage("overviewlayout.affinityicon","/objects/affinity/venom.png")
+  elseif affinity == 7 then
+    widget.setText("overviewlayout.affinitytitle","Cryo")
+    widget.setImage("overviewlayout.affinityicon","/objects/affinity/frost.png")
+  elseif affinity == 8 then
+    widget.setText("overviewlayout.affinitytitle","Arc")
+    widget.setImage("overviewlayout.affinityicon","/objects/affinity/shock.png")
+  end
+
+  if status.statPositive("ivrpghardcore") then
+    widget.setText("overviewlayout.hardcoretoggletext", "Active")
+  else
+    widget.setText("overviewlayout.hardcoretoggletext", "Inactive")
+  end
+
 end
 
 function updateClassTab()
@@ -294,6 +331,13 @@ function updateClassTab()
     widget.setImage("classlayout.classweaponicon","/interface/RPGskillbook/weapons/explorer.png")
     widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nVigor\n^magenta;Good:^reset;\nAgility\n^gray;OK:^reset;\nVitality\nEndurance")
   end
+
+  if status.statPositive("ivrpgclassability") then
+    widget.setText("classlayout.classabilitytoggletext", "Inactive")
+  else
+    widget.setText("classlayout.classabilitytoggletext", "Active")
+  end
+
   updateClassWeapon()
   updateTechImages()
 end
@@ -305,6 +349,7 @@ function removeLayouts()
   widget.setVisible("classeslayout",false)
   widget.setVisible("classlayout",false)
   widget.setVisible("affinitieslayout",false)
+  widget.setVisible("affinitylayout",false)
   widget.setVisible("infolayout",false)
 end
 
@@ -384,21 +429,21 @@ function updateInfo()
     (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed"))/50 .. "^reset;" .. "\n" ..
     "\nStatus:\n" ..
     "^red;" .. getStatImmunity(status.stat("lavaImmunity")) ..
-    getStatImmunity(status.stat("heatbiomeImmunity")) .. "^reset;" ..
-    "^blue;" .. getStatImmunity(status.stat("coldbiomeImmunity")) .. "^reset;" ..
-    "^green;" .. getStatImmunity(status.stat("radiationbiomeImmunity")) .. "^reset;" ..
-    "^black;" .. getStatImmunity(status.stat("tarImmunity")) .. "^reset;" ..
+    getStatImmunity(status.stat("biomeheatImmunity")) .. "^reset;" ..
+    "^blue;" .. getStatImmunity(status.stat("biomecoldImmunity")) .. "^reset;" ..
+    "^green;" .. getStatImmunity(status.stat("biomeradiationImmunity")) .. "^reset;" ..
+    "^gray;" .. getStatImmunity(status.stat("tarImmunity")) .. "^reset;" ..
     "^blue;" .. getStatImmunity(status.stat("breathingProtection")) .. "^reset;")
 
   widget.setText("infolayout.displaystatsFU", 
     "Amount\n" ..
     "^green;" .. getStatPercent(status.stat("radioactiveResistance")) .. "^reset;" ..
-    "^black;" .. getStatPercent(status.stat("shadowResistance")) .. "^reset;" ..
+    "^gray;" .. getStatPercent(status.stat("shadowResistance")) .. "^reset;" ..
     "^magenta;" .. getStatPercent(status.stat("cosmicResistance")) .. "^reset;" ..
     "\nStatus:\n" ..
-    "^red;" .. getStatImmunity(status.stat("extremeheatbiomeImmunity")) .. "^reset;" .. 
-    "^blue;" .. getStatImmunity(status.stat("extremecoldbiomeImmunity")) .. "^reset;" .. 
-   "^green;" ..  getStatImmunity(status.stat("extremeradiationbiomeImmunity")) .. "^reset;")
+    "^red;" .. getStatImmunity(status.stat("ffextremeheatImmunity")) .. "^reset;" .. 
+    "^blue;" .. getStatImmunity(status.stat("ffextremecoldImmunity")) .. "^reset;" .. 
+   "^green;" ..  getStatImmunity(status.stat("ffextremeradiationImmunity")) .. "^reset;")
 end
 
 function unlockTech()
@@ -1011,6 +1056,13 @@ function chooseAffinity()
   changeToAffinities()
 end
 
+function upgradeAffinity()
+  player.addCurrency("affinitytype", 4)
+  self.affinity = self.affinity + 4
+  addAffinityStats()
+  changeToAffinities()
+end
+
 function checkAffinityDescription(name)
   name = string.gsub(name,"icon","")
   uncheckAffinityIcons(name)
@@ -1044,23 +1096,23 @@ end
 
 function changeAffinityDescription(name)
   if name == "fire" then
-    widget.setText("affinitieslayout.affinitydescription", "Bend fire to your will.") 
+    widget.setText("affinitieslayout.affinitydescription", "Flame, the Powerful Affinity.\n") 
     widget.setFontColor("affinitieslayout.firetitle", "red")
     self.affinityTo = 1
   end
-  if name == "ice" then
-    widget.setText("affinitieslayout.affinitydescription", "Bend ice to your will.") 
-    widget.setFontColor("affinitieslayout.icetitle", "blue")
+  if name == "poison" then
+    widget.setText("affinitieslayout.affinitydescription", "Venom, the Proficient Affinity.\n") 
+    widget.setFontColor("affinitieslayout.poisontitle", "green")
     self.affinityTo = 2
   end
-  if name == "electric" then
-    widget.setText("affinitieslayout.affinitydescription", "Bend lightning to your will.") 
-    widget.setFontColor("affinitieslayout.electrictitle", "yellow")
+  if name == "ice" then
+    widget.setText("affinitieslayout.affinitydescription", "Frost, the Protective Affinity.\n") 
+    widget.setFontColor("affinitieslayout.icetitle", "blue")
     self.affinityTo = 3
   end
-  if name == "poison" then
-    widget.setText("affinitieslayout.affinitydescription", "Bend poison to your will.") 
-    widget.setFontColor("affinitieslayout.poisontitle", "green")
+  if name == "electric" then
+    widget.setText("affinitieslayout.affinitydescription", "Shock, the Perceptive Affinity.\n") 
+    widget.setFontColor("affinitieslayout.electrictitle", "yellow")
     self.affinityTo = 4
   end
   if name == "default" then
@@ -1071,90 +1123,179 @@ function changeAffinityDescription(name)
 end
 
 function updateAffinityTab()
+  local affinity = player.currency("affinitytype")
+  if affinity == 0 then
+    widget.setText("affinitylayout.affinitytitle","No Class Yet")
+    widget.setImage("affinitylayout.affinityicon","/objects/class/noclass.png")
+  elseif affinity == 1 then
+    widget.setText("affinitylayout.affinitytitle","Flame")
+    widget.setFontColor("affinitylayout.affinitytitle","red")
+    widget.setImage("affinitylayout.affinityicon","/objects/affinity/flame.png")
+
+    widget.setText("affinitylayout.passivetext","+10% chance to sear enemies when dealing damage. Seared enemies deal -25% damage and start burning.")
+    widget.setFontColor("affinitylayout.effecttext","red")
+    widget.setText("affinitylayout.statscalingtext","+3 Vigor")
+
+    widget.setText("affinitylayout.immunitytext", "Fire\nHeat")
+    widget.setText("affinitylayout.weaknesstext", "-25% Poison Resistance\n-30% Energy while submerged\n-1 HP/s while submerged")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to melt enemies\n+5 Strength\nImmunities Added:\nLava\nExtreme Heat")
+  elseif affinity == 2 then
+    widget.setText("affinitylayout.affinitytitle","Venom")
+    widget.setFontColor("affinitylayout.affinitytitle","green")
+    widget.setImage("affinitylayout.affinityicon","/objects/affinity/venom.png")
+
+    widget.setText("affinitylayout.passivetext","+10% chance to toxify enemies when dealing damage. Toxified enemies have -25% max health and become poisoned.")
+    widget.setFontColor("affinitylayout.effecttext","green")
+    widget.setText("affinitylayout.statscalingtext","+1 Vigor\n+1 Dexterity\n+1 Agility")
+
+    widget.setText("affinitylayout.immunitytext", "Poison\nTar")
+    widget.setText("affinitylayout.weaknesstext", "-25% Electric Resistance\n-15% Health")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to toxify enemies\n+5 Dexterity\nImmunities Added:\nRadiation\nProto")
+  elseif affinity == 3 then
+    widget.setText("affinitylayout.affinitytitle","Frost")
+    widget.setFontColor("affinitylayout.affinitytitle","blue")
+    widget.setImage("affinitylayout.affinityicon","/objects/affinity/frost.png")
+
+    widget.setText("affinitylayout.passivetext","+10% chance to embrittle enemies when dealing damage. Embrittled enemies have -25% physical resistance and shatter when killed, dealing damage to nearby enemies.")
+    widget.setFontColor("affinitylayout.effecttext","blue")
+    widget.setText("affinitylayout.statscalingtext","+3 Vitality")
+
+    widget.setText("affinitylayout.immunitytext", "Wet\nCold")
+    widget.setText("affinitylayout.weaknesstext", "-25% Fire Resistance\n-15% Speed\n-15% Jump")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to embrittle enemies\n+5 Endurance\nImmunities Added:\nBreathing\nExtreme Cold")
+  elseif affinity == 4 then
+    widget.setText("affinitylayout.affinitytitle","Shock")
+    widget.setFontColor("affinitylayout.affinitytitle","yellow")
+    widget.setImage("affinitylayout.affinityicon","/objects/affinity/shock.png")
+
+    widget.setText("affinitylayout.passivetext","+10% chance to overload enemies when dealing damage. Overloaded enemies are 25% slower and chain electrifying lightning to nearby enemies.")
+    widget.setFontColor("affinitylayout.effecttext","yellow")
+    widget.setText("affinitylayout.statscalingtext","+3 Agility")
+
+    widget.setText("affinitylayout.immunitytext", "Slow\nElectricity")
+    widget.setText("affinitylayout.weaknesstext", "-25% Ice Resistance\n-30% Health while submerged\n-1 E/s while submerged")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to overload enemies\n+5 Intelligence\nImmunities Added:\nRadiation\nShadow")
+  elseif affinity == 5 then
+    widget.setText("affinitylayout.affinitytitle","Infernal")
+    widget.setFontColor("affinitylayout.affinitytitle","red")
+    widget.setImage("affinitylayout.affinityicon","/objects/affinity/flame.png")
+  elseif affinity == 6 then
+    widget.setText("affinitylayout.affinitytitle","Toxic")
+    widget.setFontColor("affinitylayout.affinitytitle","green")
+    widget.setImage("affinitylayout.affinityicon","/objects/affinity/venom.png")
+  elseif affinity == 7 then
+    widget.setText("affinitylayout.affinitytitle","Cryo")
+    widget.setFontColor("affinitylayout.affinitytitle","blue")
+    widget.setImage("affinitylayout.affinityicon","/objects/affinity/frost.png")
+  elseif affinity == 8 then
+    widget.setText("affinitylayout.affinitytitle","Arc")
+    widget.setFontColor("affinitylayout.affinitytitle","yellow")
+    widget.setImage("affinitylayout.affinityicon","/objects/affinity/shock.png")
+  end
+
+  if status.statPositive("ivrpgaesthetics") then
+    widget.setText("affinitylayout.aestheticstoggletext", "Active")
+  else
+    widget.setText("affinitylayout.aestheticstoggletext", "Inactive")
+  end
 end
 
 function addAffinityStats()
-  --[[if player.currency("classtype") == 1 then
+  if player.currency("affinitytype") == 1 then
       --Flame
-    player.addCurrency("strengthpoint", 5)
-    player.addCurrency("endurancepoint", 4)
-    player.addCurrency("vitalitypoint", 3)
-    player.addCurrency("vigorpoint", 1)
-  elseif player.currency("classtype") == 2 then
+    player.addCurrency("vigorpoint", 3)
+  elseif player.currency("affinitytype") == 2 then
     --Venom
-    player.addCurrency("intelligencepoint", 7)
-    player.addCurrency("vigorpoint", 6)
-  elseif player.currency("classtype") == 3 then
+    player.addCurrency("vigorpoint", 1)
+    player.addCurrency("dexteritypoint", 1)
+    player.addCurrency("agilitypoint", 1)
+  elseif player.currency("affinitytype") == 3 then
     --Frost
-    player.addCurrency("agilitypoint", 5)
-    player.addCurrency("dexteritypoint", 6)
-    player.addCurrency("intelligencepoint", 2)
-  elseif player.currency("classtype") == 4 then
-    --Shock
-    player.addCurrency("vitalitypoint", 5)
-    player.addCurrency("endurancepoint", 2)
-    player.addCurrency("dexteritypoint", 4)
-    player.addCurrency("strengthpoint", 2)
-  elseif player.currency("classtype") == 5 then
-    --Infernal
-    player.addCurrency("agilitypoint", 3)
-    player.addCurrency("endurancepoint", 2)
-    player.addCurrency("dexteritypoint", 3)
-    player.addCurrency("strengthpoint", 3)
-    player.addCurrency("vigorpoint", 2)
-  elseif player.currency("classtype") == 6 then
-    --Toxic
-    player.addCurrency("agilitypoint", 4)
-    player.addCurrency("endurancepoint", 2)
     player.addCurrency("vitalitypoint", 3)
-    player.addCurrency("vigorpoint", 4)
+  elseif player.currency("affinitytype") == 4 then
+    --Shock
+    player.addCurrency("agilitypoint", 3)
+  elseif player.currency("affinitytype") == 5 then
+    --Infernal
+    player.addCurrency("strengthpoint", 5)
+  elseif player.currency("affinitytype") == 6 then
+    --Toxic
+    player.addCurrency("dexteritypoint", 5)
+  elseif player.currency("affinitytype") == 7 then
+    --Cryo
+    player.addCurrency("endurancepoint", 5)
+  elseif player.currency("affinitytype") == 8 then
+    --Arc
+    player.addCurrency("intelligencepoint", 5)
   end
   updateStats()
-  uncheckClassIcons("default")
-  changeClassDescription("default")]]
+  uncheckAffinityIcons("default")
+  changeAffinityDescription("default")
 end
 
 function consumeAffinityStats()
-  --[[if player.currency("classtype") == 1 then
-      --Knight
-    player.consumeCurrency("strengthpoint", 5)
-    player.consumeCurrency("endurancepoint", 4)
-    player.consumeCurrency("vitalitypoint", 3)
-    player.consumeCurrency("vigorpoint", 1)
+  --[[if player.currency("affinitytype") == 1 then
+      --Flame
+    player.consumeCurrency("vigorpoint", 3)
   elseif player.currency("classtype") == 2 then
-    --Wizard
-    player.consumeCurrency("intelligencepoint", 7)
-    player.consumeCurrency("vigorpoint", 6)
+    --Venom
+    player.consumeCurrency("vigorpoint", 1)
+    player.consumeCurrency("vitalitypoint", 1)
+    player.consumeCurrency("agilitypoint", 1)
   elseif player.currency("classtype") == 3 then
-    --Ninja
-    player.consumeCurrency("agilitypoint", 5)
-    player.consumeCurrency("dexteritypoint", 6)
-    player.consumeCurrency("intelligencepoint", 2)
-  elseif player.currency("classtype") == 4 then
-    --Soldier
-    player.consumeCurrency("vitalitypoint", 5)
-    player.consumeCurrency("endurancepoint", 2)
-    player.consumeCurrency("dexteritypoint", 4)
-    player.consumeCurrency("strengthpoint", 2)
-  elseif player.currency("classtype") == 5 then
-    --Rogue
-    player.consumeCurrency("agilitypoint", 3)
-    player.consumeCurrency("endurancepoint", 2)
-    player.consumeCurrency("dexteritypoint", 3)
-    player.consumeCurrency("strengthpoint", 3)
-    player.consumeCurrency("vigorpoint", 2)
-  elseif player.currency("classtype") == 6 then
-    --Explorer
-    player.consumeCurrency("agilitypoint", 4)
-    player.consumeCurrency("endurancepoint", 2)
+    --Frost
     player.consumeCurrency("vitalitypoint", 3)
-    player.consumeCurrency("vigorpoint", 4)
+  elseif player.currency("classtype") == 4 then
+    --Shock
+    player.consumeCurrency("agilitypoint", 3)
+  elseif player.currency("classtype") == 5 then
+    --Infernal
+    player.consumeCurrency("strengthpoint", 5)
+  elseif player.currency("classtype") == 6 then
+    --Toxic
+    player.consumeCurrency("dexteritypoint", 5)
+  elseif player.currency("classtype") == 7 then
+    --Cryo
+    player.consumeCurrency("endurancepoint", 5)
+  elseif player.currency("classtype") == 8 then
+    --Arc
+    player.consumeCurrency("intelligencepoint", 5)
   end
   updateStats()]]
 end
 
+function toggleAesthetics()
+  if status.statPositive("ivrpgaesthetics") then
+    status.clearPersistentEffects("ivrpgAesthetics")
+  else
+    status.setPersistentEffects("ivrpgAesthetics",
+    {
+      {stat = "ivrpgaesthetics", amount = 1}
+    })
+  end
+  updateAffinityTab()
+end
 
-  --pane.playSound(self.sounds.dispatch, -1)
-  --pane.stopAllSounds(self.sounds.dispatch)
-  --widget.setFontColor("connectingLabel", config.getParameter("errorColor"))
+function toggleHardcore()
+  if status.statPositive("ivrpghardcore") then
+    status.clearPersistentEffects("ivrpgHardcore")
+  else
+    status.setPersistentEffects("ivrpgHardcore",
+    {
+      {stat = "ivrpghardcore", amount = 1}
+    })
+  end
+  updateOverview(2*self.level*100+100)
+end
 
+function toggleClassAbility()
+  if status.statPositive("ivrpgclassability") then
+    status.clearPersistentEffects("ivrpgClassAbility")
+  else
+    status.setPersistentEffects("ivrpgClassAbility",
+    {
+      {stat = "ivrpgclassability", amount = 1}
+    })
+  end
+  updateClassTab()
+end

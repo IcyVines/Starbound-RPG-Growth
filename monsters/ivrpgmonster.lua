@@ -25,6 +25,7 @@ function damage(args)
   self.source = args.sourceKind
   self.bleedBonus = 0
   self.classType = world.entityCurrency(self.id, "classtype")
+  self.affinityType = world.entityCurrency(self.id, "affinitytype")
   self.dexterity = world.entityCurrency(self.id, "dexteritypoint")
   if self.classType == 2 then
     if math.random(100) < 7 then
@@ -46,6 +47,25 @@ function damage(args)
     self.dexterity = self.dexterity^1.15
     if math.random(10) < 3 then
       status.addEphemeralEffect("weakpoison", 5, self.id)
+    end
+  end
+
+  --Affinity Checks
+  if self.affinityType == 1 then
+    if math.random(10) < 2 then
+      status.addEphemeralEffect("ivrpgsear", 5, self.id)
+    end
+  elseif self.affinityType == 2 then
+    if math.random(10) < 2 then
+      status.addEphemeralEffect("ivrpgtoxify", 5, self.id)
+    end
+  elseif self.affinityType == 3 then
+    if math.random(10) < 2 then
+      status.addEphemeralEffect("ivrpgembrittle", 5, self.id)
+    end
+  elseif self.affinityType == 4 then
+    if math.random(10) < 2 then
+      status.addEphemeralEffect("ivrpgoverload", 5, self.id)
     end
   end
 
