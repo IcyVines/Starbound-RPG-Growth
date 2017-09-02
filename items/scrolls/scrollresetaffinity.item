@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgscrollresetclass",
+  "rarity" : "Legendary",
+  "category" : "scroll",
+  "inventoryIcon" : "scroll.png",
+  "description" : "This scroll contains enticing descriptions of elements that are out of this world! Maybe you want to specialise in a new one?",
+  "shortdescription" : "Seasonal Affinities",
+  "largeImage" : "scrolllarge.png"
+  
+}
