@@ -191,32 +191,40 @@ function updateOverview(toNext)
     widget.setText("overviewlayout.xptotallabel","Total Experience Orbs Collected: " .. tostring(self.xp))
   end
   widget.setText("overviewlayout.statpointsremaining","Stat Points Available: " .. tostring(player.currency("statpoint")))
+
   if player.currency("classtype") == 0 then
-    widget.setText("overviewlayout.classtitle","No Class Yet")
+    widget.setText("overviewlayout.classtitle","No Class")
     widget.setImage("overviewlayout.classicon","/objects/class/noclass.png")
+    widget.setText("overviewlayout.hardcoretext","No Negative Effects")
   elseif player.currency("classtype") == 1 then
     widget.setText("overviewlayout.classtitle","Knight")
     widget.setImage("overviewlayout.classicon","/objects/class/knight.png")
+    widget.setText("overviewlayout.hardcoretext","-10% Speed\n-30% Jump Height\n-25% Max Energy")
   elseif player.currency("classtype") == 2 then
     widget.setText("overviewlayout.classtitle","Wizard")
     widget.setImage("overviewlayout.classicon","/objects/class/wizard.png")
+    widget.setText("overviewlayout.hardcoretext","-20% Speed\n-20% Jump Height\n-20% Physical Resistance")
   elseif player.currency("classtype") == 3 then
     widget.setText("overviewlayout.classtitle","Ninja")
     widget.setImage("overviewlayout.classicon","/objects/class/ninja.png")
+    widget.setText("overviewlayout.hardcoretext","-50% Max Health")
   elseif player.currency("classtype") == 4 then
     widget.setText("overviewlayout.classtitle","Soldier")
     widget.setImage("overviewlayout.classicon","/objects/class/soldier.png")
+    widget.setText("overviewlayout.hardcoretext","-10% Jump Height\n-20% Status Resistance")
   elseif player.currency("classtype") == 5 then
     widget.setText("overviewlayout.classtitle","Rogue")
     widget.setImage("overviewlayout.classicon","/objects/class/rogue.png")
+    widget.setText("overviewlayout.hardcoretext","+20% Hunger Rate\n-20% Max Health")
   elseif player.currency("classtype") == 6 then
     widget.setText("overviewlayout.classtitle","Explorer")
     widget.setImage("overviewlayout.classicon","/objects/class/explorer.png")
+    widget.setText("overviewlayout.hardcoretext","-25% Power Multiplier")
   end
 
   local affinity = player.currency("affinitytype")
   if affinity == 0 then
-    widget.setText("overviewlayout.affinitytitle","No Affinity Yet")
+    widget.setText("overviewlayout.affinitytitle","No Affinity")
     widget.setImage("overviewlayout.affinityicon","/objects/class/noclass.png")
   elseif affinity == 1 then
     widget.setText("overviewlayout.affinitytitle","Flame")
@@ -246,8 +254,10 @@ function updateOverview(toNext)
 
   if status.statPositive("ivrpghardcore") then
     widget.setText("overviewlayout.hardcoretoggletext", "Active")
+    widget.setVisible("overviewlayout.hardcoretext", true)
   else
     widget.setText("overviewlayout.hardcoretoggletext", "Inactive")
+    widget.setVisible("overviewlayout.hardcoretext", false)
   end
 
 end
@@ -550,7 +560,7 @@ function getTechText(num)
   elseif classType == 3 then
     return num == 1 and "Press [Space] while midair to burst forward. For a short time after jumping, you are invulnerable to damage. As long as you remain in the air with energy remaining, you are invulnerable to fall damage. You may do this twice while midair." 
     or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while moving. The transformation ends if you run out of energy or press [F] while transformed." 
-    or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS. This costs 20 Health." 
+    or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS. While the cooldown is active, lose 20% Physical Resistance." 
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
     return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food. There is a cooldown of 90 seconds before you can do this again." 
@@ -961,7 +971,8 @@ function areYouSure(name)
   widget.setVisible(name2..".resetbutton"..name, false)
   widget.setVisible(name2..".yesbutton", true)
   widget.setVisible(name2..".nobutton"..name, true)
-  widget.setVisible(name2..".areyousure", true)  
+  widget.setVisible(name2..".areyousure", true)
+  --widget.setVisible(name2..".hardcoretext", false)
 end
 
 function notSure(name)
@@ -972,7 +983,8 @@ function notSure(name)
   widget.setVisible(name2..".resetbutton"..name, true)
   widget.setVisible(name2..".yesbutton", false)
   widget.setVisible(name2..".nobutton"..name, false)
-  widget.setVisible(name2..".areyousure", false)  
+  widget.setVisible(name2..".areyousure", false)
+  --updateOverview(2*self.level*100+100)
 end
 
 function resetClass()
@@ -1096,22 +1108,22 @@ end
 
 function changeAffinityDescription(name)
   if name == "fire" then
-    widget.setText("affinitieslayout.affinitydescription", "Flame, the Powerful Affinity. This Affinity grants Fire-based Immunities and Resistances, and a Medium Vigor Stat Boost. Provides better Immunities and a Large Strength Stat Boost when upgraded.\n") 
+    widget.setText("affinitieslayout.affinitydescription", "Flame, the Powerful Affinity. This Affinity grants Fire based Immunities and Resistances, and a Medium Vigor Stat Boost. Provides better Immunities and a Large Strength Stat Boost when upgraded. Be careful, as choosing this Affinity weakens you while Submerged, and makes you weak to Poison.") 
     widget.setFontColor("affinitieslayout.firetitle", "red")
     self.affinityTo = 1
   end
   if name == "poison" then
-    widget.setText("affinitieslayout.affinitydescription", "Venom, the Proficient Affinity. This Affinity grants Poison-based Immunities and Resistances, and a Small Vigor, Dexterity, and Agility Stat Boost. Provides better Immunities and a Large Dexterity Stat Boost when upgraded.\n") 
+    widget.setText("affinitieslayout.affinitydescription", "Venom, the Proficient Affinity. This Affinity grants Poison based Immunities and Resistances, and a Small Vigor, Dexterity, and Agility Stat Boost. Provides better Immunities and a Large Dexterity Stat Boost when upgraded. Be careful, as choosing this Affinity lowers your Max Health and makes you weak to Electricity.") 
     widget.setFontColor("affinitieslayout.poisontitle", "green")
     self.affinityTo = 2
   end
   if name == "ice" then
-    widget.setText("affinitieslayout.affinitydescription", "Frost, the Protective Affinity. This Affinity grants Ice-based Immunities and Resistances, and a Medium Vitality Stat Boost. Provides better Immunities and a Large Endurance Stat Boost when upgraded.\n") 
+    widget.setText("affinitieslayout.affinitydescription", "Frost, the Protective Affinity. This Affinity grants Ice based Immunities and Resistances, and a Medium Vitality Stat Boost. Provides better Immunities and a Large Endurance Stat Boost when upgraded. Be careful, as choosing this Affinity lowers your Speed and Jump Height, and makes you weak to Fire.") 
     widget.setFontColor("affinitieslayout.icetitle", "blue")
     self.affinityTo = 3
   end
   if name == "electric" then
-    widget.setText("affinitieslayout.affinitydescription", "Shock, the Perceptive Affinity. This Affinity grants Electric-based Immunities and Resistances, and a Medium Agility Stat Boost. Provides better Immunities and a Large Intelligence Stat Boost when upgraded.\n") 
+    widget.setText("affinitieslayout.affinitydescription", "Shock, the Perceptive Affinity. This Affinity grants Electric based Immunities and Resistances, and a Medium Agility Stat Boost. Provides better Immunities and a Large Intelligence Stat Boost when upgraded. Be careful, as choosing this Affinity weakens you while Submerged, and makes you weak to Frost.") 
     widget.setFontColor("affinitieslayout.electrictitle", "yellow")
     self.affinityTo = 4
   end

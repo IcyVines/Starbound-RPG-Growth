@@ -73,9 +73,9 @@ function GunFire:cooldown()
 end
 
 function GunFire:muzzleFlash()
-  animator.setPartTag("muzzleFlash", "variant", math.random(1, 3))
-  animator.setAnimationState("firing", "fire")
-  animator.burstParticleEmitter("muzzleFlash")
+  --animator.setPartTag("muzzleFlash", "variant", math.random(1, 3))
+  --animator.setAnimationState("firing", "fire")
+  --animator.burstParticleEmitter("muzzleFlash")
   animator.playSound("arfire")
 
   animator.setLightActive("muzzleFlash", true)
@@ -113,7 +113,7 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
 end
 
 function GunFire:firePosition()
-  return vec2.add(mcontroller.position(), activeItem.handPosition(self.weapon.muzzleOffset))
+  return vec2.add(mcontroller.position(), activeItem.handPosition({self.weapon.muzzleOffset[1], self.weapon.muzzleOffset[2]-1}))
 end
 
 function GunFire:aimVector(inaccuracy)

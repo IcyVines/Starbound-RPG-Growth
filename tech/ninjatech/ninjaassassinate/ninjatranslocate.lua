@@ -3,7 +3,14 @@ function init()
   animator.setAnimationState("blink", "blinkout")
   effect.setParentDirectives("?multiply=ffffff00")
   animator.playSound("activate")
-  effect.addStatModifierGroup({{stat = "activeMovementAbilities", amount = 1}})
+  effect.addStatModifierGroup({
+      {stat = "invulnerable", amount = 1},
+      {stat = "lavaImmunity", amount = 1},
+      {stat = "poisonStatusImmunity", amount = 1},
+      {stat = "tarImmunity", amount = 1},
+      {stat = "waterImmunity", amount = 1},
+      {stat = "activeMovementAbilities", amount = 1}
+  })
   mcontroller.setVelocity({0,0})
   mcontroller.controlModifiers({
     speedModifier = 0,
