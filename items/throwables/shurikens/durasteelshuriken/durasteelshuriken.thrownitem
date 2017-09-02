@@ -1,7 +1,7 @@
 {
   "itemName" : "durasteelshuriken",
   "rarity" : "legendary",
-  "category" : "throwableItem",
+  "category" : "shuriken",
   "inventoryIcon" : "durasteelshuriken.png",
   "image" : "durasteelshuriken.png",
   "shortdescription" : "Durasteel Shuriken",

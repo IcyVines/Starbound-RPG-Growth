@@ -1,7 +1,7 @@
 {
   "itemName" : "ivrpgscrollarc",
   "rarity" : "Legendary",
-  "category" : "tradingCard",
+  "category" : "scroll",
   "inventoryIcon" : "scroll.png",
   "description" : "This scroll contains useful information about harnessing the power of electricity.",
   "shortdescription" : "Arc Scoll",

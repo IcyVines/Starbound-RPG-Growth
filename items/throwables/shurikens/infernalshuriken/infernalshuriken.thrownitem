@@ -1,7 +1,7 @@
 {
   "itemName" : "infernalshuriken",
   "rarity" : "rare",
-  "category" : "throwableItem",
+  "category" : "shuriken",
   "inventoryIcon" : "infernalshuriken.png",
   "image" : "infernalshuriken.png",
   "shortdescription" : "Infernal Shuriken",

@@ -1,7 +1,7 @@
 {
   "itemName" : "toxicshuriken",
   "rarity" : "rare",
-  "category" : "throwableItem",
+  "category" : "shuriken",
   "inventoryIcon" : "toxicshuriken.png",
   "image" : "toxicshuriken.png",
   "shortdescription" : "Toxic Shuriken",

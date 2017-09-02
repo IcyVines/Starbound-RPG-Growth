@@ -6,7 +6,7 @@
   "description" : "Versa, a gun that can decimate enemies from up close and at medium distances.",
   "shortdescription" : "Versa",
   "tooltipKind" : "gun",
-  "category" : "uniqueWeapon",
+  "category" : "hybridGun",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","shotgun", "assaultrifle", "soldier"],
   "level" : 3,

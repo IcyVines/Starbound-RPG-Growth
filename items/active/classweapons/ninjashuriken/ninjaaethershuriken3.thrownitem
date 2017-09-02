@@ -4,7 +4,7 @@
   "level" : 7,
   "maxStack" : 1,
   "rarity" : "legendary",
-  "category" : "throwableItem",
+  "category" : "shuriken",
   "inventoryIcon" : "aether_shuriken50.png",
   "image" : "aether_shuriken50.png",
   "shortdescription" : "Blood Aether",

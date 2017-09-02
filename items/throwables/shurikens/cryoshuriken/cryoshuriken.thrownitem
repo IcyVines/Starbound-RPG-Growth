@@ -1,7 +1,7 @@
 {
   "itemName" : "cryoshuriken",
   "rarity" : "rare",
-  "category" : "throwableItem",
+  "category" : "shuriken",
   "inventoryIcon" : "cryoshuriken.png",
   "image" : "cryoshuriken.png",
   "shortdescription" : "Cryo Shuriken",

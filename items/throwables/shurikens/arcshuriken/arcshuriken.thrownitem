@@ -1,7 +1,7 @@
 {
   "itemName" : "arcshuriken",
   "rarity" : "rare",
-  "category" : "throwableItem",
+  "category" : "shuriken",
   "inventoryIcon" : "arcshuriken.png",
   "image" : "arcshuriken.png",
   "shortdescription" : "Arc Shuriken",

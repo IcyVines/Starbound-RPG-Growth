@@ -6,7 +6,7 @@
   "description" : "Versa Ricochet, a gun that can decimate enemies from everywhere: even behind you.",
   "shortdescription" : "Versa Ricochet",
   "tooltipKind" : "gun",
-  "category" : "uniqueWeapon",
+  "category" : "hybridGun",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","shotgun", "assaultrifle", "sniperrifle", "soldier"],
   "level" : 7,
