@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgscrollcryo",
+  "rarity" : "Legendary",
+  "category" : "tradingCard",
+  "inventoryIcon" : "scroll.png",
+  "description" : "This scroll contains useful information about harnessing the power of heat dissipation.",
+  "shortdescription" : "Cryo Scoll",
+  "largeImage" : "scrolllarge.png"
+  
+}
