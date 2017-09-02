@@ -27,6 +27,7 @@ function update(dt)
   if animator.animationState("blink") == "none" then
     teleport()
   end
+  status.setResourcePercentage("energyRegenBlock", 1.0)
 end
 
 function teleport()
