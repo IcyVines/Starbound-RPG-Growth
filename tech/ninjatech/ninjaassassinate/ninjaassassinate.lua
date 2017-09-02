@@ -19,7 +19,7 @@ function init()
 end
 
 function assassinate()
-  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and status.consumeResource("health", self.cost) then
+  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and status.overConsumeResource("energy", self.cost) then
       self.vanishTimer = self.vanishTime
       self.vanished = true
       status.addEphemeralEffect("invisible", math.huge)
@@ -64,6 +64,7 @@ function update(args)
   if self.vanished then
     if self.vanishTimer > 0 then
       self.vanishTimer = math.max(0, self.vanishTimer - args.dt)
+      status.setResourcePercentage("energyRegenBlock", 1.0)
       mcontroller.setVelocity({0,0})
       mcontroller.controlModifiers({
         speedModifier = 0,
