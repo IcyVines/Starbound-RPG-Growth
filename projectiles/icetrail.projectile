@@ -1,0 +1,141 @@
+{
+  "projectileName" : "icetrailIVRPG",
+  "image" : "/projectiles/activeitems/traildash/icetrail.png",
+  "physics" : "gas",
+  "frameNumber" : 3,
+  "animationCycle" : 0.25,
+  "lightColor" : [100, 100, 160],
+  "power" : 1,
+  "speed" : 0,
+  "timeToLive" : 0.5,
+  "bounces" : -1,
+  "knockback" : 25,
+  "knockbackDirectional" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
+  "piercing" : true,
+  "damageKind" : "icebarrier",
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 2,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/statuseffects/frozen/frozen.animation",
+            "size" : 0.5,
+            "approach" : [30, 30],
+            "timeToLive" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.425,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [1.5, 1.0],
+              "finalVelocity" : [1.5, 1.5],
+              "timeToLive" : 0.3
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/frozendust2/frozendust2.animation",
+            "size" : 0.5,
+            "approach" : [30, 30],
+            "timeToLive" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.425,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [1.5, 1.0],
+              "finalVelocity" : [1.5, 1.5],
+              "timeToLive" : 0.3
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/shards/iceshard.animation",
+            "size" : 1,
+            "approach" : [30, 30],
+            "timeToLive" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [0, 1.0],
+              "finalVelocity" : [5, 5],
+              "timeToLive" : 1
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/shards/iceshard.animation",
+            "size" : 1,
+            "approach" : [30, 30],
+            "timeToLive" : 1,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [0, 1.0],
+              "finalVelocity" : [5, 5],
+              "timeToLive" : 1
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/elementalaura/iceaura/iceaura.animation",
+            "initialVelocity" : [0, 1],
+            "finalVelocity" : [0, 3],
+            "approach" : [1, 1],
+            "timeToLive" : 1.0,
+            "size" : 0.7,
+            "layer" : "back",
+            "variance" : {
+              "initialVelocity" : [4, 1],
+              "rotation" : 180,
+              "angularVelocity" : 20
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [99, 216, 232, 255],
+            "fade" : 0.9,
+            "approach" : [30, 30],
+            "light" : [50, 140, 160],
+            "timeToLive" : 0.5,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [2.0, 1.0],
+              "finalVelocity" : [1.5, 1.5],
+              "size" : 0.5,
+              "timeToLive" : 0.3,
+              "fade" : 0.3
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+

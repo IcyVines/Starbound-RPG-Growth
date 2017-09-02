@@ -3,7 +3,7 @@ require "/scripts/util.lua"
 
 function init()
   local bounds = mcontroller.boundBox()
-  script.setUpdateDelta(10)
+  script.setUpdateDelta(5)
   self.damageUpdate = 1
 end
 
@@ -247,7 +247,7 @@ function update(dt)
       if self.affinity > 0 then
         local affinityMod = (self.affinity-1)%4
         if status.statPositive("ivrpgaesthetics") and (mcontroller.xVelocity() > 1 or mcontroller.xVelocity() < -1) and not status.statPositive("activeMovementAbility") then
-          world.spawnProjectile(aestheticType[affinityMod+1].."trail", {mcontroller.xPosition(), mcontroller.yPosition()-2}, self.id, {0,0}, false, {power = 0, knockback = 0, timeToLive = 0.5})
+          world.spawnProjectile(aestheticType[affinityMod+1].."trailIVRPG", {mcontroller.xPosition(), mcontroller.yPosition()-2}, self.id, {0,0}, false, {power = 0, knockback = 0, timeToLive = 0.25})
         end
 
         if isInLiquid() == 1 then
