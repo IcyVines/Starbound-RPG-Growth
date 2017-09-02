@@ -61,62 +61,6 @@
         {
           "action" : "particle",
           "specification" : {
-            "type" : "animated",
-            "looping" : true,
-            "animation" : "/animations/shards/iceshard.animation",
-            "size" : 1,
-            "approach" : [30, 30],
-            "timeToLive" : 1,
-            "destructionAction" : "shrink",
-            "destructionTime" : 1,
-            "layer" : "middle",
-            "variance" : {
-              "position" : [0, 1.0],
-              "finalVelocity" : [5, 5],
-              "timeToLive" : 1
-            }
-          }
-        },
-        {
-          "action" : "particle",
-          "specification" : {
-            "type" : "animated",
-            "looping" : true,
-            "animation" : "/animations/shards/iceshard.animation",
-            "size" : 1,
-            "approach" : [30, 30],
-            "timeToLive" : 1,
-            "destructionAction" : "shrink",
-            "destructionTime" : 1,
-            "layer" : "middle",
-            "variance" : {
-              "position" : [0, 1.0],
-              "finalVelocity" : [5, 5],
-              "timeToLive" : 1
-            }
-          }
-        },
-        {
-          "action" : "particle",
-          "specification" : {
-            "type" : "animated",
-            "animation" : "/animations/elementalaura/iceaura/iceaura.animation",
-            "initialVelocity" : [0, 1],
-            "finalVelocity" : [0, 3],
-            "approach" : [1, 1],
-            "timeToLive" : 1.0,
-            "size" : 0.7,
-            "layer" : "back",
-            "variance" : {
-              "initialVelocity" : [4, 1],
-              "rotation" : 180,
-              "angularVelocity" : 20
-            }
-          }
-        },
-        {
-          "action" : "particle",
-          "specification" : {
             "type" : "ember",
             "size" : 1.5,
             "color" : [99, 216, 232, 255],
