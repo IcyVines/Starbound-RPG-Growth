@@ -1,0 +1,27 @@
+{
+  "id" : "ivrpgversaquest",
+  "title" : "^green;Weapons Worth Wielding",
+  "text" : "I don't mean to interrupt your training regimen, but I have noticed the weapons you employ could be made more versatile. However, the mechanics behind such a weapon, despite feeling as though they should be simple, don't exist yet. I have calculated that reverse engineering complex robotics may yield much needed results.^white;",
+  "completionText" : "Great! You found advanced robotic technology.",
+  "rewards" : [
+    [ [ "experienceorb", 200] ]
+  ],
+
+  "canBeAbandoned" : false,
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "sail"
+    },
+    "followUp" : "nextQuest",
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ironbar",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

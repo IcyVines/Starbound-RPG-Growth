@@ -1,0 +1,26 @@
+{
+  "id" : "ivrpgnovaquest",
+  "title" : "^green;Shattered Stars",
+  "text" : "Your magical power is growing by the second, and it triggered some sort of collapse that has allowed me to search through a long lost archive written by old magicians. These records indicate that there is a magical stone that holds energy fueled by dying stars. Perhaps if you can find something similar, you can harness its power!^white;",
+  "completionText" : "Great! You found a broken star.",
+  "rewards" : [
+    [ [ "experienceorb", 200] ]
+  ],
+
+  "canBeAbandoned" : false,
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "sail"
+    },
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ironbar",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}

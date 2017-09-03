@@ -1,0 +1,26 @@
+{
+  "id" : "ivrpgsiphonquest",
+  "title" : "^green;Plausibly Powerful Parasitic Poisons",
+  "text" : "Your uncanny desire to poison everything has apparently poisoned my circuits as well. In my brief state of corruption, schematics for a dubious weapon were created, and although researching it may lead down a dangerous path, it is also possible it may be rewarding. In any case, I believe the research points to some sort of parasite. Be careful.^white;",
+  "completionText" : "Great! You found parasitic poison.",
+  "rewards" : [
+    [ [ "experienceorb", 200] ]
+  ],
+
+  "canBeAbandoned" : false,
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "sail"
+    },
+    "conditions" : [
+      {
+        "type" : "gatherItem",
+        "itemName" : "ironbar",
+        "count" : 1,
+        "consume" : false
+      }
+    ]
+  }
+}
