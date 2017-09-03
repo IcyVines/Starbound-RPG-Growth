@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgether",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "ether.png",
+  "description" : "A substance that appears to be almost intangible. Can be used for crafting.",
+  "shortdescription" : "Ether",
+  "itemTags" : [ "reagent" ]
+}
