@@ -43,7 +43,8 @@ function update(args)
     --invulnerable while active
     status.setPersistentEffects("vanishsphere",
     {
-      {stat = "invulnerable", amount = 1}
+      {stat = "invulnerable", amount = 1},
+      {stat = "ninjaVanishSphere", amount = 1}
     })
 
     if groundDirection then

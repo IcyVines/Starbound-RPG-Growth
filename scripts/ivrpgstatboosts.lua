@@ -80,10 +80,12 @@ function update(dt)
   })
 
   -- Agility
-  mcontroller.controlModifiers({
-    speedModifier = 1 + self.agility*.02,
-    airJumpModifier = 1 + self.agility*.01
-  })
+  if not status.statPositive("activeMovementAbilities") or mcontroller.canJump() or status.statPositive("ninjaVanishSphere") then
+    mcontroller.controlModifiers({
+      speedModifier = 1 + self.agility*.02,
+      airJumpModifier = 1 + self.agility*.01
+    })
+  end
 
   local heldItem = world.entityHandItem(self.id, "primary")
   local heldItem2 = world.entityHandItem(self.id, "alt")
