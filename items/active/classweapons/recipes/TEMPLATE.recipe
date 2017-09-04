@@ -1,8 +1,0 @@
-{
-  "input" : [
-    { "item" : "fabric", "count" : 20 },
-    { "item" : "fabric", "count" : 20 }
-  ],
-	"output" : { "item" : "knightaegissword", "count" : 1 },
-	"groups" : [ "craftingwheel", "clothes" ]
-}
