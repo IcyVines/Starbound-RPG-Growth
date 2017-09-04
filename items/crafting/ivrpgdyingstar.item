@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgdyingstar",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "dyingstar2.png",
+  "description" : "A dying star... Can this even be used for crafting?",
+  "shortdescription" : "Dying Star",
+  "itemTags" : [ "reagent" ]
+}

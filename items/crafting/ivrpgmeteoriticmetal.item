@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgmeteoriticmetal",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "meteoriticmetal.png",
+  "description" : "A hard metallic meteorite fragment. Can be used for crafting.",
+  "shortdescription" : "Meteoritic Metal",
+  "itemTags" : [ "reagent" ]
+}
