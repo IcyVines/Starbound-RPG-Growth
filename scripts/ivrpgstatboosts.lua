@@ -268,6 +268,9 @@ function update(dt)
         end
       end
   end
+
+  checkQuests()
+
 end
 
 function hasEphemeralStat(stat)

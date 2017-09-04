@@ -1,0 +1,13 @@
+{
+  "input" : [
+    { "item" : "ivrpgdyingstar", "count" : 25 },
+    { "item" : "copperbar", "count" : 2 },
+    { "item" : "logblock", "count" : 4 },
+    { "item" : "leather", "count" : 1 },
+    { "item" : "scorchedcore", "count" : 1 },
+    { "item" : "staticcell", "count" : 1 },
+    { "item" : "cryonicextract", "count" : 1 }
+  ],
+	"output" : { "item" : "wizardnovastaff", "count" : 1 },
+	"groups" : [ "craftinganvil", "weapons", "all" ]
+}
