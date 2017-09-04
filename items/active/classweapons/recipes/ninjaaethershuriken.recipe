@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "ivrpgether", "count" : 25 },
+    { "item" : "ironbar", "count" : 1 },
+    { "item" : "phasematter", "count" : 3 }
+  ],
+	"output" : { "item" : "ninjaaethershuriken", "count" : 1 },
+	"groups" : [ "craftinganvil", "weapons", "all" ]
+}
