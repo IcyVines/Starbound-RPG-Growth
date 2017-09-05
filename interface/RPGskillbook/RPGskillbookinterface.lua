@@ -42,6 +42,7 @@ function init()
     7: Cryo 
     8: Arc
     ]]
+    self.quests = {"ivrpgaegisquest", "ivrpgnovaquest", "ivrpgaetherquest", "ivrpgversaquest", "ivrpgsiphonquest", "ivrpgspiraquest"}
     --initiating possible Level Change (thus, level currency should not be used in another script!!!)
     updateLevel()
 end
@@ -1041,24 +1042,24 @@ end
 
 function updateClassWeapon()
   if self.level < 15 then
+    widget.setFontColor("classlayout.weaponreqlvl", "red")
     widget.setText("classlayout.weaponreqlvl", "Required Level: 15")
+    widget.setVisible("classlayout.weaponreqlvl", true)
+    widget.setVisible("classlayout.unlockquestbutton", false)
+  elseif player.hasQuest(self.quests[self.class]) then
+    widget.setFontColor("classlayout.weaponreqlvl", "white")
+    widget.setText("classlayout.weaponreqlvl", "")
     widget.setVisible("classlayout.weaponreqlvl", true)
     widget.setVisible("classlayout.unlockquestbutton", false)
   else
     widget.setVisible("classlayout.unlockquestbutton", true)
     widget.setVisible("classlayout.weaponreqlvl", false)
   end
-  --[[if self.level < 30 then
-    widget.setText("classlayout.weaponreqlvl", "Required Level: 30")
-    widget.setVisible("classlayout.unlockquestbutton", false)
-  elseif self.level < 50 then
-    widget.setText("classlayout.weaponreqlvl", "Required Level: 50")
-    widget.setVisible("classlayout.unlockquestbutton", false)
-  end]]
 end
 
 function unlockQuest()
-  
+  player.startQuest(self.quests[self.class])
+  widget.setVisible("classlayout.unlockquestbutton", false)
 end
 
 function chooseAffinity()

@@ -1,0 +1,8 @@
+{
+  "name" : "ivrpglevelup",
+  "defaultDuration" : 0.1,
+  "scripts" : [
+    "ivrpglevelup.lua"
+  ],
+  "animationConfig" : "ivrpglevelup.animation"
+}

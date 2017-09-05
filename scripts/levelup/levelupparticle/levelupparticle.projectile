@@ -1,0 +1,15 @@
+{
+  "projectileName" : "levelupparticle",
+  "image" : "levelupparticle.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "pointLight" : true,
+  "fullbright" : true,
+  "timeToLive" : 1.5,
+  "damageKind" : "applystatus",
+  "power" : 0,
+  "knockback" : 0,
+  "bounces" : 0,
+  "piercing" : true,
+  "orientationLocked" : false
+}

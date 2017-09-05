@@ -5,6 +5,8 @@ function init()
   local bounds = mcontroller.boundBox()
   script.setUpdateDelta(3)
   self.damageUpdate = 1
+  
+  self.level = -1
 end
 
 function update(dt)
@@ -22,6 +24,8 @@ function update(dt)
   	return
   end]]
   self.id = entity.id()
+  self.xp = world.entityCurrency(self.id, "experienceorb")
+  self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
   self.classType = world.entityCurrency(self.id, "classtype")
 
   self.strengthBonus = self.classType == 1 and 1.15 or (self.classType == 5 and 1.1 or (self.classType == 4 and 1.05 or 1))
@@ -267,6 +271,16 @@ function update(dt)
           })
         end
       end
+  end
+
+  checkLevelUp()
+
+end
+
+function checkLevelUp()
+  if world.entityCurrency(self.id,"experienceorb") >= (self.level+1)^2*100 then
+    self.level = self.level + 1
+    status.addEphemeralEffect("ivrpglevelup")
   end
 end
 
