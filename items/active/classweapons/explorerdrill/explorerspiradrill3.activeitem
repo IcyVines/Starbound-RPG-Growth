@@ -1,0 +1,33 @@
+{
+  "itemName" : "explorerspiradrill3",
+  "price" : 750,
+  "category" : "Unique Drill",
+  "inventoryIcon" : "explorerspiradrillicon.png",
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "tooltipKind" : "tool",
+  "description" : "The Spira, a drill that can pierce through most materials quickly.",
+  "shortdescription" : "Ravenous Spira",
+  "largeImage" : "explorerspiradrillbig.png",
+  "image" : "explorerspiradrill.png:{frame}",
+  "scripts" : [ "/items/active/classweapons/explorerdrill/explorerspiradrill.lua" ],
+  "frames" : 5,
+  "animationCycle" : 0.1,
+  "handPosition" : [-8, 1],
+  "pointable" : true,
+
+  "fireOffset" : [0, 0.3],
+
+  "fireTime" : 0.1,
+  "blockRadius" : 2,
+  "altBlockRadius" : 1,
+  "twoHanded" : false,
+  "idleSound" : "/sfx/tools/chainsaw_idle.ogg",
+  "strikeSounds" : [ "/sfx/tools/drill_hit.ogg" ],
+  "breakSound" : "/sfx/tools/pickaxe_break.ogg",
+  "durability" : 1,
+  "durabilityPerUse" : 0,
+  "tileDamage" : 3.0,
+  "harvestLevel" : 99,
+  "tileDamageBlunted" : 0.2
+}

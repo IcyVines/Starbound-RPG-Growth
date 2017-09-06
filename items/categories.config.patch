@@ -1,5 +1,7 @@
 [
 { "op" : "add", "path" : "/labels/scroll", "value" : "Scroll" },
+{ "op" : "add", "path" : "/labels/useScroll", "value" : "Useable Scroll" },
+{ "op" : "add", "path" : "/labels/tornPage", "value" : "Torn Page" },
 { "op" : "add", "path" : "/labels/clawWeapon", "value" : "Claw Weapon" },
 { "op" : "add", "path" : "/labels/hybridGun", "value" : "Hybrid Gun" },
 { "op" : "add", "path" : "/labels/shuriken", "value" : "Shuriken" },

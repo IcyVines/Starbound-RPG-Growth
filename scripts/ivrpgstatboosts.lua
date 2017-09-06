@@ -5,6 +5,7 @@ function init()
   local bounds = mcontroller.boundBox()
   script.setUpdateDelta(3)
   self.damageUpdate = 1
+  self.damageGivenUpdate = 1
   
   self.level = -1
 end
@@ -273,6 +274,17 @@ function update(dt)
       end
   end
 
+  self.dnotifications, self.damageGivenUpdate = status.inflictedHitsSince(self.damageGivenUpdate)
+  if self.dnotifications then
+    --sb.logInfo("Damage Taken!!!")
+    for _,notification in pairs(self.dnotifications) do
+      
+      if notification.damageSourceKind == "rogueelectricslash" then status.modifyResource("energy", 20)
+      elseif notification.damageSourceKind == "roguepoisonslash" then status.modifyResource("health", 10)
+      elseif notification.damageSourceKind == "rogueslash" then status.modifyResource("food", 3)
+      end
+    end
+  end
   checkLevelUp()
 
 end

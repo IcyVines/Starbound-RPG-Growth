@@ -66,6 +66,16 @@ function update(dt)
     end
   end
 
+  if widget.getChecked("bookTabs.2") and player.currency("classtype") ~= self.class then
+    self.class = player.currency("classtype")
+    changeToClasses()
+  end
+
+  if widget.getChecked("bookTabs.3") and player.currency("affinitytype") ~= self.affinity then
+    self.affinity = player.currency("affinitytype")
+    changeToAffinities()
+  end
+
   updateStats()
   if widget.getChecked("bookTabs.4") then
     updateInfo()
