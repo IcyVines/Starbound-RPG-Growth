@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpggunparts",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "gunparts.png",
+  "description" : "Parts from illegal weaponry. Perhaps you can put these together to make something dangerous.",
+  "shortdescription" : "Gun Parts",
+  "itemTags" : [ "reagent" ]
+}

@@ -1,0 +1,14 @@
+{
+  "itemName" : "ivrpgspiralpower",
+  "price" : 500,
+  "rarity" : "Rare",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "spiralpower.png",
+  "description" : "We've somehow made the energy even manlier. And spinnier!",
+  "shortdescription" : "Spiral Power",
+  "learnBlueprintsOnPickup" : [
+    "ivrpgspiralpower",
+    "explorerspiradrill"
+  ],
+  "itemTags" : [ "reagent" ]
+}

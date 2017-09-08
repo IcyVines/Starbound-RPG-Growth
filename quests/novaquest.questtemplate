@@ -2,9 +2,12 @@
   "id" : "ivrpgnovaquest",
   "title" : "^green;Shattered Stars",
   "text" : "Your magical power is growing by the second, and it triggered some sort of collapse that has allowed me to search through a long lost archive written by old magicians. These records indicate that there is a magical stone that holds energy fueled by dying stars. Perhaps if you can find something similar, you can harness its power!^white;",
-  "completionText" : "You've found enough Dying Stars! I believe you should be able to use these now, coupled with some other materials, to create a powerful staff. Just use your anvil to create it.",
+  "completionText" : "You've found enough Dying Stars! I believe you should be able to use these now, but you will need to crystallize them. For now, I have crystallized them for you, but in the future, you may need to do it yourself.",
   "rewards" : [
-    [ [ "experienceorb", 200] ]
+    [
+      [ "experienceorb", 200],
+      [ "ivrpgnovacrystal", 1]
+    ]
   ],
 
   "canBeAbandoned" : false,
@@ -14,12 +17,13 @@
     "portraits" : {
       "default" : "sail"
     },
+    "followUp" : "ivrpgnovaquest2",
     "conditions" : [
       {
         "type" : "gatherItem",
         "itemName" : "ivrpgdyingstar",
-        "count" : 25,
-        "consume" : false
+        "count" : 50,
+        "consume" : true
       }
     ]
   }

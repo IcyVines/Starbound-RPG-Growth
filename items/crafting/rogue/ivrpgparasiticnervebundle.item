@@ -1,0 +1,14 @@
+{
+  "itemName" : "ivrpgsquirmingnervebundle",
+  "price" : 500,
+  "rarity" : "Rare",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "squirmingnervebundle.png",
+  "description" : "A bundle of nerves that move in a disgusting manner.",
+  "shortdescription" : "Squirming Nerve Bundle",
+  "learnBlueprintsOnPickup" : [
+    "ivrpgsquirmingnervebundle",
+    "roguesiphonclaw"
+  ],
+  "itemTags" : [ "reagent" ]
+}

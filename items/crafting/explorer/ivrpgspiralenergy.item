@@ -3,8 +3,8 @@
   "price" : 50,
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
-  "inventoryIcon" : "g.png",
-  "description" : "A substance that appears to be almost intangible. Can be used for crafting.",
+  "inventoryIcon" : "spiralenergy.png",
+  "description" : "What is this strange, manly energy?",
   "shortdescription" : "Spiral Energy",
   "itemTags" : [ "reagent" ]
 }

@@ -1,0 +1,14 @@
+{
+  "itemName" : "ivrpgmeteoricmetalbar",
+  "price" : 500,
+  "rarity" : "Rare",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "meteoricmetalbar.png",
+  "description" : "A bar of metal so tough, it makes you feel weak just looking at it.",
+  "shortdescription" : "Meteoric Metal Bar",
+  "learnBlueprintsOnPickup" : [
+    "ivrpgmeteoricmetalbar",
+    "knightaegissword"
+  ],
+  "itemTags" : [ "reagent" ]
+}

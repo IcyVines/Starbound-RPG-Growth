@@ -2,9 +2,12 @@
   "id" : "ivrpgversaquest",
   "title" : "^green;Weapons Worth Wielding",
   "text" : "I don't mean to interrupt your training regimen, but I have noticed the weapons you employ could be made more versatile. However, the mechanics behind such a weapon, despite feeling as though they should be simple, don't exist yet. I have calculated that reverse engineering complex robotics may yield much needed results.^white;",
-  "completionText" : "Great! You found advanced robotic technology.",
+  "completionText" : "These illegal gun parts can be used to make an impressive gun. You'll need to create a specific mechanism, though, but I've already created one for you.",
   "rewards" : [
-    [ [ "experienceorb", 200] ]
+    [
+      [ "experienceorb", 200],
+      [ "ivrpgfiringmechanics", 1]
+    ]
   ],
 
   "canBeAbandoned" : false,
@@ -14,10 +17,11 @@
     "portraits" : {
       "default" : "sail"
     },
+    "followUp" : "ivrpgversaquest2",
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "ivrpgadvancedrobotics",
+        "itemName" : "ivrpggunparts",
         "count" : 25,
         "consume" : false
       }

@@ -2,9 +2,12 @@
   "id" : "ivrpgaetherquest",
   "title" : "^green;Ether Experiment",
   "text" : "Due to your abilities, my scanners have often been unable to locate you: this issue has lent itself to a new hypothesis! It seems certain inhabitants of this universe are... not really here. This should mean they cannot interact with anything, but this is not the case. Maybe fighting 'creatures' like this will lead to an uncanny discovery.^white;",
-  "completionText" : "Great! You found some Ether.",
+  "completionText" : "Great! You found some Ether. It seems you may have to sharpen this if you'd like to use it however. I have already tempered some of your current ether for you.",
   "rewards" : [
-    [ [ "experienceorb", 200] ]
+    [
+      [ "experienceorb", 200],
+      [ "ivrpgetherealblade", 1]
+    ]
   ],
 
   "canBeAbandoned" : false,
@@ -14,12 +17,13 @@
     "portraits" : {
       "default" : "sail"
     },
+    "followUp" : "ivrpgaetherquest2",
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "ironbar",
-        "count" : 1,
-        "consume" : false
+        "itemName" : "ivrpgether",
+        "count" : 15,
+        "consume" : true
       }
     ]
   }

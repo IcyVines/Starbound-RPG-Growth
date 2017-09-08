@@ -1,0 +1,14 @@
+{
+  "itemName" : "ivrpgfiringmechanism",
+  "price" : 500,
+  "rarity" : "Rare",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "g.png",
+  "description" : "A firing mechanism that allows guns to fire different kinds of bullets.",
+  "shortdescription" : "Firing Mechanism",
+  "learnBlueprintsOnPickup" : [
+    "ivrpgfiringmechanism",
+    "soldierversagun"
+  ],
+  "itemTags" : [ "reagent" ]
+}

@@ -2,9 +2,12 @@
   "id" : "ivrpgsiphonquest",
   "title" : "^green;Plausibly Powerful Parasitic Poisons",
   "text" : "Your uncanny desire to poison everything has apparently poisoned my circuits as well. In my brief state of corruption, schematics for a dubious weapon were created, and although researching it may lead down a dangerous path, it is also possible it may be rewarding. In any case, I believe the research points to some sort of parasite. Be careful.^white;",
-  "completionText" : "Great! You found parasitic poison.",
+  "completionText" : "That looks a bit... gross. In any case, I've condensed it into a bundle of nerves that you can attach to your arm. You may eventually have to make more - unfortunately.",
   "rewards" : [
-    [ [ "experienceorb", 200] ]
+    [ 
+      [ "experienceorb", 200],
+      [ "ivrpgsquirmingnervebundle", 1]
+    ]
   ],
 
   "canBeAbandoned" : false,
@@ -14,12 +17,13 @@
     "portraits" : {
       "default" : "sail"
     },
+    "followUp" : "ivrpgsiphonquest2",
     "conditions" : [
       {
         "type" : "gatherItem",
         "itemName" : "ivrpgparasiticgoo",
         "count" : 20,
-        "consume" : false
+        "consume" : true
       }
     ]
   }

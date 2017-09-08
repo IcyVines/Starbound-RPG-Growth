@@ -1,10 +1,13 @@
 {
   "id" : "ivrpgaegisquest",
-  "title" : "^green;Meteoritic Metal",
+  "title" : "^green;Meteoric Metal",
   "text" : "My databanks show that your physical strength is nearly unmatched! I have run a diagnostic and it suggests you would be unrivaled using a normally unwieldable, incredibly heavy metal as the base for a sword. Looking for meteoric rock may be the best place to start, though not specifically to mine.^white;",
-  "completionText" : "Great! You found a meteorite.",
+  "completionText" : "Great! You found some meteoric metal. You have to smelt these before they can be of any use, however. Here are some to start you off.",
   "rewards" : [
-    [ [ "experienceorb", 200] ]
+    [ 
+      [ "experienceorb", 200],
+      [ "ivrpgmeteoricmetalbar", 5]
+    ]
   ],
 
   "canBeAbandoned" : false,
@@ -14,12 +17,13 @@
     "portraits" : {
       "default" : "sail"
     },
+    "followUp" : "ivrpgaegisquest2",
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "ivrpgmeteoriticmetal",
-        "count" : 25,
-        "consume" : false
+        "itemName" : "ivrpgmeteoricmetal",
+        "count" : 10,
+        "consume" : true
       }
     ]
   }

@@ -1,6 +1,6 @@
 {
   "input" : [
-    { "item" : "ivrpgmeteoriticmetal", "count" : 25 },
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 10 },
     { "item" : "tungstenbar", "count" : 4 },
     { "item" : "leather", "count" : 1 },
     { "item" : "goldbar", "count" : 2 }

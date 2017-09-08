@@ -2,7 +2,7 @@
   "input" : [
     { "item" : "ivrpgparasiticgoo", "count" : 20 },
     { "item" : "leather", "count" : 2 },
-    { "item" : "titaniumbar", "count" : 5 },
+    { "item" : "titaniumbar", "count" : 5 }
   ],
 	"output" : { "item" : "roguesiphonclaw", "count" : 1 },
 	"groups" : [ "craftinganvil", "weapons", "all" ]

@@ -1,0 +1,7 @@
+{
+  "input" : [
+    { "item" : "ivrpgmeteoricmetal", "count" : 2 }
+  ],
+	"output" : { "item" : "ivrpgmeteoricmetalbar", "count" : 1 },
+	"groups" : [ "craftingfurnace", "bars", "all" ]
+}
