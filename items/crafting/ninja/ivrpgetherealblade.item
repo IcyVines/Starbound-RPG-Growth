@@ -3,7 +3,7 @@
   "price" : 500,
   "rarity" : "Rare",
   "category" : "craftingMaterial",
-  "inventoryIcon" : "ether.png",
+  "inventoryIcon" : "etherealblade.png",
   "description" : "Don't let this blade fool you. Despite it's transparency, it's sharper than a squeaky clarinet.",
   "shortdescription" : "Ethereal Blade",
   "learnBlueprintsOnPickup" : [

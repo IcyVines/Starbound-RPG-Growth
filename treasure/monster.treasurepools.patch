@@ -7,7 +7,7 @@
 			"op": "add",
 			"path": "/erchiushorrorTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 100]
+				"item": ["experienceorb", 250]
 			}
 		}
 	],
@@ -19,7 +19,7 @@
 			"op": "add",
 			"path": "/erchiushorrorTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 100]
+					"item": ["experienceorb", 250]
 				}
 			]
 
@@ -33,7 +33,7 @@
 			"op": "add",
 			"path": "/ixodoomTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 150]
+				"item": ["experienceorb", 300]
 			}
 		}
 	],
@@ -45,7 +45,7 @@
 			"op": "add",
 			"path": "/ixodoomTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 150]
+					"item": ["experienceorb", 300]
 				}
 			]
 
@@ -59,7 +59,7 @@
 			"op": "add",
 			"path": "/asranoxTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 200]
+				"item": ["experienceorb", 350]
 			}
 		}
 	],
@@ -71,7 +71,7 @@
 			"op": "add",
 			"path": "/asranoxTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 200]
+					"item": ["experienceorb", 350]
 				}
 			]
 
@@ -85,7 +85,7 @@
 			"op": "add",
 			"path": "/kluexavatarTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 250]
+				"item": ["experienceorb", 400]
 			}
 		}
 	],
@@ -97,7 +97,7 @@
 			"op": "add",
 			"path": "/kluexavatarTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 250]
+					"item": ["experienceorb", 400]
 				}
 			]
 
@@ -111,7 +111,7 @@
 			"op": "add",
 			"path": "/bigapeTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 300]
+				"item": ["experienceorb", 450]
 			}
 		}
 	],
@@ -123,7 +123,7 @@
 			"op": "add",
 			"path": "/bigapeTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 300]
+					"item": ["experienceorb", 450]
 				}
 			]
 
@@ -137,7 +137,7 @@
 			"op": "add",
 			"path": "/bonedragonTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 350]
+				"item": ["experienceorb", 500]
 			}
 		}
 	],
@@ -149,7 +149,7 @@
 			"op": "add",
 			"path": "/bonedragonTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 350]
+					"item": ["experienceorb", 500]
 				}
 			]
 

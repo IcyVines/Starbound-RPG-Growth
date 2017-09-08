@@ -33,7 +33,7 @@ function update(dt, fireMode, shiftHeld, moves)
   else
     animator.setAnimationState(self.armName, "idle")
   end
-  sb.logInfo("hand: " .. self.armName)
+  --sb.logInfo("hand: " .. self.armName)
 
 end
 

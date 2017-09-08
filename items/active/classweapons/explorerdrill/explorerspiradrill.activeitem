@@ -17,6 +17,7 @@
 
   "animation" : "/items/active/classweapons/explorerdrill/explorerdrill.animation",
   "animationParts" : {
+    "gun" : "explorerspiradrillicon.png",
     "leftArm" : "explorerdrill.png",
     "rightArm" : "explorerdrill.png"
   },

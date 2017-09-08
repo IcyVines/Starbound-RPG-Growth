@@ -4,7 +4,7 @@
   "category" : "Unique Drill",
   "inventoryIcon" : "explorerspiradrillicon.png",
   "maxStack" : 1,
-  "rarity" : "Uncommon",
+  "rarity" : "Rare",
   "tooltipKind" : "tool",
   "description" : "The Spira, a drill that can pierce through most materials quickly.",
   "shortdescription" : "Hungry Spira",
