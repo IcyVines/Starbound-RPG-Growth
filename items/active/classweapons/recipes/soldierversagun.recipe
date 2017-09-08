@@ -1,6 +1,6 @@
 {
   "input" : [
-    { "item" : "ivrpgadvancedrobotics", "count" : 25 },
+    { "item" : "ivrpgfiringmechanism", "count" : 2 },
     { "item" : "titaniumbar", "count" : 10 },
     { "item" : "stickofram", "count" : 1 },
     { "item" : "volatilepowder", "count" : 10 }
