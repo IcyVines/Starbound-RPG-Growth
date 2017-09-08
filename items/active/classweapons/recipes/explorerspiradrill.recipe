@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "ivrpgsppiralenergy", "count" : 50 },
+    { "item" : "copperbar", "count" : 2 },
+    { "item" : "titaniumbar", "count" : 5 },
+    { "item" : "staticcell", "count" : 2 }
+  ],
+	"output" : { "item" : "explorerspiradrill", "count" : 1 },
+	"groups" : [ "craftinganvil", "weapons", "all" ]
+}

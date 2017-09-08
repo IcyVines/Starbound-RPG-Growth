@@ -2,7 +2,7 @@
   "id" : "ivrpgspiraquest",
   "title" : "^green;Spectacular Spin",
   "text" : "You've been to many places it seems, or at least plan to visit, and I only realized now that your travels would be made easier if your mining tools were improved. I have begun working on a prototype that I need your help to build: if you can defeat monsters whose anatomies are built for spinning, I may be able to figure something out.^white;",
-  "completionText" : "Great! You are spinning like a buffoon.",
+  "completionText" : "Great! This strange energy seems to be spinning like a top.",
   "rewards" : [
     [ [ "experienceorb", 200] ]
   ],
@@ -17,8 +17,8 @@
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "ironbar",
-        "count" : 1,
+        "itemName" : "ivrpgspiralenergy",
+        "count" : 25,
         "consume" : false
       }
     ]

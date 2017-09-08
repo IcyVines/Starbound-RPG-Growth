@@ -17,8 +17,8 @@
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "ironbar",
-        "count" : 1,
+        "itemName" : "ivrpgparasiticgoo",
+        "count" : 20,
         "consume" : false
       }
     ]

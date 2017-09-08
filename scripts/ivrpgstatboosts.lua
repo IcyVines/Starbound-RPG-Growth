@@ -158,14 +158,14 @@ function update(dt)
           {stat = "fireStatusImmunity", amount = 1},
           {stat = "fireResistance", amount = 3},
           {stat = "biomeheatImmunity", amount = 1},
-          {stat = "maxEnergy", baseMultiplier = 1 - 0.3*isInLiquid()}
+          {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isInLiquid()}
         },
         { -- Venom --
           {stat = "poisonStatusImmunity", amount = 1},
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "poisonResistance", amount = 3},
           {stat = "electricResistance", amount = -0.25},
-          {stat = "maxHealth", baseMultiplier = 0.5}
+          {stat = "maxHealth", effectiveMultiplier = 0.5}
         },
         { -- Frost --
           {stat = "iceStatusImmunity", amount = 1},
@@ -187,7 +187,7 @@ function update(dt)
           {stat = "sandstormImmunity", amount = 1 },
           {stat = "snowslowImmunity", amount = 1},
           {stat = "iceResistance", amount = -0.25},
-    	    {stat = "maxHealth", baseMultiplier = 1 - 0.3*isInLiquid()}
+    	    {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isInLiquid()}
         },
         --{ -- Aer --
         --  {stat = "breathprotectionvehicle", amount = 1},
@@ -198,7 +198,7 @@ function update(dt)
           {stat = "fireStatusImmunity", amount = 1},
           {stat = "fireResistance", amount = 3},
           {stat = "biomeheatImmunity", amount = 1},
-          {stat = "maxEnergy", baseMultiplier = 1 - 0.3*isInLiquid()},
+          {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isInLiquid()},
 
           {stat = "ffextremeheatImmunity", amount = 1},
           {stat = "lavaImmunity", amount = 1}
@@ -208,7 +208,7 @@ function update(dt)
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "poisonResistance", amount = 3},
           {stat = "electricResistance", amount = -0.25},
-          {stat = "maxHealth", baseMultiplier = 0.5},
+          {stat = "maxHealth", effectiveMultiplier = 0.5},
 
           {stat = "biomeradiationImmunity", amount = 1},
           {stat = "protoImmunity", amount = 1}
@@ -236,7 +236,7 @@ function update(dt)
           {stat = "sandstormImmunity", amount = 1 },
           {stat = "snowslowImmunity", amount = 1},
           {stat = "iceResistance", amount = -0.25},
-          {stat = "maxHealth", baseMultiplier = 1 - 0.3*isInLiquid()},
+          {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isInLiquid()},
 
           {stat = "shadowResistance", amount = 3},
           {stat = "biomeradiationImmunity", amount = 1}
@@ -382,7 +382,7 @@ function updateClassEffects(classType)
     if hardcore then
       status.addPersistentEffects("ivrpgclassboosts", 
         {
-          {stat = "maxEnergy", baseMultiplier = 0.75}
+          {stat = "maxEnergy", effectiveMultiplier = 0.75}
         })
       mcontroller.controlModifiers({
         speedModifier = 0.9,
@@ -502,7 +502,7 @@ function updateClassEffects(classType)
     if hardcore then
       status.addPersistentEffects("ivrpgclassboosts", 
         {
-          {stat = "maxHealth", baseMultiplier = 0.5}
+          {stat = "maxHealth", effectiveMultiplier = 0.5}
         })
     end
   elseif classType == 4 then
@@ -572,7 +572,7 @@ function updateClassEffects(classType)
     if hardcore then
       status.addPersistentEffects("ivrpgclassboosts", 
         {
-          {stat = "maxHealth", baseMultiplier = 0.8},
+          {stat = "maxHealth", effectiveMultiplier = 0.8},
           {stat = "foodDelta", amount = -0.002}
         })
     end

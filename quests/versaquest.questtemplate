@@ -17,8 +17,8 @@
     "conditions" : [
       {
         "type" : "gatherItem",
-        "itemName" : "ironbar",
-        "count" : 1,
+        "itemName" : "ivrpgadvancedrobotics",
+        "count" : 25,
         "consume" : false
       }
     ]
