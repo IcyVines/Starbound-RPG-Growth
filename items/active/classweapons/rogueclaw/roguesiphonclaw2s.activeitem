@@ -11,6 +11,11 @@
   "twoHanded" : false,
   "itemTags" : ["weapon","rogue","claw"],
 
+  "learnBlueprintsOnPickup" : [
+    "roguesiphonclaw2s",
+    "roguesiphonclaw2v"
+  ],
+
   "inventoryIcon" : "roguesiphonclaw.png:front",
   "animation" : "/items/active/weapons/fist/fistweapon.animation",
   "animationParts" : {

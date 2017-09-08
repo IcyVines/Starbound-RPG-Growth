@@ -1,0 +1,11 @@
+{
+  "input" : [
+  	{ "item" : "soldierversagun", "count" : 1 },
+    { "item" : "ivrpgfiringmechanism", "count" : 1 },
+    { "item" : "durasteelbar", "count" : 6 },
+    { "item" : "stickofram", "count" : 1 },
+    { "item" : "volatilepowder", "count" : 15 }
+  ],
+	"output" : { "item" : "soldierversagun2", "count" : 1 },
+	"groups" : [ "craftinganvil2", "weapons", "all" ]
+}

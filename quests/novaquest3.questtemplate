@@ -1,12 +1,12 @@
 {
-  "id" : "ivrpgaegisquest3",
+  "id" : "ivrpgnovaquest3",
   "title" : "^green;Weapon Upgrade",
   "text" : "Oh boy.^white;",
-  "completionText" : "You're as strong as you can be! I have upgraded your Aegis. You will now also be able to build Vital Aegis in an upgraded anvil.",
+  "completionText" : "You're as intelligent as you can be! I have upgraded your Nova. You will now also be able to build Primed Nova in an upgraded anvil.",
   "rewards" : [
     [ 
       [ "ivrpgscrollresetaffinity", 1],
-      [ "knightaegissword3", 1]
+      [ "wizardnovastaff3", 1]
     ]
   ],
 
@@ -26,7 +26,7 @@
       },
       {
         "type" : "gatherItem",
-        "itemName" : "knightaegissword2",
+        "itemName" : "wizardnovastaff2",
         "count" : 1,
         "consume" : true
       }

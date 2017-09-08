@@ -11,6 +11,10 @@
   "twoHanded" : true,
   "itemTags" : ["weapon","staff"],
 
+  "learnBlueprintsOnPickup" : [
+    "wizardnovastaff2"
+  ],
+
   "animation" : "/items/active/classweapons/wizardstaff/wizardnovastaff.animation",
   "animationParts" : {
     "staff" : "nova_staff30.png",

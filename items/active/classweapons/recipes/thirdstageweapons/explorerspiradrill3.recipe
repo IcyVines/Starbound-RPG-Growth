@@ -1,0 +1,9 @@
+{
+  "input" : [
+ 	{ "item" : "explorerspiradrill2", "count" : 1 },
+    { "item" : "ivrpgspiralpower", "count" : 10 },
+    { "item" : "staticcell", "count" : 5 }
+  ],
+	"output" : { "item" : "explorerspiradrill3", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

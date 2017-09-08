@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "wizardnovastaff2", "count" : 1 },
+    { "item" : "ivrpgnovacrystal", "count" : 2 },
+    { "item" : "scorchedcore", "count" : 3 },
+    { "item" : "staticcell", "count" : 3 },
+    { "item" : "cryonicextract", "count" : 3 }
+  ],
+	"output" : { "item" : "wizardnovastaff3", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

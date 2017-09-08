@@ -1,0 +1,9 @@
+{
+  "input" : [
+  	{ "item" : "roguesiphonclaw2v", "count" : 1 },
+    { "item" : "ivrpgsquirmingnervebundle", "count" : 1 },
+    { "item" : "venomsample", "count" : 5 }
+  ],
+	"output" : { "item" : "roguesiphonclaw3v", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

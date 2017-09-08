@@ -1,12 +1,12 @@
 {
-  "id" : "ivrpgaegisquest3",
+  "id" : "ivrpgversaquest3",
   "title" : "^green;Weapon Upgrade",
   "text" : "Oh boy.^white;",
-  "completionText" : "You're as strong as you can be! I have upgraded your Aegis. You will now also be able to build Vital Aegis in an upgraded anvil.",
+  "completionText" : "You're as accurate as you can be! I have upgraded your Versa. You will now also be able to build Versa Ricochet in an upgraded anvil.",
   "rewards" : [
     [ 
       [ "ivrpgscrollresetaffinity", 1],
-      [ "knightaegissword3", 1]
+      [ "soldierversagun3", 1]
     ]
   ],
 
@@ -26,7 +26,7 @@
       },
       {
         "type" : "gatherItem",
-        "itemName" : "knightaegissword2",
+        "itemName" : "soldierversagun2",
         "count" : 1,
         "consume" : true
       }

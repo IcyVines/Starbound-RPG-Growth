@@ -13,6 +13,10 @@
 
   "inventoryIcon" : "aegis_sword30.png",
 
+  "learnBlueprintsOnPickup" : [
+    "knightaegissword2"
+  ],
+
   "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
   "animationParts" : {
     "handle" : "",

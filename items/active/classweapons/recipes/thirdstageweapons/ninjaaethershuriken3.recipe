@@ -1,0 +1,9 @@
+{
+  "input" : [
+  	{ "item" : "ninjaaethershuriken2", "count" : 1 },
+    { "item" : "ivrpgetherealblade", "count" : 4 },
+    { "item" : "phasematter", "count" : 10 }
+  ],
+	"output" : { "item" : "ninjaaethershuriken3", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

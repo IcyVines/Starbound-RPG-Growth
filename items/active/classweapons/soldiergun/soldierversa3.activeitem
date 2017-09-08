@@ -11,6 +11,10 @@
   "itemTags" : ["weapon","ranged","shotgun", "assaultrifle", "sniperrifle", "soldier"],
   "level" : 7,
 
+  "learnBlueprintsOnPickup" : [
+    "soldierversagun3"
+  ],
+
   "inventoryIcon" : [
     { "image" : "soldierversa.png" }
   ],

@@ -1,12 +1,12 @@
 {
-  "id" : "ivrpgaegisquest3",
+  "id" : "ivrpgaetherquest3",
   "title" : "^green;Weapon Upgrade",
   "text" : "Oh boy.^white;",
-  "completionText" : "You're as strong as you can be! I have upgraded your Aegis. You will now also be able to build Vital Aegis in an upgraded anvil.",
+  "completionText" : "You're as dexterous as you can be! I have upgraded your Aether. You will now also be able to build Blood Aether in an upgraded anvil.",
   "rewards" : [
     [ 
       [ "ivrpgscrollresetaffinity", 1],
-      [ "knightaegissword3", 1]
+      [ "ninjaaethershuriken3", 1]
     ]
   ],
 
@@ -26,7 +26,7 @@
       },
       {
         "type" : "gatherItem",
-        "itemName" : "knightaegissword2",
+        "itemName" : "ninjaaethershuriken2",
         "count" : 1,
         "consume" : true
       }

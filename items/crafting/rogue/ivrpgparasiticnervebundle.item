@@ -4,7 +4,7 @@
   "rarity" : "Rare",
   "category" : "craftingMaterial",
   "inventoryIcon" : "squirmingnervebundle.png",
-  "description" : "A bundle of nerves that move in a disgusting manner.",
+  "description" : "A bundle of nerves that wiggle in a disgusting manner as if trying to dig into your skin.",
   "shortdescription" : "Squirming Nerve Bundle",
   "learnBlueprintsOnPickup" : [
     "ivrpgsquirmingnervebundle",

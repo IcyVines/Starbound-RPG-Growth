@@ -1,0 +1,9 @@
+{
+  "input" : [
+  	{ "item" : "knightaegissword2", "count" : 1 },
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 8 },
+    { "item" : "livingroot", "count" : 5 }
+  ],
+	"output" : { "item" : "knightaegissword3", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

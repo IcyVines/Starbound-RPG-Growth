@@ -1,0 +1,9 @@
+{
+  "input" : [
+  	{ "item" : "soldierversagun2", "count" : 1 },
+    { "item" : "ivrpgfiringmechanism", "count" : 2 },
+    { "item" : "liquidoil", "count" : 120 }
+  ],
+	"output" : { "item" : "soldierversagun3", "count" : 1 },
+	"groups" : [ "craftinganvil2", "weapons", "all" ]
+}

@@ -13,6 +13,10 @@
 
   "ammoUsage" : 0,
 
+  "learnBlueprintsOnPickup" : [
+    "ninjaaethershuriken2"
+  ],
+
   "edgeTrigger" : false,
   "windupTime" : 0.0,
   "cooldown" : 1.0,

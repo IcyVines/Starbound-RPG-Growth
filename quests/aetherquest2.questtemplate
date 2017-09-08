@@ -2,7 +2,7 @@
   "id" : "ivrpgaetherquest2",
   "title" : "^green;Weapon Upgrade",
   "text" : "Now that you have the blueprint for a powerful weapon, you may be able to upgrade it. I will let you know when that time comes.^white;",
-  "completionText" : "You're a lot more dexterous now! I have upgraded your Aether. You will now also be able to build Prismatic Aether in an upgraded anvil.",
+  "completionText" : "You're a lot more dexterous now! I have upgraded your Aether. You will now also be able to build Shadow Aether in an upgraded anvil.",
   "rewards" : [
     [ 
       [ "experienceorb", 500],
