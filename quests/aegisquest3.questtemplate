@@ -1,12 +1,12 @@
 {
-  "id" : "ivrpgaegisquest2",
+  "id" : "ivrpgaegisquest3",
   "title" : "^green;Weapon Upgrade",
-  "text" : "Now that you have the blueprint for a powerful weapon, you may be able to upgrade it. I will let you know when that time comes.^white;",
-  "completionText" : "You're a lot stronger now! I have upgraded your Aegis. You will now also be able to build Prismatic Aegis in an upgraded anvil.",
+  "text" : "Oh boy.^white;",
+  "completionText" : "You're as strong as you can be! I have upgraded your Aegis. You will now also be able to build Vital Aegis in an upgraded anvil.",
   "rewards" : [
     [ 
-      [ "experienceorb", 500],
-      [ "knightaegissword2", 1]
+      [ "ivrpgscrollresetaffinity", 1],
+      [ "knightaegissword3", 1]
     ]
   ],
 
@@ -22,12 +22,12 @@
       {
         "type" : "gatherItem",
         "itemName" : "experienceorb",
-        "count" : 90000,
+        "count" : 250000,
         "consume" : false
       },
       {
         "type" : "gatherItem",
-        "itemName" : "knightaegissword",
+        "itemName" : "knightaegissword2",
         "count" : 1,
         "consume" : true
       }
