@@ -9,25 +9,23 @@
   "description" : "The Spira, a drill that can pierce through most materials quickly.",
   "shortdescription" : "Spira",
   "largeImage" : "explorerspiradrillbig.png",
-  "image" : "explorerspiradrill.png:{frame}",
+  "image" : "explorerdrill.png:{frame}",
   "scripts" : [ "/items/active/classweapons/explorerdrill/explorerspiradrill.lua" ],
-  "frames" : 5,
-  "animationCycle" : 0.1,
   "handPosition" : [-8, 1],
   "pointable" : true,
-
   "fireOffset" : [0, 0.3],
 
-  "fireTime" : 0.1,
-  "blockRadius" : 2,
-  "altBlockRadius" : 1,
+  "animation" : "/items/active/classweapons/explorerdrill/explorerdrill.animation",
+  "animationParts" : {
+    "leftArm" : "explorerdrill.png",
+    "rightArm" : "explorerdrill.png"
+  },
+
+  "drillTipOffset" : [1, 0],
+  "drillSourceOffsets" : [[1.0, -2.0], [1.0, 0.0], [1.0, 2.0]],
   "twoHanded" : false,
-  "idleSound" : "/sfx/tools/chainsaw_idle.ogg",
-  "strikeSounds" : [ "/sfx/tools/drill_hit.ogg" ],
-  "breakSound" : "/sfx/tools/pickaxe_break.ogg",
-  "durability" : 1,
-  "durabilityPerUse" : 0,
   "tileDamage" : 10.0,
   "harvestLevel" : 99,
-  "tileDamageBlunted" : 0.2
+  "damageTileDepth" : 3,
+  "spinUpDownTime" : 0.6
 }

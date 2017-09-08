@@ -1,0 +1,23 @@
+{
+  "frameGrid" : {
+    "size" : [64, 42],
+    "dimensions" : [10, 1],
+
+    "names" : [
+      [ "idle", "rotate", "windup.1", "windup.2", "windup.3", "windup.4", "active.1", "active.2", "active.3", "active.4" ]
+    ]
+  },
+
+  "aliases" : {
+    "winddown.1" : "windup.4",
+    "winddown.2" : "windup.3",
+    "winddown.3" : "windup.2",
+    "winddown.4" : "windup.1",
+
+    // used by drone launchers
+    "cooldown" : "active.1",
+    "recover.1" : "active.2",
+    "recover.2" : "active.3",
+    "recover.3" : "active.4"
+  }
+}
