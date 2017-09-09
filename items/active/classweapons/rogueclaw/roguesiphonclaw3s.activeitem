@@ -17,10 +17,10 @@
     "roguesiphonclaw3v"
   ],
 
-  "inventoryIcon" : "roguesiphonclaw.png:front",
+  "inventoryIcon" : "roguesiphonclaw3s.png:front",
   "animation" : "/items/active/weapons/fist/fistweapon.animation",
   "animationParts" : {
-    "weapon" : "roguesiphonclaw.png",
+    "weapon" : "roguesiphonclaw3s.png",
     "swoosh" : "/items/active/weapons/fist/swoosh/clawswoosh.png"
   },
   "animationCustom" : {

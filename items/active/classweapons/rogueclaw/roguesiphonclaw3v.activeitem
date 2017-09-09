@@ -11,10 +11,10 @@
   "twoHanded" : false,
   "itemTags" : ["weapon","rogue","claw"],
 
-  "inventoryIcon" : "roguesiphonclaw.png:front",
+  "inventoryIcon" : "roguesiphonclaw3v.png:front",
   "animation" : "/items/active/weapons/fist/fistweapon.animation",
   "animationParts" : {
-    "weapon" : "roguesiphonclaw.png",
+    "weapon" : "roguesiphonclaw3v.png",
     "swoosh" : "/items/active/weapons/fist/swoosh/clawswoosh.png"
   },
   "animationCustom" : {
