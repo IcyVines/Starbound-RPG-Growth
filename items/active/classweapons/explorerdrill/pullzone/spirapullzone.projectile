@@ -27,5 +27,5 @@
   "emitters" : [ ],
 
   "piercing" : true,
-  "bounces" : -1,
+  "bounces" : -1
 }

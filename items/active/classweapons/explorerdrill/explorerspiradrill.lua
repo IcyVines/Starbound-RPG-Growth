@@ -77,7 +77,9 @@ function damageTiles(layer)
     local drillTiles = world.collisionBlocksAlongLine(sourcePosition, tipPosition, {"Block"}, self.damageTileDepth)
     if #drillTiles > 0 then
       world.damageTiles(drillTiles, layer, sourcePosition, "blockish", self.tileDamage, self.drops)
-      status.modifyResourcePercentage("energy", #drillTiles * 0.001)
+      if self.drops == 0 then
+        status.modifyResourcePercentage("energy", #drillTiles * 0.001)
+      end
     end
   end
 end
