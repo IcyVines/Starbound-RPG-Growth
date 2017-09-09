@@ -11,7 +11,6 @@ function init()
   self.drillTipOffset = config.getParameter("drillTipOffset")
   self.tileDamage =  config.getParameter("tileDamage",10)
   self.damageTileDepth = config.getParameter("damageTileDepth",3)
-  self.damageSources = config.getParameter("damageSources")
 end
 
 function update(dt, fireMode, shiftHeld, moves)
@@ -30,8 +29,22 @@ function update(dt, fireMode, shiftHeld, moves)
     sb.logInfo("layer" .. layer)
     damageTiles(layer)
     animator.setAnimationState("drill", "active")
-    activeItem.setItemDamageSources(self.damageSources)
+    activeItem.setItemDamageSources({
+        {
+          enabled = false,
+          attachToPart = drill,
+          --poly = {{8, 2.5}, {2, 0.75}, {2, 4.25}},
+          poly = {{4.2, -1.55}, {7.85, 0.0}, {4.2, 1.55}},
+          damage = 25,
+          damageSourceKind = "spear",
+          damageRepeatTimeout = 0.2,
+          damageRepeatGroup = "leftArmDrill",
+          knockback = 30,
+          rayCheck = true
+        }
+    })
   else
+    activeItem.setItemDamageSources()
     animator.setAnimationState("drill", "idle")
   end
 
