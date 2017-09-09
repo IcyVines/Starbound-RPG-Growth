@@ -39,21 +39,24 @@
             "pool" : [
                 {"weight" : 0.33, "item" : ["experienceorb", 85]},
                 {"weight" : 0.34, "item" : ["experienceorb", 90]},
-                {"weight" : 0.33, "item" : ["experienceorb", 95]}
+                {"weight" : 0.33, "item" : ["experienceorb", 95]},
+                {"weight" : 0.0005, "item" : "ivrpgscrollresetclass"}
             ]
         }],
         [7, {
             "pool" : [
                 {"weight" : 0.33, "item" : ["experienceorb", 100]},
                 {"weight" : 0.34, "item" : ["experienceorb", 105]},
-                {"weight" : 0.33, "item" : ["experienceorb", 110]}
+                {"weight" : 0.33, "item" : ["experienceorb", 110]},
+                {"weight" : 0.00075, "item" : "ivrpgscrollresetclass"}
             ]
         }],
         [8, {
             "pool" : [
                 {"weight" : 0.33, "item" : ["experienceorb", 115]},
                 {"weight" : 0.34, "item" : ["experienceorb", 120]},
-                {"weight" : 0.33, "item" : ["experienceorb", 125]}
+                {"weight" : 0.33, "item" : ["experienceorb", 125]},
+                {"weight" : 0.001, "item" : "ivrpgscrollresetclass"}
             ]
         }]
     ],

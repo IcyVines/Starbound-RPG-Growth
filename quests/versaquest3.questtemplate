@@ -1,7 +1,7 @@
 {
   "id" : "ivrpgversaquest3",
   "title" : "^green;Weapon Upgrade",
-  "text" : "Oh boy.^white;",
+  "text" : "Time to train! When you have perfected your abilities, I will attempt to make Versa strong enough to match!^white;",
   "completionText" : "You're as accurate as you can be! I have upgraded your Versa. You will now also be able to build Versa Ricochet in an upgraded anvil.",
   "rewards" : [
     [ 

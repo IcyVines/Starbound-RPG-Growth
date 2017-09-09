@@ -1,7 +1,7 @@
 {
   "id" : "ivrpgsiphonquest3",
   "title" : "^green;Weapon Upgrade",
-  "text" : "Oh boy.^white;",
+  "text" : "Time to train! When you have perfected your abilities, I will attempt to make Siphon strong enough to match!^white;",
   "completionText" : "You're as dangerous as you can be! I have upgraded your Siphon. You will now also be able to build Siphon Spore, Siphon Razor, and Siphon Flux in an upgraded anvil.",
   "rewards" : [
     [ 

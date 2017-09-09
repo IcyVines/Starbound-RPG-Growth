@@ -474,5 +474,15 @@
       "pool": "experienceorbpool"
       }]
     }
+  ],
+  [
+    {
+      "op": "add",
+      "path": "/banditTreasure/0/1/pool/-",
+      "value": {
+        "weight": 0.055,
+        "item": "ivrpggunparts"
+      }
+    }
   ]
 ]

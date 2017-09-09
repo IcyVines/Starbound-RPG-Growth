@@ -8,7 +8,7 @@
   "inventoryIcon" : "aether_shuriken50.png",
   "image" : "aether_shuriken50.png",
   "shortdescription" : "Blood Aether",
-  "description" : "Blood Aether, a sharper, shadowy shuriken that duplicates using dark energy.",
+  "description" : "Blood Aether, a shadowy shuriken that seeks enemies.",
   "itemTags" : ["ninja"],
 
   "ammoUsage" : 0,

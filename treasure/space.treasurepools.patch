@@ -2,12 +2,12 @@
 	[
 	  {
 	    "op": "test",
-	    "path": "/spaceRobotPassive/0/1/fill",
+	    "path": "/spaceRobotPassive/1/1/fill",
 	    "inverse": false
 	  }, 
 	  {
 	    "op": "add",
-	    "path": "/spaceRobotPassive/0/1/fill/-",
+	    "path": "/spaceRobotPassive/1/1/fill/-",
 	    "value": {
 	    "pool": "experienceorbpool"
 	    } 
@@ -16,12 +16,12 @@
 	[
 	  {
 	    "op": "test",
-	    "path": "/spaceRobotPassive/0/1/fill",
+	    "path": "/spaceRobotPassive/1/1/fill",
 	    "inverse": true
 	  }, 
 	  {
 	    "op": "add",
-	    "path": "/spaceRobotPassive/0/1/fill",
+	    "path": "/spaceRobotPassive/1/1/fill",
 	    "value": [{
 	    "pool": "experienceorbpool"
 	    }]
@@ -31,12 +31,12 @@
 	[
 	  {
 	    "op": "test",
-	    "path": "/spaceRobot/0/1/fill",
+	    "path": "/spaceRobot/1/1/fill",
 	    "inverse": false
 	  }, 
 	  {
 	    "op": "add",
-	    "path": "/spaceRobot/0/1/fill/-",
+	    "path": "/spaceRobot/1/1/fill/-",
 	    "value": {
 	    "pool": "experienceorbpool"
 	    } 
@@ -45,12 +45,12 @@
 	[
 	  {
 	    "op": "test",
-	    "path": "/spaceRobot/0/1/fill",
+	    "path": "/spaceRobot/1/1/fill",
 	    "inverse": true
 	  }, 
 	  {
 	    "op": "add",
-	    "path": "/spaceRobot/0/1/fill",
+	    "path": "/spaceRobot/1/1/fill",
 	    "value": [{
 	    "pool": "experienceorbpool"
 	    }]
@@ -60,31 +60,41 @@
 	[
 	  {
 	    "op": "test",
-	    "path": "/spaceRock/0/1/fill",
+	    "path": "/spaceRock/1/1/fill",
 	    "inverse": false
 	  }, 
 	  {
 	    "op": "add",
-	    "path": "/spaceRock/0/1/fill/-",
+	    "path": "/spaceRock/1/1/fill/-",
 	    "value": {
-	    "pool": "experienceorbpool",
-	    "item" : ["ivrpgmeteoricmetal", 1]
+		    "pool": "experienceorbpool",
+		    "item" : "ivrpgmeteoricmetal"
 	    } 
 	  }
 	],
 	[
 	  {
 	    "op": "test",
-	    "path": "/spaceRock/0/1/fill",
+	    "path": "/spaceRock/1/1/fill",
 	    "inverse": true
 	  }, 
 	  {
 	    "op": "add",
-	    "path": "/spaceRock/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool",
-	    "item" : ["ivrpgmeteoricmetal", 1]
-	    }]
+	    "path": "/spaceRock/1/1/fill",
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"item" : "ivrpgmeteoricmetal"}
+	    ]
 	  }
+	],
+	[
+		{
+		    "op": "add",
+		    "path": "/spaceRobot/1/1/pool/-",
+		    "value": {
+		      "weight": 0.055,
+		      "item": "ivrpggunparts"
+	    	}
+	  	}
 	]
 ]

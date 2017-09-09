@@ -43,6 +43,14 @@ function init()
     8: Arc
     ]]
     self.quests = {"ivrpgaegisquest", "ivrpgnovaquest", "ivrpgaetherquest", "ivrpgversaquest", "ivrpgsiphonquest", "ivrpgspiraquest"}
+    self.classWeaponText = {
+      "The Aegis is a broadsword that can be used as a shield. Perfect Blocking triggers the Knight's class ability. Perfect Blocking with the Vital Aegis restores health.",
+      "The Nova is a staff that can change elements. The staff cycles between Nova, Fire, Electric, and Ice. Nova weakens enemies to Fire, Electricity, and Ice. Enemies killed by Primed Nova explode.", 
+      "The Aether is a shuriken that never runs out and always causes bleeding. Blood Aether tracks enemies and goes both walls and enemies.", 
+      "The Versa is a gun that can fire in two modes. Versa Impact and Ricochet's shotgun blast can be held to increase damage and snipe enemies. Versa Ricochet's bullets bounce and increase in power everytime they do.", 
+      "The Siphon is a claw that uses energy to deal massive damage for its finisher. Finishers: Critical Slice causes bleed and fills hunger. Venom Slice causes poison and fills health. Lightning Slice causes static and fills energy.", 
+      "The Spira is a one-handed drill with increased speed and infinite use. Hungry Spira draws items closer. Pressing shift while using Ravenous Spira causes no blocks to drop, but fills energy while breaking them."
+    }
     --initiating possible Level Change (thus, level currency should not be used in another script!!!)
     updateLevel()
 end
@@ -63,6 +71,9 @@ function update(dt)
       local checked = widget.getChecked("classlayout.techicon1") and 1 or (widget.getChecked("classlayout.techicon2") and 2 or (widget.getChecked("classlayout.techicon3") and 3 or (widget.getChecked("classlayout.techicon4") and 4 or 0))) 
       if checked ~= 0 then unlockTechVisible(("techicon" .. tostring(checked)), 2^(checked+1)) end
       updateClassWeapon()
+    elseif widget.getChecked("bookTabs.3") then
+      removeLayouts()
+      changeToAffinities()
     end
   end
 
@@ -338,7 +349,7 @@ function updateClassTab()
     widget.setImage("classlayout.effecticon","/scripts/roguepoison/roguepoison.png")
     widget.setImage("classlayout.effecticon2","/scripts/roguepoison/roguepoison.png")
     widget.setImage("classlayout.classweaponicon","/interface/RPGskillbook/weapons/rogue.png")
-    widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nDexterity\n^magenta;Good:^reset;\nStrength\nAgility")
+    widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nDexterity\n^magenta;Good:^reset;\nVigor\nAgility")
   elseif player.currency("classtype") == 6 then
     widget.setText("classlayout.classtitle","Explorer")
     widget.setImage("classlayout.classicon","/objects/class/explorer.png")
@@ -371,6 +382,7 @@ function removeLayouts()
   widget.setVisible("classlayout",false)
   widget.setVisible("affinitieslayout",false)
   widget.setVisible("affinitylayout",false)
+  widget.setVisible("affinitylockedlayout",false)
   widget.setVisible("infolayout",false)
 end
 
@@ -406,7 +418,11 @@ function changeToAffinities()
     if player.currency("affinitytype") == 0 then
       widget.setVisible("affinitylayout", false)
       checkAffinityDescription("default")
-      widget.setVisible("affinitieslayout", true)
+      if self.level >= 25 then
+        widget.setVisible("affinitieslayout", true)
+      else
+        widget.setVisible("affinitylockedlayout", true)
+      end
       return
     else
       widget.setVisible("affinitieslayout", false)
@@ -453,7 +469,7 @@ function updateInfo()
     getStatImmunity(status.stat("biomeheatImmunity")) .. "^reset;" ..
     "^blue;" .. getStatImmunity(status.stat("biomecoldImmunity")) .. "^reset;" ..
     "^green;" .. getStatImmunity(status.stat("biomeradiationImmunity")) .. "^reset;" ..
-    "^gray;" .. getStatImmunity(status.stat("tarImmunity")) .. "^reset;" ..
+    "^gray;" .. getStatImmunity(status.stat("tarStatusImmunity")) .. "^reset;" ..
     "^blue;" .. getStatImmunity(status.stat("breathingProtection")) .. "^reset;")
 
   widget.setText("infolayout.displaystatsFU", 
@@ -919,8 +935,8 @@ function addClassStats()
     --Rogue
     player.addCurrency("agilitypoint", 3)
     player.addCurrency("endurancepoint", 3)
-    player.addCurrency("dexteritypoint", 3)
-    player.addCurrency("vigorpoint", 4)
+    player.addCurrency("dexteritypoint", 4)
+    player.addCurrency("vigorpoint", 3)
   elseif player.currency("classtype") == 6 then
     --Explorer
     player.addCurrency("agilitypoint", 4)
@@ -959,8 +975,8 @@ function consumeClassStats()
     --Rogue
     player.consumeCurrency("agilitypoint", 3)
     player.consumeCurrency("endurancepoint", 3)
-    player.consumeCurrency("dexteritypoint", 3)
-    player.consumeCurrency("vigorpoint", 4)
+    player.consumeCurrency("dexteritypoint", 4)
+    player.consumeCurrency("vigorpoint", 3)
   elseif player.currency("classtype") == 6 then
     --Explorer
     player.consumeCurrency("agilitypoint", 4)
@@ -1049,25 +1065,34 @@ function removeTechs()
 end
 
 function updateClassWeapon()
-  if self.level < 15 then
+  if player.hasCompletedQuest(self.quests[self.class]) then
+    widget.setText("classlayout.classweapontext", self.classWeaponText[self.class])
+    widget.setVisible("classlayout.weaponreqlvl", false)
+    widget.setVisible("classlayout.unlockquestbutton", false)
+    widget.setVisible("classlayout.classweapontext", true)
+  elseif self.level < 15 then
     widget.setFontColor("classlayout.weaponreqlvl", "red")
     widget.setText("classlayout.weaponreqlvl", "Required Level: 15")
     widget.setVisible("classlayout.weaponreqlvl", true)
     widget.setVisible("classlayout.unlockquestbutton", false)
+    widget.setVisible("classlayout.classweapontext", false)
   elseif player.hasQuest(self.quests[self.class]) then
-    widget.setFontColor("classlayout.weaponreqlvl", "white")
-    widget.setText("classlayout.weaponreqlvl", "")
-    widget.setVisible("classlayout.weaponreqlvl", true)
+    widget.setText("classlayout.classweapontext", "Complete the first quest for more information.")
+    widget.setVisible("classlayout.classweapontext", true)
+    widget.setVisible("classlayout.weaponreqlvl", false)
     widget.setVisible("classlayout.unlockquestbutton", false)
   else
     widget.setVisible("classlayout.unlockquestbutton", true)
     widget.setVisible("classlayout.weaponreqlvl", false)
+    widget.setVisible("classlayout.classweapontext", false)
   end
 end
 
 function unlockQuest()
   player.startQuest(self.quests[self.class])
   widget.setVisible("classlayout.unlockquestbutton", false)
+  widget.setText("classlayout.classweapontext", "Complete the first quest for more information.")
+  widget.setVisible("classlayout.classweapontext", true)
 end
 
 function chooseAffinity()

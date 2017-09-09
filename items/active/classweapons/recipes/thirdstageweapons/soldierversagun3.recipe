@@ -5,5 +5,5 @@
     { "item" : "liquidoil", "count" : 120 }
   ],
 	"output" : { "item" : "soldierversagun3", "count" : 1 },
-	"groups" : [ "craftinganvil2", "weapons", "all" ]
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
 }

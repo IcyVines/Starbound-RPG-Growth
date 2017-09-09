@@ -2143,6 +2143,158 @@
 	    "pool": "experienceorbpool"
 	    }]
 	  }
-	]
-
+	],
+	[{
+	    "op": "add",
+	    "path": "/hypnareTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgspiralenergy"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/lumothTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgdyingstar"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/mandrafloraTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgspiralenergy"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/miasmopTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgparasiticgoo"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/monopusTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgspiralenergy"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/narfinTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgdyingstar"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/oculobTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgparasiticgoo"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/paraspriteTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgparasiticgoo"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/paratailTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgparasiticgoo"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/petricubTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgdyingstar"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/ringramTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgspiralenergy"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/skimbusTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgether"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/spookitTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgether"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/sporgusTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgparasiticgoo"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/squeemTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgether"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/gosmetTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgether"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/trictusTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgspiralenergy"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/wisperTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgdyingstar"
+	    }
+	  },
+	  {
+	    "op": "add",
+	    "path": "/guardianTreasure/0/1/pool/-",
+	    "value": {
+	      "weight": 0.11,
+	      "item": "ivrpgscrollresetaffinity"
+	    }
+	  }
+  ]
 ]

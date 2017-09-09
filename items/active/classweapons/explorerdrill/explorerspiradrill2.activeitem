@@ -6,7 +6,7 @@
   "maxStack" : 1,
   "rarity" : "Rare",
   "tooltipKind" : "tool",
-  "description" : "The Spira, a drill that can pierce through most materials quickly, and pulls in item drops.",
+  "description" : "Hungry Spira, a drill that pulls item drops towards you.",
   "shortdescription" : "Hungry Spira",
   "largeImage" : "explorerspiradrill2.png",
   "image" : "explorerdrill.png:{frame}",
@@ -15,6 +15,10 @@
   "pointable" : true,
   "fireOffset" : [0, 0.3],
   "itemTags" : ["weapon","tool","explorer","drill"],
+
+  "learnBlueprintsOnPickup" : [
+    "explorerspiradrill2"
+  ],
 
   "animation" : "/items/active/classweapons/explorerdrill/explorerspiradrill.animation",
   "animationParts" : {
