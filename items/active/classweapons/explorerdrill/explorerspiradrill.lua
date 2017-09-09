@@ -41,9 +41,8 @@ function update(dt, fireMode, shiftHeld, moves)
     self.drops = (shiftHeld and self.name == "explorerspiradrill3") and 0 or 99
     --sb.logInfo("layer" .. layer)
     damageTiles(layer)
+
     animator.setAnimationState("drill", "active")
-    activeItem.setItemDamageSources(self.damageSources)
-    animator.setSoundVolume("active", 1, 0)
     activeItem.setItemDamageSources({
         {
           enabled = false,
@@ -58,6 +57,7 @@ function update(dt, fireMode, shiftHeld, moves)
           rayCheck = true
         }
     })
+    animator.setSoundVolume("active", 1, 0)
   else
     activeItem.setItemDamageSources()
     animator.setAnimationState("drill", "idle")
