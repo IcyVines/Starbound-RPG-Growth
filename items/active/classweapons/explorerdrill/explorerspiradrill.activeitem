@@ -2,31 +2,30 @@
   "itemName" : "explorerspiradrill",
   "price" : 750,
   "category" : "Unique Drill",
-  "inventoryIcon" : "explorerspiradrillicon.png",
+  "inventoryIcon" : "explorerspiradrill.png",
   "maxStack" : 1,
   "rarity" : "Uncommon",
   "tooltipKind" : "tool",
   "description" : "The Spira, a drill that can pierce through most materials quickly.",
   "shortdescription" : "Spira",
-  "largeImage" : "explorerspiradrillbig.png",
+  "largeImage" : "explorerspiradrill.png",
   "image" : "explorerdrill.png:{frame}",
   "scripts" : [ "/items/active/classweapons/explorerdrill/explorerspiradrill.lua" ],
   "handPosition" : [-8, 1],
   "pointable" : true,
   "fireOffset" : [0, 0.3],
 
-  "animation" : "/items/active/classweapons/explorerdrill/explorerdrill.animation",
+  "animation" : "/items/active/classweapons/explorerdrill/explorerspiradrill.animation",
   "animationParts" : {
-    "gun" : "explorerspiradrillicon.png",
-    "leftArm" : "explorerdrill.png",
-    "rightArm" : "explorerdrill.png"
+    "gun" : "explorerspiradrill.png",
+    "drill" : "explorerspiradrilllaser.png"
   },
 
-  "drillTipOffset" : [1, 0],
-  "drillSourceOffsets" : [[1.0, -2.0], [1.0, 0.0], [1.0, 2.0]],
+  "drillTipOffset" : [7.85, 0.0],
+  "drillSourceOffsets" : [[4.2, -1.55], [4.2, 0.0], [4.2, 1.55]],
   "twoHanded" : false,
   "tileDamage" : 10.0,
   "harvestLevel" : 99,
-  "damageTileDepth" : 3,
+  "damageTileDepth" : 5,
   "spinUpDownTime" : 0.6
 }
