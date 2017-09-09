@@ -24,8 +24,9 @@
   "drillTipOffset" : [7.85, 0.0],
   "drillSourceOffsets" : [[4.2, -1.55], [4.2, 0.0], [4.2, 1.55]],
   "twoHanded" : false,
-  "tileDamage" : 10.0,
+  "tileDamage" : 0.2,
   "harvestLevel" : 99,
   "damageTileDepth" : 5,
+  "cost" : 20,
   "spinUpDownTime" : 0.6
 }

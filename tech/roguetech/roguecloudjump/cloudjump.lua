@@ -11,6 +11,7 @@ function init()
   self.cooldown = config.getParameter("cooldown", 2)
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=3CB34CFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
+  self.cost = config.getParameter("cost", 30)
 
   Bind.create("Up", platform)
 end
@@ -78,7 +79,7 @@ function doMultiJump()
 end
 
 function platform()
-  if self.cooldownTimer == 0 and not mcontroller.groundMovement() and not mcontroller.liquidMovement() and not status.statPositive("activeMovementAbilities") then
+  if self.cooldownTimer == 0 and not mcontroller.groundMovement() and not mcontroller.liquidMovement() and not status.statPositive("activeMovementAbilities") and status.overConsumeResource("energy", self.cost) then
     mcontroller.setYVelocity(0)
     world.spawnVehicle("cloudplatform", vec2.sub(mcontroller.position(),{0,3}))
     self.cooldownTimer = self.cooldown

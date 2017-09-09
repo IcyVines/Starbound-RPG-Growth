@@ -423,10 +423,10 @@ end
 
 function updateInfo()
   self.classType = player.currency("classtype")
-  self.strengthBonus = self.classType == 1 and 1.15 or (self.classType == 5 and 1.1 or (self.classType == 4 and 1.05 or 1))
+  self.strengthBonus = self.classType == 1 and 1.15 or (self.classType == 4 and 1.05 or 1)
   self.agilityBonus = self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1))
   self.vitalityBonus = self.classType == 4 and 1.15 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.05 or 1))
-  self.vigorBonus = self.classType == 6 and 1.15 or (self.classType == 2 and 1.1 or 1)
+  self.vigorBonus = self.classType == 6 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or 1))
   self.intelligenceBonus = self.classType == 2 and 1.2 or 1
   self.enduranceBonus = self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1))
   self.dexterityBonus = self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))
@@ -918,10 +918,9 @@ function addClassStats()
   elseif player.currency("classtype") == 5 then
     --Rogue
     player.addCurrency("agilitypoint", 3)
-    player.addCurrency("endurancepoint", 2)
+    player.addCurrency("endurancepoint", 3)
     player.addCurrency("dexteritypoint", 3)
-    player.addCurrency("strengthpoint", 3)
-    player.addCurrency("vigorpoint", 2)
+    player.addCurrency("vigorpoint", 4)
   elseif player.currency("classtype") == 6 then
     --Explorer
     player.addCurrency("agilitypoint", 4)
@@ -959,10 +958,9 @@ function consumeClassStats()
   elseif player.currency("classtype") == 5 then
     --Rogue
     player.consumeCurrency("agilitypoint", 3)
-    player.consumeCurrency("endurancepoint", 2)
+    player.consumeCurrency("endurancepoint", 3)
     player.consumeCurrency("dexteritypoint", 3)
-    player.consumeCurrency("strengthpoint", 3)
-    player.consumeCurrency("vigorpoint", 2)
+    player.consumeCurrency("vigorpoint", 4)
   elseif player.currency("classtype") == 6 then
     --Explorer
     player.consumeCurrency("agilitypoint", 4)
@@ -1295,7 +1293,7 @@ function consumeAffinityStats()
   elseif player.currency("classtype") == 4 then
     --Shock
     player.consumeCurrency("agilitypoint", 3)
-  elseif player.currency("classtype") == 5 then
+  elseif player.currency("cla sstype") == 5 then
     --Infernal
     player.consumeCurrency("strengthpoint", 5)
   elseif player.currency("classtype") == 6 then

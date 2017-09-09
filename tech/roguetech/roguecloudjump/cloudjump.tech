@@ -5,13 +5,14 @@
   "scripts" : ["cloudjump.lua"],
   "animator" : "cloudjump.animation",
 
-  "description" : "Cooldown: 2s",
+  "description" : "Cost: 30e. Cooldown: 2s",
   "shortDescription" : "Cloud Jump",
   "rarity" : "Rare",
   "icon" : "/tech/roguetech/roguecloudjump/cloudjump.png",
 
   "chipCost" : 0,
   "cooldown": 2.0,
+  "cost" : 30,
 
   "multiJumpCount" : 1
 }

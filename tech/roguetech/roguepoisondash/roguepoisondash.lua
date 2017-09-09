@@ -66,8 +66,10 @@ function update(args)
     self.damageConfig = {
       power = self.power*self.poison*10
     }
-    world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()-2}, entity.id(), {0,0}, false, self.damageConfig)
-
+    if not status.resourceLocked("energy") then
+      world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()-2}, entity.id(), {0,0}, false, self.damageConfig)
+    end
+    
     if self.airDashing then
       mcontroller.setYVelocity(0)
     end

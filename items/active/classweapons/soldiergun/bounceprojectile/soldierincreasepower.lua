@@ -2,7 +2,7 @@ require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
 function init()
-  sb.logInfo("proj")
+  --sb.logInfo("proj")
 end
 
 function update(dt)

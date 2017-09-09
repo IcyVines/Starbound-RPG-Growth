@@ -2,7 +2,7 @@ require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
 function init()
-  sb.logInfo("explorer drill")
+  --sb.logInfo("explorer drill")
   self.active = false
   self.fireOffset = config.getParameter("fireOffset")
   self.aimAngle = 0
@@ -12,6 +12,11 @@ function init()
   self.tileDamage =  config.getParameter("tileDamage",10)
   self.damageTileDepth = config.getParameter("damageTileDepth",3)
   self.damageSources = config.getParameter("damageSources")
+  self.cost = config.getParameter("cost", 10)
+  self.name = item.name()
+  self.id = activeItem.ownerEntityId()
+  animator.setSoundVolume("active", 0, 0)
+  animator.playSound("active", -1)
 end
 
 function update(dt, fireMode, shiftHeld, moves)
@@ -25,25 +30,39 @@ function update(dt, fireMode, shiftHeld, moves)
   activeItem.setFacingDirection(self.facingDirection)
   activeItem.setArmAngle(self.aimAngle)
 
-  if self.active then
-    local layer = shiftHeld and "background" or "foreground"
-    sb.logInfo("layer" .. layer)
+  if self.active and status.overConsumeResource("energy", self.cost*dt) then
+    if self.name ~= "explorerspiradrill" then
+      local dropList = world.itemDropQuery(mcontroller.position(), 10)
+      if dropList then
+        world.spawnProjectile("spirapullzone", mcontroller.position(), self.id, {0,0}, true)
+      end
+    end
+    local layer = "foreground"
+    self.drops = (shiftHeld and self.name == "explorerspiradrill3") and 0 or 99
+    --sb.logInfo("layer" .. layer)
     damageTiles(layer)
     animator.setAnimationState("drill", "active")
     activeItem.setItemDamageSources(self.damageSources)
+    animator.setSoundVolume("active", 1, 0)
   else
     animator.setAnimationState("drill", "idle")
+    animator.setSoundVolume("active", 0, 0)
   end
 
+end
+
+function uninit()
+  animator.stopAllSounds("active")
 end
 
 function damageTiles(layer)
   local tipPosition = transformOffset(self.drillTipOffset)
   for _, sourceOffset in ipairs(self.drillSourceOffsets) do
     local sourcePosition = transformOffset(sourceOffset)
-    local drillTiles = world.collisionBlocksAlongLine(sourcePosition, tipPosition, nil, self.damageTileDepth)
+    local drillTiles = world.collisionBlocksAlongLine(sourcePosition, tipPosition, {"Block"}, self.damageTileDepth)
     if #drillTiles > 0 then
-      world.damageTiles(drillTiles, layer, sourcePosition, "blockish", self.tileDamage, 99)
+      world.damageTiles(drillTiles, layer, sourcePosition, "blockish", self.tileDamage, self.drops)
+      status.modifyResourcePercentage("energy", #drillTiles * 0.001)
     end
   end
 end

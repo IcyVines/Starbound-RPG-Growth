@@ -97,5 +97,8 @@
         }
       }
     }
+  },
+  "sounds" : {
+    "active" : ["/sfx/gun/mech_beamdrill_loop.ogg"]
   }
 }

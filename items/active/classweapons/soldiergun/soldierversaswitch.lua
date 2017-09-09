@@ -36,8 +36,8 @@ function GunFire:update(dt, fireMode, shiftHeld)
       status.overConsumeResource("energy", self:energyPerShot()*self.dt)
       self.chargeTimer = math.min(self.chargeTime, self.chargeTimer + self.dt)
       if self.chargeTimer == 1 then
-        animator.stopAllSounds("charge")
         animator.playSound("charged")
+        animator.stopAllSounds("charge")
       end
     end
   else
@@ -142,4 +142,5 @@ function GunFire:damagePerShot()
 end
 
 function GunFire:uninit()
+
 end

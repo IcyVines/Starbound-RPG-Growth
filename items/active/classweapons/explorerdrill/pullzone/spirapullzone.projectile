@@ -1,0 +1,31 @@
+{
+  "projectileName" : "spirapullzone",
+  "physics" : "laser",
+  "timeToLive" : 0.05,
+  "image" : "pullzone.png",
+  
+  "actionOnReap" : [],
+  "speed" : 0,
+  "power" : 0,
+
+  "onlyHitTerrain" : true,
+
+  "boundBox" : [-14, -14, 14, 14],
+  "physicsForces" : {
+    "pull" : {
+      "type" : "RadialForceRegion",
+      "categoryWhitelist" : ["itemdrop"],
+      "outerRadius" : 14,
+      "innerRadius" : 7,
+      "targetRadialVelocity" : -40,
+      "controlForce" : 300
+    }
+  },
+
+  "renderLayer" : "Player+1",
+  "orientationLocked" : true,
+  "emitters" : [ ],
+
+  "piercing" : true,
+  "bounces" : -1,
+}
