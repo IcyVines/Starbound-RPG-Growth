@@ -35,8 +35,8 @@
       },
       "fire" : {
         "duration" : 0,
-        "armRotation" : 3,
-        "weaponRotation" : 3,
+        "armRotation" : 8,
+        "weaponRotation" : 8,
         "twoHanded" : true,
 
         "allowRotate" : false,
@@ -44,8 +44,8 @@
       },
       "cooldown" : {
         "duration" : 0.11,
-        "armRotation" : 3,
-        "weaponRotation" : 3,
+        "armRotation" : 8,
+        "weaponRotation" : 8,
         "twoHanded" : true,
 
         "allowRotate" : false,
