@@ -44,7 +44,22 @@ function update(dt, fireMode, shiftHeld, moves)
     animator.setAnimationState("drill", "active")
     activeItem.setItemDamageSources(self.damageSources)
     animator.setSoundVolume("active", 1, 0)
+    activeItem.setItemDamageSources({
+        {
+          enabled = false,
+          attachToPart = drill,
+          --poly = {{8, 2.5}, {2, 0.75}, {2, 4.25}},
+          poly = {{4.2, -1.55}, {7.85, 0.0}, {4.2, 1.55}},
+          damage = 25,
+          damageSourceKind = "spear",
+          damageRepeatTimeout = 0.2,
+          damageRepeatGroup = "leftArmDrill",
+          knockback = 30,
+          rayCheck = true
+        }
+    })
   else
+    activeItem.setItemDamageSources()
     animator.setAnimationState("drill", "idle")
     animator.setSoundVolume("active", 0, 0)
   end
