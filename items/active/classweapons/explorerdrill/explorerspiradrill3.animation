@@ -98,6 +98,12 @@
       }
     }
   },
+  "lights" : {
+    "glow" : {
+      "color" : [140, 130, 15],
+      "active" : false
+    }
+  },
   "sounds" : {
     "active" : ["/sfx/gun/mech_beamdrill_loop.ogg"]
   }

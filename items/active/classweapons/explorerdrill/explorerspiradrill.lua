@@ -14,6 +14,7 @@ function init()
   self.damageSources = config.getParameter("damageSources")
   self.cost = config.getParameter("cost", 10)
   self.name = item.name()
+  self.damageBonus = (self.name == "explorerspiradrill" and 1 or (self.name == "explorerspiradrill2" and 2 or 3))
   self.id = activeItem.ownerEntityId()
   animator.setSoundVolume("active", 0, 0)
   animator.playSound("active", -1)
@@ -39,6 +40,7 @@ function update(dt, fireMode, shiftHeld, moves)
     end
     local layer = "foreground"
     self.drops = (shiftHeld and self.name == "explorerspiradrill3") and 0 or 99
+    animator.setLightActive("glow", true)
     --sb.logInfo("layer" .. layer)
     damageTiles(layer)
     animator.setAnimationState("drill", "active")
@@ -50,16 +52,17 @@ function update(dt, fireMode, shiftHeld, moves)
           attachToPart = drill,
           --poly = {{8, 2.5}, {2, 0.75}, {2, 4.25}},
           poly = {{4.2, -1.55}, {7.85, 0.0}, {4.2, 1.55}},
-          damage = 25,
-          damageSourceKind = "spear",
+          damage = 3*self.damageBonus,
+          damageSourceKind = "electricplasma",
           damageRepeatTimeout = 0.2,
           damageRepeatGroup = "leftArmDrill",
-          knockback = 30,
+          knockback = 3,
           rayCheck = true
         }
     })
   else
     activeItem.setItemDamageSources()
+    animator.setLightActive("glow", false)
     animator.setAnimationState("drill", "idle")
     animator.setSoundVolume("active", 0, 0)
   end
@@ -67,6 +70,7 @@ function update(dt, fireMode, shiftHeld, moves)
 end
 
 function uninit()
+  animator.setLightActive("glow", false)
   animator.stopAllSounds("active")
 end
 

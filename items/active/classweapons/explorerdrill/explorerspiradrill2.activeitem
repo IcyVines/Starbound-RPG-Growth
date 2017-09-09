@@ -14,6 +14,7 @@
   "handPosition" : [-8, 1],
   "pointable" : true,
   "fireOffset" : [0, 0.3],
+  "itemTags" : ["weapon","tool","explorer","drill"],
 
   "animation" : "/items/active/classweapons/explorerdrill/explorerspiradrill.animation",
   "animationParts" : {
