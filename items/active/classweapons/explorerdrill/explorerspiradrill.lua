@@ -11,7 +11,6 @@ function init()
   self.drillTipOffset = config.getParameter("drillTipOffset")
   self.tileDamage =  config.getParameter("tileDamage",10)
   self.damageTileDepth = config.getParameter("damageTileDepth",3)
-  self.damageSources = config.getParameter("damageSources")
   self.cost = config.getParameter("cost", 10)
   self.name = item.name()
   self.damageBonus = (self.name == "explorerspiradrill" and 1 or (self.name == "explorerspiradrill2" and 2 or 3))
@@ -43,9 +42,8 @@ function update(dt, fireMode, shiftHeld, moves)
     animator.setLightActive("glow", true)
     --sb.logInfo("layer" .. layer)
     damageTiles(layer)
+
     animator.setAnimationState("drill", "active")
-    activeItem.setItemDamageSources(self.damageSources)
-    animator.setSoundVolume("active", 1, 0)
     activeItem.setItemDamageSources({
         {
           enabled = false,
@@ -60,6 +58,7 @@ function update(dt, fireMode, shiftHeld, moves)
           rayCheck = true
         }
     })
+    animator.setSoundVolume("active", 1, 0)
   else
     activeItem.setItemDamageSources()
     animator.setLightActive("glow", false)
