@@ -7,11 +7,11 @@ function init()
   self.fireOffset = config.getParameter("fireOffset")
   self.aimAngle = 0
   self.facingDirection = 0
-  self.drillSourceOffsets = config.getParameter("drillSourceOffsets",{{1.0, -2.0}, {1.0, 0.0}, {1.0, 2.0}})
-  self.drillTipOffset = config.getParameter("drillTipOffset",{3, 0})
+  self.drillSourceOffsets = config.getParameter("drillSourceOffsets")
+  self.drillTipOffset = config.getParameter("drillTipOffset")
   self.tileDamage =  config.getParameter("tileDamage",10)
   self.damageTileDepth = config.getParameter("damageTileDepth",3)
-  self.armName = activeItem.hand() == "primary" and "leftArm" or "rightArm"
+  self.damageSources = config.getParameter("damageSources")
 end
 
 function update(dt, fireMode, shiftHeld, moves)
@@ -29,23 +29,20 @@ function update(dt, fireMode, shiftHeld, moves)
     local layer = shiftHeld and "background" or "foreground"
     sb.logInfo("layer" .. layer)
     damageTiles(layer)
-    animator.setAnimationState(self.armName, "active")
+    animator.setAnimationState("drill", "active")
+    activeItem.setItemDamageSources(self.damageSources)
   else
-    animator.setAnimationState(self.armName, "idle")
+    animator.setAnimationState("drill", "idle")
   end
-  --sb.logInfo("hand: " .. self.armName)
 
 end
 
 function damageTiles(layer)
   local tipPosition = transformOffset(self.drillTipOffset)
-  sb.logInfo("tipPosition: " .. tipPosition[1] .. ", " .. tipPosition[2])
   for _, sourceOffset in ipairs(self.drillSourceOffsets) do
     local sourcePosition = transformOffset(sourceOffset)
     local drillTiles = world.collisionBlocksAlongLine(sourcePosition, tipPosition, nil, self.damageTileDepth)
-    sb.logInfo("sourcePosition: " .. sourcePosition[1] .. ", " .. sourcePosition[2])
     if #drillTiles > 0 then
-      sb.logInfo("sourcePositionYes: " .. sourcePosition[1] .. ", " .. sourcePosition[2])
       world.damageTiles(drillTiles, layer, sourcePosition, "blockish", self.tileDamage, 99)
     end
   end

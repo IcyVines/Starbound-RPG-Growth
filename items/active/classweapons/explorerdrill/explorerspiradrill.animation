@@ -1,0 +1,101 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "drill" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "rotate" : {},
+          "windup" : {
+            "frames" : 4,
+            "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "active"
+          },
+          "active" : {
+            "frames" : 4,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          },
+          "winddown" : {
+            "frames" : 4,
+            "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "rotate"
+          },
+          "cooldown" : {},
+          "recover" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "gun" : {
+        "properties" : {
+          "zLevel" : -8,
+          "centered" : true,
+          "image" : "<partImage>",
+          "offset" : [0.7, -0.0]
+        }
+      },
+      "drill" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 8,
+          "flippedZLevel" : -7
+        },
+        "partStates" : {
+          "drill" : {
+            "idle" : {
+              "properties" : {
+                "offset" : [3.0, 0.3],
+                "image" : "<partImage>:idle"
+              }
+            },
+            "rotate" : {
+              "properties" : {
+                "offset" : [3.0, 0.3],
+                "image" : "<partImage>:rotate"
+              }
+            },
+            "windup" : {
+              "properties" : {
+                "offset" : [3.0, 0.3],
+                "image" : "<partImage>:windup.<frame>"
+              }
+            },
+            "active" : {
+              "properties" : {
+                "offset" : [3.0, 0.3],
+                "image" : "<partImage>:active.<frame>"
+              }
+            },
+            "winddown" : {
+              "properties" : {
+                "offset" : [3.0, 0.3],
+                "image" : "<partImage>:winddown.<frame>"
+              }
+            },
+            "cooldown" : {
+              "properties" : {
+                "offset" : [3.0, 0.3],
+                "image" : "<partImage>:cooldown"
+              }
+            },
+            "recover" : {
+              "properties" : {
+                "offset" : [3.0, 0.3],
+                "image" : "<partImage>:recover.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
