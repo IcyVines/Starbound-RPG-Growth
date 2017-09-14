@@ -9,11 +9,12 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/smokeexplosion/smokeexplosion.config"
+      "file" : "/items/active/classweapons/ninjashuriken/smokeexplosion/ninjasmokeexplosion.config"
     }
   ],
   "power" : 100.0,
   "knockback" : 10,
+  "piercing" : true,
   "damageKind" : "alwaysbleed",
   "damagePoly" : [ [-5, 0], [-3.3, -3.3], [0, -5], [3.3, -3.3], [5, 0], [3.3, 3.3], [0, 5], [-3.3, 3.3] ],
   "emitters" : [ "shadowsmoke" ]

@@ -9,7 +9,7 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/smokeexplosion/smokeexplosion.config"
+      "file" : "/items/active/classweapons/ninjashuriken/smokeexplosion/ninjasmokeexplosion.config"
     }
   ],
 

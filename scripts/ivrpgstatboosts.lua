@@ -165,7 +165,7 @@ function update(dt)
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "poisonResistance", amount = 3},
           {stat = "electricResistance", amount = -0.25},
-          {stat = "maxHealth", effectiveMultiplier = 0.5}
+          {stat = "maxHealth", effectiveMultiplier = 0.85}
         },
         { -- Frost --
           {stat = "iceStatusImmunity", amount = 1},
@@ -208,7 +208,7 @@ function update(dt)
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "poisonResistance", amount = 3},
           {stat = "electricResistance", amount = -0.25},
-          {stat = "maxHealth", effectiveMultiplier = 0.5},
+          {stat = "maxHealth", effectiveMultiplier = 0.85},
 
           {stat = "biomeradiationImmunity", amount = 1},
           {stat = "protoImmunity", amount = 1}

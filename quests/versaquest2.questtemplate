@@ -27,7 +27,7 @@
       },
       {
         "type" : "gatherItem",
-        "itemName" : "soldierversagun2",
+        "itemName" : "soldierversagun",
         "count" : 1,
         "consume" : true
       }
