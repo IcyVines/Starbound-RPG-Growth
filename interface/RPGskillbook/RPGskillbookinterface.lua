@@ -586,7 +586,7 @@ function getTechText(num)
         or "Press [F] to negate all damage for a short time. Energy does not recharge while this effect is active. You can prematurely end the effect by pressing [F] again. The cooldown shortens if so."))
   elseif classType == 3 then
     return num == 1 and "Press [Space] while midair to burst forward. For a short time after jumping, you are invulnerable to damage. As long as you remain in the air with energy remaining, you are invulnerable to fall damage. You may do this twice while midair." 
-    or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while moving. The transformation ends if you run out of energy or press [F] while transformed." 
+    or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while active. The invulnerability ends when you run out of energy or press [F] while transformed." 
     or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS. While the cooldown is active, lose 20% Physical Resistance." 
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
@@ -996,6 +996,11 @@ function areYouSure(name)
   widget.setVisible(name2..".resetbutton"..name, false)
   widget.setVisible(name2..".yesbutton", true)
   widget.setVisible(name2..".nobutton"..name, true)
+  if self.level == 50 then
+    widget.setText(name2..".areyousure", "Are you sure you want to reset? This will reset your Experience to 100, Level to 1, and Stat Points to 0, as well as remove your Class and Affinity.")
+  else
+    widget.setText(name2..".areyousure", "Are you sure you want to reset? This will reset your Experience to 100, Level to 1, and Stat Points to 0, as well as remove your Class, Affinity, and unlocked Class Techs.")
+  end
   widget.setVisible(name2..".areyousure", true)
   --widget.setVisible(name2..".hardcoretext", false)
 end
@@ -1033,35 +1038,44 @@ function resetSkillBook()
   player.consumeCurrency("dexteritypoint",player.currency("dexteritypoint"))
   player.consumeCurrency("classtype",player.currency("classtype"))
   player.consumeCurrency("affinitytype",player.currency("affinitytype"))
-  removeTechs()
+  if self.level ~= 50 then
+    removeTechs()
+  end
   updateStats()
 end
 
 function removeTechs()
-  player.makeTechUnavailable("ninjaassassinate")
-  player.makeTechUnavailable("ninjaflashjump")
-  player.makeTechUnavailable("ninjawallcling")
-  player.makeTechUnavailable("ninjavanishsphere")
-  player.makeTechUnavailable("wizardmagicshield")
-  player.makeTechUnavailable("wizardgravitysphere")
-  player.makeTechUnavailable("wizardtranslocate")
-  player.makeTechUnavailable("wizardhover")
-  player.makeTechUnavailable("knightslam")
-  player.makeTechUnavailable("knightbash")
-  player.makeTechUnavailable("knightcharge")
-  player.makeTechUnavailable("knightarmorsphere")
-  player.makeTechUnavailable("roguetoxicaura")
-  player.makeTechUnavailable("roguecloudjump")
-  player.makeTechUnavailable("roguetoxiccapsule")
-  player.makeTechUnavailable("roguepoisondash")
-  player.makeTechUnavailable("soldiermissilestrike")
-  player.makeTechUnavailable("soldierenergypack")
-  player.makeTechUnavailable("soldiermarksman")
-  player.makeTechUnavailable("soldiermre")
-  player.makeTechUnavailable("explorerenhancedjump")
-  player.makeTechUnavailable("explorerenhancedmovement")
-  player.makeTechUnavailable("explorerdrill")
-  player.makeTechUnavailable("explorerglide")
+  if self.class == 3 then
+    player.makeTechUnavailable("ninjaassassinate")
+    player.makeTechUnavailable("ninjaflashjump")
+    player.makeTechUnavailable("ninjawallcling")
+    player.makeTechUnavailable("ninjavanishsphere")
+  elseif self.class == 2 then
+    player.makeTechUnavailable("wizardmagicshield")
+    player.makeTechUnavailable("wizardgravitysphere")
+    player.makeTechUnavailable("wizardtranslocate")
+    player.makeTechUnavailable("wizardhover")
+  elseif self.class == 1 then
+    player.makeTechUnavailable("knightslam")
+    player.makeTechUnavailable("knightbash")
+    player.makeTechUnavailable("knightcharge!")
+    player.makeTechUnavailable("knightarmorsphere")
+  elseif self.class == 5 then
+    player.makeTechUnavailable("roguetoxicaura")
+    player.makeTechUnavailable("roguecloudjump")
+    player.makeTechUnavailable("roguetoxiccapsule")
+    player.makeTechUnavailable("roguepoisondash")
+  elseif self.class == 4 then
+    player.makeTechUnavailable("soldiermissilestrike")
+    player.makeTechUnavailable("soldierenergypack")
+    player.makeTechUnavailable("soldiermarksman")
+    player.makeTechUnavailable("soldiermre")
+  elseif self.class == 6 then
+    player.makeTechUnavailable("explorerenhancedjump")
+    player.makeTechUnavailable("explorerenhancedmovement")
+    player.makeTechUnavailable("explorerdrill")
+    player.makeTechUnavailable("explorerglide")
+  end
 end
 
 function updateClassWeapon()

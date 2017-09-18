@@ -22,7 +22,8 @@
             "mode" : "transition",
             "transition" : "on"
           },
-          "on" : { }
+          "on" : { },
+          "onv" : { }
         }
       }
     },
@@ -36,6 +37,13 @@
         "partStates" : {
           "ballState" : {
             "on" : {
+              "properties" : {
+                "zLevel" : 1,
+                "fullbright" : true,
+                "image" : "<partImage>:<rotationFrame><ballDirectives>"
+              }
+            },
+            "onv" : {
               "properties" : {
                 "zLevel" : 1,
                 "fullbright" : true,
@@ -69,6 +77,11 @@
             "on" : {
               "properties" : {
                 "image" : "<partImage>:<rotationFrame><ballDirectives>"
+              }
+            },
+            "onv" : {
+              "properties" : {
+                "image" : "v<partImage>:<rotationFrame><ballDirectives>"
               }
             }
           }

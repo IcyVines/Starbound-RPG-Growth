@@ -1,8 +1,8 @@
 {
   "id" : "ivrpgspiraquest",
   "title" : "^green;Spectacular Spin",
-  "text" : "You've been to many places it seems, or at least plan to visit, and I only realized now that your travels would be made easier if your mining tools were improved. I have begun working on a prototype that I need your help to build: if you can defeat monsters whose anatomies are built for spinning, I may be able to figure something out.^white;",
-  "completionText" : "Great! This strange energy seems to be spinning like a top. I've molded it into a more contained form that you can use for crafting, but you should be able to do the same if you ever need to.",
+  "text" : "You plan to visit many places it seems, and I only realized now that your travels would be made easier if your mining tools were improved. I have begun working on a prototype that I need your help to build: if you can defeat ^green;monsters that can spin,^reset; I may be able to figure something out.^white;",
+  "completionText" : "This strange energy seems to be spinning like a top. I've molded it into a more contained form that you can use for crafting, and you should now be able to do the same. Go craft the Spira and start digging!",
   "rewards" : [
     [ 
       [ "experienceorb", 200],

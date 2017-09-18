@@ -480,7 +480,7 @@
       "op": "add",
       "path": "/banditTreasure/0/1/pool/-",
       "value": {
-        "weight": 0.055,
+        "weight": 0.10,
         "item": "ivrpggunparts"
       }
     }

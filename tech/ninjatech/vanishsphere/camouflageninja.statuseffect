@@ -1,0 +1,14 @@
+{
+  "name" : "camouflageninja",
+  "effectConfig" : {
+    "alpha" : 0
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+  	"camouflageninja.lua"
+  ],
+
+  "label" : "Camouflage",
+  "icon" : "/interface/statuses/invisible.png"
+}

@@ -1,8 +1,8 @@
 {
   "id" : "ivrpgnovaquest",
   "title" : "^green;Shattered Stars",
-  "text" : "Your magical power is growing by the second, and it triggered some sort of collapse that has allowed me to search through a long lost archive written by old magicians. These records indicate that there is a magical stone that holds energy fueled by dying stars. Perhaps if you can find something similar, you can harness its power!^white;",
-  "completionText" : "You've found enough Dying Stars! I believe you should be able to use these now, but you will need to crystallize them. For now, I have crystallized them for you, but in the future, you may need to do it yourself.",
+  "text" : "Your magical power is growing by the second, and it triggered a collapse that let me search through a long lost archive written by old magicians. Records indicate that a magical stone holds energy fueled by stars. I believe ^green;Wisper, Narfin, and Lumoth^reset; can produce these crystals upon death. There are also rumors of a ^green;shadowy puppy^reset; that eats them.^white;",
+  "completionText" : "I believe you should be able to use these now, but you will need to crystallize them. I have crystallized them for you, but you can now do so yourself. Go build the Nova and cause your own 'collapse'.",
   "rewards" : [
     [
       [ "experienceorb", 200],

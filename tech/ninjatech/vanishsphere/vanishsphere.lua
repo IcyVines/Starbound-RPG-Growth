@@ -41,11 +41,14 @@ function update(args)
       groundDirection = findGroundDirection()
     end
     --invulnerable while active
+    status.addEphemeralEffect("camouflageninja", math.huge)
     status.setPersistentEffects("vanishsphere",
     {
       {stat = "invulnerable", amount = 1},
       {stat = "ninjaVanishSphere", amount = 1}
     })
+
+    status.overConsumeResource("energy", self.energyCostPerSecond * args.dt)
 
     if groundDirection then
       if not self.headingAngle then
@@ -61,7 +64,7 @@ function update(args)
 
         --consume energy only when moving
         --status.setResourcePercentage("energyRegenBlock", 1.0)
-        status.overConsumeResource("energy", self.energyCostPerSecond * args.dt)
+        
         
         local adjustment = 0
         for a = 0, math.pi, math.pi / 4 do
@@ -98,6 +101,7 @@ function update(args)
       else
         --status.overConsumeResource("energy", 0)
         --status.setResource("energyRegenBlock", self.energyRegenBlock)
+        --status.consumeResource("health", self.healthCostPerSecond * args.dt)
         mcontroller.controlApproachVelocity({0,0}, 2000)
         self.angularVelocity = 0
       end
@@ -120,10 +124,20 @@ function update(args)
     checkForceDeactivate(args.dt)
 
     if status.resource("energy") == 0 then
-      uninit()
+      --uninit()
+      animator.setAnimationState("ballState", "onv")
+      status.removeEphemeralEffect("camouflageninja")
+      status.setPersistentEffects("vanishsphere",
+      {
+        {stat = "invulnerable", amount = 0},
+        {stat = "ninjaVanishSphere", amount = 1}
+      })
+    else
+      
     end
 
   else
+    status.removeEphemeralEffect("camouflageninja")
     status.clearPersistentEffects("vanishsphere")
     self.headingAngle = nil
     --status.overConsumeResource("energy", 0)

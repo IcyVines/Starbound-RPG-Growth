@@ -6,8 +6,7 @@ ControlProjectile = WeaponAbility:new()
 function ControlProjectile:init()
   storage.projectiles = storage.projectiles or {}
 
-  self.item = world.entityHandItemDescriptor(activeItem.ownerEntityId(), activeItem.hand())
-  self.name = "wizardnovastaff"
+  self.name = item.name()
 
   self.elementalType = self.elementalType or self.weapon.elementalType
 
@@ -26,15 +25,6 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
   self.element = self.elementalType == "physical" and "nova" or self.elementalType
   self:updateProjectiles()
-
-  if not self.item then
-    self.item = world.entityHandItemDescriptor(activeItem.ownerEntityId(), activeItem.hand())
-  end
-    
-  if self.item then
-    self.itemConf = root.itemConfig(self.item)
-    self.name = self.itemConf.config.itemName
-  end
 
   world.debugPoint(self:focusPosition(), "blue")
 

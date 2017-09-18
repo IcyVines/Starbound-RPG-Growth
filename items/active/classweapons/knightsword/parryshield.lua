@@ -5,16 +5,10 @@ require "/items/active/weapons/weapon.lua"
 Parry = WeaponAbility:new()
 
 function Parry:init()
-  --[[self.item = world.entityHandItemDescriptor(activeItem.ownerEntityId(), activeItem.hand())
-  self.name = "knightaegissword"
-  if self.item then
-    self.itemConf = root.itemConfig(self.item)
-    self.name = self.itemConf.config.itemName
-  end]]
 
-  self.item = world.entityHandItemDescriptor(activeItem.ownerEntityId(), activeItem.hand())
-  self.name = "knightaegissword"
-  self.bonus = 1
+  self.name = item.name()
+  self.bonus = self.name == "knightaegissword" and 1 or (self.name == "knightaegissword2" and 1.5 or 2)
+  self.perfectBlockTime = self.bonus*.1
 
   self.cooldownTimer = 0
   self.holdTimer = 0
@@ -31,19 +25,6 @@ end
 
 function Parry:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
-
-  
-  if not self.item then
-    self.item = world.entityHandItemDescriptor(activeItem.ownerEntityId(), activeItem.hand())
-  end
-    
-  if self.item then
-    self.itemConf = root.itemConfig(self.item)
-    self.name = self.itemConf.config.itemName
-  end
-
-  self.bonus = self.name == "knightaegissword" and 1 or (self.name == "knightaegissword2" and 1.5 or 2)
-  self.perfectBlockTime = self.bonus*.1
 
   self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
   self.holdTimer = math.max(0, self.holdTimer - dt)

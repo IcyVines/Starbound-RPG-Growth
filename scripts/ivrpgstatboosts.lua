@@ -105,7 +105,17 @@ function update(dt)
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.02}
     })
-  elseif heldItem and (root.itemHasTag(heldItem, "bow") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "assaultrifle") or root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "rocketlauncher")) then
+  elseif heldItem and (root.itemHasTag(heldItem, "bow") or root.itemHasTag(heldItem, "rifle") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "assaultrifle") or root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "rocketlauncher")) then
+    status.addPersistentEffects("ivrpgstatboosts",
+    {
+      {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
+    })
+  elseif heldItem and ((root.itemConfig(heldItem)).config.itemName == "magnorbs" or (root.itemConfig(heldItem)).config.itemName == "evileye") then
+    status.addPersistentEffects("ivrpgstatboosts",
+    {
+      {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.01 + self.intelligence*0.01}
+    })
+  elseif heldItem and (root.itemConfig(heldItem)).config.itemName == "remotegrenadelauncher" then
     status.addPersistentEffects("ivrpgstatboosts",
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
