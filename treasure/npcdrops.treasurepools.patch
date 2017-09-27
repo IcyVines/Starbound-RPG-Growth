@@ -456,9 +456,12 @@
     {
       "op": "add",
       "path": "/banditTreasure/0/1/fill/-",
-      "value": {
-      "pool": "experienceorbpool"
-      } 
+      "value": {"pool": "experienceorbpool"}
+    },
+    {
+      "op": "add",
+      "path": "/banditTreasure/0/1/fill/-",
+      "value": {"pool": "ivrpggunpartstargetpool"}
     }
   ],
   [
@@ -470,19 +473,10 @@
     {
       "op": "add",
       "path": "/banditTreasure/0/1/fill",
-      "value": [{
-      "pool": "experienceorbpool"
-      }]
-    }
-  ],
-  [
-    {
-      "op": "add",
-      "path": "/banditTreasure/0/1/pool/-",
-      "value": {
-        "weight": 0.10,
-        "item": "ivrpggunparts"
-      }
+      "value": [
+        {"pool": "experienceorbpool"},
+        {"pool": "ivrpggunpartstargetpool"}
+      ]
     }
   ]
 ]

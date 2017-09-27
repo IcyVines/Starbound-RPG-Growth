@@ -726,7 +726,7 @@ function getStatMultiplier(stat)
 end
 
 function getStatImmunity(stat)
-  return tostring(stat == 1):gsub("^%l",string.upper) .. "\n"
+  return tostring(stat >= 1):gsub("^%l",string.upper) .. "\n"
 end
 
 function raiseStat(name)
@@ -1079,6 +1079,7 @@ function removeTechs()
 end
 
 function updateClassWeapon()
+  if self.class == 0 then return end
   if player.hasCompletedQuest(self.quests[self.class]) then
     widget.setText("classlayout.classweapontext", self.classWeaponText[self.class])
     widget.setVisible("classlayout.weaponreqlvl", false)

@@ -162,9 +162,11 @@
 		}, {
 			"op": "add",
 			"path": "/guardianTreasure/0/1/fill/-",
-			"value": {
-				"item": ["experienceorb", 500]
-			}
+			"value": {"item": ["experienceorb", 500]}
+		}, {
+			"op": "add",
+			"path": "/guardianTreasure/0/1/fill/-",
+			"value": {"pool": "ivrpgbosspool"}
 		}
 	],
 	[{
@@ -174,9 +176,9 @@
 		}, {
 			"op": "add",
 			"path": "/guardianTreasure/0/1/fill",
-			"value": [{
-					"item": ["experienceorb", 500]
-				}
+			"value": [
+			    {"item": ["experienceorb", 500]},
+			    {"pool": "ivrpgbosspool"}
 			]
 
 		}
@@ -791,9 +793,12 @@
 	  {
 	    "op": "add",
 	    "path": "/hypnareTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/hypnareTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgspiralenergypool"}
 	  }
 	],
 	[
@@ -805,9 +810,10 @@
 	  {
 	    "op": "add",
 	    "path": "/hypnareTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+	    	{"pool": "experienceorbpool"},
+	    	{"pool": "ivrpgspiralenergypool"}
+	    ]
 	  }
 	],
 
@@ -965,9 +971,12 @@
 	  {
 	    "op": "add",
 	    "path": "/lumothTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/lumothTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgdyingstarpool"}
 	  }
 	],
 	[
@@ -979,9 +988,10 @@
 	  {
 	    "op": "add",
 	    "path": "/lumothTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgdyingstarpool"}
+		]
 	  }
 	],
 
@@ -994,9 +1004,12 @@
 	  {
 	    "op": "add",
 	    "path": "/mandrafloraTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/mandrafloraTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgspiralenergytargetpool"}
 	  }
 	],
 	[
@@ -1008,9 +1021,10 @@
 	  {
 	    "op": "add",
 	    "path": "/mandrafloraTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgspiralenergytargetpool"}
+		]
 	  }
 	],
 
@@ -1023,9 +1037,12 @@
 	  {
 	    "op": "add",
 	    "path": "/miasmopTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/miasmopTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgparasiticgoopool"}
 	  }
 	],
 	[
@@ -1037,9 +1054,10 @@
 	  {
 	    "op": "add",
 	    "path": "/miasmopTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgparasiticgoopool"}
+		]
 	  }
 	],
 
@@ -1052,9 +1070,12 @@
 	  {
 	    "op": "add",
 	    "path": "/monopusTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/monopusTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgspiralenergypool"}
 	  }
 	],
 	[
@@ -1066,9 +1087,10 @@
 	  {
 	    "op": "add",
 	    "path": "/monopusTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgspiralenergypool"}
+		]
 	  }
 	],
 
@@ -1081,9 +1103,12 @@
 	  {
 	    "op": "add",
 	    "path": "/narfinTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/narfinTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgdyingstarpool"}
 	  }
 	],
 	[
@@ -1095,9 +1120,10 @@
 	  {
 	    "op": "add",
 	    "path": "/narfinTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgdyingstarpool"}
+		]
 	  }
 	],
 
@@ -1168,9 +1194,12 @@
 	  {
 	    "op": "add",
 	    "path": "/oculobTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/oculobTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgparasiticgoopool"}
 	  }
 	],
 	[
@@ -1182,9 +1211,10 @@
 	  {
 	    "op": "add",
 	    "path": "/oculobTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgparasiticgoopool"}
+		]
 	  }
 	],
 
@@ -1255,9 +1285,12 @@
 	  {
 	    "op": "add",
 	    "path": "/paraspriteTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/paraspriteTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgparasiticgootargetpool"}
 	  }
 	],
 	[
@@ -1269,9 +1302,10 @@
 	  {
 	    "op": "add",
 	    "path": "/paraspriteTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgparasiticgootargetpool"}
+		]
 	  }
 	],
 
@@ -1284,9 +1318,12 @@
 	  {
 	    "op": "add",
 	    "path": "/paratailTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/paratailTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgparasiticgoopool"}
 	  }
 	],
 	[
@@ -1298,9 +1335,10 @@
 	  {
 	    "op": "add",
 	    "path": "/paratailTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgparasiticgoopool"}
+		]
 	  }
 	],
 
@@ -1342,9 +1380,12 @@
 	  {
 	    "op": "add",
 	    "path": "/petricubTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/petricubTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgdyingstarpool"}
 	  }
 	],
 	[
@@ -1356,9 +1397,10 @@
 	  {
 	    "op": "add",
 	    "path": "/petricubTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgdyingstarpool"}
+		]
 	  }
 	],
 
@@ -1545,9 +1587,12 @@
 	  {
 	    "op": "add",
 	    "path": "/ringramTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/ringramTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgspiralenergypool"}
 	  }
 	],
 	[
@@ -1559,9 +1604,10 @@
 	  {
 	    "op": "add",
 	    "path": "/ringramTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgspiralenergypool"}
+		]
 	  }
 	],
 
@@ -1632,9 +1678,12 @@
 	  {
 	    "op": "add",
 	    "path": "/skimbusTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/skimbusTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgetherpool"}
 	  }
 	],
 	[
@@ -1646,9 +1695,10 @@
 	  {
 	    "op": "add",
 	    "path": "/skimbusTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgetherpool"}
+		]
 	  }
 	],
 
@@ -1777,9 +1827,12 @@
 	  {
 	    "op": "add",
 	    "path": "/spookitTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/spookitTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgetherpool"}
 	  }
 	],
 	[
@@ -1791,9 +1844,10 @@
 	  {
 	    "op": "add",
 	    "path": "/spookitTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+	    	{"pool": "experienceorbpool"},
+	    	{"pool": "ivrpgetherpool"}
+	    ]
 	  }
 	],
 
@@ -1806,9 +1860,12 @@
 	  {
 	    "op": "add",
 	    "path": "/sporgusTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/sporgusTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgparasiticgoopool"}
 	  }
 	],
 	[
@@ -1820,9 +1877,10 @@
 	  {
 	    "op": "add",
 	    "path": "/sporgusTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgparasiticgoopool"}
+		]
 	  }
 	],
 
@@ -1835,9 +1893,12 @@
 	  {
 	    "op": "add",
 	    "path": "/squeemTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/squeemTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgetherpool"}
 	  }
 	],
 	[
@@ -1849,9 +1910,10 @@
 	  {
 	    "op": "add",
 	    "path": "/squeemTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgetherpool"}
+		]
 	  }
 	],
 
@@ -1864,9 +1926,12 @@
 	  {
 	    "op": "add",
 	    "path": "/gosmetTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/gosmetTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgethertargetpool"}
 	  }
 	],
 	[
@@ -1878,9 +1943,10 @@
 	  {
 	    "op": "add",
 	    "path": "/gosmetTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgethertargetpool"}
+		]
 	  }
 	],
 
@@ -2067,9 +2133,12 @@
 	  {
 	    "op": "add",
 	    "path": "/wisperTreasure/0/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/wisperTreasure/0/1/fill/-",
+	    "value": {"pool": "ivrpgdyingstartargetpool"}
 	  }
 	],
 	[
@@ -2081,9 +2150,10 @@
 	  {
 	    "op": "add",
 	    "path": "/wisperTreasure/0/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+		    {"pool": "experienceorbpool"},
+		    {"pool": "ivrpgdyingstartargetpool"}
+		]
 	  }
 	],
 
@@ -2143,150 +2213,5 @@
 	    "pool": "experienceorbpool"
 	    }]
 	  }
-	],
-	[{
-	    "op": "add",
-	    "path": "/hypnareTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.20,
-	      "item": "ivrpgspiralenergy"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/lumothTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgdyingstar"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/mandrafloraTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.20,
-	      "item": "ivrpgspiralenergy"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/miasmopTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgparasiticgoo"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/monopusTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.20,
-	      "item": "ivrpgspiralenergy"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/narfinTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgdyingstar"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/oculobTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgparasiticgoo"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/paraspriteTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.25,
-	      "item": "ivrpgparasiticgoo"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/paratailTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgparasiticgoo"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/petricubTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgdyingstar"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/ringramTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.20,
-	      "item": "ivrpgspiralenergy"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/skimbusTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgether"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/spookitTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgether"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/sporgusTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgparasiticgoo"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/squeemTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgether"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/gosmetTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.25,
-	      "item": "ivrpgether"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/wisperTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.25,
-	      "item": "ivrpgdyingstar"
-	    }
-	  },
-	  {
-	    "op": "add",
-	    "path": "/guardianTreasure/0/1/pool/-",
-	    "value": {
-	      "weight": 0.15,
-	      "item": "ivrpgscrollresetaffinity"
-	    }
-	  }
-  ]
+	]
 ]

@@ -37,9 +37,12 @@
 	  {
 	    "op": "add",
 	    "path": "/spaceRobot/1/1/fill/-",
-	    "value": {
-	    "pool": "experienceorbpool"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/spaceRobot/1/1/fill/-",
+	    "value": {"pool": "ivrpggunpartspool"}
 	  }
 	],
 	[
@@ -51,9 +54,10 @@
 	  {
 	    "op": "add",
 	    "path": "/spaceRobot/1/1/fill",
-	    "value": [{
-	    "pool": "experienceorbpool"
-	    }]
+	    "value": [
+	        {"pool": "experienceorbpool"},
+	        {"pool": "ivrpggunpartspool"}
+      	]
 	  }
 	],
 
@@ -66,10 +70,12 @@
 	  {
 	    "op": "add",
 	    "path": "/spaceRock/1/1/fill/-",
-	    "value": {
-		    "pool": "experienceorbpool",
-		    "item" : "ivrpgmeteoricmetal"
-	    } 
+	    "value": {"pool": "experienceorbpool"}
+	  },
+	  {
+	    "op": "add",
+	    "path": "/spaceRock/1/1/fill/-",
+	    "value": {"item" : "ivrpgmeteoricmetal"} 
 	  }
 	],
 	[
@@ -86,15 +92,5 @@
 		    {"item" : "ivrpgmeteoricmetal"}
 	    ]
 	  }
-	],
-	[
-		{
-		    "op": "add",
-		    "path": "/spaceRobot/1/1/pool/-",
-		    "value": {
-		      "weight": 0.055,
-		      "item": "ivrpggunparts"
-	    	}
-	  	}
 	]
 ]

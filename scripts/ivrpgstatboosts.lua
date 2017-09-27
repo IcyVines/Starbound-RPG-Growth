@@ -94,6 +94,7 @@ function update(dt)
 
   local heldItem = world.entityHandItem(self.id, "primary")
   local heldItem2 = world.entityHandItem(self.id, "alt")
+  self.itemName = heldItem and (root.itemConfig(heldItem)).config.itemName or ""
   --two handed
   if heldItem and (root.itemHasTag(heldItem, "broadsword") or root.itemHasTag(heldItem, "spear") or root.itemHasTag(heldItem, "hammer")) then
     status.addPersistentEffects("ivrpgstatboosts",
@@ -110,12 +111,12 @@ function update(dt)
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
     })
-  elseif heldItem and ((root.itemConfig(heldItem)).config.itemName == "magnorbs" or (root.itemConfig(heldItem)).config.itemName == "evileye") then
+  elseif self.itemName == "magnorbs" or self.itemName == "evileye" then
     status.addPersistentEffects("ivrpgstatboosts",
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.01 + self.intelligence*0.01}
     })
-  elseif heldItem and (root.itemConfig(heldItem)).config.itemName == "remotegrenadelauncher" then
+  elseif self.itemName == "remotegrenadelauncher" then
     status.addPersistentEffects("ivrpgstatboosts",
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}

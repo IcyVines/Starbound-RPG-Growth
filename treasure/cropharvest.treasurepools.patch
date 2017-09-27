@@ -1,0 +1,1075 @@
+[
+	[{
+			"op": "test",
+			"path": "/automatoHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/automatoHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/automatoHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/automatoHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/avesmingoHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/avesmingoHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/avesmingoHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/avesmingoHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/bananaHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/bananaHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/bananaHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/bananaHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/beakseedHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/beakseedHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/beakseedHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/beakseedHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/boltbulbHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/boltbulbHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/boltbulbHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/boltbulbHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/bonebooHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/bonebooHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/bonebooHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/bonebooHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/carrotHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/carrotHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/carrotHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/carrotHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/chiliHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/chiliHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/chiliHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/chiliHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/coffeeHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/coffeeHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/coffeeHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/coffeeHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/cocoaHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/cocoaHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/cocoaHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/cocoaHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/coralcreepHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/coralcreepHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/coralcreepHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/coralcreepHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/cornHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/cornHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/cornHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/cornHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/cottonHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/cottonHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/cottonHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/cottonHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/crystalplantHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/crystalplantHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/crystalplantHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/crystalplantHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/currentcornHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/currentcornHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/currentcornHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/currentcornHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/diodiaHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/diodiaHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/diodiaHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/diodiaHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/dirturchinHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/dirturchinHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/dirturchinHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/dirturchinHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/eggshootHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/eggshootHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/eggshootHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/eggshootHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/feathercrownHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/feathercrownHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/feathercrownHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/feathercrownHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/grapesHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/grapesHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/grapesHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/grapesHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/kiwiHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/kiwiHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/kiwiHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/kiwiHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/neonmelonHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/neonmelonHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/neonmelonHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/neonmelonHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/oculemonHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/oculemonHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/oculemonHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/oculemonHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/pearlpeaHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/pearlpeaHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/pearlpeaHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/pearlpeaHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/pineappleHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/pineappleHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/pineappleHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/pineappleHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/potatoHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/potatoHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/potatoHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/potatoHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/pussplumHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/pussplumHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/pussplumHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/pussplumHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/reefpodHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/reefpodHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/reefpodHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/reefpodHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/riceHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/riceHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/riceHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/riceHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/sugarcaneHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/sugarcaneHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/sugarcaneHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/sugarcaneHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/tomatoHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/tomatoHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/tomatoHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/tomatoHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/toxictopHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/toxictopHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/toxictopHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/toxictopHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/wartweedHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/wartweedHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/wartweedHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/wartweedHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/wheatHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/wheatHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/wheatHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/wheatHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						5
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/mushroomHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/mushroomHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 1]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/mushroomHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/mushroomHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						1
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/flowerredHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/flowerredHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 2]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/flowerredHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/flowerredHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						2
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/flowerblueHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/flowerblueHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 2]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/flowerblueHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/flowerblueHarvest/0/1/fill",
+			"value": [{
+					"item": [
+						"experienceorb",
+						2
+					]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/flowerspringHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/flowerspringHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 4]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/flowerspringHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/flowerspringHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 4]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/floweryellowHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/floweryellowHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 2]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/floweryellowHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/floweryellowHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 2]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/thornplantHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/thornplantHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/thornplantHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/thornplantHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/silkHarvest/0/1/fill",
+			"inverse": false
+		}, {
+			"op": "add",
+			"path": "/silkHarvest/0/1/fill/-",
+			"value": {
+				"item": ["experienceorb", 5]
+			}
+		}
+	],
+	[{
+			"op": "test",
+			"path": "/silkHarvest/0/1/fill",
+			"inverse": true
+		}, {
+			"op": "add",
+			"path": "/silkHarvest/0/1/fill",
+			"value": [{
+					"item": ["experienceorb", 5]
+				}
+			]
+		}
+	]
+]

@@ -4,7 +4,7 @@
   "friendlyName" : "RPG Growth",
   "link" : "steam://url/CommunityFilePage/1115920474",
   "name" : "RPG_Growth",
-  "priority" : 200,
+  "priority" : 1001,
   "steamContentId" : "1115920474",
-  "version" : "1.21"
+  "version" : "1.24f"
 }
