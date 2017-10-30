@@ -46,7 +46,7 @@ function init()
     self.classWeaponText = {
       "The Aegis is a broadsword that can be used as a shield. Perfect Blocking triggers the Knight's class ability. Perfect Blocking with the Vital Aegis restores health.",
       "The Nova is a staff that can change elements. The staff cycles between Nova, Fire, Electric, and Ice. Nova weakens enemies to Fire, Electricity, and Ice. Enemies killed by Primed Nova explode.", 
-      "The Aether is a shuriken that never runs out and always causes bleeding. Blood Aether tracks enemies and goes both walls and enemies.", 
+      "The Aether is a shuriken that never runs out and always causes bleeding. Blood Aether tracks enemies and goes through both walls and enemies.", 
       "The Versa is a gun that can fire in two modes. Versa Impact and Ricochet's shotgun blast can be held to increase damage and snipe enemies. Versa Ricochet's bullets bounce and increase in power everytime they do.", 
       "The Siphon is a claw that uses energy to deal massive damage for its finisher. Finishers: Critical Slice causes bleed and fills hunger. Venom Slice causes poison and fills health. Lightning Slice causes static and fills energy.", 
       "The Spira is a one-handed drill with increased speed and infinite use. Hungry Spira draws items closer. Pressing shift while using Ravenous Spira causes no blocks to drop, but fills energy while breaking them."
@@ -1276,6 +1276,12 @@ function updateAffinityTab()
     widget.setText("affinitylayout.immunitytext", "Slow\nElectricity\nRadiation\nShadow (Frackin Universe)")
     widget.setText("affinitylayout.weaknesstext", "-25% Ice Resistance\n-30% Health while submerged\n-1 E/s while submerged")
     widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
+  end
+
+  if affinity > 4 then
+    widget.setVisible("affinitylayout.effecttext", false)
+  elseif affinity > 0 then
+    widget.setVisible("affinitylayout.effecttext", true)
   end
 
   if status.statPositive("ivrpgaesthetics") then

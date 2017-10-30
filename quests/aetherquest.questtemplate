@@ -22,7 +22,7 @@
       {
         "type" : "gatherItem",
         "itemName" : "ivrpgether",
-        "count" : 15,
+        "count" : 12,
         "consume" : true
       }
     ]

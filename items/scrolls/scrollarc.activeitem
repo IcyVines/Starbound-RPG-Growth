@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgscrollarc",
+  "rarity" : "Legendary",
+  "category" : "scroll",
+  "inventoryIcon" : "scrollarc.png",
+  "description" : "Shows complex equations detailing electricity. It seems to be humming: how shocking.",
+  "shortdescription" : "Scroll: Lightning",
+  "largeImage" : "scrolllarge.png",
+  "scripts" : ["/items/scrolls/upgrade.lua"]
+  
+}

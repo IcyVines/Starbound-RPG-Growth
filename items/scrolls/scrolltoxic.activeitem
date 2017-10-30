@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgscrolltoxic",
+  "rarity" : "Legendary",
+  "category" : "scroll",
+  "inventoryIcon" : "scrolltoxic.png",
+  "description" : "Shows dubious information on neurotoxins... and cake? It's dripping slimy stuff. Maybe that's the batter.",
+  "shortdescription" : "Scroll: Toxins",
+  "largeImage" : "scrolllarge.png",
+  "scripts" : ["/items/scrolls/upgrade.lua"]
+  
+}

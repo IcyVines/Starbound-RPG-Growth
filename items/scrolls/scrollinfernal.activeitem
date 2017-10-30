@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgscrollinfernal",
+  "rarity" : "Legendary",
+  "category" : "scroll",
+  "inventoryIcon" : "scrollinfernal.png",
+  "description" : "Shows inscriptions of devilish rituals. The corner is partially burnt.",
+  "shortdescription" : "Scroll: Infernos",
+  "largeImage" : "scrolllarge.png",
+  "scripts" : ["/items/scrolls/upgrade.lua"]
+  
+}

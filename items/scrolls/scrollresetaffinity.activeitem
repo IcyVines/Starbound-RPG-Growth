@@ -4,7 +4,7 @@
   "category" : "scroll",
   "inventoryIcon" : "scroll.png",
   "description" : "Looks like enticing descriptions of awesome elements! Maybe you want to try out a new one?",
-  "shortdescription" : "Affinity Rest Scroll",
+  "shortdescription" : "Affinity Reset Scroll",
   "largeImage" : "scrolllarge.png",
   "scripts" : ["/items/scrolls/reset.lua"]
   
