@@ -1,6 +1,6 @@
 {
   "input" : [
-    { "item" : "ivrpgether", "count" : 25 },
+    { "item" : "ivrpgetherealblade", "count" : 4 },
     { "item" : "ironbar", "count" : 1 },
     { "item" : "phasematter", "count" : 3 }
   ],
