@@ -2,7 +2,7 @@
   "id" : "ivrpgaetherquest",
   "title" : "^green;Ether Experiment",
   "text" : "Due to your abilities, my scanners have often been unable to locate you: this issue has lent itself to a new hypothesis! It seems certain inhabitants of this universe are... not really here. This should mean they cannot interact with anything, but this is not the case. Fighting these ^green;ghosts^reset; should lead to an uncanny discovery.^white;",
-  "completionText" : "This Ether is quite like Phase Matter, though it seems that you can harden it. I have already tempered some of your current Ether for you, but you can now do so as well. Go build the Aether so you can pierce through enemies.",
+  "completionText" : "This Ether is quite like Phase Matter, though it seems that you can harden it. I have already tempered some of your current Ether for you, but you can now do so as well. Go build the Aether in an anvil so you can pierce through enemies.",
   "rewards" : [
     [
       [ "experienceorb", 200],

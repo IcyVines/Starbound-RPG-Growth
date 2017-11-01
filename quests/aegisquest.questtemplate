@@ -2,7 +2,7 @@
   "id" : "ivrpgaegisquest",
   "title" : "^green;Meteoric Metal",
   "text" : "My databanks show that your physical strength is nearly unmatched! I have run a diagnostic and it suggests you would be unrivaled using a normally unwieldable, incredibly heavy metal as the base for a sword. Looking for meteoric rock from ^green;living meteorites^reset; may be the best place to start.^white;",
-  "completionText" : "Looks like Masteroids were a great source of this metal. You have to smelt these before they can be of any use, however. Here are some to start you off, though you can do so on your own now. Go build the Aegis so that you may destroy your enemies!",
+  "completionText" : "Looks like Masteroids were a great source of this metal. You have to smelt these before they can be of any use, however. Here are some to start you off, though you can do so on your own now. Go build the Aegis in an anvil so that you may destroy your enemies!",
   "rewards" : [
     [ 
       [ "experienceorb", 200],

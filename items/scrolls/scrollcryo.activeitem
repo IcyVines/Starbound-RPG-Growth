@@ -2,7 +2,7 @@
   "itemName" : "ivrpgscrollcryo",
   "rarity" : "Legendary",
   "category" : "scroll",
-  "inventoryIcon" : "scroll.png",
+  "inventoryIcon" : "scrollcryo.png",
   "description" : "Shows scribbles of super-cooling structures. It's frosted over.",
   "shortdescription" : "Scroll: Cryogenics",
   "largeImage" : "scrolllarge.png",

@@ -769,5 +769,50 @@
                 [0.30, 1]
             ]
         }]
+    ],
+
+    "ivrpgscrollinfernalpool" : [
+        [0, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgscrollinfernal", 1]}
+            ],
+            "poolRounds" : [
+                [0.33, 0],
+                [0.67, 1]
+            ]
+        }]
+    ],
+    "ivrpgscrolltoxicpool" : [
+        [0, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgscrolltoxic", 1]}
+            ],
+            "poolRounds" : [
+                [0.33, 0],
+                [0.67, 1]
+            ]
+        }]
+    ],
+    "ivrpgscrollcryopool" : [
+        [0, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgscrollcryo", 1]}
+            ],
+            "poolRounds" : [
+                [0.33, 0],
+                [0.67, 1]
+            ]
+        }]
+    ],
+    "ivrpgscrollarcpool" : [
+        [0, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgscrollarc", 1]}
+            ],
+            "poolRounds" : [
+                [0.33, 0],
+                [0.67, 1]
+            ]
+        }]
     ]
 }
