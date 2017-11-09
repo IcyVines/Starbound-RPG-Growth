@@ -1,0 +1,25 @@
+{
+  "projectileName" : "soldiertankmissile",
+  "image" : "soldiertankmissile.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 3,
+  "lightColor" : [255, 255, 128],
+  "pointLight" : true,
+  "emitters" : [ "rocketsmoke" ],
+  "animationLoops" : true,
+  "statusEffects" : [ ],
+  "flippable" : true,
+  "power" : 10.0,
+  "speed" : 1.0,
+  "persistentAudio" : "/sfx/projectiles/guidedrocket_loop2.ogg",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/tech/soldiertech/soldiertanksphere/missile/soldiertankmissileexplosion.config"
+    }
+  ],
+  "acceleration" : 150,
+  "physics" : "rocket",
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

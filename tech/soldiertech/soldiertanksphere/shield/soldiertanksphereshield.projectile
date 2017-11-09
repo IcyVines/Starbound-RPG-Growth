@@ -1,0 +1,22 @@
+{
+  "projectileName" : "soldiertanksphereshield",
+  "image" : "soldiertanksphereshield.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 3,
+  "lightColor" : [190, 130, 40],
+  "pointLight" : true,
+  "animationLoops" : true,
+  "statusEffects" : [ ],
+  "emitters" : [ ],
+  "renderLayer" : "Player+1",
+  "orientationLocked" : true,
+  "power" : 0.0,
+  "speed" : 0.0,
+  "physics" : "laser",
+  "scripts": ["/tech/soldiertech/soldiertanksphere/shield/soldiertanksphereshield.lua"],
+  "persistentAudio" : "/sfx/projectiles/zone_power_loop.ogg",
+  "timeToLive" : 999999999,
+  "piercing" : true,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

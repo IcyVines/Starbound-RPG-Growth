@@ -1,0 +1,47 @@
+{
+  "name" : "soldiertanksphere",
+  "type" : "head",
+
+  "scripts" : ["soldiertanksphere.lua"],
+  "animator" : "soldiertanksphere.animation",
+
+  "description" : "Transformation Cost: 25e. Press ^green;[primary fire]^reset; to fire missiles. Hold ^green;[alt fire]^reset; to shield against damage.",
+  "shortDescription" : "Tank Sphere",
+  "rarity" : "Legendary",
+  "icon" : "/tech/soldiertech/soldiertanksphere/soldiertanksphereicon.png",
+
+  "chipCost" : 0,
+
+  "animationParts" : {
+    "ballGlow" : "soldiertanksphereglow.png",
+    "ball" : "soldiertanksphere.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.85, -0.35], [-0.35, -0.85], [0.35, -0.85], [0.85, -0.35], [0.85, 0.35], [0.35, 0.85], [-0.35, 0.85], [-0.85, 0.35] ],
+
+    "airForce" : 0.0,
+    "liquidForce" : 0.0,
+
+    "airJumpProfile" : {
+      "jumpSpeed" : 0.0
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 0.0,
+      "jumpControlForce" : 0.0,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ignorePlatforms" : true,
+
+  "ballSpeed" : 8,
+  "energyCostPerSecond" : 40,
+  "energyCost" : 40,
+
+  "ballRadius" : 1,
+  "ballFrames" : 4
+}

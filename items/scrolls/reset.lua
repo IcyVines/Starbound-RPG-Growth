@@ -72,7 +72,7 @@ function removeTechs()
     player.makeTechUnavailable("roguetoxiccapsule")
     player.makeTechUnavailable("roguepoisondash")
   elseif self.class == 4 then
-    player.makeTechUnavailable("soldiermissilestrike")
+    player.makeTechUnavailable("soldiertanksphere")
     player.makeTechUnavailable("soldierenergypack")
     player.makeTechUnavailable("soldiermarksman")
     player.makeTechUnavailable("soldiermre")

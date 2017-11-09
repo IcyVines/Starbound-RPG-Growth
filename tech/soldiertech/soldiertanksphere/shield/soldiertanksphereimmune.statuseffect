@@ -1,0 +1,14 @@
+{
+  "name" : "soldiertanksphereimmune",
+  "effectConfig" : {
+    "powerModifier" : 1.20
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "soldiertanksphereimmune.lua"
+  ],
+
+  "label" : "Tank",
+  "icon" : "/tech/soldiertech/soldiertanksphere/shield/soldiertanksphereimmune.png"
+}

@@ -500,7 +500,7 @@ function getTechEnableName(classType, checked)
   elseif classType == 3 then
     return checked == 1 and "ninjaflashjump" or (checked == 2 and "ninjavanishsphere" or (checked == 3 and "ninjaassassinate" or "ninjawallcling"))
   elseif classType == 4 then
-    return checked == 1 and "soldiermre" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldiermissilestrike"))
+    return checked == 1 and "soldiermre" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldiertanksphere"))
   elseif classType == 5 then
     return checked == 1 and "roguepoisondash" or (checked == 2 and "roguetoxiccapsule" or (checked == 3 and "roguecloudjump" or "roguetoxicaura"))
   elseif classType == 6 then
@@ -593,7 +593,7 @@ function getTechText(num)
     return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food. There is a cooldown of 90 seconds before you can do this again." 
     or (num == 2 and "Press [G] to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
       or (num == 3 and "An upgrade to Double Jump, press [W] to instantly refill energy and gain a slight jump boost for a short period. You can prematurely end this effect, but cooldown is not shortened if so." 
-        or "Press [F] to call down a missile strike from your cursor's location. Upon exploding, the missile releases a carpet of fire that sticks to the ground. Try not to kill yourself..."))
+        or "Press [F] to switch to a slow-moving Spike Sphere. Left click to shoot a missile. Right click to use energy in order to shield yourself from damage. Created by SushiSquid!"))
   elseif classType == 5 then
     return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind. The damage from the toxic clouds scale with your Poison Resistance and Power Multiplier. Deals massive damage if immune to Poison." 
     or (num == 2 and "Press [F] to gain +33% Physical Resistance and Poison Immunity but lose health for a short period. You can prematurely end the effect by pressing [F] again. If so, you emit a ring of toxic clouds whose damage scales with Power Multiplier and Time Passed." 
@@ -620,7 +620,7 @@ function getTechName(num)
     return num == 1 and "Flash Jump" or (num == 2 and "Vanish Sphere" or (num == 3 and "Assassinate" or "Wall Cling"))
   elseif classType == 4 then
     widget.setFontColor("classlayout.techname", "orange")
-    return num == 1 and "MRE" or (num == 2 and "Marksman" or (num == 3 and "Energy Pack" or "Missile Strike"))
+    return num == 1 and "MRE" or (num == 2 and "Marksman" or (num == 3 and "Energy Pack" or "Tank Sphere"))
   elseif classType == 5 then
     widget.setFontColor("classlayout.techname", "green")
     return num == 1 and "Poison Dash" or (num == 2 and "Toxic Capsule" or (num == 3 and "Cloud Jump" or "Toxic Aura"))
@@ -1066,7 +1066,7 @@ function removeTechs()
     player.makeTechUnavailable("roguetoxiccapsule")
     player.makeTechUnavailable("roguepoisondash")
   elseif self.class == 4 then
-    player.makeTechUnavailable("soldiermissilestrike")
+    player.makeTechUnavailable("soldiertanksphere")
     player.makeTechUnavailable("soldierenergypack")
     player.makeTechUnavailable("soldiermarksman")
     player.makeTechUnavailable("soldiermre")
