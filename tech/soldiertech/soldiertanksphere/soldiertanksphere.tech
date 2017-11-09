@@ -5,7 +5,7 @@
   "scripts" : ["soldiertanksphere.lua"],
   "animator" : "soldiertanksphere.animation",
 
-  "description" : "Transformation Cost: 25e. Press ^green;[primary fire]^reset; to fire missiles. Hold ^green;[alt fire]^reset; to shield against damage.",
+  "description" : "Transformation Cost: 40e. Shield Cost: 40eps.",
   "shortDescription" : "Tank Sphere",
   "rarity" : "Legendary",
   "icon" : "/tech/soldiertech/soldiertanksphere/soldiertanksphereicon.png",

@@ -29,10 +29,10 @@ function update(dt)
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
   self.classType = world.entityCurrency(self.id, "classtype")
 
-  self.strengthBonus = self.classType == 1 and 1.15 or (self.classType == 4 and 1.05 or 1)
+  self.strengthBonus = self.classType == 1 and 1.15 or 1
   self.agilityBonus = self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1))
-  self.vitalityBonus = self.classType == 4 and 1.15 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.05 or 1))
-  self.vigorBonus = self.classType == 6 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or 1))
+  self.vitalityBonus = self.classType == 4 and 1.05 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.15 or 1))
+  self.vigorBonus = self.classType == 4 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.05 or 1)))
   self.intelligenceBonus = self.classType == 2 and 1.2 or 1
   self.enduranceBonus = self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1))
   self.dexterityBonus = self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))
