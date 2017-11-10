@@ -20,6 +20,7 @@ function eat()
       status.addEphemeralEffect("soldiermre", self.cooldown)
       animator.playSound("eat")
       status.modifyResourcePercentage("food", self.foodGain/100)
+      status.modifyResourcePercentage("energy", 1)
   end
 end
 

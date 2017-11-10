@@ -49,7 +49,7 @@
   "elementalType" : "physical",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "scripts" : ["/items/active/classweapons/soldiergun/gunfire.lua"],
     "class" : "GunFire",
 
     "fireTime" : 1.0,

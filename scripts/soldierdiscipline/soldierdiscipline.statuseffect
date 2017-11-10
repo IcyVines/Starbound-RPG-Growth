@@ -1,7 +1,7 @@
 {
   "name" : "soldierdiscipline",
   "effectConfig" : {
-    "powerModifier" : 1.20
+    "powerModifier" : 1.10
   },
   "defaultDuration" : 5,
 

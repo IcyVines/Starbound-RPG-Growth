@@ -1,7 +1,7 @@
 {
   "name" : "soldierfocus",
   "effectConfig" : {
-    "powerModifier" : 1.30
+    "powerModifier" : 1.20
   },
   "defaultDuration" : 10,
   

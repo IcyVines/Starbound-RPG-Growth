@@ -67,6 +67,22 @@ function damage(args)
     if math.random(10) < 2 then
       status.addEphemeralEffect("ivrpgoverload", 5, self.id)
     end
+  elseif self.affinityType == 5 then
+    if math.random(10) < 4 then
+      status.addEphemeralEffect("ivrpgsear", 5, self.id)
+    end
+  elseif self.affinityType == 6 then
+    if math.random(10) < 4 then
+      status.addEphemeralEffect("ivrpgtoxify", 5, self.id)
+    end
+  elseif self.affinityType == 7 then
+    if math.random(10) < 4 then
+      status.addEphemeralEffect("ivrpgembrittle", 5, self.id)
+    end
+  elseif self.affinityType == 8 then
+    if math.random(10) < 4 then
+      status.addEphemeralEffect("ivrpgoverload", 5, self.id)
+    end
   end
 
   --Bleed Checks!
@@ -91,7 +107,7 @@ function damage(args)
     status.addEphemeralEffect("ivrpgweaken", (self.dexterity/25), self.id)
     status.applySelfDamageRequest({
       damageType = "IgnoresDef",
-      damage = self.allDamage,
+      damage = self.allDamage/2,
       sourceEntityId = self.id
     })
   end

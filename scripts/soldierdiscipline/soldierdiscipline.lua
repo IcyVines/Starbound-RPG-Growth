@@ -1,7 +1,8 @@
 function init()
   --Power
+  self.damageModifier = config.getParameter("powerModifier")
   effect.addStatModifierGroup({
-    {stat = "foodDelta", amount = .01}
+    {stat = "powerMultiplier", effectiveMultiplier = self.damageModifier}
   })
   --effect.setParentDirectives("border=1;d8a23c20;63481400")
 end

@@ -5,13 +5,17 @@
   "scripts" : ["soldierenergypack.lua"],
   "animator" : "soldierenergypack.animation",
 
-  "description" : "Duration/Cooldown: 20s/30s.",
-  "shortDescription" : "Energy Pack",
+  "description" : "Dash Duration: 0.20s.",
+  "shortDescription" : "Energize",
   "rarity" : "Rare",
   "icon" : "/tech/soldiertech/soldierenergypack/soldierenergypack.png",
 
   "chipCost" : 0, 
   "cooldown" : 30.0,
   "duration" : 20.0,
-  "multiJumpCount" : 1
+
+  "multiJumpCount" : 2,
+  "dashControlForce" : 2000,
+  "dashSpeed" : 50,
+  "dashDuration" : 0.25
 }

@@ -439,10 +439,11 @@ end
 
 function updateInfo()
   self.classType = player.currency("classtype")
-  self.strengthBonus = self.classType == 1 and 1.15 or (self.classType == 4 and 1.05 or 1)
+  --Yea, yea, this should be in its own file that all lua files can import, but I'm lazy, ya' hear?
+  self.strengthBonus = self.classType == 1 and 1.15 or 1
   self.agilityBonus = self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1))
-  self.vitalityBonus = self.classType == 4 and 1.15 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.05 or 1))
-  self.vigorBonus = self.classType == 6 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or 1))
+  self.vitalityBonus = self.classType == 4 and 1.05 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.15 or 1))
+  self.vigorBonus = self.classType == 4 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.05 or 1)))
   self.intelligenceBonus = self.classType == 2 and 1.2 or 1
   self.enduranceBonus = self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1))
   self.dexterityBonus = self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))
@@ -582,27 +583,27 @@ function getTechText(num)
   elseif classType == 2 then
     return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity. In addition, toggle a barrier that pushes enemies away by pressing [G]." 
     or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
-      or (num == 3 and "Press [W] to teleport to your cursor. There is a slight cooldown before you can teleport again." 
+      or (num == 3 and "Press [H] to teleport to your cursor. There is a slight cooldown before you can teleport again." 
         or "Press [F] to negate all damage for a short time. Energy does not recharge while this effect is active. You can prematurely end the effect by pressing [F] again. The cooldown shortens if so."))
   elseif classType == 3 then
     return num == 1 and "Press [Space] while midair to burst forward. For a short time after jumping, you are invulnerable to damage. As long as you remain in the air with energy remaining, you are invulnerable to fall damage. You may do this twice while midair." 
     or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while active. The invulnerability ends when you run out of energy or press [F] while transformed." 
-    or (num == 3 and "Press [W] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS. While the cooldown is active, lose 20% Physical Resistance." 
+    or (num == 3 and "Press [H] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS. While the cooldown is active, lose 20% Physical Resistance." 
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
-    return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food. There is a cooldown of 90 seconds before you can do this again." 
+    return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food and all your energy. There is a cooldown of 90 seconds before you can do this again." 
     or (num == 2 and "Press [G] to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
-      or (num == 3 and "An upgrade to Double Jump, press [W] to instantly refill energy and gain a slight jump boost for a short period. You can prematurely end this effect, but cooldown is not shortened if so." 
-        or "Press [F] to switch to a slow-moving Spike Sphere. Left click to shoot a missile. Right click to use energy in order to shield yourself from damage. Created by SushiSquid!"))
+      or (num == 3 and "An upgrade to Double Jump, press [Space] to dash in a direction of your choosing using [W], [A], [S], and [D]. You can slightly change your trajectory while dashing." 
+        or "Press [F] to switch to a slow-moving Spike Sphere. Left click to shoot a missile. Right click to use energy in order to shield yourself from damage.\nCreated by SushiSquid!"))
   elseif classType == 5 then
     return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind. The damage from the toxic clouds scale with your Poison Resistance and Power Multiplier. Deals massive damage if immune to Poison." 
-    or (num == 2 and "Press [F] to gain +33% Physical Resistance and Poison Immunity but lose health for a short period. You can prematurely end the effect by pressing [F] again. If so, you emit a ring of toxic clouds whose damage scales with Power Multiplier and Time Passed." 
+    or (num == 2 and "Press [F] to transform into a Spike Sphere. Left click while transformed to shoot out a ring of poison clouds. You are immune to poison while transformed." 
       or (num == 3 and "An upgrade to Double Jump, press [W] to create a cloudy platform beneath you. The cloud disappears after 5 seconds." 
-        or "Press [G] to deal toxic damage with all weapons for a short time. Toxic damage deals more damage than poison damage. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so."))
+        or "Press [G] to create a toxic field that inflicts enemies with a weakening poison. These enemies take more poison and bleed damage. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so."))
   elseif classType == 6 then
     return num == 1 and "An upgrade to Double Jump, hold [W] to glide forward, slowly losing altitude. You can use your double jump while gliding." 
     or (num == 2 and "Press [G] to switch between Enhanced Airdash and Enhanced Sprint. Enhanced Airdash travels further than Air Dash, and has a shorter cooldown. Enhanced Sprint is faster and costs less energy than Sprint." 
-      or (num == 3 and "Hold [F] to drill downwards at incredible speed, draining your energy." 
+      or (num == 3 and "Press [F] to transform into a fast Spike Sphere that can jump. Press [H] to drill down at incredible speed, draining your energy. You can drill while transformed." 
         or "An upgrade to Glide. Gain another three midair jumps and a wall jump. Midair jumps are 85% as effective. You cling to walls slightly longer than the normal Wall Jump and slide down slower as well. "))
   end
 end
@@ -620,13 +621,13 @@ function getTechName(num)
     return num == 1 and "Flash Jump" or (num == 2 and "Vanish Sphere" or (num == 3 and "Assassinate" or "Wall Cling"))
   elseif classType == 4 then
     widget.setFontColor("classlayout.techname", "orange")
-    return num == 1 and "MRE" or (num == 2 and "Marksman" or (num == 3 and "Energy Pack" or "Tank Sphere"))
+    return num == 1 and "MRE" or (num == 2 and "Marksman" or (num == 3 and "Energize" or "Tank Sphere"))
   elseif classType == 5 then
     widget.setFontColor("classlayout.techname", "green")
-    return num == 1 and "Poison Dash" or (num == 2 and "Toxic Capsule" or (num == 3 and "Cloud Jump" or "Toxic Aura"))
+    return num == 1 and "Poison Dash" or (num == 2 and "Toxic Sphere" or (num == 3 and "Cloud Jump" or "Toxic Aura"))
   elseif classType == 6 then
     widget.setFontColor("classlayout.techname", "yellow")
-    return num == 1 and "Glide" or (num == 2 and "Enhanced Dash" or (num == 3 and "Drill" or "Enhanced Glide"))
+    return num == 1 and "Glide" or (num == 2 and "Enhanced Dash" or (num == 3 and "Drill Sphere" or "Enhanced Glide"))
   end
 end
 
@@ -927,10 +928,10 @@ function addClassStats()
     player.addCurrency("intelligencepoint", 2)
   elseif player.currency("classtype") == 4 then
     --Soldier
-    player.addCurrency("vitalitypoint", 5)
+    player.addCurrency("vigorpoint", 5)
     player.addCurrency("endurancepoint", 2)
     player.addCurrency("dexteritypoint", 4)
-    player.addCurrency("strengthpoint", 2)
+    player.addCurrency("vitalitypoint", 2)
   elseif player.currency("classtype") == 5 then
     --Rogue
     player.addCurrency("agilitypoint", 3)
@@ -941,14 +942,15 @@ function addClassStats()
     --Explorer
     player.addCurrency("agilitypoint", 4)
     player.addCurrency("endurancepoint", 2)
-    player.addCurrency("vitalitypoint", 3)
-    player.addCurrency("vigorpoint", 4)
+    player.addCurrency("vigorpoint", 3)
+    player.addCurrency("vitalitypoint", 4)
   end
   updateStats()
   uncheckClassIcons("default")
   changeClassDescription("default")
 end
 
+--deprecated, don't use
 function consumeClassStats()
   if player.currency("classtype") == 1 then
       --Knight
@@ -986,6 +988,7 @@ function consumeClassStats()
   end
   updateStats()
 end
+--
 
 function areYouSure(name)
   name = string.gsub(name,"resetbutton","")
@@ -1017,12 +1020,14 @@ function notSure(name)
   --updateOverview(2*self.level*100+100)
 end
 
+--deprecated, don't use
 function resetClass()
   notSure("nobuttoncl")
   consumeClassStats()
   player.consumeCurrency("classtype",player.currency("classtype"))
   changeToClasses()
 end
+--
 
 function resetSkillBook()
   notSure("nobutton")
@@ -1198,7 +1203,7 @@ function updateAffinityTab()
 
     widget.setText("affinitylayout.immunitytext", "Fire\nHeat")
     widget.setText("affinitylayout.weaknesstext", "-25% Poison Resistance\n-30% Energy while submerged\n-1 HP/s while submerged")
-    widget.setText("affinitylayout.upgradetext", "+20% chance to melt enemies\n+5 Strength\nImmunities Added:\nLava\nExtreme Heat")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to Sear enemies\n+5 Strength\nImmunities Added:\nLava\nExtreme Heat")
   elseif affinity == 2 then
     widget.setText("affinitylayout.affinitytitle","Venom")
     widget.setFontColor("affinitylayout.affinitytitle","green")
@@ -1209,7 +1214,7 @@ function updateAffinityTab()
 
     widget.setText("affinitylayout.immunitytext", "Poison\nTar")
     widget.setText("affinitylayout.weaknesstext", "-25% Electric Resistance\n-15% Health")
-    widget.setText("affinitylayout.upgradetext", "+20% chance to toxify enemies\n+5 Dexterity\nImmunities Added:\nRadiation\nProto")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to Toxify enemies\n+5 Dexterity\nImmunities Added:\nRadiation\nProto")
   elseif affinity == 3 then
     widget.setText("affinitylayout.affinitytitle","Frost")
     widget.setFontColor("affinitylayout.affinitytitle","blue")
@@ -1220,7 +1225,7 @@ function updateAffinityTab()
 
     widget.setText("affinitylayout.immunitytext", "Wet\nCold")
     widget.setText("affinitylayout.weaknesstext", "-25% Fire Resistance\n-15% Speed\n-15% Jump")
-    widget.setText("affinitylayout.upgradetext", "+20% chance to embrittle enemies\n+5 Endurance\nImmunities Added:\nBreathing\nExtreme Cold")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to Embrittle enemies\n+5 Endurance\nImmunities Added:\nBreathing\nExtreme Cold")
   elseif affinity == 4 then
     widget.setText("affinitylayout.affinitytitle","Shock")
     widget.setFontColor("affinitylayout.affinitytitle","yellow")
@@ -1231,7 +1236,7 @@ function updateAffinityTab()
 
     widget.setText("affinitylayout.immunitytext", "Slow\nElectricity")
     widget.setText("affinitylayout.weaknesstext", "-25% Ice Resistance\n-30% Health while submerged\n-1 E/s while submerged")
-    widget.setText("affinitylayout.upgradetext", "+20% chance to overload enemies\n+5 Intelligence\nImmunities Added:\nRadiation\nShadow")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to Overload enemies\n+5 Intelligence\nImmunities Added:\nRadiation\nShadow")
   elseif affinity == 5 then
     widget.setText("affinitylayout.affinitytitle","Infernal")
     widget.setFontColor("affinitylayout.affinitytitle","red")

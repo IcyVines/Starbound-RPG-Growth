@@ -60,8 +60,8 @@ function update(args)
 
     self.power = status.stat("powerMultiplier")
     self.poison = status.stat("poisonResistance")
-    self.poison = self.poison >= .1 and self.poison or (self.poison >= 1 and 5 or .1)
-    self.poison = status.statPositive("poisonStatusImmunity") and 5 or self.poison
+    self.poison = self.poison >= .1 and self.poison or (self.poison >= 1 and 2.5 or .1)
+    self.poison = status.statPositive("poisonStatusImmunity") and 2.5 or self.poison
 
     self.damageConfig = {
       power = self.power*self.poison*10

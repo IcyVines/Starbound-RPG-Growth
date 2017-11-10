@@ -24,7 +24,7 @@
   "projectileType" : "ninjaaethershuriken50",
   "projectileConfig" : {
     "speed" : 60,
-    "power" : 6,
+    "power" : 15,
     "knockback" : 0,
 
     "persistentAudio" : "/sfx/projectiles/throwingstar_loop.ogg",

@@ -12,6 +12,7 @@ function init()
     {stat = "shadowResistance", amount = -.20},
     {stat = "cosmicResistance", amount = -.20},
     {stat = "radioactiveResistance", amount = -.20},
+    {stat = "activeMovementAbilities", amount = 1},
     {stat = "grit", amount = -.20}
   })
 
@@ -24,7 +25,7 @@ end
 
 function update(dt)
   mcontroller.controlModifiers({
-    speedModifier = 0.75
+    speedModifier = 0.5
   })
 
   local heldItem = world.entityHandItem(entity.id(), "primary")
@@ -33,7 +34,7 @@ function update(dt)
   if (heldItem and root.itemHasTag(heldItem, "ranged")) or (heldItem2 and root.itemHasTag(heldItem2, "ranged")) then
     status.setPersistentEffects("soldierfocus",
     {
-      {stat = "powerMultiplier", baseMultiplier = self.damageModifier}
+      {stat = "powerMultiplier", effectiveMultiplier = self.damageModifier}
     })
   else
     status.clearPersistentEffects("soldierfocus")

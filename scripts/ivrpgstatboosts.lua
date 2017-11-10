@@ -527,7 +527,7 @@ function updateClassEffects(classType)
     self.maxEnergy = status.stat("maxEnergy")
     if self.energy == self.maxEnergy then
       status.addEphemeralEffect("soldierdiscipline", math.huge)
-    else
+    elseif self.energy < self.maxEnergy*3/4 then
       status.removeEphemeralEffect("soldierdiscipline")
     end
     if heldItem and (root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "assaultrifle")) then
