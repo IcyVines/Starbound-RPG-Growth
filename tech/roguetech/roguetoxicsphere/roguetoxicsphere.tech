@@ -1,20 +1,20 @@
 {
-  "name" : "soldiertanksphere",
+  "name" : "roguetoxicsphere",
   "type" : "head",
 
-  "scripts" : ["soldiertanksphere.lua"],
-  "animator" : "soldiertanksphere.animation",
+  "scripts" : ["roguetoxicsphere.lua"],
+  "animator" : "roguetoxicsphere.animation",
 
-  "description" : "Transformation Cost: 40e. Shield Cost: 40eps.",
-  "shortDescription" : "Tank Sphere",
+  "description" : "Transformation Cost: 50e. Attack Cost: 10e.",
+  "shortDescription" : "Toxic Sphere",
   "rarity" : "Legendary",
-  "icon" : "/tech/soldiertech/soldiertanksphere/soldiertanksphereicon.png",
+  "icon" : "/tech/roguetech/roguetoxicsphere/roguetoxicsphereicon.png",
 
   "chipCost" : 0,
 
   "animationParts" : {
-    "ballGlow" : "soldiertanksphereglow.png",
-    "ball" : "soldiertanksphere.png"
+    "ballGlow" : "roguetoxicsphereglow.png",
+    "ball" : "roguetoxicsphere.png"
   },
 
   "transformedMovementParameters" : {
@@ -38,11 +38,14 @@
 
   "ignorePlatforms" : true,
 
-  "ballSpeed" : 8,
-  "energyCostPerSecond" : 40,
-  "energyCost" : 40,
-  "rocketEnergyCost" : 10,
+  "ballSpeed" : 12,
+
+  "energyCost" : 50,
+  "poisonEnergyCost" : 10,
 
   "ballRadius" : 1,
-  "ballFrames" : 4
+  "ballFrames" : 4,
+  "fireBlockTime" : 4.0,
+
+  "damageDisableTime" : 0.2
 }

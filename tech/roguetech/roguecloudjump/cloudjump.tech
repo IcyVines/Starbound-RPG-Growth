@@ -11,7 +11,7 @@
   "icon" : "/tech/roguetech/roguecloudjump/cloudjump.png",
 
   "chipCost" : 0,
-  "cooldown": 2.0,
+  "cooldown": 5.0,
   "cost" : 30,
 
   "multiJumpCount" : 1

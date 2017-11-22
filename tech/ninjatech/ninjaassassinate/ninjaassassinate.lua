@@ -15,7 +15,7 @@ function init()
   self.vanishTime = config.getParameter("vanishTime", 3)
   self.vanished = false
 
-  Bind.create("Up", assassinate)
+  Bind.create("h", assassinate)
 end
 
 function assassinate()

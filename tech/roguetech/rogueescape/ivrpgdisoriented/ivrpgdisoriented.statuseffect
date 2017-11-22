@@ -1,0 +1,13 @@
+{
+  "name" : "ivrpgdisoriented",
+
+  "blockingStat" : "poisonStatusImmunity",
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgdisoriented.lua"
+  ],
+
+  "animationConfig" : "ivrpgdisoriented.animation"
+}

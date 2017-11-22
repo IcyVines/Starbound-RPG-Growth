@@ -13,5 +13,5 @@
   "chipCost" : 0,
   "cost" : 30,
   "cooldown" : 1.5,
-  "multiJumpCount" : 1
+  "multiJumpCount" : 2
 }

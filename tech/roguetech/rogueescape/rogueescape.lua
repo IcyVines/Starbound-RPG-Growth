@@ -14,35 +14,15 @@ function init()
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=21A81AFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
 
+  self.vDirectionLocked = 0
+  self.hDirectionLocked = 0
+
   refreshJumps()
-  --Bind.create("Up", energize)
   Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doMultiJump)
 
-  status.setPersistentEffects("energizefalldamagereduction", {
-    {stat = "fallDamageMultiplier", amount = -0.1}
-  })
-
 end
-
---[[
-function energize()
-  if self.cooldownTimer == 0 and not status.statPositive("activeMovementAbilities") then
-    self.cooldownTimer = self.cooldown + self.duration
-    status.addEphemeralEffect("jumpboost", self.duration)
-    animator.playSound("energize")
-    status.modifyResourcePercentage("energy", 1)
-  elseif self.cooldownTimer > self.cooldown then
-    self.cooldownTimer = self.cooldown
-    status.addEphemeralEffect("soldierenergypackcooldown", self.cooldownTimer)
-    status.removeEphemeralEffect("jumpboost")
-  end
-end
---]]
 
 function uninit()
-  --status.removeEphemeralEffect("jumpboost")
-  --status.removeEphemeralEffect("soldierenergypackcooldown")
-  status.clearPersistentEffects("energizefalldamagereduction")
   status.clearPersistentEffects("movementAbility")
   animator.setAnimationState("dashing", "off")
   animator.setParticleEmitterActive("dashParticles", false)
@@ -66,8 +46,13 @@ function update(args)
   end
 
   if self.dashTimer > 0 then
-    mcontroller.controlApproachVelocity({self.dashSpeed * self.hDirection, self.dashSpeed * self.vDirection}, self.dashControlForce)
-    mcontroller.controlMove(self.hDirection, true)
+    self.agility = world.entityCurrency(entity.id(), "agilitypoint")
+    if self.vDirectionLocked == 0 or self.hDirectionLocked == 0 then
+      mcontroller.controlApproachVelocity({self.dashSpeed * self.hDirectionLocked * (1+self.agility/100), self.dashSpeed * self.vDirectionLocked * (1+self.agility/100)}, self.dashControlForce)
+    else
+      mcontroller.controlApproachVelocity({self.dashSpeed/1.41 * self.hDirectionLocked * (1+self.agility/100), self.dashSpeed/1.41 * self.vDirectionLocked * (1+self.agility/100)}, self.dashControlForce)
+    end
+    mcontroller.controlMove(self.hDirectionLocked, true)
     mcontroller.controlModifiers({jumpingSuppressed = true})
     animator.setFlipped(mcontroller.facingDirection() == -1)
     self.dashTimer = math.max(0, self.dashTimer - args.dt)
@@ -75,26 +60,6 @@ function update(args)
       endDash()
     end
   end
-
-  --[[if self.cooldownTimer > 0 then
-    self.cooldownTimer = math.max(0, self.cooldownTimer - args.dt)
-    if self.cooldownTimer == 0 then
-      self.cooldownActive = false
-      self.rechargeEffectTimer = self.rechargeEffectTime
-      tech.setParentDirectives(self.rechargeDirectives)
-      animator.playSound("recharge")
-    elseif self.cooldownTimer <= self.cooldown and not self.cooldownActive then
-      self.cooldownActive = true
-      status.addEphemeralEffect("soldierenergypackcooldown", self.cooldownTimer)
-    end
-  end
-
-  if self.rechargeEffectTimer > 0 then
-    self.rechargeEffectTimer = math.max(0, self.rechargeEffectTimer - args.dt)
-    if self.rechargeEffectTimer == 0 then
-      tech.setParentDirectives()
-    end
-  end--]]
 
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
     refreshJumps()
@@ -127,20 +92,29 @@ function refreshJumps()
 end
 
 function startDash()
-  self.agility = world.entityCurrency(entity.id(), "agilitypoint")
-  self.dashTimer = self.dashDuration+(self.agility/200)
+  self.vDirectionLocked = self.vDirection
+  self.hDirectionLocked = (self.vDirectionLocked == 0 and self.hDirection == 0) and mcontroller.facingDirection()*-1 or self.hDirection
+  self.dashTimer = self.dashDuration
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   mcontroller.setVelocity({0, 0})
   animator.playSound("startDash")
   animator.setAnimationState("dashing", "on")
   animator.setParticleEmitterActive("dashParticles", true)
+  spawnSmoke()
 end
 
 function endDash()
   status.clearPersistentEffects("movementAbility")
   local movementParams = mcontroller.baseParameters()
   local currentVelocity = mcontroller.velocity()
-  mcontroller.setVelocity({0, 0})
+  --mcontroller.setVelocity({0, 0})
   animator.setAnimationState("dashing", "off")
   animator.setParticleEmitterActive("dashParticles", false)
+end
+
+function spawnSmoke()
+  world.spawnProjectile("roguedisorientingsmoke", {mcontroller.xPosition()+1, mcontroller.yPosition()+1}, entity.id(), {0,0}, false, {})
+  world.spawnProjectile("roguedisorientingsmoke", {mcontroller.xPosition()-1, mcontroller.yPosition()+1}, entity.id(), {0,0}, false, {})
+  world.spawnProjectile("roguedisorientingsmoke", {mcontroller.xPosition()+1, mcontroller.yPosition()-1}, entity.id(), {0,0}, false, {})
+  world.spawnProjectile("roguedisorientingsmoke", {mcontroller.xPosition()-1, mcontroller.yPosition()-1}, entity.id(), {0,0}, false, {})
 end

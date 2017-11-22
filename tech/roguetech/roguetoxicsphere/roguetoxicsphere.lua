@@ -2,27 +2,38 @@ require "/tech/distortionsphere/distortionsphere.lua"
 require "/scripts/rect.lua"
 require "/scripts/poly.lua"
 require "/scripts/status.lua"
-require "/scripts/vec2.lua"
+require "/scripts/keybinds.lua"
 
 function init()
   initCommonParameters()
-  self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
-  self.headingAngle = nil
+
   self.ignorePlatforms = config.getParameter("ignorePlatforms")
+  self.damageDisableTime = config.getParameter("damageDisableTime")
+  self.damageDisableTimer = 0
+
+  self.headingAngle = nil
+
   self.normalCollisionSet = {"Block", "Dynamic"}
-
-  self.rocketEnergyCost = config.getParameter("rocketEnergyCost")
-  self.pressBlock = false
-  self.pressFire = false
-  self.bombTimer = 0
-  self.immunityshieldOn = nil
-
   if self.ignorePlatforms then
     self.platformCollisionSet = self.normalCollisionSet
   else
     self.platformCollisionSet = {"Block", "Dynamic", "Platform"}
   end
 
+  self.fireTimer = 0
+  self.fireBlockTime = config.getParameter("fireBlockTime")
+  self.poisonEnergyCost = config.getParameter("poisonEnergyCost")
+  
+  self.damageListener = damageListener("damageTaken", function(notifications)
+    for _, notification in pairs(notifications) do
+      if notification.healthLost > 0 and notification.sourceEntityId ~= entity.id() then
+        damaged()
+        return
+      end
+    end
+  end)
+
+  Bind.create("primaryFire", spawnPoison)
 end
 
 function update(args)
@@ -32,41 +43,25 @@ function update(args)
     attemptActivation()
   end
   self.specialLast = args.moves["special1"]
-  self.pressBlock = args.moves["altFire"]
-  self.pressFire = args.moves["primaryFire"]
+
   if not args.moves["special1"] then
     self.forceTimer = nil
   end
 
+  self.damageDisableTimer = math.max(0, self.damageDisableTimer - args.dt)
+
+  self.damageListener:update()
+
   if self.active then
-
-      if self.bombTimer > 0 then
-        self.bombTimer = math.max(0, self.bombTimer - args.dt)
-      end
-
-    --Tank Sphere missile effect.
-    if (self.pressFire and self.bombTimer == 0) and status.overConsumeResource("energy", self.rocketEnergyCost) then
-      self.bombTimer = 1.5
-      self.cursor = tech.aimPosition()
-
-      local diff = world.distance(self.cursor, mcontroller.position())
-      local aimingAngle = vec2.angle(diff)
-      local aimingVector = vec2.rotate({1, 0}, aimingAngle)
-
---      soldiertankmissiledamageConfig = {
---        power = self.damage
---      }
-      world.spawnProjectile("soldiertankmissile", mcontroller.position(), entity.id(), aimingVector, false)
+    local groundDirection
+    if self.damageDisableTimer == 0 then
+      groundDirection = findGroundDirection()
     end
 
-    --Tank Sphere immunity effect
-    if self.pressBlock and status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
-      activateImmunityShields()
-    else
-      deactivateImmunityShields()
-    end
-
-    local groundDirection = findGroundDirection()
+    status.setPersistentEffects("roguetoxicsphereimmune",{
+      {stat = "poisonStatusImmunity", amount = 1},
+      {stat = "poisonResistance", amount = 1}
+    })
 
     if groundDirection then
       if not self.headingAngle then
@@ -105,10 +100,10 @@ function update(args)
         -- apply a gravitation like force in the ground direction, while moving in the controlled direction
         -- Note: this ground force causes weird collision when moving up slopes, result is you move faster up slopes
         local groundAngle = self.headingAngle - (math.pi / 2)
-        mcontroller.controlApproachVelocity(vec2.withAngle(groundAngle, self.ballSpeed), 300)
+        mcontroller.controlApproachVelocity(vec2.withAngle(groundAngle, self.ballSpeed), 400)
 
         local moveDirection = vec2.rotate({moveX, 0}, self.headingAngle)
-        mcontroller.controlApproachVelocityAlongAngle(math.atan(moveDirection[2], moveDirection[1]), self.ballSpeed, 2000)
+        mcontroller.controlApproachVelocityAlongAngle(math.atan(moveDirection[2], moveDirection[1]), self.ballSpeed, 2500)
 
         self.angularVelocity = -moveX * self.ballSpeed
       else
@@ -133,41 +128,22 @@ function update(args)
     checkForceDeactivate(args.dt)
   else
     self.headingAngle = nil
-     -- DisableEffects --
-    deactivateImmunityShields()
+    status.clearPersistentEffects("roguetoxicsphereimmune")
   end
- 
+
   updateTransformFade(args.dt)
 
   self.lastPosition = mcontroller.position()
+
+  if self.fireTimer > 0 then
+    self.fireTimer = math.max(0,self.fireTimer - args.dt)
+  end
 end
 
-function activateImmunityShields()
-    if not self.immunityshieldOn then
-      status.addEphemeralEffect("soldiertanksphereimmune", math.huge)
-      self.immunityshieldOn = world.spawnProjectile("soldiertanksphereshield",
-                                            mcontroller.position(),
-                                            entity.id(),
-                                            {0,0},
-                                            true,
-                                            {}
-                                           )
-    end
-end
-
-function deactivateImmunityShields()
-    if self.immunityshieldOn then
-      status.removeEphemeralEffect("soldiertanksphereimmune")
-      world.entityQuery(mcontroller.position(),1,
-        {
-         withoutEntityId = entity.id(),
-         includedTypes = {"projectile"},
-         callScript = "immunityshieldRemoval",
-         callScriptArgs = {self.immunityshieldOn}
-        }
-      )
-      self.immunityshieldOn = nil
-    end
+function damaged()
+  if self.active then
+    self.damageDisableTimer = self.damageDisableTime
+  end
 end
 
 function findGroundDirection()
@@ -179,4 +155,36 @@ function findGroundDirection()
       return vec2.withAngle(angle, 1.0)
     end
   end
+end
+
+function spawnPoison()
+  if (not self.active or self.fireTimer ~= 0) or not status.overConsumeResource("energy", self.poisonEnergyCost) then
+    return
+  end
+  self.fireTimer = self.fireBlockTime
+  self.power = status.stat("powerMultiplier")
+  self.damageConfig = {
+    power = self.power,
+    speed = 2,
+    timeToLive = 2.0,
+    bounces = 0
+  }
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {1,0}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {0.87,-0.5}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {0.5,-0.87}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {0,-1}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {-0.5,-0.87}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {-0.87,-0.5}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {-1,0}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {-0.87,0.5}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {-0.5,0.87}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {0,1}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {0.5,0.87}, true, self.damageConfig)
+  world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {0.87,0.5}, true, self.damageConfig)
+end
+
+function uninit()
+  storePosition()
+  deactivate()
+  status.clearPersistentEffects("roguetoxicsphereimmune")
 end

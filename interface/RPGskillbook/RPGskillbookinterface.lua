@@ -337,7 +337,7 @@ function updateClassTab()
     widget.setImage("classlayout.effecticon","/scripts/soldierdiscipline/soldierdiscipline.png")
     widget.setImage("classlayout.effecticon2","/scripts/soldierdiscipline/soldierdiscipline.png")
     widget.setImage("classlayout.classweaponicon","/interface/RPGskillbook/weapons/soldier.png")
-    widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nVitality\n^magenta;Good:^reset;\nDexterity\n^gray;OK:^reset;\nStrength\nEndurance")
+    widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nVigor\n^magenta;Good:^reset;\nDexterity\n^gray;OK:^reset;\nVitality\nEndurance")
   elseif player.currency("classtype") == 5 then
     widget.setText("classlayout.classtitle","Rogue")
     widget.setFontColor("classlayout.classtitle","green")
@@ -361,7 +361,7 @@ function updateClassTab()
     widget.setImage("classlayout.effecticon","/scripts/explorerglow/explorerglow.png")
     widget.setImage("classlayout.effecticon2","/scripts/explorerglow/explorerglow.png")
     widget.setImage("classlayout.classweaponicon","/interface/RPGskillbook/weapons/explorer.png")
-    widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nVigor\n^magenta;Good:^reset;\nAgility\n^gray;OK:^reset;\nVitality\nEndurance")
+    widget.setText("classlayout.statscalingtext","^blue;Great:^reset;\nVitality\n^magenta;Good:^reset;\nAgility\n^gray;OK:^reset;\nVigor\nEndurance")
   end
 
   if status.statPositive("ivrpgclassability") then
@@ -456,14 +456,14 @@ function updateInfo()
     math.floor(status.stat("energyRegenBlockTime")*100+.5)/100 .. "^reset;" .. "\n" ..
     "^orange;" .. getStatPercent(status.stat("foodDelta")) .. "^reset;" ..
     "^gray;" .. getStatPercent(status.stat("physicalResistance")) .. "^reset;" ..
-    "^magenta;" .. getStatPercent(status.stat("poisonResistance")) .. "^reset;" ..
-    "^blue;" .. getStatPercent(status.stat("iceResistance")) .. "^reset;" .. 
-    "^red;" .. getStatPercent(status.stat("fireResistance")) .."^reset;" .. 
-    "^yellow;" .. getStatPercent(status.stat("electricResistance")) .. "^reset;" ..
+    "^magenta;" .. (status.statPositive("poisonStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("poisonResistance"))) .. "^reset;" ..
+    "^blue;" .. (status.statPositive("iceStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("iceResistance"))) .. "^reset;" .. 
+    "^red;" .. (status.statPositive("fireStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("fireResistance"))) .."^reset;" .. 
+    "^yellow;" .. (status.statPositive("electricStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("electricResistance"))) .. "^reset;" ..
     "^gray;" .. getStatPercent(status.stat("grit")) ..
     getStatMultiplier(status.stat("fallDamageMultiplier")) ..  
     math.floor((1 + self.strength^self.strengthBonus*.05)*100+.5)/100 .. "^reset;" .. "\n" ..
-    "^red;" .. (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed")) .. "%\n" ..
+    "^red;" .. (math.floor(self.dexterity^self.dexterityBonus*100+.5)/200 + status.stat("ninjaBleed")) .. "%\n" ..
     (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed"))/50 .. "^reset;" .. "\n" ..
     "\nStatus:\n" ..
     "^red;" .. getStatImmunity(status.stat("lavaImmunity")) ..
@@ -475,9 +475,9 @@ function updateInfo()
 
   widget.setText("infolayout.displaystatsFU", 
     "Amount\n" ..
-    "^green;" .. getStatPercent(status.stat("radioactiveResistance")) .. "^reset;" ..
-    "^gray;" .. getStatPercent(status.stat("shadowResistance")) .. "^reset;" ..
-    "^magenta;" .. getStatPercent(status.stat("cosmicResistance")) .. "^reset;" ..
+    "^green;" .. (status.statPositive("radioactiveStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("radioactiveResistance"))) .. "^reset;" ..
+    "^gray;" .. (status.statPositive("shadowStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("shadowResistance"))) .. "^reset;" ..
+    "^magenta;" .. (status.statPositive("cosmicStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("cosmicResistance"))) .. "^reset;" ..
     "\nStatus:\n" ..
     "^red;" .. getStatImmunity(status.stat("ffextremeheatImmunity")) .. "^reset;" .. 
     "^blue;" .. getStatImmunity(status.stat("ffextremecoldImmunity")) .. "^reset;" .. 
@@ -503,7 +503,7 @@ function getTechEnableName(classType, checked)
   elseif classType == 4 then
     return checked == 1 and "soldiermre" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldiertanksphere"))
   elseif classType == 5 then
-    return checked == 1 and "roguepoisondash" or (checked == 2 and "roguetoxiccapsule" or (checked == 3 and "roguecloudjump" or "roguetoxicaura"))
+    return checked == 1 and "roguepoisondash" or (checked == 2 and "roguetoxicsphere" or (checked == 3 and "rogueescape" or "roguetoxicaura"))
   elseif classType == 6 then
     return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedmovement" or (checked == 3 and "explorerdrill" or "explorerenhancedjump"))
   end
@@ -576,10 +576,10 @@ end
 function getTechText(num)
   local classType = player.currency("classtype")
   if classType == 1 then
-    return num == 1 and "An upgrade to Sprint, while running, enemies receive damage and knockback. Damage is doubled when holding up a shield. Damage scales with Strength and Run Speed."
+    return num == 1 and "An upgrade to Sprint, while running, enemies receive damage and knockback. Damage is doubled when holding up a shield. Damage scales with Strength and Run Speed. Energy Cost decreases with Agility."
     or (num == 2 and "An upgrade to Double Jump, press [G] while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies. Damage scales with Strength and distance fallen from activation."
       or (num == 3 and "An upgrade to Spike Sphere, while transformed, ignore knockback and deal contact damage to enemies." 
-        or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit. Damage scales with Strength and Run Speed."))
+        or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit. Damage scales with Strength and Run Speed. Energy Cost decreases with Agility."))
   elseif classType == 2 then
     return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity. In addition, toggle a barrier that pushes enemies away by pressing [G]." 
     or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
@@ -593,12 +593,12 @@ function getTechText(num)
   elseif classType == 4 then
     return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food and all your energy. There is a cooldown of 90 seconds before you can do this again." 
     or (num == 2 and "Press [G] to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
-      or (num == 3 and "An upgrade to Double Jump, press [Space] to dash in a direction of your choosing using [W], [A], [S], and [D]. You can slightly change your trajectory while dashing." 
-        or "Press [F] to switch to a slow-moving Spike Sphere. Left click to shoot a missile. Right click to use energy in order to shield yourself from damage.\nCreated by SushiSquid!"))
+      or (num == 3 and "An upgrade to Double Jump, press [Space] to dash in a direction of your choosing using [W], [A], [S], and [D]. You can slightly change your trajectory while dashing. Dash Duration scales with Agility." 
+        or "Press [F] to switch to a slow-moving Spike Sphere. Left click to shoot a missile using some energy. Right click to drain your energy in order to shield yourself from damage.\nCreated by SushiSquid!"))
   elseif classType == 5 then
-    return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind. The damage from the toxic clouds scale with your Poison Resistance and Power Multiplier. Deals massive damage if immune to Poison." 
+    return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind. The damage from the toxic clouds scale with your Poison Resistance and Power Multiplier. Deals more damage when immune to Poison." 
     or (num == 2 and "Press [F] to transform into a Spike Sphere. Left click while transformed to shoot out a ring of poison clouds. You are immune to poison while transformed." 
-      or (num == 3 and "An upgrade to Double Jump, press [W] to create a cloudy platform beneath you. The cloud disappears after 5 seconds." 
+      or (num == 3 and "An upgrade to Double Jump, press [Space] to launch yourself in a direction of your choosing, leaving a cloud of smoke behind that disorients enemies. Disoriented enemies are slowed and do less damage. Defaults to a backwards launch." 
         or "Press [G] to create a toxic field that inflicts enemies with a weakening poison. These enemies take more poison and bleed damage. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so."))
   elseif classType == 6 then
     return num == 1 and "An upgrade to Double Jump, hold [W] to glide forward, slowly losing altitude. You can use your double jump while gliding." 
@@ -624,7 +624,7 @@ function getTechName(num)
     return num == 1 and "MRE" or (num == 2 and "Marksman" or (num == 3 and "Energize" or "Tank Sphere"))
   elseif classType == 5 then
     widget.setFontColor("classlayout.techname", "green")
-    return num == 1 and "Poison Dash" or (num == 2 and "Toxic Sphere" or (num == 3 and "Cloud Jump" or "Toxic Aura"))
+    return num == 1 and "Deadly Stance" or (num == 2 and "Toxic Sphere" or (num == 3 and "Escape!" or "Toxic Aura"))
   elseif classType == 6 then
     widget.setFontColor("classlayout.techname", "yellow")
     return num == 1 and "Glide" or (num == 2 and "Enhanced Dash" or (num == 3 and "Drill Sphere" or "Enhanced Glide"))
@@ -1069,11 +1069,13 @@ function removeTechs()
     player.makeTechUnavailable("roguetoxicaura")
     player.makeTechUnavailable("roguecloudjump")
     player.makeTechUnavailable("roguetoxiccapsule")
+    player.makeTechUnavailable("roguetoxicsphere")
     player.makeTechUnavailable("roguepoisondash")
   elseif self.class == 4 then
     player.makeTechUnavailable("soldiertanksphere")
     player.makeTechUnavailable("soldierenergypack")
     player.makeTechUnavailable("soldiermarksman")
+    player.makeTechUnavailable("soldiermissilestrike")
     player.makeTechUnavailable("soldiermre")
   elseif self.class == 6 then
     player.makeTechUnavailable("explorerenhancedjump")

@@ -17,5 +17,5 @@
   "multiJumpCount" : 2,
   "dashControlForce" : 2000,
   "dashSpeed" : 50,
-  "dashDuration" : 0.25
+  "dashDuration" : 0.20
 }

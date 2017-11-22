@@ -6,7 +6,7 @@
   "animator" : "ninjaassassinate.animation",
 
   "description" : "Cost: 50e. Vanish Time: 2s. Cooldown: 3s.",
-  "shortDescription" : "Assassinate",
+  "shortDescription" : "Shadow Step",
   "rarity" : "Legendary",
   "icon" : "/tech/ninjatech/ninjaassassinate/ninjaassassinate.png",
 

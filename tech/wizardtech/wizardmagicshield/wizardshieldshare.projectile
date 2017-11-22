@@ -1,0 +1,17 @@
+{
+  "projectileName" : "wizardshieldshare",
+  "image" : "wizardshieldshare.png",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "power" : 0,
+  "timeToLive" : 15,
+  "bounces" : -1,
+  "damageKind" : "applystatus",
+  "damageTeam" : { "type" : "indiscriminate" },
+  "statusEffects" : [
+    "wizardshield"
+  ],
+  "scripts": ["/tech/wizardtech/wizardmagicshield/removeshield.lua"],
+  "piercing" : true,
+  "damagePoly" : [[-64, 0], [-45, 45], [0, 64], [45, 45], [64, 0], [45, -45], [0, -64], [-45, -45]]
+}

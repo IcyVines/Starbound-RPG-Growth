@@ -1,8 +1,7 @@
 function init()
   effect.addStatModifierGroup({
-    {stat = "physicalResistance", amount = -.20},
     {stat = "poisonResistance", amount = -.30},
-    {stat = "iceResistance", amount = -.10},
+    {stat = "iceResistance", amount = -.20},
     {stat = "shadowResistance", amount = -.10},
     {stat = "cosmicResistance", amount = -.10},
     {stat = "radiationResistance", amount = -.20}

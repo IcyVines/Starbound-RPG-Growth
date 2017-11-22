@@ -1,6 +1,5 @@
 function init()
-  --Power
-  effect.addStatModifierGroup({
+  status.setPersistentEffects("wizardshieldstats", {
     {stat = "invulnerable", amount = 1},
     {stat = "lavaImmunity", amount = 1},
     {stat = "poisonStatusImmunity", amount = 1},
@@ -13,9 +12,9 @@ end
 
 
 function update(dt)
-  status.setResourcePercentage("energyRegenBlock", 1.0)
+  
 end
 
 function uninit()
-
+  status.clearPersistentEffects("wizardshieldstats")
 end

@@ -539,7 +539,7 @@ function updateClassEffects(classType)
       if (root.itemHasTag(heldItem,"soldier") and root.itemHasTag(heldItem2,"ranged")) or (root.itemHasTag(heldItem,"ranged") and root.itemHasTag(heldItem2,"soldier")) then
         status.addPersistentEffects("ivrpgclassboosts",
         {
-          {stat = "powerMultiplier", baseMultiplier = 1.1}
+          {stat = "powerMultiplier", baseMultiplier = 1.2}
         })
       end
     end
@@ -618,7 +618,7 @@ function updateClassEffects(classType)
     if hardcore then
       status.addPersistentEffects("ivrpgclassboosts", 
         {
-          {stat = "powerMultiplier", baseMultiplier = 0.75}
+          {stat = "powerMultiplier", effectiveMultiplier = 0.85}
         })
     end
   end 

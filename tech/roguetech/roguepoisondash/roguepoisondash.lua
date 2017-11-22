@@ -64,7 +64,7 @@ function update(args)
     self.poison = status.statPositive("poisonStatusImmunity") and 2.5 or self.poison
 
     self.damageConfig = {
-      power = self.power*self.poison*10
+      power = self.power*self.poison
     }
     if not status.resourceLocked("energy") then
       world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()-2}, entity.id(), {0,0}, false, self.damageConfig)

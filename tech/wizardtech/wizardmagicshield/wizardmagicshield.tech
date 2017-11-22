@@ -4,14 +4,14 @@
 
   "rarity" : "Legendary",
   "icon" : "/tech/wizardtech/wizardmagicshield/wizardmagicshield.png",
-  "description" : "Cost: 10e. Duration/Cooldown: 10s/30s.",
+  "description" : "Cost: 30eps.",
   "shortDescription" : "Magic Shield",
   "chipCost" : 0,
 
   "scripts" : ["wizardmagicshield.lua"],
   "animator" : "wizardmagicshield.animation",
 
-  "cost" : 10,
+  "cost" : 30,
   "cooldown" : 30,
   "duration" : 10
 

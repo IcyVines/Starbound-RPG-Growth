@@ -1,0 +1,19 @@
+{
+  "name" : "rogueescape",
+  "type" : "legs",
+
+  "scripts" : ["rogueescape.lua"],
+  "animator" : "rogueescape.animation",
+
+  "description" : "Dash Duration: 0.25s.",
+  "shortDescription" : "Poison Dash",
+  "rarity" : "Uncommon",
+  "icon" : "/tech/roguetech/rogueescape/rogueescape.png",
+
+  "chipCost" : 0,
+
+  "multiJumpCount" : 1,
+  "dashControlForce" : 1000,
+  "dashSpeed" : 50,
+  "dashDuration" : 0.25
+}
