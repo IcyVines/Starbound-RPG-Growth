@@ -3,7 +3,14 @@
     "path" : "/experienceorb",
     "value" : {
       "representativeItem" : "experienceorb",
-      "playerMax" : 250000
+      "playerMax" : 500000
+    }
+  },
+  { "op" : "add",
+    "path" : "/masterypoint",
+    "value" : {
+      "representativeItem" : "masterypoint",
+      "playerMax" : 100
     }
   },
   { "op" : "add",
@@ -81,6 +88,20 @@
     "value" : {
       "representativeItem" : "classtype",
       "playerMax" : 6
+    }
+  },
+  { "op" : "add",
+    "path" : "/spectype",
+    "value" : {
+      "representativeItem" : "spectype",
+      "playerMax" : 3
+    }
+  },
+  { "op" : "add",
+    "path" : "/proftype",
+    "value" : {
+      "representativeItem" : "proftype",
+      "playerMax" : 9
     }
   },
   { "op" : "add",

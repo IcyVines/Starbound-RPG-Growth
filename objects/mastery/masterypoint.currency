@@ -1,15 +1,18 @@
 {
-  "itemName" : "classtype",
-  "rarity" : "Rare",
-  "inventoryIcon" : "experienceorb.png",
-  "description" : "A droplet of mysterious power.",
-  "shortdescription" : "Class Droplet",
-  "currency" : "classtype",
+  "itemName" : "masterypoint",
+  "rarity" : "Legendary",
+  "inventoryIcon" : "masterypoint.png",
+  "description" : "Mastery Points. Used to attain peak strength!",
+  "shortdescription" : "Mastery Point",
+  "currency" : "masterypoint",
   "value" : 1,
   "pickupSoundsSmall" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "pickupSoundsMedium" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "pickupSoundsLarge" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
-  "smallStackLimit" : 6,
-  "mediumStackLimit" : 6,
-  "maxStack" : 6
+  "learnBlueprintsOnPickup" : [
+    "RPGskillbook"
+  ],
+  "smallStackLimit" : 5,
+  "mediumStackLimit" : 50,
+  "maxStack" : 100
 }

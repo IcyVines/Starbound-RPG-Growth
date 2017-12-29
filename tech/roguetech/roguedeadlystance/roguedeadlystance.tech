@@ -1,0 +1,15 @@
+{
+  "name" : "roguedeadlystance",
+  "type" : "body",
+
+  "scripts" : ["roguedeadlystance.lua"],
+  "animator" : "roguedeadlystance.animation",
+
+  "description" : "Aura Cost: 10eps.",
+  "shortDescription" : "Deadly Stance",
+  "rarity" : "Legendary",
+  "icon" : "/tech/roguetech/roguedeadlystance/roguedeadlystance.png",
+
+  "chipCost" : 0,
+  "energyCost" : 10
+}

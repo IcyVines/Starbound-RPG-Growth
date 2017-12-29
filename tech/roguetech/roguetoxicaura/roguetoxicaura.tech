@@ -5,19 +5,11 @@
   "scripts" : ["roguetoxicaura.lua"],
   "animator" : "roguetoxicaura.animation",
 
-  "description" : "Aura Duration/Cooldown: 15s/60s. Dash Cooldown: 1.8s.",
+  "description" : "Aura Cost: 10eps.",
   "shortDescription" : "Toxic Aura",
   "rarity" : "Legendary",
   "icon" : "/tech/roguetech/roguetoxicaura/roguetoxicaura.png",
 
   "chipCost" : 0,
-  "duration" : 15,
-  "cooldown" : 60,
-  "maximumDoubleTapTime" : 0.25,
-  "dashControlForce" : 2000,
-  "dashSpeed" : 80,
-  "dashDuration" : 0.20,
-  "dashCooldown" : 1.8,
-  "stopAfterDash" : true,
-  "groundOnly" : false
+  "energyCost" : 10
 }

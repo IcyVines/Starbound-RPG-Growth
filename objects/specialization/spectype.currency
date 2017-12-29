@@ -1,15 +1,15 @@
 {
-  "itemName" : "classtype",
+  "itemName" : "spectype",
   "rarity" : "Rare",
   "inventoryIcon" : "experienceorb.png",
-  "description" : "A droplet of mysterious power.",
-  "shortdescription" : "Class Droplet",
-  "currency" : "classtype",
+  "description" : "A droplet of specialized knowledge.",
+  "shortdescription" : "Specialization Droplet",
+  "currency" : "spectype",
   "value" : 1,
   "pickupSoundsSmall" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "pickupSoundsMedium" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "pickupSoundsLarge" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
-  "smallStackLimit" : 6,
-  "mediumStackLimit" : 6,
-  "maxStack" : 6
+  "smallStackLimit" : 1,
+  "mediumStackLimit" : 2,
+  "maxStack" : 3
 }

@@ -1,0 +1,14 @@
+{
+  "name" : "rdeadlystance",
+  "effectConfig" : {
+    "cooldown" : 1
+  },
+  
+  "defaultDuration" : 2,
+
+  "scripts" : [
+    "/tech/roguetech/roguedeadlystance/rdeadlystance.lua"
+  ],
+
+  "icon" : "/tech/roguetech/roguedeadlystance/roguedeadlystance.png"
+}

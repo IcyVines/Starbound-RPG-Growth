@@ -16,6 +16,8 @@ function init()
   --initiating level and xp
   self.xp = player.currency("experienceorb")
   self.level = player.currency("currentlevel")--math.floor(math.sqrt(self.xp/100))
+  self.mastery = player.currency("masterypoint")
+  --Mastery Conversion: 1000 Experience = 1 Mastery!!
   --initiating stats
   updateStats()
   self.classTo = 0
@@ -28,6 +30,14 @@ function init()
     4: Soldier
     5: Rogue
     6: Explorer
+    ]]
+  self.specTo = 0
+  self.spec = player.currency("spectype")
+    --[[
+    ]]
+  self.profTo = 0
+  self.profession = player.currency("proftype")
+    --[[
     ]]
   self.affinityTo = 0
   self.affinity = player.currency("affinitytype")
@@ -125,6 +135,7 @@ function updateLevel()
   end
   self.level = player.currency("currentlevel")
   self.newLevel = math.floor(math.sqrt(self.xp/100))
+  self.newLevel = self.newLevel >= 50 and 50 or self.newLevel
   if self.newLevel > self.level then
     addStatPoints(self.newLevel, self.level)
   elseif self.newLevel < self.level then
@@ -503,7 +514,7 @@ function getTechEnableName(classType, checked)
   elseif classType == 4 then
     return checked == 1 and "soldiermre" or (checked == 2 and "soldiermarksman" or (checked == 3 and "soldierenergypack" or "soldiertanksphere"))
   elseif classType == 5 then
-    return checked == 1 and "roguepoisondash" or (checked == 2 and "roguetoxicsphere" or (checked == 3 and "rogueescape" or "roguetoxicaura"))
+    return checked == 1 and "roguedeadlystance" or (checked == 2 and "roguetoxicsphere" or (checked == 3 and "rogueescape" or "roguetoxicaura"))
   elseif classType == 6 then
     return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedmovement" or (checked == 3 and "explorerdrill" or "explorerenhancedjump"))
   end
@@ -577,33 +588,33 @@ function getTechText(num)
   local classType = player.currency("classtype")
   if classType == 1 then
     return num == 1 and "An upgrade to Sprint, while running, enemies receive damage and knockback. Damage is doubled when holding up a shield. Damage scales with Strength and Run Speed. Energy Cost decreases with Agility."
-    or (num == 2 and "An upgrade to Double Jump, press [G] while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies. Damage scales with Strength and distance fallen from activation."
+    or (num == 2 and "An upgrade to Double Jump, press [G] (Bind [G] in your Controls) while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies. Damage scales with Strength and distance fallen from activation."
       or (num == 3 and "An upgrade to Spike Sphere, while transformed, ignore knockback and deal contact damage to enemies." 
         or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit. Damage scales with Strength and Run Speed. Energy Cost decreases with Agility."))
   elseif classType == 2 then
     return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity. In addition, toggle a barrier that pushes enemies away by pressing [G]." 
     or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
-      or (num == 3 and "Press [H] to teleport to your cursor. There is a slight cooldown before you can teleport again." 
+      or (num == 3 and "Press [H] (Bind [H] in your Controls) to teleport to your cursor. There is a slight cooldown before you can teleport again." 
         or "Press [F] to negate all damage for a short time. Energy does not recharge while this effect is active. You can prematurely end the effect by pressing [F] again. The cooldown shortens if so."))
   elseif classType == 3 then
     return num == 1 and "Press [Space] while midair to burst forward. For a short time after jumping, you are invulnerable to damage. As long as you remain in the air with energy remaining, you are invulnerable to fall damage. You may do this twice while midair." 
     or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while active. The invulnerability ends when you run out of energy or press [F] while transformed." 
-    or (num == 3 and "Press [H] to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS. While the cooldown is active, lose 20% Physical Resistance." 
+    or (num == 3 and "Press [H] (Bind [H] in your Controls) to vanish out of existence. After 2 seconds, you appear where your cursor points. If holding a sharp weapon, slash where you appear. Slash damage scales with Power Modifier and Weapon DPS. While the cooldown is active, lose 20% Physical Resistance." 
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
-    return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food and all your energy. There is a cooldown of 90 seconds before you can do this again." 
-    or (num == 2 and "Press [G] to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
-      or (num == 3 and "An upgrade to Double Jump, press [Space] to dash in a direction of your choosing using [W], [A], [S], and [D]. You can slightly change your trajectory while dashing. Dash Duration scales with Agility." 
+    return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food and all your energy. There is a cooldown of 90 seconds before you can do this again. While the cooldown is active, you gain slight health regen, but your overall speed is decreased." 
+    or (num == 2 and "Press [G] (Bind [G] in your Controls) to gain improved weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so." 
+      or (num == 3 and "An upgrade to Double Jump, press [Space] to dash in a direction of your choosing. You can slightly change your trajectory while dashing. Dash Duration scales with Agility." 
         or "Press [F] to switch to a slow-moving Spike Sphere. Left click to shoot a missile using some energy. Right click to drain your energy in order to shield yourself from damage.\nCreated by SushiSquid!"))
   elseif classType == 5 then
-    return num == 1 and "An upgrade to Air Dash, distance is improved. In addition, a trail of toxic clouds is left behind. The damage from the toxic clouds scale with your Poison Resistance and Power Multiplier. Deals more damage when immune to Poison." 
+    return num == 1 and "Press [G] (Bind [G] in your Controls) to toggle an ability that increases Physical and Poison Resistance and grants Knockback Immunity. Drains energy while active, and is toggled off when no energy remains." 
     or (num == 2 and "Press [F] to transform into a Spike Sphere. Left click while transformed to shoot out a ring of poison clouds. You are immune to poison while transformed." 
       or (num == 3 and "An upgrade to Double Jump, press [Space] to launch yourself in a direction of your choosing, leaving a cloud of smoke behind that disorients enemies. Disoriented enemies are slowed and do less damage. Defaults to a backwards launch." 
-        or "Press [G] to create a toxic field that inflicts enemies with a weakening poison. These enemies take more poison and bleed damage. You can prematurely end the effect by pressing [G] again. The cooldown shortens if so."))
+        or "Press [G] (Bind [G] in your Controls) to toggle a toxic field that inflicts enemies with a weakening poison. These enemies take more poison and bleed damage. Drains energy while active, and is toggled off when no energy remains."))
   elseif classType == 6 then
     return num == 1 and "An upgrade to Double Jump, hold [W] to glide forward, slowly losing altitude. You can use your double jump while gliding." 
-    or (num == 2 and "Press [G] to switch between Enhanced Airdash and Enhanced Sprint. Enhanced Airdash travels further than Air Dash, and has a shorter cooldown. Enhanced Sprint is faster and costs less energy than Sprint." 
-      or (num == 3 and "Press [F] to transform into a fast Spike Sphere that can jump. Press [H] to drill down at incredible speed, draining your energy. You can drill while transformed." 
+    or (num == 2 and "Press [G] (Bind [G] in your Controls) to switch between Enhanced Airdash and Enhanced Sprint. Enhanced Airdash travels further than Air Dash, and has a shorter cooldown. Enhanced Sprint is faster and costs less energy than Sprint." 
+      or (num == 3 and "Press [F] to transform into a fast Spike Sphere that can jump. Press [H] (Bind [H] in your Controls) to drill down at incredible speed, draining your energy. You can drill while transformed." 
         or "An upgrade to Glide. Gain another three midair jumps and a wall jump. Midair jumps are 85% as effective. You cling to walls slightly longer than the normal Wall Jump and slide down slower as well. "))
   end
 end
@@ -618,7 +629,7 @@ function getTechName(num)
     return num == 1 and "Gravity Sphere" or (num == 2 and "Hover" or (num == 3 and "Translocate" or "Magic Shield"))
   elseif classType == 3 then
     widget.setFontColor("classlayout.techname", "red")
-    return num == 1 and "Flash Jump" or (num == 2 and "Vanish Sphere" or (num == 3 and "Assassinate" or "Wall Cling"))
+    return num == 1 and "Flash Jump" or (num == 2 and "Vanish Sphere" or (num == 3 and "Shadow Step" or "Wall Cling"))
   elseif classType == 4 then
     widget.setFontColor("classlayout.techname", "orange")
     return num == 1 and "MRE" or (num == 2 and "Marksman" or (num == 3 and "Energize" or "Tank Sphere"))
@@ -1071,6 +1082,7 @@ function removeTechs()
     player.makeTechUnavailable("roguetoxiccapsule")
     player.makeTechUnavailable("roguetoxicsphere")
     player.makeTechUnavailable("roguepoisondash")
+    player.makeTechUnavailable("roguedeadlystance")
   elseif self.class == 4 then
     player.makeTechUnavailable("soldiertanksphere")
     player.makeTechUnavailable("soldierenergypack")
