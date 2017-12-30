@@ -522,7 +522,7 @@ function getTechEnableName(classType, checked)
   elseif classType == 5 then
     return checked == 1 and "roguedeadlystance" or (checked == 2 and "roguetoxicsphere" or (checked == 3 and "rogueescape" or "roguetoxicaura"))
   elseif classType == 6 then
-    return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedmovement" or (checked == 3 and "explorerdrill" or "explorerenhancedjump"))
+    return checked == 1 and "explorerglide" or (checked == 2 and "explorerenhancedmovement" or (checked == 3 and "explorerdrillsphere" or "explorerenhancedjump"))
   end
 end
 
@@ -1099,6 +1099,7 @@ function removeTechs()
     player.makeTechUnavailable("explorerenhancedjump")
     player.makeTechUnavailable("explorerenhancedmovement")
     player.makeTechUnavailable("explorerdrill")
+    player.makeTechUnavailable("explorerdrillsphere")
     player.makeTechUnavailable("explorerglide")
   end
 end

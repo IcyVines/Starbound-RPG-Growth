@@ -238,7 +238,7 @@ function drill()
 end
 
 function input(args)
-  if args.moves["special2"] then
+  if args.moves["special3"] then
     return "explorerdrill"
   else
     return nil
