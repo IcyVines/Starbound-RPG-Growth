@@ -1,0 +1,53 @@
+{
+  "name" : "explorerdrillsphere",
+  "type" : "head",
+
+  "rarity" : "Rare",
+  "icon" : "/tech/explorertech/explorerdrillsphere/explorerdrillsphereicon.png",
+  "description" : "Transformation Cost: 25e. Active Cost: 50eps.",
+  "shortDescription" : "Drill Sphere",
+  "chipCost" : 0,
+
+  "scripts" : ["explorerdrillsphere.lua"],
+  "actions" : [ "explorerdrill" ],
+  "animator" : "explorerdrillsphere.animation",
+
+  "fallTime" : 0.1,
+  "power" : 2,
+
+  "animationParts" : {
+    "ballGlow" : "explorerdrillsphereglow.png",
+    "ball" : "explorerdrillsphere.png"
+  },
+
+  "transformedMovementParameters" : {
+    "collisionPoly" : [ [-0.85, -0.35], [-0.35, -0.85], [0.35, -0.85], [0.85, -0.35], [0.85, 0.35], [0.35, 0.85], [-0.35, 0.85], [-0.85, 0.35] ],
+
+    "airForce" : 0.0,
+    "liquidForce" : 0.0,
+
+    "airJumpProfile" : {
+      "jumpSpeed" : 0.0
+    },
+
+    "liquidJumpProfile" : {
+      "jumpSpeed" : 0.0,
+      "jumpControlForce" : 0.0,
+
+      "multiJump" : false,
+      "autoJump" : false
+    }
+  },
+
+  "ignorePlatforms" : true,
+
+  "jumpSpeed": 35,
+  "ballSpeed" : 12,
+  "energyCost" : 25,
+  "drillCost": 5,
+
+  "ballRadius" : 1,
+  "ballFrames" : 4,
+
+  "damageDisableTime" : 0.2
+}

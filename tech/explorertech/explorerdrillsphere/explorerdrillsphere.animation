@@ -1,0 +1,147 @@
+{
+  "globalTagDefaults" : {
+    "rotationFrame" : "0",
+    "ballDirectives" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "drill" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "drillParticles" ]
+            }
+          },
+          "on" : {
+            "properties" : {
+              "persistentSound" : "/sfx/tools/drill_hit.ogg",
+              "particleEmittersOn" : [ "drillParticles" ]
+            }
+          }
+        }
+      },
+      "ballState" : {
+        "default" : "off",
+        "states" : {
+          "deactivate" : {
+            "frames" : 3,
+            "cycle" : 0.12,
+            "mode" : "transition",
+            "transition" : "off"
+          },
+          "off" : { },
+          "activate" : {
+            "frames" : 3,
+            "cycle" : 0.12,
+            "mode" : "transition",
+            "transition" : "on"
+          },
+          "on" : { }
+        }
+      }
+    },
+    "parts" : {
+      "ballGlow" : {
+        "properties" : {
+          "transformationGroups" : [ "ball" ],
+          "centered" : true
+        },
+        "partStates" : {
+          "ballState" : {
+            "on" : {
+              "properties" : {
+                "zLevel" : 1,
+                "fullbright" : true,
+                "image" : "<partImage>:<rotationFrame><ballDirectives>"
+              }
+            }
+          }
+        }
+      },
+      "ball" : {
+        "properties" : {
+          "transformationGroups" : [ "ball" ],
+          "centered" : true
+        },
+        "partStates" : {
+          "ballState" : {
+            "deactivate" : {
+              "properties" : {
+                "offset" : [0, 0],
+                "fullbright" : true,
+                "image" : "/tech/distortionsphere/transform.png:deactivate.<frame>"
+              }
+            },
+            "activate" : {
+              "properties" : {
+                "offset" : [0, 1.5],
+                "fullbright" : true,
+                "image" : "/tech/distortionsphere/transform.png:activate.<frame>"
+              }
+            },
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<rotationFrame><ballDirectives>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "ball" : { "interpolated" : true }
+  },
+
+  "particleEmitters" : {
+    "drillParticles" : {
+      "emissionRate" : 14.0,
+      "particles" : [
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -2]
+        }
+      ]
+    },
+    "activateParticles" : {
+      "particles" : [ ]
+    },
+    "deactivateParticles" : {
+      "particles" : [ ]
+    }
+  },
+  "sounds" : {
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "activate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
+    "deactivate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
+    "forceDeactivate" : [ "/sfx/tech/tech_sonicsphere_charge1.ogg" ]
+  }
+
+}
