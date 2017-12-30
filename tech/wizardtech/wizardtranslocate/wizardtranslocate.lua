@@ -11,7 +11,7 @@ function init()
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=B880FCFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
 
-  Bind.create("h", translocate)
+  Bind.create("g", translocate)
 end
 
 function translocate()
