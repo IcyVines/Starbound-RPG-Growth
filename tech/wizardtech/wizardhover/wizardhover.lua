@@ -26,9 +26,12 @@ function update(args)
   if action == "wizardhover" and status.overConsumeResource("energy", energyUsagePerSecond * args.dt) and not status.statPositive("activeMovementAbilities") then
     animator.setAnimationState("hover", "on")
 
+    local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
+    local maxSpeed = math.sqrt(agility*18.0)+5
     local velocity = vec2.sub(tech.aimPosition(),mcontroller.position())
+    velocity = vec2.mag(velocity) > maxSpeed and vec2.withAngle(vec2.angle(velocity), maxSpeed) or velocity
+    velocity = {velocity[1],velocity[2]/2}
     local hoverControlForce = config.getParameter("hoverControlForce")
-
     mcontroller.controlApproachVelocity(velocity, hoverControlForce)
 
     if not self.active then
