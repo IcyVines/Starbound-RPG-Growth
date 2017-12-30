@@ -285,6 +285,7 @@ function update(dt)
       end
   end
 
+  --Rogue Siphon
   self.dnotifications, self.damageGivenUpdate = status.inflictedHitsSince(self.damageGivenUpdate)
   if self.dnotifications then
     --sb.logInfo("Damage Taken!!!")
@@ -296,6 +297,7 @@ function update(dt)
       end
     end
   end
+
   checkLevelUp()
 
 end

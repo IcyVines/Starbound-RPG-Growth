@@ -395,6 +395,12 @@ function removeLayouts()
   widget.setVisible("affinitylayout",false)
   widget.setVisible("affinitylockedlayout",false)
   widget.setVisible("infolayout",false)
+  widget.setVisible("masterylayout",false)
+  widget.setVisible("masterylockedlayout",false)
+  widget.setVisible("professionlayout",false)
+  widget.setVisible("professionlockedlayout",false)
+  widget.setVisible("specializationlayout",false)
+  widget.setVisible("specializationlockedlayout",false)
 end
 
 function changeToOverview()
