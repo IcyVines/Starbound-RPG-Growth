@@ -40,6 +40,10 @@ function teleport()
   if discId and world.entityExists(discId) then
     local teleportTarget = world.callScriptedEntity(discId, "teleportPosition", mcontroller.collisionPoly())
     if teleportTarget then
+	  local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
+      local distance = world.magnitude(teleportTarget, mcontroller.position())
+      local costPercent = -(distance-agility*2.0+20.0)/100.0
+      status.modifyResourcePercentage("energy", costPercent)
       mcontroller.setPosition(teleportTarget)
     end
     world.callScriptedEntity(status.statusProperty("translocatorDiscId"), "kill")

@@ -15,16 +15,17 @@ function init()
   self.vanishTime = config.getParameter("vanishTime", 3)
   self.vanished = false
 
-  Bind.create("h", assassinate)
+  Bind.create("g", assassinate)
 end
 
 function assassinate()
-  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and status.overConsumeResource("energy", self.cost) then
-      self.vanishTimer = self.vanishTime
-      self.vanished = true
-      status.addEphemeralEffect("invisible", math.huge)
-      tech.setToolUsageSuppressed(true)
-      status.setPersistentEffects("ninjaassassinate", {
+  local isValidWorld = world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost" or world.type() == "unknown"
+  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and isValidWorld and status.resource("energy") > 0 then--status.overConsumeResource("energy", self.cost) then
+    self.vanishTimer = self.vanishTime
+    self.vanished = true
+    status.addEphemeralEffect("invisible", math.huge)
+    tech.setToolUsageSuppressed(true)
+    status.setPersistentEffects("ninjaassassinate", {
         {stat = "invulnerable", amount = 1},
         {stat = "lavaImmunity", amount = 1},
         {stat = "poisonStatusImmunity", amount = 1},
