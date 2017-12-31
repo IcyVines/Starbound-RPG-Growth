@@ -19,8 +19,7 @@ function init()
 end
 
 function assassinate()
-  local isValidWorld = world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost" or world.type() == "unknown"
-  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and isValidWorld and status.resource("energy") > 0 then--status.overConsumeResource("energy", self.cost) then
+  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and status.resource("energy") > 0 then--status.overConsumeResource("energy", self.cost) then
     self.vanishTimer = self.vanishTime
     self.vanished = true
     status.addEphemeralEffect("invisible", math.huge)

@@ -39,12 +39,15 @@ function teleport()
   local discId = status.statusProperty("translocatorDiscId")
   if discId and world.entityExists(discId) then
     local teleportTarget = world.callScriptedEntity(discId, "teleportPosition", mcontroller.collisionPoly())
+    local isNotMissionWorld = world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost" or world.type() == "unknown"
+    local notThroughWalls = not world.lineTileCollision(teleportTarget, mcontroller.position())
+    teleportTarget = (isNotMissionWorld or notThroughWalls) and teleportTarget or nil
     if teleportTarget then
-	  local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
+      local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
       local distance = world.magnitude(teleportTarget, mcontroller.position())
       local costPercent = -(1.06^(distance-agility)+20.0)/100.0
       status.modifyResourcePercentage("energy", costPercent)
-	  status.overConsumeResource("energy", 1)
+      status.overConsumeResource("energy", 1)
       mcontroller.setPosition(teleportTarget)
     end
     world.callScriptedEntity(status.statusProperty("translocatorDiscId"), "kill")
