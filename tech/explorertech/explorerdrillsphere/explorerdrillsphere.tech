@@ -4,7 +4,7 @@
 
   "rarity" : "Rare",
   "icon" : "/tech/explorertech/explorerdrillsphere/explorerdrillsphereicon.png",
-  "description" : "Transformation Cost: 25e. Active Cost: 50eps.",
+  "description" : "Transformation Cost: 25e. Active Cost: 5eps.",
   "shortDescription" : "Drill Sphere",
   "chipCost" : 0,
 

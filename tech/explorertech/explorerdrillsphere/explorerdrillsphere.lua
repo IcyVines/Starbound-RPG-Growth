@@ -114,7 +114,7 @@ function update(args)
         -- apply a gravitation like force in the ground direction, while moving in the controlled direction
         -- Note: this ground force causes weird collision when moving up slopes, result is you move faster up slopes
         local groundAngle = self.headingAngle - (math.pi / 2)
-        mcontroller.controlApproachVelocity(vec2.withAngle(groundAngle, self.ballSpeed), 3800)
+        mcontroller.controlApproachVelocity(vec2.withAngle(groundAngle, self.ballSpeed), 600)
 
         local moveDirection = vec2.rotate({moveX, 0}, self.headingAngle)
         mcontroller.controlApproachVelocityAlongAngle(math.atan(moveDirection[2], moveDirection[1]), self.ballSpeed, 2000)
