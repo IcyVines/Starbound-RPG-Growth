@@ -17,10 +17,10 @@ end
 function translocate()
   --sb.logInfo("Cooldown: " .. tostring(self.dashCooldownTimer))
   local isValidWorld = world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost" or world.type() == "unknown"
-  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and isValidWorld and status.resource("energy") > 0 then--status.overConsumeResource("energy", self.cost) then
+  if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and isValidWorld and status.overConsumeResource("energy", 1) then
     local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
     local distance = world.magnitude(tech.aimPosition(), mcontroller.position())
-    local costPercent = -(distance-agility*2.0+20.0)/100.0
+    local costPercent = -(1.06^(distance-agility)+20.0)/100.0
     status.modifyResourcePercentage("energy", costPercent)
     local projectileId = world.spawnProjectile(
         "invtransdisc",
