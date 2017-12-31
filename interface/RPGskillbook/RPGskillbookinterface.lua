@@ -63,7 +63,6 @@ function init()
     }
     --initiating possible Level Change (thus, level currency should not be used in another script!!!)
     updateLevel()
-    sb.logInfo(player.worldId())
 end
 
 function dismissed()

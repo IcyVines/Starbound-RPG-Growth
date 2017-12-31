@@ -18,7 +18,8 @@ end
 
 function update(args)
   local action = input(args)
-  local energyUsagePerSecond = config.getParameter("energyUsagePerSecond")
+  local agility = world.entityCurrency(entity.id(), "agilitypoint")
+  local energyUsagePerSecond = config.getParameter("energyUsagePerSecond") - ( agility^2 / 200.0 )
 
   if action == "explorerglide" and status.overConsumeResource("energy", energyUsagePerSecond * args.dt) and not status.statPositive("activeMovementAbilities") then
     animator.setAnimationState("hover", "on")
@@ -26,7 +27,7 @@ function update(args)
     --local velocity = vec2.sub(tech.aimPosition(),mcontroller.position())
     local hoverControlForce = config.getParameter("hoverControlForce")
 
-    mcontroller.controlApproachYVelocity(-1, hoverControlForce)
+    mcontroller.controlApproachYVelocity(-2, hoverControlForce)
 
     if not self.active then
       animator.playSound("activate")
