@@ -50,12 +50,12 @@ function update(args)
 
   updateDrill(args)
 
-  if not self.specialLast and args.moves["special1"] then
+  if not self.specialLast and args.moves["special3"] then
     attemptActivation()
   end
-  self.specialLast = args.moves["special1"]
+  self.specialLast = args.moves["special3"]
 
-  if not args.moves["special1"] then
+  if not args.moves["special3"] then
     self.forceTimer = nil
   end
 
@@ -114,7 +114,7 @@ function update(args)
         -- apply a gravitation like force in the ground direction, while moving in the controlled direction
         -- Note: this ground force causes weird collision when moving up slopes, result is you move faster up slopes
         local groundAngle = self.headingAngle - (math.pi / 2)
-        mcontroller.controlApproachVelocity(vec2.withAngle(groundAngle, self.ballSpeed), 3800)
+        mcontroller.controlApproachVelocity(vec2.withAngle(groundAngle, self.ballSpeed), 600)
 
         local moveDirection = vec2.rotate({moveX, 0}, self.headingAngle)
         mcontroller.controlApproachVelocityAlongAngle(math.atan(moveDirection[2], moveDirection[1]), self.ballSpeed, 2000)
@@ -238,7 +238,7 @@ function drill()
 end
 
 function input(args)
-  if args.moves["special3"] then
+  if args.moves["special1"] then
     return "explorerdrill"
   else
     return nil

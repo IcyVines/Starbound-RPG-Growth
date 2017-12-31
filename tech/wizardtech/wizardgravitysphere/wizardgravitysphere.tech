@@ -5,7 +5,7 @@
   "scripts" : ["wizardgravitysphere.lua"],
   "animator" : "wizardgravitysphere.animation",
 
-  "description" : "Transformation Cost: 50e. Regen: 1%hps.",
+  "description" : "Transformation Cost: 30e. Regen: 1%hps. Zone Cost: 15eps.",
   "shortDescription" : "Gravity Sphere",
   "rarity" : "Uncommon",
   "icon" : "/tech/wizardtech/wizardgravitysphere/wizardgravitysphereicon.png",

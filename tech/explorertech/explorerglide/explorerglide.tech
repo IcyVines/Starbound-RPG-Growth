@@ -13,6 +13,6 @@
   "animator" : "explorerglide.animation",
 
   "hoverControlForce" : 400.0,
-  "energyUsagePerSecond" : 5.0,
+  "energyUsagePerSecond" : 20,
   "multiJumpCount" : 1
 }

@@ -43,7 +43,8 @@ function update(args)
   updateJumpModifier()
 
   local action = input(args)
-  local energyUsagePerSecond = config.getParameter("energyUsagePerSecond")
+  local agility = world.entityCurrency(entity.id(), "agilitypoint")
+  local energyUsagePerSecond = config.getParameter("energyUsagePerSecond") - ( agility^2 / 200.0 )
   local lrInput
   if args.moves["left"] and not args.moves["right"] then
     lrInput = "left"
@@ -57,7 +58,7 @@ function update(args)
     --local velocity = vec2.sub(tech.aimPosition(),mcontroller.position())
     local hoverControlForce = config.getParameter("hoverControlForce")
 
-    mcontroller.controlApproachYVelocity(-1, hoverControlForce)
+    mcontroller.controlApproachYVelocity(-2, hoverControlForce)
 
     if not self.active then
       animator.playSound("activate")
