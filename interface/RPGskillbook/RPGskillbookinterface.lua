@@ -660,7 +660,7 @@ function getTechText(num)
   elseif classType == 6 then
     return num == 1 and "An upgrade to Double Jump, hold [W] to glide forward, slowly losing altitude. You can use your double jump while gliding." 
     or (num == 2 and "Press [G] (Bind [G] in your Controls) to switch between Enhanced Airdash and Enhanced Sprint. Enhanced Airdash travels further than Air Dash, and has a shorter cooldown. Enhanced Sprint is faster and costs less energy than Sprint." 
-      or (num == 3 and "Press [F] to transform into a fast Spike Sphere that can jump. Press [H] (Bind [H] in your Controls) to drill down at incredible speed, draining your energy. You can drill while transformed." 
+      or (num == 3 and "Press [H] (Bind [H] in your Controls) to transform into a fast Spike Sphere that can jump. Press [F] to drill down at incredible speed, draining your energy. You can drill whether or not you are transformed." 
         or "An upgrade to Glide. Gain another three midair jumps and a wall jump. Midair jumps are 85% as effective. You cling to walls slightly longer than the normal Wall Jump and slide down slower as well. "))
   end
 end

@@ -50,12 +50,12 @@ function update(args)
 
   updateDrill(args)
 
-  if not self.specialLast and args.moves["special1"] then
+  if not self.specialLast and args.moves["special3"] then
     attemptActivation()
   end
-  self.specialLast = args.moves["special1"]
+  self.specialLast = args.moves["special3"]
 
-  if not args.moves["special1"] then
+  if not args.moves["special3"] then
     self.forceTimer = nil
   end
 
@@ -238,7 +238,7 @@ function drill()
 end
 
 function input(args)
-  if args.moves["special3"] then
+  if args.moves["special1"] then
     return "explorerdrill"
   else
     return nil
