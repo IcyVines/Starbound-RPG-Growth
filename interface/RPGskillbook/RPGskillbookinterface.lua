@@ -84,17 +84,31 @@ function update(dt)
     elseif widget.getChecked("bookTabs.3") then
       removeLayouts()
       changeToAffinities()
+    elseif widget.getChecked("bookTabs.5") then
+      changeToSpecialization()
+    elseif widget.getChecked("bookTabs.6") then
+      changeToProfession()
+    elseif widget.getChecked("bookTabs.7") then
+      changeToMastery()
     end
   end
 
-  if widget.getChecked("bookTabs.2") and player.currency("classtype") ~= self.class then
+  if player.currency("classtype") ~= self.class then
     self.class = player.currency("classtype")
-    changeToClasses()
+    if widget.getChecked("bookTabs.2") then
+      changeToClasses()
+    elseif widget.getChecked("bookTabs.0") then
+      changeToOverview()
+    end
   end
 
-  if widget.getChecked("bookTabs.3") and player.currency("affinitytype") ~= self.affinity then
+  if player.currency("affinitytype") ~= self.affinity then
     self.affinity = player.currency("affinitytype")
-    changeToAffinities()
+    if widget.getChecked("bookTabs.3") then
+      changeToAffinities()
+    elseif widget.getChecked("bookTabs.0") then
+      changeToOverview()
+    end
   end
 
   updateStats()
@@ -118,15 +132,14 @@ function updateBookTab()
     changeToAffinities()
   elseif widget.getChecked("bookTabs.4") then
     changeToInfo()
+  elseif widget.getChecked("bookTabs.5") then
+    changeToSpecialization()
+  elseif widget.getChecked("bookTabs.6") then
+    changeToProfession()
+  elseif widget.getChecked("bookTabs.7") then
+    changeToMastery()
   end
 end
-
---[[function takeInputEvents()
-  local clicks = self.clickEvents
-  self.clickEvents = {}
-  return clicks
-end
---]]
 
 function updateLevel()
   self.xp = player.currency("experienceorb")
@@ -176,32 +189,6 @@ function addStatPoints(newLevel, oldLevel)
     oldLevel = oldLevel + 1
   end
 end
-
---[[function updateLevel()
-  self.xp = player.currency("experienceorb")
-  if player.currency("currentlevel") == 0 then
-    self.level = 1
-    player.addCurrency("currentlevel",1)
-    player.addCurrency("experienceorb",100 - player.currency("experienceorb"))
-    self.xp = player.currency("experienceorb")
-    startingStats()
-  elseif player.currency("experienceorb") < 100 then
-    player.addCurrency("experienceorb",100 - player.currency("experienceorb"))
-    self.xp = player.currency("experienceorb")
-  else
-    self.newLevel = math.floor(math.sqrt(self.xp/100))
-    while self.newLevel > self.level do
-      player.addCurrency("currentlevel", 1)
-      player.addCurrency("statpoint", math.floor(player.currency("currentlevel")/20)+1)
-      self.level = self.level+1
-    end
-  end
-  widget.setText("statslayout.statpointsleft",player.currency("statpoint"))
-  updateStats()
-  self.toNext = 2*self.level*100+100
-  updateOverview(self.toNext)
-  updateBottomBar(self.toNext)
-end]]
 
 function updateBottomBar(toNext)
   widget.setText("levelLabel", "Level " .. tostring(self.level))
@@ -398,6 +385,7 @@ function removeLayouts()
   widget.setVisible("masterylayout",false)
   widget.setVisible("masterylockedlayout",false)
   widget.setVisible("professionlayout",false)
+  widget.setVisible("professionslayout",false)
   widget.setVisible("professionlockedlayout",false)
   widget.setVisible("specializationlayout",false)
   widget.setVisible("specializationlockedlayout",false)
@@ -452,6 +440,58 @@ function changeToInfo()
     widget.setText("tabLabel", "Info Tab")
     widget.setVisible("infolayout", true)
     updateInfo()
+end
+
+function changeToSpecialization()
+    widget.setText("tabLabel", "Specialization Tab")
+    if self.level < 40 then
+      widget.setVisible("specializationlayout", false)
+      widget.setVisible("specializationlockedlayout", true)
+    else
+      updateSpecializationTab()
+      widget.setVisible("specializationlockedlayout", false)
+      widget.setVisible("specializationlayout", true)
+    end
+end
+
+function changeToProfession()
+    widget.setText("tabLabel", "Profession Tab")
+    if self.level < 10 then
+      widget.setVisible("professionlayout", false)
+      widget.setVisible("professionlockedlayout", true)
+    else
+      widget.setVisible("professionlockedlayout", false)
+      if player.currency("proftype") == 0 then
+        widget.setVisible("professionlayout", false)
+        widget.setVisible("professionslayout", true)
+      else
+        updateProfessionTab()
+        widget.setVisible("professionslayout", false)
+        widget.setVisible("professionlayout", true)
+      end
+    end
+end
+
+function changeToMastery()
+    widget.setText("tabLabel", "Mastery Tab")
+    if self.level < 50 then
+      widget.setVisible("masterylayout", false)
+      widget.setVisible("masterylockedlayout", true)
+    else
+      updateMasteryTab()
+      widget.setVisible("masterylockedlayout", false)
+      widget.setVisible("masterylayout", true)
+    end
+    
+end
+
+function updateProfessionTab()
+end
+
+function updateSpecializationTab()
+end
+
+function updateMasteryTab()
 end
 
 function updateInfo()
@@ -1017,9 +1057,9 @@ function areYouSure(name)
   widget.setVisible(name2..".yesbutton", true)
   widget.setVisible(name2..".nobutton"..name, true)
   if self.level == 50 then
-    widget.setText(name2..".areyousure", "Are you sure you want to reset? This will reset your Experience to 100, Level to 1, and Stat Points to 0, as well as remove your Class and Affinity.")
+    widget.setText(name2..".areyousure", "Are you sure you want to reset? This will reset your Experience, Level, and Stat Points, as well as remove your Class, Affinity, Profession, and Specialization.")
   else
-    widget.setText(name2..".areyousure", "Are you sure you want to reset? This will reset your Experience to 100, Level to 1, and Stat Points to 0, as well as remove your Class, Affinity, and unlocked Class Techs.")
+    widget.setText(name2..".areyousure", "Are you sure you want to reset? This will reset your Experience, Level, and Stat Points, as well as remove your Class, Affinity, Profession, Specialization, and unlocked Skills.")
   end
   widget.setVisible(name2..".areyousure", true)
   --widget.setVisible(name2..".hardcoretext", false)
@@ -1060,6 +1100,9 @@ function resetSkillBook()
   player.consumeCurrency("dexteritypoint",player.currency("dexteritypoint"))
   player.consumeCurrency("classtype",player.currency("classtype"))
   player.consumeCurrency("affinitytype",player.currency("affinitytype"))
+  player.consumeCurrency("proftype",player.currency("proftype"))
+  player.consumeCurrency("spectype",player.currency("spectype"))
+  player.consumeCurrency("masterypoint",player.currency("masterypoint"))
   if self.level ~= 50 then
     removeTechs()
   end

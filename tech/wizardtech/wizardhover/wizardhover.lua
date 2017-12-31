@@ -27,10 +27,11 @@ function update(args)
     animator.setAnimationState("hover", "on")
 
     local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
-    local maxSpeed = math.sqrt(agility*18.0)+5
-    local velocity = vec2.sub(tech.aimPosition(),mcontroller.position())
+    local maxSpeed = agility^2 / 180.0 + 25
+    local velocity = world.distance(tech.aimPosition(),mcontroller.position())
+    --local direction = mcontroller.facingDirection()
     velocity = vec2.mag(velocity) > maxSpeed and vec2.withAngle(vec2.angle(velocity), maxSpeed) or velocity
-    velocity = {velocity[1],velocity[2]/2}
+    velocity = {velocity[1],velocity[2] / 1.5}
     local hoverControlForce = config.getParameter("hoverControlForce")
     mcontroller.controlApproachVelocity(velocity, hoverControlForce)
 

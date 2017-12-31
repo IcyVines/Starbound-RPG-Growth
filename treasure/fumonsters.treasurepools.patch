@@ -982,34 +982,6 @@
   [
     {
       "op": "test",
-      "path": "/furobotTreasure/0/1/fill",
-      "inverse": false
-    }, 
-    {
-      "op": "add",
-      "path": "/furobotTreasure/0/1/fill/-",
-      "value": {
-      "pool": "experienceorbpool"
-      } 
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/furobotTreasure/0/1/fill",
-      "inverse": true
-    }, 
-    {
-      "op": "add",
-      "path": "/furobotTreasure/0/1/fill",
-      "value": [{
-      "pool": "experienceorbpool"
-      }]
-    }
-  ],
-  [
-    {
-      "op": "test",
       "path": "/ashgolemLoot/0/1/fill",
       "inverse": false
     }, 
