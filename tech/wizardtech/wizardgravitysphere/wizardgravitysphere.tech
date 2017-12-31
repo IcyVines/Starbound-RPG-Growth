@@ -41,7 +41,8 @@
   "ballSpeed" : 8,
   "healingRate" : 1,
 
-  "energyCost" : 50,
+  "energyCost" : 30,
+  "zoneCostPerSec" : 15,
 
   "ballRadius" : 1,
   "ballFrames" : 4,

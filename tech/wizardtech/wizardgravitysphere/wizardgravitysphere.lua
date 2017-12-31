@@ -20,12 +20,14 @@ function init()
     self.platformCollisionSet = {"Block", "Dynamic", "Platform"}
   end
 
+  self.zoneCostPerSec = config.getParameter("zoneCostPerSec")
   self.healingRate = config.getParameter("healingRate")/100
   self.enableZone = false
-  Bind.create("g", 
+  Bind.create("primaryFire", 
     function()
-      self.enableZone = not self.enableZone
-    end
+      self.enableZone = true
+    end,
+	true
   )
 
   self.damageListener = damageListener("damageTaken", 
@@ -61,11 +63,13 @@ function update(args)
   if self.active then
 
     -- Gravity Sphere Stat Effects --
-    if self.enableZone then
+    if self.enableZone and status.overConsumeResource("energy", self.zoneCostPerSec * args.dt) then
       activateZone()
     else
       deactivateZone()
     end
+	self.enableZone = false
+    
     animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
     animator.setParticleEmitterActive("healing", true)
     status.modifyResourcePercentage("health", self.healingRate * args.dt)
