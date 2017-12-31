@@ -39,8 +39,13 @@ function teleport()
   local discId = status.statusProperty("translocatorDiscId")
   if discId and world.entityExists(discId) then
     local teleportTarget = world.callScriptedEntity(discId, "teleportPosition", mcontroller.collisionPoly())
-    local isNotMissionWorld = world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost" or world.type() == "unknown"
-    local notThroughWalls = not world.lineTileCollision(teleportTarget, mcontroller.position())
+    local isNotMissionWorld = world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost" --or world.type() == "unknown"
+    local notThroughWalls = true
+    if (teleportTarget) then
+      notThroughWalls = not world.lineTileCollision(teleportTarget, mcontroller.position())
+    else
+      notThroughWalls = true
+    end
     teleportTarget = (isNotMissionWorld or notThroughWalls) and teleportTarget or nil
     if teleportTarget then
       local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
@@ -70,9 +75,11 @@ function teleport()
     twoHanded = self.itemConf.config.twoHanded
   end
 
-  if twoHanded and root.itemHasTag(heldItem, "melee") and not root.itemHasTag(heldItem, "hammer") then
-    self.dps = self.itemConf.config.primaryAbility.baseDps
-    self.damage = 2*status.stat("powerMultiplier")*self.dps
+  if twoHanded then
+    if not root.itemHasTag(heldItem, "hammer") and root.itemHasTag(heldItem, "melee") then
+      self.dps = self.itemConf.config.primaryAbility.baseDps
+      self.damage = 2*status.stat("powerMultiplier")*self.dps
+    end
   else
     self.tag = ""
     if heldItem then 

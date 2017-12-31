@@ -1,17 +1,22 @@
 {
   "projectileName" : "wizardshieldshare",
   "image" : "wizardshieldshare.png",
+  "physics" : "laser",
   "frameNumber" : 1,
   "pointLight" : false,
-  "power" : 0,
+  
   "timeToLive" : 15,
-  "bounces" : -1,
-  "damageKind" : "applystatus",
-  "damageTeam" : { "type" : "indiscriminate" },
-  "statusEffects" : [
-    "wizardshield"
-  ],
-  "scripts": ["/tech/wizardtech/wizardmagicshield/removeshield.lua"],
+  "emitters" : [],
+
   "piercing" : true,
-  "damagePoly" : [[-64, 0], [-45, 45], [0, 64], [45, 45], [64, 0], [45, -45], [0, -64], [-45, -45]]
+  "bounces" : -1,
+
+  "damageTeam" : { "type" : "friendly" },
+  "onlyHitTerrain" : true,
+  "persistentStatusEffects" : ["wizardshield"],
+  "statusEffectArea" : [[-64, 0], [-45, 45], [0, 64], [45, 45], [64, 0], [45, -45], [0, -64], [-45, -45]],
+
+  "scripts": ["/tech/wizardtech/wizardmagicshield/removeshield.lua"],
+  "damagePoly" : [[-64, 0], [-45, 45], [0, 64], [45, 45], [64, 0], [45, -45], [0, -64], [-45, -45]],
+  "renderLayer" : "Player+1"
 }

@@ -5,7 +5,7 @@
   "scripts" : ["wizardtranslocate.lua"],
   "animator" : "wizardtranslocate.animation",
 
-  "description" : "Cost: 30e. Cooldown: 2s.",
+  "description" : "Cost: 20-100% Max Energy. Cooldown: 2s.",
   "shortDescription" : "Translocate",
   "rarity" : "Rare",
   "icon" : "/tech/wizardtech/wizardtranslocate/wizardtranslocate.png",

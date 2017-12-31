@@ -640,12 +640,12 @@ function getTechText(num)
   elseif classType == 2 then
     return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity. In addition, hold left click to create a barrier that pushes enemies away, draining energy to do so." 
     or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
-      or (num == 3 and "Press [H] (Bind [H] in your Controls) to teleport to your cursor. There is a slight cooldown before you can teleport again." 
-        or "Press [F] to negate all damage for a short time. Energy does not recharge while this effect is active. You can prematurely end the effect by pressing [F] again. The cooldown shortens if so."))
+      or (num == 3 and "Press [G] (Bind [G] in your Controls) to teleport to your cursor (if possible). There is a slight cooldown before you can teleport again. Energy Cost depends on Distance and Agility. You cannot teleport through walls in Missions or your ship." 
+        or "Press [F] to toggle a magical shield that provides invulnerability to you and nearby allies. Drains energy while active, and is toggled off when no energy remains."))
   elseif classType == 3 then
     return num == 1 and "Press [Space] while midair to burst forward. For a short time after jumping, you are invulnerable to damage. As long as you remain in the air with energy remaining, you are invulnerable to fall damage. You may do this twice while midair." 
     or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while active. The invulnerability ends when you run out of energy or press [F] while transformed." 
-    or (num == 3 and "Press [G] (Bind [G] in your Controls) to vanish. After 2 seconds, you appear at your cursor. If holding a sharp weapon, slash where you appear. While the cooldown is active, lose 20% Physical Resistance. Energy Cost depends on distance and Agility." 
+    or (num == 3 and "Press [G] (Bind [G] in your Controls) to vanish. After 2 seconds, you appear at your cursor (if possible). If holding a sharp weapon, slash where you appear. During the cooldown, lose 20% Physical Resistance. Energy Cost depends on Distance and Agility." 
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
     return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food and all your energy. There is a cooldown of 90 seconds before you can do this again. While the cooldown is active, you gain slight health regen, but your overall speed is decreased." 
@@ -1363,36 +1363,34 @@ end
 function addAffinityStats()
   if player.currency("affinitytype") == 1 then
       --Flame
-    player.addCurrency("vigorpoint", 3)
+    addAffintyStatsHelper("vigorpoint", 3)
   elseif player.currency("affinitytype") == 2 then
     --Venom
-    player.addCurrency("vigorpoint", 1)
-    player.addCurrency("dexteritypoint", 1)
-    player.addCurrency("agilitypoint", 1)
+    addAffintyStatsHelper("vigorpoint", 1)
+    addAffintyStatsHelper("dexteritypoint", 1)
+    addAffintyStatsHelper("agilitypoint", 1)
   elseif player.currency("affinitytype") == 3 then
     --Frost
-    player.addCurrency("vitalitypoint", 3)
+    addAffintyStatsHelper("vitalitypoint", 3)
   elseif player.currency("affinitytype") == 4 then
     --Shock
-    player.addCurrency("agilitypoint", 3)
-  elseif player.currency("affinitytype") == 5 then
-    --Infernal
-    player.addCurrency("strengthpoint", 5)
-  elseif player.currency("affinitytype") == 6 then
-    --Toxic
-    player.addCurrency("dexteritypoint", 5)
-  elseif player.currency("affinitytype") == 7 then
-    --Cryo
-    player.addCurrency("endurancepoint", 5)
-  elseif player.currency("affinitytype") == 8 then
-    --Arc
-    player.addCurrency("intelligencepoint", 5)
+    addAffintyStatsHelper("agilitypoint", 3)
   end
   updateStats()
   uncheckAffinityIcons("default")
   changeAffinityDescription("default")
 end
 
+function addAffintyStatsHelper(statName, amount)
+  local current = 50 - player.currency(statName)
+  if current < amount then
+    --Adds Stat Points if Bonus Stat is near maxed!
+    player.addCurrency("statpoint", amount - current)
+  end
+  player.addCurrency(statName, amount)
+end
+
+--Deprecated
 function consumeAffinityStats()
   --[[if player.currency("affinitytype") == 1 then
       --Flame

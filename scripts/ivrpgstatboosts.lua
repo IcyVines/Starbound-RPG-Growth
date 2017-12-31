@@ -348,7 +348,14 @@ end
 function updateClassEffects(classType)
   local heldItem = world.entityHandItem(self.id, "primary")
   local heldItem2 = world.entityHandItem(self.id, "alt")
+  local twoHanded = false
+  if heldItem then
+    self.itemConf = root.itemConfig(heldItem)
+    twoHanded = self.itemConf.config.twoHanded
+  end
+  
   local hardcore = status.statPositive("ivrpghardcore")
+  local weaponsDisabled = false
   if classType == 0 then
     --No Class
     status.clearPersistentEffects("ivrpgclassboosts")
@@ -407,6 +414,22 @@ function updateClassEffects(classType)
         speedModifier = 0.9,
         airJumpModifier = 0.7
       })
+
+      --Weapon Checks
+      if twoHanded then
+        if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "melee") then weaponsDisabled = true end
+      else
+        if heldItem and root.itemHasTag(heldItem, "weapon") then
+          if not root.itemHasTag(heldItem, "melee") or (heldItem2 and root.itemHasTag(heldItem2, "weapon")) then
+            weaponsDisabled = true
+          end
+        elseif heldItem2 and root.itemHasTag(heldItem2, "weapon") then
+          if not root.itemHasTag(heldItem2, "melee") then
+            weaponsDisabled = true
+          end
+        end
+      end
+
     end
 
   elseif classType == 2 then
@@ -473,6 +496,23 @@ function updateClassEffects(classType)
         speedModifier = 0.8,
         airJumpModifier = 0.8
       })
+
+      --Weapon Checks
+      if twoHanded then
+        if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "staff") then weaponsDisabled = true end
+      else
+        if heldItem and root.itemHasTag(heldItem, "weapon") then
+          if not root.itemHasTag(heldItem, "wand") then
+            weaponsDisabled = true
+          end
+        end
+        if heldItem2 and root.itemHasTag(heldItem2, "weapon") then
+          if not root.itemHasTag(heldItem2, "wand") then
+            weaponsDisabled = true
+          end
+        end
+      end
+
     end
   elseif classType == 3 then
     --Ninja
@@ -523,6 +563,23 @@ function updateClassEffects(classType)
         {
           {stat = "maxHealth", effectiveMultiplier = 0.5}
         })
+
+      --Weapon Checks
+      if twoHanded then
+        if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "bow") then weaponsDisabled = true end
+      else
+        if heldItem and root.itemHasTag(heldItem, "weapon") then
+          if not root.itemHasTag(heldItem, "melee") then
+            weaponsDisabled = true
+          end
+        end
+        if heldItem2 and root.itemHasTag(heldItem2, "weapon") then
+          if not root.itemHasTag(heldItem2, "melee") then
+            weaponsDisabled = true
+          end
+        end
+      end
+
     end
   elseif classType == 4 then
     --Soldier
@@ -564,6 +621,22 @@ function updateClassEffects(classType)
       mcontroller.controlModifiers({
         airJumpModifier = 0.9
       })
+
+      --Weapon Checks
+      if twoHanded then
+        if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "ranged") then weaponsDisabled = true end
+      else
+        if heldItem and root.itemHasTag(heldItem, "weapon") then
+          if not root.itemHasTag(heldItem, "ranged") or (heldItem2 and root.itemHasTag(heldItem2, "weapon")) then
+            weaponsDisabled = true
+          end
+        elseif heldItem2 and root.itemHasTag(heldItem2, "weapon") then
+          if not root.itemHasTag(heldItem2, "ranged") then
+            weaponsDisabled = true
+          end
+        end
+      end
+
     end
   elseif classType == 5 then
     --Rogue
@@ -594,6 +667,13 @@ function updateClassEffects(classType)
           {stat = "maxHealth", effectiveMultiplier = 0.8},
           {stat = "foodDelta", amount = -0.002}
         })
+
+      --Weapon Checks
+      if twoHanded and root.itemHasTag(heldItem, "weapon") then
+        weaponsDisabled = true
+      elseif (heldItem and root.itemHasTag(heldItem, "wand")) or (heldItem2 and root.itemHasTag(heldItem2, "wand")) then
+        weaponsDisabled = true
+      end
     end
   elseif classType == 6 then
     --Explorer
@@ -629,7 +709,16 @@ function updateClassEffects(classType)
           {stat = "powerMultiplier", effectiveMultiplier = 0.85}
         })
     end
-  end 
+  end
+
+  if weaponsDisabled then
+    status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+      {stat = "powerMultiplier", effectiveMultiplier = 0}
+    })
+  else
+    status.clearPersistentEffects("ivrpghardcoreweaponsdisabled")
+  end
+
 end
 
 function holdingWeaponsCheck(heldItem, heldItem2, dualWield)

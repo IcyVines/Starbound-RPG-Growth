@@ -5,7 +5,7 @@
   "scripts" : ["ninjaassassinate.lua"],
   "animator" : "ninjaassassinate.animation",
 
-  "description" : "Cost: 50e. Vanish Time: 2s. Cooldown: 3s.",
+  "description" : "Cost: 20-100% Max Energy. Vanish Time: 2s. Cooldown: 3s.",
   "shortDescription" : "Shadow Step",
   "rarity" : "Legendary",
   "icon" : "/tech/ninjatech/ninjaassassinate/ninjaassassinate.png",

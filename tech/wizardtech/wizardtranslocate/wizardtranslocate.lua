@@ -7,7 +7,7 @@ function init()
   self.cost = config.getParameter("cost")
   self.dashMaxDistance = config.getParameter("dashDistance")
   self.dashCooldown = config.getParameter("dashCooldown")
-  sb.logInfo("ConfigCooldown: " .. tostring(self.dashCooldown))
+  --sb.logInfo("ConfigCooldown: " .. tostring(self.dashCooldown))
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=B880FCFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
 
@@ -16,7 +16,7 @@ end
 
 function translocate()
   --sb.logInfo("Cooldown: " .. tostring(self.dashCooldownTimer))
-  local isNotMissionWorld = world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost" or world.type() == "unknown"
+  local isNotMissionWorld = world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost" --or world.type() == "unknown"
   local notThroughWalls = not world.lineTileCollision(tech.aimPosition(), mcontroller.position())
   if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and (isNotMissionWorld or notThroughWalls) and status.overConsumeResource("energy", 1) then
     local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1

@@ -1,4 +1,5 @@
 function init()
+  if player.currency("experienceorb") < 202500 then return end
   self.statType = {"strength", "dexterity", "endurance", "intelligence"}
   self.statName = "agilitypoint" --default, set to agility just in case
   self.affinity = player.currency("affinitytype")

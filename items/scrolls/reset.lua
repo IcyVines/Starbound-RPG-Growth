@@ -68,19 +68,27 @@ function removeTechs()
     player.makeTechUnavailable("knightarmorsphere")
   elseif self.class == 5 then
     player.makeTechUnavailable("roguetoxicaura")
+    player.makeTechUnavailable("roguedeadlystance")
+    player.makeTechUnavailable("rogueescape")
+    player.makeTechUnavailable("roguetoxicsphere")
+    --Deprecated
     player.makeTechUnavailable("roguecloudjump")
     player.makeTechUnavailable("roguetoxiccapsule")
     player.makeTechUnavailable("roguepoisondash")
   elseif self.class == 4 then
     player.makeTechUnavailable("soldiertanksphere")
-    player.makeTechUnavailable("soldierenergypack")
+    player.makeTechUnavailable("soldierenergize")
     player.makeTechUnavailable("soldiermarksman")
     player.makeTechUnavailable("soldiermre")
+    --Deprecated
+    player.makeTechUnavailable("soldierenergypack")
   elseif self.class == 6 then
     player.makeTechUnavailable("explorerenhancedjump")
     player.makeTechUnavailable("explorerenhancedmovement")
-    player.makeTechUnavailable("explorerdrill")
+    player.makeTechUnavailable("explorerdrillsphere")
     player.makeTechUnavailable("explorerglide")
+    --Deprecated
+    player.makeTechUnavailable("explorerdrill")
   end
 end
 

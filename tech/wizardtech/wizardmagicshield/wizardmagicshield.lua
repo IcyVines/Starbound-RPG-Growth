@@ -26,7 +26,7 @@ function magicShield()
     --if self.cooldownTimer <= 0 and status.overConsumeResource("energy", self.cost) then
     if not status.resourceLocked("energy") then
       self.active = true
-      --activateAura()
+      activateAura()
       --status.addEphemeralEffect("wizardshield", self.duration)
       --self.cooldownTimer = self.cooldown + self.duration
     end
@@ -88,7 +88,7 @@ end
 function deactivate()
   self.active = false
   status.removeEphemeralEffect("wizardshield")
-  --deactivateAura()
+  deactivateAura()
 end
 
 function deactivateAura()
