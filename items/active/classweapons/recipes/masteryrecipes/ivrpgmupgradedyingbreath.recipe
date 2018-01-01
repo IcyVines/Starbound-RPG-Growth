@@ -1,7 +1,0 @@
-{
-  "input" : [
-    { "item" : "masterypoint", "count" : 5 }
-  ],
-	"output" : { "item" : "ivrpgupgradedyingbreath", "count" : 1 },
-	"groups" : [ "ivrpgmasterystation", "upgrades", "all" ]
-}
