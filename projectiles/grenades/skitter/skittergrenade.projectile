@@ -1,0 +1,21 @@
+{
+  "projectileName" : "skittergrenade",
+  "physics" : "grenade",
+  "bounces" : -1,
+  "timeToLive" : 10,
+  "damageKindImage" : "icon.png",
+  "image" : "skittergrenadeair.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "scripts" : ["skittergrenade.lua"],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/grenades/skitter/skitterexplosion.config"
+    }
+  ],
+  "power" : 0,
+  "damageType" : "NoDamage",
+  "piercing" : true,
+  "damageKind" : "default"
+}

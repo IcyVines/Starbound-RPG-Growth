@@ -1,0 +1,29 @@
+{
+  "itemName" : "stungrenade",
+  "rarity" : "Rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "stungrenade.png",
+  "image" : "stungrenade.png",
+  "shortdescription" : "Stun Grenade",
+  "description" : "What doesn't kill you makes you vulnerable.",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "stungrenade",
+  "projectileConfig" : {
+    "speed" : 50,
+    "power" : 1,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

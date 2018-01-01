@@ -1,0 +1,29 @@
+{
+  "itemName" : "skittergrenade",
+  "rarity" : "Rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "skittergrenade.png",
+  "image" : "skittergrenade.png",
+  "shortdescription" : "Skitter",
+  "description" : "Warning! Releases disorienting and toxic gas.",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "skittergrenade",
+  "projectileConfig" : {
+    "speed" : 50,
+    "power" : 40,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

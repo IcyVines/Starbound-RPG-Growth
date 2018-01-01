@@ -1,0 +1,21 @@
+{
+  "projectileName" : "shockcharge",
+  "physics" : "stickygrenade",
+  "bounces" : 1,
+  "timeToLive" : 5,
+  "damageKindImage" : "icon.png",
+  "image" : "shockchargeair.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "scripts" : ["shockcharge.lua"],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/grenades/shock/shockexplosion.config"
+    }
+  ],
+  "power" : 0,
+  "damageType" : "NoDamage",
+  "piercing" : true,
+  "damageKind" : "default"
+}

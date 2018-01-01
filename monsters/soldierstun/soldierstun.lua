@@ -14,7 +14,10 @@ function update(dt)
       speedModifier = 0.0,
       airJumpModifier = 0.0
     })
-  
+  mcontroller.setXVelocity(0)
+  mcontroller.controlParameters({
+      gravityEnabled = true
+    })
 end
 
 function uninit()

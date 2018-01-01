@@ -1,0 +1,29 @@
+{
+  "itemName" : "shockcharge",
+  "rarity" : "Rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "shockcharge.png",
+  "image" : "shockcharge.png",
+  "shortdescription" : "Shock Charge",
+  "description" : "Shocks your enemies... for a price.",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "shockcharge",
+  "projectileConfig" : {
+    "speed" : 50,
+    "power" : 20,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}
