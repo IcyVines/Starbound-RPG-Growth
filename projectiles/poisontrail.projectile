@@ -4,7 +4,7 @@
   "physics" : "gas",
   "frameNumber" : 3,
   "animationCycle" : 0.35,
-  "lightColor" : [50, 160, 50],
+  "lightColor" : [25, 80, 25],
   "power" : 2,
   "speed" : 0,
   "timeToLive" : 2.0,

@@ -6,7 +6,8 @@
   "damageKindImage" : "icon.png",
   "image" : "shockchargeair.png",
   "animationCycle" : 0.5,
-  "frameNumber" : 1,
+  "frameNumber" : 7,
+  "lightColor" : [77, 77, 0],
   "scripts" : ["shockcharge.lua"],
   "actionOnReap" : [
     {
@@ -14,8 +15,11 @@
       "file" : "/projectiles/grenades/shock/shockexplosion.config"
     }
   ],
+  "orientationLocked" : true,
   "power" : 0,
   "damageType" : "NoDamage",
   "piercing" : true,
-  "damageKind" : "default"
+  "damageKind" : "default",
+  "persistentAudio" : "/sfx/projectiles/electricstickyspikes_loop.ogg",
+  "emitters" : [ "electricplasma" ]
 }

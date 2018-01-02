@@ -2,8 +2,8 @@
   "itemName" : "tripmine",
   "rarity" : "Rare",
   "category" : "throwableItem",
-  "inventoryIcon" : "tripmine.png",
-  "image" : "tripmine.png",
+  "inventoryIcon" : "tripmineicon.png",
+  "image" : "tripmineicon.png",
   "shortdescription" : "Tripmine",
   "description" : "Watch your step.",
 

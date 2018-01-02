@@ -1,15 +1,15 @@
 {
   "projectileName" : "tripmine",
   "physics" : "stickygrenade",
-  "bounces" : -1,
+  "bounces" : 1,
   "damageKindImage" : "icon.png",
   "pointLight" : true,
-  "lightColor" : [40, 60, 80],
+  "lightColor" : [150, 0, 0],
   "image" : "tripmine.png",
-  "animationCycle" : 0.5,
-  "orientationLocked" : true,
+  "animationCycle" : 1,
+  "orientationLocked" : false,
   "timeToLive" : 10,
-  "frameNumber" : 4,
+  "frameNumber" : 2,
   "actionOnReap" : [
     {
       "action" : "config",
