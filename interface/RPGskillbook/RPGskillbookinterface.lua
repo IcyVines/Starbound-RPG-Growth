@@ -1491,6 +1491,7 @@ end
 
 function purchaseShop()
   player.consumeCurrency("masterypoint", 5)
+  player.giveItem("ivrpgmasteryshop")
 end
 
 function refine()
