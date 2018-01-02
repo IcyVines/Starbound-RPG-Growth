@@ -29,8 +29,8 @@
   "animationCustom" : {
     "sounds" : {
       "fire" : ["/sfx/gun/shotgun2.ogg"],
-      "charge" : ["/sfx/tools/energypickaxe_idle.ogg"],
-      "charged" : ["/sfx/tools/energypickaxe_stop1.ogg"]
+      "charge" : ["/sfx/melee/charge_up7.ogg"],
+      "charged" : ["/sfx/melee/charge_full_swing2.ogg"]
     },
     "lights" : {
       "muzzleFlash" : {
