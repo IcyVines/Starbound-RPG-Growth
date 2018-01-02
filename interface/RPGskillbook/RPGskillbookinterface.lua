@@ -111,6 +111,13 @@ function update(dt)
     end
   end
 
+  if player.currency("masterypoint") ~= self.mastery then
+    self.mastery = player.currency("masterypoint")
+    if widget.getChecked("bookTabs.7") then
+      changeToMastery()
+    end
+  end
+
   updateStats()
   if widget.getChecked("bookTabs.4") then
     updateInfo()
@@ -492,6 +499,26 @@ function updateSpecializationTab()
 end
 
 function updateMasteryTab()
+  widget.setText("masterylayout.masterypoints", self.mastery)
+  widget.setText("masterylayout.xpover", math.max(0, self.xp - 250000))
+
+  if self.mastery < 3 then
+    widget.setButtonEnabled("masterylayout.prestigebutton", false)
+  else
+    widget.setButtonEnabled("masterylayout.prestigebutton", true)
+  end
+
+  if self.mastery < 5 then
+    widget.setButtonEnabled("masterylayout.shopbutton", false)
+  else
+    widget.setButtonEnabled("masterylayout.shopbutton", true)
+  end
+
+  if self.mastery == 100 or self.xp < 260000 then
+    widget.setButtonEnabled("masterylayout.refinebutton", false)
+  else
+    widget.setButtonEnabled("masterylayout.refinebutton", true)
+  end
 end
 
 function updateInfo()
@@ -1456,4 +1483,19 @@ function toggleClassAbility()
     })
   end
   updateClassTab()
+end
+
+function prestige()
+  player.consumeCurrency("masterypoint", 3)
+end
+
+function purchaseShop()
+  player.consumeCurrency("masterypoint", 5)
+end
+
+function refine()
+  local xp = self.xp - 250000
+  local mastery = math.floor(xp/10000)
+  player.addCurrency("masterypoint", mastery)
+  player.consumeCurrency("experienceorb", 10000*mastery)
 end
