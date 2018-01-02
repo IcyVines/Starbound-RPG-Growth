@@ -17,5 +17,6 @@
   "power" : 0,
   "damageType" : "NoDamage",
   "piercing" : true,
+  "persistentAudio" : "/sfx/objects/gasbooster_loop.ogg",
   "damageKind" : "default"
 }
