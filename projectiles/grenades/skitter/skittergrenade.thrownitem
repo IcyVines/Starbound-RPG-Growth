@@ -1,5 +1,5 @@
 {
-  "itemName" : "skittergrenade",
+  "itemName" : "ivrpgskittergrenade",
   "rarity" : "Rare",
   "category" : "throwableItem",
   "inventoryIcon" : "skittergrenade.png",
@@ -13,7 +13,7 @@
   "windupTime" : 0.0,
   "cooldown" : 0.4,
 
-  "projectileType" : "skittergrenade",
+  "projectileType" : "ivrpgskittergrenade",
   "projectileConfig" : {
     "speed" : 50,
     "power" : 40,

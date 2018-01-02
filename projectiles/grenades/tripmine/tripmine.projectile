@@ -1,5 +1,5 @@
 {
-  "projectileName" : "tripmine",
+  "projectileName" : "ivrpgtripmine",
   "physics" : "stickygrenade",
   "bounces" : 1,
   "damageKindImage" : "icon.png",
@@ -20,7 +20,7 @@
   "damageType" : "NoDamage",
   "damageKind" : "default",
   "onlyHitTerrain" : true,
-  "persistentAudio" : "",
+  "persistentAudio" : "/sounds/ivrpgbeep.ogg",
 
   "scripts" : [ "tripmine.lua" ]
 }

@@ -1,5 +1,5 @@
 {
-  "projectileName" : "skittergrenade",
+  "projectileName" : "ivrpgskittergrenade",
   "physics" : "grenade",
   "bounces" : -1,
   "timeToLive" : 10,

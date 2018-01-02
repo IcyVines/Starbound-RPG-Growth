@@ -1,5 +1,5 @@
 {
-  "itemName" : "stungrenade",
+  "itemName" : "ivrpgstungrenade",
   "rarity" : "Rare",
   "category" : "throwableItem",
   "inventoryIcon" : "stungrenade.png",
@@ -13,7 +13,7 @@
   "windupTime" : 0.0,
   "cooldown" : 0.4,
 
-  "projectileType" : "stungrenade",
+  "projectileType" : "ivrpgstungrenade",
   "projectileConfig" : {
     "speed" : 50,
     "power" : 1,

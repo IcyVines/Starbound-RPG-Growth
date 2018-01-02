@@ -1,5 +1,5 @@
 {
-  "itemName" : "tripmine",
+  "itemName" : "ivrpgtripmine",
   "rarity" : "Rare",
   "category" : "throwableItem",
   "inventoryIcon" : "tripmineicon.png",
@@ -13,7 +13,7 @@
   "windupTime" : 0.0,
   "cooldown" : 0.4,
 
-  "projectileType" : "tripmine",
+  "projectileType" : "ivrpgtripmine",
   "projectileConfig" : {
     "speed" : 50,
     "power" : 100,

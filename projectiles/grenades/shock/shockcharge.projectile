@@ -1,5 +1,5 @@
 {
-  "projectileName" : "shockcharge",
+  "projectileName" : "ivrpgshockcharge",
   "physics" : "stickygrenade",
   "bounces" : 1,
   "timeToLive" : 5,

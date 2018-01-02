@@ -1,5 +1,5 @@
 {
-  "itemName" : "shockcharge",
+  "itemName" : "ivrpgshockcharge",
   "rarity" : "Rare",
   "category" : "throwableItem",
   "inventoryIcon" : "shockcharge.png",
@@ -13,7 +13,7 @@
   "windupTime" : 0.0,
   "cooldown" : 0.4,
 
-  "projectileType" : "shockcharge",
+  "projectileType" : "ivrpgshockcharge",
   "projectileConfig" : {
     "speed" : 50,
     "power" : 20,
