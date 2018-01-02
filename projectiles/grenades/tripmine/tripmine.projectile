@@ -20,6 +20,7 @@
   "damageType" : "NoDamage",
   "damageKind" : "default",
   "onlyHitTerrain" : true,
+  "persistentAudio" : "",
 
   "scripts" : [ "tripmine.lua" ]
 }
