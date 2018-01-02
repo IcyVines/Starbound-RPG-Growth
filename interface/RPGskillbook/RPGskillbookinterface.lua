@@ -502,7 +502,7 @@ function updateMasteryTab()
   widget.setText("masterylayout.masterypoints", self.mastery)
   widget.setText("masterylayout.xpover", math.max(0, self.xp - 250000))
 
-  if self.mastery < 3 then
+  if self.mastery < 3 or self.xp < 250000 then
     widget.setButtonEnabled("masterylayout.prestigebutton", false)
   else
     widget.setButtonEnabled("masterylayout.prestigebutton", true)
