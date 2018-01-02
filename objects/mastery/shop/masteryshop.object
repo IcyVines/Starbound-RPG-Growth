@@ -2,9 +2,9 @@
   "objectName" : "ivrpgmasteryshop",
   "colonyTags" : ["commerce"],
   "rarity" : "Legendary",
-  "category" : "furniture",
+  "category" : "crafting",
   "description" : "A masterfully designed wooden desk for masters to refine their experience into mastery.",
-  "shortdescription" : "Masters Desk",
+  "shortdescription" : "Master's Desk",
   "printable" : false,
 
   "apexDescription" : "A small table. It doesn't look very sturdy.",
@@ -19,67 +19,18 @@
   "orientations" : [
     {
       "dualImage" : "masteryshop.png:<color>",
-      "imagePosition" : [-16, 0],
+      "imagePosition" : [-24, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ],
-      "collision" : "platform"
-
+      "anchors" : [ "bottom" ]
     }
   ],
 
-  "interactAction" : "OpenMerchantInterface",
+  "interactAction" : "OpenCraftingInterface",
   "interactData" : {
-    "config" : "/interface/windowconfig/vendingmachine.config",
-    "paneLayoutOverride" : {
-      "windowtitle" : {
-        "title" : " Vending Machine",
-        "subtitle" : " Tasty Snacks"
-      }
-    },
-    "buyFactor" : 2.5,
-    "sellFactor" : 0.2,
-    "items" : [
-      { "item" : "oculemonade" },
-      { "item" : "soda" },
-      { "item" : "bottledwater" }
-    ]
-  },
-
-  "soundEffect" : "/sfx/objects/fluorescent_light_loud.ogg",
-  "soundEffectRangeMultiplier" : 0.5,
-
-  "scripts" : [
-    "/scripts/npcToyObject.lua"
-  ],
-  "scriptDelta" : 60,
-
-  "npcToy" : {
-    "influence" : [
-      "vendingmachineActivate",
-      "vendingmachineCollect",
-      "vendingmachineConsume",
-      "vendingmachineComplete"
-    ],
-    "defaultReactions" : {
-      "vendingmachineActivate" : [
-        [1.0, "pressbutton"]
-      ],
-      "vendingmachineCollect" : [
-        [1.0, "crouchcollect"]
-      ],
-      "vendingmachineConsume" : [
-        [1.0, "drink"]
-      ],
-      "vendingmachineComplete" : [
-        [1.0, "smile"],
-        [0.1, "vomit"]
-      ]
-    },
-    "preciseStandPositionLeft" : [-0.5, 1.0],
-    "preciseStandPositionRight" : [2.0, 1.0],
-    "maxNpcs" : 1
+    "config" : "/objects/mastery/shop/ivrpgmasteryshop.config",
+    "filter" : [ "ivrpgmasteryshop" ]
   }
 }
