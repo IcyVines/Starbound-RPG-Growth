@@ -6,6 +6,7 @@
   "image" : "tripmineicon.png",
   "shortdescription" : "Tripmine",
   "description" : "Watch your step.",
+  "itemTags" : ["soldier"],
 
   "ammoUsage" : 1,
 

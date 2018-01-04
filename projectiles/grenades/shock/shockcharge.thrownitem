@@ -6,7 +6,7 @@
   "image" : "shockcharge.png",
   "shortdescription" : "Shock Charge",
   "description" : "Shocks your enemies... for a price.",
-
+  "itemTags" : ["soldier"],
   "ammoUsage" : 1,
 
   "edgeTrigger" : true,

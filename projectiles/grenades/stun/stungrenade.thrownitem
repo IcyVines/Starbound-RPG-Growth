@@ -6,6 +6,7 @@
   "image" : "stungrenade.png",
   "shortdescription" : "Stun Grenade",
   "description" : "What doesn't kill you makes you vulnerable.",
+  "itemTags" : ["soldier"],
 
   "ammoUsage" : 1,
 

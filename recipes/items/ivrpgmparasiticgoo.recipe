@@ -1,0 +1,7 @@
+{
+  "input" : [
+    { "item" : "masterypoint", "count" : 1 }
+  ],
+	"output" : { "item" : "ivrpgparasiticgoo", "count" : 10 },
+	"groups" : [ "ivrpgmasteryshop", "items", "all" ]
+}

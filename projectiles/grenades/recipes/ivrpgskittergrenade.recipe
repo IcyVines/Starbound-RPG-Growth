@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "volatilepowder", "count" : 10 },
+    { "item" : "venomsample", "count" : 10 },
+    { "item" : "titaniumbar", "count" : 5 }
+  ],
+	"output" : { "item" : "ivrpgskittergrenade", "count" : 10 },
+	"groups" : [ "craftinganvil", "consumables", "all" ]
+}

@@ -5,5 +5,9 @@
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "infernalshuriken" } },
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "cryoshuriken" } },
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "arcshuriken" } },
-{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "toxicshuriken" } }
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "toxicshuriken" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgshockcharge" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgskittergrenade" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgstungrenade" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgtripmine" } }
 ]

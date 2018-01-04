@@ -6,6 +6,7 @@
   "image" : "skittergrenade.png",
   "shortdescription" : "Skitter",
   "description" : "Warning! Releases disorienting and toxic gas.",
+  "itemTags" : ["soldier"],
 
   "ammoUsage" : 1,
 

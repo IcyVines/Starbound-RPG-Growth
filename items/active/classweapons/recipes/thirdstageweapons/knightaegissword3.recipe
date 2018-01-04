@@ -1,7 +1,7 @@
 {
   "input" : [
   	{ "item" : "knightaegissword2", "count" : 1 },
-    { "item" : "ivrpgmeteoricmetalbar", "count" : 8 },
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 16 },
     { "item" : "livingroot", "count" : 5 }
   ],
 	"output" : { "item" : "knightaegissword3", "count" : 1 },

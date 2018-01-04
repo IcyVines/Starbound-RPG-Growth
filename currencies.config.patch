@@ -24,7 +24,7 @@
     "path" : "/statpoint",
     "value" : {
       "representativeItem" : "statpoint",
-      "playerMax" : 150
+      "playerMax" : 250
     }
   },
   { "op" : "add",

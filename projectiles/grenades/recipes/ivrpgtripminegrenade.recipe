@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "scanner", "count" : 10 },
+    { "item" : "titaniumbar", "count" : 5 },
+    { "item" : "volatilepowder", "count" : 30 }
+  ],
+	"output" : { "item" : "ivrpgtripmine", "count" : 10 },
+	"groups" : [ "craftinganvil", "consumables", "all" ]
+}

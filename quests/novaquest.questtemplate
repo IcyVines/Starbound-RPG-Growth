@@ -22,7 +22,7 @@
       {
         "type" : "gatherItem",
         "itemName" : "ivrpgdyingstar",
-        "count" : 50,
+        "count" : 32,
         "consume" : true
       }
     ]

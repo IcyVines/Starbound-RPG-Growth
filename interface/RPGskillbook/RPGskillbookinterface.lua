@@ -62,6 +62,34 @@ function init()
       "The Spira is a one-handed drill with increased speed and infinite use. Hungry Spira draws items closer. Pressing shift while using Ravenous Spira causes no blocks to drop, but fills energy while breaking them."
     }
     --initiating possible Level Change (thus, level currency should not be used in another script!!!)
+    self.challengeText = {
+      {
+        {"Defeat 500 enemies on Tier 4 or higher Planets.", 500},
+        {"Defeat 350 enemies on Tier 5 or higher Planets.", 350},
+        {"Defeat Kluex.", 1},
+        {"Defeat the Erchius Horror without taking damage.", 1}
+      },
+      {
+        {"Defeat 400 enemies on Tier 6 or higher Planets.", 400},
+        {"Defeat the Bone Dragon.", 1}
+      },
+      {
+        {"Defeat 400 enemies on Tier 7 or higher Planets (Vaults).", 400},
+        {"Defeat 2 Vault Guardians.", 2},
+        {"Defeat the Heart of Ruin.", 1},
+        {"Deafeat the Heart of Ruin without taking damage.", 1}
+      }
+    }
+
+    self.hardcoreWeaponText = {
+      "Can Currently Equip All Weapons.",
+      "The Knight can equip:^green;\nTwo-Handed Melee Weapons\nOne-Handed Melee Weapons\n\n^reset;^red;The Knight cannot dual-wield weapons.",
+      "The Wizard can equip:^green;\nStaffs\nWands\nDaggers ^red;(Secondary Hand Only)^reset;\n\n^green;The Wizard can dual-wield weapons.^reset;",
+      "The Ninja can equip:^green;\nOne-Handed Melee Weapons\nFist Weapons\nWhips\nBows\n\nThe Ninja can dual-wield weapons.^reset;",
+      "The Soldier can equip:^green;\nTwo-Handed Ranged Weapons.\nOne-Handed Ranged Weapons.\n\n^reset;^red;The Soldier cannot dual-wield weapons.^reset;",
+      "The Rogue can equip:^green;\nOne-Handed Melee Weapons.\nOne-Handed Ranged Weapons.\nFist Weapons\nWhips\n\nThe Rogue can dual-wield weapons.\n^reset;^red;The Rogue cannot wield Wands.^reset;",
+      "The Explorer can equip:^green;\nAny Weapon Type\n\nThe Explorer can dual-wield weapons.^reset;"
+    }
     updateLevel()
 end
 
@@ -116,6 +144,10 @@ function update(dt)
     if widget.getChecked("bookTabs.7") then
       changeToMastery()
     end
+  end
+
+  if status.statPositive("ivrpgmasteryunlocked") and widget.getChecked("bookTabs.7") then
+    updateChallenges()
   end
 
   updateStats()
@@ -282,9 +314,11 @@ function updateOverview(toNext)
   if status.statPositive("ivrpghardcore") then
     widget.setText("overviewlayout.hardcoretoggletext", "Active")
     widget.setVisible("overviewlayout.hardcoretext", true)
+    widget.setVisible("overviewlayout.hardcoreweapontext", true)
   else
     widget.setText("overviewlayout.hardcoretoggletext", "Inactive")
     widget.setVisible("overviewlayout.hardcoretext", false)
+    widget.setVisible("overviewlayout.hardcoreweapontext", false)
   end
 
 end
@@ -481,15 +515,19 @@ end
 
 function changeToMastery()
     widget.setText("tabLabel", "Mastery Tab")
-    if self.level < 50 then
+    if self.level < 50 and not status.statPositive("ivrpgmasteryunlocked") then
       widget.setVisible("masterylayout", false)
       widget.setVisible("masterylockedlayout", true)
     else
       updateMasteryTab()
       widget.setVisible("masterylockedlayout", false)
       widget.setVisible("masterylayout", true)
+      if not status.statPositive("ivrpgmasteryunlocked") then
+        status.setPersistentEffects("ivrpgmasteryunlocked", {
+          {stat = "ivrpgmasteryunlocked", amount = 1}
+        })
+      end
     end
-    
 end
 
 function updateProfessionTab()
@@ -519,6 +557,8 @@ function updateMasteryTab()
   else
     widget.setButtonEnabled("masterylayout.refinebutton", true)
   end
+
+  updateChallenges()
 end
 
 function updateInfo()
@@ -566,6 +606,13 @@ function updateInfo()
     "^red;" .. getStatImmunity(status.stat("ffextremeheatImmunity")) .. "^reset;" .. 
     "^blue;" .. getStatImmunity(status.stat("ffextremecoldImmunity")) .. "^reset;" .. 
    "^green;" ..  getStatImmunity(status.stat("ffextremeradiationImmunity")) .. "^reset;")
+
+  widget.setText("infolayout.displayWeapons", self.hardcoreWeaponText[self.classType+1] .. "\n\n^green;All Classes can use the\nBroken Protectorate Broadsword!^reset;")
+  if status.statPositive("ivrpghardcore") then
+    widget.setVisible("infolayout.displayWeapons", true)
+  else
+    widget.setVisible("infolayout.displayWeapons", false)
+  end
 end
 
 function unlockTech()
@@ -1083,11 +1130,6 @@ function areYouSure(name)
   widget.setVisible(name2..".resetbutton"..name, false)
   widget.setVisible(name2..".yesbutton", true)
   widget.setVisible(name2..".nobutton"..name, true)
-  if self.level == 50 then
-    widget.setText(name2..".areyousure", "Are you sure you want to reset? This will reset your Experience, Level, and Stat Points, as well as remove your Class, Affinity, Profession, and Specialization.")
-  else
-    widget.setText(name2..".areyousure", "Are you sure you want to reset? This will reset your Experience, Level, and Stat Points, as well as remove your Class, Affinity, Profession, Specialization, and unlocked Skills.")
-  end
   widget.setVisible(name2..".areyousure", true)
   --widget.setVisible(name2..".hardcoretext", false)
 end
@@ -1115,25 +1157,9 @@ end
 
 function resetSkillBook()
   notSure("nobutton")
-  player.consumeCurrency("experienceorb", self.xp)
-  player.consumeCurrency("currentlevel", self.level)
-  player.consumeCurrency("statpoint", player.currency("statpoint"))
-  player.consumeCurrency("strengthpoint",player.currency("strengthpoint"))
-  player.consumeCurrency("agilitypoint",player.currency("agilitypoint"))
-  player.consumeCurrency("vitalitypoint",player.currency("vitalitypoint"))
-  player.consumeCurrency("vigorpoint",player.currency("vigorpoint"))
-  player.consumeCurrency("intelligencepoint",player.currency("intelligencepoint"))
-  player.consumeCurrency("endurancepoint",player.currency("endurancepoint"))
-  player.consumeCurrency("dexteritypoint",player.currency("dexteritypoint"))
-  player.consumeCurrency("classtype",player.currency("classtype"))
-  player.consumeCurrency("affinitytype",player.currency("affinitytype"))
-  player.consumeCurrency("proftype",player.currency("proftype"))
-  player.consumeCurrency("spectype",player.currency("spectype"))
-  player.consumeCurrency("masterypoint",player.currency("masterypoint"))
-  if self.level ~= 50 then
-    removeTechs()
-  end
-  updateStats()
+  consumeAllRPGCurrency()
+  consumeMasteryCurrency()
+  removeTechs()
 end
 
 function removeTechs()
@@ -1485,8 +1511,27 @@ function toggleClassAbility()
   updateClassTab()
 end
 
+function consumeAllRPGCurrency()
+  player.consumeCurrency("experienceorb", self.xp)
+  player.consumeCurrency("currentlevel", self.level)
+  player.consumeCurrency("statpoint", player.currency("statpoint"))
+  player.consumeCurrency("strengthpoint",player.currency("strengthpoint"))
+  player.consumeCurrency("agilitypoint",player.currency("agilitypoint"))
+  player.consumeCurrency("vitalitypoint",player.currency("vitalitypoint"))
+  player.consumeCurrency("vigorpoint",player.currency("vigorpoint"))
+  player.consumeCurrency("intelligencepoint",player.currency("intelligencepoint"))
+  player.consumeCurrency("endurancepoint",player.currency("endurancepoint"))
+  player.consumeCurrency("dexteritypoint",player.currency("dexteritypoint"))
+  player.consumeCurrency("classtype",player.currency("classtype"))
+  player.consumeCurrency("affinitytype",player.currency("affinitytype"))
+  player.consumeCurrency("proftype",player.currency("proftype"))
+  player.consumeCurrency("spectype",player.currency("spectype"))
+  updateStats()
+end
+
 function prestige()
   player.consumeCurrency("masterypoint", 3)
+  consumeAllRPGCurrency()
 end
 
 function purchaseShop()
@@ -1499,4 +1544,138 @@ function refine()
   local mastery = math.floor(xp/10000)
   player.addCurrency("masterypoint", mastery)
   player.consumeCurrency("experienceorb", 10000*mastery)
+end
+
+function updateChallenges()
+  if not status.statPositive("ivrpgchallenge1") then
+    status.setPersistentEffects("ivrpgchallenge1", {
+    -- 1. Defeat 150 Level 4 or higher enemies.
+    -- 2. Defeat 100 Level 6 or higher enemies.
+    -- 3. Defeat 1 Boss Monster.
+    -- 4. Defeat the Erchius Horror without taking damage.
+      {stat = "ivrpgchallenge1", amount = math.random(1,3)}
+    })
+  end
+  if not status.statPositive("ivrpgchallenge2") then
+    -- 1. Defeat 300 Level 6 or higher enemies.
+    -- 2. Defeat 3 Boss Monsters.
+    status.setPersistentEffects("ivrpgchallenge2", {
+      {stat = "ivrpgchallenge2", amount = math.random(1,2)}
+    })
+  end
+  if not status.statPositive("ivrpgchallenge3") then
+    -- 1. Defeat 300 Vault enemies.
+    -- 2. Defeat 3 Vault Guardians.
+    -- 3. Defeat 5 Boss Monsters.
+    -- 4. Deafeat the Heart of Ruin without taking damage.
+    status.setPersistentEffects("ivrpgchallenge3", {
+      {stat = "ivrpgchallenge3", amount = math.random(1,3)}
+    })
+  end
+  updateChallengesText()
+end
+
+function updateChallengesText()
+  local challenge1 = status.stat("ivrpgchallenge1")
+  local challenge2 = status.stat("ivrpgchallenge2")
+  local challenge3 = status.stat("ivrpgchallenge3")
+
+  widget.setText("masterylayout.challenge1", self.challengeText[1][challenge1][1])
+  widget.setText("masterylayout.challenge2", self.challengeText[2][challenge2][1])
+  widget.setText("masterylayout.challenge3", self.challengeText[3][challenge3][1])
+
+  local prog1 = math.floor(status.stat("ivrpgchallenge1progress"))
+  local prog2 = math.floor(status.stat("ivrpgchallenge2progress"))
+  local prog3 = math.floor(status.stat("ivrpgchallenge3progress"))
+
+  local maxprog1 = self.challengeText[1][challenge1][2]
+  local maxprog2 = self.challengeText[2][challenge2][2]
+  local maxprog3 = self.challengeText[3][challenge3][2]
+
+  widget.setText("masterylayout.challenge1progress", (prog1 > maxprog1 and maxprog1 or prog1) .. " / " .. maxprog1)
+  widget.setText("masterylayout.challenge2progress", (prog2 > maxprog2 and maxprog2 or prog2) .. " / " .. maxprog2)
+  widget.setText("masterylayout.challenge3progress", (prog3 > maxprog3 and maxprog3 or prog3) .. " / " .. maxprog3)
+
+  if prog1 >= maxprog1 then
+    widget.setFontColor("masterylayout.challenge1progress", "green")
+    widget.setButtonEnabled("masterylayout.challenge1button", true)
+  else
+    widget.setFontColor("masterylayout.challenge1progress", "red")
+    widget.setButtonEnabled("masterylayout.challenge1button", false)
+  end
+
+  if prog2 >= maxprog2 then
+    widget.setFontColor("masterylayout.challenge2progress", "green")
+    widget.setButtonEnabled("masterylayout.challenge2button", true)
+  else
+    widget.setFontColor("masterylayout.challenge2progress", "red")
+    widget.setButtonEnabled("masterylayout.challenge2button", false)
+  end
+
+  if prog3 >= maxprog3 then
+    widget.setFontColor("masterylayout.challenge3progress", "green")
+    widget.setButtonEnabled("masterylayout.challenge3button", true)
+  else
+    widget.setFontColor("masterylayout.challenge3progress", "red")
+    widget.setButtonEnabled("masterylayout.challenge3button", false)
+  end
+
+end
+
+function challengeRewards(name)
+  local rand = math.random(1,10)
+  if name == "challenge1button" then
+    status.clearPersistentEffects("ivrpgchallenge1")
+    status.clearPersistentEffects("ivrpgchallenge1progress")
+    if rand < 4 then
+      player.giveItem({"experienceorb", math.random(1000,2000)})
+    elseif rand < 7 then
+      player.giveItem({"money", math.random(500,1000)})
+      player.giveItem({"experienceorb", math.random(250,500)})
+    elseif rand < 9 then
+      player.giveItem({"liquidfuel", 500})
+      player.giveItem({"experienceorb", math.random(250,500)})
+    else
+      player.giveItem({"rewardbag", 5})
+      player.giveItem({"experienceorb", math.random(250,500)})
+    end
+  elseif name == "challenge2button" then
+    status.clearPersistentEffects("ivrpgchallenge2")
+    status.clearPersistentEffects("ivrpgchallenge2progress")
+    if rand < 4 then
+      player.giveItem({"experienceorb", math.random(2500,5000)})
+    elseif rand < 7 then
+      player.giveItem({"money", math.random(1500,2500)})
+      player.giveItem({"experienceorb", math.random(500,750)})
+    elseif rand < 8 then
+      player.giveItem({"masterypoint", 1})
+    else
+      player.giveItem({"ultimatejuice", math.random(5,10)})
+      player.giveItem({"experienceorb", math.random(500,750)})
+    end
+  elseif name == "challenge3button" then
+    status.clearPersistentEffects("ivrpgchallenge3")
+    status.clearPersistentEffects("ivrpgchallenge3progress")
+    if rand < 5 then
+      player.giveItem({"essence", math.random(500,750)})
+    elseif rand < 7 then
+      player.giveItem({"masterypoint", 1})
+    elseif rand < 10 then
+      player.giveItem({"essence", math.random(100,250)})
+      player.giveItem({"diamond", math.random(7,12)})
+    else
+      player.giveItem({"vaultkey", 1})
+    end
+  end
+end
+
+function consumeMasteryCurrency()
+  player.consumeCurrency("masterypoint",player.currency("masterypoint"))
+  status.clearPersistentEffects("ivrpgmasteryunlocked")
+  status.clearPersistentEffects("ivrpgchallenge1")
+  status.clearPersistentEffects("ivrpgchallenge2")
+  status.clearPersistentEffects("ivrpgchallenge3")
+  status.clearPersistentEffects("ivrpgchallenge1progress")
+  status.clearPersistentEffects("ivrpgchallenge2progress")
+  status.clearPersistentEffects("ivrpgchallenge3progress")
 end

@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "venomsample", "count" : 5 },
+    { "item" : "cryonicextract", "count" : 5 },
+    { "item" : "staticcell", "count" : 5 },
+    { "item" : "titaniumbar", "count" : 10 }
+    
+  ],
+	"output" : { "item" : "ivrpgstungrenade", "count" : 10 },
+	"groups" : [ "craftinganvil", "consumables", "all" ]
+}

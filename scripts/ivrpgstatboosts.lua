@@ -6,24 +6,19 @@ function init()
   script.setUpdateDelta(3)
   self.damageUpdate = 1
   self.damageGivenUpdate = 1
+  self.challengeDamageGivenUpdate = 1
   
   self.level = -1
+
+  --Versioning if necessary
+  --if not status.statPositive("ivrpgupdate13") then
+    --status.addPersistentEffect("ivrpgupdate13", {stat = "ivrpgupdate13", amount = 1})
+  --end
+
 end
 
 function update(dt)
   
-  --[[if status.statPositive("ivrpgremove") then
-  	script.setUpdateDelta(0)
-  	status.clearPersistentEffects("ivrpgstatboosts")
-    status.clearPersistentEffects("ivrpgclassboosts")
-    status.removeEphemeralEffect("explorerglow")
-    status.removeEphemeralEffect("knightblock")
-    status.removeEphemeralEffect("ninjacrit")
-    status.removeEphemeralEffect("wizardaffinity")
-    status.removeEphemeralEffect("roguepoison")
-    status.removeEphemeralEffect("soldierdiscipline")
-  	return
-  end]]
   self.id = entity.id()
   self.xp = world.entityCurrency(self.id, "experienceorb")
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
@@ -95,6 +90,11 @@ function update(dt)
   local heldItem = world.entityHandItem(self.id, "primary")
   local heldItem2 = world.entityHandItem(self.id, "alt")
   self.itemName = heldItem and (root.itemConfig(heldItem)).config.itemName or ""
+  if self.itemName == "brokenprotectoratebroadsword" then
+    self.isBrokenBroadsword = true
+  else
+    self.isBrokenBroadsword = false
+  end
   --two handed
   if heldItem and (root.itemHasTag(heldItem, "broadsword") or root.itemHasTag(heldItem, "spear") or root.itemHasTag(heldItem, "hammer")) then
     status.addPersistentEffects("ivrpgstatboosts",
@@ -285,20 +285,22 @@ function update(dt)
       end
   end
 
-  --Rogue Siphon
   self.dnotifications, self.damageGivenUpdate = status.inflictedHitsSince(self.damageGivenUpdate)
   if self.dnotifications then
     --sb.logInfo("Damage Taken!!!")
     for _,notification in pairs(self.dnotifications) do
       
+      --Rogue Siphon
       if notification.damageSourceKind == "rogueelectricslash" then status.modifyResource("energy", 20)
       elseif notification.damageSourceKind == "roguepoisonslash" then status.modifyResource("health", 10)
       elseif notification.damageSourceKind == "rogueslash" then status.modifyResource("food", 3)
       end
+
     end
   end
 
   checkLevelUp()
+  updateChallenges()
 
 end
 
@@ -365,7 +367,6 @@ function updateClassEffects(classType)
     status.removeEphemeralEffect("wizardaffinity")
     status.removeEphemeralEffect("roguepoison")
     status.removeEphemeralEffect("soldierdiscipline")
-    status.removeEphemeralEffect("regeneration")
   elseif classType == 1 then
     --Knight
     status.setPersistentEffects("ivrpgclassboosts",
@@ -416,16 +417,18 @@ function updateClassEffects(classType)
       })
 
       --Weapon Checks
-      if twoHanded then
-        if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "melee") then weaponsDisabled = true end
-      else
-        if heldItem and root.itemHasTag(heldItem, "weapon") then
-          if not root.itemHasTag(heldItem, "melee") or (heldItem2 and root.itemHasTag(heldItem2, "weapon")) then
-            weaponsDisabled = true
-          end
-        elseif heldItem2 and root.itemHasTag(heldItem2, "weapon") then
-          if not root.itemHasTag(heldItem2, "melee") then
-            weaponsDisabled = true
+      if not self.isBrokenBroadsword then
+        if twoHanded then
+          if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "melee") then weaponsDisabled = true end
+        else
+          if heldItem and root.itemHasTag(heldItem, "weapon") then
+            if not root.itemHasTag(heldItem, "melee") or (heldItem2 and root.itemHasTag(heldItem2, "weapon")) then
+              weaponsDisabled = true
+            end
+          elseif heldItem2 and root.itemHasTag(heldItem2, "weapon") then
+            if not root.itemHasTag(heldItem2, "melee") then
+              weaponsDisabled = true
+            end
           end
         end
       end
@@ -498,17 +501,19 @@ function updateClassEffects(classType)
       })
 
       --Weapon Checks
-      if twoHanded then
-        if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "staff") then weaponsDisabled = true end
-      else
-        if heldItem and root.itemHasTag(heldItem, "weapon") then
-          if not root.itemHasTag(heldItem, "wand") then
-            weaponsDisabled = true
+      if not self.isBrokenBroadsword then
+        if twoHanded then
+          if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "staff") then weaponsDisabled = true end
+        else
+          if heldItem and root.itemHasTag(heldItem, "weapon") then
+            if not root.itemHasTag(heldItem, "wand") then
+              weaponsDisabled = true
+            end
           end
-        end
-        if heldItem2 and root.itemHasTag(heldItem2, "weapon") then
-          if not root.itemHasTag(heldItem2, "wand") then
-            weaponsDisabled = true
+          if heldItem2 and root.itemHasTag(heldItem2, "weapon") then
+            if not root.itemHasTag(heldItem2, "wand") and not root.itemHasTag(heldItem2, "dagger") then
+              weaponsDisabled = true
+            end
           end
         end
       end
@@ -565,17 +570,19 @@ function updateClassEffects(classType)
         })
 
       --Weapon Checks
-      if twoHanded then
-        if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "bow") then weaponsDisabled = true end
-      else
-        if heldItem and root.itemHasTag(heldItem, "weapon") then
-          if not root.itemHasTag(heldItem, "melee") then
-            weaponsDisabled = true
+      if not self.isBrokenBroadsword then
+        if twoHanded then
+          if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "bow") then weaponsDisabled = true end
+        else
+          if heldItem and root.itemHasTag(heldItem, "weapon") then
+            if root.itemHasTag(heldItem, "ranged") or root.itemHasTag(heldItem, "wand") then
+              weaponsDisabled = true
+            end
           end
-        end
-        if heldItem2 and root.itemHasTag(heldItem2, "weapon") then
-          if not root.itemHasTag(heldItem2, "melee") then
-            weaponsDisabled = true
+          if heldItem2 and root.itemHasTag(heldItem2, "weapon") then
+            if root.itemHasTag(heldItem2, "ranged") or root.itemHasTag(heldItem2, "wand") then
+              weaponsDisabled = true
+            end
           end
         end
       end
@@ -623,16 +630,18 @@ function updateClassEffects(classType)
       })
 
       --Weapon Checks
-      if twoHanded then
-        if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "ranged") then weaponsDisabled = true end
-      else
-        if heldItem and root.itemHasTag(heldItem, "weapon") then
-          if not root.itemHasTag(heldItem, "ranged") or (heldItem2 and root.itemHasTag(heldItem2, "weapon")) then
-            weaponsDisabled = true
-          end
-        elseif heldItem2 and root.itemHasTag(heldItem2, "weapon") then
-          if not root.itemHasTag(heldItem2, "ranged") then
-            weaponsDisabled = true
+      if not self.isBrokenBroadsword then
+        if twoHanded then
+          if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "ranged") then weaponsDisabled = true end
+        else
+          if heldItem and root.itemHasTag(heldItem, "weapon") then
+            if not root.itemHasTag(heldItem, "ranged") or (heldItem2 and root.itemHasTag(heldItem2, "weapon")) then
+              weaponsDisabled = true
+            end
+          elseif heldItem2 and root.itemHasTag(heldItem2, "weapon") then
+            if not root.itemHasTag(heldItem2, "ranged") then
+              weaponsDisabled = true
+            end
           end
         end
       end
@@ -669,10 +678,12 @@ function updateClassEffects(classType)
         })
 
       --Weapon Checks
-      if twoHanded and root.itemHasTag(heldItem, "weapon") then
-        weaponsDisabled = true
-      elseif (heldItem and root.itemHasTag(heldItem, "wand")) or (heldItem2 and root.itemHasTag(heldItem2, "wand")) then
-        weaponsDisabled = true
+      if not self.isBrokenBroadsword then
+        if twoHanded and root.itemHasTag(heldItem, "weapon") then
+          weaponsDisabled = true
+        elseif (heldItem and root.itemHasTag(heldItem, "wand")) or (heldItem2 and root.itemHasTag(heldItem2, "wand")) then
+          weaponsDisabled = true
+        end
       end
     end
   elseif classType == 6 then
@@ -753,6 +764,7 @@ function holdingWeaponsCheck(heldItem, heldItem2, dualWield)
   end
 end
 
+
 function getLight()
   local position = mcontroller.position()
   position[1] = math.floor(position[1])
@@ -772,4 +784,106 @@ end
 
 function undergroundCheck()
   return world.underground(mcontroller.position()) 
+end
+
+function updateChallenges()
+  self.dnotifications, self.challengeDamageGivenUpdate = status.inflictedDamageSince(self.challengeDamageGivenUpdate)
+  if self.dnotifications then
+    --sb.logInfo("Damage Taken!!!")
+    for _,notification in pairs(self.dnotifications) do
+      --Challenges
+      local challenge1 = status.stat("ivrpgchallenge1")
+      local challenge2 = status.stat("ivrpgchallenge2")
+      local challenge3 = status.stat("ivrpgchallenge3")
+
+      if challenge1 then
+        if challenge1 == 1 then
+          if updateProgress(notification, "kill", 4) then
+            status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
+          end
+        elseif challenge1 == 2 then
+          if updateProgress(notification, "kill", 5) then
+            status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
+          end
+        elseif challenge1 == 3 then
+          if updateProgress(notification, "boss", 1, "kluexboss") then
+            status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
+          end
+        end
+      end
+
+      if challenge2 then
+        if challenge2 == 1 then
+          if updateProgress(notification, "kill", 6) then
+            status.addPersistentEffect("ivrpgchallenge2progress", {stat = "ivrpgchallenge2progress", amount = 1})
+          end
+        elseif challenge2 == 2 then
+          if updateProgress(notification, "boss", 1, "dragonboss") then
+            status.addPersistentEffect("ivrpgchallenge2progress", {stat = "ivrpgchallenge2progress", amount = 1})
+          end
+        end
+      end
+
+      if challenge3 then
+        if challenge3 == 1 then
+          if updateProgress(notification, "kill", 8) then
+            status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
+          end
+        elseif challenge3 == 2 then
+          if updateProgress(notification, "boss", 1, "vault") then
+            status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
+          end
+        elseif challenge3 == 3 then
+          if updateProgress(notification, "boss", 1, "eyeboss") then
+            status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
+          end
+        end
+      end
+
+    end
+  end
+end
+
+function updateProgress(notification, challengeKind, threatTarget, bossKind)
+  local targetEntityId = notification.targetEntityId
+  local entityAggressive = world.entityAggressive(targetEntityId)
+  local isTarget = world.isMonster(targetEntityId) or world.isNpc(targetEntityId)
+  local canDamage = world.entityCanDamage(targetEntityId, self.id)
+  local monsterName = world.monsterType(targetEntityId)
+  local health = world.entityHealth(notification.targetEntityId)
+  local threat = world.threatLevel()
+  local bosses = {"crystalboss", "apeboss", "cultistboss", "dragonboss", "eyeboss", "kluexboss", "penguinUfo", "spiderboss", "robotboss", "electricguardianboss", "fireguardianboss", "iceguardianboss", "poisonguardianboss"}
+  local vaultGuardians = {"electricguardianboss", "fireguardianboss", "iceguardianboss", "poisonguardianboss"}
+
+  if challengeKind == "kill" then
+    if isTarget and (entityAggressive or canDamage) and (not health or notification.healthLost >= health[1]) and threat >= threatTarget then
+      return true 
+    end
+  elseif challengeKind == "bosses" then
+    if (not health or notification.healthLost >= health[1] and notification.healthLost ~= 0) and threat >= threatTarget then
+      for _,boss in pairs(bosses) do
+        if boss == monsterName then
+          return true
+        end
+      end 
+    end
+  elseif challengeKind == "boss" then
+    if (not health or notification.healthLost >= health[1] and notification.healthLost ~= 0) and threat >= threatTarget then
+      if bossKind == "vault" then
+        for _,boss in pairs(vaultGuardians) do
+          if boss == monsterName then
+            return true
+          end
+        end
+      else
+        if bossKind == monsterName then
+          return true
+        end
+      end
+    end
+  elseif challengeKind == "gather" then
+    return false
+  end
+
+  return false
 end

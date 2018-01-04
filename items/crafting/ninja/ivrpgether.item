@@ -4,7 +4,7 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "ether.png",
-  "description" : "A substance that appears to be almost intangible. Can be used for crafting.",
+  "description" : "A substance that appears to be almost intangible... Though, still corporeal?",
   "shortdescription" : "Ether",
   "itemTags" : [ "reagent" ]
 }
