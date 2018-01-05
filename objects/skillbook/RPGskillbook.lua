@@ -6,8 +6,10 @@ function activate(fireMode, shiftHeld)
   if player.currency("skillbookopen") ~= 1 then
     activeItem.interact(config.getParameter("interactAction"), config.getParameter("interactData"));
     if player.currency("skillbookopen") == 2 then
-    	player.consumeCurrency("skillbookopen", 1)
+    	player.consumeCurrency("skillbookopen", 2)
     end
+  else
+  	player.addCurrency("skillbookopen", 1)
   end
 end
 
