@@ -87,31 +87,15 @@ function update(dt)
     })
   end
 
-  local heldItem = world.entityHandItem(self.id, "primary")
-  local heldItem2 = world.entityHandItem(self.id, "alt")
-  self.itemName = heldItem and (root.itemConfig(heldItem)).config.itemName or ""
-  if self.itemName == "brokenprotectoratebroadsword" then
-    self.isBrokenBroadsword = true
-  else
-    self.isBrokenBroadsword = false
-  end
-  --two handed
-  if heldItem and (root.itemHasTag(heldItem, "broadsword") or root.itemHasTag(heldItem, "spear") or root.itemHasTag(heldItem, "hammer")) then
-    status.addPersistentEffects("ivrpgstatboosts",
-    {
-      {stat = "powerMultiplier", baseMultiplier = 1 + self.strength*0.02}
-    })
-  elseif heldItem and root.itemHasTag(heldItem, "staff") then
-    status.addPersistentEffects("ivrpgstatboosts",
-    {
-      {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.02}
-    })
-  elseif heldItem and (root.itemHasTag(heldItem, "bow") or root.itemHasTag(heldItem, "rifle") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "assaultrifle") or root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "rocketlauncher")) then
-    status.addPersistentEffects("ivrpgstatboosts",
-    {
-      {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
-    })
-  elseif self.itemName == "magnorbs" or self.itemName == "evileye" then
+  self.heldItem = world.entityHandItem(self.id, "primary")
+  self.heldItem2 = world.entityHandItem(self.id, "alt")
+  self.itemConf = self.heldItem and root.itemConfig(self.heldItem).config
+  self.itemName = self.itemConf and self.itemConf.itemName or ""
+  self.twoHanded = self.itemConf and self.itemConf.twoHanded or false
+  self.isBrokenBroadsword = self.itemName == "brokenprotectoratebroadsword" and true or false
+
+  --Weapon Stat Bonuses
+  if self.itemName == "magnorbs" or self.itemName == "evileye" then
     status.addPersistentEffects("ivrpgstatboosts",
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.01 + self.intelligence*0.01}
@@ -121,33 +105,51 @@ function update(dt)
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
     })
-  else
-    --one-handed primary
-    if (heldItem and root.itemHasTag(heldItem,"wand")) then
-      status.addPersistentEffects("ivrpgstatboosts",
-      {
-        {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.0075}
-      })
-    elseif (heldItem and (root.itemHasTag(heldItem,"weapon") or root.itemHasTag(heldItem,"ninja"))) then
-      status.addPersistentEffects("ivrpgstatboosts",
-      {
-        {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.0075}
-      })
-    end
-    --one-handed primary
-    if (heldItem2 and root.itemHasTag(heldItem2,"wand")) then
-      status.addPersistentEffects("ivrpgstatboosts",
-      {
-        {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.0075}
-      })
-    elseif (heldItem2 and (root.itemHasTag(heldItem2,"weapon") or root.itemHasTag(heldItem2,"ninja"))) then
-      status.addPersistentEffects("ivrpgstatboosts",
-      {
-        {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.0075}
-      })
-    end
+  elseif self.heldItem then
+  	if root.itemHasTag(self.heldItem, "broadsword") or root.itemHasTag(self.heldItem, "spear") or root.itemHasTag(self.heldItem, "hammer") then
+		status.addPersistentEffects("ivrpgstatboosts",
+		{
+		  {stat = "powerMultiplier", baseMultiplier = 1 + self.strength*0.02}
+		})
+	elseif root.itemHasTag(self.heldItem, "staff") then
+		status.addPersistentEffects("ivrpgstatboosts",
+		{
+		  {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.02}
+		})
+	elseif root.itemHasTag(self.heldItem, "bow") or root.itemHasTag(self.heldItem, "rifle") or root.itemHasTag(self.heldItem, "sniperrifle") or root.itemHasTag(self.heldItem, "assaultrifle") or root.itemHasTag(self.heldItem, "shotgun") or root.itemHasTag(self.heldItem, "rocketlauncher") then
+		status.addPersistentEffects("ivrpgstatboosts",
+		{
+		  {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
+		})
+	else
+	    --Bonus for One-Handed Primary
+	    if root.itemHasTag(self.heldItem,"wand") then
+	      status.addPersistentEffects("ivrpgstatboosts",
+	      {
+	        {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.0075}
+	      })
+	    elseif root.itemHasTag(self.heldItem,"weapon") or root.itemHasTag(self.heldItem,"ninja") then
+	      status.addPersistentEffects("ivrpgstatboosts",
+	      {
+	        {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.0075}
+	      })
+	    end
+	end
   end
-  
+  --Extra Bonus with One-Handed Secondary
+  if self.heldItem2 then
+    if root.itemHasTag(self.heldItem2,"wand") then
+      status.addPersistentEffects("ivrpgstatboosts",
+      {
+        {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.0075}
+      })
+    elseif root.itemHasTag(self.heldItem2,"weapon") or root.itemHasTag(self.heldItem2,"ninja") then
+      status.addPersistentEffects("ivrpgstatboosts",
+      {
+        {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.0075}
+      })
+    end
+  end  
 
   updateClassEffects(self.classType)
   
@@ -348,16 +350,9 @@ function isInLiquid()
 end
 
 function updateClassEffects(classType)
-  local heldItem = world.entityHandItem(self.id, "primary")
-  local heldItem2 = world.entityHandItem(self.id, "alt")
-  local twoHanded = false
-  if heldItem then
-    self.itemConf = root.itemConfig(heldItem)
-    twoHanded = self.itemConf.config.twoHanded
-  end
-  
   local hardcore = status.statPositive("ivrpghardcore")
   local weaponsDisabled = false
+
   if classType == 0 then
     --No Class
     status.clearPersistentEffects("ivrpgclassboosts")
@@ -381,7 +376,7 @@ function updateClassEffects(classType)
         if notification.hitType == "ShieldHit" then
           if status.resourcePositive("perfectBlock") then
             --increased damage after perfect blocks
-            if heldItem and root.itemHasTag(heldItem, "vitalaegis") then
+            if self.heldItem and root.itemHasTag(self.heldItem, "vitalaegis") then
               status.addEphemeralEffect("regeneration4", 2)
             end
             status.addEphemeralEffect("knightblock")
@@ -391,13 +386,13 @@ function updateClassEffects(classType)
       end
     end
 
-    if heldItem and root.itemHasTag(heldItem, "broadsword") then
+    if self.heldItem and root.itemHasTag(self.heldItem, "broadsword") then
       status.addPersistentEffects("ivrpgclassboosts",
           {
             {stat = "powerMultiplier", baseMultiplier = 1.2}
           })
-    elseif holdingWeaponsCheck(heldItem, heldItem2, true) then
-      if (root.itemHasTag(heldItem, "shortsword") and root.itemHasTag(heldItem2, "shield")) or (root.itemHasTag(heldItem, "shield") and root.itemHasTag(heldItem2, "shortsword")) then
+    elseif self.heldItem and self.heldItem2 and not self.twoHanded then
+      if (root.itemHasTag(self.heldItem, "shortsword") and root.itemHasTag(self.heldItem2, "shield")) or (root.itemHasTag(self.heldItem, "shield") and root.itemHasTag(self.heldItem2, "shortsword")) then
         status.addPersistentEffects("ivrpgclassboosts",
           {
             {stat = "powerMultiplier", baseMultiplier = 1.2 + self.strength*.015}
@@ -418,15 +413,15 @@ function updateClassEffects(classType)
 
       --Weapon Checks
       if not self.isBrokenBroadsword then
-        if twoHanded then
-          if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "melee") then weaponsDisabled = true end
+        if self.twoHanded then
+          if root.itemHasTag(self.heldItem, "weapon") and not root.itemHasTag(self.heldItem, "melee") then weaponsDisabled = true end
         else
-          if heldItem and root.itemHasTag(heldItem, "weapon") then
-            if not root.itemHasTag(heldItem, "melee") or (heldItem2 and root.itemHasTag(heldItem2, "weapon")) then
+          if self.heldItem and root.itemHasTag(self.heldItem, "weapon") then
+            if not root.itemHasTag(self.heldItem, "melee") or (self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon")) then
               weaponsDisabled = true
             end
-          elseif heldItem2 and root.itemHasTag(heldItem2, "weapon") then
-            if not root.itemHasTag(heldItem2, "melee") then
+          elseif self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") then
+            if not root.itemHasTag(self.heldItem2, "melee") then
               weaponsDisabled = true
             end
           end
@@ -441,31 +436,34 @@ function updateClassEffects(classType)
     {
       --purposefully left empty
     })
-    --arcane chance in monster.lua
+    --Arcane Chance Specified in monster.lua and npc.lua
+
     self.checkDualWield = true
     self.wizardaffinityAdded = false
-    if heldItem and root.itemHasTag(heldItem, "staff") then
+
+    if self.heldItem and root.itemHasTag(self.heldItem, "staff") then
       status.addPersistentEffects("ivrpgclassboosts",
       {
         {stat = "powerMultiplier", baseMultiplier = 1.1},
       })
       status.addEphemeralEffect("wizardaffinity", math.huge)
       self.wizardaffinityAdded = true
-    elseif (heldItem and root.itemHasTag(heldItem, "wand") and heldItem2 and root.itemHasTag(heldItem2,"wand")) then
+    elseif (self.heldItem and root.itemHasTag(self.heldItem, "wand") and self.heldItem2 and root.itemHasTag(self.heldItem2,"wand")) then
       status.addPersistentEffects("ivrpgclassboosts",
       {
         {stat = "powerMultiplier", baseMultiplier = 1.1},
       })
       status.addEphemeralEffect("wizardaffinity", math.huge)
       self.wizardaffinityAdded = true
-    elseif holdingWeaponsCheck(heldItem, heldItem2, true) then
-      if (heldItem2 and root.itemHasTag(heldItem2, "wand")) or (heldItem and root.itemHasTag(heldItem, "wand")) then
+    elseif holdingWeaponsCheck(self.heldItem, self.heldItem2, true) then
+      if (self.heldItem2 and root.itemHasTag(self.heldItem2, "wand")) or (self.heldItem and root.itemHasTag(self.heldItem, "wand")) then
         status.addEphemeralEffect("wizardaffinity", math.huge)
         self.wizardaffinityAdded = true
       end
     end
-    if holdingWeaponsCheck(heldItem, heldItem2, false) then
-      if (heldItem and root.itemHasTag(heldItem, "wand")) then
+
+    if holdingWeaponsCheck(self.heldItem, self.heldItem2, false) then
+      if (self.heldItem and root.itemHasTag(self.heldItem, "wand")) then
         self.checkDualWield = false
         status.addPersistentEffects("ivrpgclassboosts",
         {
@@ -475,8 +473,9 @@ function updateClassEffects(classType)
         self.wizardaffinityAdded = true
       end
     end
-    if holdingWeaponsCheck(heldItem2, heldItem, false) then
-      if (heldItem2 and root.itemHasTag(heldItem2, "wand")) and self.checkDualWield then
+
+    if holdingWeaponsCheck(self.heldItem2, self.heldItem, false) then
+      if (self.heldItem2 and root.itemHasTag(self.heldItem2, "wand")) and self.checkDualWield then
         status.addPersistentEffects("ivrpgclassboosts",
         {
           {stat = "powerMultiplier", baseMultiplier = 1.1}
@@ -485,6 +484,7 @@ function updateClassEffects(classType)
         self.wizardaffinityAdded = true
       end
     end
+
     if not self.wizardaffinityAdded then
       status.removeEphemeralEffect("wizardaffinity")
     end
@@ -502,16 +502,16 @@ function updateClassEffects(classType)
 
       --Weapon Checks
       if not self.isBrokenBroadsword then
-        if twoHanded then
-          if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "staff") then weaponsDisabled = true end
+        if self.twoHanded then
+          if root.itemHasTag(self.heldItem, "weapon") and not root.itemHasTag(self.heldItem, "staff") then weaponsDisabled = true end
         else
-          if heldItem and root.itemHasTag(heldItem, "weapon") then
-            if not root.itemHasTag(heldItem, "wand") then
+          if self.heldItem and root.itemHasTag(self.heldItem, "weapon") then
+            if not root.itemHasTag(self.heldItem, "wand") then
               weaponsDisabled = true
             end
           end
-          if heldItem2 and root.itemHasTag(heldItem2, "weapon") then
-            if not root.itemHasTag(heldItem2, "wand") and not root.itemHasTag(heldItem2, "dagger") then
+          if self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") then
+            if not root.itemHasTag(self.heldItem2, "wand") and not root.itemHasTag(self.heldItem2, "dagger") then
               weaponsDisabled = true
             end
           end
@@ -534,14 +534,14 @@ function updateClassEffects(classType)
       status.removeEphemeralEffect("ninjacrit")
     end
     self.checkDualWield = true
-    --if heldItem and root.itemHasTag(heldItem, "bow") then
+    --if self.heldItem and root.itemHasTag(self.heldItem, "bow") then
       --status.addPersistentEffects("ivrpgclassboosts",
       --{
         --{stat = "powerMultiplier", effectiveMultiplier = 1.1}
       --})
     --end
-    if holdingWeaponsCheck(heldItem, heldItem2, false) then
-      if (heldItem and root.itemHasTag(heldItem, "ninja")) then
+    if holdingWeaponsCheck(self.heldItem, self.heldItem2, false) then
+      if (self.heldItem and root.itemHasTag(self.heldItem, "ninja")) then
         self.checkDualWield = false
         status.addPersistentEffects("ivrpgclassboosts",
         {
@@ -549,8 +549,8 @@ function updateClassEffects(classType)
         })
       end
     end
-    if holdingWeaponsCheck(heldItem2, heldItem, false) then
-      if (heldItem2 and root.itemHasTag(heldItem2, "ninja")) and self.checkDualWield then
+    if holdingWeaponsCheck(self.heldItem2, self.heldItem, false) then
+      if (self.heldItem2 and root.itemHasTag(self.heldItem2, "ninja")) and self.checkDualWield then
         status.addPersistentEffects("ivrpgclassboosts",
         {
           {stat = "powerMultiplier", baseMultiplier = 1.2}
@@ -571,16 +571,16 @@ function updateClassEffects(classType)
 
       --Weapon Checks
       if not self.isBrokenBroadsword then
-        if twoHanded then
-          if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "bow") then weaponsDisabled = true end
+        if self.twoHanded then
+          if root.itemHasTag(self.heldItem, "weapon") and not root.itemHasTag(self.heldItem, "bow") then weaponsDisabled = true end
         else
-          if heldItem and root.itemHasTag(heldItem, "weapon") then
-            if root.itemHasTag(heldItem, "ranged") or root.itemHasTag(heldItem, "wand") then
+          if self.heldItem and root.itemHasTag(self.heldItem, "weapon") then
+            if root.itemHasTag(self.heldItem, "ranged") or root.itemHasTag(self.heldItem, "wand") then
               weaponsDisabled = true
             end
           end
-          if heldItem2 and root.itemHasTag(heldItem2, "weapon") then
-            if root.itemHasTag(heldItem2, "ranged") or root.itemHasTag(heldItem2, "wand") then
+          if self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") then
+            if root.itemHasTag(self.heldItem2, "ranged") or root.itemHasTag(self.heldItem2, "wand") then
               weaponsDisabled = true
             end
           end
@@ -602,13 +602,13 @@ function updateClassEffects(classType)
     elseif self.energy < self.maxEnergy*3/4 then
       status.removeEphemeralEffect("soldierdiscipline")
     end
-    if heldItem and (root.itemHasTag(heldItem, "shotgun") or root.itemHasTag(heldItem, "sniperrifle") or root.itemHasTag(heldItem, "assaultrifle")) then
+    if self.heldItem and (root.itemHasTag(self.heldItem, "shotgun") or root.itemHasTag(self.heldItem, "sniperrifle") or root.itemHasTag(self.heldItem, "assaultrifle")) then
         status.addPersistentEffects("ivrpgclassboosts",
         {
           {stat = "powerMultiplier", baseMultiplier = 1.1}
         })
-    elseif holdingWeaponsCheck(heldItem, heldItem2, true) then
-      if (root.itemHasTag(heldItem,"soldier") and root.itemHasTag(heldItem2,"ranged")) or (root.itemHasTag(heldItem,"ranged") and root.itemHasTag(heldItem2,"soldier")) then
+    elseif holdingWeaponsCheck(self.heldItem, self.heldItem2, true) then
+      if (root.itemHasTag(self.heldItem,"soldier") and root.itemHasTag(self.heldItem2,"ranged")) or (root.itemHasTag(self.heldItem,"ranged") and root.itemHasTag(self.heldItem2,"soldier")) then
         status.addPersistentEffects("ivrpgclassboosts",
         {
           {stat = "powerMultiplier", baseMultiplier = 1.2}
@@ -631,15 +631,15 @@ function updateClassEffects(classType)
 
       --Weapon Checks
       if not self.isBrokenBroadsword then
-        if twoHanded then
-          if root.itemHasTag(heldItem, "weapon") and not root.itemHasTag(heldItem, "ranged") then weaponsDisabled = true end
+        if self.twoHanded then
+          if root.itemHasTag(self.heldItem, "weapon") and not root.itemHasTag(self.heldItem, "ranged") then weaponsDisabled = true end
         else
-          if heldItem and root.itemHasTag(heldItem, "weapon") then
-            if not root.itemHasTag(heldItem, "ranged") or (heldItem2 and root.itemHasTag(heldItem2, "weapon")) then
+          if self.heldItem and root.itemHasTag(self.heldItem, "weapon") then
+            if not root.itemHasTag(self.heldItem, "ranged") or (self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon")) then
               weaponsDisabled = true
             end
-          elseif heldItem2 and root.itemHasTag(heldItem2, "weapon") then
-            if not root.itemHasTag(heldItem2, "ranged") then
+          elseif self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") then
+            if not root.itemHasTag(self.heldItem2, "ranged") then
               weaponsDisabled = true
             end
           end
@@ -660,8 +660,8 @@ function updateClassEffects(classType)
       status.removeEphemeralEffect("roguepoison")
     end
     --poison is finished in monster.lua
-    if holdingWeaponsCheck(heldItem, heldItem2, true) then
-      if root.itemHasTag(heldItem, "weapon") and root.itemHasTag(heldItem2, "weapon") then
+    if holdingWeaponsCheck(self.heldItem, self.heldItem2, true) then
+      if root.itemHasTag(self.heldItem, "weapon") and root.itemHasTag(self.heldItem2, "weapon") then
         status.addPersistentEffects("ivrpgclassboosts",
           {
             {stat = "powerMultiplier", baseMultiplier = 1.2}
@@ -679,9 +679,9 @@ function updateClassEffects(classType)
 
       --Weapon Checks
       if not self.isBrokenBroadsword then
-        if twoHanded and root.itemHasTag(heldItem, "weapon") then
+        if self.twoHanded and root.itemHasTag(self.heldItem, "weapon") then
           weaponsDisabled = true
-        elseif (heldItem and root.itemHasTag(heldItem, "wand")) or (heldItem2 and root.itemHasTag(heldItem2, "wand")) then
+        elseif (self.heldItem and root.itemHasTag(self.heldItem, "wand")) or (self.heldItem2 and root.itemHasTag(self.heldItem2, "wand")) then
           weaponsDisabled = true
         end
       end
@@ -692,7 +692,7 @@ function updateClassEffects(classType)
     {
       {stat = "physicalResistance", amount = .1}
     })
-    if (heldItem and root.itemHasTag(heldItem, "explorer")) or (heldItem2 and root.itemHasTag(heldItem2, "explorer")) then
+    if (self.heldItem and root.itemHasTag(self.heldItem, "explorer")) or (self.heldItem2 and root.itemHasTag(self.heldItem2, "explorer")) then
       status.addPersistentEffects("ivrpgclassboosts",
         {
           {stat = "powerMultiplier", baseMultiplier = 1.1},
@@ -734,32 +734,30 @@ end
 
 function holdingWeaponsCheck(heldItem, heldItem2, dualWield)
   if heldItem then
-    --first item exists
     if heldItem2 then
-      --second item exists
       if dualWield then
-        --bonus from two weapons
+        --Returning True only when two items are equipped and Dual-Wield is specified.
         return true
       else
-        --bonus should only apply to single weapon
         if root.itemHasTag(heldItem2, "weapon") then
+          --Second Item is a weapon, and Dual-Wield is not specified, so we return False.
           return false
         else
+        	--Second item is not a weapon, so we return True.
           return true
         end
       end
     else
-      --second item does not exist
       if dualWield then
-        --bonus applies with only two weapons
+        --Returning False because Dual-Wield is specified, but there is only one item equipped.
         return false
       else
-        --only one item is equipped and we might get a bonus
+        --Returning True because Dual-Wield is not specified, and only one item is equipped.
         return true
       end
     end
   else
-    --no item
+    --Returning False because no items are equipped.
     return false
   end
 end
