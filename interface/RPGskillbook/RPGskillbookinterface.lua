@@ -83,11 +83,11 @@ function init()
 
     self.hardcoreWeaponText = {
       "Can Currently Equip All Weapons.",
-      "The Knight can equip:^green;\nTwo-Handed Melee Weapons\nOne-Handed Melee Weapons\n\n^reset;^red;The Knight cannot dual-wield weapons.",
-      "The Wizard can equip:^green;\nStaffs\nWands\nDaggers ^red;(Secondary Hand Only)^reset;\n\n^green;The Wizard can dual-wield weapons.^reset;",
-      "The Ninja can equip:^green;\nOne-Handed Melee Weapons\nFist Weapons\nWhips\n\nThe Ninja can dual-wield weapons.^reset;",
-      "The Soldier can equip:^green;\nTwo-Handed Ranged Weapons.\nOne-Handed Ranged Weapons.\n\n^reset;^red;The Soldier cannot dual-wield weapons.^reset;",
-      "The Rogue can equip:^green;\nOne-Handed Melee Weapons.\nOne-Handed Ranged Weapons.\nFist Weapons\nWhips\n\nThe Rogue can dual-wield weapons.\n^reset;^red;The Rogue cannot wield Wands.^reset;",
+      "The Knight can equip:^green;\nTwo-Handed Melee Weapons\nOne-Handed Melee Weapons ^reset;^red;\n(Not Including Fist Weapons or Whips)\n\nThe Knight cannot dual-wield weapons.",
+      "The Wizard can equip:^green;\nStaffs\nWands\nDaggers ^red;(Secondary Hand Only)^reset;\n^green;Erchius Eye, Evil Eye, and Magnorbs.\n\nThe Wizard can dual-wield weapons.^reset;",
+      "The Ninja can equip:^green;\nOne-Handed Melee Weapons\nFist Weapons and Whips\nAdaptable Crossbow and Solus Katana\n\nThe Ninja can dual-wield weapons.^reset;",
+      "The Soldier can equip:^green;\nTwo-Handed Ranged Weapons.\nOne-Handed Ranged Weapons.\n\n^reset;^red;The Soldier cannot dual-wield weapons.\nThe Soldier cannot wield Wands.\nThe Soldier cannot wield the Erchius Eye.^reset;",
+      "The Rogue can equip:^green;\nOne-Handed Melee Weapons.\nOne-Handed Ranged Weapons.\nFist Weapons and Whips\n\nThe Rogue can dual-wield weapons.\n^reset;^red;The Rogue cannot wield Wands.^reset;",
       "The Explorer can equip:^green;\nAny Weapon Type\n\nThe Explorer can dual-wield weapons.^reset;"
     }
     updateLevel()
@@ -718,7 +718,7 @@ function getTechText(num)
   elseif classType == 2 then
     return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity. In addition, hold left click to create a barrier that pushes enemies away, draining energy to do so." 
     or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
-      or (num == 3 and "Press [G] (Bind [G] in your Controls) to teleport to your cursor (if possible). There is a slight cooldown before you can teleport again. Energy Cost depends on Distance and Agility. You cannot teleport through walls in Missions or your ship." 
+      or (num == 3 and "Press [G] (Bind [G] in your Controls) to teleport to your cursor (if possible). There is a slight cooldown before you can teleport again. Energy Cost depends on Distance and Agility. During Missions (and in your ship), Translocate is Line-of-Sight only!." 
         or "Press [F] to toggle a magical shield that provides invulnerability to you and nearby allies. Drains energy while active, and is toggled off when no energy remains."))
   elseif classType == 3 then
     return num == 1 and "Press [Space] while midair to burst forward. For a short time after jumping, you are invulnerable to damage. As long as you remain in the air with energy remaining, you are invulnerable to fall damage. You may do this twice while midair." 
@@ -1534,6 +1534,7 @@ function consumeAllRPGCurrency()
   player.consumeCurrency("affinitytype",player.currency("affinitytype"))
   player.consumeCurrency("proftype",player.currency("proftype"))
   player.consumeCurrency("spectype",player.currency("spectype"))
+  startingStats()
   updateStats()
 end
 

@@ -3,7 +3,7 @@ require "/scripts/util.lua"
 
 function init()
   local bounds = mcontroller.boundBox()
-  script.setUpdateDelta(3)
+  script.setUpdateDelta(10)
   self.damageUpdate = 1
   self.damageGivenUpdate = 1
   self.challengeDamageGivenUpdate = 1
@@ -91,6 +91,7 @@ function update(dt)
   self.heldItem2 = world.entityHandItem(self.id, "alt")
   self.itemConf = self.heldItem and root.itemConfig(self.heldItem).config
   self.twoHanded = self.itemConf and self.itemConf.twoHanded or false
+  self.category = self.itemConf and self.itemConf.category or false
   self.isBrokenBroadsword = self.heldItem == "brokenprotectoratebroadsword" and true or false
   self.weapon1 = self.heldItem and root.itemHasTag(self.heldItem, "weapon") or false
   self.weapon2 = self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") or false
@@ -106,6 +107,11 @@ function update(dt)
     status.addPersistentEffects("ivrpgstatboosts",
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
+    })
+  elseif self.heldItem == "erchiuseye" then
+  	status.addPersistentEffects("ivrpgstatboosts",
+    {
+      {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.015}
     })
   elseif self.heldItem then
   	if root.itemHasTag(self.heldItem, "broadsword") or root.itemHasTag(self.heldItem, "spear") or root.itemHasTag(self.heldItem, "hammer") then
@@ -502,7 +508,7 @@ function updateClassEffects(classType)
       })
 
       --Weapon Checks
-      if not self.isBrokenBroadsword and not self.isBow then
+      if not self.isBrokenBroadsword and not self.isBow and not (self.heldItem == "erchiuseye") and not (self.heldItem == "magnorbs") and not (self.heldItem == "evileye") then
         if self.twoHanded then
           if self.weapon1 and not root.itemHasTag(self.heldItem, "staff") then weaponsDisabled = true end
         else
@@ -571,7 +577,7 @@ function updateClassEffects(classType)
         })
 
       --Weapon Checks
-      if not self.isBrokenBroadsword and not self.isBow then
+      if not self.isBrokenBroadsword and not self.isBow and not (self.heldItem == "adaptablecrossbow") and not (self.heldItem == "soluskatana") then
         if self.twoHanded then
           if self.weapon1 then weaponsDisabled = true end
         else
@@ -633,7 +639,7 @@ function updateClassEffects(classType)
       --Weapon Checks
       if not self.isBrokenBroadsword and not self.isBow then
         if self.twoHanded then
-          if self.weapon1 and not root.itemHasTag(self.heldItem, "ranged") then weaponsDisabled = true end
+          if self.weapon1 and (not root.itemHasTag(self.heldItem, "ranged") or self.heldItem == "erchiuseye") then weaponsDisabled = true end
         else
           if self.weapon1 then
             if not root.itemHasTag(self.heldItem, "ranged") or self.weapon2 then
@@ -855,7 +861,7 @@ function updateProgress(notification, challengeKind, threatTarget, bossKind)
   local vaultGuardians = {"electricguardianboss", "fireguardianboss", "iceguardianboss", "poisonguardianboss"}
 
   if challengeKind == "kill" then
-    if isTarget and (entityAggressive or canDamage) and (not health or notification.healthLost >= health[1]) and threat >= threatTarget then
+    if isTarget and (entityAggressive or canDamage) and (not health or notification.healthLost >= health[1] and notification.healthLost ~= 0) and threat >= threatTarget then
       return true 
     end
   elseif challengeKind == "bosses" then

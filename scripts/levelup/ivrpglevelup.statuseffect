@@ -1,6 +1,6 @@
 {
   "name" : "ivrpglevelup",
-  "defaultDuration" : 0.1,
+  "defaultDuration" : 0.3,
   "scripts" : [
     "ivrpglevelup.lua"
   ],
