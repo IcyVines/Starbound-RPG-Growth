@@ -1,0 +1,11 @@
+{
+  "id" : "oneforall",
+  "title" : "^orange;One for All",
+  "text" : "Play with friends.",
+  "completionText" : "This should never be seen.",
+  "moneyRange" : [0, 0],
+  "canBeAbandoned" : false,
+
+  "updateDelta" : 10,
+  "script" : "/quests/STUPID_HACK.lua"
+}
