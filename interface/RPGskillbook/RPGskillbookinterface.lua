@@ -92,7 +92,7 @@ function init()
     }
     updateLevel()
 
-    if not player.hasQuest("oneforall") then
+    if not player.hasQuest("oneforall") or player.hasCompletedQuest("oneforall") then
       player.startQuest("oneforall")
     end
 end
