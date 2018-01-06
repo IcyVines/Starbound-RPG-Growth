@@ -28,3 +28,7 @@ function update(dt)
   end
   status.addEphemeralEffect("ivrpgstatboosts", math.huge)
 end
+
+function addXP(amount)
+  sb.logInfo(amount)
+end
