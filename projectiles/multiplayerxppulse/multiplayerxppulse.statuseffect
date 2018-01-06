@@ -1,0 +1,11 @@
+{
+  "name" : "multiplayerxppulse",
+  "defaultDuration" : 20,
+
+  "scripts" : [
+    "/projectiles/multiplayerxppulse/multiplayerxppulsestatus.lua"
+  ],
+
+  "label" : "XP Pulse",
+  "icon" : "/tech/roguetech/roguetoxicaura/roguetoxicaura.png"
+}

@@ -724,7 +724,7 @@ function getTechText(num)
   elseif classType == 4 then
     return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food and all your energy. There is a cooldown of 90 seconds before you can do this again. While the cooldown is active, you gain slight health regen, but your overall speed is decreased." 
     or (num == 2 and "Press [G] (Bind [G] in your Controls) to gain extra weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can end the effect by pressing [G] again. The cooldown shortens if so." 
-      or (num == 3 and "An upgrade to Double Jump, press [Space] to dash in a direction of your choosing. You can slightly change your trajectory while dashing. Dash Duration scales with Agility." 
+      or (num == 3 and "An upgrade to Double Jump, press [Space] to dash in a direction of your choosing. You can slightly change your trajectory while dashing. Dash Duration scales with Agility. You can dash twice in mid-air." 
         or "Press [F] to switch to a slow-moving Spike Sphere. Left click to shoot a missile using some energy. Hold right click to drain your energy in order to shield yourself from damage.\nCreated by SushiSquid!"))
   elseif classType == 5 then
     return num == 1 and "Press [G] (Bind [G] in your Controls) to toggle an ability that increases Physical and Poison Resistance and grants Knockback Immunity. Drains energy while active, and is toggled off when no energy remains." 

@@ -5,5 +5,5 @@
     { "item" : "titaniumbar", "count" : 5 }
   ],
 	"output" : { "item" : "ivrpgskittergrenade", "count" : 10 },
-	"groups" : [ "craftinganvil", "consumables", "all" ]
+	"groups" : [ "craftinganvil2", "consumables", "all" ]
 }

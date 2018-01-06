@@ -20,6 +20,7 @@ end
 function update(dt)
   
   self.id = entity.id()
+  updateXPPulse()
   self.xp = world.entityCurrency(self.id, "experienceorb")
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
   self.classType = world.entityCurrency(self.id, "classtype")
@@ -44,7 +45,6 @@ function update(dt)
   {
 
     -- Strength
-    --Increases Shield Health, Damage with melee weapons, and physical resistance
     {stat = "shieldHealth", effectiveMultiplier = 1 + self.strength*.05},
     {stat = "physicalResistance", amount = self.strength*.0025},
 
@@ -90,17 +90,19 @@ function update(dt)
   self.heldItem = world.entityHandItem(self.id, "primary")
   self.heldItem2 = world.entityHandItem(self.id, "alt")
   self.itemConf = self.heldItem and root.itemConfig(self.heldItem).config
-  self.itemName = self.itemConf and self.itemConf.itemName or ""
   self.twoHanded = self.itemConf and self.itemConf.twoHanded or false
-  self.isBrokenBroadsword = self.itemName == "brokenprotectoratebroadsword" and true or false
+  self.isBrokenBroadsword = self.heldItem == "brokenprotectoratebroadsword" and true or false
+  self.weapon1 = self.heldItem and root.itemHasTag(self.heldItem, "weapon") or false
+  self.weapon2 = self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") or false
+  self.isBow = self.weapon1 and root.itemHasTag(self.heldItem, "bow") or false
 
   --Weapon Stat Bonuses
-  if self.itemName == "magnorbs" or self.itemName == "evileye" then
+  if self.heldItem == "magnorbs" or self.heldItem == "evileye" then
     status.addPersistentEffects("ivrpgstatboosts",
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.01 + self.intelligence*0.01}
     })
-  elseif self.itemName == "remotegrenadelauncher" then
+  elseif self.heldItem == "remotegrenadelauncher" then
     status.addPersistentEffects("ivrpgstatboosts",
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
@@ -116,7 +118,7 @@ function update(dt)
 		{
 		  {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.02}
 		})
-	elseif root.itemHasTag(self.heldItem, "bow") or root.itemHasTag(self.heldItem, "rifle") or root.itemHasTag(self.heldItem, "sniperrifle") or root.itemHasTag(self.heldItem, "assaultrifle") or root.itemHasTag(self.heldItem, "shotgun") or root.itemHasTag(self.heldItem, "rocketlauncher") then
+	elseif self.isBow or root.itemHasTag(self.heldItem, "rifle") or root.itemHasTag(self.heldItem, "sniperrifle") or root.itemHasTag(self.heldItem, "assaultrifle") or root.itemHasTag(self.heldItem, "shotgun") or root.itemHasTag(self.heldItem, "rocketlauncher") then
 		status.addPersistentEffects("ivrpgstatboosts",
 		{
 		  {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
@@ -128,7 +130,7 @@ function update(dt)
 	      {
 	        {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.0075}
 	      })
-	    elseif root.itemHasTag(self.heldItem,"weapon") or root.itemHasTag(self.heldItem,"ninja") then
+	    elseif self.weapon1 or root.itemHasTag(self.heldItem,"ninja") then
 	      status.addPersistentEffects("ivrpgstatboosts",
 	      {
 	        {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.0075}
@@ -143,7 +145,7 @@ function update(dt)
       {
         {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.0075}
       })
-    elseif root.itemHasTag(self.heldItem2,"weapon") or root.itemHasTag(self.heldItem2,"ninja") then
+    elseif self.weapon2 or root.itemHasTag(self.heldItem2,"ninja") then
       status.addPersistentEffects("ivrpgstatboosts",
       {
         {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.0075}
@@ -303,7 +305,6 @@ function update(dt)
 
   checkLevelUp()
   updateChallenges()
-
 end
 
 function checkLevelUp()
@@ -412,15 +413,15 @@ function updateClassEffects(classType)
       })
 
       --Weapon Checks
-      if not self.isBrokenBroadsword then
+      if not self.isBrokenBroadsword and not self.isBow then
         if self.twoHanded then
-          if root.itemHasTag(self.heldItem, "weapon") and not root.itemHasTag(self.heldItem, "melee") then weaponsDisabled = true end
+          if self.weapon1 and not root.itemHasTag(self.heldItem, "melee") then weaponsDisabled = true end
         else
-          if self.heldItem and root.itemHasTag(self.heldItem, "weapon") then
-            if not root.itemHasTag(self.heldItem, "melee") or (self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon")) then
+          if self.weapon1 then
+            if not root.itemHasTag(self.heldItem, "melee") or self.weapon2 then
               weaponsDisabled = true
             end
-          elseif self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") then
+          elseif self.weapon2 then
             if not root.itemHasTag(self.heldItem2, "melee") then
               weaponsDisabled = true
             end
@@ -501,16 +502,16 @@ function updateClassEffects(classType)
       })
 
       --Weapon Checks
-      if not self.isBrokenBroadsword then
+      if not self.isBrokenBroadsword and not self.isBow then
         if self.twoHanded then
-          if root.itemHasTag(self.heldItem, "weapon") and not root.itemHasTag(self.heldItem, "staff") then weaponsDisabled = true end
+          if self.weapon1 and not root.itemHasTag(self.heldItem, "staff") then weaponsDisabled = true end
         else
-          if self.heldItem and root.itemHasTag(self.heldItem, "weapon") then
+          if self.weapon1 then
             if not root.itemHasTag(self.heldItem, "wand") then
               weaponsDisabled = true
             end
           end
-          if self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") then
+          if self.weapon2 then
             if not root.itemHasTag(self.heldItem2, "wand") and not root.itemHasTag(self.heldItem2, "dagger") then
               weaponsDisabled = true
             end
@@ -570,16 +571,16 @@ function updateClassEffects(classType)
         })
 
       --Weapon Checks
-      if not self.isBrokenBroadsword then
+      if not self.isBrokenBroadsword and not self.isBow then
         if self.twoHanded then
-          if root.itemHasTag(self.heldItem, "weapon") and not root.itemHasTag(self.heldItem, "bow") then weaponsDisabled = true end
+          if self.weapon1 then weaponsDisabled = true end
         else
-          if self.heldItem and root.itemHasTag(self.heldItem, "weapon") then
+          if self.weapon1 then
             if root.itemHasTag(self.heldItem, "ranged") or root.itemHasTag(self.heldItem, "wand") then
               weaponsDisabled = true
             end
           end
-          if self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") then
+          if self.weapon2 then
             if root.itemHasTag(self.heldItem2, "ranged") or root.itemHasTag(self.heldItem2, "wand") then
               weaponsDisabled = true
             end
@@ -630,15 +631,15 @@ function updateClassEffects(classType)
       })
 
       --Weapon Checks
-      if not self.isBrokenBroadsword then
+      if not self.isBrokenBroadsword and not self.isBow then
         if self.twoHanded then
-          if root.itemHasTag(self.heldItem, "weapon") and not root.itemHasTag(self.heldItem, "ranged") then weaponsDisabled = true end
+          if self.weapon1 and not root.itemHasTag(self.heldItem, "ranged") then weaponsDisabled = true end
         else
-          if self.heldItem and root.itemHasTag(self.heldItem, "weapon") then
-            if not root.itemHasTag(self.heldItem, "ranged") or (self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon")) then
+          if self.weapon1 then
+            if not root.itemHasTag(self.heldItem, "ranged") or self.weapon2 then
               weaponsDisabled = true
             end
-          elseif self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") then
+          elseif self.weapon2 then
             if not root.itemHasTag(self.heldItem2, "ranged") then
               weaponsDisabled = true
             end
@@ -661,7 +662,7 @@ function updateClassEffects(classType)
     end
     --poison is finished in monster.lua
     if holdingWeaponsCheck(self.heldItem, self.heldItem2, true) then
-      if root.itemHasTag(self.heldItem, "weapon") and root.itemHasTag(self.heldItem2, "weapon") then
+      if self.weapon1 and self.weapon2 then
         status.addPersistentEffects("ivrpgclassboosts",
           {
             {stat = "powerMultiplier", baseMultiplier = 1.2}
@@ -678,8 +679,8 @@ function updateClassEffects(classType)
         })
 
       --Weapon Checks
-      if not self.isBrokenBroadsword then
-        if self.twoHanded and root.itemHasTag(self.heldItem, "weapon") then
+      if not self.isBrokenBroadsword and not self.isBow then
+        if self.twoHanded and self.weapon1 then
           weaponsDisabled = true
         elseif (self.heldItem and root.itemHasTag(self.heldItem, "wand")) or (self.heldItem2 and root.itemHasTag(self.heldItem2, "wand")) then
           weaponsDisabled = true
@@ -884,4 +885,17 @@ function updateProgress(notification, challengeKind, threatTarget, bossKind)
   end
 
   return false
+end
+
+function updateXPPulse()
+	if not self.xp then
+		self.xp = world.entityCurrency(self.id, "experienceorb")
+	elseif world.entityCurrency(self.id, "experienceorb") - self.xp > 0 then
+		sb.logInfo("XP changed by " .. (world.entityCurrency(self.id, "experienceorb") - self.xp))
+		if status.statPositive("ivrpgmultiplayerxp") then
+			status.clearPersistentEffects("ivrpgmultiplayerxp")
+		else
+			world.spawnProjectile("multiplayerxppulse", mcontroller.position(), self.id, {0,0}, false, {power = 0, knockback = 0, timeToLive = 0.1, statusEffects = {{effect = "multiplayerxppulse", duration = world.entityCurrency(self.id, "experienceorb") - self.xp}}})
+		end
+	end
 end

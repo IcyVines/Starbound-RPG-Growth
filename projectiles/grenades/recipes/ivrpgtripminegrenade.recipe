@@ -5,5 +5,5 @@
     { "item" : "volatilepowder", "count" : 30 }
   ],
 	"output" : { "item" : "ivrpgtripmine", "count" : 10 },
-	"groups" : [ "craftinganvil", "consumables", "all" ]
+	"groups" : [ "craftinganvil2", "consumables", "all" ]
 }

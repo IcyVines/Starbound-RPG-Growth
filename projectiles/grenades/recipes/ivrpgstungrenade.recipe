@@ -7,5 +7,5 @@
     
   ],
 	"output" : { "item" : "ivrpgstungrenade", "count" : 10 },
-	"groups" : [ "craftinganvil", "consumables", "all" ]
+	"groups" : [ "craftinganvil2", "consumables", "all" ]
 }
