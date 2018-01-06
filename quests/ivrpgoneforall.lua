@@ -11,7 +11,7 @@ function update(dt)
 			player.giveItem({ "experienceorb", status.stat("ivrpgmultiplayerxp")})
 			self.removed = false
 		end
-	elseif self.removed then
+	elseif not self.removed then
 		self.removed = true
 	end
 
