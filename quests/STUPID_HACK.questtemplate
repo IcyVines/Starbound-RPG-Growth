@@ -6,6 +6,6 @@
   "moneyRange" : [0, 0],
   "canBeAbandoned" : false,
 
-  "updateDelta" : 10,
+  "updateDelta" : 1,
   "script" : "/quests/STUPID_HACK.lua"
 }
