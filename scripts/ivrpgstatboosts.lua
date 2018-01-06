@@ -895,7 +895,11 @@ function updateXPPulse()
 		if status.statPositive("ivrpgmultiplayerxp") then
 			status.clearPersistentEffects("ivrpgmultiplayerxp")
 		else
-			world.spawnProjectile("multiplayerxppulse", mcontroller.position(), self.id, {0,0}, false, {power = 0, knockback = 0, timeToLive = 0.1, statusEffects = {{effect = "multiplayerxppulse", duration = world.entityCurrency(self.id, "experienceorb") - self.xp}}})
+			world.playerQuery(mcontroller.position(), 10, {
+				callScript = "addCurrency",
+         		callScriptArgs = {"experienceorb", world.entityCurrency(self.id, "experienceorb") - self.xp}
+         	})
+			--world.spawnProjectile("multiplayerxppulse", mcontroller.position(), self.id, {0,0}, false, {power = 0, knockback = 0, timeToLive = 0.1, statusEffects = {{effect = "multiplayerxppulse", duration = world.entityCurrency(self.id, "experienceorb") - self.xp}}})
 		end
 	end
 end
