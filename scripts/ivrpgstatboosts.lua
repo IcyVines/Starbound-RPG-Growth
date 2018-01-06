@@ -890,12 +890,14 @@ end
 function updateXPPulse()
 	if not self.xp then
 		self.xp = world.entityCurrency(self.id, "experienceorb")
-	elseif world.entityCurrency(self.id, "experienceorb") - self.xp > 0 then
-		sb.logInfo("XP changed by " .. (world.entityCurrency(self.id, "experienceorb") - self.xp))
-		if status.statPositive("ivrpgmultiplayerxp") then
-			status.clearPersistentEffects("ivrpgmultiplayerxp")
-		else
-			world.spawnProjectile("multiplayerxppulse", mcontroller.position(), self.id, {0,0}, true, {power = 0, knockback = 0, timeToLive = 0.1, statusEffects = {{effect = "multiplayerxppulse", duration = world.entityCurrency(self.id, "experienceorb") - self.xp}}})
+	else
+		local new = world.entityCurrency(self.id, "experienceorb") - self.xp
+		if new > 0 then
+			if status.statPositive("ivrpgmultiplayerxp") then
+				status.clearPersistentEffects("ivrpgmultiplayerxp")
+			else
+				world.spawnProjectile("multiplayerxppulse", mcontroller.position(), self.id, {0,0}, true, {power = 0, knockback = 0, timeToLive = 0.1, statusEffects = {{effect = "multiplayerxppulse", duration = world.entityCurrency(self.id, "experienceorb") - self.xp}}})
+			end
 		end
 	end
 end
