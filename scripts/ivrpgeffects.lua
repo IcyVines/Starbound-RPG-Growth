@@ -27,8 +27,7 @@ function update(dt)
   	return
   end
   status.addEphemeralEffect("ivrpgstatboosts", math.huge)
-end
-
-function addXP(amount)
-  sb.logInfo(amount)
+  if status.statPositive("ivrpgmultiplayerxp") then
+    player.giveItem({"experienceorb", status.stat("ivrpgmultiplayerxp")})
+  end
 end
