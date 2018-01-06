@@ -1,14 +1,16 @@
 {
   "projectileName" : "multiplayerxppulse",
   "image" : "multiplayerxppulse.png",
+  "physics" : "laser",
   "frameNumber" : 1,
   "pointLight" : false,
-  "power" : 0,
   "timeToLive" : 2,
-  "bounces" : -1,
-  "damageKind" : "applystatus",
-  "damageTeam" : { "type" : "indiscriminate" },
-  "scripts" : ["multiplayerxppulse.lua"],
+
   "piercing" : true,
+  "bounces" : -1,
+
+  "damageTeam" : { "type" : "friendly" },
+  "onlyHitTerrain" : true,
+
   "damagePoly" : [[-125, 0], [-88.3, 88.3], [0, 125], [88.3, 88.3], [125, 0], [88.3, -88.3], [0, -125], [-88.3, -88.3]]
 }

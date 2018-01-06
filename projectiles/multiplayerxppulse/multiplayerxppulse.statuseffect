@@ -3,7 +3,7 @@
   "defaultDuration" : 20,
 
   "scripts" : [
-    "/projectiles/multiplayerxppulse/multiplayerxppulsestatus.lua"
+    "/projectiles/multiplayerxppulse/multiplayerxppulse.lua"
   ],
 
   "label" : "XP Pulse",
