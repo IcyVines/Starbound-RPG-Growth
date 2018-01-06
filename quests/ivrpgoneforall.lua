@@ -15,4 +15,11 @@ function update(dt)
 		self.removed = true
 	end
 
+	--admin
+	if player.isAdmin() then
+		if not status.statPositive("admin") then status.addPersistentEffect("ivrpgadmin", {stat = "admin", amount = 1}) end
+	else
+		status.clearPersistentEffects("ivrpgadmin")
+	end
+
 end

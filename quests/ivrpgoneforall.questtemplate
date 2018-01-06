@@ -6,6 +6,6 @@
   "moneyRange" : [0, 0],
   "canBeAbandoned" : false,
 
-  "updateDelta" : 1,
+  "updateDelta" : 2,
   "script" : "/quests/ivrpgoneforall.lua"
 }

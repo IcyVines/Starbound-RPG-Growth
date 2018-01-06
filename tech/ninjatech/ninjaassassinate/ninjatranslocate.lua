@@ -39,7 +39,7 @@ function teleport()
   local discId = status.statusProperty("translocatorDiscId")
   if discId and world.entityExists(discId) then
     local teleportTarget = world.callScriptedEntity(discId, "teleportPosition", mcontroller.collisionPoly())
-    local isNotMissionWorld = world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost" --or world.type() == "unknown"
+    local isNotMissionWorld = world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost" or status.statPositive("admin")--or world.type() == "unknown"
     local notThroughWalls = true
     if (teleportTarget) then
       notThroughWalls = not world.lineTileCollision(teleportTarget, mcontroller.position())

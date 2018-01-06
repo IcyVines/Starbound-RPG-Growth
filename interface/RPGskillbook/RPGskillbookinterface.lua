@@ -15,9 +15,9 @@ function init()
   player.addCurrency("skillbookopen", 1)
   --initiating level and xp
   self.xp = player.currency("experienceorb")
-  self.level = player.currency("currentlevel")--math.floor(math.sqrt(self.xp/100))
+  self.level = player.currency("currentlevel")
   self.mastery = player.currency("masterypoint")
-  --Mastery Conversion: 1000 Experience = 1 Mastery!!
+  --Mastery Conversion: 10000 Experience = 1 Mastery!!
   --initiating stats
   updateStats()
   self.classTo = 0
@@ -85,7 +85,7 @@ function init()
       "Can Currently Equip All Weapons.",
       "The Knight can equip:^green;\nTwo-Handed Melee Weapons\nOne-Handed Melee Weapons\n\n^reset;^red;The Knight cannot dual-wield weapons.",
       "The Wizard can equip:^green;\nStaffs\nWands\nDaggers ^red;(Secondary Hand Only)^reset;\n\n^green;The Wizard can dual-wield weapons.^reset;",
-      "The Ninja can equip:^green;\nOne-Handed Melee Weapons\nFist Weapons\nWhips\nBows\n\nThe Ninja can dual-wield weapons.^reset;",
+      "The Ninja can equip:^green;\nOne-Handed Melee Weapons\nFist Weapons\nWhips\n\nThe Ninja can dual-wield weapons.^reset;",
       "The Soldier can equip:^green;\nTwo-Handed Ranged Weapons.\nOne-Handed Ranged Weapons.\n\n^reset;^red;The Soldier cannot dual-wield weapons.^reset;",
       "The Rogue can equip:^green;\nOne-Handed Melee Weapons.\nOne-Handed Ranged Weapons.\nFist Weapons\nWhips\n\nThe Rogue can dual-wield weapons.\n^reset;^red;The Rogue cannot wield Wands.^reset;",
       "The Explorer can equip:^green;\nAny Weapon Type\n\nThe Explorer can dual-wield weapons.^reset;"
@@ -611,7 +611,7 @@ function updateInfo()
     "^blue;" .. getStatImmunity(status.stat("ffextremecoldImmunity")) .. "^reset;" .. 
    "^green;" ..  getStatImmunity(status.stat("ffextremeradiationImmunity")) .. "^reset;")
 
-  widget.setText("infolayout.displayWeapons", self.hardcoreWeaponText[self.classType+1] .. "\n\n^green;All Classes can use the\nBroken Protectorate Broadsword!^reset;")
+  widget.setText("infolayout.displayWeapons", self.hardcoreWeaponText[self.classType+1] .. "\n\n^green;All Classes can use the\nBroken Protectorate Broadsword!\nAll Classes can use Hunting Bows.^reset;")
   if status.statPositive("ivrpghardcore") then
     widget.setVisible("infolayout.displayWeapons", true)
   else
@@ -1184,23 +1184,27 @@ function removeTechs()
     player.makeTechUnavailable("knightarmorsphere")
   elseif self.class == 5 then
     player.makeTechUnavailable("roguetoxicaura")
+    player.makeTechUnavailable("roguetoxicsphere")
+    player.makeTechUnavailable("roguedeadlystance")
+    player.makeTechUnavailable("rogueescape")
+    --Deprecated
+    player.makeTechUnavailable("roguepoisondash")
     player.makeTechUnavailable("roguecloudjump")
     player.makeTechUnavailable("roguetoxiccapsule")
-    player.makeTechUnavailable("roguetoxicsphere")
-    player.makeTechUnavailable("roguepoisondash")
-    player.makeTechUnavailable("roguedeadlystance")
   elseif self.class == 4 then
     player.makeTechUnavailable("soldiertanksphere")
     player.makeTechUnavailable("soldierenergypack")
     player.makeTechUnavailable("soldiermarksman")
-    player.makeTechUnavailable("soldiermissilestrike")
     player.makeTechUnavailable("soldiermre")
+    --Deprecated
+    player.makeTechUnavailable("soldiermissilestrike")
   elseif self.class == 6 then
     player.makeTechUnavailable("explorerenhancedjump")
     player.makeTechUnavailable("explorerenhancedmovement")
-    player.makeTechUnavailable("explorerdrill")
     player.makeTechUnavailable("explorerdrillsphere")
     player.makeTechUnavailable("explorerglide")
+    --Deprecated
+    player.makeTechUnavailable("explorerdrill")
   end
 end
 
@@ -1536,6 +1540,7 @@ end
 function prestige()
   player.consumeCurrency("masterypoint", 3)
   consumeAllRPGCurrency()
+  removeDeprecatedTechs()
 end
 
 function purchaseShop()
@@ -1682,4 +1687,12 @@ function consumeMasteryCurrency()
   status.clearPersistentEffects("ivrpgchallenge1progress")
   status.clearPersistentEffects("ivrpgchallenge2progress")
   status.clearPersistentEffects("ivrpgchallenge3progress")
+end
+
+function removeDeprecatedTechs()
+  player.makeTechUnavailable("roguecloudjump")
+  player.makeTechUnavailable("roguetoxiccapsule")
+  player.makeTechUnavailable("roguepoisondash")
+  player.makeTechUnavailable("soldiermissilestrike")
+  player.makeTechUnavailable("explorerdrill")
 end

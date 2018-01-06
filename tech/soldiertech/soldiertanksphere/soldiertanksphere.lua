@@ -56,7 +56,7 @@ function update(args)
 --      soldiertankmissiledamageConfig = {
 --        power = self.damage
 --      }
-      world.spawnProjectile("soldiertankmissile", mcontroller.position(), entity.id(), aimingVector, false)
+      world.spawnProjectile("soldiertankmissile", mcontroller.position(), entity.id(), aimingVector, false, {power = (world.entityCurrency(entity.id(),"dexteritypoint") + 14)})
     end
 
     --Tank Sphere immunity effect
