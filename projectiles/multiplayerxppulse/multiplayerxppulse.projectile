@@ -10,7 +10,7 @@
   "bounces" : -1,
   "damageKind" : "applyStatus",
 
-  "damageTeam" : { "type" : "indiscriminate" },
+  "damageTeam" : { "type" : "friendly" },
 
-  "damagePoly" : [[-125,0], [-88, -88], [0,-125], [-60,-40],[-50,0],[-60,40],[0,125],[-88,88]]
+  "damagePoly" : [[-256, 0], [-181, 181], [0, 256], [181, 181], [256, 0], [181, -181], [0, -256], [-181, -181]],
 }

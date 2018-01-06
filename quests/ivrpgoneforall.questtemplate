@@ -1,11 +1,11 @@
 {
   "id" : "oneforall",
   "title" : "^orange;One for All",
-  "text" : "Play with friends.",
+  "text" : "Play with friends, and gain XP when they gain XP!",
   "completionText" : "This should never be seen.",
   "moneyRange" : [0, 0],
   "canBeAbandoned" : false,
 
   "updateDelta" : 1,
-  "script" : "/quests/STUPID_HACK.lua"
+  "script" : "/quests/ivrpgoneforall.lua"
 }

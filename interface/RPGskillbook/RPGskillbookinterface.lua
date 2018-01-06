@@ -1512,8 +1512,8 @@ function toggleClassAbility()
 end
 
 function consumeAllRPGCurrency()
-  player.consumeCurrency("experienceorb", self.xp)
-  player.consumeCurrency("currentlevel", self.level)
+  player.consumeCurrency("experienceorb", self.xp - 100)
+  player.consumeCurrency("currentlevel", self.level - 1)
   player.consumeCurrency("statpoint", player.currency("statpoint"))
   player.consumeCurrency("strengthpoint",player.currency("strengthpoint"))
   player.consumeCurrency("agilitypoint",player.currency("agilitypoint"))
