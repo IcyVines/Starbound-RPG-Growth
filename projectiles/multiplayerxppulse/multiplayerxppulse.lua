@@ -6,6 +6,7 @@ function init()
   	sb.logInfo("Status: " .. effect.duration())
   	status.addPersistentEffect("ivrpgmultiplayerxp", {stat = "ivrpgmultiplayerxp", amount = 1})
   	world.spawnItem("experienceorb", mcontroller.position(), math.floor(effect.duration()))
+  	effect.expire()
   end
 end
 

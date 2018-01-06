@@ -9,8 +9,7 @@
   "piercing" : true,
   "bounces" : -1,
 
-  "damageTeam" : { "type" : "friendly" },
-  "onlyHitTerrain" : true,
+  "damageTeam" : { "type" : "indiscriminate" },
 
   "damagePoly" : [[-125, 0], [-88.3, 88.3], [0, 125], [88.3, 88.3], [125, 0], [88.3, -88.3], [0, -125], [-88.3, -88.3]]
 }
