@@ -1,8 +1,8 @@
 {
   "id" : "oneforall",
   "title" : "^orange;One for All",
-  "text" : "Play with friends, and gain XP when they gain XP!",
-  "completionText" : "This should never be seen.",
+  "text" : "Welcome to Update 1.31 of RPG Growth! This quest is an indicator that nearby players will gain the same amount of XP you do, and vice versa. Now those pesky Melee-Only Classes won't steal all of it from you. You cannot gain shared XP while in Admin (sorry, cheaters).",
+  "completionText" : "If you are seeing this, it means you somehow completed or abandoned the RPG Growth XP Sharing Quest. Please exit the game and re-enter it to be given the quest again.",
   "moneyRange" : [0, 0],
   "canBeAbandoned" : false,
 

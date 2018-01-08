@@ -91,10 +91,6 @@ function init()
       "The Explorer can equip:^green;\nAny Weapon Type\n\nThe Explorer can dual-wield weapons.^reset;"
     }
     updateLevel()
-
-    if not player.hasQuest("oneforall") or player.hasCompletedQuest("oneforall") then
-      player.startQuest("oneforall")
-    end
 end
 
 function dismissed()
