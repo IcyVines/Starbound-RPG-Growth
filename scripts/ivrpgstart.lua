@@ -21,6 +21,6 @@ function removeTechs()
     player.makeTechUnavailable("roguecloudjump")
     player.makeTechUnavailable("roguetoxiccapsule")
     player.makeTechUnavailable("roguepoisondash")
-    player.makeTechUnavailable("soldierenergypack")
+    player.makeTechUnavailable("soldiermissilestrike")
     player.makeTechUnavailable("explorerdrill")
 end
