@@ -982,32 +982,32 @@ end
 
 function changeClassDescription(name)
   if name == "knight" then
-    widget.setText("classeslayout.classdescription", "The Knight is a melee tank with a focus on swords and shields. Great for players who want to survive many hits and deal moderate damage.") 
+    widget.setText("classeslayout.classdescription", "The Knight: Melee Tank. Does better with Two-Handed Melee Weapons, but still does great with Sword and Shield. The Knight's skills mostly improve defensive capabilities, though all have offensive measures as well. The Knight can heal via Perfect Shielding, and has higher Knockback Resistance.") 
     widget.setFontColor("classeslayout.knighttitle", "blue")
     self.classTo = 1
   end
   if name == "wizard" then
-    widget.setText("classeslayout.classdescription", "The Wizard is a ranged dps character with a focus on wands and staffs. Great for players who want to maximize damage and ability use.") 
+    widget.setText("classeslayout.classdescription", "The Wizard: Ranged Utility. Does better with Staffs and Wands. The Wizard's skills mostly improve utility and movement. The Wizard can randomly apply Elemental Status (Fire, Ice, Lightning) to enemies while hitting them, and fares better against the Elements while holding Wands or Staffs.") 
     widget.setFontColor("classeslayout.wizardtitle", "magenta")
     self.classTo = 2
   end
   if name == "ninja" then
-    widget.setText("classeslayout.classdescription", "The Ninja is a evasive dps character with a focus on thrown weapons. Great for players who enjoy fast, technical play and doing massive damage at the cost of materials.") 
+    widget.setText("classeslayout.classdescription", "The Ninja: Mixed-Range, Evasive DPS. Does better with Shurikens, but still does great with One-Handed (Non-Ranged) Weapons. The Ninja's skills mostly improve movement and evasion. The Ninja has an easier time getting Critical Hits, and can easily avoid Fall Damage.") 
     widget.setFontColor("classeslayout.ninjatitle", "red")
     self.classTo = 3
   end
   if name == "soldier" then
-    widget.setText("classeslayout.classdescription", "The Soldier is a ranged tank with a focus on guns. Great for players who want to maximize distance and stay alive.") 
+    widget.setText("classeslayout.classdescription", "The Soldier: Ranged Tank. Does better with Two-Handed Ranged Weapons, but can still utilize One-Handed Ranged Weapons farely well. The Soldier's skills mostly improve utility and defense. The Soldier does more damage while at full Energy, and can randomly stun enemies while hitting them.") 
     widget.setFontColor("classeslayout.soldiertitle", "orange")
     self.classTo = 4
   end
   if name == "rogue" then
-    widget.setText("classeslayout.classdescription", "The Rogue is a melee dps character with a focus on one-handed weapons. Great for players who enjoy afflicting status and getting up close.") 
+    widget.setText("classeslayout.classdescription", "The Rogue: Mixed-Range CC. Does better with One-Handed Weapons. The Rogue's skills mostly improve offensive capabilities, though also increase Physical, Poison, and Knockback Resistance. The Rogue can randomly Poison enemies, and is more Resistant to Poison while Food is near full.") 
     widget.setFontColor("classeslayout.roguetitle", "green")
     self.classTo = 5
   end
   if name == "explorer" then
-    widget.setText("classeslayout.classdescription", "The Explorer is a evasive tank character with a focus on grappling hooks and lighting up the way. Great for players who prefer to run away from encounters and explore.") 
+    widget.setText("classeslayout.classdescription", "The Explorer: Evasive Utility. Does better with Tools, like Pickaxes, Flashlights, or the Matter Manipulator. The Explorer's skills mostly improve movement and mining. The Explorer glows while Health is greater than half, and is slightly more Resistant to Physical Damage.") 
     widget.setFontColor("classeslayout.explorertitle", "yellow")
     self.classTo = 6
   end

@@ -26,4 +26,5 @@ function update(dt)
 end
 
 function uninit()
+   effect.setParentDirectives()
 end

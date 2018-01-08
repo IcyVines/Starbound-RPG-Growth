@@ -9,8 +9,8 @@ function init()
     removeTechs()
   end
 
-  if not player.hasQuest("oneforall") or player.hasCompletedQuest("oneforall") then
-    player.startQuest("oneforall")
+  if not player.hasQuest("ivrpgoneforall") or player.hasCompletedQuest("ivrpgoneforall") then
+    player.startQuest("ivrpgoneforall")
   end
   
   sb.logInfo("Chaika's RPG Growth: Version %s", data.version)
