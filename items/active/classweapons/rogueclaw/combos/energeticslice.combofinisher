@@ -5,7 +5,7 @@
         "attack" : {
           "states" : {
             "special" : {
-              "frames" : 4,
+              "frames" : 3,
               "cycle" : 0.19,
               "mode" : "transition",
               "transition" : "idle"
