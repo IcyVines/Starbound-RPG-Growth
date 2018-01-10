@@ -347,7 +347,7 @@ function updateClassTab()
     widget.setImage("classlayout.classicon","/objects/class/wizard.png")
     widget.setFontColor("classlayout.effecttext","magenta")
     widget.setText("classlayout.weapontext","+10% Damage while using a Wand in either hand without any other weapon equipped. +10% Damage with Staves.")
-    widget.setText("classlayout.passivetext","+6% Chance to Freeze, Burn, or Electry monsters on hit. These effects can stack.")
+    widget.setText("classlayout.passivetext","+6% Chance to Freeze, Burn, or Electrify monsters on hit. These effects can stack.")
     widget.setText("classlayout.effecttext","While using Wands or Staves, gain +10% Fire, Poison, and Ice Resistance.")
     widget.setImage("classlayout.effecticon","/scripts/wizardaffinity/wizardaffinity.png")
     widget.setImage("classlayout.effecticon2","/scripts/wizardaffinity/wizardaffinity.png")
@@ -713,7 +713,7 @@ function getTechText(num)
         or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit. Damage scales with Strength and Run Speed. Energy Cost decreases with higher Agility."))
   elseif classType == 2 then
     return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity. In addition, hold left click to create a barrier that pushes enemies away, draining energy to do so." 
-    or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover." 
+    or (num == 2 and "Press [Space] while in air to hover towards your cursor. The further your cursor, the faster you move. Your Energy drains while you hover. Hover speed scales with Agility." 
       or (num == 3 and "Press [G] (Bind [G] in your Controls) to teleport to your cursor (if possible). There is a slight cooldown before you can teleport again. Energy Cost depends on Distance and Agility. During Missions (and in your ship), Translocate is Line-of-Sight only!." 
         or "Press [F] to toggle a magical shield that provides invulnerability to you and nearby allies. Drains energy while active, and is toggled off when no energy remains."))
   elseif classType == 3 then

@@ -1,8 +1,8 @@
 {
   "input" : [
-    { "item" : "venomsample", "count" : 5 },
-    { "item" : "cryonicextract", "count" : 5 },
-    { "item" : "staticcell", "count" : 5 },
+    { "item" : "venomsample", "count" : 2 },
+    { "item" : "cryonicextract", "count" : 2 },
+    { "item" : "staticcell", "count" : 2 },
     { "item" : "titaniumbar", "count" : 10 }
     
   ],

@@ -2,7 +2,7 @@
   "input" : [
     { "item" : "goldbar", "count" : 5 },
     { "item" : "titaniumbar", "count" : 5 },
-    { "item" : "staticcell", "count" : 10 }
+    { "item" : "staticcell", "count" : 5 }
   ],
 	"output" : { "item" : "ivrpgshockcharge", "count" : 10 },
 	"groups" : [ "craftinganvil2", "consumables", "all" ]
