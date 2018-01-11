@@ -43,9 +43,11 @@
   "energyCost" : 50,
   "poisonEnergyCost" : 10,
 
+  "foodCostPerSecond" : 2,
+
   "ballRadius" : 1,
   "ballFrames" : 4,
-  "fireBlockTime" : 4.0,
+  "fireBlockTime" : 3.0,
 
   "damageDisableTime" : 0.2
 }

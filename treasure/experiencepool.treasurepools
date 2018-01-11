@@ -9,60 +9,60 @@
         }],
         [1, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 10]},
-                {"weight" : 0.34, "item" : ["experienceorb", 15]},
-                {"weight" : 0.33, "item" : ["experienceorb", 20]}
+                {"weight" : 0.33, "item" : ["experienceorb", 15]},
+                {"weight" : 0.34, "item" : ["experienceorb", 20]},
+                {"weight" : 0.33, "item" : ["experienceorb", 25]}
             ]
         }],
         [2, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 25]},
-                {"weight" : 0.34, "item" : ["experienceorb", 30]},
-                {"weight" : 0.33, "item" : ["experienceorb", 35]}
+                {"weight" : 0.33, "item" : ["experienceorb", 30]},
+                {"weight" : 0.34, "item" : ["experienceorb", 35]},
+                {"weight" : 0.33, "item" : ["experienceorb", 40]}
             ]
         }],
         [3, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 40]},
-                {"weight" : 0.34, "item" : ["experienceorb", 45]},
-                {"weight" : 0.33, "item" : ["experienceorb", 50]}
+                {"weight" : 0.33, "item" : ["experienceorb", 45]},
+                {"weight" : 0.34, "item" : ["experienceorb", 50]},
+                {"weight" : 0.33, "item" : ["experienceorb", 55]}
             ]
         }],
         [4, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 55]},
-                {"weight" : 0.34, "item" : ["experienceorb", 60]},
-                {"weight" : 0.33, "item" : ["experienceorb", 65]}
+                {"weight" : 0.33, "item" : ["experienceorb", 60]},
+                {"weight" : 0.34, "item" : ["experienceorb", 65]},
+                {"weight" : 0.33, "item" : ["experienceorb", 70]}
             ]
         }],
         [5, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 70]},
-                {"weight" : 0.34, "item" : ["experienceorb", 75]},
-                {"weight" : 0.33, "item" : ["experienceorb", 80]}
+                {"weight" : 0.33, "item" : ["experienceorb", 75]},
+                {"weight" : 0.34, "item" : ["experienceorb", 80]},
+                {"weight" : 0.33, "item" : ["experienceorb", 85]}
             ]
         }],
         [6, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 85]},
-                {"weight" : 0.34, "item" : ["experienceorb", 90]},
-                {"weight" : 0.33, "item" : ["experienceorb", 95]},
+                {"weight" : 0.33, "item" : ["experienceorb", 90]},
+                {"weight" : 0.34, "item" : ["experienceorb", 95]},
+                {"weight" : 0.33, "item" : ["experienceorb", 100]},
                 {"weight" : 0.0025, "item" : "ivrpgscrollresetclass"}
             ]
         }],
         [7, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 100]},
-                {"weight" : 0.34, "item" : ["experienceorb", 105]},
                 {"weight" : 0.33, "item" : ["experienceorb", 110]},
+                {"weight" : 0.34, "item" : ["experienceorb", 115]},
+                {"weight" : 0.33, "item" : ["experienceorb", 120]},
                 {"weight" : 0.005, "item" : "ivrpgscrollresetclass"}
             ]
         }],
         [8, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 115]},
-                {"weight" : 0.34, "item" : ["experienceorb", 120]},
-                {"weight" : 0.33, "item" : ["experienceorb", 125]},
+                {"weight" : 0.33, "item" : ["experienceorb", 140]},
+                {"weight" : 0.34, "item" : ["experienceorb", 145]},
+                {"weight" : 0.33, "item" : ["experienceorb", 150]},
                 {"weight" : 0.0075, "item" : "ivrpgscrollresetclass"}
             ]
         }]
@@ -130,7 +130,7 @@
                 {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
             ],
             "poolRounds" : [
-                [0.70, 0],
+                [0.80, 0],
                 [0.20, 1]
             ]
         }],

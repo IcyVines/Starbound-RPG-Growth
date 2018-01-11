@@ -7,7 +7,6 @@ function init()
   self.damageUpdate = 1
   self.damageGivenUpdate = 1
   self.challengeDamageGivenUpdate = 1
-  
   self.level = -1
 
   --Versioning if necessary
@@ -811,7 +810,7 @@ function updateChallenges()
             status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
           end
         elseif challenge1 == 3 then
-          if updateProgress(notification, "boss", 1, "kluexboss") then
+          if updateProgress(notification, "boss", 7, "kluexboss") then
             status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
           end
         end
@@ -823,7 +822,7 @@ function updateChallenges()
             status.addPersistentEffect("ivrpgchallenge2progress", {stat = "ivrpgchallenge2progress", amount = 1})
           end
         elseif challenge2 == 2 then
-          if updateProgress(notification, "boss", 1, "dragonboss") then
+          if updateProgress(notification, "boss", 7, "dragonboss") then
             status.addPersistentEffect("ivrpgchallenge2progress", {stat = "ivrpgchallenge2progress", amount = 1})
           end
         end
@@ -835,11 +834,11 @@ function updateChallenges()
             status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
           end
         elseif challenge3 == 2 then
-          if updateProgress(notification, "boss", 1, "vault") then
+          if updateProgress(notification, "boss", 7, "vault") then
             status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
           end
         elseif challenge3 == 3 then
-          if updateProgress(notification, "boss", 1, "eyeboss") then
+          if updateProgress(notification, "boss", 7, "eyeboss") then
             status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
           end
         end
@@ -851,37 +850,41 @@ end
 
 function updateProgress(notification, challengeKind, threatTarget, bossKind)
   local targetEntityId = notification.targetEntityId
-  local entityAggressive = world.entityAggressive(targetEntityId)
   local isTarget = world.isMonster(targetEntityId) or world.isNpc(targetEntityId)
-  local canDamage = world.entityCanDamage(targetEntityId, self.id)
   local monsterName = world.monsterType(targetEntityId)
-  local health = world.entityHealth(notification.targetEntityId)
+  local health = world.entityHealth(targetEntityId)
+  local damageTeam = world.entityDamageTeam(targetEntityId)
+  local isEnemy = damageTeam and damageTeam.type == "enemy" or false
   local threat = world.threatLevel()
   local bosses = {"crystalboss", "apeboss", "cultistboss", "dragonboss", "eyeboss", "kluexboss", "penguinUfo", "spiderboss", "robotboss", "electricguardianboss", "fireguardianboss", "iceguardianboss", "poisonguardianboss"}
   local vaultGuardians = {"electricguardianboss", "fireguardianboss", "iceguardianboss", "poisonguardianboss"}
 
   if challengeKind == "kill" then
-    if isTarget and (entityAggressive or canDamage) and (not health or notification.healthLost >= health[1] and notification.healthLost ~= 0) and threat >= threatTarget then
+    if isTarget and isEnemy and ((not health) or notification.healthLost >= health[1] and notification.healthLost ~= 0) and threat >= threatTarget then
+      --self.lastMonster[threatTarget-3] = targetEntityId
       return true 
     end
   elseif challengeKind == "bosses" then
-    if (not health or notification.healthLost >= health[1] and notification.healthLost ~= 0) and threat >= threatTarget then
+    if ((not health) or notification.healthLost >= health[1] and notification.healthLost ~= 0) then
       for _,boss in pairs(bosses) do
         if boss == monsterName then
+          --self.lastMonster[threatTarget-3] = targetEntityId
           return true
         end
       end 
     end
   elseif challengeKind == "boss" then
-    if (not health or notification.healthLost >= health[1] and notification.healthLost ~= 0) and threat >= threatTarget then
+    if ((not health) or notification.healthLost >= health[1] and notification.healthLost ~= 0) then
       if bossKind == "vault" then
         for _,boss in pairs(vaultGuardians) do
           if boss == monsterName then
+          	--self.lastMonster[threatTarget-3] = targetEntityId
             return true
           end
         end
       else
         if bossKind == monsterName then
+          --self.lastMonster[threatTarget-3] = targetEntityId
           return true
         end
       end

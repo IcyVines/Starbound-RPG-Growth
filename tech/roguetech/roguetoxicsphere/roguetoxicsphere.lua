@@ -23,6 +23,7 @@ function init()
   self.fireTimer = 0
   self.fireBlockTime = config.getParameter("fireBlockTime")
   self.poisonEnergyCost = config.getParameter("poisonEnergyCost")
+  self.foodCostPerSecond = config.getParameter("foodCostPerSecond")
   
   self.damageListener = damageListener("damageTaken", function(notifications)
     for _, notification in pairs(notifications) do
@@ -32,6 +33,7 @@ function init()
       end
     end
   end)
+  self.consumeOn = nil
 
   Bind.create("primaryFire", spawnPoison)
 end
@@ -43,6 +45,7 @@ function update(args)
     attemptActivation()
   end
   self.specialLast = args.moves["special1"]
+  self.pressConsume = args.moves["altFire"]
 
   if not args.moves["special1"] then
     self.forceTimer = nil
@@ -53,6 +56,16 @@ function update(args)
   self.damageListener:update()
 
   if self.active then
+
+    --Consume Effect
+    self.healthFull = (status.resourceMax("health") == status.resource("health"))
+    self.energyFull = (status.resourceMax("energy") == status.resource("energy"))
+    if self.pressConsume and (not self.healthFull or not self.energyFull) and status.consumeResource("food", self.foodCostPerSecond * args.dt) then
+      activateConsume()
+    else
+      deactivateConsume()
+    end
+
     local groundDirection
     if self.damageDisableTimer == 0 then
       groundDirection = findGroundDirection()
@@ -60,7 +73,7 @@ function update(args)
 
     status.setPersistentEffects("roguetoxicsphereimmune",{
       {stat = "poisonStatusImmunity", amount = 1},
-      {stat = "poisonResistance", amount = 1}
+      {stat = "poisonResistance", amount = 2}
     })
 
     if groundDirection then
@@ -128,6 +141,7 @@ function update(args)
     checkForceDeactivate(args.dt)
   else
     self.headingAngle = nil
+    deactivateConsume()
     status.clearPersistentEffects("roguetoxicsphereimmune")
   end
 
@@ -161,13 +175,15 @@ function spawnPoison()
   if (not self.active or self.fireTimer ~= 0) or not status.overConsumeResource("energy", self.poisonEnergyCost) then
     return
   end
+  self.dexterity = world.entityCurrency(entity.id(), "dexteritypoint")
   self.fireTimer = self.fireBlockTime
-  self.power = status.stat("powerMultiplier")
+  self.power = status.stat("powerMultiplier") * (1 + self.dexterity / 25.0)
   self.damageConfig = {
     power = self.power,
-    speed = 2,
+    speed = 4,
     timeToLive = 2.0,
-    bounces = 0
+    bounces = 0,
+    piercing = true
   }
   world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {1,0}, true, self.damageConfig)
   world.spawnProjectile("poisontrail", {mcontroller.xPosition(), mcontroller.yPosition()}, entity.id(), {0.87,-0.5}, true, self.damageConfig)
@@ -186,5 +202,34 @@ end
 function uninit()
   storePosition()
   deactivate()
+  deactivateConsume()
   status.clearPersistentEffects("roguetoxicsphereimmune")
+end
+
+function activateConsume()
+    if not self.consumeOn then
+      status.addEphemeralEffect("roguetoxicsphereconsume", math.huge)
+      self.consumeOn = world.spawnProjectile("roguetoxicspheresurround",
+                                            mcontroller.position(),
+                                            entity.id(),
+                                            {0,0},
+                                            true,
+                                            {}
+                                           )
+    end
+end
+
+function deactivateConsume()
+    if self.consumeOn then
+      status.removeEphemeralEffect("roguetoxicsphereconsume")
+      world.entityQuery(mcontroller.position(),1,
+        {
+         withoutEntityId = entity.id(),
+         includedTypes = {"projectile"},
+         callScript = "removeConsume",
+         callScriptArgs = {self.consumeOn}
+        }
+      )
+      self.consumeOn = nil
+    end
 end

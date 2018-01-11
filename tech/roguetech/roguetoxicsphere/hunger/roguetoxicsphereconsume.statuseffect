@@ -1,0 +1,17 @@
+{
+  "name" : "roguetoxicsphereconsume",
+  "defaultDuration" : 5,
+
+  "effectConfig" : {
+	  "energyGain" : 10,
+	  "healthGain" : 5
+  },
+
+  "scripts" : [
+    "roguetoxicsphereconsume.lua"
+  ],
+  
+  "animationConfig" : "roguetoxicsphereconsume.animation",
+  "label" : "Tank",
+  "icon" : "/tech/roguetech/roguetoxicsphere/hunger/roguetoxicsphereconsume.png"
+}
