@@ -908,11 +908,14 @@ function updateXPPulse()
 				for k,id in pairs(players) do
 					world.sendEntityMessage(id, "addXP", new)
 				end
-				--status.addPersistentEffect("ivrpgmultiplayerxp", {stat = "ivrpgmultiplayerxp", amount = math.floor(effect.duration())})
 				--world.spawnProjectile("multiplayerxppulse", mcontroller.position(), self.id, {0,0}, true, {power = 0, knockback = 0, timeToLive = 0.1, statusEffects = {{effect = "multiplayerxppulse", duration = new}}})
 			end
 		end
 	end
+end
+
+function addXP(amount)
+	status.addPersistentEffect("ivrpgmultiplayerxp", {stat = "ivrpgmultiplayerxp", amount = math.floor(effect.duration())})
 end
 
 function addToChallengeCount(level)
