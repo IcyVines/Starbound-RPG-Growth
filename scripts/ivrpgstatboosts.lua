@@ -13,6 +13,12 @@ function init()
   	addToChallengeCount(level)
       --sb.logInfo("Added to Challenge Count:\nLevel is: " .. (level and level or 0))
   end)
+
+  message.setHandler("addXP", function(_, _, amount)
+  	--addToChallengeCount(amount)
+  	sb.logInfo("XP Pulse: " .. (amount and amount or 0))
+  end)
+
   --Versioning if necessary
   --if not status.statPositive("ivrpgupdate13") then
     --status.addPersistentEffect("ivrpgupdate13", {stat = "ivrpgupdate13", amount = 1})
@@ -896,7 +902,14 @@ function updateXPPulse()
 			if status.statPositive("ivrpgmultiplayerxp") then
 				status.clearPersistentEffects("ivrpgmultiplayerxp")
 			else
-				world.spawnProjectile("multiplayerxppulse", mcontroller.position(), self.id, {0,0}, true, {power = 0, knockback = 0, timeToLive = 0.1, statusEffects = {{effect = "multiplayerxppulse", duration = new}}})
+				local players = world.playerQuery(mcontroller.position(), 50, {
+					withoutEntityId = self.id
+				})
+				for k,id in pairs(players) do
+					world.sendEntityMessage(id, "addXP", new)
+				end
+				--status.addPersistentEffect("ivrpgmultiplayerxp", {stat = "ivrpgmultiplayerxp", amount = math.floor(effect.duration())})
+				--world.spawnProjectile("multiplayerxppulse", mcontroller.position(), self.id, {0,0}, true, {power = 0, knockback = 0, timeToLive = 0.1, statusEffects = {{effect = "multiplayerxppulse", duration = new}}})
 			end
 		end
 	end
