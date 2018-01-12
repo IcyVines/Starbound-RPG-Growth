@@ -67,6 +67,13 @@
             ]
         }]
     ],
+    "experienceorbpoolsmall" : [
+        [0, {
+            "pool" : [
+                {"weight" : 1, "item" : ["experienceorb", 3]}
+            ]
+        }]
+    ],
     "experienceorbbosspool" : [
         [0, {
             "pool" : [
@@ -773,45 +780,33 @@
 
     "ivrpgscrollinfernalpool" : [
         [0, {
-            "pool" : [
-                {"weight" : 1, "item" : ["ivrpgscrollinfernal", 1]}
-            ],
-            "poolRounds" : [
-                [0.33, 0],
-                [0.67, 1]
+            "fill" : [
+                {"pool": "guardianTreasure"},
+                {"item" : ["ivrpgscrollinfernal", 1]}
             ]
         }]
     ],
     "ivrpgscrolltoxicpool" : [
         [0, {
-            "pool" : [
-                {"weight" : 1, "item" : ["ivrpgscrolltoxic", 1]}
-            ],
-            "poolRounds" : [
-                [0.33, 0],
-                [0.67, 1]
+            "fill" : [
+                {"pool": "guardianTreasure"},
+                {"item" : ["ivrpgscrolltoxic", 1]}
             ]
         }]
     ],
     "ivrpgscrollcryopool" : [
         [0, {
-            "pool" : [
-                {"weight" : 1, "item" : ["ivrpgscrollcryo", 1]}
-            ],
-            "poolRounds" : [
-                [0.33, 0],
-                [0.67, 1]
+            "fill" : [
+                {"pool": "guardianTreasure"},
+                {"item" : ["ivrpgscrollcryo", 1]}
             ]
         }]
     ],
     "ivrpgscrollarcpool" : [
         [0, {
-            "pool" : [
-                {"weight" : 1, "item" : ["ivrpgscrollarc", 1]}
-            ],
-            "poolRounds" : [
-                [0.33, 0],
-                [0.67, 1]
+            "fill" : [
+                {"pool": "guardianTreasure"},
+                {"item" : ["ivrpgscrollarc", 1]}
             ]
         }]
     ]

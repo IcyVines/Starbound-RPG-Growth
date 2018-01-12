@@ -1,1 +1,28 @@
-[ { "op" : "add", "path" : "/baseParameters/scripts/-", "value" : "/monsters/ivrpgmonster.lua" }]
+[ 
+	[{ "op" : "add", "path" : "/baseParameters/scripts/-", "value" : "/monsters/ivrpgmonster.lua" }],
+
+	[
+	  {
+	    "op": "test",
+	    "path": "/dropPools/0",
+	    "inverse": false
+	  }, 
+	  {
+	    "op": "replace",
+	    "path": "/dropPools/0",
+	    "value": "experienceorbpoolsmall"
+	  }
+	],
+	[
+	  {
+	    "op": "test",
+	    "path": "/dropPools/0",
+	    "inverse": true
+	  }, 
+	  {
+	    "op": "add",
+	    "path": "/dropPools/-",
+	    "value": "experienceorbpoolsmall"
+	  }
+	]
+]

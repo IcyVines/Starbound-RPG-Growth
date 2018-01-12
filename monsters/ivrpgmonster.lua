@@ -1,22 +1,14 @@
 local monsterOldInit = init
-local monsterOldUpdate = update
-local monsterOldUninit = uninit
 
-  -- Listen to damage taken
-  --[[self.damageTaken = damageListener("damageTaken", function(notifications)
-    for _,notification in pairs(notifications) do
-      if notification.healthLost > 0 then
-        
-        self.damaged = true
-        self.board:setEntity("damageSource", notification.sourceEntityId)
-      end
-    end
-  end)]]
+function init()
+  monsterOldInit()
+  self.effects = {"ivrpgsear", "ivrpgtoxify", "ivrpgembrittle", "ivrpgoverload"}
+end
 
 function damage(args)
 -- IVRPGMod
-      --sb.logInfo("Damage Taken!!")
   self.id = args.sourceId
+  --sb.logInfo("Damage Taken!! ID: " .. self.id)
   if world.isMonster(self.id) or world.isNpc(self.id) then
     return
   end
@@ -51,37 +43,10 @@ function damage(args)
   end
 
   --Affinity Checks
-  if self.affinityType == 1 then
-    if math.random(10) < 2 then
-      status.addEphemeralEffect("ivrpgsear", 5, self.id)
-    end
-  elseif self.affinityType == 2 then
-    if math.random(10) < 2 then
-      status.addEphemeralEffect("ivrpgtoxify", 5, self.id)
-    end
-  elseif self.affinityType == 3 then
-    if math.random(10) < 2 then
-      status.addEphemeralEffect("ivrpgembrittle", 5, self.id)
-    end
-  elseif self.affinityType == 4 then
-    if math.random(10) < 2 then
-      status.addEphemeralEffect("ivrpgoverload", 5, self.id)
-    end
-  elseif self.affinityType == 5 then
-    if math.random(10) < 4 then
-      status.addEphemeralEffect("ivrpgsear", 5, self.id)
-    end
-  elseif self.affinityType == 6 then
-    if math.random(10) < 4 then
-      status.addEphemeralEffect("ivrpgtoxify", 5, self.id)
-    end
-  elseif self.affinityType == 7 then
-    if math.random(10) < 4 then
-      status.addEphemeralEffect("ivrpgembrittle", 5, self.id)
-    end
-  elseif self.affinityType == 8 then
-    if math.random(10) < 4 then
-      status.addEphemeralEffect("ivrpgoverload", 5, self.id)
+  if self.affinityType then
+    local effectChance = self.affinityType > 4 and 4 or 2
+    if math.random(10) < effectChance then
+      status.addEphemeralEffect(self.effects[(self.affinityType - 1)%4 + 1], 5, self.id)
     end
   end
 
@@ -111,6 +76,11 @@ function damage(args)
       sourceEntityId = self.id
     })
   end
+
+  if world.entityHealth(entity.id())[1] <= 0 then
+    --sb.logInfo("Health <= 0!")
+    sendDyingMessage(self.id, monster.level())
+  end
   --End IVRPGMod
 end
 
@@ -120,4 +90,9 @@ end
 
 function undergroundCheck(position)
   return world.underground(position) 
+end
+
+function sendDyingMessage(sourceId, monsterLevel)
+  --sb.logInfo("Sending Message!")
+  world.sendEntityMessage(sourceId, "addToChallengeCount", monsterLevel)
 end

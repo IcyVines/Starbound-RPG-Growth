@@ -8,7 +8,7 @@
   "animationLoops" : true,
   "statusEffects" : [ ],
   "emitters" : [ ],
-  "renderLayer" : "Player+1",
+  "renderLayer" : "Player-1",
   "orientationLocked" : true,
   "power" : 0.0,
   "speed" : 0.0,

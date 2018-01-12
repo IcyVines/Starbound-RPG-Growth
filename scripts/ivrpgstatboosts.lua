@@ -7,8 +7,12 @@ function init()
   self.damageUpdate = 1
   self.damageGivenUpdate = 1
   self.challengeDamageGivenUpdate = 1
+  self.lastMonster = {nil, nil, nil, nil, nil}
   self.level = -1
-
+  message.setHandler("addToChallengeCount", function(_, _, level)
+  	addToChallengeCount(level)
+      --sb.logInfo("Added to Challenge Count:\nLevel is: " .. (level and level or 0))
+  end)
   --Versioning if necessary
   --if not status.statPositive("ivrpgupdate13") then
     --status.addPersistentEffect("ivrpgupdate13", {stat = "ivrpgupdate13", amount = 1})
@@ -176,20 +180,19 @@ function update(dt)
       effs = {
         { -- Flame --
           {stat = "fireStatusImmunity", amount = 1},
-          {stat = "fireResistance", amount = 3},
           {stat = "biomeheatImmunity", amount = 1},
           {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isInLiquid()}
         },
         { -- Venom --
           {stat = "poisonStatusImmunity", amount = 1},
           {stat = "tarStatusImmunity", amount = 1},
-          {stat = "poisonResistance", amount = 3},
+          {stat = "poisonStatusImmunity", amount = 1},
           {stat = "electricResistance", amount = -0.25},
           {stat = "maxHealth", effectiveMultiplier = 0.85}
         },
         { -- Frost --
           {stat = "iceStatusImmunity", amount = 1},
-          {stat = "iceResistance", amount = 3},
+          --{stat = "iceResistance", amount = 3},
           {stat = "wetImmunity", amount = 1},
           {stat = "snowslowImmunity", amount = 1},
           {stat = "iceslipImmunity", amount = 1},
@@ -198,7 +201,7 @@ function update(dt)
         },
         { -- Shock --
           {stat = "electricStatusImmunity", amount = 1},
-          {stat = "electricResistance", amount = 3},
+          --{stat = "electricResistance", amount = 3},
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "slimeImmunity", amount = 1},
           {stat = "fumudslowImmunity", amount = 1 },
@@ -236,6 +239,7 @@ function update(dt)
         { -- Cryo --
           {stat = "iceStatusImmunity", amount = 1},
           {stat = "iceResistance", amount = 3},
+          {stat = "breathProtection", amount = 1},
           {stat = "wetImmunity", amount = 1},
           {stat = "snowslowImmunity", amount = 1},
           {stat = "iceslipImmunity", amount = 1},
@@ -243,7 +247,6 @@ function update(dt)
           {stat = "fireResistance", amount = -0.25},
 
           {stat = "ffextremecoldImmunity", amount = 1},
-          {stat = "breathingProtection", amount = 1},
         },
         { -- Arc --
           {stat = "electricStatusImmunity", amount = 1},
@@ -298,7 +301,7 @@ function update(dt)
   if self.dnotifications then
     --sb.logInfo("Damage Taken!!!")
     for _,notification in pairs(self.dnotifications) do
-      
+      --sb.logInfo("In damage given update")
       --Rogue Siphon
       if notification.damageSourceKind == "rogueelectricslash" then status.modifyResource("energy", 20)
       elseif notification.damageSourceKind == "roguepoisonslash" then status.modifyResource("health", 10)
@@ -801,15 +804,7 @@ function updateChallenges()
       local challenge3 = status.stat("ivrpgchallenge3")
 
       if challenge1 then
-        if challenge1 == 1 then
-          if updateProgress(notification, "kill", 4) then
-            status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
-          end
-        elseif challenge1 == 2 then
-          if updateProgress(notification, "kill", 5) then
-            status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
-          end
-        elseif challenge1 == 3 then
+        if challenge1 == 3 then
           if updateProgress(notification, "boss", 7, "kluexboss") then
             status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
           end
@@ -817,11 +812,7 @@ function updateChallenges()
       end
 
       if challenge2 then
-        if challenge2 == 1 then
-          if updateProgress(notification, "kill", 6) then
-            status.addPersistentEffect("ivrpgchallenge2progress", {stat = "ivrpgchallenge2progress", amount = 1})
-          end
-        elseif challenge2 == 2 then
+		if challenge2 == 2 then
           if updateProgress(notification, "boss", 7, "dragonboss") then
             status.addPersistentEffect("ivrpgchallenge2progress", {stat = "ivrpgchallenge2progress", amount = 1})
           end
@@ -829,11 +820,7 @@ function updateChallenges()
       end
 
       if challenge3 then
-        if challenge3 == 1 then
-          if updateProgress(notification, "kill", 8) then
-            status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
-          end
-        elseif challenge3 == 2 then
+		if challenge3 == 2 then
           if updateProgress(notification, "boss", 7, "vault") then
             status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
           end
@@ -844,55 +831,59 @@ function updateChallenges()
         end
       end
 
+      if updateProgress(notification, "boss", 8, "eyeboss") then
+      	world.spawnItem("experienceorb", mcontroller.position(), 1000)
+      end
+
     end
   end
 end
 
 function updateProgress(notification, challengeKind, threatTarget, bossKind)
   local targetEntityId = notification.targetEntityId
-  local isTarget = world.isMonster(targetEntityId) or world.isNpc(targetEntityId)
+  local isMonster = world.isMonster(targetEntityId)
+  if not isMonster then
+  	return false
+  end
+
+  local isNpc = world.isNpc(targetEntityId)
   local monsterName = world.monsterType(targetEntityId)
   local health = world.entityHealth(targetEntityId)
+  local healthLost = notification.healthLost
+  local hitType = notification.hitType
   local damageTeam = world.entityDamageTeam(targetEntityId)
   local isEnemy = damageTeam and damageTeam.type == "enemy" or false
   local threat = world.threatLevel()
   local bosses = {"crystalboss", "apeboss", "cultistboss", "dragonboss", "eyeboss", "kluexboss", "penguinUfo", "spiderboss", "robotboss", "electricguardianboss", "fireguardianboss", "iceguardianboss", "poisonguardianboss"}
   local vaultGuardians = {"electricguardianboss", "fireguardianboss", "iceguardianboss", "poisonguardianboss"}
+  local notKilled = (targetEntityId ~= self.lastMonster[threatTarget-3])
 
-  if challengeKind == "kill" then
-    if isTarget and isEnemy and ((not health) or notification.healthLost >= health[1] and notification.healthLost ~= 0) and threat >= threatTarget then
-      --self.lastMonster[threatTarget-3] = targetEntityId
-      return true 
-    end
-  elseif challengeKind == "bosses" then
-    if ((not health) or notification.healthLost >= health[1] and notification.healthLost ~= 0) then
-      for _,boss in pairs(bosses) do
-        if boss == monsterName then
-          --self.lastMonster[threatTarget-3] = targetEntityId
-          return true
-        end
-      end 
-    end
-  elseif challengeKind == "boss" then
-    if ((not health) or notification.healthLost >= health[1] and notification.healthLost ~= 0) then
+  if challengeKind == "boss" then
+    if notKilled and ((not health) or (healthLost >= health[1])) then
       if bossKind == "vault" then
         for _,boss in pairs(vaultGuardians) do
           if boss == monsterName then
-          	--self.lastMonster[threatTarget-3] = targetEntityId
+          	self.lastMonster[threatTarget-3] = targetEntityId
             return true
           end
         end
       else
         if bossKind == monsterName then
-          --self.lastMonster[threatTarget-3] = targetEntityId
+          self.lastMonster[threatTarget-3] = targetEntityId
           return true
         end
       end
     end
-  elseif challengeKind == "gather" then
-    return false
+  elseif challengeKind == "bosses" then
+    if notKilled and ((not health) or (healthLost >= health[1])) then
+      for _,boss in pairs(bosses) do
+        if boss == monsterName then
+          self.lastMonster[threatTarget-3] = targetEntityId
+          return true
+        end
+      end 
+    end
   end
-
   return false
 end
 
@@ -909,4 +900,26 @@ function updateXPPulse()
 			end
 		end
 	end
+end
+
+function addToChallengeCount(level)
+	sb.logInfo("Added to Challenge Count with Level: " .. level)
+	local challenge1 = status.stat("ivrpgchallenge1")
+    local challenge2 = status.stat("ivrpgchallenge2")
+    local challenge3 = status.stat("ivrpgchallenge3")
+
+	if challenge1 == 1 and level >= 4 then
+		status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
+	elseif challenge1 == 2 and level >= 5 then
+		status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
+	end
+
+	if challenge2 == 1 and level >= 6 then
+		status.addPersistentEffect("ivrpgchallenge2progress", {stat = "ivrpgchallenge2progress", amount = 1})
+	end
+
+	if challenge3 == 1 and level >= 7 then
+		status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
+	end
+
 end

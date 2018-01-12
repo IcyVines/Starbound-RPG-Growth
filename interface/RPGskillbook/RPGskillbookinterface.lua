@@ -64,20 +64,22 @@ function init()
     --initiating possible Level Change (thus, level currency should not be used in another script!!!)
     self.challengeText = {
       {
-        {"Defeat 500 enemies on Tier 4 or higher Planets.", 500},
-        {"Defeat 350 enemies on Tier 5 or higher Planets.", 350},
+        {"Defeat 500 Tier 4 or higher enemies.", 500},
+        {"Defeat 350 Tier 5 or higher enemies.", 350},
         {"Defeat Kluex.", 1},
         {"Defeat the Erchius Horror without taking damage.", 1}
       },
       {
-        {"Defeat 400 enemies on Tier 6 or higher Planets.", 400},
-        {"Defeat the Bone Dragon.", 1}
+        {"Defeat 400 Tier 6 or higher enemies.", 400},
+        {"Defeat the Bone Dragon.", 1},
+        {"Gather 5 Upgrade Modules. They are consumed.", 5}
       },
       {
-        {"Defeat 400 enemies on Tier 7 or higher Planets (Vaults).", 400},
+        {"Defeat 400 Vault Tier or higher enemies.", 400},
         {"Defeat 2 Vault Guardians.", 2},
         {"Defeat the Heart of Ruin.", 1},
-        {"Deafeat the Heart of Ruin without taking damage.", 1}
+        {"Deafeat the Heart of Ruin without taking damage.", 1},
+        {"-------------------------------------------------------. <- Period is max length!"}
       }
     }
 
@@ -579,33 +581,33 @@ function updateInfo()
     math.floor(status.stat("energyRegenPercentageRate")*100+.5)/100 .. "\n" ..
     math.floor(status.stat("energyRegenBlockTime")*100+.5)/100 .. "^reset;" .. "\n" ..
     "^orange;" .. getStatPercent(status.stat("foodDelta")) .. "^reset;" ..
-    "^gray;" .. getStatPercent(status.stat("physicalResistance")) .. "^reset;" ..
-    "^magenta;" .. (status.statPositive("poisonStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("poisonResistance"))) .. "^reset;" ..
-    "^blue;" .. (status.statPositive("iceStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("iceResistance"))) .. "^reset;" .. 
-    "^red;" .. (status.statPositive("fireStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("fireResistance"))) .."^reset;" .. 
-    "^yellow;" .. (status.statPositive("electricStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("electricResistance"))) .. "^reset;" ..
     "^gray;" .. getStatPercent(status.stat("grit")) ..
-    getStatMultiplier(status.stat("fallDamageMultiplier")) ..  
+    getStatMultiplier(status.stat("fallDamageMultiplier")) ..
     math.floor((1 + self.strength^self.strengthBonus*.05)*100+.5)/100 .. "^reset;" .. "\n" ..
     "^red;" .. (math.floor(self.dexterity^self.dexterityBonus*100+.5)/200 + status.stat("ninjaBleed")) .. "%\n" ..
     (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed"))/50 .. "^reset;" .. "\n" ..
-    "\nStatus:\n" ..
-    "^red;" .. getStatImmunity(status.stat("lavaImmunity")) ..
-    getStatImmunity(status.stat("biomeheatImmunity")) .. "^reset;" ..
-    "^blue;" .. getStatImmunity(status.stat("biomecoldImmunity")) .. "^reset;" ..
-    "^green;" .. getStatImmunity(status.stat("biomeradiationImmunity")) .. "^reset;" ..
-    "^gray;" .. getStatImmunity(status.stat("tarStatusImmunity")) .. "^reset;" ..
-    "^blue;" .. getStatImmunity(status.stat("breathingProtection")) .. "^reset;")
+    "\n\nPercent\n" ..
+    "^gray;" .. getStatPercent(status.stat("physicalResistance")) .. "^reset;" ..
+    "^magenta;" .. getStatPercent(status.stat("poisonResistance")) .. "^reset;" ..
+    "^blue;" .. getStatPercent(status.stat("iceResistance")) .. "^reset;" .. 
+    "^red;" .. getStatPercent(status.stat("fireResistance")) .."^reset;" .. 
+    "^yellow;" .. getStatPercent(status.stat("electricResistance")) .. "^reset;" ..
+    "^green;" .. getStatPercent(status.stat("radioactiveResistance")) .. "^reset;" ..
+    "^gray;" .. getStatPercent(status.stat("shadowResistance")) .. "^reset;" ..
+    "^magenta;" .. getStatPercent(status.stat("cosmicResistance")) .. "^reset;")
 
   widget.setText("infolayout.displaystatsFU", 
-    "Amount\n" ..
-    "^green;" .. (status.statPositive("radioactiveStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("radioactiveResistance"))) .. "^reset;" ..
-    "^gray;" .. (status.statPositive("shadowStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("shadowResistance"))) .. "^reset;" ..
-    "^magenta;" .. (status.statPositive("cosmicStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("cosmicResistance"))) .. "^reset;" ..
-    "\nStatus:\n" ..
-    "^red;" .. getStatImmunity(status.stat("ffextremeheatImmunity")) .. "^reset;" .. 
-    "^blue;" .. getStatImmunity(status.stat("ffextremecoldImmunity")) .. "^reset;" .. 
-   "^green;" ..  getStatImmunity(status.stat("ffextremeradiationImmunity")) .. "^reset;")
+    "Immunity\n" ..
+    "^red;" .. getStatImmunity(status.stat("fireStatusImmunity")) ..
+    getStatImmunity(status.stat("lavaImmunity")) ..
+    getStatImmunityNoLine(status.stat("biomeheatImmunity")) .. " [" .. getStatImmunityNoLine(status.stat("ffextremeheatImmunity")) .. "]\n" .. "^reset;" ..
+    "^blue;" .. getStatImmunity(status.stat("iceStatusImmunity")) ..
+    getStatImmunityNoLine(status.stat("biomecoldImmunity")) .. " [" .. getStatImmunityNoLine(status.stat("ffextremecoldImmunity")) .. "]\n" .. 
+    getStatImmunity(status.stat("breathProtection")) .. "^reset;" ..
+    "^green;" .. getStatImmunity(status.stat("poisonStatusImmunity")) ..
+    getStatImmunityNoLine(status.stat("biomeradiationImmunity")) .. " [" .. getStatImmunityNoLine(status.stat("ffextremeradiationImmunity")) .. "]\n" .. "^reset;" ..
+    "^yellow;" .. getStatImmunity(status.stat("electricStatusImmunity")) .. "^reset;" ..
+    "^gray;" .. getStatImmunity(status.stat("invulnerable")))
 
   widget.setText("infolayout.displayWeapons", self.hardcoreWeaponText[self.classType+1] .. "\n\n^green;All Classes can use the\nBroken Protectorate Broadsword!\nAll Classes can use Hunting Bows.^reset;")
   if status.statPositive("ivrpghardcore") then
@@ -613,6 +615,14 @@ function updateInfo()
   else
     widget.setVisible("infolayout.displayWeapons", false)
   end
+
+  --[["^gray;" .. getStatPercent(status.stat("physicalResistance")) .. "^reset;" ..
+    "^magenta;" .. (status.statPositive("poisonStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("poisonResistance"))) .. "^reset;" ..
+    "^blue;" .. (status.statPositive("iceStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("iceResistance"))) .. "^reset;" .. 
+    "^red;" .. (status.statPositive("fireStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("fireResistance"))) .."^reset;" .. 
+    "^yellow;" .. (status.statPositive("electricStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("electricResistance"))) .. "^reset;" ..
+    getStatMultiplier(status.stat("fallDamageMultiplier")) ..]]
+
 end
 
 function unlockTech()
@@ -859,6 +869,10 @@ end
 
 function getStatImmunity(stat)
   return tostring(stat >= 1):gsub("^%l",string.upper) .. "\n"
+end
+
+function getStatImmunityNoLine(stat)
+  return tostring(stat >= 1):gsub("^%l",string.upper)
 end
 
 function raiseStat(name)
@@ -1322,9 +1336,9 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+10% chance to Sear enemies when dealing damage. Seared enemies have -25% Power and are Burned for the duration of Sear.")
     widget.setText("affinitylayout.statscalingtext","+3 Vigor")
 
-    widget.setText("affinitylayout.immunitytext", "Fire\nHeat")
+    widget.setText("affinitylayout.immunitytext", "Fire Status\nHeat")
     widget.setText("affinitylayout.weaknesstext", "-25% Poison Resistance\n-30% Energy while submerged\n-1 HP/s while submerged")
-    widget.setText("affinitylayout.upgradetext", "+20% chance to Sear enemies\n+5 Strength\nImmunities Added:\nLava\nExtreme Heat")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to Sear enemies\n+5 Strength\nImmunities Added:\nFire Damage\nLava\nExtreme Heat")
   elseif affinity == 2 then
     widget.setText("affinitylayout.affinitytitle","Venom")
     widget.setFontColor("affinitylayout.affinitytitle","green")
@@ -1333,9 +1347,9 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+10% chance to Toxify enemies when dealing damage. Toxified enemies have -25% Max Health and are Poisoned for the duration of Toxify.")
     widget.setText("affinitylayout.statscalingtext","+1 Vigor\n+1 Dexterity\n+1 Agility")
 
-    widget.setText("affinitylayout.immunitytext", "Poison\nTar")
+    widget.setText("affinitylayout.immunitytext", "Poison Status\nTar")
     widget.setText("affinitylayout.weaknesstext", "-25% Electric Resistance\n-15% Health")
-    widget.setText("affinitylayout.upgradetext", "+20% chance to Toxify enemies\n+5 Dexterity\nImmunities Added:\nRadiation\nProto")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to Toxify enemies\n+5 Dexterity\nImmunities Added:\nPoison Damage\nRadiation\nProto")
   elseif affinity == 3 then
     widget.setText("affinitylayout.affinitytitle","Frost")
     widget.setFontColor("affinitylayout.affinitytitle","blue")
@@ -1344,9 +1358,9 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+10% chance to Embrittle enemies when dealing damage. Embrittled enemies have -25% Physical Resistance and shatter when killed. This Ice Explosion deals Cold Damage and Frost Slows enemies.")
     widget.setText("affinitylayout.statscalingtext","+3 Vitality")
 
-    widget.setText("affinitylayout.immunitytext", "Wet\nCold")
+    widget.setText("affinitylayout.immunitytext", "Ice Status\nWet\nCold")
     widget.setText("affinitylayout.weaknesstext", "-25% Fire Resistance\n-15% Speed\n-15% Jump")
-    widget.setText("affinitylayout.upgradetext", "+20% chance to Embrittle enemies\n+5 Endurance\nImmunities Added:\nBreathing\nExtreme Cold")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to Embrittle enemies\n+5 Endurance\nImmunities Added:\nIce Damage\nBreathing\nExtreme Cold")
   elseif affinity == 4 then
     widget.setText("affinitylayout.affinitytitle","Shock")
     widget.setFontColor("affinitylayout.affinitytitle","yellow")
@@ -1355,9 +1369,9 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+10% chance to Overload enemies when dealing damage. Overloaded enemies have -25% Speed and chain lightning to nearby enemies. This Lightning deals Electric Damage and Electrifies enemies.")
     widget.setText("affinitylayout.statscalingtext","+3 Agility")
 
-    widget.setText("affinitylayout.immunitytext", "Slow\nElectricity")
+    widget.setText("affinitylayout.immunitytext", "Slow\nElectric Damage")
     widget.setText("affinitylayout.weaknesstext", "-25% Ice Resistance\n-30% Health while submerged\n-1 E/s while submerged")
-    widget.setText("affinitylayout.upgradetext", "+20% chance to Overload enemies\n+5 Intelligence\nImmunities Added:\nRadiation\nShadow")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to Overload enemies\n+5 Intelligence\nImmunities Added:\nElectric Damage\nRadiation\nShadow")
   elseif affinity == 5 then
     widget.setText("affinitylayout.affinitytitle","Infernal")
     widget.setFontColor("affinitylayout.affinitytitle","red")
@@ -1366,7 +1380,7 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+30% chance to Sear enemies when dealing damage. Seared enemies have -25% Power and are Burned for the duration of Sear.")
     widget.setText("affinitylayout.statscalingtext","+3 Vigor\n+5 Strength")
 
-    widget.setText("affinitylayout.immunitytext", "Fire\nHeat\nLava\nExtreme Heat (Frackin Universe)")
+    widget.setText("affinitylayout.immunitytext", "Fire Damage\nLava\nExtreme Heat (Frackin Universe)")
     widget.setText("affinitylayout.weaknesstext", "-25% Poison Resistance\n-30% Energy while submerged\n-1 HP/s while submerged")
     widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   elseif affinity == 6 then
@@ -1377,7 +1391,7 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+30% chance to Toxify enemies when dealing damage. Toxified enemies have -25% Max Health and are Poisoned for the duration of Toxify.")
     widget.setText("affinitylayout.statscalingtext","+1 Vigor\n+1 Agility\n+6 Dexterity")
 
-    widget.setText("affinitylayout.immunitytext", "Poison\nTar\nRadiation\nProto (Frackin Universe)")
+    widget.setText("affinitylayout.immunitytext", "Poison Damage\nTar\nRadiation\nProto (Frackin Universe)")
     widget.setText("affinitylayout.weaknesstext", "-25% Electric Resistance\n-15% Health")
     widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   elseif affinity == 7 then
@@ -1388,7 +1402,7 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+30% chance to Embrittle enemies when dealing damage. Embrittled enemies have -25% Physical Resistance and shatter when killed. This Ice Explosion deals Cold Damage and Frost Slows enemies.")
     widget.setText("affinitylayout.statscalingtext","+3 Vitality\n+5 Endurance")
 
-    widget.setText("affinitylayout.immunitytext", "Wet\nCold\nBreathing\nExtreme Cold (Frackin Universe)")
+    widget.setText("affinitylayout.immunitytext", "Ice Damage\nWet\nBreathing\nExtreme Cold (Frackin Universe)")
     widget.setText("affinitylayout.weaknesstext", "-25% Fire Resistance\n-15% Speed\n-15% Jump")
     widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   elseif affinity == 8 then
@@ -1399,7 +1413,7 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+30% chance to Overload enemies when dealing damage. Overloaded enemies have -25% Speed and chain lightning to nearby enemies. This Lightning deals Electric Damage and Electrifies enemies.")
     widget.setText("affinitylayout.statscalingtext","+3 Agility\n+5 Intelligence")
 
-    widget.setText("affinitylayout.immunitytext", "Slow\nElectricity\nRadiation\nShadow (Frackin Universe)")
+    widget.setText("affinitylayout.immunitytext", "Electric Damage\nSlow\nRadiation\nShadow (Frackin Universe)")
     widget.setText("affinitylayout.weaknesstext", "-25% Ice Resistance\n-30% Health while submerged\n-1 E/s while submerged")
     widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   end
