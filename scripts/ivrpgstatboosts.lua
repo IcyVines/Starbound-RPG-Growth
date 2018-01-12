@@ -16,7 +16,8 @@ function init()
 
   message.setHandler("addXP", function(_, _, amount)
   	--addToChallengeCount(amount)
-  	sb.logInfo("XP Pulse: " .. (amount and amount or 0))
+  	--sb.logInfo("XP Pulse: " .. (amount and amount or 0))
+  	addXP(amount)
   end)
 
   --Versioning if necessary
