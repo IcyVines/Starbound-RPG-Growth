@@ -914,8 +914,9 @@ function updateXPPulse()
 	end
 end
 
-function addXP(amount)
-	status.addPersistentEffect("ivrpgmultiplayerxp", {stat = "ivrpgmultiplayerxp", amount = math.floor(effect.duration())})
+function addXP(new)
+	sb.logInfo("In addXP(): " .. new)
+	status.addPersistentEffect("ivrpgmultiplayerxp", {stat = "ivrpgmultiplayerxp", amount = math.floor(new)})
 end
 
 function addToChallengeCount(level)
