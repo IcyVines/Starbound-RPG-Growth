@@ -56,7 +56,7 @@ function init()
     self.classWeaponText = {
       "The Aegis is a broadsword that can be used as a shield. Perfect Blocking triggers the Knight's class ability. Perfect Blocking with the Vital Aegis restores health.",
       "The Nova is a staff that can change elements. The staff cycles between Nova, Fire, Electric, and Ice. Nova weakens enemies to Fire, Electricity, and Ice. Enemies killed by Primed Nova explode.", 
-      "The Aether is a shuriken that never runs out and always causes bleeding. Blood Aether tracks enemies and goes through both walls and enemies.", 
+      "The Aether is a shuriken that never runs out and always causes bleeding. Blood Aether tracks enemies and goes through both walls and enemies. The tracking scales with Dexterity, and its time to live increases with Agility.", 
       "The Versa is a gun that can fire in two modes. Versa Impact and Ricochet's shotgun blast can be held to increase damage and snipe enemies. Versa Ricochet's bullets bounce and increase in power everytime they do.", 
       "The Siphon is a claw that uses energy to deal massive damage for its finisher. Finishers: Critical Slice causes bleed and fills hunger. Venom Slice causes poison and fills health. Lightning Slice causes static and fills energy.", 
       "The Spira is a one-handed drill with increased speed and infinite use. Hungry Spira draws items closer. Pressing shift while using Ravenous Spira causes no blocks to drop, but fills energy while breaking them."
@@ -728,7 +728,7 @@ function getTechText(num)
         or "Press [F] to toggle a magical shield that provides invulnerability to you and nearby allies. Drains energy while active, and is toggled off when no energy remains."))
   elseif classType == 3 then
     return num == 1 and "Press [Space] while midair to burst forward. For a short time after jumping, you are invulnerable to damage. As long as you remain in the air with energy remaining, you are invulnerable to fall damage. You may do this twice while midair." 
-    or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while active. The invulnerability ends when you run out of energy or press [F] while transformed." 
+    or (num == 2 and "Press [F] to morph into an invulnerable spike ball. Energy drains quickly while active. The invulnerability ends when you run out of energy or press [F] while transformed. Unlike other Spike Spheres, Vanish Sphere's speed scales with Aglity." 
     or (num == 3 and "Press [G] (Bind [G] in your Controls) to vanish. After 2 seconds, you appear at your cursor (if possible). If holding a sharp weapon, slash where you appear. During the cooldown, lose 20% Physical Resistance. Energy Cost depends on Distance and Agility." 
     or "An upgrade to Flash Jump. Cling to walls by moving against them during a jump, and refresh your jumps upon doing so. Press [S] to slide down while clinging. Press [Space] while clinging or sliding to jump. Move away from the wall to get off."))
   elseif classType == 4 then
@@ -738,7 +738,7 @@ function getTechText(num)
         or "Press [F] to switch to a slow-moving Spike Sphere. Left click to shoot a missile using some energy. Hold right click to drain your energy in order to shield yourself from damage.\nCreated by SushiSquid!"))
   elseif classType == 5 then
     return num == 1 and "Press [G] (Bind [G] in your Controls) to toggle an ability that increases Physical and Poison Resistance and grants Knockback Immunity. Drains energy while active, and is toggled off when no energy remains." 
-    or (num == 2 and "Press [F] to transform into a Spike Sphere. Left click while transformed to shoot out a ring of poison clouds. You are immune to poison while transformed." 
+    or (num == 2 and "Press [F] to transform into a poison-immune Spike Sphere. Left click while transformed to shoot out a ring of poison clouds (Damage scales with Dexterity). Hold Right Click while transformed to decrease your Hunger Bar to regenerate Health and Energy." 
       or (num == 3 and "An upgrade to Double Jump, press [Space] to launch yourself in a direction of your choosing, leaving a cloud of smoke behind that disorients enemies. Disoriented enemies are slowed and do less damage. Defaults to a backwards launch." 
         or "Press [G] (Bind [G] in your Controls) to toggle a toxic field that inflicts enemies with a weakening poison. These enemies take more poison and bleed damage. Drains energy while active, and is toggled off when no energy remains."))
   elseif classType == 6 then

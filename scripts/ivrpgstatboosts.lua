@@ -11,26 +11,12 @@ function init()
   self.level = -1
   message.setHandler("addToChallengeCount", function(_, _, level)
   	addToChallengeCount(level)
-      --sb.logInfo("Added to Challenge Count:\nLevel is: " .. (level and level or 0))
   end)
-
-  --[[message.setHandler("addXP", function(_, _, amount)
-  	--addToChallengeCount(amount)
-  	--sb.logInfo("XP Pulse: " .. (amount and amount or 0))
-  	addXP(amount)
-  end)]]
-
-  --Versioning if necessary
-  --if not status.statPositive("ivrpgupdate13") then
-    --status.addPersistentEffect("ivrpgupdate13", {stat = "ivrpgupdate13", amount = 1})
-  --end
-
 end
 
 function update(dt)
   
   self.id = entity.id()
-  --updateXPPulse()
   self.xp = world.entityCurrency(self.id, "experienceorb")
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
   self.classType = world.entityCurrency(self.id, "classtype")
@@ -893,33 +879,6 @@ function updateProgress(notification, challengeKind, threatTarget, bossKind)
   end
   return false
 end
-
---[[function updateXPPulse()
-	if not self.xp then
-		self.xp = world.entityCurrency(self.id, "experienceorb")
-	else
-		local new = world.entityCurrency(self.id, "experienceorb") - self.xp
-		if new > 0 then
-			if status.statPositive("ivrpgmultiplayerxp") then
-				status.clearPersistentEffects("ivrpgmultiplayerxp")
-			else
-				local players = world.playerQuery(mcontroller.position(), 60, {
-					withoutEntityId = self.id
-				})
-				for k,id in pairs(players) do
-					world.sendEntityMessage(id, "addXP", new)
-				end
-				--Deprecated
-				--world.spawnProjectile("multiplayerxppulse", mcontroller.position(), self.id, {0,0}, true, {power = 0, knockback = 0, timeToLive = 0.1, statusEffects = {{effect = "multiplayerxppulse", duration = new}}})
-			end
-		end
-	end
-end
-
-function addXP(new)
-	--sb.logInfo("In addXP(): " .. new)
-	status.addPersistentEffect("ivrpgmultiplayerxp", {stat = "ivrpgmultiplayerxp", amount = math.floor(new)})
-end]]
 
 function addToChallengeCount(level)
 	--sb.logInfo("Added to Challenge Count with Level: " .. level)
