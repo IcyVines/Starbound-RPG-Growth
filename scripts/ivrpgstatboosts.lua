@@ -14,11 +14,11 @@ function init()
       --sb.logInfo("Added to Challenge Count:\nLevel is: " .. (level and level or 0))
   end)
 
-  message.setHandler("addXP", function(_, _, amount)
+  --[[message.setHandler("addXP", function(_, _, amount)
   	--addToChallengeCount(amount)
   	--sb.logInfo("XP Pulse: " .. (amount and amount or 0))
   	addXP(amount)
-  end)
+  end)]]
 
   --Versioning if necessary
   --if not status.statPositive("ivrpgupdate13") then
@@ -30,7 +30,7 @@ end
 function update(dt)
   
   self.id = entity.id()
-  updateXPPulse()
+  --updateXPPulse()
   self.xp = world.entityCurrency(self.id, "experienceorb")
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
   self.classType = world.entityCurrency(self.id, "classtype")
@@ -894,7 +894,7 @@ function updateProgress(notification, challengeKind, threatTarget, bossKind)
   return false
 end
 
-function updateXPPulse()
+--[[function updateXPPulse()
 	if not self.xp then
 		self.xp = world.entityCurrency(self.id, "experienceorb")
 	else
@@ -919,7 +919,7 @@ end
 function addXP(new)
 	--sb.logInfo("In addXP(): " .. new)
 	status.addPersistentEffect("ivrpgmultiplayerxp", {stat = "ivrpgmultiplayerxp", amount = math.floor(new)})
-end
+end]]
 
 function addToChallengeCount(level)
 	--sb.logInfo("Added to Challenge Count with Level: " .. level)

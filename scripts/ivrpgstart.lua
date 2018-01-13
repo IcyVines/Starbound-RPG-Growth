@@ -15,19 +15,16 @@ function init()
   
   sb.logInfo("Chaika's RPG Growth: Version %s", data.version)
 
+  message.setHandler("addXP", function(_, _, amount)
+    addXP(amount)
+  end)
+
 end
 
 function update(args)
   origUpdate(args)
 
-  if status.statPositive("ivrpgmultiplayerxp") then
-    if self.removed then
-      player.giveItem({ "experienceorb", status.stat("ivrpgmultiplayerxp")})
-      self.removed = false
-    end
-  elseif not self.removed then
-    self.removed = true
-  end
+  updateXPPulse()
 
   --admin
   if player.isAdmin() then
@@ -46,4 +43,24 @@ function removeTechs()
     player.makeTechUnavailable("roguepoisondash")
     player.makeTechUnavailable("soldiermissilestrike")
     player.makeTechUnavailable("explorerdrill")
+end
+
+function updateXPPulse()    
+  if self.xp then
+    local new = player.currency("experienceorb") - self.xp
+    if new > 0 then
+      local players = world.playerQuery(mcontroller.position(), 60, {
+        withoutEntityId = self.id
+      })
+      for k,id in pairs(players) do
+        world.sendEntityMessage(id, "addXP", new)
+      end
+    end
+  end
+  self.xp = player.currency("experienceorb")
+end
+
+function addXP(new)
+  player.giveItem({"experienceorb", new})
+  self.xp = player.currency("experienceorb")
 end
