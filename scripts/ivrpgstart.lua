@@ -49,8 +49,8 @@ function updateXPPulse()
   if self.xp then
     local new = player.currency("experienceorb") - self.xp
     if new > 0 then
-      local players = world.playerQuery(mcontroller.position(), 60, {
-        withoutEntityId = self.id
+      local players = world.playerQuery(entity.position(), 60, {
+        withoutEntityId = entity.id()
       })
       for k,id in pairs(players) do
         world.sendEntityMessage(id, "addXP", new)
