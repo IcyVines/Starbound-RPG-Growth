@@ -903,12 +903,13 @@ function updateXPPulse()
 			if status.statPositive("ivrpgmultiplayerxp") then
 				status.clearPersistentEffects("ivrpgmultiplayerxp")
 			else
-				local players = world.playerQuery(mcontroller.position(), 50, {
+				local players = world.playerQuery(mcontroller.position(), 60, {
 					withoutEntityId = self.id
 				})
 				for k,id in pairs(players) do
 					world.sendEntityMessage(id, "addXP", new)
 				end
+				--Deprecated
 				--world.spawnProjectile("multiplayerxppulse", mcontroller.position(), self.id, {0,0}, true, {power = 0, knockback = 0, timeToLive = 0.1, statusEffects = {{effect = "multiplayerxppulse", duration = new}}})
 			end
 		end
