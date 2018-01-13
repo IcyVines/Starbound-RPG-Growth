@@ -5,18 +5,16 @@ function init()
   origInit()
   script.setUpdateDelta(9)
   self.removed = true
+  self.xp = player.currency("experienceorb")
   
   local data = root.assetJson("/ivrpgversion.config")
   if status.statusProperty("ivrpgversion", "0") ~= data.version then
     status.setStatusProperty("ivrpgversion", data.version)
     removeTechs()
   end
-
-  if not player.hasQuest("ivrpgoneforall") or player.hasCompletedQuest("ivrpgoneforall") then
-    player.startQuest("ivrpgoneforall")
-  end
   
   sb.logInfo("Chaika's RPG Growth: Version %s", data.version)
+
 end
 
 function update(args)
