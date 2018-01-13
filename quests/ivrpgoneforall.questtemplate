@@ -1,0 +1,16 @@
+{
+  "id" : "ivrpgoneforall",
+  "title" : "^orange;One for All",
+  "text" : "Welcome to Update 1.31 of RPG Growth!\n\nThis quest is an indicator that nearby players will gain the same amount of XP you do, and vice versa. Now those pesky Melee-Only Classes won't steal all of it from you.",
+  "completionText" : "We are phasing out the usage of this quest. Please do not worry if it has been completed/abandoned.",
+  "moneyRange" : [0, 0],
+  "canBeAbandoned" : true,
+
+  "updateDelta" : 9,
+  "script" : "/quests/ivrpgoneforall.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "sail"
+    }
+  }
+}
