@@ -917,12 +917,12 @@ function updateXPPulse()
 end
 
 function addXP(new)
-	sb.logInfo("In addXP(): " .. new)
+	--sb.logInfo("In addXP(): " .. new)
 	status.addPersistentEffect("ivrpgmultiplayerxp", {stat = "ivrpgmultiplayerxp", amount = math.floor(new)})
 end
 
 function addToChallengeCount(level)
-	sb.logInfo("Added to Challenge Count with Level: " .. level)
+	--sb.logInfo("Added to Challenge Count with Level: " .. level)
 	local challenge1 = status.stat("ivrpgchallenge1")
     local challenge2 = status.stat("ivrpgchallenge2")
     local challenge3 = status.stat("ivrpgchallenge3")
