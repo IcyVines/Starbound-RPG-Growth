@@ -11,6 +11,7 @@ function init()
   self.damageDisableTimer = 0
 
   self.headingAngle = nil
+  self.contactOn = nil
 
   self.normalCollisionSet = {"Block", "Dynamic"}
   if self.ignorePlatforms then
@@ -48,12 +49,7 @@ function update(args)
   if self.active then
 
     -- Armor Sphere Stat Effects --
-    status.addEphemeralEffect("knightspikes", math.huge)
-    status.setPersistentEffects("ivrpgarmorsphereboost",{
-      {stat = "grit", amount = 1},
-      {stat = "protection", effectiveMultiplier = 1.5},
-      {stat = "protection", amount = 5}
-    })
+    activateContact()
 
     local groundDirection
     if self.damageDisableTimer == 0 then
@@ -126,8 +122,7 @@ function update(args)
   else
     self.headingAngle = nil
      -- DisableEffects --
-    status.removeEphemeralEffect("knightspikes")
-    status.clearPersistentEffects("ivrpgarmorsphereboost")
+    deactivateContact()
   end
  
   updateTransformFade(args.dt)
@@ -150,4 +145,38 @@ function findGroundDirection()
       return vec2.withAngle(angle, 1.0)
     end
   end
+end
+
+function uninit()
+  storePosition()
+  deactivate()
+  deactivateContact()
+end
+
+function activateContact()
+    if not self.contactOn then
+      status.addEphemeralEffect("knightarmorspherecontact", math.huge)
+      self.contactOn = world.spawnProjectile("knightarmorspheresurround",
+                                            mcontroller.position(),
+                                            entity.id(),
+                                            {0,0},
+                                            true,
+                                            {}
+                                           )
+    end
+end
+
+function deactivateContact()
+    if self.contactOn then
+      status.removeEphemeralEffect("knightarmorspherecontact")
+      world.entityQuery(mcontroller.position(),1,
+        {
+         withoutEntityId = entity.id(),
+         includedTypes = {"projectile"},
+         callScript = "removeContact",
+         callScriptArgs = {self.contactOn}
+        }
+      )
+      self.contactOn = nil
+    end
 end

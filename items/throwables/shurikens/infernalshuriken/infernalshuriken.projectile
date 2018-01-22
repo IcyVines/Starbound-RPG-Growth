@@ -18,6 +18,8 @@
   "statusEffects" : [
     "burning"
   ],
+  "timeToLive" : 1.5,
+  "scripts" : ["infernalshuriken.lua"],
   "damagePoly" : [ [-5, 0], [-3.3, -3.3], [0, -5], [3.3, -3.3], [5, 0], [3.3, 3.3], [0, 5], [-3.3, 3.3] ],
   "emitters" : [ "smoke", "flames" ]
 }

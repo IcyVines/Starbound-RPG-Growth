@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucwavedash",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Description.",
+  "shortdescription" : "Wavedash",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "tech",
+  "stat" : "wavedash"
+}

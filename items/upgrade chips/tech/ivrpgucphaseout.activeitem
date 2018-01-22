@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucphaseout",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Description.",
+  "shortdescription" : "Phase Out",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "tech",
+  "stat" : "phaseout"
+}

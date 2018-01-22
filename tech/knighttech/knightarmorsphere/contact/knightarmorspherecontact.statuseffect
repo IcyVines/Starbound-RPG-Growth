@@ -1,0 +1,12 @@
+{
+  "name" : "knightarmorspherecontact",
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "knightarmorspherecontact.lua"
+  ],
+  
+  "animationConfig" : "knightarmorspherecontact.animation",
+  "label" : "Contact Damage",
+  "icon" : "/tech/knighttech/knightarmorsphere/contact/knightarmorspherecontact.png"
+}

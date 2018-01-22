@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpguccharger",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Description.",
+  "shortdescription" : "Charger",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "weapon",
+  "stat" : "charger"
+}

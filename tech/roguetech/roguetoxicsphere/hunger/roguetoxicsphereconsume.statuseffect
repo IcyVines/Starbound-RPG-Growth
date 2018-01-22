@@ -12,6 +12,6 @@
   ],
   
   "animationConfig" : "roguetoxicsphereconsume.animation",
-  "label" : "Tank",
+  "label" : "Consume",
   "icon" : "/tech/roguetech/roguetoxicsphere/hunger/roguetoxicsphereconsume.png"
 }

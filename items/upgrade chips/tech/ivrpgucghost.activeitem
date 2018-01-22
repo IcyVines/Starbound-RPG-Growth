@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucghost",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Description.",
+  "shortdescription" : "Ghost",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "tech",
+  "stat" : "ghost"
+}

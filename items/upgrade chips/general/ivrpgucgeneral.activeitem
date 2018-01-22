@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpguc.general",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Description.",
+  "shortdescription" : "Name",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "general",
+  "stat" : "name"
+}

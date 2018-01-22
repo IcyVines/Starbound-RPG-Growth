@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucbatterypack",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Description.",
+  "shortdescription" : "Battery Pack",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "tech",
+  "stat" : "batterypack"
+}

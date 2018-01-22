@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpguchoversphere",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Description.",
+  "shortdescription" : "Hover Sphere",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "tech",
+  "stat" : "hoversphere"
+}

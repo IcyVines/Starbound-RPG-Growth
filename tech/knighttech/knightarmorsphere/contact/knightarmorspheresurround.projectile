@@ -1,0 +1,22 @@
+{
+  "projectileName" : "knightarmorspheresurround",
+  "image" : "knightarmorspheresurround.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 3,
+  "lightColor" : [20, 20, 180],
+  "pointLight" : true,
+  "animationLoops" : true,
+  "statusEffects" : [ ],
+  "emitters" : [ ],
+  "renderLayer" : "Player-1",
+  "orientationLocked" : true,
+  "power" : 15,
+  "speed" : 0.0,
+  "physics" : "laser",
+  "scripts": ["/tech/knighttech/knightarmorsphere/contact/knightarmorspheresurround.lua"],
+  "timeToLive" : 999999999,
+  "piercing" : true,
+  "knockback" : 30,
+  "damageType" : "Damage",
+  "damageKind" : "bluntforce"
+}

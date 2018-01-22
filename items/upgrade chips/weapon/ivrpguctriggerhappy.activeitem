@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpguctriggerhappy",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Description.",
+  "shortdescription" : "Trigger Happy",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "weapon",
+  "stat" : "triggerhappy"
+}

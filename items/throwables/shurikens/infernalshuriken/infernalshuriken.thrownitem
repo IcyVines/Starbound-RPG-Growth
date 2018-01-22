@@ -19,6 +19,7 @@
     "speed" : 80,
     "power" : 10,
     "knockback" : 12,
+    "timeToLive" : 1,
 
     "persistentAudio" : "/sfx/projectiles/throwingstar_loop.ogg",
     "periodicActions" : [

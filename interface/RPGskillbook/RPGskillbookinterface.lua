@@ -555,14 +555,28 @@ end
 
 function updateUpgradeTab()
 
-  local effect = nil
+  local effectName = "nil"
 
-  if status.statPositive("ivrpgucclasstech") then
+  if status.statPositive("ivrpguctech") then
+    effectName = status.getPersistentEffects("ivrpguctech")[2].stat
+    widget.setText("upgradelayout.techname", self.textData.upgrades.tech[effectName].title)
+    widget.setText("upgradelayout.techtext", self.textData.upgrades.tech[effectName].description)
+    widget.setButtonEnabled("upgradelayout.tech", true)
   else
+    widget.setText("upgradelayout.techname", "UNUSED")
+    widget.setText("upgradelayout.techtext", "-")
+    widget.setButtonEnabled("upgradelayout.tech", false)
   end
 
-  if status.statPositive("ivrpgucclassweapon") then
+  if status.statPositive("ivrpgucweapon") then
+    effectName = status.getPersistentEffects("ivrpgucweapon")[2].stat
+    widget.setText("upgradelayout.weaponname", self.textData.upgrades.weapon[effectName].title)
+    widget.setText("upgradelayout.weapontext", self.textData.upgrades.weapon[effectName].description)
+    widget.setButtonEnabled("upgradelayout.weapon", true)
   else
+    widget.setText("upgradelayout.weaponname", "UNUSED")
+    widget.setText("upgradelayout.weapontext", "-")
+    widget.setButtonEnabled("upgradelayout.weapon", false)
   end
 
   if status.statPositive("ivrpgucaffinity") then
@@ -577,7 +591,14 @@ function updateUpgradeTab()
   end
 
   if status.statPositive("ivrpgucgeneral") then
+    effectName = status.getPersistentEffects("ivrpgucgeneral")[2].stat
+    widget.setText("upgradelayout.generalname", self.textData.upgrades.general[effectName].title)
+    widget.setText("upgradelayout.generaltext", self.textData.upgrades.general[effectName].description)
+    widget.setButtonEnabled("upgradelayout.general", true)
   else
+    widget.setText("upgradelayout.generalname", "UNUSED")
+    widget.setText("upgradelayout.generaltext", "-")
+    widget.setButtonEnabled("upgradelayout.general", false)
   end
 end
 
@@ -762,7 +783,7 @@ function getTechText(num)
   if classType == 1 then
     return num == 1 and "An upgrade to Sprint, while running, enemies receive damage and knockback. Damage is doubled when holding up a shield. Damage scales with Strength and Run Speed. Energy Cost decreases with higher Agility."
     or (num == 2 and "An upgrade to Double Jump, press [G] (Bind [G] in your Controls) while midair to slam downwards. You take no fall damage upon landing, and cause a small explosion, damaging enemies. Damage scales with Strength and distance fallen from activation."
-      or (num == 3 and "An upgrade to Spike Sphere, while transformed, ignore knockback and deal contact damage to enemies." 
+      or (num == 3 and "An upgrade to Spike Sphere, while transformed, ignore knockback and deal contact damage to enemies. Armor is also increased while transformed." 
         or "An upgrade to Bash. While sprinting, the player receives physical resistance. While damage remains the same, enemies are stunned on hit. Damage scales with Strength and Run Speed. Energy Cost decreases with higher Agility."))
   elseif classType == 2 then
     return num == 1 and "An upgrade to Spike Sphere, while transformed you regen slightly and are affected by low gravity. In addition, hold left click to create a barrier that pushes enemies away, draining energy to do so." 
@@ -1390,9 +1411,9 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+10% chance to Toxify enemies when dealing damage. Toxified enemies have -25% Max Health and are Poisoned for the duration of Toxify.")
     widget.setText("affinitylayout.statscalingtext","+1 Vigor\n+1 Dexterity\n+1 Agility")
 
-    widget.setText("affinitylayout.immunitytext", "Poison Status\nTar")
+    widget.setText("affinitylayout.immunitytext", "Poison Status\nTar\nRadiation")
     widget.setText("affinitylayout.weaknesstext", "-25% Electric Resistance\n-15% Health")
-    widget.setText("affinitylayout.upgradetext", "+20% chance to Toxify enemies\n+5 Dexterity\nImmunities Added:\nPoison Damage\nRadiation\nProto")
+    widget.setText("affinitylayout.upgradetext", "+20% chance to Toxify enemies\n+5 Dexterity\nImmunities Added:\nPoison Damage\nExtreme Radiation\nProto")
   elseif affinity == 3 then
     widget.setText("affinitylayout.affinitytitle","Frost")
     widget.setFontColor("affinitylayout.affinitytitle","blue")
@@ -1409,7 +1430,7 @@ function updateAffinityTab()
     widget.setFontColor("affinitylayout.affinitytitle","yellow")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/shock.png")
 
-    widget.setText("affinitylayout.passivetext","+10% chance to Overload enemies when dealing damage. Overloaded enemies have -25% Speed and chain lightning to nearby enemies. This Lightning deals Electric Damage and Electrifies enemies.")
+    widget.setText("affinitylayout.passivetext","+10% chance to Overload enemies when dealing damage. Overloaded enemies have -25% Speed and chain electrifying lightning to nearby enemies.")
     widget.setText("affinitylayout.statscalingtext","+3 Agility")
 
     widget.setText("affinitylayout.immunitytext", "Slow\nElectric Damage")
@@ -1423,7 +1444,7 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+30% chance to Sear enemies when dealing damage. Seared enemies have -25% Power and are Burned for the duration of Sear.")
     widget.setText("affinitylayout.statscalingtext","+3 Vigor\n+5 Strength")
 
-    widget.setText("affinitylayout.immunitytext", "Fire Damage\nLava\nExtreme Heat (Frackin Universe)")
+    widget.setText("affinitylayout.immunitytext", "Fire Damage\nLava\nExtreme Heat (FU)")
     widget.setText("affinitylayout.weaknesstext", "-25% Poison Resistance\n-30% Energy while submerged\n-1 HP/s while submerged")
     widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   elseif affinity == 6 then
@@ -1434,7 +1455,7 @@ function updateAffinityTab()
     widget.setText("affinitylayout.passivetext","+30% chance to Toxify enemies when dealing damage. Toxified enemies have -25% Max Health and are Poisoned for the duration of Toxify.")
     widget.setText("affinitylayout.statscalingtext","+1 Vigor\n+1 Agility\n+6 Dexterity")
 
-    widget.setText("affinitylayout.immunitytext", "Poison Damage\nTar\nRadiation\nProto (Frackin Universe)")
+    widget.setText("affinitylayout.immunitytext", "Poison Damage\nTar\nExtreme Radiation (FU)\nProto (FU)")
     widget.setText("affinitylayout.weaknesstext", "-25% Electric Resistance\n-15% Health")
     widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   elseif affinity == 7 then
@@ -1442,10 +1463,10 @@ function updateAffinityTab()
     widget.setFontColor("affinitylayout.affinitytitle","blue")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/frost.png")
 
-    widget.setText("affinitylayout.passivetext","+30% chance to Embrittle enemies when dealing damage. Embrittled enemies have -25% Physical Resistance and shatter when killed. This Ice Explosion deals Cold Damage and Frost Slows enemies.")
+    widget.setText("affinitylayout.passivetext","+30% chance to Embrittle enemies when dealing damage. Embrittled enemies have -25% Physical Resistance and shatter when killed. This Ice Explosion deals Cold Damage and Frost Slows enemies.\n^blue;When your Health falls below one third, nearby enemies are knocked back and slowed.")
     widget.setText("affinitylayout.statscalingtext","+3 Vitality\n+5 Endurance")
 
-    widget.setText("affinitylayout.immunitytext", "Ice Damage\nWet\nBreathing\nExtreme Cold (Frackin Universe)")
+    widget.setText("affinitylayout.immunitytext", "Ice Damage\nWet\nBreathing\nExtreme Cold (FU)")
     widget.setText("affinitylayout.weaknesstext", "-25% Fire Resistance\n-15% Speed\n-15% Jump")
     widget.setText("affinitylayout.upgradetext", "Fully Upgraded!")
   elseif affinity == 8 then
@@ -1453,7 +1474,7 @@ function updateAffinityTab()
     widget.setFontColor("affinitylayout.affinitytitle","yellow")
     widget.setImage("affinitylayout.affinityicon","/objects/affinity/shock.png")
 
-    widget.setText("affinitylayout.passivetext","+30% chance to Overload enemies when dealing damage. Overloaded enemies have -25% Speed and chain lightning to nearby enemies. This Lightning deals Electric Damage and Electrifies enemies.")
+    widget.setText("affinitylayout.passivetext","+30% chance to Overload enemies when dealing damage. Overloaded enemies have -25% Speed and chain electrifying lightning to nearby enemies.\n^yellow;Upon expending all Energy, release an Electric explosion that deals massive damage and causes Overload.")
     widget.setText("affinitylayout.statscalingtext","+3 Agility\n+5 Intelligence")
 
     widget.setText("affinitylayout.immunitytext", "Electric Damage\nSlow\nRadiation\nShadow (Frackin Universe)")

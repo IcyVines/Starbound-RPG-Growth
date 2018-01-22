@@ -9,12 +9,13 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+      "file" : "/projectiles/explosions/regularexplosion2/iceexplosionknockbackstatus.config"
     }
   ],
   "power" : 100.0,
   "knockback" : 10,
   "damageKind" : "icedagger",
+  "timeToLive" : 3,
   "statusEffects" : [
     "frostslow"
   ],

@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucbloodseeker",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Description.",
+  "shortdescription" : "Blood Seeker",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "weapon",
+  "stat" : "bloodseeker"
+}

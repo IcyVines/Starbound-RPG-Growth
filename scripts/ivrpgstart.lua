@@ -33,6 +33,7 @@ function update(args)
     status.clearPersistentEffects("ivrpgadmin")
   end
 
+  updateUpgrades()
 
 end
 
@@ -63,4 +64,8 @@ end
 function addXP(new)
   player.giveItem({"experienceorb", new})
   self.xp = player.currency("experienceorb")
+end
+
+function updateUpgrades()
+	
 end

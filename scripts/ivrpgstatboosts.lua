@@ -7,6 +7,8 @@ function init()
   self.damageUpdate = 1
   self.damageGivenUpdate = 1
   self.challengeDamageGivenUpdate = 1
+  self.arcExplosion = true
+  self.cryoExplosion = true
   self.lastMonster = {nil, nil, nil, nil, nil}
   self.level = -1
   message.setHandler("addToChallengeCount", function(_, _, level)
@@ -186,6 +188,7 @@ function update(dt)
           {stat = "poisonStatusImmunity", amount = 1},
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "poisonStatusImmunity", amount = 1},
+          {stat = "biomeradiationImmunity", amount = 1},
           {stat = "electricResistance", amount = -0.25},
           {stat = "maxHealth", effectiveMultiplier = 0.85}
         },
@@ -229,6 +232,7 @@ function update(dt)
           {stat = "maxHealth", effectiveMultiplier = 1 - 0.15  * ((status.stat("ivrpgucincurable")+1)%2)},
 
           {stat = "biomeradiationImmunity", amount = 1},
+          {stat = "ffextremeradiationImmunity", amount = 1},
           {stat = "protoImmunity", amount = 1}
         },
         { -- Cryo --
@@ -271,6 +275,11 @@ function update(dt)
           world.spawnProjectile(aestheticType[affinityMod+1].."trailIVRPG", {mcontroller.xPosition(), mcontroller.yPosition()-2}, self.id, {0,0}, false, {power = 0, knockback = 0, timeToLive = 0.3, damageKind = "applystatus"})
         end
 
+        if self.affinity == 8 and status.resource("energy") == 0 and self.arcExplosion then
+          self.arcExplosion = false
+          world.spawnProjectile("ivrpgarcexplosion", mcontroller.position(), self.id, {0,0}, false)
+        end
+
         if isInLiquid() == 1 then
           if affinityMod == 0 then
             if self.affinity == 1 or not status.statPositive("ivrpguceternalflame") then status.overConsumeResource("health", dt) end
@@ -287,7 +296,21 @@ function update(dt)
             })
           end
         end
+
+        if self.affinity == 7 and status.resource("health")/status.stat("maxHealth") < 0.33 and self.cryoExplosion then
+          self.cryoExplosion = false
+          world.spawnProjectile("ivrpgcryoexplosionstatus", mcontroller.position(), self.id, {0,0}, false)
+        end
+
       end
+  end
+
+  if self.arcExplosion == false and status.resource("energy") > 0 then
+    self.arcExplosion = true
+  end
+
+  if self.cryoExplosion == false and status.resource("health")/status.stat("maxHealth") >= 0.33 then
+    self.cryoExplosion = true
   end
 
   self.dnotifications, self.damageGivenUpdate = status.inflictedHitsSince(self.damageGivenUpdate)

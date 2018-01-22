@@ -1,0 +1,23 @@
+{
+  "projectileName" : "ivrpgcryoexplosionstatus",
+  "physics" : "laser",
+  "bounces" : -1,
+  "timeToLive" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "iceexplosion.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 6,
+  "lightColor" : [77, 77, 0],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/cryoexplosion/ivrpgcryoexplosion.config"
+    }
+  ],
+  "orientationLocked" : true,
+  "power" : 0,
+  "knockback" : 100,
+  "damageType" : "NoDamage",
+  "piercing" : true,
+  "damageKind" : "default"
+}
