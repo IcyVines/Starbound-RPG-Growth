@@ -92,6 +92,8 @@ function init()
       "The Rogue can equip:^green;\nOne-Handed Melee Weapons.\nOne-Handed Ranged Weapons.\nFist Weapons and Whips\n\nThe Rogue can dual-wield weapons.\n^reset;^red;The Rogue cannot wield Wands.^reset;",
       "The Explorer can equip:^green;\nAny Weapon Type\n\nThe Explorer can dual-wield weapons.^reset;"
     }
+
+    self.textData = root.assetJson("/ivrpgtext.config")
     updateLevel()
 end
 
@@ -150,6 +152,10 @@ function update(dt)
 
   if status.statPositive("ivrpgmasteryunlocked") and widget.getChecked("bookTabs.7") then
     updateChallenges()
+  end
+
+  if widget.getChecked("bookTabs.8") then
+    updateUpgradeTab()
   end
 
   updateStats()
@@ -548,6 +554,31 @@ function updateSpecializationTab()
 end
 
 function updateUpgradeTab()
+
+  local effect = nil
+
+  if status.statPositive("ivrpgucclasstech") then
+  else
+  end
+
+  if status.statPositive("ivrpgucclassweapon") then
+  else
+  end
+
+  if status.statPositive("ivrpgucaffinity") then
+    effectName = status.getPersistentEffects("ivrpgucaffinity")[2].stat
+    widget.setText("upgradelayout.affinityname", self.textData.upgrades.affinity[effectName].title)
+    widget.setText("upgradelayout.affinitytext", self.textData.upgrades.affinity[effectName].description)
+    widget.setButtonEnabled("upgradelayout.affinity", true)
+  else
+    widget.setText("upgradelayout.affinityname", "UNUSED")
+    widget.setText("upgradelayout.affinitytext", "-")
+    widget.setButtonEnabled("upgradelayout.affinity", false)
+  end
+
+  if status.statPositive("ivrpgucgeneral") then
+  else
+  end
 end
 
 function updateMasteryTab()
@@ -1718,4 +1749,14 @@ function removeDeprecatedTechs()
   player.makeTechUnavailable("roguepoisondash")
   player.makeTechUnavailable("soldiermissilestrike")
   player.makeTechUnavailable("explorerdrill")
+end
+
+function unequipUpgrade(name)
+  name = "ivrpguc" .. name
+  local effects = status.getPersistentEffects(name)
+  local uc = effects[2].stat or "masterypoint"
+  player.giveItem(uc)
+  status.setPersistentEffects(name, {
+    {stat = name, amount = 0}
+  })
 end

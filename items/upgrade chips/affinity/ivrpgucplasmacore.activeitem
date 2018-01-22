@@ -1,0 +1,12 @@
+{
+  "itemName" : "ivrpgucplasmacore",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "/items/upgrade chips/affinity/upgradechip.png",
+  "description" : "Negates all detriments while using the Arc Affinity.",
+  "shortdescription" : "Plasma Core",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "affinity",
+  "stat" : "plasmacore"
+  
+}

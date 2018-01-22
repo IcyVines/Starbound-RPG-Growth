@@ -1,0 +1,12 @@
+{
+  "itemName" : "ivrpguceternalflame",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Negates all detriments while using the Infernal Affinity.",
+  "shortdescription" : "Eternal Flame",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "affinity",
+  "stat" : "eternalflame"
+  
+}

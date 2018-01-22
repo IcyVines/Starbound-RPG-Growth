@@ -1,0 +1,12 @@
+{
+  "itemName" : "ivrpgucevergreen",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Negates all detriments while using the Cryo Affinity.",
+  "shortdescription" : "Evergreen",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "affinity",
+  "stat" : "evergreen"
+  
+}

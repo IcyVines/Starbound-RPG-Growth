@@ -179,6 +179,7 @@ function update(dt)
         { -- Flame --
           {stat = "fireStatusImmunity", amount = 1},
           {stat = "biomeheatImmunity", amount = 1},
+          {stat = "poisonResistance", amount = -0.25},
           {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isInLiquid()}
         },
         { -- Venom --
@@ -190,7 +191,6 @@ function update(dt)
         },
         { -- Frost --
           {stat = "iceStatusImmunity", amount = 1},
-          --{stat = "iceResistance", amount = 3},
           {stat = "wetImmunity", amount = 1},
           {stat = "snowslowImmunity", amount = 1},
           {stat = "iceslipImmunity", amount = 1},
@@ -199,7 +199,6 @@ function update(dt)
         },
         { -- Shock --
           {stat = "electricStatusImmunity", amount = 1},
-          --{stat = "electricResistance", amount = 3},
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "slimeImmunity", amount = 1},
           {stat = "fumudslowImmunity", amount = 1 },
@@ -210,16 +209,13 @@ function update(dt)
           {stat = "iceResistance", amount = -0.25},
     	    {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isInLiquid()}
         },
-        --{ -- Aer --
-        --  {stat = "breathprotectionvehicle", amount = 1},
-        --  {stat = "jumpModifier", effectiveMultiplier = 1.5},
-        --  {stat = "fallDamageMultiplier", effectiveMultiplier = 0.5},
-        --},
         { -- Infernal --
           {stat = "fireStatusImmunity", amount = 1},
           {stat = "fireResistance", amount = 3},
           {stat = "biomeheatImmunity", amount = 1},
-          {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isInLiquid()},
+
+          {stat = "poisonResistance", amount = -0.25 * ((status.stat("ivrpguceternalflame")+1)%2)},
+          {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isInLiquid() * ((status.stat("ivrpguceternalflame")+1)%2)},
 
           {stat = "ffextremeheatImmunity", amount = 1},
           {stat = "lavaImmunity", amount = 1}
@@ -228,8 +224,9 @@ function update(dt)
           {stat = "poisonStatusImmunity", amount = 1},
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "poisonResistance", amount = 3},
-          {stat = "electricResistance", amount = -0.25},
-          {stat = "maxHealth", effectiveMultiplier = 0.85},
+
+          {stat = "electricResistance", amount = -0.25 * ((status.stat("ivrpgucincurable")+1)%2)},
+          {stat = "maxHealth", effectiveMultiplier = 1 - 0.15  * ((status.stat("ivrpgucincurable")+1)%2)},
 
           {stat = "biomeradiationImmunity", amount = 1},
           {stat = "protoImmunity", amount = 1}
@@ -242,7 +239,8 @@ function update(dt)
           {stat = "snowslowImmunity", amount = 1},
           {stat = "iceslipImmunity", amount = 1},
           {stat = "biomecoldImmunity", amount = 1},
-          {stat = "fireResistance", amount = -0.25},
+
+          {stat = "fireResistance", amount = -0.25 * ((status.stat("ivrpgucevergreen")+1)%2)},
 
           {stat = "ffextremecoldImmunity", amount = 1},
         },
@@ -256,18 +254,13 @@ function update(dt)
           {stat = "spiderwebImmunity", amount = 1 },
           {stat = "sandstormImmunity", amount = 1 },
           {stat = "snowslowImmunity", amount = 1},
-          {stat = "iceResistance", amount = -0.25},
-          {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isInLiquid()},
+
+          {stat = "iceResistance", amount = -0.25 * ((status.stat("ivrpgucplasmacore")+1)%2)},
+          {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isInLiquid() * ((status.stat("ivrpgucplasmacore")+1)%2)},
 
           {stat = "shadowResistance", amount = 3},
           {stat = "biomeradiationImmunity", amount = 1}
         }
-        --{ -- Void --
-        --  {stat = "breathprotectionvehicle", amount = 1},
-        --  {stat = "jumpModifier", effectiveMultiplier = 1.5},
-        --  {stat = "fallDamageMultiplier", effectiveMultiplier = 0.5},
-        --  {stat = "biomeradiationImmunity", amount = 1},
-        --}
       }
       status.setPersistentEffects("ivrpgaffinityeffects",effs[self.affinity])
 
@@ -280,17 +273,19 @@ function update(dt)
 
         if isInLiquid() == 1 then
           if affinityMod == 0 then
-            status.overConsumeResource("health", dt)
+            if self.affinity == 1 or not status.statPositive("ivrpguceternalflame") then status.overConsumeResource("health", dt) end
           elseif affinityMod == 3 then
-            status.overConsumeResource("energy", dt)
+            if self.affinity == 4 or not status.statPositive("ivrpgucplasmacore") then status.overConsumeResource("energy", dt) end
           end
         end
 
         if affinityMod == 2 then
-          mcontroller.controlModifiers({
-            speedModifier = 0.85,
-            airJumpModifier = 0.85
-          })
+          if self.affinity == 3 or not status.statPositive("ivrpgucevergreen") then
+            mcontroller.controlModifiers({
+              speedModifier = 0.85,
+              airJumpModifier = 0.85
+            })
+          end
         end
       end
   end
