@@ -45,7 +45,7 @@ function damage(args)
   end
 
   --Affinity Checks
-  if self.affinityType then
+  if self.affinityType and self.affinityType > 0 then
     local effectChance = self.affinityType > 4 and 4 or 2
     if math.random(10) < effectChance then
       status.addEphemeralEffect(self.effects[(self.affinityType - 1)%4 + 1], 5, self.id)

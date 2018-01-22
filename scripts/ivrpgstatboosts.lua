@@ -109,6 +109,11 @@ function update(dt)
     {
       {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.015}
     })
+  elseif self.heldItem == "energywhip" then
+    status.addPersistentEffects("ivrpgstatboosts",
+    {
+      {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.02}
+    })
   elseif self.heldItem then
   	if root.itemHasTag(self.heldItem, "broadsword") or root.itemHasTag(self.heldItem, "spear") or root.itemHasTag(self.heldItem, "hammer") then
 		status.addPersistentEffects("ivrpgstatboosts",
@@ -572,7 +577,7 @@ function updateClassEffects(classType)
         })
 
       --Weapon Checks
-      if not self.isBrokenBroadsword and not self.isBow and not (self.heldItem == "adaptablecrossbow") and not (self.heldItem == "soluskatana") then
+      if not self.isBrokenBroadsword and not self.isBow and not (self.heldItem == "adaptablecrossbow") and not (self.heldItem == "soluskatana") and not (self.heldItem == "energywhip") and not root.itemHasTag(self.heldItem, "katana") then
         if self.twoHanded then
           if self.weapon1 then weaponsDisabled = true end
         else
@@ -680,7 +685,7 @@ function updateClassEffects(classType)
         })
 
       --Weapon Checks
-      if not self.isBrokenBroadsword and not self.isBow then
+      if not self.isBrokenBroadsword and not self.isBow and not (self.heldItem == "energywhip") then
         if self.twoHanded and self.weapon1 then
           weaponsDisabled = true
         elseif (self.heldItem and root.itemHasTag(self.heldItem, "wand")) or (self.heldItem2 and root.itemHasTag(self.heldItem2, "wand")) then

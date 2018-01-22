@@ -1,6 +1,7 @@
 {
   "input" : [
-    { "item" : "masterypoint", "count" : 8 }
+    { "item" : "masterypoint", "count" : 5 },
+    { "item" : "cryonicextract", "count" : 15 }
   ],
 	"output" : { "item" : "ivrpgscrollcryo", "count" : 1 },
 	"groups" : [ "ivrpgmasteryshop", "scrolls", "all" ]

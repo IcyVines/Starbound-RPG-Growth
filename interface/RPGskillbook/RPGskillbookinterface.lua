@@ -179,6 +179,8 @@ function updateBookTab()
     changeToProfession()
   elseif widget.getChecked("bookTabs.7") then
     changeToMastery()
+  elseif widget.getChecked("bookTabs.8") then
+    changeToUpgrades()
   end
 end
 
@@ -432,6 +434,7 @@ function removeLayouts()
   widget.setVisible("professionlockedlayout",false)
   widget.setVisible("specializationlayout",false)
   widget.setVisible("specializationlockedlayout",false)
+  widget.setVisible("upgradelayout", false)
 end
 
 function changeToOverview()
@@ -532,10 +535,19 @@ function changeToMastery()
     end
 end
 
+function changeToUpgrades()
+  widget.setText("tabLabel", "Upgrade Tab")
+  widget.setVisible("upgradelayout", true)
+  updateUpgradeTab()
+end
+
 function updateProfessionTab()
 end
 
 function updateSpecializationTab()
+end
+
+function updateUpgradeTab()
 end
 
 function updateMasteryTab()

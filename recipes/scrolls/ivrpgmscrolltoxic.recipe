@@ -1,6 +1,7 @@
 {
   "input" : [
-    { "item" : "masterypoint", "count" : 8 }
+    { "item" : "masterypoint", "count" : 5 },
+    { "item" : "venomsample", "count" : 15 }
   ],
 	"output" : { "item" : "ivrpgscrolltoxic", "count" : 1 },
 	"groups" : [ "ivrpgmasteryshop", "scrolls", "all" ]
