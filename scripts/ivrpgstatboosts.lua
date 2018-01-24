@@ -595,7 +595,7 @@ function updateClassEffects(classType)
         })
 
       --Weapon Checks
-      if not self.isBrokenBroadsword and not self.isBow and not (self.heldItem == "adaptablecrossbow") and not (self.heldItem == "soluskatana") and not (self.heldItem == "energywhip") and not root.itemHasTag(self.heldItem, "katana") then
+      if not self.isBrokenBroadsword and not self.isBow and not (self.heldItem == "adaptablecrossbow") and not (self.heldItem == "soluskatana") and not (self.heldItem == "energywhip") and not (self.heldItem and root.itemHasTag(self.heldItem, "katana")) then
         if self.twoHanded then
           if self.weapon1 then weaponsDisabled = true end
         else
