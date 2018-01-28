@@ -36,12 +36,12 @@
               },
               "active" : {
                 "properties" : {
-                  "image" : "/items/active/weapons/melee/abilities/broadsword/parry/parryshield.png:active"
+                  "image" : "/items/active/classweapons/knightsword/parryshield.png:active"
                 }
               },
               "block" : {
                 "properties" : {
-                  "image" : "/items/active/weapons/melee/abilities/broadsword/parry/parryshield.png:block"
+                  "image" : "/items/active/classweapons/knightsword/parryshield.png:block"
                 }
               }
             }

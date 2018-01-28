@@ -3,6 +3,9 @@ local monsterOldInit = init
 function init()
   monsterOldInit()
   self.effects = {"ivrpgsear", "ivrpgtoxify", "ivrpgembrittle", "ivrpgoverload"}
+  message.setHandler("addEphemeralEffect", function(_, _, name, duration, sourceId)
+    status.addEphemeralEffect(name, duration, sourceId)
+  end)
 end
 
 function damage(args)
@@ -46,7 +49,12 @@ function damage(args)
   if self.affinityType and self.affinityType > 0 then
     local effectChance = self.affinityType > 4 and 4 or 2
     if math.random(10) < effectChance then
-      status.addEphemeralEffect(self.effects[(self.affinityType - 1)%4 + 1], 5, self.id)
+      local effectName = self.effects[(self.affinityType - 1)%4 + 1]
+      if effectName == "ivrpgoverload" then
+        world.sendEntityMessage(self.id, "feedbackLoop")
+      end
+      local effectTime = 5
+      status.addEphemeralEffect(effectName, effectTime, self.id)
     end
   end
 
@@ -79,7 +87,7 @@ function damage(args)
 
   if world.entityHealth(entity.id())[1] <= 0 then
     --sb.logInfo("Health <= 0!")
-    sendDyingMessage(self.id, monster.level())
+    sendDyingMessage(self.id)
   end
   --End IVRPGMod
 end
@@ -92,7 +100,7 @@ function undergroundCheck(position)
   return world.underground(position) 
 end
 
-function sendDyingMessage(sourceId, monsterLevel)
+function sendDyingMessage(sourceId)
   --sb.logInfo("Sending Message!")
-  world.sendEntityMessage(sourceId, "addToChallengeCount", monsterLevel)
+  world.sendEntityMessage(sourceId, "killedMonster", monster.level(), mcontroller.position(), status.activeUniqueStatusEffectSummary())
 end

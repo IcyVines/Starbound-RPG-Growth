@@ -8,6 +8,13 @@ function init()
 end
 
 function update(args)
+
+ self.lrInput = nil
+  if args.moves["left"] and not args.moves["right"] then
+    self.lrInput = "left"
+  elseif args.moves["right"] and not args.moves["left"] then
+    self.lrInput = "right"
+  end
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
     status.removeEphemeralEffect("camouflage25")
     status.removeEphemeralEffect("invulnerable")
@@ -29,7 +36,7 @@ function canMultiJump()
       and math.abs(world.gravity(mcontroller.position())) > 0
 end
 
-function doMultiJump()
+function doMultiJump(args)
   --set flashjump player changes
   if canMultiJump() then
     if status.overConsumeResource("energy", self.cost) then
@@ -41,7 +48,14 @@ function doMultiJump()
       mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()))
       self.facing = mcontroller.facingDirection()
       --self.facing = tech.aimPosition()[1]-mcontroller.position()[1]
-      if self.facing < 0 then
+    
+      if self.lrInput == "left" then
+        mcontroller.setXVelocity(-50 + math.min(0, mcontroller.xVelocity()))
+        animator.burstParticleEmitter("jumpLeftParticles")
+      elseif self.lrInput == "right" then
+        mcontroller.setXVelocity(50 + math.max(0, mcontroller.xVelocity()))
+        animator.burstParticleEmitter("jumpRightParticles")
+      elseif self.facing < 0 then
         mcontroller.setXVelocity(-50 + math.min(0, mcontroller.xVelocity()))
         animator.burstParticleEmitter("jumpLeftParticles")
       else

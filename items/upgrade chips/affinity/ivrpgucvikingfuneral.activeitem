@@ -1,11 +1,11 @@
 {
-  "itemName" : "ivrpgucincurable",
+  "itemName" : "ivrpgucvikingfuneral",
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Negates all detriments while using the Toxic Affinity.",
-  "shortdescription" : "Incurable",
+  "description" : "Description.",
+  "shortdescription" : "Viking Funeral",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",
-  "stat" : "incurable"  
+  "stat" : "vikingfuneral"
 }

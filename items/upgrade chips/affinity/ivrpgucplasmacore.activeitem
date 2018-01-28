@@ -8,5 +8,4 @@
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",
   "stat" : "plasmacore"
-  
 }

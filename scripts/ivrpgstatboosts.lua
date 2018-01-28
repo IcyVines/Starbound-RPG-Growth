@@ -11,6 +11,7 @@ function init()
   self.cryoExplosion = true
   self.lastMonster = {nil, nil, nil, nil, nil}
   self.level = -1
+  self.id = entity.id()
   message.setHandler("addToChallengeCount", function(_, _, level)
   	addToChallengeCount(level)
   end)
@@ -18,7 +19,6 @@ end
 
 function update(dt)
   
-  self.id = entity.id()
   self.xp = world.entityCurrency(self.id, "experienceorb")
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
   self.classType = world.entityCurrency(self.id, "classtype")
@@ -118,21 +118,21 @@ function update(dt)
     })
   elseif self.heldItem then
   	if root.itemHasTag(self.heldItem, "broadsword") or root.itemHasTag(self.heldItem, "spear") or root.itemHasTag(self.heldItem, "hammer") then
-		status.addPersistentEffects("ivrpgstatboosts",
-		{
-		  {stat = "powerMultiplier", baseMultiplier = 1 + self.strength*0.02}
-		})
-	elseif root.itemHasTag(self.heldItem, "staff") then
-		status.addPersistentEffects("ivrpgstatboosts",
-		{
-		  {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.02}
-		})
-	elseif self.isBow or root.itemHasTag(self.heldItem, "rifle") or root.itemHasTag(self.heldItem, "sniperrifle") or root.itemHasTag(self.heldItem, "assaultrifle") or root.itemHasTag(self.heldItem, "shotgun") or root.itemHasTag(self.heldItem, "rocketlauncher") then
-		status.addPersistentEffects("ivrpgstatboosts",
-		{
-		  {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
-		})
-	else
+  		status.addPersistentEffects("ivrpgstatboosts",
+  		{
+  		  {stat = "powerMultiplier", baseMultiplier = 1 + self.strength*0.02}
+  		})
+	 elseif root.itemHasTag(self.heldItem, "staff") then
+  		status.addPersistentEffects("ivrpgstatboosts",
+  		{
+  		  {stat = "powerMultiplier", baseMultiplier = 1 + self.intelligence*0.02}
+  		})
+  	elseif self.isBow or root.itemHasTag(self.heldItem, "rifle") or root.itemHasTag(self.heldItem, "sniperrifle") or root.itemHasTag(self.heldItem, "assaultrifle") or root.itemHasTag(self.heldItem, "shotgun") or root.itemHasTag(self.heldItem, "rocketlauncher") then
+  		status.addPersistentEffects("ivrpgstatboosts",
+  		{
+  		  {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.015}
+  		})
+  	else
 	    --Bonus for One-Handed Primary
 	    if root.itemHasTag(self.heldItem,"wand") then
 	      status.addPersistentEffects("ivrpgstatboosts",
@@ -145,7 +145,7 @@ function update(dt)
 	        {stat = "powerMultiplier", baseMultiplier = 1 + self.dexterity*0.0075}
 	      })
 	    end
-	end
+	 end
   end
   --Extra Bonus with One-Handed Secondary
   if self.heldItem2 then
@@ -181,16 +181,16 @@ function update(dt)
         { -- Flame --
           {stat = "fireStatusImmunity", amount = 1},
           {stat = "biomeheatImmunity", amount = 1},
-          {stat = "poisonResistance", amount = -0.25},
-          {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isInLiquid()}
+          {stat = "poisonResistance", amount = -0.25 * ((status.stat("ivrpguceternalflame")+1)%2)},
+          {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isInLiquid() * ((status.stat("ivrpguceternalflame")+1)%2)}
         },
         { -- Venom --
           {stat = "poisonStatusImmunity", amount = 1},
           {stat = "tarStatusImmunity", amount = 1},
           {stat = "poisonStatusImmunity", amount = 1},
           {stat = "biomeradiationImmunity", amount = 1},
-          {stat = "electricResistance", amount = -0.25},
-          {stat = "maxHealth", effectiveMultiplier = 0.85}
+          {stat = "electricResistance", amount = -0.25 * ((status.stat("ivrpgucincurable")+1)%2)},
+          {stat = "maxHealth", effectiveMultiplier = 1 - 0.15 * ((status.stat("ivrpgucincurable")+1)%2)}
         },
         { -- Frost --
           {stat = "iceStatusImmunity", amount = 1},
@@ -198,7 +198,7 @@ function update(dt)
           {stat = "snowslowImmunity", amount = 1},
           {stat = "iceslipImmunity", amount = 1},
           {stat = "biomecoldImmunity", amount = 1},
-          {stat = "fireResistance", amount = -0.25}
+          {stat = "fireResistance", amount = -0.25 * ((status.stat("ivrpgucevergreen")+1)%2)}
         },
         { -- Shock --
           {stat = "electricStatusImmunity", amount = 1},
@@ -209,8 +209,8 @@ function update(dt)
           {stat = "spiderwebImmunity", amount = 1 },
           {stat = "sandstormImmunity", amount = 1 },
           {stat = "snowslowImmunity", amount = 1},
-          {stat = "iceResistance", amount = -0.25},
-    	    {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isInLiquid()}
+          {stat = "iceResistance", amount = -0.25 * ((status.stat("ivrpgucplasmacore")+1)%2)},
+    	    {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isInLiquid() * ((status.stat("ivrpgucplasmacore")+1)%2)}
         },
         { -- Infernal --
           {stat = "fireStatusImmunity", amount = 1},
@@ -269,6 +269,7 @@ function update(dt)
       status.setPersistentEffects("ivrpgaffinityeffects",effs[self.affinity])
 
       local aestheticType = {"fire", "poison", "ice", "electric"}
+      if status.statPositive("ivrpgucmiasma") then aestheticType[2] = "miasma" end
       if self.affinity > 0 then
         local affinityMod = (self.affinity-1)%4
         if status.statPositive("ivrpgaesthetics") and (mcontroller.xVelocity() > 1 or mcontroller.xVelocity() < -1) and not status.statPositive("activeMovementAbilities") then
@@ -282,18 +283,24 @@ function update(dt)
 
         if isInLiquid() == 1 then
           if affinityMod == 0 then
-            if self.affinity == 1 or not status.statPositive("ivrpguceternalflame") then status.overConsumeResource("health", dt) end
+            if not status.statPositive("ivrpguceternalflame") then status.overConsumeResource("health", dt) end
           elseif affinityMod == 3 then
-            if self.affinity == 4 or not status.statPositive("ivrpgucplasmacore") then status.overConsumeResource("energy", dt) end
+            if not status.statPositive("ivrpgucplasmacore") then status.overConsumeResource("energy", dt) end
           end
         end
 
         if affinityMod == 2 then
-          if self.affinity == 3 or not status.statPositive("ivrpgucevergreen") then
+          if not status.statPositive("ivrpgucevergreen") then
             mcontroller.controlModifiers({
               speedModifier = 0.85,
               airJumpModifier = 0.85
             })
+          end
+        end
+
+        if affinityMod == 3 then
+          if (mcontroller.liquidPercentage() > 0 or wet == 1) and status.statPositive("ivrpgucdischarge") then
+            shockNearbyTargets(dt)
           end
         end
 
@@ -329,6 +336,40 @@ function update(dt)
 
   checkLevelUp()
   updateChallenges()
+end
+
+function shockNearbyTargets(dt)
+  self.tickTimer = not self.tickTimer and 0.5 or self.tickTimer - dt
+  local boltPower = status.stat("powerMultiplier")*5
+  if self.tickTimer <= 0 then
+    self.tickTimer = 0.5
+    local targetIds = world.entityQuery(mcontroller.position(), 8, {
+      withoutEntityId = self.id,
+      includedTypes = {"creature"}
+    })
+
+    shuffle(targetIds)
+
+    for i,id in ipairs(targetIds) do
+      if world.entityCanDamage(self.id, id) and not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
+        local sourceDamageTeam = world.entityDamageTeam(self.id)
+        local directionTo = world.distance(world.entityPosition(id), mcontroller.position())
+        world.spawnProjectile(
+          "teslaboltsmall",
+          mcontroller.position(),
+          self.id,
+          directionTo,
+          false,
+          {
+            power = boltPower,
+            damageTeam = sourceDamageTeam,
+            statusEffects = {"electrified"}
+          }
+        )
+        return
+      end
+    end
+  end
 end
 
 function checkLevelUp()
@@ -851,6 +892,10 @@ function updateChallenges()
       	world.spawnItem("experienceorb", mcontroller.position(), 1000)
       end
 
+      if self.affinity == 5 and status.statPositive("ivrpgucvikingfuneral") then
+        --world.sendEntityMessage(notification.targetEntityId, "doubleSear")
+      end
+
     end
   end
 end
@@ -906,8 +951,8 @@ end
 function addToChallengeCount(level)
 	--sb.logInfo("Added to Challenge Count with Level: " .. level)
 	local challenge1 = status.stat("ivrpgchallenge1")
-    local challenge2 = status.stat("ivrpgchallenge2")
-    local challenge3 = status.stat("ivrpgchallenge3")
+  local challenge2 = status.stat("ivrpgchallenge2")
+  local challenge3 = status.stat("ivrpgchallenge3")
 
 	if challenge1 == 1 and level >= 4 then
 		status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
@@ -922,5 +967,4 @@ function addToChallengeCount(level)
 	if challenge3 == 1 and level >= 7 then
 		status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
 	end
-
 end

@@ -54,7 +54,7 @@ function init()
     ]]
     self.quests = {"ivrpgaegisquest", "ivrpgnovaquest", "ivrpgaetherquest", "ivrpgversaquest", "ivrpgsiphonquest", "ivrpgspiraquest"}
     self.classWeaponText = {
-      "The Aegis is a broadsword that can be used as a shield. Perfect Blocking triggers the Knight's class ability. Perfect Blocking with the Vital Aegis restores health.",
+      "The Aegis is a broadsword that can be used as a shield. Perfect Blocking triggers the Knight's class ability. Perfect Blocking with the Vital Aegis restores health.\nAttack Animations by ^blue;Ribs^reset;. Check out ^blue;Project Blade Dance^reset; if you haven't already!",
       "The Nova is a staff that can change elements. The staff cycles between Nova, Fire, Electric, and Ice. Nova weakens enemies to Fire, Electricity, and Ice. Enemies killed by Primed Nova explode.", 
       "The Aether is a shuriken that never runs out and always causes bleeding. Blood Aether tracks enemies and goes through both walls and enemies. The tracking scales with Dexterity, and its time to live increases with Agility.", 
       "The Versa is a gun that can fire in two modes. Versa Impact and Ricochet's shotgun blast can be held to increase damage and snipe enemies. Versa Ricochet's bullets bounce and increase in power everytime they do.", 

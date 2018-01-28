@@ -1,11 +1,11 @@
 {
-  "itemName" : "ivrpgucincurable",
+  "itemName" : "ivrpgucskadisblessing",
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Negates all detriments while using the Toxic Affinity.",
-  "shortdescription" : "Incurable",
+  "description" : "Description.",
+  "shortdescription" : "Skadi's Blessing",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",
-  "stat" : "incurable"  
+  "stat" : "skadisblessing"
 }

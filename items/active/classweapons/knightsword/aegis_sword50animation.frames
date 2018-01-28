@@ -1,0 +1,11 @@
+{
+  "frameGrid" : {
+    "size" : [24, 64],
+    "dimensions" : [6, 1],
+    "names" : [
+      [
+        "aura.1", "aura.2", "aura.3", "aura.4", "aura.5", "aura.6"
+      ]
+    ]
+  }
+}

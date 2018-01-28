@@ -33,10 +33,12 @@ function input(args)
 end
 
 function update(args)
+
+  
   local jumpActivated = args.moves["jump"] and not self.lastJump
   self.lastJump = args.moves["jump"]
 
-  local lrInput
+ lrInput = nil
   if args.moves["left"] and not args.moves["right"] then
     lrInput = "left"
   elseif args.moves["right"] and not args.moves["left"] then
@@ -109,7 +111,13 @@ function doMultiJump()
       mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()))
       self.facing = mcontroller.facingDirection()
       --self.facing = tech.aimPosition()[1]-mcontroller.position()[1]
-      if self.facing < 0 then
+    if lrInput == "left" then
+        mcontroller.setXVelocity(-50 + math.min(0, mcontroller.xVelocity()))
+        animator.burstParticleEmitter("jumpLeftParticles")
+      elseif lrInput == "right" then
+        mcontroller.setXVelocity(50 + math.max(0, mcontroller.xVelocity()))
+        animator.burstParticleEmitter("jumpRightParticles")
+      elseif self.facing < 0 then
         mcontroller.setXVelocity(-50 + math.min(0, mcontroller.xVelocity()))
         animator.burstParticleEmitter("jumpLeftParticles")
       else

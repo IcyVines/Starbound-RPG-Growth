@@ -7,6 +7,5 @@
   "shortdescription" : "Evergreen",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",
-  "stat" : "evergreen"
-  
+  "stat" : "evergreen"  
 }

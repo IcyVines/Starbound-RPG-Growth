@@ -1,11 +1,12 @@
 {
-  "itemName" : "ivrpgucincurable",
+  "itemName" : "ivrpgucicequeen",
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Negates all detriments while using the Toxic Affinity.",
-  "shortdescription" : "Incurable",
+  "description" : "Description.",
+  "shortdescription" : "Ice Queen",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",
-  "stat" : "incurable"  
+  "stat" : "icequeen",
+  "gender" : "female"
 }

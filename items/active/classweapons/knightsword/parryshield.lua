@@ -16,6 +16,7 @@ function Parry:init()
   self.active = false
   self.knockback = config.getParameter("knockback", 0)
   self.perfectBlockDirectives = config.getParameter("perfectBlockDirectives", "")
+  
   --self.perfectBlockTime = config.getParameter("perfectBlockTime", 0.2)
 
   --self.bonus = self.name == "knightaegissword" and 1 or (self.name == "knightaegissword2" and 1.5 or 2)
@@ -78,6 +79,7 @@ function Parry:parry()
   --end
 
   animator.setAnimationState("parryShield", "active")
+  if self.bonus == 2 then animator.setAnimationState("auraLoop", "idle") end
   animator.playSound("guard")
 
   local damageListener = damageListener("damageTaken", function(notifications)
@@ -117,6 +119,7 @@ end
 function Parry:reset()
   animator.setGlobalTag("directives", "")
   animator.setAnimationState("parryShield", "inactive")
+  if self.bonus == 2 then animator.setAnimationState("auraLoop", "aura") end
   status.clearPersistentEffects("broadswordParry")
   activeItem.setItemShieldPolys({})
   activeItem.setItemDamageSources({})

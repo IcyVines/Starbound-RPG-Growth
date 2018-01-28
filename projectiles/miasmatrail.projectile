@@ -1,0 +1,20 @@
+{
+  "projectileName" : "miasmatrailIVRPG",
+  "image" : "/projectiles/activeitems/traildash/poisontrail.png",
+  "physics" : "gas",
+  "frameNumber" : 3,
+  "animationCycle" : 0.35,
+  "lightColor" : [25, 80, 25],
+  "power" : 2,
+  "speed" : 0,
+  "timeToLive" : 2.0,
+  "bounces" : -1,
+  "knockback" : 25,
+  "knockbackDirectional" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
+  "piercing" : true,
+  "damageKind" : "poisonbarrier",
+  "emitters" : ["barrierpoison"],
+  "statusEffects" : ["weakpoison"]
+}
