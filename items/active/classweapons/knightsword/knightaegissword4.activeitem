@@ -405,11 +405,11 @@
 
 	"elementalType": "physical",
 
-	"primaryAbilityType": "broadswordcombo",
+	"primaryAbilityType": "aegisswordcombo",
 	"primaryAbility": {
 		"name": "Combo Slash",
-		"type": "broadswordcombo",
-		"scripts": ["/items/active/weapons/melee/meleecombo.lua"],
+		"type": "aegisswordcombo",
+		"scripts": ["/items/active/classweapons/knightsword/meleecombo.lua"],
 		"class": "MeleeCombo",
 
 		"comboSteps": 14,

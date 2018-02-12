@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Blood Aether Upgrade.\nMore aggressive tracking. Blood Aether does more damage on consecutive hits.",
   "shortdescription" : "Blood Seeker",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "weapon",

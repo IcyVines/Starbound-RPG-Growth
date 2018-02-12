@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Siphon Razor Upgrade.\nCritical Slice Combo Finisher activates earlier.",
   "shortdescription" : "Combo Breaker",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "weapon",

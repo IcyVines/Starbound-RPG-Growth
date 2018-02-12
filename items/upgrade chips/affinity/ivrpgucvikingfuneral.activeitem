@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Flame and Infernal Affinity Upgrade.\nSear length doubled.",
   "shortdescription" : "Viking Funeral",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",

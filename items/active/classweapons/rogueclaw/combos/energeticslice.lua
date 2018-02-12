@@ -7,7 +7,8 @@ function PowerPunch:init()
   self.freezeTimer = 0
   self.cost = config.getParameter("energyCost", 30)
   self.baseDamage = self.damageConfig.baseDamage
-
+  self.initDamage = self.baseDamage
+  self.name = item.name()
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
@@ -16,6 +17,16 @@ end
 -- Ticks on every update regardless if this is the active ability
 function PowerPunch:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
+
+  self.symbiosis = status.statPositive("ivrpgucsymbiosis") and self.name == "roguesiphonclaw3v"
+
+  if self.symbiosis and status.resource("health")/status.stat("maxHealth") <= 0.33 then
+    status.setPersistentEffects("ivrpgucsymbiosis", {
+      {stat = "powerMultiplier", baseMultiplier = 2}
+    })
+  elseif self.name == "roguesiphonclaw3v" then
+    status.clearPersistentEffects("ivrpgucsymbiosis")
+  end
 
   self.freezeTimer = math.max(0, self.freezeTimer - self.dt)
   if self.freezeTimer > 0 and not mcontroller.onGround() and math.abs(world.gravity(mcontroller.position())) > 0 then
@@ -75,4 +86,5 @@ end
 
 function PowerPunch:uninit(unloaded)
   self.weapon:setDamage()
+  status.clearPersistentEffects("ivrpgucsymbiosis")
 end

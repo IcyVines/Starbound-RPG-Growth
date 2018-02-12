@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Versa Ricochet Upgrade.\nBullets bounce towards nearby enemies.",
   "shortdescription" : "Hard Light",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "weapon",

@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "masterypoint", "count" : 5 },
+    { "item" : "scorchedcore", "count" : 10 }
+  ],
+	"output" : { "item" : "ivrpguceternalflame", "count" : 1 },
+	"groups" : [ "ivrpgmasteryshop", "upgradesA", "all" ]
+}

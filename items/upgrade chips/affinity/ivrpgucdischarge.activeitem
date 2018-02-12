@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Shock and Arc Affinity Upgrade.\nDamage nearby enemies while wet.",
   "shortdescription" : "Discharge",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",

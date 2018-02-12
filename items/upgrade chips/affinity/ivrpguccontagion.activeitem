@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Venom and Toxic Affinity Upgrade.\nToxified enemies can spread Toxify.",
   "shortdescription" : "Contagion",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",

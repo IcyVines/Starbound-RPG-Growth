@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Negates all detriments while using the Infernal Affinity.",
+  "description" : "Flame and Infernal Affinity Upgrade.\nNegates all Affinity Weaknesses.",
   "shortdescription" : "Eternal Flame",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",

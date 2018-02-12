@@ -1,0 +1,138 @@
+{
+	"itemName": "knockback",
+	"price": 960,
+	"maxStack": 1,
+	"rarity": "legendary",
+	"description": "Heavy assault shotgun, altfire fires a quick airburst to help the user get around quickly",
+	"shortdescription": "HEAV Shotgun",
+	"tooltipKind": "base",
+	"category": "shotgun",
+	"twoHanded": true,
+	"itemTags": ["weapon", "ranged", "shotgun","upgradeableWeapon"],
+	"level": 4,
+	"inventoryIcon": "knockback.png",
+
+	"animation": "/items/active/weapons/ranged/gun.animation",
+	"animationParts": {
+		"butt": "",
+		"middle": "knockback.png",
+		"barrel": "",
+		"muzzleFlash": "/items/active/weapons/ranged/muzzleflash.png"
+	},
+	"animationCustom": {
+		"sounds": {
+			"fire": ["/sfx/gun/mech_flakcannon1.ogg", "/sfx/gun/mech_flakcannon2.ogg", "/sfx/gun/mech_flakcannon3.ogg"],
+			"altFire": ["/sfx/gun/shotgun2.ogg"]
+		}
+
+	},
+
+	"baseOffset": [0.9, 0.25],
+	"muzzleOffset": [2, 0.125],
+
+	"scripts": ["/items/active/weapons/ranged/gun.lua"],
+
+	"elementalType": "physical",
+
+	"primaryAbility": {
+		"scripts": ["/items/active/weapons/ranged/gunfire.lua"],
+		"class": "GunFire",
+
+		"fireTime": 0.2,
+		"baseDps": 30,
+		"energyUsage": 31.5,
+		"inaccuracy": 0.13,
+
+		"projectileCount": 8,
+		"fireType": "auto",
+
+		"projectileType": "standardbullet",
+		"projectileParameters": {
+			"damageKind": "shotgunbullet",
+			"knockback": 30
+		},
+		"stances": {
+			"idle": {
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": true,
+				"allowRotate": true,
+				"allowFlip": true,
+				"weaponOffset": [-0.4, -0.1]
+			},
+			"fire": {
+				"duration": 0.1,
+				"armRotation": 3,
+				"weaponRotation": 5,
+				"twoHanded": true,
+				"allowRotate": true,
+				"allowFlip": true,
+				"weaponOffset": [-0.4, -0.1]
+			},
+			"cooldown": {
+				"duration": 0.1,
+				"armRotation": 3,
+				"weaponRotation": 5,
+				"twoHanded": true,
+				"allowRotate": true,
+				"allowFlip": true,
+				"weaponOffset": [-0.4, -0.1]
+			}
+		}
+	},
+
+	"altAbility": {
+		"scripts" : ["/items/active/weapons/ribsgun/altfire.lua"],
+    	"class" : "AltFireAttack",
+
+		"inaccuracy": 0.10,
+		"baseDps": 10,
+		"projectileCount": 2,
+		"energyUsage": 100,
+
+		"knockbackFactor" : 50,
+		"projectileType": "flakbullet",
+		"projectileParameters": {
+			"speed": 20,
+			"power": 20,
+			"knockback": 150
+		},
+		"stances": {
+			"idle": {
+				"duration": 0,
+				"armRotation": 0,
+				"weaponRotation": 0,
+				"twoHanded": true,
+				"weaponOffset": [-0.4, -0.1],
+				"allowRotate": true,
+				"allowFlip": true
+			},
+			"fire": {
+				"duration": 0.5,
+				"armRotation": 15,
+				"weaponRotation": 10,
+				"twoHanded": true,
+				"weaponOffset": [-0.4, -0.1],
+				"allowRotate": true,
+				"allowFlip": true
+			},
+			"cooldown": {
+				"duration": 0.5,
+				"armRotation": 15,
+				"weaponRotation": 10,
+				"twoHanded": true,
+				"weaponOffset": [-0.4, -0.1],
+				"allowRotate": true,
+				"allowFlip": true
+			}
+		}
+	},
+	"builder": "/items/buildscripts/buildunrandweapon.lua",
+	"upgradeParameters": {
+		"inventoryIcon": "knockback_l6.png",
+		"animationParts": {
+			"middle": "knockback_l6.png"
+		},
+		"shortdescription": "Street Cleaner ^yellow;^reset;"
+	}
+}

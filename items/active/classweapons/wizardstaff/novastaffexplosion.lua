@@ -7,7 +7,6 @@ function ControlProjectile:init()
   storage.projectiles = storage.projectiles or {}
 
   self.name = item.name()
-
   self.elementalType = self.elementalType or self.weapon.elementalType
 
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
@@ -26,35 +25,51 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
   self.element = self.elementalType == "physical" and "nova" or self.elementalType
   self:updateProjectiles()
 
+  self.passedPrime = status.statPositive("ivrpgucpassedprime") and self.name == "wizardnovastaff3"
+  self.quicksilver = status.statPositive("ivrpgucquicksilver") and self.name == "wizardnovastaff3"
   world.debugPoint(self:focusPosition(), "blue")
 
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
     and not status.resourceLocked("energy") then
-
-    self:setState(self.charge)
+      self:setState(self.charge)
   end
 end
 
 function ControlProjectile:charge()
   self.weapon:setStance(self.stances.charge)
 
+
+  local chargeTimer = self.stances.charge.duration
+  if self.quicksilver then 
+    chargeTimer = chargeTimer / 2
+    animator.setAnimationRate(2)
+  end
+
   animator.playSound(self.elementalType.."charge")
   animator.setAnimationState((self.elementalType == "physical" and "nova" or self.elementalType).."charge", "charge")
   animator.setParticleEmitterActive((self.elementalType == "physical" and "nova" or self.elementalType) .. "Charge", true)
   activeItem.setCursor("/cursors/charge2.cursor")
 
-  local chargeTimer = self.stances.charge.duration
+
+
   while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     chargeTimer = chargeTimer - self.dt
 
     mcontroller.controlModifiers({runningSuppressed=true})
+    if self.passedPrime then
+      status.overConsumeResource("energy", 0)
+    end
 
     coroutine.yield()
   end
 
-  animator.stopAllSounds(self.elementalType.."charge")
+  if self.passedPrime then
+    status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor)
+  end
 
+  animator.stopAllSounds(self.elementalType.."charge")
+  animator.setAnimationRate(1)
   if chargeTimer <= 0 then
     self:setState(self.charged)
   else
@@ -71,11 +86,20 @@ function ControlProjectile:charged()
   animator.setParticleEmitterActive((self.elementalType == "physical" and "nova" or self.elementalType) .. "Charge", true)
 
   local targetValid
+  self.bonusDamage = 1
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     targetValid = self:targetValid(activeItem.ownerAimPosition())
     activeItem.setCursor(targetValid and "/cursors/chargeready.cursor" or "/cursors/chargeinvalid.cursor")
 
     mcontroller.controlModifiers({runningSuppressed=true})
+
+    if self.passedPrime then
+      if status.overConsumeResource("energy", self.dt * self.baseDamageFactor * 25) then
+        self.bonusDamage = self.bonusDamage + self.dt*0.3
+      else
+        status.setResource("energy", 0)
+      end
+    end
 
     coroutine.yield()
   end
@@ -88,13 +112,24 @@ function ControlProjectile:discharge()
 
   activeItem.setCursor("/cursors/reticle0.cursor")
 
-  if self:targetValid(activeItem.ownerAimPosition()) and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
-    animator.playSound(self.elementalType.."activate")
-    self:createProjectiles()
+  if self.passedPrime then
+    if self:targetValid(activeItem.ownerAimPosition()) then
+      animator.playSound(self.elementalType.."activate")
+      self:createProjectiles()
+    else
+      animator.playSound(self.elementalType.."discharge")
+      self:setState(self.cooldown)
+      return
+    end
   else
-    animator.playSound(self.elementalType.."discharge")
-    self:setState(self.cooldown)
-    return
+    if self:targetValid(activeItem.ownerAimPosition()) and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
+      animator.playSound(self.elementalType.."activate")
+      self:createProjectiles()
+    else
+      animator.playSound(self.elementalType.."discharge")
+      self:setState(self.cooldown)
+      return
+    end
   end
 
   util.wait(self.stances.discharge.duration, function(dt)
@@ -132,7 +167,12 @@ end
 
 function ControlProjectile:targetValid(aimPos)
   local focusPos = self:focusPosition()
-  return world.magnitude(focusPos, aimPos) <= self.maxCastRange
+  if self.quicksilver then
+    self.bonusRange = 10
+  else 
+    self.bonusRange = 0
+  end
+  return world.magnitude(focusPos, aimPos) <= (self.maxCastRange + self.bonusRange)
       and not world.lineTileCollision(mcontroller.position(), focusPos)
       and not world.lineTileCollision(focusPos, aimPos)
 end
@@ -149,12 +189,17 @@ function ControlProjectile:createProjectiles()
   --pParams.statusEffects = {"wizardnovastatus"}
   self.projectileType = self.name == "wizardnovastaff3" and "primednovaexplosion" or self.projectileType
   self.powerMod = self.elementalType == "ice" and 20 or (self.elementalType == "fire" and -20 or 0)
-  pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount + self.powerMod
+  if self.quicksilver then
+    self.quicksilverPower = 50
+  else
+    self.quicksilverPower = 0
+  end
+  pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") * self.bonusDamage / pCount + self.powerMod - self.quicksilverPower
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(
-        (self.elementalType == "physical" and "nova" or self.elementalType) .. self.projectileType,
+        (self.elementalType == "physical" and "nova" or self.elementalType) .. self.projectileType .. (self.passedPrime and "passed" or ""),
         vec2.add(basePos, pOffset),
         activeItem.ownerEntityId(),
         pOffset,

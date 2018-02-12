@@ -19,7 +19,7 @@
   "piercing" : true,
   "bounces" : -1,
   "controlForce" : 1000,
-  "damageKind" : "alwaysbleed",
+  "damageKind" : "bloodaether",
   "scripts" : [ "ninjashurikentracking.lua" ],
   "damagePoly" : [ [-7.5, 0], [-5, -5], [0, -7.5], [5, -5], [7.5, 0], [5, 5], [0, 7.5], [-5, 5] ],
   "emitters" : [ "shadowsmoke" ]

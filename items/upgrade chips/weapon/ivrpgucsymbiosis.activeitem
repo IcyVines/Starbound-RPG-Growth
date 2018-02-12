@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Siphon Spore Upgrade.\nDeal more damage when health is low.",
   "shortdescription" : "Symbiosis",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "weapon",

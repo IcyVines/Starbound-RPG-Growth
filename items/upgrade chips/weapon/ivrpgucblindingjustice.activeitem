@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Vital Aegis Upgrade.\nCertain Combo Steps stun enemies.",
   "shortdescription" : "Blinding Justice",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "weapon",

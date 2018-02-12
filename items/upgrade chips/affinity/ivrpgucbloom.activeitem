@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Infernal Affinity Upgrade.",
+  "description" : "Flame and Infernal Affinity Upgrade.\nEnemies on fire explode when you kill them.",
   "shortdescription" : "Bloom",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",

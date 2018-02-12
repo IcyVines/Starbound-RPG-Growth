@@ -6,7 +6,7 @@ GunFire = WeaponAbility:new()
 
 function GunFire:init()
   self.weapon:setStance(self.stances.idle)
-
+  self.name = item.name()
   self.cooldownTimer = self.fireTime
   self.fireTimer = self.fireTime
 
@@ -19,6 +19,13 @@ function GunFire:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
+
+  self.hardLight = status.statPositive("ivrpguchardlight") and self.name == "soldierversagun3"
+  if self.hardLight then
+    self.projectileType = "versabullethl"
+  else
+    self.projectileType = "versabullet"
+  end
 
   if animator.animationState("firing") ~= "fire" then
     animator.setLightActive("muzzleFlash", false)

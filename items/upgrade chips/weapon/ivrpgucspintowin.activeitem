@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Ravenous Spira Upgrade.\nSpira is more effective but uses more energy.",
   "shortdescription" : "Spin to Win",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "weapon",

@@ -21,8 +21,8 @@ function init()
   end)
 
   message.setHandler("hasStat", function(_, _, name)
-  	sb.logInfo(name)
-  	if status.statPositive(name) then sb.logInfo("True") end
+  	--sb.logInfo(name)
+  	--if status.statPositive(name) then sb.logInfo("True") end
     return status.statPositive(name)
   end)
 
@@ -30,8 +30,12 @@ function init()
   	if status.statPositive("ivrpgucfeedbackloop") then status.addEphemeralEffect("rage", 2) end
   end)
 
-  message.setHandler("killedMonster", function(_, _, level, position, statusEffects)
-  	killedMonster(level, position, statusEffects)
+  message.setHandler("killedMonster", function(_, _, level, position, statusEffects, damageType)
+  	killedMonster(level, position, statusEffects, damageType)
+  end)
+
+  message.setHandler("modifyResource", function(_, _, type, amount)
+  	status.modifyResource(type, amount)
   end)
 
 end
@@ -85,9 +89,10 @@ function updateUpgrades()
 
 end
 
-function killedMonster(level, position, statusEffects)
+function killedMonster(level, position, statusEffects, damageType)
   addToChallengeCount(level)
   dyingEffects(position, statusEffects)
+  killingEffects(damageType)
 end
 
 function addToChallengeCount(level)
@@ -112,7 +117,7 @@ end
 
 function dyingEffects(position, statusEffects)
   if status.statPositive("ivrpgucbloom") then
-    if hasEphemeralStat(statusEffects, "ivrpgsear") or hasEphemeralStat(statusEffects, "burning") then
+    if hasEphemeralStat(statusEffects, "ivrpgsear") or hasEphemeralStat(statusEffects, "burning") or hasEphemeralStat(statusEffects, "melting") then
     	world.spawnProjectile(
         	"fireplasmaexplosionstatus",
         	position,
@@ -123,6 +128,13 @@ function dyingEffects(position, statusEffects)
       )
     end
   end
+end
+
+function killingEffects(damageType)
+	if status.statPositive("ivrpgucvampirescaress") then
+		status.addEphemeralEffect("rage", 2, self.id)
+		status.addEphemeralEffect("regeneration4", 2, self.id)
+	end
 end
 
 function hasEphemeralStat(statusEffects, stat)

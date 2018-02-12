@@ -9,7 +9,7 @@
   "tooltipKind" : "fistweapon",
   "category" : "Claw",
   "twoHanded" : false,
-  "itemTags" : ["weapon","rogue","claw"],
+  "itemTags" : ["weapon","rogue","claw","fist"],
 
   "inventoryIcon" : "roguesiphonclaw3e.png:front",
   "animation" : "/items/active/weapons/fist/fistweapon.animation",

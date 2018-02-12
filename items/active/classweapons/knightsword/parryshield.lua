@@ -16,7 +16,7 @@ function Parry:init()
   self.active = false
   self.knockback = config.getParameter("knockback", 0)
   self.perfectBlockDirectives = config.getParameter("perfectBlockDirectives", "")
-  
+  self.parryCounter = 0
   --self.perfectBlockTime = config.getParameter("perfectBlockTime", 0.2)
 
   --self.bonus = self.name == "knightaegissword" and 1 or (self.name == "knightaegissword2" and 1.5 or 2)
@@ -26,6 +26,14 @@ end
 
 function Parry:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
+
+  if status.statPositive("ivrpgucrighteousness") then
+    status.setPersistentEffects("ivrpgucrighteousness", {
+      {stat = "powerMultiplier", baseMultiplier = math.min((1 + 0.1*self.parryCounter), 4)}
+    })
+  else
+    status.clearPersistentEffects("ivrpgucrighteousness")
+  end
 
   self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
   self.holdTimer = math.max(0, self.holdTimer - dt)
@@ -48,9 +56,6 @@ function Parry:update(dt, fireMode, shiftHeld)
       animator.setGlobalTag("directives", "")
     end
   end
-
-  
-
 end
 
 function Parry:parry()
@@ -87,9 +92,13 @@ function Parry:parry()
       if notification.sourceEntityId ~= -65536 and notification.healthLost == 0 then
         if status.resourcePositive("perfectBlock") then
           animator.playSound("perfectBlock")
-          --animator.burstParticleEmitter("perfectBlock")
+          self.parryCounter = self.parryCounter + 1
+          if self.bonus == 2 then
+            status.addEphemeralEffect("regeneration4", 2)
+          end
           self:refreshPerfectBlock()
         elseif status.resourcePositive("shieldStamina") then
+          self.parryCounter = 0
           animator.playSound("parry")
         end
         animator.setAnimationState("parryShield", "block")
@@ -121,11 +130,13 @@ function Parry:reset()
   animator.setAnimationState("parryShield", "inactive")
   if self.bonus == 2 then animator.setAnimationState("auraLoop", "aura") end
   status.clearPersistentEffects("broadswordParry")
+  status.clearPersistentEffects("ivrpgucrighteousness")
   activeItem.setItemShieldPolys({})
   activeItem.setItemDamageSources({})
 end
 
 function Parry:uninit()
+
   self:reset()
 end
 

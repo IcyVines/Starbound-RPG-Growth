@@ -290,11 +290,30 @@ function update(dt)
         end
 
         if affinityMod == 2 then
+          local noSpeedDebuff = false
           if not status.statPositive("ivrpgucevergreen") then
             mcontroller.controlModifiers({
-              speedModifier = 0.85,
               airJumpModifier = 0.85
             })
+            if status.statPositive("ivrpgucicequeen") and world.entityGender(self.id) == "female" then
+              if (self.weapon1 and root.itemHasTag(self.heldItem, "whip")) or (self.weapon2 and root.itemHasTag(self.heldItem2, "whip")) then
+                noSpeedDebuff = true
+              end
+            end
+            if not noSpeedDebuff then
+              mcontroller.controlModifiers({
+                speedModifier = 0.85
+              })
+            end
+          end
+          if status.statPositive("ivrpgucskadisblessing") then
+            if self.isBow then
+              status.addPersistentEffect("ivrpgaffinityeffects", {stat = "powerMultiplier", baseMultiplier = 1.5})
+            end
+          elseif status.statPositive("ivrpgucicequeen") and world.entityGender(self.id) == "female" then
+            if (self.weapon1 and (root.itemHasTag(self.heldItem, "dagger") or root.itemHasTag(self.heldItem, "fist") or root.itemHasTag(self.heldItem, "whip"))) or (self.weapon2 and (root.itemHasTag(self.heldItem2, "dagger") or root.itemHasTag(self.heldItem2, "fist") or root.itemHasTag(self.heldItem2, "whip"))) then
+              status.addPersistentEffect("ivrpgaffinityeffects", {stat = "powerMultiplier", baseMultiplier = 1.75})
+            end
           end
         end
 
@@ -326,11 +345,19 @@ function update(dt)
     for _,notification in pairs(self.dnotifications) do
       --sb.logInfo("In damage given update")
       --Rogue Siphon
-      if notification.damageSourceKind == "rogueelectricslash" then status.modifyResource("energy", 20)
+      if notification.damageSourceKind == "rogueelectricslash" then
+        status.modifyResource("energy", 20)
+        if status.statPositive("ivrpguccharger") then
+          local playerIds = world.playerQuery(mcontroller.position(), 15, {
+            withoutEntityId = self.id
+          })
+          for _,id in ipairs(playerIds) do
+            world.sendEntityMessage(id, "modifyResource", "energy", 30)
+          end
+        end
       elseif notification.damageSourceKind == "roguepoisonslash" then status.modifyResource("health", 10)
       elseif notification.damageSourceKind == "rogueslash" then status.modifyResource("food", 3)
       end
-
     end
   end
 
@@ -442,9 +469,6 @@ function updateClassEffects(classType)
         if notification.hitType == "ShieldHit" then
           if status.resourcePositive("perfectBlock") then
             --increased damage after perfect blocks
-            if self.heldItem and root.itemHasTag(self.heldItem, "vitalaegis") then
-              status.addEphemeralEffect("regeneration4", 2)
-            end
             status.addEphemeralEffect("knightblock")
             --sb.logInfo("Perfect Block: " .. tostring(status.resource("perfectBlock")) .. ", " .. tostring(status.resource("prefectBlockLimit")))
           end
@@ -892,8 +916,12 @@ function updateChallenges()
       	world.spawnItem("experienceorb", mcontroller.position(), 1000)
       end
 
-      if self.affinity == 5 and status.statPositive("ivrpgucvikingfuneral") then
-        --world.sendEntityMessage(notification.targetEntityId, "doubleSear")
+      if status.statPositive("ivrpgucskadisblessing") and (self.affinity-1)%4 == 2 and notification.damageSourceKind == "bow" then
+        world.sendEntityMessage(notification.targetEntityId, "addEphemeralEffect", "ivrpgembrittle", 3, self.id)
+      end
+
+      if status.statPositive("ivrpgucbloodseeker") and notification.damageSourceKind == "bloodaether" then
+        world.sendEntityMessage(notification.targetEntityId, "hitByBloodAether")
       end
 
     end

@@ -1,0 +1,13 @@
+{
+  "projectileName" : "novaprimednovaexplosionpassed",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "damageKindImage" : "icon.png",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/classweapons/wizardstaff/novaexplosionprojectiles/novaprimedexplosionknockbackpassed.config"
+    }
+  ],
+  "damageKind" : "nova",
+  "timeToLive" : 0
+}

@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Negates all detriments while using the Toxic Affinity.",
+  "description" : "Venom and Toxic Affinity Upgrade.\nNegates all Affinity Weaknesses.",
   "shortdescription" : "Incurable",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",

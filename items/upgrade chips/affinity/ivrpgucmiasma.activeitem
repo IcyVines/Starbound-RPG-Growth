@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Venom and Toxic Affinity Upgrade.\nAesthetic Poison Clouds cause Poison Status.",
   "shortdescription" : "Miasma",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",

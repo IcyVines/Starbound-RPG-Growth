@@ -6,12 +6,14 @@ function init()
   message.setHandler("addEphemeralEffect", function(_, _, name, duration, sourceId)
     status.addEphemeralEffect(name, duration, sourceId)
   end)
+  message.setHandler("hitByBloodAether", function(_, _)
+    self.hitByBloodAether = true
+  end)
 end
 
 function damage(args)
 -- IVRPGMod
   self.id = args.sourceId
-  --sb.logInfo("Damage Taken!! ID: " .. self.id)
   if world.isMonster(self.id) or world.isNpc(self.id) then
     return
   end
@@ -36,7 +38,6 @@ function damage(args)
     self.dexterity = self.dexterity^1.1
     if math.random(10) < 2 then
       status.addEphemeralEffect("soldierstun", 5.0*self.damage/world.entityHealth(entity.id())[2], self.id)
-      -- sb.logInfo(50.0*self.damage/world.entityHealth(entity.id())[2])
     end
   elseif self.classType == 5 then
     self.dexterity = self.dexterity^1.15
@@ -65,8 +66,16 @@ function damage(args)
       self.dexterity = self.dexterity + 40
     end
   end
+
+  self.bonusDamage = 1
+
   if self.source == "alwaysbleed" then
     self.bleedBonus = 200
+  elseif self.source == "bloodaether" then
+    self.bleedBonus = 200
+    if self.hitByBloodAether then
+      self.bonusDamage = 2
+    end
   elseif self.source == "bluntforce" then
     self.bleedBonus = -100
   end
@@ -80,14 +89,14 @@ function damage(args)
     status.addEphemeralEffect("ivrpgweaken", (self.dexterity/25), self.id)
     status.applySelfDamageRequest({
       damageType = "IgnoresDef",
-      damage = self.allDamage/2,
+      damage = self.allDamage/2 * self.bonusDamage,
       sourceEntityId = self.id
     })
   end
 
   if world.entityHealth(entity.id())[1] <= 0 then
     --sb.logInfo("Health <= 0!")
-    sendDyingMessage(self.id)
+    sendDyingMessage(self.id, self.source)
   end
   --End IVRPGMod
 end
@@ -100,7 +109,7 @@ function undergroundCheck(position)
   return world.underground(position) 
 end
 
-function sendDyingMessage(sourceId)
+function sendDyingMessage(sourceId, damageType)
   --sb.logInfo("Sending Message!")
-  world.sendEntityMessage(sourceId, "killedMonster", monster.level(), mcontroller.position(), status.activeUniqueStatusEffectSummary())
+  world.sendEntityMessage(sourceId, "killedMonster", monster.level(), mcontroller.position(), status.activeUniqueStatusEffectSummary(), damageType)
 end

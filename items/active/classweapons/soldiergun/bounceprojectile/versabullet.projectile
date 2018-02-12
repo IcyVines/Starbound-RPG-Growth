@@ -17,5 +17,6 @@
   "scripts" : [ "soldierincreasepower.lua" ],
   "power" : 5.0,
   "speed" : 150,
+  "hardLight" : false,
   "knockback" : 0
 }

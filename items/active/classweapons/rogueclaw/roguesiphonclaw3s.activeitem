@@ -9,7 +9,7 @@
   "tooltipKind" : "fistweapon",
   "category" : "Claw",
   "twoHanded" : false,
-  "itemTags" : ["weapon","rogue","claw"],
+  "itemTags" : ["weapon","rogue","claw","fist"],
 
   "learnBlueprintsOnPickup" : [
     "roguesiphonclaw3s",
@@ -31,7 +31,7 @@
       "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
     }
   },
-  "scripts" : [ "/items/active/weapons/fist/fistweapon.lua" ],
+  "scripts" : [ "/items/active/classweapons/rogueclaw/fistweapon.lua" ],
 
   "needsEdgeTrigger" : true,
   "edgeTriggerGrace" : 0.1,

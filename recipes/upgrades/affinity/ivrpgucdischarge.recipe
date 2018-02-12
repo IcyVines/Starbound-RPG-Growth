@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "masterypoint", "count" : 6 },
+    { "item" : "staticcell", "count" : 12 }
+  ],
+	"output" : { "item" : "ivrpgucdischarge", "count" : 1 },
+	"groups" : [ "ivrpgmasteryshop", "upgradesA", "all" ]
+}

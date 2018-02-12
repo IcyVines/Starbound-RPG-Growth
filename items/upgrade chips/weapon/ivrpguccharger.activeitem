@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Siphon Flux Upgrade.\nEnergetic Slice grants Energy to nearby allies.",
   "shortdescription" : "Charger",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "weapon",

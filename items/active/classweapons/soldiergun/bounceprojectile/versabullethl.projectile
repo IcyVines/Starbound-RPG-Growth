@@ -1,0 +1,22 @@
+{
+  "projectileName" : "versabullethl",
+  "image" : "versabullet.png",
+  "physics" : "laser",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKind" : "standardbullet",
+  "pointLight" : false,
+  "flippable" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    }
+  ],
+  "statusEffects" : [ ],
+  "scripts" : [ "soldierincreasepower.lua" ],
+  "power" : 5.0,
+  "speed" : 150,
+  "hardLight" : true,
+  "knockback" : 0
+}

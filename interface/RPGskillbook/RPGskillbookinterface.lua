@@ -1075,7 +1075,7 @@ function changeClassDescription(name)
     self.classTo = 3
   end
   if name == "soldier" then
-    widget.setText("classeslayout.classdescription", "The Soldier: Ranged Tank. Does better with Two-Handed Ranged Weapons, but can still utilize One-Handed Ranged Weapons farely well. The Soldier's skills mostly improve utility and defense. The Soldier does more damage while at full Energy, and can randomly stun enemies while hitting them.") 
+    widget.setText("classeslayout.classdescription", "The Soldier: Ranged Tank. Does better with Two-Handed Ranged Weapons, but can still utilize One-Handed Ranged Weapons fairly well. The Soldier's skills mostly improve utility and defense. The Soldier does more damage while at full Energy, and can randomly stun enemies while hitting them.") 
     widget.setFontColor("classeslayout.soldiertitle", "orange")
     self.classTo = 4
   end
@@ -1289,7 +1289,7 @@ function updateClassWeapon()
     widget.setVisible("classlayout.weaponreqlvl", false)
     widget.setVisible("classlayout.unlockquestbutton", false)
     widget.setVisible("classlayout.classweapontext", true)
-  elseif self.level < 15 then
+  elseif self.level < 12 then
     widget.setFontColor("classlayout.weaponreqlvl", "red")
     widget.setText("classlayout.weaponreqlvl", "Required Level: 15")
     widget.setVisible("classlayout.weaponreqlvl", true)

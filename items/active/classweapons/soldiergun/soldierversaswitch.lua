@@ -6,7 +6,7 @@ GunFire = WeaponAbility:new()
 
 function GunFire:init()
   self.weapon:setStance(self.stances.idle)
-
+  self.name = item.name()
   self.cooldownTimer = self.fireTime
   self.chargeTime = config.getParameter("chargeTime", 1)
   self.chargeTimer = 0
@@ -20,6 +20,21 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 
+  self.triggerHappy = status.statPositive("ivrpguctriggerhappy") and self.name == "soldierversagun3"
+  self.hardLight = status.statPositive("ivrpguchardlight") and self.name == "soldierversagun3"
+
+  if self.triggerHappy then
+    self.chargeTime = 0.75
+  else
+    self.chargeTime = 1
+  end
+
+  if self.hardLight then
+    self.projectileType = "versabullethl"
+  else
+    self.projectileType = "versabullet"
+  end
+
   if animator.animationState("firing") ~= "fire" then
     animator.setLightActive("muzzleFlash", false)
   end
@@ -28,14 +43,15 @@ function GunFire:update(dt, fireMode, shiftHeld)
     and not self.weapon.currentAbility
     and self.cooldownTimer == 0
     and not status.resourceLocked("energy")
-    and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
-    if self.chargeTimer < 1 then
+    and not world.lineTileCollision(mcontroller.position(), self:firePosition())
+    and not (self.triggerHappy and self.chargeTimer == self.chargeTime) then
+    if self.chargeTimer < self.chargeTime then
       if self.chargeTimer == 0 then
         animator.playSound("charge")
       end
-      status.overConsumeResource("energy", self:energyPerShot()*self.dt)
+      status.overConsumeResource("energy", self:energyPerShot()*self.dt*(self.triggerHappy and 4/3 or 1))
       self.chargeTimer = math.min(self.chargeTime, self.chargeTimer + self.dt)
-      if self.chargeTimer == 1 then
+      if self.chargeTimer == self.chargeTime then
         animator.playSound("charged")
         animator.stopAllSounds("charge")
       end
@@ -51,6 +67,10 @@ function GunFire:update(dt, fireMode, shiftHeld)
 end
 
 function GunFire:auto()
+
+  if self.triggerHappy then
+    self.chargeTimer = self.chargeTimer*4/3
+  end
 
   self.baseInaccuracy = self.inaccuracy
   self.inaccuracy = self.inaccuracy * (1 - self.chargeTimer)

@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Primed Nova Upgrade.\nPrimed Nova can be charged for longer. Status Procs upgraded.",
   "shortdescription" : "Passed Prime",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "weapon",

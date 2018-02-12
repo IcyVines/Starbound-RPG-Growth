@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "masterypoint", "count" : 5 },
+    { "item" : "venomsample", "count" : 10 }
+  ],
+	"output" : { "item" : "ivrpgucmiasma", "count" : 1 },
+	"groups" : [ "ivrpgmasteryshop", "upgradesA", "all" ]
+}

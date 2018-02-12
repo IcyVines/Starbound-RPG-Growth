@@ -8,6 +8,8 @@ function init()
   self.hitTimer = config.getParameter("hitTimer")
   self.cooldown = 0
 
+  self.message = world.sendEntityMessage(self.playerId, "hasStat", "ivrpgucbloodseeker")
+
   if world.isMonster(self.playerId) or world.isNpc(self.playerId) then
     self.agility = 10
   else
@@ -32,12 +34,13 @@ function update(dt)
   	return
   end
 
+  local maxDistance = (self.message:result()) and 30 or 20
   local entityPos = nil
   local pos = mcontroller.position()
   local distance = -1
-  local entities = world.entityQuery(pos, 20, {withoutEntityId = self.playerId})
+  local entities = world.entityQuery(pos, maxDistance, {withoutEntityId = self.playerId, includedTypes = {"creature"}})
   for _, e in ipairs(entities) do
-  	if world.entityAggressive(e) then
+  	if world.entityCanDamage(self.playerId, e) then
   		epos = world.entityPosition(e)
   		local newDistance = world.magnitude(pos, epos)
   		if (newDistance < distance or distance < 0) then

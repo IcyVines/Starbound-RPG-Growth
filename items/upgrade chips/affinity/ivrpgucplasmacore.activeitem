@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "/items/upgrade chips/affinity/upgradechip.png",
-  "description" : "Negates all detriments while using the Arc Affinity.",
+  "description" : "Shock and Arc Affinity Upgrade.\nNegates all Affinity Weaknesses.",
   "shortdescription" : "Plasma Core",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",

@@ -8,6 +8,7 @@ function init()
   self.aimAngle = 0
   self.facingDirection = 0
   self.drillSourceOffsets = config.getParameter("drillSourceOffsets")
+  self.origDrillSourceOffsets = self.drillSourceOffsets
   self.drillTipOffset = config.getParameter("drillTipOffset")
   self.tileDamage =  config.getParameter("tileDamage",10)
   self.damageTileDepth = config.getParameter("damageTileDepth",3)
@@ -15,6 +16,7 @@ function init()
   self.name = item.name()
   self.damageBonus = (self.name == "explorerspiradrill" and 1 or (self.name == "explorerspiradrill2" and 2 or 3))
   self.id = activeItem.ownerEntityId()
+  self.spwDamageBonus = 1
   animator.setSoundVolume("active", 0, 0)
   animator.playSound("active", -1)
 end
@@ -26,11 +28,22 @@ function update(dt, fireMode, shiftHeld, moves)
     self.active = false
   end
 
+  self.spinToWin = status.statPositive("ivrpgucspintowin") and self.name == "explorerspiradrill3"
+  self.rightHandMan = status.statPositive("ivrpgucrighthandman") and self.name == "explorerspiradrill3" and activeItem.hand() == "alt"
+
+  if self.spinToWin then
+    self.spwDamageBonus = 2
+    self.drillSourceOffsets = {{3.4, -1.6}, {3.4, -0.05}, {3.4, 1.5}}
+  else
+    self.spwDamageBonus = 1
+    self.drillSourceOffsets = self.origDrillSourceOffsets
+  end
+
   self.aimAngle, self.facingDirection = activeItem.aimAngleAndDirection(self.fireOffset[2], activeItem.ownerAimPosition())
   activeItem.setFacingDirection(self.facingDirection)
   activeItem.setArmAngle(self.aimAngle)
 
-  if self.active and status.overConsumeResource("energy", self.cost*dt) then
+  if self.active and status.overConsumeResource("energy", self.cost*dt*self.spwDamageBonus) then
     if self.name ~= "explorerspiradrill" then
       local dropList = world.itemDropQuery(mcontroller.position(), 10)
       if dropList then
@@ -38,6 +51,11 @@ function update(dt, fireMode, shiftHeld, moves)
       end
     end
     local layer = "foreground"
+    self.tileGroup = {"Block"}
+    if self.rightHandMan then
+      layer = "background"
+      self.tileGroup = {"None", "Block", "Platform", "Slippery"}
+    end
     self.drops = (shiftHeld and self.name == "explorerspiradrill3") and 0 or 99
     animator.setLightActive("glow", true)
     --sb.logInfo("layer" .. layer)
@@ -50,7 +68,7 @@ function update(dt, fireMode, shiftHeld, moves)
           attachToPart = drill,
           --poly = {{8, 2.5}, {2, 0.75}, {2, 4.25}},
           poly = {{4.2, -1.55}, {7.85, 0.0}, {4.2, 1.55}},
-          damage = 3*self.damageBonus,
+          damage = 3*self.damageBonus*self.spwDamageBonus,
           damageSourceKind = "electricplasma",
           damageRepeatTimeout = 0.2,
           damageRepeatGroup = "leftArmDrill",
@@ -77,10 +95,10 @@ function damageTiles(layer)
   local tipPosition = transformOffset(self.drillTipOffset)
   for _, sourceOffset in ipairs(self.drillSourceOffsets) do
     local sourcePosition = transformOffset(sourceOffset)
-    local drillTiles = world.collisionBlocksAlongLine(sourcePosition, tipPosition, {"Block"}, self.damageTileDepth)
+    local drillTiles = world.collisionBlocksAlongLine(sourcePosition, tipPosition, self.tileGroup, self.damageTileDepth)
     if #drillTiles > 0 then
       world.damageTiles(drillTiles, layer, sourcePosition, "blockish", self.tileDamage, self.drops)
-      if self.drops == 0 then
+      if self.drops == 0 and layer == "foreground" then
         status.modifyResourcePercentage("energy", #drillTiles * 0.001)
       end
     end

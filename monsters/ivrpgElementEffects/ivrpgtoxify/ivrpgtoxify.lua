@@ -5,6 +5,7 @@ function init()
   effect.addStatModifierGroup({
     {stat = "maxHealth", effectiveMultiplier = 0.75}
   })
+  self.timer = 0.25
   self.sourceId = effect.sourceEntity()
   if self.sourceId then
     self.message = world.sendEntityMessage(self.sourceId, "hasStat", "ivrpguccontagion")
@@ -19,20 +20,23 @@ function update(dt)
 end
 
 function contagionSpread(dt)
-  local rand = math.random(1,300)
-  if rand < 2 then
-    local targetIds = world.entityQuery(mcontroller.position(), 8, {
-      withoutEntityId = entity.id(),
-      includedTypes = {"creature"}
-    })
+  self.timer = self.timer - dt
+  if self.timer <= 0 then
+    self.timer = 0.25
+    if math.random(1,20) < 2 then
+      local targetIds = world.entityQuery(mcontroller.position(), 8, {
+        withoutEntityId = entity.id(),
+        includedTypes = {"creature"}
+      })
 
-    shuffle(targetIds)
+      shuffle(targetIds)
 
-    for i,id in ipairs(targetIds) do
-      if world.entityCanDamage(self.sourceId, id) and not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
-      	spawnPoison()
-      	world.sendEntityMessage(id, "addEphemeralEffect", "ivrpgtoxify", 5, self.sourceId)
-        return
+      for i,id in ipairs(targetIds) do
+        if world.entityCanDamage(self.sourceId, id) and not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
+        	spawnPoison()
+        	world.sendEntityMessage(id, "addEphemeralEffect", "ivrpgtoxify", 5, self.sourceId)
+          return
+        end
       end
     end
   end

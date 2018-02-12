@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Blood Aether Upgrade.\nGain Regenaration and Rage upon killing an enemy.",
   "shortdescription" : "Vampire's Caress",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "weapon",
