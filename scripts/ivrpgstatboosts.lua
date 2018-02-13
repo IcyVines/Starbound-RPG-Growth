@@ -18,7 +18,6 @@ function init()
 end
 
 function update(dt)
-  
   self.xp = world.entityCurrency(self.id, "experienceorb")
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
   self.classType = world.entityCurrency(self.id, "classtype")

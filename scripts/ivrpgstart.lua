@@ -1,5 +1,6 @@
 local origInit = init
 local origUpdate = update
+local origUninit = uninit
 
 function init()
   origInit()
@@ -15,6 +16,7 @@ function init()
   end
   
   sb.logInfo("Chaika's RPG Growth: Version %s", data.version)
+  self.upgradeData = root.assetJson("/ivrpgUpMonDic.config")
 
   message.setHandler("addXP", function(_, _, amount)
     addXP(amount)
@@ -30,8 +32,8 @@ function init()
   	if status.statPositive("ivrpgucfeedbackloop") then status.addEphemeralEffect("rage", 2) end
   end)
 
-  message.setHandler("killedMonster", function(_, _, level, position, statusEffects, damageType)
-  	killedMonster(level, position, statusEffects, damageType)
+  message.setHandler("killedMonster", function(_, _, level, position, statusEffects, damageType, name)
+  	killedMonster(level, position, statusEffects, damageType, name)
   end)
 
   message.setHandler("modifyResource", function(_, _, type, amount)
@@ -54,6 +56,20 @@ function update(args)
 
   updateUpgrades()
 
+end
+
+function uninit()
+  origUninit()
+  status.removeEphemeralEffect("ivrpgstatboosts")
+  status.clearPersistentEffects("ivrpgclassboosts")
+  status.clearPersistentEffects("ivrpgstatboosts")
+  status.clearPersistentEffects("ivrpgaffinityeffects")
+  status.removeEphemeralEffect("explorerglow")
+  status.removeEphemeralEffect("knightblock")
+  status.removeEphemeralEffect("ninjacrit")
+  status.removeEphemeralEffect("wizardaffinity")
+  status.removeEphemeralEffect("roguepoison")
+  status.removeEphemeralEffect("soldierdiscipline")
 end
 
 function removeTechs()
@@ -89,10 +105,26 @@ function updateUpgrades()
 
 end
 
-function killedMonster(level, position, statusEffects, damageType)
+function killedMonster(level, position, statusEffects, damageType, name)
   addToChallengeCount(level)
   dyingEffects(position, statusEffects)
   killingEffects(damageType)
+  dropUpgradeChips(level, position, name)
+end
+
+function dropUpgradeChips(level, position, name)
+  local monsterData = self.upgradeData.monsters[name]
+  if monsterData then
+    shuffle(monsterData)
+    local item = monsterData[1]
+    local itemData = self.upgradeData.items[item]
+    if itemData then
+      level = level * itemData
+    end
+    if level >= math.random(1,100) then
+      world.spawnItem(item, position)
+    end
+  end
 end
 
 function addToChallengeCount(level)

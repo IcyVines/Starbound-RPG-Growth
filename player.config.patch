@@ -1,4 +1,5 @@
 [
+//Status Scripts
 { "op" : "add", "path" : "/statusControllerSettings/primaryScriptSources/-", "value" : "/scripts/ivrpgeffects.lua" },
 
 // Recipes
@@ -13,6 +14,6 @@
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgstungrenade" } },
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgtripmine" } },
 
-// Starting Quest
+// Necessary Scripts
 { "op": "add", "path" : "/deploymentConfig/scripts/-", "value" : "/scripts/ivrpgstart.lua"}
 ]

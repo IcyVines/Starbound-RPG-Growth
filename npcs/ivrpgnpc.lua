@@ -61,7 +61,6 @@ function damage(args)
   end
 
   --Bleed Checks!
-  self.bonusDamage = 1
   if self.classType == 3 then
     self.dexterity = self.dexterity^1.2
     if nighttimeCheck() or undergroundCheck(world.entityPosition(self.id)) then
@@ -113,5 +112,5 @@ end
 
 function sendDyingMessage(sourceId, damageType)
   --sb.logInfo("Sending Message!")
-  world.sendEntityMessage(sourceId, "killedMonster", npc.level(), mcontroller.position(), status.activeUniqueStatusEffectSummary(), damageType)
+  world.sendEntityMessage(sourceId, "killedMonster", npc.level(), mcontroller.position(), status.activeUniqueStatusEffectSummary(), damageType, npc.npcType())
 end

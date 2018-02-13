@@ -232,7 +232,7 @@
 							},
 							"fire8": {
 								"properties": {
-									"image": "/projectiles/explosions/doomgrenadeexplosion/doomgrenadeexplosion.png:<frame>?replace;F4988C=FFFFA7;D93A3A=E2C344?scalenearest=0.8",
+									"image": "/items/active/classweapons/knightsword/explosions/holyexplosion1/holyexplosion1.png:<frame>?replace;F4988C=FFFFA7;D93A3A=E2C344?scalenearest=0.8",
 									"offset": [3, 2],
 									"damageArea": [[3, 3], [3, -3], [-3, 3], [-3, -3]],
 									"zLevel": 10,
@@ -242,7 +242,7 @@
 							},
 							"fire9": {
 								"properties": {
-									"image": "/projectiles/boss/guardianboss/guardiandeathexplosion/guardiandeathexplosion.png:<frame>?replace;D29CE7=FFFFA7;A451C4=E2C344;6A2284=FFFFCC",
+									"image": "/items/active/classweapons/knightsword/explosions/holyexplosion2/holyexplosion2.png:<frame>?replace;D29CE7=FFFFA7;A451C4=E2C344;6A2284=FFFFCC",
 									"offset": [7, 0],
 									"damageArea": [[2, 2], [2, -2], [-2, 2], [-2, -2]],
 									"zLevel": 10,

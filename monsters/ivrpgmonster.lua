@@ -111,5 +111,5 @@ end
 
 function sendDyingMessage(sourceId, damageType)
   --sb.logInfo("Sending Message!")
-  world.sendEntityMessage(sourceId, "killedMonster", monster.level(), mcontroller.position(), status.activeUniqueStatusEffectSummary(), damageType)
+  world.sendEntityMessage(sourceId, "killedMonster", monster.level(), mcontroller.position(), status.activeUniqueStatusEffectSummary(), damageType, monster.type())
 end
