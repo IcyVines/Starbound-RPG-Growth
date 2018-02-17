@@ -3,5 +3,6 @@
 { "op" : "add", "path" : "/aegisswordcombo", "value" : "/items/active/classweapons/knightsword/aegisswordcombo.weaponability" },
 { "op" : "add", "path" : "/novastaffexplosion", "value" : "/items/active/classweapons/wizardstaff/novastaffexplosion.weaponability" },
 { "op" : "add", "path" : "/novastaffswitch", "value" : "/items/active/classweapons/wizardstaff/novastaffswitch.weaponability" },
-{ "op" : "add", "path" : "/versaarfire", "value" : "/items/active/classweapons/soldiergun/versaarfire.weaponability" }
+{ "op" : "add", "path" : "/versaarfire", "value" : "/items/active/classweapons/soldiergun/versaarfire.weaponability" },
+{ "op": "add", "path": "/gungnirbeam", "value": "/items/active/weapons/other/gungnir/gungnirbeam.weaponability"}
 ]

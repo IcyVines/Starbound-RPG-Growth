@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Frost and Cryo Affinity Upgrade.\nNegates all Affinity Weaknesses.",
+  "description" : "Frost and Cryo Affinity Upgrade.\nImproves potential with Whips, Claws, and Daggers. ^red;Female Only^reset;.",
   "shortdescription" : "Ice Queen",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "affinity",

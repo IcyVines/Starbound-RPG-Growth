@@ -70,9 +70,11 @@ function update(args)
     end
 	self.enableZone = false
     
-    animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
-    animator.setParticleEmitterActive("healing", true)
-    status.modifyResourcePercentage("health", self.healingRate * args.dt)
+    if status.resource("health") ~= 0 then
+      animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())
+      animator.setParticleEmitterActive("healing", true)
+      status.modifyResourcePercentage("health", self.healingRate * args.dt)
+    end
     status.addEphemeralEffect("wizardlowgrav", math.huge)
     
 
