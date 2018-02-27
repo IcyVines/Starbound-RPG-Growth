@@ -1,5 +1,5 @@
 {
-  "projectileName" : "soldiertankmissile",
+  "projectileName" : "soldiertankmissiletracking",
   "image" : "soldiertankmissile.png",
   "animationCycle" : 0.2,
   "frameNumber" : 3,
@@ -18,9 +18,12 @@
       "file" : "/tech/soldiertech/soldiertanksphere/missile/soldiertankmissileexplosion.config"
     }
   ],
+  "scripts" : ["soldiertankmissile.lua"],
   "acceleration" : 150,
   "physics" : "rocket",
   "controlForce" : 1000,
+  "maxSpeed" : 50,
+  "startTimer" : 0.25,
   "damageType" : "NoDamage",
   "damageKind" : "default"
 }

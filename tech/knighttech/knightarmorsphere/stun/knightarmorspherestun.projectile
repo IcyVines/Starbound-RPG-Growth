@@ -1,0 +1,22 @@
+{
+  "projectileName" : "knightarmorspherestun",
+  "image" : "knightarmorspheresurround.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 3,
+  "lightColor" : [120, 90, 20],
+  "pointLight" : true,
+  "animationLoops" : true,
+  "emitters" : [ ],
+  "renderLayer" : "Player-1",
+  "orientationLocked" : true,
+  "speed" : 0.0,
+  "power" : 0.0,
+  "physics" : "laser",
+  "scripts": ["/tech/knighttech/knightarmorsphere/stun/knightarmorspheresurround.lua"],
+  "timeToLive" : 999999999,
+  "piercing" : true,
+  "damageKind" : "applystatus",
+  "damagePoly" : [[-12, 0], [-9, 9], [0, 12], [9, 9], [12, 0], [9, -9], [0, -12], [-9, -9]],
+  "statusEffects" : [ {"effect" : "soldierstun", "duration" : 1} ],
+  "persistentAudio" : "/sfx/projectiles/zone_power_loop.ogg"
+}

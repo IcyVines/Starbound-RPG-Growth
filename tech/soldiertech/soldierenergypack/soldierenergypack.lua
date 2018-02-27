@@ -18,10 +18,6 @@ function init()
   --Bind.create("Up", energize)
   Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doMultiJump)
 
-  status.setPersistentEffects("energizefalldamagereduction", {
-    {stat = "fallDamageMultiplier", amount = -0.1}
-  })
-
 end
 
 --[[
@@ -51,6 +47,21 @@ end
 
 function update(args)
 
+  self.batteryPack = status.statPositive("ivrpgucbatterypack")
+  local jumpBoost = 1.2
+  local fallDamageDecrease = -0.1
+  if self.batteryPack then
+    jumpBoost = 1.35
+    fallDamageDecrease = -0.25
+  end
+
+  status.setPersistentEffects("energizefalldamagereduction", {
+    {stat = "fallDamageMultiplier", amount = fallDamageDecrease},
+  })
+  mcontroller.controlModifiers({
+    airJumpModifier = jumpBoost
+  })
+  
   --Find Directional Input
   self.hDirection = 0
   self.vDirection = 0
@@ -123,7 +134,11 @@ function canMultiJump()
 end
 
 function refreshJumps()
-  self.jumpsLeft = config.getParameter("multiJumpCount")
+  if self.batteryPack then
+    self.jumpsLeft = config.getParameter("multiJumpCount") + 1
+  else
+    self.jumpsLeft = config.getParameter("multiJumpCount")
+  end
 end
 
 function startDash()

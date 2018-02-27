@@ -44,6 +44,9 @@
   "energyCost" : 30,
   "zoneCostPerSec" : 15,
 
+  "hoverControlForce" : 400.0,
+  "energyUsagePerSecond" : 50.0,
+
   "ballRadius" : 1,
   "ballFrames" : 4,
 

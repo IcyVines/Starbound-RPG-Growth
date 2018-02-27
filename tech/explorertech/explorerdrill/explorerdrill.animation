@@ -16,6 +16,22 @@
             }
           }
         }
+      },
+      "hover" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "hoverParticles" ]
+            }
+          },
+          "on" : {
+            "properties" : {
+              "persistentSound" : "/sfx/tech/tech_hoverloop.ogg",
+              "particleEmittersOn" : [ "hoverParticles" ]
+            }
+          }
+        }
       }
     }
   },
@@ -53,10 +69,53 @@
           "offset" : [0.2, -2]
         }
       ]
+    },
+    "hoverParticles" : {
+      "emissionRate" : 14.0,
+      "particles" : [
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -2]
+        }
+      ]
+    },
+    "jumpParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "doublejump",
+          "offset" : [0.2, -3]
+        }
+      ]
     }
   },
   "sounds" : {
     "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "multiJumpSound" : ["/sfx/tech/tech_multijump.ogg"],
     "activate" : []
   }
 }

@@ -14,6 +14,7 @@ function init()
   self.damageDisableTimer = 0
   
   self.headingAngle = nil
+  self.sticking = false
 
   self.normalCollisionSet = {"Block", "Dynamic"}
   if self.ignorePlatforms then
@@ -26,13 +27,16 @@ function init()
     function(notifications)
       for _, notification in pairs(notifications) do
         if notification.healthLost > 0 and notification.sourceEntityId ~= entity.id() then
-          damaged(true)
+          damaged()
           return
         end
       end
     end
   )
 
+  self.jumpsLeft = config.getParameter("multiJumpCount")
+  refreshJumps()
+  self.glideActive = false
 
   self.drillCost = config.getParameter("drillCost")
   self.power = config.getParameter("power")
@@ -42,10 +46,20 @@ function init()
   self.drill = false
 
   self.jumpSpeed = config.getParameter("jumpSpeed")
-  Bind.create("jumping", function() damaged(false) end)
+  Bind.create("jumping", doMultiJump)
 end
 
-function update(args)  
+function update(args)
+
+  local action = input(args)
+  self.glideSphere = status.statPositive("ivrpgucglidesphere")
+  local lrInput = 0
+  if args.moves["left"] then
+    lrInput = -1
+  elseif args.moves["right"] then
+    lrInput = 1
+  end
+
   restoreStoredPosition()
 
   updateDrill(args)
@@ -65,6 +79,25 @@ function update(args)
 
   self.energyRegenBlock = status.resource("energyRegenBlock")
   if self.active then
+
+    --Gliding
+    if self.glideSphere and action == "explorerglide" and canGlide() and status.overConsumeResource("energy", self.drillCost * args.dt) then
+      animator.setAnimationState("hover", "on")
+      --local velocity = vec2.sub(tech.aimPosition(),mcontroller.position())
+      local hoverControlForce = config.getParameter("hoverControlForce")
+      mcontroller.controlApproachYVelocity(-2, hoverControlForce)
+    else
+      animator.setAnimationState("hover", "off")
+    end
+
+    if self.glideSphere and canGlide() then
+      if math.abs(mcontroller.xVelocity()) < self.ballSpeed then
+        mcontroller.addMomentum({lrInput, 0})
+      end
+      self.angularVelocity = -lrInput * self.ballSpeed
+    end
+    --End Gliding
+
     status.setResourcePercentage("energyRegenBlock", 1.0)
 
     local groundDirection
@@ -121,9 +154,6 @@ function update(args)
 
         self.angularVelocity = -moveX * self.ballSpeed
       else
-        --status.overConsumeResource("energy", 0)
-        --status.setResource("energyRegenBlock", self.energyRegenBlock)
-        --status.consumeResource("health", self.healthCostPerSecond * args.dt)
         mcontroller.controlApproachVelocity({0,0}, 2000)
         self.angularVelocity = 0
       end
@@ -134,6 +164,7 @@ function update(args)
       updateAngularVelocity(args.dt)
 
       self.transformedMovementParameters.gravityEnabled = false
+      self.sticking = true
     else
       updateAngularVelocity(args.dt)
       self.transformedMovementParameters.gravityEnabled = true
@@ -141,6 +172,7 @@ function update(args)
         mcontroller.setVelocity(vec2.mul(vec2.norm(vec2.add(self.jumpDirection,{0,1})),self.jumpSpeed))
         self.jumpDirection = nil
       end
+      self.sticking = false
     end
 
     mcontroller.controlParameters(self.transformedMovementParameters)
@@ -149,7 +181,12 @@ function update(args)
 
     checkForceDeactivate(args.dt)
 
+    if mcontroller.groundMovement() or mcontroller.liquidMovement() or self.sticking then
+      refreshJumps()
+    end
+
   else
+    self.sticking = false
     self.headingAngle = nil
     --status.overConsumeResource("energy", 0)
   end
@@ -174,7 +211,11 @@ function updateDrill(args)
   end]]--
 
   if action == "explorerdrill" and status.overConsumeResource("energy", energyUsagePerSecond * args.dt) then--and self.drill then
-    animator.setAnimationState("drill", "on")
+    if self.active then
+      animator.setAnimationState("drillSphere", "on")
+    else
+      animator.setAnimationState("drill", "on")
+    end
 
     if not self.activeDrill then
       animator.playSound("activate")
@@ -183,6 +224,7 @@ function updateDrill(args)
   else
     self.activeDrill = false
     animator.setAnimationState("drill", "off")
+    animator.setAnimationState("drillSphere", "off")
   end
 
   if self.activeDrill then
@@ -191,22 +233,9 @@ function updateDrill(args)
   
 end
 
-function damaged(really)
+function damaged()
   if self.active then
     self.damageDisableTimer = self.damageDisableTime
-    if not really then
-      local groundDirection = findGroundDirection()
-      if groundDirection then
-        groundDirection = {util.round(groundDirection[1]), util.round(groundDirection[2])}
-        sb.logInfo("Ground Direction: " .. groundDirection[1] .. ", " .. groundDirection[2])
-        if groundDirection[2] == -1 then
-          self.jumpDirection = vec2.norm(mcontroller.velocity())
-        else 
-          self.jumpDirection = {-groundDirection[1], -groundDirection[2]}
-        end
-        sb.logInfo("Jump Direction: " .. self.jumpDirection[1] .. ", " .. self.jumpDirection[2])
-      end
-    end
   end
 end
 
@@ -238,9 +267,60 @@ function drill()
 end
 
 function input(args)
-  if args.moves["special1"] then
+  if args.moves["up"] then
+    return "explorerglide"
+  elseif args.moves["special1"] then
     return "explorerdrill"
   else
     return nil
+  end
+end
+
+function groundJump()
+  local groundDirection = findGroundDirection()
+  if groundDirection then
+    groundDirection = {util.round(groundDirection[1]), util.round(groundDirection[2])}
+    sb.logInfo("Ground Direction: " .. groundDirection[1] .. ", " .. groundDirection[2])
+    if groundDirection[2] == -1 then
+      self.jumpDirection = vec2.norm(mcontroller.velocity())
+    else 
+      self.jumpDirection = {-groundDirection[1], -groundDirection[2]}
+    end
+    self.damageDisableTimer = self.damageDisableTime
+    sb.logInfo("Jump Direction: " .. self.jumpDirection[1] .. ", " .. self.jumpDirection[2])
+  end
+end
+
+function doMultiJump()
+  if self.sticking then
+    groundJump()
+  elseif canMultiJump() then
+    mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()) + self.ballSpeed*3)
+    animator.burstParticleEmitter("jumpParticles")
+    self.jumpsLeft = self.jumpsLeft - 1
+    animator.playSound("multiJumpSound")
+  end
+end
+
+function canMultiJump()
+  return self.jumpsLeft > 0
+      and not self.sticking
+      and not mcontroller.liquidMovement()
+      and math.abs(world.gravity(mcontroller.position())) > 0
+      and self.active and self.glideSphere
+end
+
+function canGlide()
+  return not self.sticking
+      and not mcontroller.liquidMovement()
+      and math.abs(world.gravity(mcontroller.position())) > 0
+      and self.active and self.glideSphere
+end
+
+function refreshJumps()
+  if self.glideSphere then
+    self.jumpsLeft = config.getParameter("multiJumpCount") + 1
+  else
+    self.jumpsLeft = config.getParameter("multiJumpCount")
   end
 end

@@ -17,6 +17,12 @@ function init()
   else
     self.platformCollisionSet = {"Block", "Dynamic", "Platform"}
   end
+  
+  self.noCollisionPoly = mcontroller.collisionPoly()
+  for i,set in ipairs(self.noCollisionPoly) do
+    self.noCollisionPoly[i] = vec2.mul(set,1.2)
+  end
+  self.ghostOn = nil
 end
 
 function update(args)
@@ -34,21 +40,37 @@ function update(args)
   self.damageDisableTimer = math.max(0, self.damageDisableTimer - args.dt)
 
   self.energyRegenBlock = status.resource("energyRegenBlock")
+  self.ghost = status.statPositive("ivrpgucghost")
+  self.noCollision = self.active and args.moves["primaryFire"] and self.ghost and status.overConsumeResource("energy", self.energyCostPerSecond * args.dt / 2)
+
+  if self.noCollision then
+    activateGhost()
+      mcontroller.controlParameters(
+        {
+          collisionEnabled = false
+        }
+      )
+  else
+    deactivateGhost()
+  end
+
   if self.active then
+
     status.setResourcePercentage("energyRegenBlock", 1.0)
     local groundDirection
     if self.damageDisableTimer == 0 then
       groundDirection = findGroundDirection()
     end
     --invulnerable while active
-    status.addEphemeralEffect("camouflageninja", math.huge)
-    status.setPersistentEffects("vanishsphere",
-    {
-      {stat = "invulnerable", amount = 1},
-      {stat = "ninjaVanishSphere", amount = 1}
-    })
-
-    status.overConsumeResource("energy", self.energyCostPerSecond * args.dt)
+    if (not self.ghost) and status.overConsumeResource("energy", self.energyCostPerSecond * args.dt) then
+      animator.setAnimationState("ballState", "on")
+      status.addEphemeralEffect("camouflageninja", math.huge)
+      status.setPersistentEffects("vanishsphere",
+      {
+        {stat = "invulnerable", amount = 1},
+        {stat = "ninjaVanishSphere", amount = 1}
+      })
+    end
 
     if groundDirection then
       if not self.headingAngle then
@@ -58,7 +80,23 @@ function update(args)
       local moveX = 0
       if args.moves["right"] then moveX = moveX + 1 end
       if args.moves["left"] then moveX = moveX - 1 end
-      if moveX ~= 0 then
+      
+      local moveY = 0
+      if args.moves["up"] then moveY = moveY + 1 end
+      if args.moves["down"] then moveY = moveY - 1 end
+
+      if self.noCollision then
+
+        local adjustedSpeed = self.ballSpeed
+        if (moveY ~= 0) and (moveX ~= 0) then
+          adjustedSpeed = self.ballSpeed/math.sqrt(2)
+        end
+        if world.polyCollision(self.noCollisionPoly, mcontroller.position(), {"Block"}) then
+          mcontroller.controlApproachVelocity({moveX*adjustedSpeed,moveY*adjustedSpeed}, 2000)
+        end
+        self.angularVelocity = -moveX * self.ballSpeed
+
+      elseif moveX ~= 0 then
         -- find any collisions in the moving direction, and adjust heading angle *up* until there is no collision
         -- this makes the heading direction follow concave corners
 
@@ -123,7 +161,7 @@ function update(args)
 
     checkForceDeactivate(args.dt)
 
-    if status.resource("energy") == 0 then
+    if status.resource("energy") == 0 or self.ghost then
       --uninit()
       animator.setAnimationState("ballState", "onv")
       status.removeEphemeralEffect("camouflageninja")
@@ -132,13 +170,12 @@ function update(args)
         {stat = "invulnerable", amount = 0},
         {stat = "ninjaVanishSphere", amount = 1}
       })
-    else
-      
     end
 
   else
     status.removeEphemeralEffect("camouflageninja")
     status.clearPersistentEffects("vanishsphere")
+    animator.setAnimationState("ballState", "off")
     self.headingAngle = nil
     --status.overConsumeResource("energy", 0)
   end
@@ -155,6 +192,67 @@ function findGroundDirection()
     local testPos = vec2.add(mcontroller.position(), vec2.withAngle(angle, 0.25))
     if world.polyCollision(poly.translate(mcontroller.collisionPoly(), testPos), nil, collisionSet) then
       return vec2.withAngle(angle, 1.0)
+    end
+  end
+end
+
+function uninit()
+  storePosition()
+  deactivate()
+  deactivateGhost()
+  status.removeEphemeralEffect("camouflageninja")
+  status.clearPersistentEffects("vanishsphere")
+end
+
+function activateGhost()
+    if not self.ghostOn then
+      status.addEphemeralEffect("ninjavanishsphereghost", math.huge)
+      self.ghostOn = world.spawnProjectile("ninjavanishspheresurround",
+                                            mcontroller.position(),
+                                            entity.id(),
+                                            {0,0},
+                                            true,
+                                            {}
+                                           )
+    end
+end
+
+function deactivateGhost()
+    if self.ghostOn then
+      status.removeEphemeralEffect("ninjavanishsphereghost")
+      world.entityQuery(mcontroller.position(),1,
+        {
+         withoutEntityId = entity.id(),
+         includedTypes = {"projectile"},
+         callScript = "removeGhost",
+         callScriptArgs = {self.ghostOn}
+        }
+      )
+      self.ghostOn = nil
+    end
+end
+
+function attemptActivation()
+  if not self.active
+      and not tech.parentLounging()
+      and not status.statPositive("activeMovementAbilities")
+      and status.overConsumeResource("energy", self.energyCost) then
+
+    local pos = transformPosition()
+    if pos then
+      mcontroller.setPosition(pos)
+      activate()
+    elseif self.ghost then
+      activate()
+    end
+  elseif self.active then
+    local pos = restorePosition()
+    if pos then
+      mcontroller.setPosition(pos)
+      deactivate()
+    elseif not self.forceTimer then
+      animator.playSound("forceDeactivate", -1)
+      self.forceTimer = 0
     end
   end
 end

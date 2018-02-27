@@ -12,6 +12,7 @@ function init()
 
   self.headingAngle = nil
   self.contactOn = nil
+  self.stunOn = nil
 
   self.normalCollisionSet = {"Block", "Dynamic"}
   if self.ignorePlatforms then
@@ -50,6 +51,11 @@ function update(args)
 
     -- Armor Sphere Stat Effects --
     activateContact()
+    if status.statPositive("ivrpgucstunningsphere") and args.moves["primaryFire"] and status.overConsumeResource("energy", 20*args.dt) then
+      activateStun()
+    else
+      deactivateStun()
+    end
 
     local groundDirection
     if self.damageDisableTimer == 0 then
@@ -123,6 +129,7 @@ function update(args)
     self.headingAngle = nil
      -- DisableEffects --
     deactivateContact()
+    deactivateStun()
   end
  
   updateTransformFade(args.dt)
@@ -151,19 +158,20 @@ function uninit()
   storePosition()
   deactivate()
   deactivateContact()
+  deactivateStun()
 end
 
 function activateContact()
-    if not self.contactOn then
-      status.addEphemeralEffect("knightarmorspherecontact", math.huge)
-      self.contactOn = world.spawnProjectile("knightarmorspheresurround",
-                                            mcontroller.position(),
-                                            entity.id(),
-                                            {0,0},
-                                            true,
-                                            {}
-                                           )
-    end
+  if not self.contactOn then
+    status.addEphemeralEffect("knightarmorspherecontact", math.huge)
+    self.contactOn = world.spawnProjectile("knightarmorspheresurround",
+                                          mcontroller.position(),
+                                          entity.id(),
+                                          {0,0},
+                                          true,
+                                          {}
+                                         )
+  end
 end
 
 function deactivateContact()
@@ -178,5 +186,33 @@ function deactivateContact()
         }
       )
       self.contactOn = nil
+    end
+end
+
+function activateStun()
+  if not self.stunOn then
+    status.addEphemeralEffect("knightarmorspherestun", math.huge)
+    self.stunOn = world.spawnProjectile("knightarmorspherestun",
+                                          mcontroller.position(),
+                                          entity.id(),
+                                          {0,0},
+                                          true,
+                                          {}
+                                         )
+  end
+end
+
+function deactivateStun()
+    if self.stunOn then
+      status.removeEphemeralEffect("knightarmorspherestun")
+      world.entityQuery(mcontroller.position(),1,
+        {
+         withoutEntityId = entity.id(),
+         includedTypes = {"projectile"},
+         callScript = "removeContact",
+         callScriptArgs = {self.stunOn}
+        }
+      )
+      self.stunOn = nil
     end
 end

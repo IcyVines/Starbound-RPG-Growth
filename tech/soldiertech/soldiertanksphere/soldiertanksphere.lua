@@ -28,6 +28,8 @@ end
 function update(args)
   restoreStoredPosition()
 
+  self.pinpointAccuracy = status.statPositive("ivrpgucpinpointaccuracy")
+
   if not self.specialLast and args.moves["special1"] then
     attemptActivation()
   end
@@ -52,11 +54,9 @@ function update(args)
       local diff = world.distance(self.cursor, mcontroller.position())
       local aimingAngle = vec2.angle(diff)
       local aimingVector = vec2.rotate({1, 0}, aimingAngle)
-
---      soldiertankmissiledamageConfig = {
---        power = self.damage
---      }
-      world.spawnProjectile("soldiertankmissile", mcontroller.position(), entity.id(), aimingVector, false, {power = (world.entityCurrency(entity.id(),"dexteritypoint") + 14)})
+      local missileConfig = {power = (world.entityCurrency(entity.id(),"dexteritypoint") + 14)}
+      local projectileName = self.pinpointAccuracy and "soldiertankmissiletracking" or "soldiertankmissile"
+      world.spawnProjectile(projectileName, mcontroller.position(), entity.id(), aimingVector, false, missileConfig)
     end
 
     --Tank Sphere immunity effect

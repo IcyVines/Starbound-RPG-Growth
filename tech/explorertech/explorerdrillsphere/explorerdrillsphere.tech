@@ -49,5 +49,9 @@
   "ballRadius" : 1,
   "ballFrames" : 4,
 
-  "damageDisableTime" : 0.2
+  "damageDisableTime" : 0.2,
+
+  "hoverControlForce" : 400.0,
+  "energyUsagePerSecond" : 20,
+  "multiJumpCount" : 0
 }

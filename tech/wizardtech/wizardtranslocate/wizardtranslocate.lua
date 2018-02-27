@@ -16,7 +16,7 @@ end
 
 function translocate()
   --sb.logInfo("Cooldown: " .. tostring(self.dashCooldownTimer))
-  local isNotMissionWorld = ((world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost") and world.dayLength() ~= 100000) or status.statPositive("admin")
+  local isNotMissionWorld = ((world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost") and world.dayLength() ~= 100000) or (status.statPositive("admin") or status.statPositive("ivrpgucfourthwall"))
   local notThroughWalls = not world.lineTileCollision(tech.aimPosition(), mcontroller.position())
   if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and (isNotMissionWorld or notThroughWalls) and status.overConsumeResource("energy", 1) then
     local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1

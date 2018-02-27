@@ -1,0 +1,8 @@
+{
+  "name" : "ninjavanishsphereghost",
+  "defaultDuration" : 5,
+  
+  "animationConfig" : "ninjavanishsphereghost.animation",
+  "label" : "Ghost",
+  "icon" : "/tech/ninjatech/vanishsphere/ghost/ninjavanishsphereghost.png"
+}

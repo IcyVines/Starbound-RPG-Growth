@@ -15,5 +15,20 @@
   "multiJumpCount" : 1,
   "dashControlForce" : 1000,
   "dashSpeed" : 50,
-  "dashDuration" : 0.25
+  "dashDuration" : 0.25,
+
+  "wallSensors" : [1.0, 1.75, 2.5],
+  "wallDetectThreshold" : 1,
+
+  "wallReleaseTime" : 0.15,
+
+  "wallGrabFreezeTime" : 0.15,
+  "wallJumpXVelocity" : 15,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1.0
+    },
+    "airForce" : 0,
+    "airFriction" : 10.0
+  }
 }

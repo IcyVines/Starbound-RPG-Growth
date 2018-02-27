@@ -21,6 +21,7 @@ function init()
   end
 
   self.zoneCostPerSec = config.getParameter("zoneCostPerSec")
+  self.hoverCost = config.getParameter("energyUsagePerSecond")
   self.healingRate = config.getParameter("healingRate")/100
   self.enableZone = false
   Bind.create("primaryFire", 
@@ -142,7 +143,7 @@ function update(args)
 
     mcontroller.controlParameters(self.transformedMovementParameters)
     status.setResourcePercentage("energyRegenBlock", 1.0)
-
+  
     updateRotationFrame(args.dt)
 
     checkForceDeactivate(args.dt)
@@ -157,6 +158,15 @@ function update(args)
   updateTransformFade(args.dt)
 
   self.lastPosition = mcontroller.position()
+
+  if status.statPositive("ivrpguchoversphere") and self.active and args.moves["jump"] and status.overConsumeResource("energy", self.hoverCost * args.dt) then
+    hover(args)
+    self.hovering = true
+  else
+    animator.setAnimationState("hover", "off")
+    self.hovering = false
+  end
+
 end
 
 function activateZone()
@@ -200,4 +210,17 @@ function findGroundDirection()
       return vec2.withAngle(angle, 1.0)
     end
   end
+end
+
+function hover(args)
+  animator.setAnimationState("hover", "on")
+  local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
+  local maxSpeed = agility^2 / 180.0 + 25
+  local velocity = world.distance(tech.aimPosition(), mcontroller.position())
+  --local direction = mcontroller.facingDirection()
+  velocity = vec2.mag(velocity) > maxSpeed and vec2.withAngle(vec2.angle(velocity), maxSpeed) or velocity
+  velocity = {velocity[1],velocity[2] / 1.5}
+  local hoverControlForce = config.getParameter("hoverControlForce")
+  mcontroller.controlApproachVelocity(velocity, hoverControlForce)
+  self.angularVelocity = -mcontroller.xVelocity()/2
 end

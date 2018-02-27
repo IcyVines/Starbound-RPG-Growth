@@ -6,7 +6,6 @@
   "lightColor" : [20, 20, 180],
   "pointLight" : true,
   "animationLoops" : true,
-  "statusEffects" : [ ],
   "emitters" : [ ],
   "renderLayer" : "Player-1",
   "orientationLocked" : true,
@@ -18,5 +17,6 @@
   "piercing" : true,
   "knockback" : 30,
   "damageType" : "Damage",
-  "damageKind" : "bluntforce"
+  "damageKind" : "bluntforce",
+  "damagePoly" : [[-12, 0], [-9, 9], [0, 12], [9, 9], [12, 0], [9, -9], [0, -12], [-9, -9]]
 }

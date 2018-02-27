@@ -1,0 +1,8 @@
+{
+  "name" : "knightarmorspherestun",
+  "defaultDuration" : 5,
+  
+  "animationConfig" : "knightarmorspherecontact.animation",
+  "label" : "Stunning Sphere",
+  "icon" : "/tech/knighttech/knightarmorsphere/stun/knightarmorspherecontact.png"
+}

@@ -22,6 +22,38 @@
           }
         }
       },
+      "drillSphere" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "drillParticlesSphere" ]
+            }
+          },
+          "on" : {
+            "properties" : {
+              "persistentSound" : "/sfx/tools/drill_hit.ogg",
+              "particleEmittersOn" : [ "drillParticlesSphere" ]
+            }
+          }
+        }
+      },
+      "hover" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "hoverParticles" ]
+            }
+          },
+          "on" : {
+            "properties" : {
+              "persistentSound" : "/sfx/tech/tech_hoverloop.ogg",
+              "particleEmittersOn" : [ "hoverParticles" ]
+            }
+          }
+        }
+      },
       "ballState" : {
         "default" : "off",
         "states" : {
@@ -130,6 +162,81 @@
         }
       ]
     },
+    "drillParticlesSphere" : {
+      "emissionRate" : 14.0,
+      "particles" : [
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultbrown",
+          "offset" : [0.2, -1]
+        }
+      ]
+    },
+    "hoverParticles" : {
+      "emissionRate" : 14.0,
+      "particles" : [
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultyellow",
+          "offset" : [0.2, -1]
+        }
+      ]
+    },
+    "jumpParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "doublejump",
+          "offset" : [0.2, -2]
+        }
+      ]
+    },
     "activateParticles" : {
       "particles" : [ ]
     },
@@ -141,6 +248,7 @@
     "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
     "activate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
     "deactivate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
+    "multiJumpSound" : ["/sfx/tech/tech_multijump.ogg"],
     "forceDeactivate" : [ "/sfx/tech/tech_sonicsphere_charge1.ogg" ]
   }
 

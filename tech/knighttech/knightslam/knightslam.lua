@@ -2,6 +2,7 @@ require "/scripts/keybinds.lua"
 
 function init()
   self.jumpsLeft = config.getParameter("multiJumpCount")
+  self.origJumpsLeft = self.jumpsLeft
   self.cost = config.getParameter("cost")
   self.downPressed = false
   self.jumped = false
@@ -21,6 +22,8 @@ function init()
 end
 
 function update(args)
+
+  self.peakPerformance = status.statPositive("ivrpgucpeakperformance")
 
   if self.slamCooldownTimer > 0 then
     self.slamCooldownTimer = math.max(0, self.slamCooldownTimer - args.dt)
@@ -71,7 +74,13 @@ end
 
 function spawnExplosions(x, y)
     self.strength = world.entityCurrency(entity.id(), "strengthpoint")
-    local visualConfig = {power = math.min(200, self.lastYPosition^2*self.strength/50+1), timeToLive = .4, speed = 6.66, physics = "default"}
+    local damageFallOff = 1
+    local bonusKnockback = 0
+    if self.peakPerformance then
+      damageFallOff = 0.8
+      bonusKnockback = 40
+    end
+    local visualConfig = {power = math.min(200*damageFallOff, (self.lastYPosition^2*self.strength/50+1)*damageFallOff), timeToLive = .4, speed = 6.66, knockback = 10 + bonusKnockback, physics = "default"}
     animator.playSound("slamSound")
     world.spawnProjectile("armornova", {x + 2, y - 2}, entity.id(), {0, 0}, false, visualConfig)
     world.spawnProjectile("armornova", {x - 2, y - 2}, entity.id(), {0, 0}, false, visualConfig)
@@ -115,5 +124,9 @@ end
 
 function refreshJumps()
   self.jumped = false
-  self.jumpsLeft = config.getParameter("multiJumpCount")
+  if status.statPositive("ivrpgucpeakperformance") then
+    self.jumpsLeft = self.origJumpsLeft + 1
+  else
+    self.jumpsLeft = self.origJumpsLeft
+  end
 end

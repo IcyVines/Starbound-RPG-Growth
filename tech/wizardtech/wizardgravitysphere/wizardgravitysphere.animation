@@ -24,6 +24,22 @@
           },
           "on" : { }
         }
+      },
+      "hover" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "hoverParticles" ]
+            }
+          },
+          "on" : {
+            "properties" : {
+              "persistentSound" : "/sfx/tech/tech_hoverloop.ogg",
+              "particleEmittersOn" : [ "hoverParticles" ]
+            }
+          }
+        }
       }
     },
 
@@ -130,6 +146,39 @@
               "size" : 0.8
             }
           }
+        }
+      ]
+    },
+    "hoverParticles" : {
+      "emissionRate" : 14.0,
+      "particles" : [
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -1]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -1]
         }
       ]
     }

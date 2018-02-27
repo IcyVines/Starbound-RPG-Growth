@@ -27,6 +27,7 @@ function init()
   self.dashType = "dash"
   changeDashType()
   Bind.create("g", changeDashType)
+  Bind.create("jumping", endDashAlt)
 
   self.doubleTap = DoubleTap:new({"left", "right"}, config.getParameter("maximumDoubleTapTime"), function(dashKey)
       local direction = dashKey == "left" and -1 or 1
@@ -70,6 +71,15 @@ function uninit()
 end
 
 function update(args)
+
+  self.moreEnhanced = status.statPositive("ivrpgucmoreenhanced")
+
+  if self.moreEnhanced then
+    mcontroller.controlModifiers({
+      airJumpModifier = 1.25
+    })
+  end
+
   if self.dashCooldownTimer > 0 then
     self.dashCooldownTimer = math.max(0, self.dashCooldownTimer - args.dt)
     if self.dashCooldownTimer == 0 then
@@ -139,6 +149,15 @@ function dashBlocked()
 end
 
 function startSprint(direction)
+
+  if self.moreEnhanced then
+    self.sprintSpeedModifier = config.getParameter("sprintSpeedModifier") + 4.0
+    self.sprintControlForce = config.getParameter("sprintControlForce") + 500
+  else
+    self.sprintSpeedModifier = config.getParameter("sprintSpeedModifier")
+    self.sprintControlForce = config.getParameter("sprintControlForce")
+  end
+
   self.dashDirection = direction
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   animator.setFlipped(self.dashDirection == -1)
@@ -166,7 +185,11 @@ end
 
 function startDash(direction)
   self.dashDirection = direction
-  self.dashTimer = self.dashDuration
+  if self.moreEnhanced then
+    self.dashTimer = self.dashDuration + 0.25
+  else
+    self.dashTimer = self.dashDuration
+  end
   self.airDashing = not mcontroller.groundMovement()
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   animator.playSound("startDash")
@@ -176,7 +199,7 @@ end
 
 function endDash()
   status.clearPersistentEffects("movementAbility")
-
+  self.dashTimer = 0
   if self.stopAfterDash then
     local movementParams = mcontroller.baseParameters()
     local currentVelocity = mcontroller.velocity()
@@ -190,4 +213,10 @@ function endDash()
 
   animator.setAnimationState("dashing", "off")
   animator.setParticleEmitterActive("dashParticles", false)
+end
+
+function endDashAlt()
+  if self.dashTimer > 0 and self.moreEnhanced then
+    endDash()
+  end
 end
