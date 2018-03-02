@@ -121,7 +121,7 @@ function dropUpgradeChips(level, position, name)
     if itemData then
       level = level * itemData
     end
-    if level >= math.random(1,100) then
+    if level >= math.random(1,1000) then
       world.spawnItem(item, position)
     end
   end

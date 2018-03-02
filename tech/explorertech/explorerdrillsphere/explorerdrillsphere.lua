@@ -53,11 +53,11 @@ function update(args)
 
   local action = input(args)
   self.glideSphere = status.statPositive("ivrpgucglidesphere")
-  local lrInput = 0
+  self.lrInput = 0
   if args.moves["left"] then
-    lrInput = -1
+    self.lrInput = -1
   elseif args.moves["right"] then
-    lrInput = 1
+    self.lrInput = 1
   end
 
   restoreStoredPosition()
@@ -92,9 +92,9 @@ function update(args)
 
     if self.glideSphere and canGlide() then
       if math.abs(mcontroller.xVelocity()) < self.ballSpeed then
-        mcontroller.addMomentum({lrInput, 0})
+        mcontroller.addMomentum({self.lrInput, 0})
       end
-      self.angularVelocity = -lrInput * self.ballSpeed
+      self.angularVelocity = -self.lrInput * self.ballSpeed
     end
     --End Gliding
 
@@ -296,6 +296,7 @@ function doMultiJump()
     groundJump()
   elseif canMultiJump() then
     mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()) + self.ballSpeed*3)
+    mcontroller.addMomentum({self.lrInput*20, 0})
     animator.burstParticleEmitter("jumpParticles")
     self.jumpsLeft = self.jumpsLeft - 1
     animator.playSound("multiJumpSound")

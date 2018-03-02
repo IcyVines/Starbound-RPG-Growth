@@ -60,6 +60,10 @@ end
 
 -- State: windup
 function MeleeCombo:windup()
+  if self.comboStep == 2 then
+    self.weapon.aimAngle = self.weapon.aimAngle < 0 and math.max(-math.pi/6,self.weapon.aimAngle) or math.min(math.pi/6,self.weapon.aimAngle)
+  end
+
   local stance = self.stances["windup"..self.comboStep]
 
   self.weapon:setStance(stance)
@@ -106,10 +110,14 @@ end
 -- State: preslash
 -- brief frame in between windup and fire
 function MeleeCombo:preslash()
+
   local stance = self.stances["preslash"..self.comboStep]
 
   self.weapon:setStance(stance)
   self.weapon:updateAim()
+  if self.comboStep == 1 then
+    self.weapon.aimAngle = self.weapon.aimAngle < 0 and math.max(-math.pi/4,self.weapon.aimAngle) or math.min(math.pi/4,self.weapon.aimAngle)
+  end
 
   util.wait(stance.duration)
 
@@ -122,6 +130,10 @@ function MeleeCombo:fire()
 
   self.weapon:setStance(stance)
   self.weapon:updateAim()
+
+  if self.comboStep == 7 then
+    self.weapon.aimAngle = self.weapon.aimAngle < 0 and math.max(-math.pi/6,self.weapon.aimAngle) or math.min(math.pi/8,self.weapon.aimAngle)
+  end
 
   local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
   animator.setAnimationState("swoosh", animStateKey)

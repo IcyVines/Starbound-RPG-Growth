@@ -429,7 +429,7 @@
 				"weaponRotation": 10,
 				"twoHanded": true,
 
-				"allowRotate": false,
+				"allowRotate": true,
 				"allowFlip": false
 			},
 			"fire1": {
@@ -591,7 +591,7 @@
 				"weaponRotation": -105,
 				"weaponOffset": [0, 0],
 				"twoHanded": true,
-				"allowRotate": false,
+				"allowRotate": true,
 				"allowFlip": false
 			},
 			"fire7": {

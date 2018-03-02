@@ -15,7 +15,7 @@
   "physics" : "laser",
   "bounces" : -1,
   "scripts": ["/tech/ninjatech/vanishsphere/ghost/ninjavanishspheresurround.lua"],
-  "persistentAudio" : "/sfx/projectiles/zone_lowgrav_loop.ogg",
+  "persistentAudio" : "/sfx/npc/monsters/spookit_fly_loop.ogg",
   "timeToLive" : 999999999,
   "piercing" : true,
   "damageType" : "NoDamage",
