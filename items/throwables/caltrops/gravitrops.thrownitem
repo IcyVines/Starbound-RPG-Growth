@@ -1,0 +1,31 @@
+{
+  "itemName" : "gravitrops",
+  "rarity" : "rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "gravitropicon.png",
+  "image" : "gravitrop.png",
+  "shortdescription" : "Gravitrops",
+  "description" : "Caltrops infused with phase matter, making them more effective against flying enemies.",
+  "itemTags" : ["ninja", "caltrops"],
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "gravitrops",
+  "projectileConfig" : {
+    "speed" : 20,
+    "power" : 1,
+    "knockback" : 5,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item.ogg" ]
+      }
+    ]
+  }
+}

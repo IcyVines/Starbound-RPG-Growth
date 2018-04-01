@@ -4,5 +4,5 @@
     { "item" : "scorchedcore", "count" : 8 }
   ],
 	"output" : { "item" : "ivrpgucvikingfuneral", "count" : 1 },
-	"groups" : [ "ivrpgmasteryshop", "upgrupgradesAades", "all" ]
+	"groups" : [ "ivrpgmasteryshop", "upgradesA", "all" ]
 }

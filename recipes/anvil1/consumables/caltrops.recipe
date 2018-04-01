@@ -1,0 +1,7 @@
+{
+  "input" : [
+    { "item" : "tungstenbar", "count" : 10 }
+  ],
+  "output" : { "item" : "caltrops", "count" : 30 },
+  "groups" : [ "craftinganvil", "consumables", "all" ]
+}

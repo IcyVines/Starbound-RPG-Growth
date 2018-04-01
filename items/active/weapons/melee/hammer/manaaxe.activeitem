@@ -1,0 +1,85 @@
+{
+  "itemName" : "manaaxe",
+  "price" : 25000,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Crystalling impact weapon.",
+  "shortdescription" : "^#00FFFF;Arbiter Greataxe^white;",
+  "tooltipKind" : "sword",
+  "category" : "Greataxe",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword"],
+
+  "inventoryIcon" : "manaaxe.png",
+
+  "animation" : "TWhammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "manaaxe.png"
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.0, 3.0],
+      "color" : [51, 146, 163]
+    }},
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-1.0, 1.0]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.0,
+    "baseDps" : 53.2,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "weaponOffset" : [0.0, 1.35]
+      },
+      "windup" : {
+        "duration" : 0.8,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.4, 1.75],
+
+        // Windup animation
+        "idleHammerAngle" : -10,
+        "windupHammerAngle" : 0,
+        "dropHammerAngle" : 60,
+        "bounceHammerAngle" : 55,
+
+        "minWindup" : 0.7,
+        "windupBaseAngle" : -10,
+        "windupAngleRange" : 70
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "weaponOffset" : [0.4, 2.0]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -35,
+        "weaponRotation" : -55,
+        "smashTimer" : 1.5,
+        "weaponOffset" : [0.6, 2.0]
+      }
+    }
+  },
+
+  "altAbilityType" : "energywall",
+  "altAbility" : { },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

@@ -2,15 +2,30 @@ require "/scripts/vec2.lua"
 require "/scripts/keybinds.lua"
 
 function init()
+  isShrunk = false
+  self.transformedMovementParameters = config.getParameter("movementParameters")
+  self.basePoly = mcontroller.baseParameters().standingPoly
   Bind.create("f", printStats)
 end
 
 function update(args)
-
+  if isShrunk then
+    mcontroller.controlParameters(self.transformedMovementParameters)
+  end
 end
 
 function printStats()
-  self.id = entity.id()
+  if isShrunk then
+    tech.setParentDirectives()
+    tech.setParentOffset({0, 0})
+    isShrunk = false
+  else
+    tech.setParentDirectives("scalenearest=0.5")
+    tech.setParentOffset({0, positionOffset()})
+    isShrunk = true
+  end
+
+  --[[self.id = entity.id()
 
   self.classType = world.entityCurrency(self.id, "classtype")
   self.strengthBonus = self.classType == 1 and 1.15 or (self.classType == 5 and 1.1 or (self.classType == 4 and 1.05 or 1))
@@ -35,33 +50,22 @@ function printStats()
   self.vigor = world.entityCurrency(self.id,"vigorpoint")
   self.intelligence = world.entityCurrency(self.id,"intelligencepoint")
   self.endurance = world.entityCurrency(self.id,"endurancepoint")
-  self.dexterity = world.entityCurrency(self.id,"dexteritypoint")
+  self.dexterity = world.entityCurrency(self.id,"dexteritypoint")]]
 
-  --[[sb.logInfo("Strength: " .. tostring(self.strength))
-  sb.logInfo("Dexterity: " .. tostring(self.dexterity))
-  sb.logInfo("Agility: " .. tostring(self.agility))
-  sb.logInfo("Intelligence: " .. tostring(self.intelligence))
-  sb.logInfo("Endurance: " .. tostring(self.endurance))
-  sb.logInfo("Vitality: " .. tostring(self.vitality))
-  sb.logInfo("Vigor: " .. tostring(self.vigor))
+end
 
-  sb.logInfo("shieldHealth: " .. status.stat("shieldHealth"))
-  sb.logInfo("physicalResistance: " .. status.stat("physicalResistance"))
-  sb.logInfo("energyRegenPercentageRate: " .. status.stat("energyRegenPercentageRate"))
-  sb.logInfo("energyRegenBlockTime: " .. status.stat("energyRegenBlockTime"))
-  sb.logInfo("fallDamageMultiplier: " .. status.stat("fallDamageMultiplier"))
-  sb.logInfo("critChance: " .. status.stat("critChance"))
-  sb.logInfo("fireTime: " .. status.stat("fireTime"))
-  sb.logInfo("poisonResistance: " .. status.stat("poisonResistance"))
-  sb.logInfo("fireResistance: " .. status.stat("fireResistance"))
-  sb.logInfo("electricResistance: " .. status.stat("electricResistance"))
-  sb.logInfo("iceResistance: " .. status.stat("iceResistance"))
-  sb.logInfo("shadowResistance: " .. status.stat("shadowResistance"))
-  sb.logInfo("cosmicResistance: " .. status.stat("cosmicResistance"))
-  sb.logInfo("radioactiveResistance: " .. status.stat("radioactiveResistance"))
-  sb.logInfo("grit: " .. status.stat("grit"))
-  sb.logInfo("foodDelta: " .. status.stat("foodDelta"))]]
+function positionOffset()
+  return minY(self.basePoly) - minY(self.transformedMovementParameters.collisionPoly) + 1.25
+end
 
+function minY(poly)
+  local lowest = 0
+  for _,point in pairs(poly) do
+    if point[2] < lowest then
+      lowest = point[2]
+    end
+  end
+  return lowest
 end
 
 function uninit()

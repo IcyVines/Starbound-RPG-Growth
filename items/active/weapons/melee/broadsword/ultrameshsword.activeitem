@@ -1,0 +1,50 @@
+{
+  "itemName" : "ultrameshsword",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "price" : 8000,
+  "rarity" : "Rare",
+  "description" : "A powerful Stygian weapon. Increased damage at the cost of speed.",
+  "shortdescription" : "^#77acc3;Ultra Mesh Sword^white;",
+  "tooltipKind" : "sword",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "melee", "broadsword"],
+  "learnBlueprintsOnPickup" : [ "heartofdissolve" ],
+
+  "inventoryIcon" : "ultrameshsword.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "ultrameshsword.png"
+  },
+  "animationCustom" : { 
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.0, 2.8],
+      "color" : [88, 107, 66]
+    }}
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+  "fireTime" : 1.5,
+  "baseDps" : 25,
+  
+   "stances" : {
+     "idle" : {
+       "weaponOffset" : [0.0, 0.45]
+     }
+   }
+ },
+
+  "altAbilityType" : "giantsword",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

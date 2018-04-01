@@ -1,0 +1,19 @@
+{
+  "projectileName" : "fuelrod",
+  "image" : "fuelrod.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [166, 236, 165],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/fuelrod/fuelrodexp.config"
+    }
+  ],
+  "damagePoly" : [ [-15, 3], [-15, -3], [15, -3], [15, 3] ],
+  "power" : 10.0,
+  "damageKind" : "electric",
+  "physics" : "laser"
+}

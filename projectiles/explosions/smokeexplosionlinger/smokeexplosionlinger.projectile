@@ -1,0 +1,15 @@
+{
+  "projectileName" : "smokeexplosionlinger",
+  "image" : "smokeexplosionlinger.png",
+  "animationCycle" : 2.0,
+  "frameNumber" : 8,
+  "timeToLive" : 5.0,
+  "speed" : 0,
+  "damagePoly" : [],
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "damageTeam" : { "type" : "indiscriminate" },
+  "damageKind" : "default"
+}

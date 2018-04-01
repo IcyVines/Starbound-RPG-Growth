@@ -1,0 +1,24 @@
+{
+  "projectileName" : "telsaspinprojectile",
+  "image" : "electricspinswoosh.png",
+  "animationCycle" : 0.167,
+  "timeToLive" : 1.0,
+  "frameNumber" : 4,
+  "damageKindImage" : "/interface/statuses/electric.png",
+  "speed" : 25,
+  "orientationLocked" : true,
+  "damagePoly" : [ [-30, 14], [-14, 30], [14, 30], [30, 14], [30, -14], [14, -30], [-14, -30], [-30, -14] ],
+  "animationLoops" : true,
+  "piercing" : true,
+  "bounces" : 0,
+  "flippable" : true,
+  "emitters" : [ "electricswoosh" ],
+  "damageKind" : "electricspear",
+  "statusEffects" : [
+    "electrified"
+  ],
+  "lightColor" : [25, 92, 107],
+  "pointLight" : true,
+  "knockback" : 10,
+  "knockbackDirectional" : true
+}

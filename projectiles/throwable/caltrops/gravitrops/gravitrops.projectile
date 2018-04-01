@@ -1,0 +1,83 @@
+{
+  "projectileName" : "gravitrops",
+  "image" : "gravitrop.png",
+  "physics" : "bullet",
+  "pointLight" : false,
+  "timeToLive" : 0.01,
+  "speed" : 10,
+  "power" : 3.0,
+  "knockback" : 5,
+  "damageKind" : "dagger",
+   "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "gravitrop",
+      "fuzzAngle" : 30,
+	  "inheritSpeedFactor" : 0.5,
+      "inheritDamageFactor" : 1
+    },
+	{
+      "action" : "projectile",
+      "type" : "gravitrop",
+      "fuzzAngle" : 30,
+	  "inheritSpeedFactor" : 0.55,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "gravitrop",
+      "fuzzAngle" : 30,
+	  "inheritSpeedFactor" : 0.6,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "gravitrop",
+      "fuzzAngle" : 30,
+	  "inheritSpeedFactor" : 0.65,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "gravitrop",
+      "fuzzAngle" : 30,
+	  "inheritSpeedFactor" : 0.7,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "gravitrop",
+      "fuzzAngle" : 30,
+	  "inheritSpeedFactor" : 0.75,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "gravitrop",
+      "fuzzAngle" : 30,
+	  "inheritSpeedFactor" : 0.8,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "gravitrop",
+      "fuzzAngle" : 30,
+	  "inheritSpeedFactor" : 0.85,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "gravitrop",
+      "fuzzAngle" : 30,
+	  "inheritSpeedFactor" : 0.9,
+      "inheritDamageFactor" : 1
+    },
+    {
+      "action" : "projectile",
+      "type" : "gravitrop",
+      "fuzzAngle" : 30,
+	  "inheritSpeedFactor" : 0.95,
+      "inheritDamageFactor" : 1
+    }
+	]
+}

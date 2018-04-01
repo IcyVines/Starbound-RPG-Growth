@@ -1,0 +1,13 @@
+{
+  "projectileName" : "fuelrodexp",
+  "image" : "fuelrodexp.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 5,
+  "speed" : 0,
+  "damagePoly" : [],
+  "animationLoops" : false,
+  "piercing" : true,
+  "lightColor" : [166, 236, 165],
+  "flippable" : true,
+  "damageKind" : "electric"
+}

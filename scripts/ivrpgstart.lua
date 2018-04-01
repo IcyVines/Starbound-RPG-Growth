@@ -163,7 +163,7 @@ function dyingEffects(position, statusEffects)
 end
 
 function killingEffects(damageType)
-	if status.statPositive("ivrpgucvampirescaress") then
+	if status.statPositive("ivrpgucvampirescaress") and damageType == "bloodaether" then
 		status.addEphemeralEffect("rage", 2, self.id)
 		status.addEphemeralEffect("regeneration4", 2, self.id)
 	end

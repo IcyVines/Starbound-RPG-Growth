@@ -1,0 +1,80 @@
+{
+  "itemName" : "darktrident",
+  "price" : 25000,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Dangerously sharp point. Slower than a spear, but more damaging",
+  "shortdescription" : "^#00FFFF;Dark-Matterlord Spear^white;",
+  "tooltipKind" : "sword",
+  "category" : "spear",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","spear"],
+
+  "inventoryIcon" : "darktrident.png",
+
+  "animation" : "/items/active/weapons/melee/spear/spear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "darktrident.png"
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.2, 5.0],
+      "color" : [51, 146, 163]
+    }},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear.ogg" ]
+   }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : [],
+    "class" : "SpearStab",
+
+    "fireTime" : 1.0,
+    "baseDps" : 45.0,
+    "damageConfig" : {
+      "damageSourceKind" : "spear",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 10,
+      "timeoutGroup" : "primary"
+    },
+    "holdDamageMultiplier" : 0.1,
+    "holdDamageConfig" : {
+      "timeoutGroup" : "hold",
+      "timeout" : 0.5
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [0, 1.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "hold" : {
+        "armRotation" : -30,
+        "weaponRotation" : -60,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 2.0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      }
+    }
+  },
+  "altAbilityType" : "telsaspin",
+  "altAbility" : { },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

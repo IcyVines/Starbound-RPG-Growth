@@ -1,0 +1,44 @@
+{
+  "itemName" : "stygianbardiche",
+  "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
+  "maxStack" : 1,
+  "price" : 8000,
+  "rarity" : "Rare",
+  "description" : "A powerful Stygian weapon. Increased damage at the cost of speed.",
+  "shortdescription" : "^#77acc3;Stygian Bardiche",
+  "tooltipKind" : "sword",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "melee", "broadsword"],
+
+  "inventoryIcon" : "stygianbardiche.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "stygianbardiche.png"
+  },
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+  "fireTime" : 1.75,
+  "baseDps" : 27,
+
+    "stances" : {
+	    "idle" : {
+        "armRotation" : -10,
+        "weaponRotation" : 55
+      }
+    }
+  },
+
+  "altAbilityType" : "parry",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

@@ -1,0 +1,85 @@
+{
+  "itemName" : "fuelrod",
+  "price" : 160,
+  "inventoryIcon" : "fuelrod.png",
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "Fires super-heated plasma rods.",
+  "shortdescription" : "Plasma Cannon",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Plamsa-Cannon",
+  "itemTags" : ["weapon","ranged","sniperrifle"],
+  "twoHanded" : true,
+  "learnBlueprintsOnPickup" : [ "fuelrod2" ],
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "fuelrod.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/plasmacannon.ogg" ]
+    }
+  },
+
+  "baseOffset" : [-0.5, 0.6],
+  "muzzleOffset" : [2.445, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.55,
+    "baseDps" : 11.5,
+    "energyUsage" : 29.5,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "fuelrod",
+    "projectileParameters" : { 
+      "speed" : 30,
+      "knockback" : 9
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 9,
+	      "weaponRotation" : 9,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 0.9,
+	      "armRotation" : 5,
+	      "weaponRotation" : 5,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "altAbilityType" : "",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

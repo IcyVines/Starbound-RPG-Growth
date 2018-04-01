@@ -1,0 +1,137 @@
+{
+  "globalTagDefaults" : {
+    "hand" : "near",
+    "directives" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "shield" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "raised" : {},
+          "block" : {
+            "frames" : 1,
+            "cycle" : 0.12,
+            "mode" : "transition",
+            "transition" : "raised"
+          }
+        }
+      }
+    },
+    "parts" : {
+      "shield" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "transformationGroups" : ["shield"],
+          "rotationCenter" : [0, 0],
+          "shieldPoly" : [ [-0.5, -1.75], [-0.5, 1.75], [0.75, 1.0], [0.75, -1.0] ]
+        },
+        "partStates" : {
+          "shield" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<hand>idle<directives>"
+              }
+            },
+            "raised" : {
+              "properties" : {
+                "image" : "<partImage>:<hand>raised<directives>"
+              }
+            },
+            "block" : {
+              "properties" : {
+                "image" : "<partImage>:<hand>raised<directives>",
+                "offset" : [-0.25, 0]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "shield" : {},
+    "beamEnd" : {},
+    "muzzle" : {}
+  },
+
+  "sounds" : {
+    "raiseShield" : [ ],
+    "lowerShield" : [ ],
+    "perfectBlock" : [ ],
+    "block" : [ ],
+    "break" : [ ],
+    "fireStart" : [],
+    "fireLoop" : [],
+    "fireEnd" : [],
+    "beamImpact" : []
+  },
+
+  "particleEmitters" : {
+    "perfectBlock" : {
+      "active" : false,
+      "transformationGroups" : ["shield"],
+      "emissionRate" : 30,
+      "offsetRegion" : [-0.5, -1.0, 0.5, 1.0],
+      "particles" : [
+        { "particle" : "sparkle5"},
+        { "particle" : "sparkle5"}
+      ]
+    },
+    "beamCollision" : {
+      "active" : false,
+      "transformationGroups" : ["muzzle", "beamEnd"],
+      "emissionRate" : 30,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "color" : [225, 225, 150, 255],
+            "position" : [0, 0],
+            "initialVelocity" : [0, 2.0],
+            "finalVelocity" : [0, -4.0],
+            "approach" : [0, 10],
+            "fade" : 0.3,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.3,
+            "size" : 1.8,
+            "timeToLive" : 0.5,
+            "fullbright" : true,
+            "layer" : "front",
+            "collidesForeground" : false,
+            "variance" : {
+              "position" : [0.5, 0.5],
+              "initialVelocity" : [2, 2]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/dust2/dust2.animation",
+            "position" : [0, 0],
+            "initialVelocity" : [0, 2.0],
+            "finalVelocity" : [0, -2.0],
+            "approach" : [0, 10],
+            "fade" : 0.3,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.3,
+            "size" : 1,
+            "timeToLive" : 0.5,
+            "fullbright" : true,
+            "layer" : "front",
+            "collidesForeground" : false,
+            "variance" : {
+              "position" : [0.5, 0.5],
+              "initialVelocity" : [2, 2]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

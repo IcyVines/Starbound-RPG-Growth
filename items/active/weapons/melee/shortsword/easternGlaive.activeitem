@@ -1,0 +1,48 @@
+{
+  "itemName" : "easternGlaive",
+  "price" : 5000,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "This glaive has an eastern style design. Perhaps inspired by traditional Hylotl weapons, it is exceptionally effective in battle.",
+  "shortdescription" : "^#77acc3;Ornate Glaive^white;",
+  "tooltipKind" : "sword",
+  "category" : "Glaive",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","broadsword"],
+
+  "inventoryIcon" : "easternGlaive.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "easternGlaive.png"
+  },
+  
+  
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 1.55,
+    "baseDps" : 23.0,
+	
+    "stances" : {
+      "idle" : {
+        "armRotation" : -100,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+     }
+    }
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

@@ -1,0 +1,41 @@
+{
+  "itemName" : "silvermace",
+  "price" : 5000,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A bright and valiant starsteel blade! Also quite powerful.",
+  "shortdescription" : "^#77acc3;Verglas Energymace^white;",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword"],
+
+  "inventoryIcon" : "silvermace.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "silvermace.png"
+  },
+  
+  "animationCustom" : { 
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.95, 0.0],
+      "color" : [51, 146, 163]
+    }}
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 1.25,
+    "baseDps" : 23.0
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

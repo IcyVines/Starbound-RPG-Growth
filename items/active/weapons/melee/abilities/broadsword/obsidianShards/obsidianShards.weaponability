@@ -1,0 +1,54 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "sounds" : {
+      "fireKunai" : [ "/sfx/objects/metalbarrel_break1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Rain of Gashes",
+    "type" : "obsidianShards",
+    "scripts" : ["/items/active/weapons/melee/abilities/broadsword/kunaiblast/kunaiblast.lua"],
+    "class" : "KunaiBlast",
+
+    // timing and angle adjust to launch projectiles during fire stance
+    "projectileTimesAndAngles" : [
+      [0.02, -20],
+      [0.06, -27.5],
+      [0.10, -35],
+      [0.14, -42.5],
+      [0.18, -50]
+    ],
+    "projectileOffset" : [1.75, -2.0],
+    "projectileType" : "obsidianShards",
+    "projectileParameters" : {
+      "baseDamage" : 6
+    },
+
+    "baseDamage" : 4,
+    "energyUsage" : 150,
+    "cooldownTime" : 2.2,
+
+    "stances" : {
+      "windup" : {
+        "duration" : 0.2,
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.25,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

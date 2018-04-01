@@ -1,0 +1,48 @@
+{
+  "itemName" : "manashortsword",
+  "price" : 8000,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A bright and valiant starsteel blade! Also quite powerful.",
+  "shortdescription" : "^#77acc3;Energy Gale-Blade^white;",
+  "tooltipKind" : "sword",
+  "category" : "broadsword",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword"],
+  "learnBlueprintsOnPickup" : [ "manaaxe" ],
+
+  "inventoryIcon" : "manashortsword.png",
+
+  "animation" : "combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "manashortsword.png"
+  },
+  
+  "animationCustom" : { 
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.95, 0.6],
+      "color" : [51, 146, 163]
+    }}
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 1.25,
+    "baseDps" : 24.0,
+	
+    "stances" : {
+      "idle" : {
+        "weaponOffset" : [0.0, -0.7]
+      }
+	}
+  },
+  "altAbilityType" : "blinkslash",
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

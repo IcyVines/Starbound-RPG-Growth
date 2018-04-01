@@ -1,0 +1,43 @@
+{
+  "itemName" : "honor",
+  "price" : 25000,
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "A bright and valiant starsteel blade! Also quite powerful.",
+  "shortdescription" : "^#77acc3;HonorBlade^white;",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword"],
+
+  "inventoryIcon" : "honor.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "honor.png"
+  },
+  
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 1.4,
+    "baseDps" : 8.0,
+	
+    "stances" : {
+	    "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponOffset" : [0.0, 2.0]
+      }
+    }
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

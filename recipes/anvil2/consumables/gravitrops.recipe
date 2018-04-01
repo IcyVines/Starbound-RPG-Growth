@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "tungstenbar", "count" : 10 },
+    { "item" : "phasematter", "count" : 3 }
+  ],
+  "output" : { "item" : "gravitrops", "count" : 30 },
+  "groups" : [ "craftinganvil2", "consumables", "all" ]
+}

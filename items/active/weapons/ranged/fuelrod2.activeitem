@@ -1,0 +1,86 @@
+{
+  "itemName" : "fuelrod2",
+  "price" : 10000,
+  "inventoryIcon" : "fuelrod2.png",
+  "maxStack" : 1,
+  "rarity" : "legendary",
+  "description" : "Fires super-heated plasma rods.",
+  "shortdescription" : "^#00FFFF;Plasma Cannon Premier^white;",
+  "level" : 3,
+  "tooltipKind" : "gun",
+  "weaponType" : "Plamsa-Cannon",
+  "itemTags" : ["weapon","ranged","sniperrifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "fuelrod2.png",
+    "barrel" : "",
+    "muzzleFlash" : "/animations/muzzleflash/fuplasmamuzzle3blue.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/projectiles/plasmacannon.ogg" ]
+    }
+  },
+
+  "baseOffset" : [-0.5, 0.6],
+  "muzzleOffset" : [2.445, 0.125],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "class" : "GunFire",
+    "fireTime" : 1.4,
+    "baseDps" : 8.0,
+    "energyUsage" : 35.5,
+    "inaccuracy" : 0,
+
+    "burstTime" : 0.5,
+    "burstCount" : 2,
+    "projectileCount" : 1,
+    "fireType" : "burst",
+
+    "projectileType" : "fuelrod2",
+    "projectileParameters" : { 
+      "speed" : 45,
+      "knockback" : 9
+    },
+	  "stances" : {
+	    "idle" : {
+	      "armRotation" : 0,
+	      "weaponRotation" : 0,
+	      "twoHanded" : true,
+
+	      "allowRotate" : true,
+	      "allowFlip" : true
+	    },
+	    "fire" : {
+	      "duration" : 0,
+	      "armRotation" : 9,
+	      "weaponRotation" : 9,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    },
+	    "cooldown" : {
+	      "duration" : 3.075,
+	      "armRotation" : -20,
+	      "weaponRotation" : -20,
+	      "twoHanded" : true,
+
+	      "allowRotate" : false,
+	      "allowFlip" : false
+	    }
+	  }
+  },
+
+  "altAbilityType" : "",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

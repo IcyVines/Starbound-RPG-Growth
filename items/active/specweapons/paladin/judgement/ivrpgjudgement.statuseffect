@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgjudgement",
+  "blockingStat" : "holyImmunity",
+  "effectConfig" : {},
+  "defaultDuration" : 3,
+
+  "scripts" : [
+    "ivrpgjudgement.lua"
+  ],
+
+  "animationConfig" : "ivrpgjudgement.animation",
+
+  "label" : "Divine Judgement",
+  "icon" : "/interface/statuses/slow.png"
+}

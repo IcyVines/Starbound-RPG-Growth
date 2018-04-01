@@ -1,0 +1,13 @@
+{
+  "projectileName" : "pillarspawner",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "timeToLive" : 0.5,
+  "power" : 1,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "piercing" : true,
+  "flippable" : true,
+  "damageKind" : "default",
+  "onlyHitTerrain" : true,
+  "bounces" : -1
+}

@@ -1,5 +1,6 @@
 [
 
-    { "op": "add", "path" : "/itemTags/-" , "value" : "fist" }
+    { "op": "add", "path" : "/itemTags/-" , "value" : "fist" },
+    { "op": "add", "path" : "/itemTags/-" , "value" : "melee" }
 
 ]

@@ -85,12 +85,12 @@ function init()
 
     self.hardcoreWeaponText = {
       "Can Currently Equip All Weapons.",
-      "The Knight can equip:^green;\nTwo-Handed Melee Weapons\nOne-Handed Melee Weapons ^reset;^red;\n(Not Including Fist Weapons or Whips)\n\nThe Knight cannot dual-wield weapons.",
-      "The Wizard can equip:^green;\nStaffs\nWands\nDaggers ^red;(Secondary Hand Only)^reset;\n^green;Erchius Eye, Evil Eye, and Magnorbs.\n\nThe Wizard can dual-wield weapons.^reset;",
-      "The Ninja can equip:^green;\nOne-Handed Melee Weapons\nFist Weapons and Whips\nAdaptable Crossbow and Solus Katana\n\nThe Ninja can dual-wield weapons.^reset;",
-      "The Soldier can equip:^green;\nTwo-Handed Ranged Weapons.\nOne-Handed Ranged Weapons.\n\n^reset;^red;The Soldier cannot dual-wield weapons.\nThe Soldier cannot wield Wands.\nThe Soldier cannot wield the Erchius Eye.^reset;",
-      "The Rogue can equip:^green;\nOne-Handed Melee Weapons.\nOne-Handed Ranged Weapons.\nFist Weapons and Whips\n\nThe Rogue can dual-wield weapons.\n^reset;^red;The Rogue cannot wield Wands.^reset;",
-      "The Explorer can equip:^green;\nAny Weapon Type\n\nThe Explorer can dual-wield weapons.^reset;"
+      "The Knight can equip:^green;\nTwo-Handed Melee Weapons\nOne-Handed Melee Weapons ^reset;^red;\n\nThe Knight cannot dual-wield weapons.",
+      "The Wizard can equip:^green;\nMagic Weapons\nDaggers ^red;(Secondary Hand Only)^reset;\n^green;Erchius Eye, Evil Eye, and Magnorbs.\n\nThe Wizard can dual-wield weapons.^reset;",
+      "The Ninja can equip:^green;\nOne-Handed Melee Weapons\nThrown Weapons\nAdaptable Crossbow and Solus Katana\n\nThe Ninja can dual-wield weapons.^reset;",
+      "The Soldier can equip:^green;\nTwo-Handed Ranged Weapons.\nOne-Handed Ranged Weapons.\n\n^reset;^red;The Soldier cannot dual-wield weapons.\nThe Soldier cannot wield the Erchius Eye.^reset;",
+      "The Rogue can equip:^green;\nOne-Handed Melee Weapons.\nOne-Handed Ranged Weapons.\nThrown Weapons\n\nThe Rogue can dual-wield weapons.^reset;",
+      "The Explorer can equip:^green;\nAll Weapons\n\nThe Explorer can dual-wield weapons.^reset;"
     }
 
     self.textData = root.assetJson("/ivrpgtext.config")
@@ -368,7 +368,7 @@ function updateClassTab()
     widget.setImage("classlayout.classicon","/objects/class/ninja.png")
     widget.setFontColor("classlayout.classtitle","red")
     widget.setFontColor("classlayout.effecttext","red")
-    widget.setText("classlayout.weapontext","+20% Damage while using Throwing Stars, Knives, Kunai, or Daggers, or any type of Shuriken without any weapons equipped.")
+    widget.setText("classlayout.weapontext","+15% Damage while using Shurikens; or Throwing Stars, Kunai, Knives, or Daggers. +10% Damage while using Chakrams, Daggers, or Whips. These bonuses apply to each hand!")
     widget.setText("classlayout.passivetext","+10% Speed and Jump Height. -10% Fall Damage.")
     widget.setText("classlayout.effecttext","+10% Bleed Chance and 0.4s Bleed Length during Nighttime or while Underground.")
     widget.setImage("classlayout.effecticon","/scripts/ninjacrit/ninjacrit.png")
@@ -798,7 +798,7 @@ function getTechText(num)
   elseif classType == 4 then
     return num == 1 and "Press [F] to eat an MRE (Meal Ready to Eat), gaining a bit of food and all your energy. There is a cooldown of 90 seconds before you can do this again. While the cooldown is active, you gain slight health regen, but your overall speed is decreased." 
     or (num == 2 and "Press [G] (Bind [G] in your Controls) to gain extra weapon damage with ranged weapons and decreased energy regen block time: however, speed and resistance are decreased. You can end the effect by pressing [G] again. The cooldown shortens if so." 
-      or (num == 3 and "An upgrade to Double Jump, press [Space] to dash in a direction of your choosing. You can slightly change your trajectory while dashing. Dash Duration scales with Agility. You can dash twice in mid-air." 
+      or (num == 3 and "An upgrade to Double Jump, press [Space] to dash. You can dash in all cardinal directions, as well as change direction mid-dash. Dash Duration scales with Agility. You can dash twice in mid-air." 
         or "Press [F] to switch to a slow-moving Spike Sphere. Left click to shoot a missile using some energy. Hold right click to drain your energy in order to shield yourself from damage.\nCreated by SushiSquid!"))
   elseif classType == 5 then
     return num == 1 and "Press [G] (Bind [G] in your Controls) to toggle an ability that increases Physical and Poison Resistance and grants Knockback Immunity. Drains energy while active, and is toggled off when no energy remains." 
@@ -1048,13 +1048,13 @@ function uncheckClassIcons(name)
 end
 
 function changeStatDescription(name)
-  if name == "strength" then widget.setText("statslayout.statdescription", "Greatly Increases Shield Health.\nSignificantly Increases Two-Handed Melee Damage.\nMinimally Increases Physical Resistance.") end
-  if name == "agility" then widget.setText("statslayout.statdescription", "Significantly Increases Speed.\nIncreases Jump Height.\nDecreases Fall Damage.") end
-  if name == "vitality" then widget.setText("statslayout.statdescription", "Significantly Increases Max Health.\nDecreases Hunger Rate.") end
-  if name == "vigor" then widget.setText("statslayout.statdescription", "Significantly Increases Max Energy.\nGreatly Increases Energy Recharge Rate.") end
-  if name == "intelligence" then widget.setText("statslayout.statdescription", "Greatly Increases Energy Recharge Rate.\nGreatly Increases Staff Damage.\nDecreases Energy Recharge Delay.\nSlightly Increases Wand Damage.") end
-  if name == "endurance" then widget.setText("statslayout.statdescription", "Increases Knockback Resistance.\nIncreases Physical Resistance.\nModerately Increases All Other Resistances.") end
-  if name == "dexterity" then widget.setText("statslayout.statdescription", "Increases Gun and Bow Damage.\nIncreases Bleed Chance and Bleed Length.\nSlightly Increases One-Handed Weapon Damage.\nSlightly Decreases Fall Damage.") end
+  if name == "strength" then widget.setText("statslayout.statdescription", "Greatly Increases Shield Health.\nSignificantly Increases Two-Handed Melee Damage.\nSlightly Increases One-Handed Melee Weapon Damage.^red; Doesn't stack with Dex.!^reset;\nMinimally Increases Physical Resistance.\n^green;Starting From 20 Strength:^reset;\nClassic Mode penalty lowered to -50% for Two-Handed Melee Weapons,\nand lowered to -25% for Mono-Wielded One-Handed Melee Weapons.") end
+  if name == "agility" then widget.setText("statslayout.statdescription", "Significantly Increases Speed.\nIncreases Jump Height.\nDecreases Fall Damage.\n^green;Starting From 20 Agility:^reset;\nClassic Mode penalty for Speed and Jump Height halved.\nSpecialization penalty for Speed and Jump Height halved.") end
+  if name == "vitality" then widget.setText("statslayout.statdescription", "Significantly Increases Max Health.\nDecreases Hunger Rate.\n^green;Starting From 20 Vitality:^reset;\nClassic Mode penalty for Max Health and Food Delta halved.\nSpecialization penalty for Max Health and Food Delta halved.") end
+  if name == "vigor" then widget.setText("statslayout.statdescription", "Significantly Increases Max Energy.\nGreatly Increases Energy Recharge Rate.\n^green;Starting From 20 Vigor:^reset;\nClassic Mode penalty for Max Energy and Energy Regeneration halved.\nSpecialization penalty for Max Energy and Energy Regeneration halved.") end
+  if name == "intelligence" then widget.setText("statslayout.statdescription", "Greatly Increases Energy Recharge Rate and Staff Damage.\nDecreases Energy Recharge Delay.\nSlightly Increases Wand Damage.\n^green;Starting From 20 Intelligence:^reset;\nClassic Mode penalty lowered to -50% for Staffs,\nand lowered to -25% for Mono-Wielded Wands.") end
+  if name == "endurance" then widget.setText("statslayout.statdescription", "Increases Knockback Resistance and Physical Resistance.\nModerately Increases All Other Resistances.\n^green;Starting From 20 Endurance:^reset;\nClassic Mode penalty for all Resistances halved.\nSpecialization penalty for all Resistances halved.") end
+  if name == "dexterity" then widget.setText("statslayout.statdescription", "Increases Ranged Weapon Damage, Bleed Chance and Bleed Length.\nSlightly Increases One-Handed Weapon Damage.^red; Doesn't stack with Strength!^reset;\nSlightly Decreases Fall Damage.\n^green;Starting From 20 Dexterity:^reset;\nClassic Mode penalty lowered to -50% for Two-Handed Ranged Weapons,\nlowered to -50% for Dual-Wielded Ranged and Melee Weapons,\nand lowered to -25% for Mono-Wielded One-Handed Melee and Ranged Weapons.") end
   if name == "default" then widget.setText("statslayout.statdescription", "Click a stat's icon to see what occurs\nwhen that stat is raised.") end
 end
 

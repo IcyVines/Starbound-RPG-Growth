@@ -16,7 +16,7 @@
   "energyUsagePerSecond" : 20.0,
   "multiJumpCount" : 4,
   "multiJumpModifier" : 0.85,
-  "wallSensors" : [1.0, 1.75, 2.5],
+  "wallSensors" : [0.5, 0.875, 1.25],
   "wallDetectThreshold" : 1,
 
   "wallReleaseTime" : 0.15,

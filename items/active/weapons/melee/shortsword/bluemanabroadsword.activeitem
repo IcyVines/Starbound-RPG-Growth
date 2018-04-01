@@ -1,0 +1,35 @@
+{
+  "itemName" : "bluemanabroadsword",
+  "price" : 5000,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A bright and valiant starsteel blade! Also quite powerful.",
+  "shortdescription" : "^#77acc3;Starsteel Energysword^white;",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword"],
+
+  "inventoryIcon" : "bluemanabroadsword.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "bluemanabroadsword.png"
+  },
+  
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "electric",
+
+  "primaryAbilityType" : "shortswordcombo2",
+  "primaryAbility" : {
+    "fireTime" : 1.2,
+    "baseDps" : 23.0
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

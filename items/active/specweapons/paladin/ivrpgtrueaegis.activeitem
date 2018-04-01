@@ -1,0 +1,185 @@
+{
+  "itemName" : "ivrpgtrueaegis",
+  "fixedLevel" : true,
+  "price" : 1000,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "category" : "shield",
+  "description" : "The Protectorate has fallen. But us? We will never fall.",
+  "shortdescription" : "True Aegis",
+  "tooltipKind" : "Shield",
+  "twoHanded" : true,
+  "itemTags" : ["shield","paladin"],
+
+  "inventoryIcon" : "true_aegis.png:nearidle",
+
+  "animation" : "shield.animation",
+  "animationParts" : {
+    "shield" : "true_aegis.png",
+    "aura": "true_aegis_aura.png",
+    "aura_raised" : "true_aegis_aura_raised.png",
+    "light_bomb" : "true_aegis_light_bomb.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "auraLoop": {
+          "default": "idle",
+          "states": {
+            "aura": {
+              "frames": 6,
+              "cycle": 0.8,
+              "mode": "loop"
+            },
+            "aura_raised": {
+              "frames": 6,
+              "cycle": 0.8,
+              "mode": "loop"
+            },
+            "light_bomb": {
+              "frames": 5,
+              "cycle": 0.5
+            },
+            "idle": {}
+          }
+        }
+      },
+      "parts" : { 
+        "shield" : { 
+          "properties" : {
+            "shieldPoly" : [ [-0.5, -1.75], [-0.5, 2.0], [0.75, 1.25], [0.75, -1.0] ]
+          }
+        },
+        "aura": {
+          "properties": {
+            "zLevel": -1,
+            "fullbright": true,
+            "centered": true,
+            "offset": [0, 0],
+            "transformationGroups": ["shield"]
+          },
+          "partStates": {
+            "auraLoop": {
+              "aura": {
+                "properties": {
+                  "image": "<partImage>:aura.<frame>"
+                }
+              },
+              "idle": {}
+            }
+          }
+        },
+        "aura_raised": {
+          "properties": {
+            "zLevel": -1,
+            "fullbright": true,
+            "centered": true,
+            "offset": [0, 0],
+            "transformationGroups": ["shield"]
+          },
+          "partStates": {
+            "auraLoop": {
+              "aura_raised": {
+                "properties": {
+                  "image": "<partImage>:aura.<frame>"
+                }
+              },
+              "idle": {}
+            }
+          }
+        },
+        "light_bomb": {
+          "properties": {
+            "zLevel": 0,
+            "fullbright": true,
+            "centered": true,
+            "offset": [1.4, 0],
+            "transformationGroups": ["shield"]
+          },
+          "partStates": {
+            "auraLoop": {
+              "light_bomb": {
+                "properties": {
+                  "image": "<partImage>:aura.<frame>"
+                }
+              },
+              "idle": {}
+            }
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "raiseShield" : [ "/sfx/melee/sword_guard.ogg" ],
+      "perfectBlock" : [ "/sfx/melee/shield_block_metal_perfect.ogg" ],
+      "block" : [ "/sfx/melee/shield_block_metal.ogg" ],
+      "break" : [ "/sfx/melee/shield_break_metal.ogg" ],
+      "fireStart" : [ "/sfx/gun/erchiuseyebeam_start.ogg" ],
+      "fireLoop" : [ "/sfx/projectiles/zone_push_loop.ogg" ],
+      "fireEnd" : [ "/sfx/gun/erchiuseyebeam_stop.ogg" ],
+      "beamImpact" : [ "/sfx/projectiles/flame_burn.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/specweapons/paladin/shield.lua"],
+  "animationScripts" : ["/items/active/effects/chain.lua"],
+
+  "minActiveTime" : 0.2,
+
+  "forceWalk" : true,
+  "baseShieldHealth" : 120,
+  "cooldownTime" : 0.65,
+  "primaryCooldownTime" : 1,
+
+  "muzzleOffset" : [1.75, 0.15],
+  "damageConfig" : {
+      "statusEffects" : [ "ivrpgjudgement" ],
+      "damageSourceKind" : "holy",
+      "knockback" : 8
+  },
+  "fireTime" : 0.2,
+  "baseDps" : 10,
+  "energyUsage" : 30,
+  "chain" : {
+    "startOffset" : [0, 0],
+    "startSegmentImage" : "/items/active/specweapons/paladin/beamstart.png:<beamFrame>",
+    "segmentImage" : "/items/active/specweapons/paladin/beam.png:<beamFrame>",
+    "endSegmentImage" : "/items/active/specweapons/paladin/beamend.png:<beamFrame>",
+    "segmentSize" : 0.48,
+    "overdrawLength" : 0.2,
+    "taper" : 0,
+    "waveform" : {
+      "frequency" : 4.0,
+      "amplitude" : 0.1,
+      "movement" : 20.0
+    },
+    "fullbright" : true
+  },
+  "beamLength" : 10,
+  "beamTransitionTime" : 0.25,
+  "beamTransitionFrames" : 10,
+
+  "perfectBlockDirectives" : "?border=2;FFFDAAFF;00000000",
+  "perfectBlockTime" : 0.2,
+
+  "knockback" : 25,
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "shieldRotation" : 0,
+      "allowRotate" : false,
+      "allowFlip" : true,
+      "twoHanded": true
+    },
+    "raised" : {
+      "armRotation" : 0,
+      "shieldRotation" : 0,
+      "allowRotate" : true,
+      "allowFlip" : true,
+      "twoHanded": true
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandshield.lua"
+}

@@ -1,0 +1,47 @@
+{
+  "itemName" : "magmaSaber",
+  "price" : 1500,
+  "maxStack" : 1,
+  "rarity" : "rare",
+  "description" : "A bright and valiant starsteel blade! Also quite powerful.",
+  "shortdescription" : "Magma Gutter",
+  "tooltipKind" : "sword",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","shortsword"],
+
+  "inventoryIcon" : "magmaSaber.png",
+
+  "animation" : "comboshortsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "magmaSaber.png"
+  },
+  
+  "animationCustom" : { 
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.0, 2.8],
+      "color" : [82, 42, 13]
+    }}
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "shortswordcombo2",
+  "primaryAbility" : {
+    "fireTime" : 1.0,
+    "baseDps" : 16.0,
+	
+    "stances" : {
+      "idle" : {
+        "weaponOffset" : [0, 1.85]
+     }
+    }
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

@@ -12,5 +12,19 @@
         "kill" : "novadamagenumber"
       }
     }
+  },
+  {
+    "op" : "add",
+    "path" : "/holy",
+    "value" : {
+      "resistanceStat" : "holyResistance",
+      "damageNumberParticles" : {
+        "hit" : "holydamagenumber",
+        "stronghit" : "holydamagenumberstrong",
+        "weakhit" : "holydamagenumberweak",
+        "shieldhit" : "holydamagenumber",
+        "kill" : "holydamagenumber"
+      }
+    }
   }
 ]

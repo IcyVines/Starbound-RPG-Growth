@@ -1,0 +1,20 @@
+{
+  "projectileName" : "gravitrop",
+  "image" : "gravitrop.png",
+  "physics" : "gravitrops",
+  "pointLight" : false,
+  "bounces" : -1,
+  "piercing" : true,
+  "orientationLocked" : false,
+  "speed" : 10,
+  "power" : 3.0,
+  "timeToLive" : 20,
+  "knockback" : 5,
+  "damageKind" : "default",
+    "statusEffects" : [
+    "stun"
+  ],
+  "damagePoly" : [ [-2, -2], [2, -2], [2, 2], [-2, 2] ]
+}
+
+
