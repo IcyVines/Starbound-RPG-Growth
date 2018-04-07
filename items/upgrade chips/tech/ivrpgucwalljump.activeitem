@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Wall, Jump; just jump off walls... while Escape!ing of course.",
   "shortdescription" : "Walljump",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "tech",

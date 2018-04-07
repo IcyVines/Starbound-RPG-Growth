@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Description.",
+  "description" : "Hold left click while transformed to stun enemies in contact at cost of energy.",
   "shortdescription" : "Stunning Sphere",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "tech",
