@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "The player immediately stops mid-air after Escape!’s initial dash completes. The player is immune to Fall Damage after using Escape!. Using Escape! into the ground does not immediately cancel the dash.",
+  "description" : "Escape! Upgrade.\nImproves aerial stopping power, ground usage, and negates fall damage.",
   "shortdescription" : "Wavedash",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "tech",

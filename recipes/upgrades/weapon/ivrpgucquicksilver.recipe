@@ -1,6 +1,7 @@
 {
   "input" : [
-    { "item" : "masterypoint", "count" : 6 }
+    { "item" : "masterypoint", "count" : 5 },
+    { "item" : "ivrpgdyingstar", "count" : 5 }
   ],
 	"output" : { "item" : "ivrpgucquicksilver", "count" : 1 },
 	"groups" : [ "ivrpgmasteryshop", "upgradesW", "all" ]

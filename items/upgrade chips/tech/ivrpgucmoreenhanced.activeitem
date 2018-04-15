@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Dashing lasts longer, and Sprinting is faster.",
+  "description" : "Enhanced Movement Upgrade.\nDashing lasts longer, and Sprinting is faster.",
   "shortdescription" : "Even More Enhanced",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "tech",

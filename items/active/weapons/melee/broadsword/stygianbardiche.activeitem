@@ -1,5 +1,5 @@
 {
-  "itemName" : "stygianbardiche",
+  "itemName" : "ivrpgstygianbardiche",
   "dropCollision" : [-4.0, -3.0, 4.0, 3.0],
   "maxStack" : 1,
   "price" : 8000,

@@ -514,13 +514,13 @@ function updateClassEffects(classType)
       end
     end
 
-    if self.heldItem and root.itemHasTag(self.heldItem, "broadsword") then
+    if self.heldItem and (root.itemHasTag(self.heldItem, "broadsword") or root.itemHasTag(self.heldItem, "greataxe")) then
       status.addPersistentEffects("ivrpgclassboosts",
           {
             {stat = "powerMultiplier", baseMultiplier = 1.2}
           })
     elseif self.heldItem and self.heldItem2 and not self.twoHanded then
-      if ((root.itemHasTag(self.heldItem, "shortsword") or root.itemHasTag(self.heldItem, "axe")) and root.itemHasTag(self.heldItem2, "shield")) or (root.itemHasTag(self.heldItem, "shield") and (root.itemHasTag(self.heldItem2, "shortsword") or root.itemHasTag(self.heldItem2, "axe"))) then
+      if ((root.itemHasTag(self.heldItem, "shortsword") or root.itemHasTag(self.heldItem, "axe") or root.itemHasTag(self.heldItem, "mace")) and root.itemHasTag(self.heldItem2, "shield")) or (root.itemHasTag(self.heldItem, "shield") and (root.itemHasTag(self.heldItem2, "shortsword") or root.itemHasTag(self.heldItem2, "axe") or root.itemHasTag(self.heldItem2, "mace"))) then
         status.addPersistentEffects("ivrpgclassboosts",
           {
             {stat = "powerMultiplier", baseMultiplier = 1.2}

@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "(pronounced Bayddery) When Energy is full, grounded jumps are boosted even more, and the player is able to dash thrice while mid-air.",
+  "description" : "Energize Upgrade.\nEnergize's passive bonus and active jump count are improved when energy is full.",
   "shortdescription" : "Battery Pack",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "tech",

@@ -1,6 +1,7 @@
 {
   "input" : [
-    { "item" : "masterypoint", "count" : 3 }
+    { "item" : "masterypoint", "count" : 3 },
+    { "item" : "sharpenedclaw", "count" : 3 }
   ],
 	"output" : { "item" : "ivrpguccombobreaker", "count" : 1 },
 	"groups" : [ "ivrpgmasteryshop", "upgradesW", "all" ]

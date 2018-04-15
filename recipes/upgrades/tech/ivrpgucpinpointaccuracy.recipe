@@ -1,7 +1,8 @@
 {
     "input" : [
-        { "item" : "masterypoint", "count" : 4 }
+        { "item" : "masterypoint", "count" : 3 },
+        { "item" : "ivrpgfiringmechanism", "count" : 1 }
     ],
-    "output" : { "item" : "ivrpgucpinpointaccurancy", "count" : 1 },
+    "output" : { "item" : "ivrpgucpinpointaccuracy", "count" : 1 },
     "groups" : [ "ivrpgmasteryshop", "upgradesT", "all" ]
 }

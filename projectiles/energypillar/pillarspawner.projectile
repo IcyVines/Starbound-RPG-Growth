@@ -1,5 +1,5 @@
 {
-  "projectileName" : "pillarspawner",
+  "projectileName" : "energypillarspawner",
   "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
   "timeToLive" : 0.5,
   "power" : 1,

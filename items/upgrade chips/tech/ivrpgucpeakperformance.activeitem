@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Jump thrice while in mid-air.\nLarger Slam explosion knockback but less damage.",
+  "description" : "Slam Upgrade.\nJump thrice while in mid-air. Larger Slam explosion knockback but less damage.",
   "shortdescription" : "Peak Performance",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "tech",

@@ -1,6 +1,7 @@
 {
   "input" : [
-    { "item" : "masterypoint", "count" : 4 }
+    { "item" : "masterypoint", "count" : 4 },
+    { "item" : "ivrpgparasiticgoo", "count" : 5 }
   ],
 	"output" : { "item" : "ivrpgucsymbiosis", "count" : 1 },
 	"groups" : [ "ivrpgmasteryshop", "upgradesW", "all" ]

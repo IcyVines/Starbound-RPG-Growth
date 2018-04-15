@@ -1,5 +1,5 @@
 {
-  "projectileName" : "fireexplosionknockback",
+  "projectileName" : "dragonfireexplosionknockback",
   "image" : "fireexplosion.png",
   "animationCycle" : 0.2,
   "frameNumber" : 6,

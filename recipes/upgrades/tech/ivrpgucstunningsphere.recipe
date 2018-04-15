@@ -1,6 +1,7 @@
 {
     "input" : [
-        { "item" : "masterypoint", "count" : 4 }
+        { "item" : "masterypoint", "count" : 4 },
+        { "item" : "staticcell", "count" : 3 }
     ],
     "output" : { "item" : "ivrpgucstunningsphere", "count" : 1 },
     "groups" : [ "ivrpgmasteryshop", "upgradesT", "all" ]

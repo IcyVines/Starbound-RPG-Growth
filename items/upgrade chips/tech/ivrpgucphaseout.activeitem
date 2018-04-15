@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Shadow Step through walls, regardless of world.",
+  "description" : "Shadow Step Upgrade.\nShadow Step through walls, regardless of world.",
   "shortdescription" : "Phase Out",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "tech",

@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Hold right click while in Gravity Sphere to hover towards cursor at the expense of energy.",
+  "description" : "Gravity Sphere Upgrade.\nJump while transformed to hover towards your cursor at the expense of energy.",
   "shortdescription" : "Hover Sphere",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "tech",

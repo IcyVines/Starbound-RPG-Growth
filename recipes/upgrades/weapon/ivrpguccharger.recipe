@@ -1,6 +1,7 @@
 {
   "input" : [
-    { "item" : "masterypoint", "count" : 4 }
+    { "item" : "masterypoint", "count" : 4 },
+    { "item" : "battery", "count" : 2 }
   ],
 	"output" : { "item" : "ivrpguccharger", "count" : 1 },
 	"groups" : [ "ivrpgmasteryshop", "upgradesW", "all" ]

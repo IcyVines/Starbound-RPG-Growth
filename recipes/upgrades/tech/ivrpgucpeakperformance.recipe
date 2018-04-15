@@ -1,6 +1,7 @@
 {
     "input" : [
-        { "item" : "masterypoint", "count" : 4 }
+        { "item" : "masterypoint", "count" : 4 },
+        { "item" : "ultimatejuice", "count" : 1 }
     ],
     "output" : { "item" : "ivrpgucpeakperformance", "count" : 1 },
     "groups" : [ "ivrpgmasteryshop", "upgradesT", "all" ]

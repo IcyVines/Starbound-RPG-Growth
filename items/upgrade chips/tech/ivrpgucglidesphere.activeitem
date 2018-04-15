@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "Upgrade Chip",
   "inventoryIcon" : "upgradechip.png",
-  "description" : "Enables gliding via the space-bar while transformed.",
+  "description" : "Drill Sphere Upgrade.\nGain a double jump and glide while transformed. In-air momentum is improved.",
   "shortdescription" : "Glide Sphere",
   "scripts" : ["/items/upgrade chips/upgrade.lua"],
   "type" : "tech",

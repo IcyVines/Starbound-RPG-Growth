@@ -1,5 +1,5 @@
 {
-  "itemName" : "fuelrod",
+  "itemName" : "ivrpgfuelrod",
   "price" : 160,
   "inventoryIcon" : "fuelrod.png",
   "maxStack" : 1,

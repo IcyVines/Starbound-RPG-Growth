@@ -1,5 +1,5 @@
 {
-  "projectileName" : "icepillar",
+  "projectileName" : "energyicepillar",
   "image" : "icepillar.png",
   "physics" : "gas",
   "frameNumber" : 3,
