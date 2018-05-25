@@ -1,0 +1,140 @@
+{
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "elementalType" : {
+          "default" : "1",
+          "states" : {
+            "1" : {
+              "frames" : 1,
+              "properties" : {                
+                "lightsOn" : [ "physicalGlow" ],
+                "lightsOff" : [ "electricGlow", "iceGlow", "fireGlow", "poisonGlow" ]
+              }
+            },
+            "2" : {
+              "frames" : 1,
+              "properties" : {                
+                "lightsOn" : [ "fireGlow" ],
+                "lightsOff" : [ "physicalGlow", "iceGlow", "electricGlow", "poisonGlow" ]
+              }
+            },
+            "3" : {
+              "frames" : 1,
+              "properties" : {
+                "lightsOn" : [ "electricGlow" ],
+                "lightsOff" : [ "physicalGlow", "iceGlow", "fireGlow", "poisonGlow" ]
+              }
+            },
+            "4" : {
+              "frames" : 1,
+              "properties" : {                
+                "lightsOn" : [ "iceGlow" ],
+                "lightsOff" : [ "physicalGlow", "electricGlow", "fireGlow", "poisonGlow" ]
+              }
+            },
+            "5" : {
+              "frames" : 1,
+              "properties" : {                
+                "lightsOn" : [ "poisonGlow" ],
+                "lightsOff" : [ "physicalGlow", "electricGlow", "fireGlow", "iceGlow" ]
+              }
+            }
+          }
+        }
+      },
+
+      "parts" : {
+        "blade" : {
+          "properties" : {
+            "image" : null
+          },
+
+          "partStates" : {
+            "elementalType" : {
+              "1" : {
+                "properties" : {
+                  "image" : "<partImage>:physical.<frame>"
+                }
+              },
+              "2" : {
+                "properties" : {
+                  "image" : "<partImage>:fire.<frame>"
+                }
+              },
+              "3" : {
+                "properties" : {
+                  "image" : "<partImage>:electric.<frame>"
+                }
+              },
+              "4" : {
+                "properties" : {
+                  "image" : "<partImage>:ice.<frame>"
+                }
+              },
+              "5" : {
+                "properties" : {
+                  "image" : "<partImage>:poison.<frame>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "sounds" : {
+      "switchElement" : [ "/sfx/gun/reload/shotgun_reload_clip3.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "type" : "elementswitch",
+    "name" : "Element Switch",
+    "scripts" : ["/items/active/weapons/other/sbloodrose/elementswitch.lua"],
+    "class" : "AdaptableAmmo",
+
+    "adaptedAbilityIndex" : 1,
+
+    "elementalTypes" : [
+      {
+        "elementalType" : "physical"
+      },
+      {
+        "elementalType" : "fire"
+      },
+      {
+        "elementalType" : "electric"
+      },
+      {
+        "elementalType" : "ice"
+      },
+      {
+        "elementalType" : "poison"
+      }
+    ],
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+  
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "switch" : {
+        "aimAngle" : 0,
+        "armRotation" : -40,
+        "weaponRotation" : 30,
+        "weaponAngularVelocity" : -150,
+        "armAngularVelocity" : 100,
+        "twoHanded" : true,
+        "duration" : 0.4,
+  
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  }
+}
