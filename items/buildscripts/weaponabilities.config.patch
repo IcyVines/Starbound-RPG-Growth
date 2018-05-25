@@ -10,5 +10,6 @@
 { "op" : "add", "path" : "/obsidianShards", "value" : "/items/active/weapons/melee/abilities/broadsword/obsidianShards/obsidianShards.weaponability" },
 { "op" : "add", "path" : "/obsidianShardsWeak", "value" : "/items/active/weapons/melee/abilities/broadsword/obsidianShardsWeak/obsidianShardsWeak.weaponability" },
 { "op" : "add", "path" : "/energywall", "value" : "/items/active/weapons/melee/abilities/hammer/energywall/elementalpillar.weaponability" },
-{ "op" : "add", "path" : "/telsaspin", "value" : "/items/active/weapons/melee/abilities/spear/telsaspin/elementalspin.weaponability" }
+{ "op" : "add", "path" : "/telsaspin", "value" : "/items/active/weapons/melee/abilities/spear/telsaspin/elementalspin.weaponability" },
+{ "op" : "add", "path" : "/elementswitch", "value" : "/items/active/weapons/other/sbloodrose/elementswitch.weaponability" }
 ]

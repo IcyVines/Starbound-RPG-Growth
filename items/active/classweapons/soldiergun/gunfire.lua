@@ -4,6 +4,7 @@ require "/scripts/interp.lua"
 -- Base gun fire ability
 GunFire = WeaponAbility:new()
 
+
 function GunFire:init()
   self.weapon:setStance(self.stances.idle)
 

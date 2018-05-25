@@ -94,6 +94,7 @@ function init()
     }
 
     self.textData = root.assetJson("/ivrpgtext.config")
+    self.specList = root.assetJson("/specList.config")
     updateLevel()
 end
 
@@ -140,6 +141,13 @@ function update(dt)
       changeToAffinities()
     elseif widget.getChecked("bookTabs.0") then
       changeToOverview()
+    end
+  end
+
+  if player.currency("spectype") ~= self.spec then
+    self.spec = player.currency("spectype")
+    if widget.getChecked("bookTabs.5") then
+      changeToSpecialization()
     end
   end
 
@@ -496,12 +504,18 @@ end
 
 function changeToSpecialization()
     widget.setText("tabLabel", "Specialization Tab")
-    if self.level < 40 then
+    if self.level < 35 then
       widget.setVisible("specializationlayout", false)
+      widget.setVisible("specializationslayout", false)
       widget.setVisible("specializationlockedlayout", true)
+    elseif self.spec == 0 then
+      widget.setVisible("specializationlockedlayout", false)
+      widget.setVisible("specializationslayout", true)
+      widget.setVisible("specializationlayout", false)
     else
       updateSpecializationTab()
       widget.setVisible("specializationlockedlayout", false)
+      widget.setVisible("specializationslayout", false)
       widget.setVisible("specializationlayout", true)
     end
 end
@@ -551,6 +565,45 @@ function updateProfessionTab()
 end
 
 function updateSpecializationTab()
+  
+  if self.class == 0 or self.spec == 0 then return end
+  local specType = self.specList[tostring(self.class)][tostring(self.spec)]
+  local specInfo = root.assetJson("/specs/" .. specType .. ".config")
+  local specImages = specInfo.images
+  local specText = specInfo.text
+
+  widget.setText("specializationlayout.spectitle", specText.title)
+  widget.setText("specializationlayout.weaponbonustext", concatTableValues(specText.weaponbonus, "\n"))
+  widget.setText("specializationlayout.effecttext", specText.ability)
+  widget.setText("specializationlayout.detrimenttext", concatTableValues(specText.detriments, "\n"))
+  widget.setText("specializationlayout.benefittext", concatTableValues(specText.benefits, "\n"))
+  widget.setText("specializationlayout.specweapontitle", specText.weapon.title)
+  widget.setText("specializationlayout.specweapontext", specText.weapon.text)
+  widget.setText("specializationlayout.techname", specText.tech.title)
+  widget.setText("specializationlayout.techtype", specText.tech.type .. " Tech")
+  widget.setText("specializationlayout.techtext", specText.tech.text)
+  widget.setText("specializationlayout.statscalingtext", (tableLength(specText.scaling.increase) > 0 and "^green;Increased\n^reset;" or "") .. concatTableValues(specText.scaling.increase, "\n") .. (tableLength(specText.scaling.decrease) > 0 and "^red;Decreased\n^reset;" or "") .. concatTableValues(specText.scaling.decrease, "\n"))
+
+  widget.setImage("specializationlayout.techicon", "/specs/images/" .. specImages.tech)
+  widget.setImage("specializationlayout.effecticon", "/specs/images/" .. specImages.ability)
+  widget.setImage("specializationlayout.effecticon2", "/specs/images/" .. specImages.ability)
+  widget.setImage("specializationlayout.specweaponicon", "/specs/images/" .. specImages.weapon)
+end
+
+function concatTableValues(table, delim)
+  local returnV = ""
+  for k,v in pairs(table) do
+    returnV = returnV .. v .. delim
+  end
+  return returnV
+end
+
+function tableLength(table)
+  local length = 0
+  for k,v in pairs(table) do
+    length = length + 1
+  end
+  return length
 end
 
 function updateUpgradeTab()

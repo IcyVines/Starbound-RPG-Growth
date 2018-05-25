@@ -94,7 +94,7 @@
     "path" : "/spectype",
     "value" : {
       "representativeItem" : "spectype",
-      "playerMax" : 3
+      "playerMax" : 8
     }
   },
   { "op" : "add",
