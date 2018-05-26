@@ -447,6 +447,7 @@ function removeLayouts()
   widget.setVisible("professionslayout",false)
   widget.setVisible("professionlockedlayout",false)
   widget.setVisible("specializationlayout",false)
+  widget.setVisible("specializationslayout",false)
   widget.setVisible("specializationlockedlayout",false)
   widget.setVisible("upgradelayout", false)
 end
@@ -573,27 +574,39 @@ function updateSpecializationTab()
   local specText = specInfo.text
 
   widget.setText("specializationlayout.spectitle", specText.title)
-  widget.setText("specializationlayout.weaponbonustext", concatTableValues(specText.weaponbonus, "\n"))
+  widget.setText("specializationlayout.classictext", concatTableValues(specText.classic, "\n"))
   widget.setText("specializationlayout.effecttext", specText.ability)
   widget.setText("specializationlayout.detrimenttext", concatTableValues(specText.detriments, "\n"))
   widget.setText("specializationlayout.benefittext", concatTableValues(specText.benefits, "\n"))
   widget.setText("specializationlayout.specweapontitle", specText.weapon.title)
-  widget.setText("specializationlayout.specweapontext", specText.weapon.text)
+  widget.setText("specializationlayout.specweapontext", concatTableValues(specText.weapon.text, "\n"))
   widget.setText("specializationlayout.techname", specText.tech.title)
   widget.setText("specializationlayout.techtype", specText.tech.type .. " Tech")
   widget.setText("specializationlayout.techtext", specText.tech.text)
   widget.setText("specializationlayout.statscalingtext", (tableLength(specText.scaling.increase) > 0 and "^green;Increased\n^reset;" or "") .. concatTableValues(specText.scaling.increase, "\n") .. (tableLength(specText.scaling.decrease) > 0 and "^red;Decreased\n^reset;" or "") .. concatTableValues(specText.scaling.decrease, "\n"))
 
   widget.setImage("specializationlayout.techicon", "/specs/images/" .. specImages.tech)
-  widget.setImage("specializationlayout.effecticon", "/specs/images/" .. specImages.ability)
-  widget.setImage("specializationlayout.effecticon2", "/specs/images/" .. specImages.ability)
+  widget.setImage("specializationlayout.effecticon", specImages.ability)
+  widget.setImage("specializationlayout.effecticon2", specImages.ability)
   widget.setImage("specializationlayout.specweaponicon", "/specs/images/" .. specImages.weapon)
+end
+
+function rescrollSpecialization()
+  if self.class == 0 or self.spec == 0 then return end
+  local specType = self.specList[tostring(self.class)][tostring(self.spec)]
+  player.consumeCurrency("spectype", self.spec)
+  player.giveItem("ivrpgscroll" .. specType)
 end
 
 function concatTableValues(table, delim)
   local returnV = ""
+  local color = true
+  local colorSwitch = {}
+  colorSwitch[true] = "white"
+  colorSwitch[false] = "#d1d1d1"
   for k,v in pairs(table) do
-    returnV = returnV .. v .. delim
+    returnV = returnV .. "^" .. colorSwitch[color] .. ";" .. v .. "^reset;" .. delim
+    color = not color
   end
   return returnV
 end
@@ -683,13 +696,13 @@ end
 function updateInfo()
   self.classType = player.currency("classtype")
   --Yea, yea, this should be in its own file that all lua files can import, but I'm lazy, ya' hear?
-  self.strengthBonus = self.classType == 1 and 1.15 or 1
-  self.agilityBonus = self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1))
-  self.vitalityBonus = self.classType == 4 and 1.05 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.15 or 1))
-  self.vigorBonus = self.classType == 4 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.05 or 1)))
-  self.intelligenceBonus = self.classType == 2 and 1.2 or 1
-  self.enduranceBonus = self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1))
-  self.dexterityBonus = self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))
+  self.strengthBonus = (self.classType == 1 and 1.15 or 1) + status.stat("ivrpgstrengthscaling")
+  self.agilityBonus = (self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1))) + status.stat("ivrpgagilityscaling")
+  self.vitalityBonus = (self.classType == 4 and 1.05 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.15 or 1))) + status.stat("ivrpgvitalityscaling")
+  self.vigorBonus = (self.classType == 4 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.05 or 1)))) + status.stat("ivrpgvigorscaling")
+  self.intelligenceBonus = (self.classType == 2 and 1.2 or 1) + status.stat("ivrpgintelligencescaling")
+  self.enduranceBonus = (self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1))) + status.stat("ivrpgendurancescaling")
+  self.dexterityBonus = (self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))) + status.stat("ivrpgdexterityscaling")
 
   widget.setText("infolayout.displaystats", 
     "Amount\n" ..
@@ -1657,6 +1670,7 @@ function consumeAllRPGCurrency()
   player.consumeCurrency("intelligencepoint",player.currency("intelligencepoint"))
   player.consumeCurrency("endurancepoint",player.currency("endurancepoint"))
   player.consumeCurrency("dexteritypoint",player.currency("dexteritypoint"))
+  rescrollSpecialization()
   player.consumeCurrency("classtype",player.currency("classtype"))
   player.consumeCurrency("affinitytype",player.currency("affinitytype"))
   player.consumeCurrency("proftype",player.currency("proftype"))

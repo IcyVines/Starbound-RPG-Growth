@@ -25,10 +25,6 @@ end
 
 function update(dt, fireMode, shiftHeld)
   self.weapon:update(dt, fireMode, shiftHeld)
-  --animator.resetTransformationGroup("weapon")
-  
-  --
-  --animator.rotateTransformationGroup("weapon", util.toRadians(-10))
 end
 
 function uninit()
@@ -55,6 +51,7 @@ function Weapon:updateAim()
   elseif self.stance.aimAngle then
     self.aimAngle = self.stance.aimAngle
   end
+
   activeItem.setArmAngle(self.aimAngle + self.relativeArmRotation)
 
   local isPrimary = activeItem.hand() == "primary"

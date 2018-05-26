@@ -15,12 +15,14 @@ function init()
   message.setHandler("addToChallengeCount", function(_, _, level)
   	addToChallengeCount(level)
   end)
+  self.specList = root.assetJson("/specList.config")
 end
 
 function update(dt)
   self.xp = world.entityCurrency(self.id, "experienceorb")
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
   self.classType = world.entityCurrency(self.id, "classtype")
+  self.specType = world.entityCurrency(self.id, "spectype")
   self.stats = {
     strength = world.entityCurrency(self.id, "strengthpoint"),
     agility = world.entityCurrency(self.id, "agilitypoint"),
@@ -31,13 +33,13 @@ function update(dt)
     dexterity = world.entityCurrency(self.id, "dexteritypoint")
   }
   self.statBonuses = {
-    strength = self.classType == 1 and 1.15 or 1,
-    agility = self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1)),
-    vitality = self.classType == 4 and 1.05 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.15 or 1)),
-    vigor = self.classType == 4 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.05 or 1))),
-    intelligence = self.classType == 2 and 1.2 or 1,
-    endurance = self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1)),
-    dexterity = self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))
+    strength = (self.classType == 1 and 1.15 or 1) + status.stat("ivrpgstrengthscaling"),
+    agility = (self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1))) + status.stat("ivrpgagilityscaling"),
+    vitality = (self.classType == 4 and 1.05 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.15 or 1))) + status.stat("ivrpgvitalityscaling"),
+    vigor = (self.classType == 4 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.05 or 1)))) + status.stat("ivrpgvigorscaling"),
+    intelligence = (self.classType == 2 and 1.2 or 1) + status.stat("ivrpgintelligencescaling"),
+    endurance = (self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1))) + status.stat("ivrpgendurancescaling"),
+    dexterity = (self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))) + status.stat("ivrpgdexterityscaling")
   }
   self.classicBonuses = {
     strength = 0,
@@ -910,6 +912,190 @@ function updateClassEffects(classType)
     status.clearPersistentEffects("ivrpghardcoreweaponsdisabled")
   end
 
+  updateSpecialization(hardcore)
+end
+
+function updateSpecialization(hardcore)
+  if self.classType == 0 or self.specType == 0 then
+    status.clearPersistentEffects("ivrpgspecweaponbonus")
+    return
+  end
+  local spec = self.specList[tostring(self.classType)][tostring(self.specType)]
+  local specInfo = root.assetJson("/specs/" .. spec .. ".config")
+  local specEffects = specInfo.effects
+  
+  --Ability
+  status.addEphemeralEffect(specEffects.ability, math.huge)
+
+  --Weapon Bonus
+  status.clearPersistentEffects("ivrpgspecweaponbonus")
+  local itemBonus = specEffects.itemBonus
+  local scaleBonus = 0
+  local breakLoop = false
+  for k,v in pairs(itemBonus) do
+    if v.twoHanded == 1 then
+      if self.twoHanded and root.itemHasTag(self.heldItem, k) then
+        scaleBonus = getScaleBonus(v.scaling, 2)
+        status.addPersistentEffect("ivrpgspecweaponbonus", {
+          {stat = "powerMultiplier", amount = v.amount + scaleBonus}
+        })
+        breakLoop = true
+      end
+    elseif v.dualWield == 0 then
+      if (self.heldItem and root.itemHasTag(self.heldItem, k)) or (self.heldItem2 and root.itemHasTag(self.heldItem2, k)) then
+        scaleBonus = getScaleBonus(v.scaling, (self.twoHanded == true and 2 or 1))
+        status.addPersistentEffect("ivrpgspecweaponbonus", {stat = "powerMultiplier", amount = v.amount + scaleBonus})
+      end
+    else
+      if self.heldItem and root.itemHasTag(self.heldItem, k) and self.heldItem2 then
+        for x,y in pairs(v.dualWield) do
+          if root.itemHasTag(self.heldItem2, x) then
+            scaleBonus = getScaleBonus(v.scaling, 2)
+            status.addPersistentEffect("ivrpgspecweaponbonus", {
+              {stat = "powerMultiplier", amount = v.amount + scaleBonus + y}
+            })
+            breakLoop = true
+            break
+          end
+        end
+      elseif self.heldItem2 and root.itemHasTag(self.heldItem2, k) and self.heldItem then
+        for x,y in pairs(v.dualWield) do
+          if root.itemHasTag(self.heldItem, x) then
+            scaleBonus = getScaleBonus(v.scaling, 2)
+            status.addPersistentEffect("ivrpgspecweaponbonus", {
+              {stat = "powerMultiplier", amount = v.amount + scaleBonus + y}
+            })
+            breakLoop = true
+            break
+          end
+        end
+      end
+    end
+    if breakLoop then
+      break
+    end
+  end
+
+  --Classic Mode
+  if not hardcore then return end
+  
+  local classicMode = specEffects.classicMode
+  local disabled = true
+  for k,v in pairs(classicMode.requirements) do
+    if self.heldItem and root.itemHasTag(self.heldItem, k) then
+      if v == 0 then
+        disabled = false
+        break
+      else
+        for x,y in pairs(v) do
+          if self.heldItem2 and root.itemHasTag(self.heldItem2, y) then
+            disabled = false
+          end
+        end
+      end
+    elseif self.heldItem2 and root.itemHasTag(self.heldItem2, k) then
+      if v == 0 then
+        disabled = false
+        break
+      else
+        for x,y in pairs(v) do
+          if self.heldItem and root.itemHasTag(self.heldItem, y) then
+            disabled = false
+          end
+        end
+      end
+    end
+  end
+
+  if disabled then
+    status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+      {stat = "powerMultiplier", effectiveMultiplier = 0}
+    })
+    return
+  end
+
+  for k,v in pairs(classicMode.disabled) do
+    if (self.heldItem and root.itemHasTag(self.heldItem, k)) or (self.heldItem2 and root.itemHasTag(self.heldItem2, k)) then
+      status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+        {stat = "powerMultiplier", effectiveMultiplier = 0}
+      })
+      return
+    end
+  end
+
+  for k,v in pairs(classicMode.enabled) do
+    if v.twoHanded == 1 then
+      if self.twoHanded and root.itemHasTag(self.heldItem, v.tag) then
+        status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+          {stat = "powerMultiplier", effectiveMultiplier = 1}
+        })
+        return
+      end
+    elseif v.dualWield == 0 then
+      if self.heldItem and root.itemHasTag(self.heldItem, v.tag) then
+        if v.otherWeaponsAllowed ~= 0 or not self.weapon2 then
+          status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+              {stat = "powerMultiplier", effectiveMultiplier = 1}
+          })
+          return
+        else
+          for x,y in pairs(v.otherWeaponsAllowed) do
+            if self.weapon2 and root.itemHasTag(self.heldItem2, y) then
+              status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+                {stat = "powerMultiplier", effectiveMultiplier = 1}
+              })
+              return
+            end
+          end
+        end
+      elseif self.heldItem2 and root.itemHasTag(self.heldItem2, v.tag) then
+        if v.otherWeaponsAllowed ~= 0 or not self.weapon1 then
+          status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+              {stat = "powerMultiplier", effectiveMultiplier = 1}
+          })
+          return
+        else
+          for x,y in pairs(v.otherWeaponsAllowed) do
+            if self.weapon1 and root.itemHasTag(self.heldItem, y) then
+              status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+                {stat = "powerMultiplier", effectiveMultiplier = 1}
+              })
+              return
+            end
+          end
+        end
+      end
+    else
+      if self.heldItem and root.itemHasTag(self.heldItem, v.tag) then
+        for x,y in pairs(v.dualWield) do
+          if self.heldItem2 and root.itemHasTag(self.heldItem2, y) then
+            status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+              {stat = "powerMultiplier", effectiveMultiplier = 1}
+            })
+            return
+          end
+        end
+      elseif self.heldItem2 and root.itemHasTag(self.heldItem2, v.tag) then
+        for x,y in pairs(v.dualWield) do
+          if self.heldItem and root.itemHasTag(self.heldItem, y) then
+            status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+              {stat = "powerMultiplier", effectiveMultiplier = 1}
+            })
+            return
+          end
+        end
+      end
+    end
+  end
+
+end
+
+function getScaleBonus(scalingList, hands)
+  local scalingDamage = 0
+  for stat,amount in pairs(scalingList) do
+    scalingDamage = scalingDamage + (self.stats[stat] * (amount * (hands / 2)))
+  end
+  return scalingDamage
 end
 
 function holdingWeaponsCheck(heldItem, heldItem2, dualWield)

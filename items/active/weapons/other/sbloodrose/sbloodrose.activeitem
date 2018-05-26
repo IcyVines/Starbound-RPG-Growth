@@ -79,8 +79,32 @@
 		"baseDps" : 11.5
 	},
 
+	
 	"altAbilityType" : "elementswitch",
-	"altAbility" : {},
+	"altAbility" : {
+		"stances" : {
+			"idle" : {
+		        "armRotation" : -90,
+		        "weaponRotation" : -10,
+		        "twoHanded" : true,
+		  
+		        "allowRotate" : false,
+		        "allowFlip" : true
+	      	},
+	      	"switch" : {
+		        "aimAngle" : 0,
+		        "armRotation" : -40,
+		        "weaponRotation" : 30,
+		        "weaponAngularVelocity" : -150,
+		        "armAngularVelocity" : 100,
+		        "twoHanded" : true,
+		        "duration" : 0.4,
+		  
+		        "allowRotate" : false,
+		        "allowFlip" : true
+	      	}
+	    }
+	},
 
 	"builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

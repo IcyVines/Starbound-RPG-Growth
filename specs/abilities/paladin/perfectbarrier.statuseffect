@@ -1,0 +1,29 @@
+{
+  "name" : "perfectbarrier",
+
+  "effectConfig" : {
+    "status" : {
+      "poisonResistance" : 0.1,
+      "electricResistance" : 0.1,
+      "fireResistance" : 0.1,
+      "iceResistance" : 0.1,
+      "ivrpgvigorscaling" : 0.05,
+      "ivrpgintelligencescaling" : 0.05
+    },
+    "movement" : {
+      "speedModifier" : 0.9,
+      "airJumpModifier" : 0.8
+    }
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "perfectbarrier.lua"
+  ],
+
+  "animationConfig" : "perfectbarrier.animation",
+
+  "label" : "Perfect Barrier",
+  "icon" : "/specs/abilities/paladin/perfectbarrier.png"
+}

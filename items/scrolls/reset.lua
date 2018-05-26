@@ -2,6 +2,7 @@ function init()
 end
 
 function activate(fireMode, shiftHeld)
+  self.specList = root.assetJson("/specList.config")
   if item.name() == "ivrpgscrollresetaffinity" and player.currency("affinitytype") ~= 0 then
     self.affinity = player.currency("affinitytype")
     consumeAffinityStats()
@@ -35,7 +36,9 @@ function activate(fireMode, shiftHeld)
       player.addCurrency(self.statType[i].."point", 1 + (self.affinity > 0 and self.affinityStats[self.affinity][i] or 0))
     end
     self.class = player.currency("classtype")
+    self.spec = player.currency("spectype")
     removeTechs()
+    rescrollSpecialization()
     consumeAllCurrency("classtype")
     item.consume(1)
   end
@@ -48,6 +51,13 @@ function consumeAllCurrency(name)
 end
 
 function uninit()
+end
+
+function rescrollSpecialization()
+  if self.class == 0 or self.spec == 0 then return end
+  local specType = self.specList[tostring(self.class)][tostring(self.spec)]
+  player.consumeCurrency("spectype", self.spec)
+  player.giveItem("ivrpgscroll" .. specType)
 end
 
 function removeTechs()
