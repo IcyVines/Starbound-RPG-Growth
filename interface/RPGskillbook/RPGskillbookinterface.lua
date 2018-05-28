@@ -566,7 +566,6 @@ function updateProfessionTab()
 end
 
 function updateSpecializationTab()
-  
   if self.class == 0 or self.spec == 0 then return end
   local specType = self.specList[tostring(self.class)][tostring(self.spec)]
   local specInfo = root.assetJson("/specs/" .. specType .. ".config")
@@ -585,10 +584,28 @@ function updateSpecializationTab()
   widget.setText("specializationlayout.techtext", specText.tech.text)
   widget.setText("specializationlayout.statscalingtext", (tableLength(specText.scaling.increase) > 0 and "^green;Increased\n^reset;" or "") .. concatTableValues(specText.scaling.increase, "\n") .. (tableLength(specText.scaling.decrease) > 0 and "^red;Decreased\n^reset;" or "") .. concatTableValues(specText.scaling.decrease, "\n"))
 
-  widget.setImage("specializationlayout.techicon", "/specs/images/" .. specImages.tech)
+  widget.setImage("specializationlayout.techicon2", "/specs/techs/" .. specType .. "/" .. specImages.tech)
   widget.setImage("specializationlayout.effecticon", specImages.ability)
   widget.setImage("specializationlayout.effecticon2", specImages.ability)
   widget.setImage("specializationlayout.specweaponicon", "/specs/images/" .. specImages.weapon)
+
+  local tech = "ivrpg" .. specInfo.effects.tech
+  if hasValue(player.availableTechs(), tech) then
+    widget.setVisible("specializationlayout.unlockbutton", false)
+    widget.setVisible("specializationlayout.unlockedtext", true)
+  else
+    widget.setVisible("specializationlayout.unlockbutton", true)
+    widget.setVisible("specializationlayout.unlockedtext", false)
+  end
+end
+
+function unlockSpecTech()
+  local specType = self.specList[tostring(self.class)][tostring(self.spec)]
+  local specInfo = root.assetJson("/specs/" .. specType .. ".config")
+  local tech = "ivrpg" .. specInfo.effects.tech
+  player.makeTechAvailable(tech)
+  player.enableTech(tech)
+  updateSpecializationTab()
 end
 
 function rescrollSpecialization()

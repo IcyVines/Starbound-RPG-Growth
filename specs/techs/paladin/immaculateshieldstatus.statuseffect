@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgimmaculateshieldstatus",
+  "effectConfig" : {
+    "shieldDecay" : 0.5,
+    "healthPercent" : 10,
+    "healthRange" : 8
+  },
+
+  "defaultDuration" : 10,
+
+  "scripts" : [
+  	"immaculateshieldstatus.lua"
+  ],
+
+  "label" : "Immaculate Shield",
+  "icon" : "/specs/techs/paladin/immaculateshield.png"
+}

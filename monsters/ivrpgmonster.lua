@@ -3,9 +3,19 @@ local monsterOldInit = init
 function init()
   monsterOldInit()
   self.effects = {"ivrpgsear", "ivrpgtoxify", "ivrpgembrittle", "ivrpgoverload"}
+
   message.setHandler("addEphemeralEffect", function(_, _, name, duration, sourceId)
     status.addEphemeralEffect(name, duration, sourceId)
   end)
+
+  message.setHandler("modifyResource", function(_, _, type, amount)
+    status.modifyResource(type, amount)
+  end)
+
+  message.setHandler("modifyResourcePercentage", function(_, _, type, amount)
+    status.modifyResourcePercentage(type, amount)
+  end)
+
   message.setHandler("hitByBloodAether", function(_, _)
     self.hitByBloodAether = true
   end)

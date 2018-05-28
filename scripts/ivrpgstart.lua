@@ -23,8 +23,6 @@ function init()
   end)
 
   message.setHandler("hasStat", function(_, _, name)
-  	--sb.logInfo(name)
-  	--if status.statPositive(name) then sb.logInfo("True") end
     return status.statPositive(name)
   end)
 
@@ -38,6 +36,14 @@ function init()
 
   message.setHandler("modifyResource", function(_, _, type, amount)
   	status.modifyResource(type, amount)
+  end)
+
+  message.setHandler("modifyResourcePercentage", function(_, _, type, amount)
+    status.modifyResourcePercentage(type, amount)
+  end)
+
+  message.setHandler("addEphemeralEffect", function(_, _, name, duration, sourceId)
+    status.addEphemeralEffect(name, duration, sourceId)
   end)
 
 end
