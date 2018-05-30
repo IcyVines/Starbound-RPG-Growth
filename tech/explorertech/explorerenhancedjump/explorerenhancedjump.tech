@@ -5,7 +5,7 @@
   "rarity" : "Legendary",
   "icon" : "/tech/explorertech/explorerenhancedjump/explorerenhancedjump.png",
   "description" : "Glide Cost: 5eps.",
-  "shortDescription" : "Enhanced Jump",
+  "shortDescription" : "Enhanced Glide",
   "chipCost" : 0,
 
   "scripts" : ["explorerenhancedjump.lua"],

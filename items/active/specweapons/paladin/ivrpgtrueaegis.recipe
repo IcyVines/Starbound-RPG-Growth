@@ -1,0 +1,10 @@
+{
+  "input" : [
+  	{ "item" : "livingroot", "count" : 4 },
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 24 },
+    { "item" : "goldbar", "count" : 6 },
+    { "item" : "diamond", "count" : 2 }
+  ],
+	"output" : { "item" : "ivrpgtrueaegis", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

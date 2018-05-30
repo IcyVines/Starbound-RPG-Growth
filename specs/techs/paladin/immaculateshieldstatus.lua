@@ -2,7 +2,7 @@
 function init()
 	self.id = effect.sourceEntity()
 	self.shieldDecay = config.getParameter("shieldDecay", 0.5)
- 	self.healthPercent = config.getParameter("healthPercent", 10)
+ 	self.healthStatus = config.getParameter("healthStatus", "regeneration4")
  	self.healthRange = config.getParameter("healthRange", 8)
  	self.damageUpdate = 5
  	effect.addStatModifierGroup({
@@ -25,7 +25,7 @@ function update(dt)
 end
 
 function healPulse()
-	status.modifyResourcePercentage("health", self.healthPercent/100)
+	status.addEphemeralEffect(self.healthStatus, 3)
 	--local sourceDamageTeam = world.entityDamageTeam(self.id)
 	local targetIds = world.entityQuery(mcontroller.position(), self.healthRange, {
       withoutEntityId = self.id,
@@ -33,7 +33,7 @@ function healPulse()
     })
     for i,id in ipairs(targetIds) do
 		if world.entityDamageTeam(id).type == "friendly" then
-			world.sendEntityMessage(id, "modifyResourcePercentage", "health", self.healthPercent/100)
+			world.sendEntityMessage(id, "addEphemeralEffect", self.healthStatus, 3, self.id)
 		end
     end
 end

@@ -1,6 +1,6 @@
 {
   "itemName" : "ivrpgtrueaegis",
-  "fixedLevel" : true,
+  "level": 6,
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Legendary",

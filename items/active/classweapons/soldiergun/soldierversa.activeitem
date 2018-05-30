@@ -44,7 +44,7 @@
   "baseOffset" : [0.3125, 0.3],
   "muzzleOffset" : [2, 0.7],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts" : ["/items/active/classweapons/soldiergun/gun.lua"],
 
   "elementalType" : "physical",
 

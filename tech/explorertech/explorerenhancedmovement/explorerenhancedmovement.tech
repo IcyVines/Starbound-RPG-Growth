@@ -6,7 +6,7 @@
   "animator" : "explorerenhancedmovement.animation",
 
   "description" : "Airdash Cooldown: 5s. Sprint Cost: 10eps.",
-  "shortDescription" : "Enhanced Movement",
+  "shortDescription" : "Enhanced Dash",
   "rarity" : "Uncommon",
   "icon" : "/tech/explorertech/explorerenhancedmovement/explorerenhancedmovement.png",
 

@@ -3,10 +3,11 @@
   "rarity" : "Legendary",
   "category" : "scroll",
   "inventoryIcon" : "/items/scrolls/scroll.png",
-  "description" : "For a Knight who want to be a wall that never breaks.",
+  "description" : "For the Knight who wants to be a wall that never breaks.",
   "shortdescription" : "Specialization: Paladin",
   "largeImage" : "/items/scrolls/scrolllarge.png",
   "scripts" : ["/items/scrolls/specs/upgrade.lua"],
   "requiredClass" : 1,
-  "specType" : 1
+  "specType" : 1,
+  "spec" : "paladin"
 }

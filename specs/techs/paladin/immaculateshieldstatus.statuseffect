@@ -2,7 +2,7 @@
   "name" : "ivrpgimmaculateshieldstatus",
   "effectConfig" : {
     "shieldDecay" : 0.5,
-    "healthPercent" : 10,
+    "healthStatus" : "regeneration4",
     "healthRange" : 8
   },
 

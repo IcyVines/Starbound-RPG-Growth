@@ -16,6 +16,9 @@ function init()
   	addToChallengeCount(level)
   end)
   self.specList = root.assetJson("/specList.config")
+  self.classList = root.assetJson("/classList.config")
+  self.affinityList = root.assetJson("/affinityList.config")
+  self.statList = root.assetJson("/stats.config")
 end
 
 function update(dt)
@@ -918,6 +921,7 @@ end
 function updateSpecialization(hardcore)
   if self.classType == 0 or self.specType == 0 then
     status.clearPersistentEffects("ivrpgspecweaponbonus")
+    status.clearPersistentEffects("ivrpgspecstatusbonus")
     return
   end
   local spec = self.specList[tostring(self.classType)][tostring(self.specType)]
@@ -925,16 +929,36 @@ function updateSpecialization(hardcore)
   local specEffects = specInfo.effects
   
   --Ability
-  status.addEphemeralEffect(specEffects.ability, math.huge)
+  status.addEphemeralEffect(specInfo.ability.name, math.huge)
+
+  --Status
+  local statuses = getArrayFromType(specEffects, "status")
+  local statusConfig = {}
+  for k,v in ipairs(statuses) do
+    local modifier = {}
+    modifier["stat"] = v.stat
+    modifier[v.type] = v.amount
+    table.insert(statusConfig, modifier)
+  end
+  status.setPersistentEffects("ivrpgspecstatusbonus", statusConfig)
+
+  --Movement
+  local movement = getArrayFromType(specEffects, "movement")
+  movementConfig = {}
+  for k,v in ipairs(movement) do
+    movementConfig[v.type] = v.amount
+  end
+  mcontroller.controlModifiers(movementConfig)
 
   --Weapon Bonus
   status.clearPersistentEffects("ivrpgspecweaponbonus")
-  local itemBonus = specEffects.itemBonus
+  local itemBonus = getArrayFromType(specEffects, "weapon")
   local scaleBonus = 0
   local breakLoop = false
   for k,v in pairs(itemBonus) do
+    local tag = v.tag
     if v.twoHanded == 1 then
-      if self.twoHanded and root.itemHasTag(self.heldItem, k) then
+      if self.twoHanded and root.itemHasTag(self.heldItem, tag) then
         scaleBonus = getScaleBonus(v.scaling, 2)
         status.addPersistentEffect("ivrpgspecweaponbonus", {
           {stat = "powerMultiplier", amount = v.amount + scaleBonus}
@@ -942,12 +966,12 @@ function updateSpecialization(hardcore)
         breakLoop = true
       end
     elseif v.dualWield == 0 then
-      if (self.heldItem and root.itemHasTag(self.heldItem, k)) or (self.heldItem2 and root.itemHasTag(self.heldItem2, k)) then
+      if (self.heldItem and root.itemHasTag(self.heldItem, tag)) or (self.heldItem2 and root.itemHasTag(self.heldItem2, tag)) then
         scaleBonus = getScaleBonus(v.scaling, (self.twoHanded == true and 2 or 1))
         status.addPersistentEffect("ivrpgspecweaponbonus", {stat = "powerMultiplier", amount = v.amount + scaleBonus})
       end
     else
-      if self.heldItem and root.itemHasTag(self.heldItem, k) and self.heldItem2 then
+      if self.heldItem and root.itemHasTag(self.heldItem, tag) and self.heldItem2 then
         for x,y in pairs(v.dualWield) do
           if root.itemHasTag(self.heldItem2, x) then
             scaleBonus = getScaleBonus(v.scaling, 2)
@@ -958,7 +982,7 @@ function updateSpecialization(hardcore)
             break
           end
         end
-      elseif self.heldItem2 and root.itemHasTag(self.heldItem2, k) and self.heldItem then
+      elseif self.heldItem2 and root.itemHasTag(self.heldItem2, tag) and self.heldItem then
         for x,y in pairs(v.dualWield) do
           if root.itemHasTag(self.heldItem, x) then
             scaleBonus = getScaleBonus(v.scaling, 2)
@@ -978,52 +1002,90 @@ function updateSpecialization(hardcore)
 
   --Classic Mode
   if not hardcore then return end
-  
-  local classicMode = specEffects.classicMode
-  local disabled = true
-  for k,v in pairs(classicMode.requirements) do
-    if self.heldItem and root.itemHasTag(self.heldItem, k) then
-      if v == 0 then
-        disabled = false
-        break
+  local classicMode = specInfo.classic
+  --Weapons/Items that are required.
+  local requires = getArrayFromType(classicMode, "require")
+  local disabled = false
+  local disableAmounts = {amount = 0, baseMultiplier = 1, effectiveMultiplier = 1}
+  local hardcoreEffects = status.getPersistentEffects('ivrpghardcoreweaponsdisabled')
+  for k,v in ipairs(hardcoreEffects) do
+    if v.effectiveMultiplier then
+      disableAmounts.effectiveMultiplier = v.effectiveMultiplier
+      break
+    end
+  end
+  for k,v in ipairs(requires) do
+    local tag = v.tag
+    local disableCheck = true
+    if self.heldItem and root.itemHasTag(self.heldItem, tag) then
+      if v.with == 0 then
+        disableCheck = false
       else
-        for x,y in pairs(v) do
+        for x,y in ipairs(v.with) do
           if self.heldItem2 and root.itemHasTag(self.heldItem2, y) then
-            disabled = false
+            disableCheck = false
+            break
           end
         end
       end
-    elseif self.heldItem2 and root.itemHasTag(self.heldItem2, k) then
-      if v == 0 then
-        disabled = false
-        break
+    elseif self.heldItem2 and root.itemHasTag(self.heldItem2, tag) then
+      if v.with == 0 then
+        disableCheck = false
       else
-        for x,y in pairs(v) do
+        for x,y in pairs(v.with) do
           if self.heldItem and root.itemHasTag(self.heldItem, y) then
-            disabled = false
+            disableCheck = false
+            break
           end
         end
+      end
+    end
+    if disableCheck then
+      disabled = true
+      if v.type == "amount" then
+        disableAmounts.amount = disableAmounts.amount - v.amount
+      else
+        disableAmounts[v.type] = disableAmounts[v.type] * v.amount
       end
     end
   end
 
   if disabled then
     status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-      {stat = "powerMultiplier", effectiveMultiplier = 0}
+      {stat = "powerMultiplier", amount = disableAmounts.amount},
+      {stat = "powerMultiplier", baseMultiplier = disableAmounts.baseMultiplier},
+      {stat = "powerMultiplier", effectiveMultiplier = disableAmounts.effectiveMultiplier}
     })
-    return
   end
 
-  for k,v in pairs(classicMode.disabled) do
-    if (self.heldItem and root.itemHasTag(self.heldItem, k)) or (self.heldItem2 and root.itemHasTag(self.heldItem2, k)) then
-      status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-        {stat = "powerMultiplier", effectiveMultiplier = 0}
-      })
-      return
+  --Weapons/Items that are disabled.
+  local disables = getArrayFromType(classicMode, "disable")
+  for k,v in ipairs(disables) do
+    local modifier = {stat = "powerMultiplier"}
+    if v.dualWield == 0 then
+      if (self.heldItem and root.itemHasTag(self.heldItem, v.tag)) or (self.heldItem2 and root.itemHasTag(self.heldItem2, v.tag)) then
+        modifier[v.type] = v.amount
+        status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+          {stat = "powerMultiplier", effectiveMultiplier = v.amount}
+        })
+        return
+      end
+    else
+      for x,y in pairs(v.dualWield) do
+        if ((self.heldItem and root.itemHasTag(self.heldItem, v.tag)) and (self.heldItem2 and root.itemHasTag(self.heldItem2, y))) or ((self.heldItem2 and root.itemHasTag(self.heldItem2, v.tag)) and (self.heldItem and root.itemHasTag(self.heldItem, y))) then
+          modifier[v.type] = v.amount
+          status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
+            {stat = "powerMultiplier", effectiveMultiplier = v.amount}
+          })
+          return
+        end
+      end
     end
   end
 
-  for k,v in pairs(classicMode.enabled) do
+  --Weapons/Items that are enabled
+  local enables = getArrayFromType(classicMode, "enable")
+  for k,v in pairs(enables) do
     if v.twoHanded == 1 then
       if self.twoHanded and root.itemHasTag(self.heldItem, v.tag) then
         status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
@@ -1033,12 +1095,12 @@ function updateSpecialization(hardcore)
       end
     elseif v.dualWield == 0 then
       if self.heldItem and root.itemHasTag(self.heldItem, v.tag) then
-        if v.otherWeaponsAllowed ~= 0 or not self.weapon2 then
+        if not self.weapon2 then
           status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
               {stat = "powerMultiplier", effectiveMultiplier = 1}
           })
           return
-        else
+        elseif v.otherWeaponsAllowed ~= 0 then
           for x,y in pairs(v.otherWeaponsAllowed) do
             if self.weapon2 and root.itemHasTag(self.heldItem2, y) then
               status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
@@ -1049,12 +1111,12 @@ function updateSpecialization(hardcore)
           end
         end
       elseif self.heldItem2 and root.itemHasTag(self.heldItem2, v.tag) then
-        if v.otherWeaponsAllowed ~= 0 or not self.weapon1 then
+        if not self.weapon1 then
           status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
               {stat = "powerMultiplier", effectiveMultiplier = 1}
           })
           return
-        else
+        elseif v.otherWeaponsAllowed ~= 0 then
           for x,y in pairs(v.otherWeaponsAllowed) do
             if self.weapon1 and root.itemHasTag(self.heldItem, y) then
               status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
@@ -1088,6 +1150,18 @@ function updateSpecialization(hardcore)
     end
   end
 
+end
+
+function getArrayFromType(t, type)
+  local returnT = {}
+  for k,v in ipairs(t) do
+    if v.type == type then
+      for x,y in ipairs(v.apply) do
+         table.insert(returnT, y)
+      end
+    end
+  end
+  return returnT
 end
 
 function getScaleBonus(scalingList, hands)

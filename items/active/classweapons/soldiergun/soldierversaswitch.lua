@@ -66,6 +66,10 @@ function GunFire:update(dt, fireMode, shiftHeld)
   end
 end
 
+function isNearHand()
+  return (activeItem.hand() == "primary") == (aimDirection < 0)
+end
+
 function GunFire:auto()
 
   if self.triggerHappy then

@@ -43,6 +43,18 @@ function init()
   self.fireMode = "none"
   self.raised = false
 
+  self.shieldPoly = animator.partPoly("shield", "shieldPoly")
+  self.knockbackDamageSource = {
+    poly = self.shieldPoly,
+    damage = 0,
+    damageType = "Knockback",
+    sourceEntity = activeItem.ownerEntityId(),
+    team = activeItem.ownerTeam(),
+    knockback = self.knockback*2,
+    rayCheck = true,
+    damageRepeatTimeout = 0.25
+  }
+
   animator.setGlobalTag("directives", "")
   animator.setAnimationState("shield", "idle")
   activeItem.setOutsideOfHand(true)
@@ -168,20 +180,9 @@ function raiseShield()
   self.active = true
   self.activeTimer = 0
   status.setPersistentEffects(activeItem.hand().."Shield", {{stat = "shieldHealth", amount = shieldHealth()}})
-  local shieldPoly = animator.partPoly("shield", "shieldPoly")
-  activeItem.setItemShieldPolys({shieldPoly})
+  activeItem.setItemShieldPolys({self.shieldPoly})
 
-  local knockbackDamageSource = {
-    poly = shieldPoly,
-    damage = 0,
-    damageType = "Knockback",
-    sourceEntity = activeItem.ownerEntityId(),
-    team = activeItem.ownerTeam(),
-    knockback = self.knockback*2,
-    rayCheck = true,
-    damageRepeatTimeout = 0.25
-  }
-  activeItem.setItemDamageSources({ knockbackDamageSource })
+  activeItem.setItemDamageSources({ self.knockbackDamageSource })
 
   self.damageListener = damageListener("damageTaken", function(notifications)
     for _,notification in pairs(notifications) do
@@ -193,9 +194,7 @@ function raiseShield()
           refreshPerfectBlock()
         elseif status.resourcePositive("shieldStamina") then
           animator.playSound("block")
-          knockbackDamageSource.knockback = self.knockback
-          self.perfectShieldBonus = 1
-          activeItem.setItemDamageSources({ knockbackDamageSource })
+          self.perfectShieldBonus = math.max(self.perfectShieldBonus - 0.25, 1)
         else
           self.perfectShieldBonus = 1
           animator.playSound("break")
@@ -294,7 +293,7 @@ function endBeam()
 end
 
 function setDamage(damageConfig, damageArea, damageTimeout)
-  activeItem.setItemDamageSources({damageSource(damageConfig, damageArea, damageTimeout)})
+  activeItem.setItemDamageSources({self.knockbackDamageSource, damageSource(damageConfig, damageArea, damageTimeout)})
 end
 
 function damageSource(damageConfig, damageArea, damageTimeout)
@@ -406,8 +405,8 @@ function damageRepeatGroup(mode)
   return activeItem.ownerEntityId() .. config.getParameter("itemName") .. activeItem.hand() .. mode
 end
 
-function reset()
-  setDamage()
+function reset(stillRaised)
+  activeItem.setItemDamageSources({self.knockbackDamageSource})
   activeItem.setScriptedAnimationParameter("chains", {})
   --animator.setParticleEmitterActive("beamCollision", false)
   animator.stopAllSounds("fireStart")

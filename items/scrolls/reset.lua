@@ -36,6 +36,8 @@ function activate(fireMode, shiftHeld)
       player.addCurrency(self.statType[i].."point", 1 + (self.affinity > 0 and self.affinityStats[self.affinity][i] or 0))
     end
     self.class = player.currency("classtype")
+    self.classList = root.assetJson("/classList.config")
+    self.classInfo = root.assetJson("/classes/" .. self.classList[self.class == 0 and 7 or self.class] .. ".config")
     self.spec = player.currency("spectype")
     removeTechs()
     rescrollSpecialization()
@@ -61,44 +63,8 @@ function rescrollSpecialization()
 end
 
 function removeTechs()
-  if self.class == 3 then
-    player.makeTechUnavailable("ninjaassassinate")
-    player.makeTechUnavailable("ninjaflashjump")
-    player.makeTechUnavailable("ninjawallcling")
-    player.makeTechUnavailable("ninjavanishsphere")
-  elseif self.class == 2 then
-    player.makeTechUnavailable("wizardmagicshield")
-    player.makeTechUnavailable("wizardgravitysphere")
-    player.makeTechUnavailable("wizardtranslocate")
-    player.makeTechUnavailable("wizardhover")
-  elseif self.class == 1 then
-    player.makeTechUnavailable("knightslam")
-    player.makeTechUnavailable("knightbash")
-    player.makeTechUnavailable("knightcharge!")
-    player.makeTechUnavailable("knightarmorsphere")
-  elseif self.class == 5 then
-    player.makeTechUnavailable("roguetoxicaura")
-    player.makeTechUnavailable("roguedeadlystance")
-    player.makeTechUnavailable("rogueescape")
-    player.makeTechUnavailable("roguetoxicsphere")
-    --Deprecated
-    player.makeTechUnavailable("roguecloudjump")
-    player.makeTechUnavailable("roguetoxiccapsule")
-    player.makeTechUnavailable("roguepoisondash")
-  elseif self.class == 4 then
-    player.makeTechUnavailable("soldiertanksphere")
-    player.makeTechUnavailable("soldierenergypack")
-    player.makeTechUnavailable("soldiermarksman")
-    player.makeTechUnavailable("soldiermre")
-    --Deprecated
-    player.makeTechUnavailable("soldiermissilestrike")
-  elseif self.class == 6 then
-    player.makeTechUnavailable("explorerenhancedjump")
-    player.makeTechUnavailable("explorerenhancedmovement")
-    player.makeTechUnavailable("explorerdrillsphere")
-    player.makeTechUnavailable("explorerglide")
-    --Deprecated
-    player.makeTechUnavailable("explorerdrill")
+  for k,v in ipairs(self.classInfo.techs) do
+    player.makeTechUnavailable(v.name)
   end
 end
 
