@@ -12,6 +12,8 @@ function init()
   self.lastMonster = {nil, nil, nil, nil, nil}
   self.level = -1
   self.id = entity.id()
+  self.affinity = 0
+  self.class = 0
   message.setHandler("addToChallengeCount", function(_, _, level)
   	addToChallengeCount(level)
   end)
@@ -19,98 +21,15 @@ function init()
   self.classList = root.assetJson("/classList.config")
   self.affinityList = root.assetJson("/affinityList.config")
   self.statList = root.assetJson("/stats.config")
+  self.weaponScaling = root.assetJson("/weaponScaling.config")
 end
 
 function update(dt)
   self.xp = world.entityCurrency(self.id, "experienceorb")
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
-  self.classType = world.entityCurrency(self.id, "classtype")
   self.specType = world.entityCurrency(self.id, "spectype")
-  self.stats = {
-    strength = world.entityCurrency(self.id, "strengthpoint"),
-    agility = world.entityCurrency(self.id, "agilitypoint"),
-    vitality = world.entityCurrency(self.id, "vitalitypoint"),
-    vigor = world.entityCurrency(self.id, "vigorpoint"),
-    intelligence = world.entityCurrency(self.id, "intelligencepoint"),
-    endurance = world.entityCurrency(self.id, "endurancepoint"),
-    dexterity = world.entityCurrency(self.id, "dexteritypoint")
-  }
-  self.statBonuses = {
-    strength = (self.classType == 1 and 1.15 or 1) + status.stat("ivrpgstrengthscaling"),
-    agility = (self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1))) + status.stat("ivrpgagilityscaling"),
-    vitality = (self.classType == 4 and 1.05 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.15 or 1))) + status.stat("ivrpgvitalityscaling"),
-    vigor = (self.classType == 4 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.05 or 1)))) + status.stat("ivrpgvigorscaling"),
-    intelligence = (self.classType == 2 and 1.2 or 1) + status.stat("ivrpgintelligencescaling"),
-    endurance = (self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1))) + status.stat("ivrpgendurancescaling"),
-    dexterity = (self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))) + status.stat("ivrpgdexterityscaling")
-  }
-  self.classicBonuses = {
-    strength = 0,
-    agility = 0,
-    vitality = 0,
-    vigor = 0,
-    intelligence = 0,
-    endurance = 0,
-    dexterity = 0,
-    default = 0
-  }
 
-  --Stat Linearity Change + Scaling
-  for k,v in pairs(self.stats) do
-    if v >= 20 then
-      self.classicBonuses[k] = 1
-      if v < 30 then
-        v = (v + 30)/2.0
-      end
-    end
-    self.stats[k] = v^self.statBonuses[k]
-  end
-
-  status.setPersistentEffects( "ivrpgstatboosts",
-  {
-
-    -- Strength
-    {stat = "shieldHealth", effectiveMultiplier = 1 + self.stats["strength"]*.05},
-    {stat = "physicalResistance", amount = self.stats["strength"]*.0025},
-
-    -- Intelligence
-    {stat = "energyRegenPercentageRate", amount = .05*self.stats["intelligence"]},
-    {stat = "energyRegenBlockTime", amount = -.01*self.stats["intelligence"]},
-
-    -- Dexterity
-    {stat = "fallDamageMultiplier", amount = -self.stats["dexterity"]*.005},
-
-    -- Endurance
-    {stat = "physicalResistance", amount = self.stats["endurance"]*.0075},
-    {stat = "poisonResistance", amount = self.stats["endurance"]*.005},
-    {stat = "fireResistance", amount = self.stats["endurance"]*.005},
-    {stat = "electricResistance", amount = self.stats["endurance"]*.005},
-    {stat = "iceResistance", amount = self.stats["endurance"]*.005},
-    {stat = "shadowResistance", amount = self.stats["endurance"]*.005},
-    {stat = "cosmicResistance", amount = self.stats["endurance"]*.005},
-    {stat = "radioactiveResistance", amount = self.stats["endurance"]*.005},
-    {stat = "grit", amount = self.stats["endurance"]*.01},
-
-    --Agility
-    {stat = "fallDamageMultiplier", amount = -self.stats["agility"]*.01},
-
-    -- Vitality
-    {stat = "maxHealth", baseMultiplier = math.floor(100*(1 + self.stats["vitality"]*.05))/100},
-    {stat = "foodDelta", amount = self.stats["vitality"]*.0002},
-
-    -- Vigor
-    {stat = "maxEnergy", baseMultiplier = math.floor(100*(1 + self.stats["vigor"]*.05))/100},
-    {stat = "energyRegenPercentageRate", amount = .02*self.stats["vigor"]}
-
-  })
-
-  -- Agility
-  if not status.statPositive("activeMovementAbilities") or mcontroller.canJump() or status.statPositive("ninjaVanishSphere") then
-    mcontroller.controlModifiers({
-      speedModifier = 1 + self.stats["agility"]*.02,
-      airJumpModifier = 1 + self.stats["agility"]*.01
-    })
-  end
+  updateStats()
 
   self.heldItem = world.entityHandItem(self.id, "primary")
   self.heldItem2 = world.entityHandItem(self.id, "alt")
@@ -123,264 +42,57 @@ function update(dt)
   self.isBow = self.weapon1 and root.itemHasTag(self.heldItem, "bow") or false
 
   --Weapon Stat Bonuses
-  if self.heldItem == "magnorbs" or self.heldItem == "evileye" then
-    status.addPersistentEffects("ivrpgstatboosts",
-    {
-      {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["dexterity"]*0.01 + self.stats["intelligence"]*0.01}
-    })
-  elseif self.heldItem == "remotegrenadelauncher" then
-    status.addPersistentEffects("ivrpgstatboosts",
-    {
-      {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["dexterity"]*0.015}
-    })
-  elseif self.heldItem == "erchiuseye" then
-  	status.addPersistentEffects("ivrpgstatboosts",
-    {
-      {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["intelligence"]*0.015}
-    })
-  elseif self.heldItem == "energywhip" then
-    status.addPersistentEffects("ivrpgstatboosts",
-    {
-      {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["dexterity"]*0.02}
+  if self.weaponScaling.items[self.heldItem] then
+    local statAmount = 1
+    for k,v in pairs(self.weaponScaling.items[self.heldItem]) do
+      statAmount = statAmount + stats[k]*v
+    end
+    status.addPersistentEffects("ivrpgstatboosts", {
+      {stat = "powerMultiplier", baseMultiplier = statAmount}
     })
   elseif self.heldItem then
-  	if root.itemHasTag(self.heldItem, "broadsword") or root.itemHasTag(self.heldItem, "spear") or root.itemHasTag(self.heldItem, "hammer") then
-  		status.addPersistentEffects("ivrpgstatboosts",
-  		{
-  		  {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["strength"]*0.02}
-  		})
-	  elseif root.itemHasTag(self.heldItem, "staff") then
-  		status.addPersistentEffects("ivrpgstatboosts",
-  		{
-  		  {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["intelligence"]*0.02}
-  		})
-  	elseif self.isBow or root.itemHasTag(self.heldItem, "rifle") or root.itemHasTag(self.heldItem, "sniperrifle") or root.itemHasTag(self.heldItem, "assaultrifle") or root.itemHasTag(self.heldItem, "shotgun") or root.itemHasTag(self.heldItem, "rocketlauncher") then
-  		status.addPersistentEffects("ivrpgstatboosts",
-  		{
-  		  {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["dexterity"]*0.015}
-  		})
-  	else
-	    --Bonus for One-Handed Primary
-	    if root.itemHasTag(self.heldItem,"wand") then
-	      status.addPersistentEffects("ivrpgstatboosts",
-	      {
-	        {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["intelligence"]*0.0075}
-	      })
-	    elseif self.weapon1 or root.itemHasTag(self.heldItem,"ninja") then
-        local strengthOrDexterity = self.stats["strength"] > self.stats["dexterity"] and "strength" or "dexterity"
-        if root.itemHasTag(self.heldItem,"melee") then
-  	      status.addPersistentEffects("ivrpgstatboosts",
-  	      {
-  	        {stat = "powerMultiplier", baseMultiplier = 1 + self.stats[strengthOrDexterity]*0.0075}
-  	      })
-        else
-          status.addPersistentEffects("ivrpgstatboosts",
-          {
-            {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["dexterity"]*0.0075}
-          })
+	   --Bonus for One-Handed Primary
+    for k,v in pairs(root.itemTags(self.heldItem)) do
+      if self.weaponScaling.tags[v] then
+        local tagInfo = self.weaponScaling.tags[v]
+        local statAmount = -1
+        local amount = 0
+        for x,y in pairs(self.twoHanded and tagInfo.twoHanded or tagInfo.oneHanded) do
+          if self.stats[x] > statAmount then
+            statAmount = self.stats[x]
+            amount = y
+          end
         end
-	    end
-	  end
+        status.addPersistentEffects("ivrpgstatboosts", {
+          {stat = "powerMultiplier", baseMultiplier = 1 + statAmount*amount}
+        })
+        break
+      end
+    end
   end
   --Extra Bonus with One-Handed Secondary
-  if self.heldItem2 then
-    if root.itemHasTag(self.heldItem2,"wand") then
-      status.addPersistentEffects("ivrpgstatboosts",
-      {
-        {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["intelligence"]*0.0075}
-      })
-    elseif self.weapon2 or root.itemHasTag(self.heldItem2,"ninja") then
-      local strengthOrDexterity = self.stats["strength"] > self.stats["dexterity"] and "strength" or "dexterity"
-      if root.itemHasTag(self.heldItem2,"melee") then
-        status.addPersistentEffects("ivrpgstatboosts",
-        {
-          {stat = "powerMultiplier", baseMultiplier = 1 + self.stats[strengthOrDexterity]*0.0075}
+  if self.heldItem2 and not self.twoHanded then
+    for k,v in pairs(root.itemTags(self.heldItem2)) do
+      if self.weaponScaling.tags[v] then
+        local tagInfo = self.weaponScaling.tags[v]
+        local statAmount = -1
+        local amount = 0
+        for x,y in pairs(tagInfo.oneHanded) do
+          if self.stats[x] > statAmount then
+            statAmount = self.stats[x]
+            amount = y
+          end
+        end
+        status.addPersistentEffects("ivrpgstatboosts", {
+          {stat = "powerMultiplier", baseMultiplier = 1 + statAmount*amount}
         })
-      else
-        status.addPersistentEffects("ivrpgstatboosts",
-        {
-          {stat = "powerMultiplier", baseMultiplier = 1 + self.stats["dexterity"]*0.0075}
-        })
+        break
       end
     end
   end  
 
-  updateClassEffects(self.classType)
-  
-  -- Affinity Effects
-  
-  self.affinity = world.entityCurrency(self.id, "affinitytype")
-  
-  if self.affinity == 0 then
-    status.clearPersistentEffects("ivrpgaffinityeffects")
-  else
-      local frost = hasEphemeralStat("frostslow")
-      local wet = hasEphemeralStat("wet")
-      local isSuborWet = isInLiquid() | wet
-      --sb.logInfo("FROST: "..frost)
-      --sb.logInfo("WET: "..wet)
-      --sb.logInfo("ISSUBORWET: "..isSuborWet)
-      effs = {
-        { -- Flame --
-          {stat = "fireStatusImmunity", amount = 1},
-          {stat = "biomeheatImmunity", amount = 1},
-          {stat = "poisonResistance", amount = -0.25 * ((status.stat("ivrpguceternalflame")+1)%2)},
-          {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isInLiquid() * ((status.stat("ivrpguceternalflame")+1)%2)}
-        },
-        { -- Venom --
-          {stat = "poisonStatusImmunity", amount = 1},
-          {stat = "tarStatusImmunity", amount = 1},
-          {stat = "poisonStatusImmunity", amount = 1},
-          {stat = "biomeradiationImmunity", amount = 1},
-          {stat = "electricResistance", amount = -0.25 * ((status.stat("ivrpgucincurable")+1)%2)},
-          {stat = "maxHealth", effectiveMultiplier = 1 - 0.15 * ((status.stat("ivrpgucincurable")+1)%2)}
-        },
-        { -- Frost --
-          {stat = "iceStatusImmunity", amount = 1},
-          {stat = "wetImmunity", amount = 1},
-          {stat = "snowslowImmunity", amount = 1},
-          {stat = "iceslipImmunity", amount = 1},
-          {stat = "biomecoldImmunity", amount = 1},
-          {stat = "fireResistance", amount = -0.25 * ((status.stat("ivrpgucevergreen")+1)%2)}
-        },
-        { -- Shock --
-          {stat = "electricStatusImmunity", amount = 1},
-          {stat = "tarStatusImmunity", amount = 1},
-          {stat = "slimeImmunity", amount = 1},
-          {stat = "fumudslowImmunity", amount = 1 },
-          {stat = "jungleslowImmunity", amount = 1 },
-          {stat = "spiderwebImmunity", amount = 1 },
-          {stat = "sandstormImmunity", amount = 1 },
-          {stat = "snowslowImmunity", amount = 1},
-          {stat = "iceResistance", amount = -0.25 * ((status.stat("ivrpgucplasmacore")+1)%2)},
-    	    {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isInLiquid() * ((status.stat("ivrpgucplasmacore")+1)%2)}
-        },
-        { -- Infernal --
-          {stat = "fireStatusImmunity", amount = 1},
-          {stat = "fireResistance", amount = 3},
-          {stat = "biomeheatImmunity", amount = 1},
-
-          {stat = "poisonResistance", amount = -0.25 * ((status.stat("ivrpguceternalflame")+1)%2)},
-          {stat = "maxEnergy", effectiveMultiplier = 1 - 0.3*isInLiquid() * ((status.stat("ivrpguceternalflame")+1)%2)},
-
-          {stat = "ffextremeheatImmunity", amount = 1},
-          {stat = "lavaImmunity", amount = 1}
-        },
-        { -- Toxic --
-          {stat = "poisonStatusImmunity", amount = 1},
-          {stat = "tarStatusImmunity", amount = 1},
-          {stat = "poisonResistance", amount = 3},
-
-          {stat = "electricResistance", amount = -0.25 * ((status.stat("ivrpgucincurable")+1)%2)},
-          {stat = "maxHealth", effectiveMultiplier = 1 - 0.15  * ((status.stat("ivrpgucincurable")+1)%2)},
-
-          {stat = "biomeradiationImmunity", amount = 1},
-          {stat = "ffextremeradiationImmunity", amount = 1},
-          {stat = "protoImmunity", amount = 1}
-        },
-        { -- Cryo --
-          {stat = "iceStatusImmunity", amount = 1},
-          {stat = "iceResistance", amount = 3},
-          {stat = "breathProtection", amount = 1},
-          {stat = "wetImmunity", amount = 1},
-          {stat = "snowslowImmunity", amount = 1},
-          {stat = "iceslipImmunity", amount = 1},
-          {stat = "biomecoldImmunity", amount = 1},
-
-          {stat = "fireResistance", amount = -0.25 * ((status.stat("ivrpgucevergreen")+1)%2)},
-
-          {stat = "ffextremecoldImmunity", amount = 1},
-        },
-        { -- Arc --
-          {stat = "electricStatusImmunity", amount = 1},
-          {stat = "electricResistance", amount = 3},
-          {stat = "tarStatusImmunity", amount = 1},
-          {stat = "slimeImmunity", amount = 1},
-          {stat = "fumudslowImmunity", amount = 1 },
-          {stat = "jungleslowImmunity", amount = 1 },
-          {stat = "spiderwebImmunity", amount = 1 },
-          {stat = "sandstormImmunity", amount = 1 },
-          {stat = "snowslowImmunity", amount = 1},
-
-          {stat = "iceResistance", amount = -0.25 * ((status.stat("ivrpgucplasmacore")+1)%2)},
-          {stat = "maxHealth", effectiveMultiplier = 1 - 0.3*isInLiquid() * ((status.stat("ivrpgucplasmacore")+1)%2)},
-
-          {stat = "shadowResistance", amount = 3},
-          {stat = "biomeradiationImmunity", amount = 1}
-        }
-      }
-      status.setPersistentEffects("ivrpgaffinityeffects",effs[self.affinity])
-
-      local aestheticType = {"fire", "poison", "ice", "electric"}
-      if status.statPositive("ivrpgucmiasma") then aestheticType[2] = "miasma" end
-      if self.affinity > 0 then
-        local affinityMod = (self.affinity-1)%4
-        if status.statPositive("ivrpgaesthetics") and (mcontroller.xVelocity() > 1 or mcontroller.xVelocity() < -1) and not status.statPositive("activeMovementAbilities") then
-          world.spawnProjectile(aestheticType[affinityMod+1].."trailIVRPG", {mcontroller.xPosition(), mcontroller.yPosition()-2}, self.id, {0,0}, false, {power = 0, knockback = 0, timeToLive = 0.3, damageKind = "applystatus"})
-        end
-
-        if self.affinity == 8 and status.resource("energy") == 0 and self.arcExplosion then
-          self.arcExplosion = false
-          world.spawnProjectile("ivrpgarcexplosion", mcontroller.position(), self.id, {0,0}, false)
-        end
-
-        if isInLiquid() == 1 then
-          if affinityMod == 0 then
-            if not status.statPositive("ivrpguceternalflame") then status.overConsumeResource("health", dt) end
-          elseif affinityMod == 3 then
-            if not status.statPositive("ivrpgucplasmacore") then status.overConsumeResource("energy", dt) end
-          end
-        end
-
-        if affinityMod == 2 then
-          local noSpeedDebuff = false
-          if not status.statPositive("ivrpgucevergreen") then
-            mcontroller.controlModifiers({
-              airJumpModifier = 0.85
-            })
-            if status.statPositive("ivrpgucicequeen") and world.entityGender(self.id) == "female" then
-              if (self.weapon1 and root.itemHasTag(self.heldItem, "whip")) or (self.weapon2 and root.itemHasTag(self.heldItem2, "whip")) then
-                noSpeedDebuff = true
-              end
-            end
-            if not noSpeedDebuff then
-              mcontroller.controlModifiers({
-                speedModifier = 0.85
-              })
-            end
-          end
-          if status.statPositive("ivrpgucskadisblessing") then
-            if self.isBow then
-              status.addPersistentEffect("ivrpgaffinityeffects", {stat = "powerMultiplier", baseMultiplier = 1.5})
-            end
-          elseif status.statPositive("ivrpgucicequeen") and world.entityGender(self.id) == "female" then
-            if (self.weapon1 and (root.itemHasTag(self.heldItem, "dagger") or root.itemHasTag(self.heldItem, "fist") or root.itemHasTag(self.heldItem, "whip"))) or (self.weapon2 and (root.itemHasTag(self.heldItem2, "dagger") or root.itemHasTag(self.heldItem2, "fist") or root.itemHasTag(self.heldItem2, "whip"))) then
-              status.addPersistentEffect("ivrpgaffinityeffects", {stat = "powerMultiplier", baseMultiplier = 1.75})
-            end
-          end
-        end
-
-        if affinityMod == 3 then
-          if (mcontroller.liquidPercentage() > 0 or wet == 1) and status.statPositive("ivrpgucdischarge") then
-            shockNearbyTargets(dt)
-          end
-        end
-
-        if self.affinity == 7 and status.resource("health")/status.stat("maxHealth") < 0.33 and self.cryoExplosion then
-          self.cryoExplosion = false
-          world.spawnProjectile("ivrpgcryoexplosionstatus", mcontroller.position(), self.id, {0,0}, false)
-        end
-
-      end
-  end
-
-  if self.arcExplosion == false and status.resource("energy") > 0 then
-    self.arcExplosion = true
-  end
-
-  if self.cryoExplosion == false and status.resource("health")/status.stat("maxHealth") >= 0.33 then
-    self.cryoExplosion = true
-  end
+  updateClassEffects(dt)
+  updateAffinityEffects(dt)
 
   self.dnotifications, self.damageGivenUpdate = status.inflictedHitsSince(self.damageGivenUpdate)
   if self.dnotifications then
@@ -406,6 +118,76 @@ function update(dt)
 
   checkLevelUp()
   updateChallenges()
+end
+
+function updateStats()
+  self.stats = {
+    strength = world.entityCurrency(self.id, "strengthpoint"),
+    agility = world.entityCurrency(self.id, "agilitypoint"),
+    vitality = world.entityCurrency(self.id, "vitalitypoint"),
+    vigor = world.entityCurrency(self.id, "vigorpoint"),
+    intelligence = world.entityCurrency(self.id, "intelligencepoint"),
+    endurance = world.entityCurrency(self.id, "endurancepoint"),
+    dexterity = world.entityCurrency(self.id, "dexteritypoint")
+  }
+  self.statBonuses = {
+    strength = 1 + status.stat("ivrpgstrengthscaling"),
+    agility = 1 + status.stat("ivrpgagilityscaling"),
+    vitality = 1 + status.stat("ivrpgvitalityscaling"),
+    vigor = 1 + status.stat("ivrpgvigorscaling"),
+    intelligence = 1 + status.stat("ivrpgintelligencescaling"),
+    endurance = 1 + status.stat("ivrpgendurancescaling"),
+    dexterity = 1 + status.stat("ivrpgdexterityscaling")
+  }
+  self.classicBonuses = {
+    strength = 0,
+    agility = 0,
+    vitality = 0,
+    vigor = 0,
+    intelligence = 0,
+    endurance = 0,
+    dexterity = 0,
+    default = 0
+  }
+
+  --Stat Linearity Change + Scaling
+  for k,v in pairs(self.stats) do
+    if v >= 20 then
+      self.classicBonuses[k] = 1
+      if v < 30 then
+        v = (v + 30)/2.0
+      end
+    end
+    self.stats[k] = v^self.statBonuses[k]
+  end
+
+  local statConfig = {}
+  local movementConfig = {}
+  for k,v in pairs(self.statList) do
+    if k ~= "default" then
+      for x,y in ipairs(v) do
+        if y.type == "stat" then
+          for i,j in ipairs(y.apply) do
+            local currentConfig = {}
+            local extra = 1
+            if j.type == "status" then
+              currentConfig.stat = j.stat
+              if j.amountType == "amount" then extra = 0 end
+              currentConfig[j.amountType] = (extra + (j.amount*self.stats[k]*(j.negative and -1 or 1)))
+              table.insert(statConfig, currentConfig)
+            elseif j.type == "movement" then
+              movementConfig[j.stat] = (extra + (j.amount*self.stats[k]))
+            end
+          end
+        end
+      end
+    end
+  end
+
+  status.setPersistentEffects("ivrpgstatboosts", statConfig)
+  if (not status.statPositive("activeMovementAbilities")) or mcontroller.canJump() or status.statPositive("ninjaVanishSphere") then
+    mcontroller.controlModifiers(movementConfig)
+  end
 end
 
 function shockNearbyTargets(dt)
@@ -469,395 +251,217 @@ end
 function isInLiquid()
   local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
   local mouthful = world.liquidAt(mouthposition)
-    if (world.liquidAt(mouthPosition)) and
-	    ((mcontroller.liquidId()== 1) or 
-	    (mcontroller.liquidId()== 5) or 
-	    (mcontroller.liquidId()== 6) or 
-	    (mcontroller.liquidId()== 12) or 
-	    (mcontroller.liquidId()== 43) or 
-	    (mcontroller.liquidId()== 55) or 
-	    (mcontroller.liquidId()== 58) or
-	    (mcontroller.liquidId()== 60) or 
-	    (mcontroller.liquidId()== 69))
-    then
-      return 1
-    end 
-  return 0
+  return (world.liquidAt(mouthPosition)) and
+    ((mcontroller.liquidId()== 1) or 
+    (mcontroller.liquidId()== 5) or 
+    (mcontroller.liquidId()== 6) or 
+    (mcontroller.liquidId()== 12) or 
+    (mcontroller.liquidId()== 43) or 
+    (mcontroller.liquidId()== 55) or 
+    (mcontroller.liquidId()== 58) or
+    (mcontroller.liquidId()== 60) or 
+    (mcontroller.liquidId()== 69))
 end
 
-function updateClassEffects(classType)
-  local hardcore = status.statPositive("ivrpghardcore")
-  local weaponsDisabled = false
+-- Class Effects
+function updateClassInfo()
+  self.classInfo = root.assetJson("/classes/" .. self.classList[self.class] .. ".config")
+end
 
-  if classType == 0 then
-    --No Class
+function updateClassEffects(dt)
+
+  if self.class ~= world.entityCurrency(self.id, "classtype") then
+    self.class = world.entityCurrency(self.id, "classtype")
+  end
+  
+  if self.class == 0 then
     status.clearPersistentEffects("ivrpgclassboosts")
+    status.clearPersistentEffects("ivrpgclasseffects")
     status.removeEphemeralEffect("explorerglow")
     status.removeEphemeralEffect("knightblock")
     status.removeEphemeralEffect("ninjacrit")
     status.removeEphemeralEffect("wizardaffinity")
     status.removeEphemeralEffect("roguepoison")
     status.removeEphemeralEffect("soldierdiscipline")
-  elseif classType == 1 then
-    --Knight
-    status.setPersistentEffects("ivrpgclassboosts",
-    {
-      {stat = "grit", amount = .2},
-    })
+    return
+  end
 
-    self.notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
-    if self.notifications then
-      --sb.logInfo("Damage Taken!!!")
-      for _,notification in pairs(self.notifications) do
-        if notification.hitType == "ShieldHit" then
-          if status.resourcePositive("perfectBlock") then
-            --increased damage after perfect blocks
-            status.addEphemeralEffect("knightblock")
-            --sb.logInfo("Perfect Block: " .. tostring(status.resource("perfectBlock")) .. ", " .. tostring(status.resource("prefectBlockLimit")))
-          end
-        end
-      end
+  updateClassInfo()
+  local classicMode = status.statPositive("ivrpghardcore")
+  local weaponsDisabled = false
+
+  -- Weapon Bonuses
+  local weaponDictionary = {}
+  local effectsConfig = {}
+  local movementConfig = {}
+  local effectConfig = false
+  for k,v in ipairs(self.classInfo.weaponBonuses) do
+    for tag,info in pairs(v.apply) do
+      weaponDictionary[tag] = info
     end
+  end
 
-    if self.heldItem and (root.itemHasTag(self.heldItem, "broadsword") or root.itemHasTag(self.heldItem, "greataxe")) then
-      status.addPersistentEffects("ivrpgclassboosts",
-          {
-            {stat = "powerMultiplier", baseMultiplier = 1.2}
-          })
-    elseif self.heldItem and self.heldItem2 and not self.twoHanded then
-      if ((root.itemHasTag(self.heldItem, "shortsword") or root.itemHasTag(self.heldItem, "axe") or root.itemHasTag(self.heldItem, "mace")) and root.itemHasTag(self.heldItem2, "shield")) or (root.itemHasTag(self.heldItem, "shield") and (root.itemHasTag(self.heldItem2, "shortsword") or root.itemHasTag(self.heldItem2, "axe") or root.itemHasTag(self.heldItem2, "mace"))) then
-        status.addPersistentEffects("ivrpgclassboosts",
-          {
-            {stat = "powerMultiplier", baseMultiplier = 1.2}
-          })
-      end
-    end
-
-    --Hardcore
-    if hardcore then
-      status.addPersistentEffects("ivrpgclassboosts", 
-        {
-          {stat = "maxEnergy", effectiveMultiplier = 0.75 + (0.125 * self.classicBonuses["vigor"])}
-        })
-      mcontroller.controlModifiers({
-        speedModifier = 0.9 + (0.05 * self.classicBonuses["agility"]),
-        airJumpModifier = 0.7 + (0.15 * self.classicBonuses["agility"])
-      })
-
-      --Weapon Checks
-      if not self.isBrokenBroadsword and not self.isBow then
+  -- Primary Hand
+  if self.heldItem then
+    for k,v in ipairs(root.itemTags(self.heldItem)) do
+      local info = weaponDictionary[v]
+      if info then
         if self.twoHanded then
-          if self.weapon1 and not root.itemHasTag(self.heldItem, "melee") then weaponsDisabled = true end
+          if info.twoHanded then
+            effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount}
+          end
         else
-          if self.weapon1 then
-            if not root.itemHasTag(self.heldItem, "melee") or self.weapon2 then
-              weaponsDisabled = true
-            end
-          elseif self.weapon2 then
-            if not root.itemHasTag(self.heldItem2, "melee") then
-              weaponsDisabled = true
+          if not info.twoHanded then
+            if info.with and self.heldItem2 then
+              for x,y in ipairs(info.with) do
+                if root.itemHasTag(self.heldItem2, y) then
+                  effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount}
+                  break
+                end
+              end
+            elseif not info.with then
+              effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount}
+              if info.without and self.heldItem2 then
+                for x,y in ipairs(info.without) do
+                  if root.itemHasTag(self.heldItem2, y) then
+                    effectConfig = false
+                    break
+                  end
+                end
+              end
             end
           end
         end
       end
-
-    end
-
-  elseif classType == 2 then
-    --Wizard
-    status.setPersistentEffects("ivrpgclassboosts",
-    {
-      --purposefully left empty
-    })
-    --Arcane Chance Specified in monster.lua and npc.lua
-
-    self.checkDualWield = true
-    self.wizardaffinityAdded = false
-
-    if self.heldItem and root.itemHasTag(self.heldItem, "staff") then
-      status.addPersistentEffects("ivrpgclassboosts",
-      {
-        {stat = "powerMultiplier", baseMultiplier = 1.1},
-      })
-      status.addEphemeralEffect("wizardaffinity", math.huge)
-      self.wizardaffinityAdded = true
-    elseif (self.heldItem and root.itemHasTag(self.heldItem, "wand") and self.heldItem2 and root.itemHasTag(self.heldItem2,"wand")) then
-      status.addPersistentEffects("ivrpgclassboosts",
-      {
-        {stat = "powerMultiplier", baseMultiplier = 1.1},
-      })
-      status.addEphemeralEffect("wizardaffinity", math.huge)
-      self.wizardaffinityAdded = true
-    elseif holdingWeaponsCheck(self.heldItem, self.heldItem2, true) then
-      if (self.heldItem2 and root.itemHasTag(self.heldItem2, "wand")) or (self.heldItem and root.itemHasTag(self.heldItem, "wand")) then
-        status.addEphemeralEffect("wizardaffinity", math.huge)
-        self.wizardaffinityAdded = true
+      if effectConfig then
+        table.insert(effectsConfig, effectConfig)
+        if info.allowSecond then
+          effectConfig = false
+        end
+        break
       end
     end
+  end
 
-    if holdingWeaponsCheck(self.heldItem, self.heldItem2, false) then
-      if (self.heldItem and root.itemHasTag(self.heldItem, "wand")) then
-        self.checkDualWield = false
-        status.addPersistentEffects("ivrpgclassboosts",
-        {
-          {stat = "powerMultiplier", baseMultiplier = 1.1}
-        })
-        status.addEphemeralEffect("wizardaffinity", math.huge)
-        self.wizardaffinityAdded = true
-      end
-    end
-
-    if holdingWeaponsCheck(self.heldItem2, self.heldItem, false) then
-      if (self.heldItem2 and root.itemHasTag(self.heldItem2, "wand")) and self.checkDualWield then
-        status.addPersistentEffects("ivrpgclassboosts",
-        {
-          {stat = "powerMultiplier", baseMultiplier = 1.1}
-        })
-        status.addEphemeralEffect("wizardaffinity", math.huge)
-        self.wizardaffinityAdded = true
-      end
-    end
-
-    if not self.wizardaffinityAdded then
-      status.removeEphemeralEffect("wizardaffinity")
-    end
-
-    --Hardcore
-    if hardcore then
-      status.addPersistentEffects("ivrpgclassboosts", 
-        {
-          {stat = "physicalResistance", amount = -.2 + (0.1 * self.classicBonuses["endurance"])}
-        })
-      mcontroller.controlModifiers({
-        speedModifier = 0.8 + (0.1 * self.classicBonuses["agility"]),
-        airJumpModifier = 0.8 + (0.1 * self.classicBonuses["agility"])
-      })
-
-      --Weapon Checks
-      if not self.isBrokenBroadsword and not self.isBow and not (self.heldItem == "erchiuseye") and not (self.heldItem == "magnorbs") and not (self.heldItem == "evileye") then
-        if self.twoHanded then
-          if self.weapon1 and not root.itemHasTag(self.heldItem, "staff") then weaponsDisabled = true end
-        else
-          if self.weapon1 then
-            if not root.itemHasTag(self.heldItem, "wand") then
-              weaponsDisabled = true
+  -- Secondary Hand: Should not include Two-Handed Weapons 
+  if (not effectConfig) and (not self.twoHanded) and self.heldItem2 then
+    for k,v in ipairs(root.itemTags(self.heldItem2)) do
+      local info = weaponDictionary[v]
+      if info then
+        if not info.twoHanded then
+          if info.with and self.heldItem then
+            for x,y in ipairs(info.with) do
+              if root.itemHasTag(self.heldItem, y) then
+                effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount}
+                break
+              end
             end
-          end
-          if self.weapon2 then
-            if not root.itemHasTag(self.heldItem2, "wand") and not root.itemHasTag(self.heldItem2, "dagger") then
-              weaponsDisabled = true
+          elseif not info.with then
+            effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount}
+            if info.without and self.heldItem then
+              for x,y in ipairs(info.without) do
+                if root.itemHasTag(self.heldItem, y) then
+                  effectConfig = false
+                  break
+                end
+              end
             end
           end
         end
       end
-
+      if effectConfig then
+        table.insert(effectsConfig, effectConfig)
+        break
+      end
     end
-  elseif classType == 3 then
-    --Ninja
-    --ThrowingStar, ThrowingKunai, SnowflakeShuriken, ThrowingKnife, ThrowingDagger
-    status.setPersistentEffects("ivrpgclassboosts",
-    {
-      {stat = "fallDamageMultiplier", amount = -.1}
-    })
-    nighttime = nighttimeCheck()
-    underground = undergroundCheck()
-    if nighttime or underground then
-      status.addEphemeralEffect("ninjacrit", math.huge)
-    else
-      status.removeEphemeralEffect("ninjacrit")
+  end
+  
+  -- Stat Bonuses
+  local statDictionary = {}
+  for k,v in ipairs(self.classInfo.scaling) do
+    table.insert(statDictionary, v)
+  end
+  for k,v in ipairs(self.classInfo.passive) do
+    table.insert(statDictionary, v)
+  end
+  if classicMode then
+    for k,v in ipairs(self.classInfo.classic) do
+      table.insert(statDictionary, v)
     end
+  end
 
-    local primaryBonus = 0
-    local secondaryBonus = 0
+  for k,v in ipairs(statDictionary) do
+    if v.type == "status" or v.type == "movement" then
+      for x,y in pairs(v.apply) do
+        local classic = y.halvingStat and y.halvingAmount * self.classicBonuses[y.halvingStat] or 0
+        if v.type == "status" then
+          effectConfig = {}
+          effectConfig[y.type] = y.amount * (y.negative and -1 or 1) + classic
+          effectConfig.stat = y.stat
+          table.insert(effectsConfig, effectConfig)
+        elseif v.type == "movement" then
+          movementConfig = {}
+          movementConfig[y.stat] = y.amount + classic
+          mcontroller.controlModifiers(movementConfig)
+        end
+      end
+    end
+  end
+
+  status.setPersistentEffects("ivrpgclasseffects", effectsConfig)
+
+  -- Classic Mode
+
+  weaponDictionary = {}
+  if classic then
+    for k,v in ipairs(self.classInfo.classic) do
+      if v.type == "disable" then
+        for x,y in ipairs(v.apply) do
+          weaponDictionary[x] = y
+        end
+      end
+    end
 
     if self.heldItem then
-      if root.itemHasTag(self.heldItem, "ninja") then
-        primaryBonus = 0.15
-      elseif root.itemHasTag(self.heldItem, "chakram") or root.itemHasTag(self.heldItem, "dagger") or root.itemHasTag(self.heldItem, "whip") then
-        primaryBonus = 0.1
-      end
-    end
-
-    if self.heldItem2 then
-      if root.itemHasTag(self.heldItem2, "ninja") then
-        secondaryBonus = 0.15
-      elseif root.itemHasTag(self.heldItem2, "chakram") or root.itemHasTag(self.heldItem2, "dagger") or root.itemHasTag(self.heldItem2, "whip") then
-        secondaryBonus = 0.1
-      end
-    end
-
-    status.addPersistentEffects("ivrpgclassboosts",
-    {
-      {stat = "powerMultiplier", baseMultiplier = 1 + (primaryBonus + secondaryBonus)}
-    })
-
-    mcontroller.controlModifiers({
-      speedModifier = 1.1,
-      airJumpModifier = 1.1
-    })
-
-    --Hardcore
-    if hardcore then
-      status.addPersistentEffects("ivrpgclassboosts", 
-        {
-          {stat = "maxHealth", effectiveMultiplier = 0.5 + (0.25 * self.classicBonuses["vitality"])}
-        })
-
-      --Weapon Checks
-      if not self.isBrokenBroadsword and not self.isBow and not (self.heldItem == "adaptablecrossbow") and not (self.heldItem == "soluskatana") and not (self.heldItem == "energywhip") and not (self.heldItem and root.itemHasTag(self.heldItem, "katana")) then
-        if self.twoHanded then
-          if self.weapon1 then weaponsDisabled = true end
-        else
-          if self.weapon1 then
-            if root.itemHasTag(self.heldItem, "ranged") or root.itemHasTag(self.heldItem, "wand") then
-              weaponsDisabled = true
+      for x,y in root.itemTags(self.heldItem) do
+        local info = weaponDictionary[y]
+        if info then
+          if info.all or (info.twoHanded and self.twoHanded) then
+            weaponsDisabled = true
+          elseif info.with and self.heldItem2 then
+            for r,tag in ipairs(info.with) do
+              if root.itemHasTag(self.heldItem2, tag) then
+                weaponsDisabled = true
+                break
+              end
             end
           end
-          if self.weapon2 then
-            if root.itemHasTag(self.heldItem2, "ranged") or root.itemHasTag(self.heldItem2, "wand") then
-              weaponsDisabled = true
-            end
-          end
+          if weaponsDisabled then break end
         end
       end
     end
 
-  elseif classType == 4 then
-    --Soldier
-    --Molotov, Thorn Grenade, Bomb
-    status.setPersistentEffects("ivrpgclassboosts",
-    {
-      --Purposefully Empty
-    })
-    self.energy = status.resource("energy")
-    self.maxEnergy = status.stat("maxEnergy")
-    if self.energy == self.maxEnergy then
-      status.addEphemeralEffect("soldierdiscipline", math.huge)
-    elseif self.energy < self.maxEnergy*3/4 then
-      status.removeEphemeralEffect("soldierdiscipline")
-    end
-    if self.heldItem and (root.itemHasTag(self.heldItem, "shotgun") or root.itemHasTag(self.heldItem, "sniperrifle") or root.itemHasTag(self.heldItem, "assaultrifle")) then
-        status.addPersistentEffects("ivrpgclassboosts",
-        {
-          {stat = "powerMultiplier", baseMultiplier = 1.1}
-        })
-    elseif holdingWeaponsCheck(self.heldItem, self.heldItem2, true) then
-      if (root.itemHasTag(self.heldItem,"soldier") and root.itemHasTag(self.heldItem2,"ranged")) or (root.itemHasTag(self.heldItem,"ranged") and root.itemHasTag(self.heldItem2,"soldier")) then
-        status.addPersistentEffects("ivrpgclassboosts",
-        {
-          {stat = "powerMultiplier", baseMultiplier = 1.2}
-        })
-      end
-    end
-
-    --Hardcore
-    if hardcore then
-      status.addPersistentEffects("ivrpgclassboosts", 
-        {
-          {stat = "poisonResistance", amount = -.2 + (0.1 * self.classicBonuses["endurance"])},
-          {stat = "fireResistance", amount = -.2 + (0.1 * self.classicBonuses["endurance"])},
-          {stat = "electricResistance", amount = -.2 + (0.1 * self.classicBonuses["endurance"])},
-          {stat = "iceResistance", amount = -.2 + (0.1 * self.classicBonuses["endurance"])}
-        })
-      mcontroller.controlModifiers({
-        airJumpModifier = 0.9 + (0.05 * self.classicBonuses["agility"])
-      })
-
-      --Weapon Checks
-      if not self.isBrokenBroadsword and not self.isBow then
-        if self.twoHanded then
-          if self.weapon1 and (not root.itemHasTag(self.heldItem, "ranged") or self.heldItem == "erchiuseye") then weaponsDisabled = true end
-        else
-          if self.weapon1 then
-            if not root.itemHasTag(self.heldItem, "ranged") or self.weapon2 then
-              weaponsDisabled = true
-            end
-          elseif self.weapon2 then
-            if not root.itemHasTag(self.heldItem2, "ranged") then
-              weaponsDisabled = true
+    if (not weaponsDisabled) and (not self.twoHanded) and self.heldItem2 then
+      for x,y in root.itemTags(self.heldItem2) do
+        local info = weaponDictionary[y]
+        if info then
+          if info.all then
+            weaponsDisabled = true
+          elseif info.with and self.heldItem then
+            for r,tag in ipairs(info.with) do
+              if root.itemHasTag(self.heldItem, tag) then
+                weaponsDisabled = true
+                break
+              end
             end
           end
+          if weaponsDisabled then break end
         end
       end
-    end
-    
-  elseif classType == 5 then
-    --Rogue
-    status.setPersistentEffects("ivrpgclassboosts",
-    {
-      --Purposefully empty
-    })
-    self.foodValue = status.resource("food")
-    if self.foodValue >= 34 then
-      status.addEphemeralEffect("roguepoison",math.huge)
-    else
-      status.removeEphemeralEffect("roguepoison")
-    end
-    --poison is finished in monster.lua
-    if holdingWeaponsCheck(self.heldItem, self.heldItem2, true) then
-      if self.weapon1 and self.weapon2 then
-        status.addPersistentEffects("ivrpgclassboosts",
-          {
-            {stat = "powerMultiplier", baseMultiplier = 1.2}
-          })
-      end
-    end
-
-    --Hardcore
-    if hardcore then
-      status.addPersistentEffects("ivrpgclassboosts", 
-        {
-          {stat = "maxHealth", effectiveMultiplier = 0.8 + (0.1 * self.classicBonuses["vitality"])},
-          {stat = "foodDelta", amount = -0.002 + (0.001 * self.classicBonuses["vitality"])}
-        })
-
-      --Weapon Checks
-      if not self.isBrokenBroadsword and not self.isBow and not (self.heldItem == "energywhip") then
-        if self.twoHanded and self.weapon1 then
-          weaponsDisabled = true
-        elseif (self.heldItem and root.itemHasTag(self.heldItem, "wand")) or (self.heldItem2 and root.itemHasTag(self.heldItem2, "wand")) then
-          weaponsDisabled = true
-        end
-      end
-    end
-  elseif classType == 6 then
-    --Explorer
-    status.setPersistentEffects("ivrpgclassboosts",
-    {
-      {stat = "physicalResistance", amount = .1}
-    })
-    if (self.heldItem and root.itemHasTag(self.heldItem, "explorer")) or (self.heldItem2 and root.itemHasTag(self.heldItem2, "explorer")) then
-      status.addPersistentEffects("ivrpgclassboosts",
-        {
-          {stat = "powerMultiplier", baseMultiplier = 1.1},
-          {stat = "physicalResistance", amount = .1},
-          {stat = "poisonResistance", amount = .1},
-          {stat = "fireResistance", amount = .1},
-          {stat = "electricResistance", amount = .1},
-          {stat = "iceResistance", amount = .1},
-          {stat = "shadowResistance", amount = .1},
-          {stat = "cosmicResistance", amount = .1},
-          {stat = "radioactiveResistance", amount = .1}
-        })
-    end
-    self.health = world.entityHealth(self.id)
-    if self.health[1] ~= 0 and self.health[2] ~= 0 and self.health[1]/self.health[2]*100 >= 50 and not status.statPositive("ivrpgclassability") then
-      status.addEphemeralEffect("explorerglow", math.huge)
-    else
-      status.removeEphemeralEffect("explorerglow")
-    end
-
-    --Hardcore
-    if hardcore then
-      status.addPersistentEffects("ivrpgclassboosts", 
-        {
-          {stat = "powerMultiplier", effectiveMultiplier = 0.85}
-        })
     end
   end
 
   if weaponsDisabled then
-
     local multiplier = 0
     local classicType = "default"
     local both = "default"
@@ -906,25 +510,24 @@ function updateClassEffects(classType)
         multiplier = 0.75
       end
     end
-
     status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
       {stat = "powerMultiplier", effectiveMultiplier = (self.classicBonuses[classicType] | self.classicBonuses[both]) * multiplier}
     })
-
   else
     status.clearPersistentEffects("ivrpghardcoreweaponsdisabled")
   end
 
-  updateSpecialization(hardcore)
+  updateSpecialization(classicMode)
+
 end
 
 function updateSpecialization(hardcore)
-  if self.classType == 0 or self.specType == 0 then
+  if self.class == 0 or self.specType == 0 then
     status.clearPersistentEffects("ivrpgspecweaponbonus")
     status.clearPersistentEffects("ivrpgspecstatusbonus")
     return
   end
-  local spec = self.specList[tostring(self.classType)][tostring(self.specType)]
+  local spec = self.specList[tostring(self.class)][tostring(self.specType)]
   local specInfo = root.assetJson("/specs/" .. spec .. ".config")
   local specEffects = specInfo.effects
   
@@ -1149,7 +752,127 @@ function updateSpecialization(hardcore)
       end
     end
   end
+end
 
+-- Affinity Effects
+function updateAffinityInfo()
+  self.affinityInfo = root.assetJson("/affinities/" .. self.affinityList[self.affinity] .. ".config")
+end
+
+function updateAffinityEffects(dt)
+
+  if self.affinity ~= world.entityCurrency(self.id, "affinitytype") then
+    self.affinity = world.entityCurrency(self.id, "affinitytype")
+  end
+  
+  if self.affinity == 0 then
+    status.clearPersistentEffects("ivrpgaffinityeffects")
+    return
+  end
+
+  updateAffinityInfo()
+
+  local affinityMod = (self.affinity - 1) % 4
+  local effectsConfig = {}
+  local movementConfig = {}
+  for k,v in ipairs(self.affinityInfo.immunity) do
+    for x,y in ipairs(v.apply) do
+      table.insert(effectsConfig, {stat = y.stat, amount = y.amount})
+    end
+  end
+  for k,v in ipairs(self.affinityInfo.weakness) do
+    if v.type ~= "ability" then
+      for x,y in ipairs(v.apply) do
+        local remove = y.removingStat and status.statPositive(y.removingStat)
+        if not remove then
+          if v.type == "status" then
+            local effectConfig = {}
+            effectConfig["stat"] = y.stat
+            effectConfig[y.type] = (y.type == "amount" and 0 or 1) + (y.amount * (y.negative and -1 or 1))
+            table.insert(effectsConfig, effectConfig)
+          elseif v.type == "movement" then
+            movementConfig[y.stat] = 1 - y.amount
+          end
+        end
+      end
+    end
+  end
+
+  -- Bonus Effects (Too complicated or specific for configs)
+  local wet = hasEphemeralStat("wet")
+  local hardcodedAesthetic = false
+
+  if affinityMod == 0 then
+    -- Flame & Infernal --
+
+    -- Health loss in Water
+    if isInLiquid() and not status.statPositive("ivrpguceternalflame") then table.insert(effectsConfig, {stat = "maxEnergy", effectiveMultiplier = 0.7}) end
+    if isInLiquid() and not status.statPositive("ivrpguceternalflame") then status.overConsumeResource("health", dt) end
+
+  elseif affinityMod == 1 then
+    -- Venom & Toxic --
+
+    -- Upgrade Chips
+    if status.statPositive("ivrpgucmiasma") and self.affinity then hardcodedAesthetic = "miasmatrailIVRPG" end
+
+  elseif affinityMod == 2 then
+    -- Frost & Cryo --
+
+    -- Upgrade Chips
+    if status.statPositive("ivrpgucicequeen") and world.entityGender(self.id) == "female" then
+      if (self.weapon1 and root.itemHasTag(self.heldItem, "whip")) or (self.weapon2 and root.itemHasTag(self.heldItem2, "whip")) then
+        movementConfig.speedModifier = 1
+      end
+      if (self.weapon1 and (root.itemHasTag(self.heldItem, "dagger") or root.itemHasTag(self.heldItem, "fist") or root.itemHasTag(self.heldItem, "whip"))) or (self.weapon2 and (root.itemHasTag(self.heldItem2, "dagger") or root.itemHasTag(self.heldItem2, "fist") or root.itemHasTag(self.heldItem2, "whip"))) then
+        table.insert(effectsConfig, {stat = "powerMultiplier", baseMultiplier = 1.75})
+      end
+    elseif status.statPositive("ivrpgucskadisblessing") then
+      if self.isBow then
+        table.insert(effectsConfig, {stat = "powerMultiplier", baseMultiplier = 1.5})
+      end
+    end
+
+    -- Cryo Explosion
+    if self.affinity == 7 and status.resource("health")/status.stat("maxHealth") < 0.33 and self.cryoExplosion then
+      self.cryoExplosion = false
+      world.spawnProjectile("ivrpgcryoexplosionstatus", mcontroller.position(), self.id, {0,0}, false)
+    end
+
+  elseif affinityMod == 3 then
+    -- Shock & Arc --
+
+    -- Upgrade Chips
+    if status.statPositive("ivrpgucdischarge") and (mcontroller.liquidPercentage() > 0 or wet == 1) then
+      shockNearbyTargets(dt)
+    end
+
+    -- Energy loss in water
+    if isInLiquid() and not status.statPositive("ivrpgucplasmacore") then table.insert(effectsConfig, {stat = "maxHealth", effectiveMultiplier = 0.7}) end
+    if isInLiquid() and not status.statPositive("ivrpgucplasmacore") then status.overConsumeResource("energy", dt) end
+
+    --Arc Explosion
+    if self.affinity == 8 and status.resource("energy") == 0 and self.arcExplosion then
+      self.arcExplosion = false
+      world.spawnProjectile("ivrpgarcexplosion", mcontroller.position(), self.id, {0,0}, false)
+    end
+
+  end
+
+  status.setPersistentEffects("ivrpgaffinityeffects", effectsConfig)
+  mcontroller.controlModifiers(movementConfig)
+
+  --Aesthetic Trails
+  if status.statPositive("ivrpgaesthetics") and (mcontroller.xVelocity() > 1 or mcontroller.xVelocity() < -1) and not status.statPositive("activeMovementAbilities") then
+    world.spawnProjectile(hardcodedAesthetic or self.affinityInfo.aesthetic, {mcontroller.xPosition(), mcontroller.yPosition()-2}, self.id, {0,0}, false, {power = 0, knockback = 0, timeToLive = 0.3, damageKind = "applystatus"})
+  end
+
+  --Reset Arc Explosion and Cryo Explosion variables regardless of Affinity
+  if self.arcExplosion == false and status.resource("energy") > 0 then
+    self.arcExplosion = true
+  end
+  if self.cryoExplosion == false and status.resource("health")/status.stat("maxHealth") >= 0.33 then
+    self.cryoExplosion = true
+  end
 end
 
 function getArrayFromType(t, type)
@@ -1202,7 +925,6 @@ function holdingWeaponsCheck(heldItem, heldItem2, dualWield)
   end
 end
 
-
 function getLight()
   local position = mcontroller.position()
   position[1] = math.floor(position[1])
@@ -1224,6 +946,7 @@ function undergroundCheck()
   return world.underground(mcontroller.position()) 
 end
 
+--Challenges
 function updateChallenges()
   self.dnotifications, self.challengeDamageGivenUpdate = status.inflictedDamageSince(self.challengeDamageGivenUpdate)
   if self.dnotifications then

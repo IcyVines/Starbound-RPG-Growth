@@ -324,7 +324,7 @@ function updateClassText()
   local scalingArray = {{"^green;Amazing^reset;"}, {"^blue;Great^reset;"}, {"^magenta;Good^reset;"}, {"^gray;OK^reset;"}}
   local scalingComp = {amazing = 1, great = 2, good = 3, ok = 4}
   for k,v in ipairs(self.classInfo.scaling) do
-    currentIndex = scalingComp[v.type]
+    currentIndex = scalingComp[v.textType]
     currentTable = scalingArray[currentIndex]
     table.insert(currentTable, v.text)
     scalingArray[currentIndex] = currentTable
