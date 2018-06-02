@@ -8,6 +8,8 @@ function init()
   self.removed = true
   self.xp = player.currency("experienceorb")
   self.id = entity.id()
+  self.class = player.currency("classtype")
+  self.specList = root.assetJson("/specList.config")
   
   local data = root.assetJson("/ivrpgversion.config")
   if status.statusProperty("ivrpgversion", "0") ~= data.version then
@@ -60,6 +62,13 @@ function update(args)
     status.clearPersistentEffects("ivrpgadmin")
   end
 
+  if self.class ~= player.currency("classtype") then
+    if player.currency("spectype") > 0 then
+      rescrollSpecialization()
+    end
+    self.class = player.currency("classtype")
+  end
+
   updateUpgrades()
 
 end
@@ -85,6 +94,13 @@ function removeTechs()
     player.makeTechUnavailable("roguepoisondash")
     player.makeTechUnavailable("soldiermissilestrike")
     player.makeTechUnavailable("explorerdrill")
+end
+
+function rescrollSpecialization()
+  local spec = player.currency("spectype")
+  local specType = self.specList[self.class][spec]
+  player.consumeCurrency("spectype", spec)
+  player.giveItem("ivrpgscroll" .. specType)
 end
 
 function updateXPPulse()    

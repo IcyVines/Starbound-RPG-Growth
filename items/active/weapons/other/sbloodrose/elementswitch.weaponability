@@ -8,7 +8,6 @@
             "1" : {
               "frames" : 1,
               "properties" : {                
-                "lightsOn" : [ "physicalGlow" ],
                 "lightsOff" : [ "electricGlow", "iceGlow", "fireGlow", "poisonGlow" ]
               }
             },
@@ -16,28 +15,28 @@
               "frames" : 1,
               "properties" : {                
                 "lightsOn" : [ "fireGlow" ],
-                "lightsOff" : [ "physicalGlow", "iceGlow", "electricGlow", "poisonGlow" ]
+                "lightsOff" : [ "iceGlow", "electricGlow", "poisonGlow" ]
               }
             },
             "3" : {
               "frames" : 1,
               "properties" : {
                 "lightsOn" : [ "electricGlow" ],
-                "lightsOff" : [ "physicalGlow", "iceGlow", "fireGlow", "poisonGlow" ]
+                "lightsOff" : [ "iceGlow", "fireGlow", "poisonGlow" ]
               }
             },
             "4" : {
               "frames" : 1,
               "properties" : {                
                 "lightsOn" : [ "iceGlow" ],
-                "lightsOff" : [ "physicalGlow", "electricGlow", "fireGlow", "poisonGlow" ]
+                "lightsOff" : [ "electricGlow", "fireGlow", "poisonGlow" ]
               }
             },
             "5" : {
               "frames" : 1,
               "properties" : {                
                 "lightsOn" : [ "poisonGlow" ],
-                "lightsOff" : [ "physicalGlow", "electricGlow", "fireGlow", "iceGlow" ]
+                "lightsOff" : [ "electricGlow", "fireGlow", "iceGlow" ]
               }
             }
           }

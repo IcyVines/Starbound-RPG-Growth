@@ -14,11 +14,11 @@ function init()
   self.pane = pane
   player.addCurrency("skillbookopen", 1)
 
-  --initiating level and xp
+  -- Initiating Level and XP
   self.xp = player.currency("experienceorb")
   self.level = player.currency("currentlevel")
   self.mastery = player.currency("masterypoint")
-  --Mastery Conversion: 10000 Experience = 1 Mastery!!
+  -- Mastery Conversion: 10000 Experience = 1 Mastery!!
 
   self.classTo = 0
   self.class = player.currency("classtype")
@@ -50,17 +50,7 @@ function init()
     }
   }
 
-  self.hardcoreWeaponText = {
-    "Can Currently Equip All Weapons.",
-    "The Knight can equip:^green;\nTwo-Handed Melee Weapons\nOne-Handed Melee Weapons ^reset;^red;\n\nThe Knight cannot dual-wield weapons.",
-    "The Wizard can equip:^green;\nMagic Weapons\nDaggers ^red;(Secondary Hand Only)^reset;\n^green;Erchius Eye, Evil Eye, and Magnorbs.\n\nThe Wizard can dual-wield weapons.^reset;",
-    "The Ninja can equip:^green;\nOne-Handed Melee Weapons\nThrown Weapons\nAdaptable Crossbow and Solus Katana\n\nThe Ninja can dual-wield weapons.^reset;",
-    "The Soldier can equip:^green;\nTwo-Handed Ranged Weapons.\nOne-Handed Ranged Weapons.\n\n^reset;^red;The Soldier cannot dual-wield weapons.\nThe Soldier cannot wield the Erchius Eye.^reset;",
-    "The Rogue can equip:^green;\nOne-Handed Melee Weapons.\nOne-Handed Ranged Weapons.\nThrown Weapons\n\nThe Rogue can dual-wield weapons.^reset;",
-    "The Explorer can equip:^green;\nAll Weapons\n\nThe Explorer can dual-wield weapons.^reset;"
-  }
-
-  --Loading Configs
+  -- Loading Configs
   self.textData = root.assetJson("/ivrpgtext.config")
   self.classList = root.assetJson("/classList.config")
   self.specList = root.assetJson("/specList.config")
@@ -71,6 +61,7 @@ function init()
   updateStats()
   updateClassInfo()
   updateAffinityInfo()
+  updateSpecInfo()
   updateLevel()
 end
 
@@ -124,8 +115,11 @@ function update(dt)
 
   if player.currency("spectype") ~= self.spec then
     self.spec = player.currency("spectype")
+    updateSpecInfo()
     if widget.getChecked("bookTabs.5") then
       changeToSpecialization()
+    elseif widget.getChecked("bookTabs.0") then
+      changeToOverview()
     end
   end
 
@@ -181,6 +175,14 @@ function updateClassInfo()
     self.classInfo = root.assetJson("/classes/" .. self.classList[self.class] .. ".config")
   else
     self.classInfo = root.assetJson("/classes/default.config")
+  end
+end
+
+function updateSpecInfo()
+  if self.spec > 0 then
+    self.specInfo = root.assetJson("/specs/" .. self.specList[self.class][self.spec] .. ".config")
+  else
+    self.specInfo = nil
   end
 end
 
@@ -269,10 +271,14 @@ function updateOverview(toNext)
   end
   widget.setText("overviewlayout.hardcoretext", classicText)
   widget.setText("overviewlayout.classtitle", self.classInfo.title)
+  widget.setFontColor("overviewlayout.classtitle", self.classInfo.color)
   widget.setImage("overviewlayout.classicon", self.classInfo.image)
 
   widget.setText("overviewlayout.affinitytitle", self.affinityInfo.title)
+  widget.setFontColor("overviewlayout.affinitytitle", self.affinityInfo.color)
   widget.setImage("overviewlayout.affinityicon", self.affinityInfo.image)
+
+  widget.setText("overviewlayout.spectitle", (self.specInfo and self.specInfo.title or ""))
   
   if status.statPositive("ivrpghardcore") then
     widget.setText("overviewlayout.hardcoretoggletext", "Active")
@@ -476,8 +482,8 @@ end
 
 function updateSpecializationTab()
   if self.class == 0 or self.spec == 0 then return end
-  self.specType = self.specList[tostring(self.class)][tostring(self.spec)]
-  self.specInfo = root.assetJson("/specs/" .. self.specType .. ".config")
+  self.specType = self.specList[self.class][self.spec]
+  updateSpecInfo()
   local specInfo = self.specInfo
 
   widget.setText("specializationlayout.spectitle", specInfo.title)
@@ -536,7 +542,7 @@ function concatTableValues(table, delim, required)
   colorSwitch[false] = "^#d1d1d1;"
   for k,v in ipairs(table) do
     if (required and required == v.textType) or not required then
-      returnV = returnV .. colorSwitch[color] .. (type(v) == "table" and v.text or v) .. "^reset;" .. delim
+      returnV = returnV .. (v.textColor and ("^" .. v.textColor .. ";") or colorSwitch[color]) .. (type(v) == "table" and v.text or v) .. "^reset;" .. delim
       color = not color
     end
   end
@@ -630,14 +636,13 @@ end
 
 function updateInfo()
   self.classType = player.currency("classtype")
-  --Yea, yea, this should be in its own file that all lua files can import, but I'm lazy, ya' hear?
-  self.strengthBonus = (self.classType == 1 and 1.15 or 1) + status.stat("ivrpgstrengthscaling")
-  self.agilityBonus = (self.classType == 3 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.1 or 1))) + status.stat("ivrpgagilityscaling")
-  self.vitalityBonus = (self.classType == 4 and 1.05 or (self.classType == 1 and 1.1 or (self.classType == 6 and 1.15 or 1))) + status.stat("ivrpgvitalityscaling")
-  self.vigorBonus = (self.classType == 4 and 1.15 or (self.classType == 2 and 1.1 or (self.classType == 5 and 1.1 or (self.classType == 6 and 1.05 or 1)))) + status.stat("ivrpgvigorscaling")
-  self.intelligenceBonus = (self.classType == 2 and 1.2 or 1) + status.stat("ivrpgintelligencescaling")
-  self.enduranceBonus = (self.classType == 1 and 1.1 or (self.classType == 4 and 1.05 or (self.classType == 6 and 1.05 or 1))) + status.stat("ivrpgendurancescaling")
-  self.dexterityBonus = (self.classType == 3 and 1.2 or (self.classType == 5 and 1.15 or (self.classType == 4 and 1.1 or 1))) + status.stat("ivrpgdexterityscaling")
+  self.strengthBonus = 1 + status.stat("ivrpgstrengthscaling")
+  self.agilityBonus = 1 + status.stat("ivrpgagilityscaling")
+  self.vitalityBonus = 1 + status.stat("ivrpgvitalityscaling")
+  self.vigorBonus = 1 + status.stat("ivrpgvigorscaling")
+  self.intelligenceBonus = 1 + status.stat("ivrpgintelligencescaling")
+  self.enduranceBonus = 1 + status.stat("ivrpgendurancescaling")
+  self.dexterityBonus = 1 + status.stat("ivrpgdexterityscaling")
 
   widget.setText("infolayout.displaystats", 
     "Amount\n" ..
@@ -653,7 +658,7 @@ function updateInfo()
     (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed"))/50 .. "^reset;" .. "\n" ..
     "\n\nPercent\n" ..
     "^gray;" .. getStatPercent(status.stat("physicalResistance")) .. "^reset;" ..
-    "^magenta;" .. getStatPercent(status.stat("poisonResistance")) .. "^reset;" ..
+    "^green;" .. getStatPercent(status.stat("poisonResistance")) .. "^reset;" ..
     "^blue;" .. getStatPercent(status.stat("iceResistance")) .. "^reset;" .. 
     "^red;" .. getStatPercent(status.stat("fireResistance")) .."^reset;" .. 
     "^yellow;" .. getStatPercent(status.stat("electricResistance")) .. "^reset;" ..
@@ -674,20 +679,12 @@ function updateInfo()
     "^yellow;" .. getStatImmunity(status.stat("electricStatusImmunity")) .. "^reset;" ..
     "^gray;" .. getStatImmunity(status.stat("invulnerable")))
 
-  widget.setText("infolayout.displayWeapons", self.hardcoreWeaponText[self.classType+1] .. "\n\n^green;All Classes can use the\nBroken Protectorate Broadsword!\nAll Classes can use Hunting Bows.^reset;")
   if status.statPositive("ivrpghardcore") then
+    widget.setText("infolayout.displayWeapons", concatTableValues(self.classInfo.classic, "\n"))
     widget.setVisible("infolayout.displayWeapons", true)
   else
     widget.setVisible("infolayout.displayWeapons", false)
   end
-
-  --[["^gray;" .. getStatPercent(status.stat("physicalResistance")) .. "^reset;" ..
-    "^magenta;" .. (status.statPositive("poisonStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("poisonResistance"))) .. "^reset;" ..
-    "^blue;" .. (status.statPositive("iceStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("iceResistance"))) .. "^reset;" .. 
-    "^red;" .. (status.statPositive("fireStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("fireResistance"))) .."^reset;" .. 
-    "^yellow;" .. (status.statPositive("electricStatusImmunity") and "Immune!\n" or getStatPercent(status.stat("electricResistance"))) .. "^reset;" ..
-    getStatMultiplier(status.stat("fallDamageMultiplier")) ..]]
-
 end
 
 function unlockTech()
@@ -1015,7 +1012,6 @@ function uncheckAffinityIcons(name)
 end
 
 function changeAffinityDescription(name)
-  sb.logInfo(name)
   local affinity = self.affinityDescriptions[name]
   widget.setText("affinitieslayout.affinitydescription", affinity.text) 
   widget.setFontColor("affinitieslayout." .. name .. "title", affinity.color)

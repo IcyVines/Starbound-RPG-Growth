@@ -1,29 +1,28 @@
 {
-    /*
-    "statustext" : {
+   "particleEmitters" : {
+    "embers" : {
       "enabled" : true,
-      "emissionRate" : 1.0,
+      "emissionRate" : 5.0,
       "particles" : [
         {
           "particle" : {
-            "type" : "text",
-            "text" : "rage",
-            "size" : 0.75,
-            "color" : [170, 50, 50, 230],
-            "fade" : 1,
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [200, 100, 0, 230],
+            "fade" : 0.9,
             "destructionAction" : "shrink",
-            "destructionTime" : 0.8,
+            "destructionTime" : 0.5,
             "position" : [0.0, 0.0],
             "offsetRegion" : [0, 0, 0, 0],
-            "initialVelocity" : [0, 4],
-            "finalVelocity" : [0, 1],
+            "initialVelocity" : [0, 1],
             "approach" : [0, 10],
-            "timeToLive" : 1,
+            "timeToLive" : 0.3,
             "variance" : {
+                "initialVelocity" : [0, 1]
             }
           }
         }
       ]
     }
-    */
+  }
 }

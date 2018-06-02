@@ -1,6 +1,9 @@
 {
   "name" : "explorerglow",
-  "effectConfig" : {},
+  "effectConfig" : {
+  	"brightLight" : [170, 170, 128],
+  	"dullLight" : [120, 120, 100]
+  },
   "defaultDuration" : 5,
 
   "scripts" : [

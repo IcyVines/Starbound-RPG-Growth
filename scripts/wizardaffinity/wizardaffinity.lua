@@ -1,5 +1,7 @@
 function init()
-  --Power
+  self.id = effect.sourceEntity()
+  self.resistanceBonusId = effect.addStatModifierGroup({})
+  animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
 end
 
 
@@ -18,11 +20,17 @@ function update(dt)
     end
   end
 
-  effect.setStatModifierGroup("wizardaffinity", {
+  effect.setStatModifierGroup(self.resistanceBonusId, {
     {stat = "iceResistance", amount = pamount},
     {stat = "fireResistance", amount = pamount},
     {stat = "electricResistance", amount = pamount}
   })
+
+  if pamount > 0 then
+    animator.setParticleEmitterActive("embers", true)
+  else
+    animator.setParticleEmitterActive("embers", false)
+  end
 
   if not status.statPositive("ivrpgclassability") then
   	effect.setParentDirectives("border=1;c132bf20;c132bf00")

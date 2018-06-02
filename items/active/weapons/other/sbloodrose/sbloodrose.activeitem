@@ -27,10 +27,6 @@
 			"swoosh" : {}
 		},
 		"lights" : {
-	      "physicalGlow" : {
-	        "color" : [160, 24, 185],
-	        "active" : false
-	      },
 	      "fireGlow" : {
 	        "color" : [216, 30, 30],
 	        "active" : false
@@ -86,7 +82,7 @@
 			"idle" : {
 		        "armRotation" : -90,
 		        "weaponRotation" : -10,
-		        "twoHanded" : true,
+		        "twoHanded" : false,
 		  
 		        "allowRotate" : false,
 		        "allowFlip" : true

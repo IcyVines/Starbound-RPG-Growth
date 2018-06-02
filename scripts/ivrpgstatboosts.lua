@@ -27,7 +27,7 @@ end
 function update(dt)
   self.xp = world.entityCurrency(self.id, "experienceorb")
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
-  self.specType = world.entityCurrency(self.id, "spectype")
+  self.classicMode = status.statPositive("ivrpghardcore")
 
   updateStats()
 
@@ -45,7 +45,7 @@ function update(dt)
   if self.weaponScaling.items[self.heldItem] then
     local statAmount = 1
     for k,v in pairs(self.weaponScaling.items[self.heldItem]) do
-      statAmount = statAmount + stats[k]*v
+      statAmount = statAmount + self.stats[k]*v
     end
     status.addPersistentEffects("ivrpgstatboosts", {
       {stat = "powerMultiplier", baseMultiplier = statAmount}
@@ -93,6 +93,9 @@ function update(dt)
 
   updateClassEffects(dt)
   updateAffinityEffects(dt)
+  if not self.classicMode then
+    status.clearPersistentEffects("ivrpghardcoreweaponsdisabled")
+  end
 
   self.dnotifications, self.damageGivenUpdate = status.inflictedHitsSince(self.damageGivenUpdate)
   if self.dnotifications then
@@ -158,7 +161,7 @@ function updateStats()
         v = (v + 30)/2.0
       end
     end
-    self.stats[k] = v^self.statBonuses[k]
+    self.stats[k] = math.floor(v^self.statBonuses[k])
   end
 
   local statConfig = {}
@@ -275,109 +278,22 @@ function updateClassEffects(dt)
   end
   
   if self.class == 0 then
+    self.classInfo = false
     status.clearPersistentEffects("ivrpgclassboosts")
     status.clearPersistentEffects("ivrpgclasseffects")
-    status.removeEphemeralEffect("explorerglow")
-    status.removeEphemeralEffect("knightblock")
-    status.removeEphemeralEffect("ninjacrit")
-    status.removeEphemeralEffect("wizardaffinity")
-    status.removeEphemeralEffect("roguepoison")
-    status.removeEphemeralEffect("soldierdiscipline")
     return
   end
 
   updateClassInfo()
-  local classicMode = status.statPositive("ivrpghardcore")
-  local weaponsDisabled = false
+  local classicMode = self.classicMode
 
-  -- Weapon Bonuses
-  local weaponDictionary = {}
-  local effectsConfig = {}
-  local movementConfig = {}
-  local effectConfig = false
-  for k,v in ipairs(self.classInfo.weaponBonuses) do
-    for tag,info in pairs(v.apply) do
-      weaponDictionary[tag] = info
-    end
-  end
+  -- Ability
+  status.addEphemeralEffect(self.classInfo.ability.name, math.huge)
 
-  -- Primary Hand
-  if self.heldItem then
-    for k,v in ipairs(root.itemTags(self.heldItem)) do
-      local info = weaponDictionary[v]
-      if info then
-        if self.twoHanded then
-          if info.twoHanded then
-            effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount}
-          end
-        else
-          if not info.twoHanded then
-            if info.with and self.heldItem2 then
-              for x,y in ipairs(info.with) do
-                if root.itemHasTag(self.heldItem2, y) then
-                  effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount}
-                  break
-                end
-              end
-            elseif not info.with then
-              effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount}
-              if info.without and self.heldItem2 then
-                for x,y in ipairs(info.without) do
-                  if root.itemHasTag(self.heldItem2, y) then
-                    effectConfig = false
-                    break
-                  end
-                end
-              end
-            end
-          end
-        end
-      end
-      if effectConfig then
-        table.insert(effectsConfig, effectConfig)
-        if info.allowSecond then
-          effectConfig = false
-        end
-        break
-      end
-    end
-  end
-
-  -- Secondary Hand: Should not include Two-Handed Weapons 
-  if (not effectConfig) and (not self.twoHanded) and self.heldItem2 then
-    for k,v in ipairs(root.itemTags(self.heldItem2)) do
-      local info = weaponDictionary[v]
-      if info then
-        if not info.twoHanded then
-          if info.with and self.heldItem then
-            for x,y in ipairs(info.with) do
-              if root.itemHasTag(self.heldItem, y) then
-                effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount}
-                break
-              end
-            end
-          elseif not info.with then
-            effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount}
-            if info.without and self.heldItem then
-              for x,y in ipairs(info.without) do
-                if root.itemHasTag(self.heldItem, y) then
-                  effectConfig = false
-                  break
-                end
-              end
-            end
-          end
-        end
-      end
-      if effectConfig then
-        table.insert(effectsConfig, effectConfig)
-        break
-      end
-    end
-  end
-  
   -- Stat Bonuses
   local statDictionary = {}
+  local effectsConfig = {}
+  local movementConfig = {}
   for k,v in ipairs(self.classInfo.scaling) do
     table.insert(statDictionary, v)
   end
@@ -410,57 +326,301 @@ function updateClassEffects(dt)
 
   status.setPersistentEffects("ivrpgclasseffects", effectsConfig)
 
+  -- Weapon Bonuses
+  status.clearPersistentEffects("ivrpgweaponbonus")
+  local weaponDictionary = getDictionaryFromType(self.classInfo.weaponBonuses, "weapon")
+  updateWeaponBonuses(weaponDictionary)
+
+  -- Specialization Bonuses
+  updateSpecialization()
+
+  -- Classic Mode Weapon Penalties
+  if classicMode then
+    updateClassicMode()
+  end
+end
+
+-- Specialization Effects
+function updateSpecInfo()
+  self.specInfo = root.assetJson("/specs/" .. self.specList[self.class][self.spec] .. ".config")
+end
+
+function updateSpecialization()
+  if self.spec ~= world.entityCurrency(self.id, "spectype") then
+    self.spec = world.entityCurrency(self.id, "spectype")
+  end
+
+  if self.spec == 0 then
+    status.clearPersistentEffects("ivrpgspecweaponbonus")
+    status.clearPersistentEffects("ivrpgspecstatusbonus")
+    self.specInfo = false
+    return
+  end
+
+  updateSpecInfo()
+
+  local specInfo = self.specInfo
+  local specEffects = specInfo.effects
+  
+  -- Ability
+  status.addEphemeralEffect(specInfo.ability.name, math.huge)
+
+  -- Status
+  local statuses = getArrayFromType(specEffects, "status")
+  local statusConfig = {}
+  for k,v in ipairs(statuses) do
+    local modifier = {}
+    modifier["stat"] = v.stat
+    modifier[v.type] = v.amount
+    table.insert(statusConfig, modifier)
+  end
+  status.setPersistentEffects("ivrpgspecstatusbonus", statusConfig)
+
+  -- Movement
+  local movement = getArrayFromType(specEffects, "movement")
+  movementConfig = {}
+  for k,v in ipairs(movement) do
+    movementConfig[v.type] = v.amount
+  end
+  mcontroller.controlModifiers(movementConfig)
+
+  -- Weapon Bonus
+  local weaponDictionary = getDictionaryFromType(specEffects, "weapon")
+  updateWeaponBonuses(weaponDictionary)
+end
+
+function updateWeaponBonuses(weaponDictionary)
+  if not weaponDictionary then return end
+  local effectsConfig = {}
+  local effectConfig = false
+  local scalingBonus = 0
+  -- Primary Hand
+  if self.heldItem then
+    for k,v in ipairs(root.itemTags(self.heldItem)) do
+      local info = weaponDictionary[v]
+      if info then
+        if self.twoHanded then
+          if info.twoHanded or info.anyHand then
+            scalingBonus = getScaleBonus(info.scaling, 2)
+            effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount + scalingBonus}
+          end
+        else
+          if (not info.twoHanded) or info.anyHand then
+            if info.with and self.heldItem2 then
+              for x,y in ipairs(info.with) do
+                if root.itemHasTag(self.heldItem2, y) then
+                  scalingBonus = getScaleBonus(info.scaling, 1)
+                  effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount + scalingBonus}
+                  break
+                end
+              end
+            elseif not info.with then
+              scalingBonus = getScaleBonus(info.scaling, 1)
+              effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount + scalingBonus}
+              if info.without and self.heldItem2 then
+                for x,y in ipairs(info.without) do
+                  if root.itemHasTag(self.heldItem2, y) then
+                    effectConfig = false
+                    break
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+      if effectConfig then
+        table.insert(effectsConfig, effectConfig)
+        if info.allowSecond then
+          effectConfig = false
+        end
+        break
+      end
+    end
+  end
+
+  -- Secondary Hand: Should not include Two-Handed Weapons 
+  if (not effectConfig) and (not self.twoHanded) and self.heldItem2 then
+    for k,v in ipairs(root.itemTags(self.heldItem2)) do
+      local info = weaponDictionary[v]
+      if info then
+        if (not info.twoHanded) or info.anyHand then
+          if info.with and self.heldItem then
+            for x,y in ipairs(info.with) do
+              if root.itemHasTag(self.heldItem, y) then
+                scalingBonus = getScaleBonus(info.scaling, 2)
+                effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount + scalingBonus}
+                break
+              end
+            end
+          elseif not info.with then
+            scalingBonus = getScaleBonus(info.scaling, 1)
+            effectConfig = {stat = "powerMultiplier", baseMultiplier = info.amount + scalingBonus}
+            if info.without and self.heldItem then
+              for x,y in ipairs(info.without) do
+                if root.itemHasTag(self.heldItem, y) then
+                  effectConfig = false
+                  break
+                end
+              end
+            end
+          end
+        end
+      end
+      if effectConfig then
+        table.insert(effectsConfig, effectConfig)
+        break
+      end
+    end
+  end
+
+  status.addPersistentEffects("ivrpgweaponbonus", effectsConfig)
+
+end
+
+function updateClassicMode()
   -- Classic Mode
-
   weaponDictionary = {}
-  if classic then
-    for k,v in ipairs(self.classInfo.classic) do
-      if v.type == "disable" then
-        for x,y in ipairs(v.apply) do
+  weaponsDisabled = false
+  for k,v in ipairs(self.classInfo.classic) do
+    if v.type == "disable" then
+      for x,y in pairs(v.apply) do
+        weaponDictionary[x] = y
+      end
+    end
+  end
+
+  if self.specInfo then
+    for k,v in ipairs(self.specInfo.classic) do
+      for x,y in pairs(v.apply) do
+        if v.type == "disable" then
           weaponDictionary[x] = y
-        end
-      end
-    end
-
-    if self.heldItem then
-      for x,y in root.itemTags(self.heldItem) do
-        local info = weaponDictionary[y]
-        if info then
-          if info.all or (info.twoHanded and self.twoHanded) then
-            weaponsDisabled = true
-          elseif info.with and self.heldItem2 then
-            for r,tag in ipairs(info.with) do
-              if root.itemHasTag(self.heldItem2, tag) then
-                weaponsDisabled = true
-                break
-              end
-            end
-          end
-          if weaponsDisabled then break end
-        end
-      end
-    end
-
-    if (not weaponsDisabled) and (not self.twoHanded) and self.heldItem2 then
-      for x,y in root.itemTags(self.heldItem2) do
-        local info = weaponDictionary[y]
-        if info then
-          if info.all then
-            weaponsDisabled = true
-          elseif info.with and self.heldItem then
-            for r,tag in ipairs(info.with) do
-              if root.itemHasTag(self.heldItem, tag) then
-                weaponsDisabled = true
-                break
-              end
-            end
-          end
-          if weaponsDisabled then break end
         end
       end
     end
   end
 
+  -- Disabling Certain Weapon Combinations
+  if (self.heldItem and weaponDictionary[self.heldItem] and weaponDictionary[self.heldItem].named) then
+    weaponsDisabled = true
+  end
+  if self.heldItem then
+    for x,y in ipairs(root.itemTags(self.heldItem)) do
+      local info = weaponDictionary[y]
+      if info then
+        if info.all or (info.twoHanded and self.twoHanded) then
+          weaponsDisabled = true
+        elseif info.with and self.heldItem2 then
+          for r,tag in ipairs(info.with) do
+            if root.itemHasTag(self.heldItem2, tag) then
+              weaponsDisabled = true
+              break
+            end
+          end
+        end
+        if weaponsDisabled then break end
+      end
+    end
+  end
+
+  if (not weaponsDisabled) and (not self.twoHanded) and self.heldItem2 then
+    for x,y in ipairs(root.itemTags(self.heldItem2)) do
+      local info = weaponDictionary[y]
+      if info then
+        if info.all then
+          weaponsDisabled = true
+        elseif info.with and self.heldItem then
+          for r,tag in ipairs(info.with) do
+            if root.itemHasTag(self.heldItem, tag) then
+              weaponsDisabled = true
+              break
+            end
+          end
+        end
+        if weaponsDisabled then break end
+      end
+    end
+  end
+
+  -- Enabling Disabled Weapon Combinations
+  if weaponsDisabled then
+    local enablesSpec = self.specInfo and getDictionaryFromType(self.specInfo.classic, "enable")
+    local enablesClass = getDictionaryFromType(self.classInfo.classic, "enable")
+    local enables = joinMaps(enablesClass, enablesSpec)
+    local loopBreak = false
+    if enables then
+      if self.heldItem then
+        for k,v in ipairs(root.itemTags(self.heldItem)) do
+          local info = enables[v]
+          if info then
+            if info.without then
+              if self.heldItem2 then
+                for x,y in ipairs(info.without) do
+                  if root.itemHasTag(self.heldItem2, y) then
+                    loopBreak = true
+                    break
+                  end
+                end
+                if loopBreak then break end
+              end
+              weaponsDisabled = false
+              break
+            elseif info.with then
+              if self.heldItem2 then
+                for x,y in ipairs(info.with) do
+                  if root.itemHasTag(self.heldItem2, y) then
+                    weaponsDisabled = false
+                    loopBreak = true
+                    break
+                  end
+                end
+                if loopBreak then break end
+              end
+            else
+              weaponsDisabled = false
+              break
+            end
+          end
+        end
+      end
+      if weaponsDisabled and self.heldItem2 then
+        for k,v in ipairs(root.itemTags(self.heldItem2)) do
+          local info = enables[v]
+          if info then
+            if info.without then
+              if self.heldItem then
+                for x,y in ipairs(info.without) do
+                  if root.itemHasTag(self.heldItem, y) then
+                    loopBreak = true
+                    break
+                  end
+                end
+                if loopBreak then break end
+              end
+              weaponsDisabled = false
+              break
+            elseif info.with then
+              if self.heldItem then
+                for x,y in ipairs(info.with) do
+                  if root.itemHasTag(self.heldItem, y) then
+                    weaponsDisabled = false
+                    loopBreak = true
+                    break
+                  end
+                end
+                if loopBreak then break end
+              end
+            end
+          end
+        end
+      end
+      if weaponsDisabled and (self.heldItem and enables[self.heldItem] and enables[self.heldItem].named) then
+        weaponsDisabled = false
+      end
+    end
+  end
+
+  -- Removing Full Penalty Based On Stats
   if weaponsDisabled then
     local multiplier = 0
     local classicType = "default"
@@ -514,241 +674,14 @@ function updateClassEffects(dt)
       {stat = "powerMultiplier", effectiveMultiplier = (self.classicBonuses[classicType] | self.classicBonuses[both]) * multiplier}
     })
   else
+    -- If not disabled, remove disable status and add potential requirement penalty
     status.clearPersistentEffects("ivrpghardcoreweaponsdisabled")
-  end
-
-  updateSpecialization(classicMode)
-
-end
-
-function updateSpecialization(hardcore)
-  if self.class == 0 or self.specType == 0 then
-    status.clearPersistentEffects("ivrpgspecweaponbonus")
-    status.clearPersistentEffects("ivrpgspecstatusbonus")
-    return
-  end
-  local spec = self.specList[tostring(self.class)][tostring(self.specType)]
-  local specInfo = root.assetJson("/specs/" .. spec .. ".config")
-  local specEffects = specInfo.effects
-  
-  --Ability
-  status.addEphemeralEffect(specInfo.ability.name, math.huge)
-
-  --Status
-  local statuses = getArrayFromType(specEffects, "status")
-  local statusConfig = {}
-  for k,v in ipairs(statuses) do
-    local modifier = {}
-    modifier["stat"] = v.stat
-    modifier[v.type] = v.amount
-    table.insert(statusConfig, modifier)
-  end
-  status.setPersistentEffects("ivrpgspecstatusbonus", statusConfig)
-
-  --Movement
-  local movement = getArrayFromType(specEffects, "movement")
-  movementConfig = {}
-  for k,v in ipairs(movement) do
-    movementConfig[v.type] = v.amount
-  end
-  mcontroller.controlModifiers(movementConfig)
-
-  --Weapon Bonus
-  status.clearPersistentEffects("ivrpgspecweaponbonus")
-  local itemBonus = getArrayFromType(specEffects, "weapon")
-  local scaleBonus = 0
-  local breakLoop = false
-  for k,v in pairs(itemBonus) do
-    local tag = v.tag
-    if v.twoHanded == 1 then
-      if self.twoHanded and root.itemHasTag(self.heldItem, tag) then
-        scaleBonus = getScaleBonus(v.scaling, 2)
-        status.addPersistentEffect("ivrpgspecweaponbonus", {
-          {stat = "powerMultiplier", amount = v.amount + scaleBonus}
-        })
-        breakLoop = true
-      end
-    elseif v.dualWield == 0 then
-      if (self.heldItem and root.itemHasTag(self.heldItem, tag)) or (self.heldItem2 and root.itemHasTag(self.heldItem2, tag)) then
-        scaleBonus = getScaleBonus(v.scaling, (self.twoHanded == true and 2 or 1))
-        status.addPersistentEffect("ivrpgspecweaponbonus", {stat = "powerMultiplier", amount = v.amount + scaleBonus})
-      end
-    else
-      if self.heldItem and root.itemHasTag(self.heldItem, tag) and self.heldItem2 then
-        for x,y in pairs(v.dualWield) do
-          if root.itemHasTag(self.heldItem2, x) then
-            scaleBonus = getScaleBonus(v.scaling, 2)
-            status.addPersistentEffect("ivrpgspecweaponbonus", {
-              {stat = "powerMultiplier", amount = v.amount + scaleBonus + y}
-            })
-            breakLoop = true
-            break
-          end
-        end
-      elseif self.heldItem2 and root.itemHasTag(self.heldItem2, tag) and self.heldItem then
-        for x,y in pairs(v.dualWield) do
-          if root.itemHasTag(self.heldItem, x) then
-            scaleBonus = getScaleBonus(v.scaling, 2)
-            status.addPersistentEffect("ivrpgspecweaponbonus", {
-              {stat = "powerMultiplier", amount = v.amount + scaleBonus + y}
-            })
-            breakLoop = true
-            break
-          end
-        end
-      end
-    end
-    if breakLoop then
-      break
-    end
-  end
-
-  --Classic Mode
-  if not hardcore then return end
-  local classicMode = specInfo.classic
-  --Weapons/Items that are required.
-  local requires = getArrayFromType(classicMode, "require")
-  local disabled = false
-  local disableAmounts = {amount = 0, baseMultiplier = 1, effectiveMultiplier = 1}
-  local hardcoreEffects = status.getPersistentEffects('ivrpghardcoreweaponsdisabled')
-  for k,v in ipairs(hardcoreEffects) do
-    if v.effectiveMultiplier then
-      disableAmounts.effectiveMultiplier = v.effectiveMultiplier
-      break
-    end
-  end
-  for k,v in ipairs(requires) do
-    local tag = v.tag
-    local disableCheck = true
-    if self.heldItem and root.itemHasTag(self.heldItem, tag) then
-      if v.with == 0 then
-        disableCheck = false
-      else
-        for x,y in ipairs(v.with) do
-          if self.heldItem2 and root.itemHasTag(self.heldItem2, y) then
-            disableCheck = false
-            break
-          end
-        end
-      end
-    elseif self.heldItem2 and root.itemHasTag(self.heldItem2, tag) then
-      if v.with == 0 then
-        disableCheck = false
-      else
-        for x,y in pairs(v.with) do
-          if self.heldItem and root.itemHasTag(self.heldItem, y) then
-            disableCheck = false
-            break
-          end
-        end
-      end
-    end
-    if disableCheck then
-      disabled = true
-      if v.type == "amount" then
-        disableAmounts.amount = disableAmounts.amount - v.amount
-      else
-        disableAmounts[v.type] = disableAmounts[v.type] * v.amount
-      end
-    end
-  end
-
-  if disabled then
-    status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-      {stat = "powerMultiplier", amount = disableAmounts.amount},
-      {stat = "powerMultiplier", baseMultiplier = disableAmounts.baseMultiplier},
-      {stat = "powerMultiplier", effectiveMultiplier = disableAmounts.effectiveMultiplier}
-    })
-  end
-
-  --Weapons/Items that are disabled.
-  local disables = getArrayFromType(classicMode, "disable")
-  for k,v in ipairs(disables) do
-    local modifier = {stat = "powerMultiplier"}
-    if v.dualWield == 0 then
-      if (self.heldItem and root.itemHasTag(self.heldItem, v.tag)) or (self.heldItem2 and root.itemHasTag(self.heldItem2, v.tag)) then
-        modifier[v.type] = v.amount
-        status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-          {stat = "powerMultiplier", effectiveMultiplier = v.amount}
-        })
-        return
-      end
-    else
-      for x,y in pairs(v.dualWield) do
-        if ((self.heldItem and root.itemHasTag(self.heldItem, v.tag)) and (self.heldItem2 and root.itemHasTag(self.heldItem2, y))) or ((self.heldItem2 and root.itemHasTag(self.heldItem2, v.tag)) and (self.heldItem and root.itemHasTag(self.heldItem, y))) then
-          modifier[v.type] = v.amount
-          status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-            {stat = "powerMultiplier", effectiveMultiplier = v.amount}
-          })
-          return
-        end
-      end
-    end
-  end
-
-  --Weapons/Items that are enabled
-  local enables = getArrayFromType(classicMode, "enable")
-  for k,v in pairs(enables) do
-    if v.twoHanded == 1 then
-      if self.twoHanded and root.itemHasTag(self.heldItem, v.tag) then
-        status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-          {stat = "powerMultiplier", effectiveMultiplier = 1}
-        })
-        return
-      end
-    elseif v.dualWield == 0 then
-      if self.heldItem and root.itemHasTag(self.heldItem, v.tag) then
-        if not self.weapon2 then
-          status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-              {stat = "powerMultiplier", effectiveMultiplier = 1}
-          })
-          return
-        elseif v.otherWeaponsAllowed ~= 0 then
-          for x,y in pairs(v.otherWeaponsAllowed) do
-            if self.weapon2 and root.itemHasTag(self.heldItem2, y) then
-              status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-                {stat = "powerMultiplier", effectiveMultiplier = 1}
-              })
-              return
-            end
-          end
-        end
-      elseif self.heldItem2 and root.itemHasTag(self.heldItem2, v.tag) then
-        if not self.weapon1 then
-          status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-              {stat = "powerMultiplier", effectiveMultiplier = 1}
-          })
-          return
-        elseif v.otherWeaponsAllowed ~= 0 then
-          for x,y in pairs(v.otherWeaponsAllowed) do
-            if self.weapon1 and root.itemHasTag(self.heldItem, y) then
-              status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-                {stat = "powerMultiplier", effectiveMultiplier = 1}
-              })
-              return
-            end
-          end
-        end
-      end
-    else
-      if self.heldItem and root.itemHasTag(self.heldItem, v.tag) then
-        for x,y in pairs(v.dualWield) do
-          if self.heldItem2 and root.itemHasTag(self.heldItem2, y) then
-            status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-              {stat = "powerMultiplier", effectiveMultiplier = 1}
-            })
-            return
-          end
-        end
-      elseif self.heldItem2 and root.itemHasTag(self.heldItem2, v.tag) then
-        for x,y in pairs(v.dualWield) do
-          if self.heldItem and root.itemHasTag(self.heldItem, y) then
-            status.setPersistentEffects("ivrpghardcoreweaponsdisabled", {
-              {stat = "powerMultiplier", effectiveMultiplier = 1}
-            })
-            return
-          end
-        end
+    if not self.specInfo then return end
+    local requires = getDictionaryFromType(self.specInfo.classic, "require")
+    if not requires then return end
+    for k,v in pairs(requires) do
+      if (not self.heldItem or (self.heldItem and not root.itemHasTag(self.heldItem, k))) and (not self.heldItem2 or (self.heldItem2 and not root.itemHasTag(self.heldItem2, k))) then
+        status.addPersistentEffect("ivrpgweaponbonus", {stat = "powerMultiplier", baseMultiplier = v.amount}) 
       end
     end
   end
@@ -875,10 +808,25 @@ function updateAffinityEffects(dt)
   end
 end
 
-function getArrayFromType(t, type)
+function joinMaps(table1, table2)
+  if not table1 then
+    if not table2 then return nil
+    else return table2 end
+  else
+    if not table2 then return table1
+    else
+      for k,v in pairs(table2) do
+        table1[k] = v
+      end
+      return table1
+    end
+  end
+end
+
+function getArrayFromType(t, atype)
   local returnT = {}
   for k,v in ipairs(t) do
-    if v.type == type then
+    if v.type == atype then
       for x,y in ipairs(v.apply) do
          table.insert(returnT, y)
       end
@@ -887,10 +835,25 @@ function getArrayFromType(t, type)
   return returnT
 end
 
+function getDictionaryFromType(t, atype)
+  local returnT = nil
+  for k,v in ipairs(t) do
+    if v.type == atype then
+      if not returnT then returnT = {} end
+      for x,y in pairs(v.apply) do
+         returnT[x] = y
+      end
+    end
+  end
+  return returnT
+end
+
 function getScaleBonus(scalingList, hands)
   local scalingDamage = 0
-  for stat,amount in pairs(scalingList) do
-    scalingDamage = scalingDamage + (self.stats[stat] * (amount * (hands / 2)))
+  if scalingList then
+    for stat,amount in pairs(scalingList) do
+      scalingDamage = scalingDamage + (self.stats[stat] * (amount * (hands / 2)))
+    end
   end
   return scalingDamage
 end
@@ -946,7 +909,7 @@ function undergroundCheck()
   return world.underground(mcontroller.position()) 
 end
 
---Challenges
+-- Challenges
 function updateChallenges()
   self.dnotifications, self.challengeDamageGivenUpdate = status.inflictedDamageSince(self.challengeDamageGivenUpdate)
   if self.dnotifications then

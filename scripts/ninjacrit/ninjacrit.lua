@@ -1,16 +1,20 @@
 function init()
-
+  self.critBonusId = effect.addStatModifierGroup({})
+  animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
 end
 
 
 function update(dt)
 
   if nighttimeCheck() or undergroundCheck() then
-  	effect.setStatModifierGroup("ninjacrit", {
-    	{stat = "ninjaBleed", amount = 10}
+  	effect.setStatModifierGroup(self.critBonusId, {
+    	{stat = "ivrpgBleedChance", amount = 0.1},
+      {stat = "ivrpgBleedLength", amount = 0.5}
   	})
+    animator.setParticleEmitterActive("embers", true)
   else
-  	effect.removeStatModifierGroup("ninjacrit")
+  	effect.setStatModifierGroup(self.critBonusId, {})
+    animator.setParticleEmitterActive("embers", false)
   end
 
   if not status.statPositive("ivrpgclassability") then

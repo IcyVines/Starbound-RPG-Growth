@@ -2,8 +2,9 @@ function init()
   --Power
   self.powerModifier = config.getParameter("powerModifier", 0)
   self.damageUpdate = 5
-  animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
   self.timer = 0
+  self.damageBonusId = effect.addStatModifierGroup({})
+  animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
 end
 
 
@@ -15,7 +16,7 @@ function update(dt)
       if notification.hitType == "ShieldHit" then
         if status.resourcePositive("perfectBlock") then
           self.timer = 5
-          effect.setStatModifierGroup("knightblock", {{stat = "powerMultiplier", baseMultiplier = self.powerModifier}})
+          effect.setStatModifierGroup(self.damageBonusId, {{stat = "powerMultiplier", baseMultiplier = self.powerModifier}})
           animator.setParticleEmitterActive("embers", true)
         end
       end
@@ -25,7 +26,7 @@ function update(dt)
   if self.timer > 0 then
     self.timer = math.max(0, self.timer - dt)
     if self.timer == 0 then
-      effect.removeStatModifierGroup("knightblock")
+      effect.setStatModifierGroup(self.damageBonusId, {})
       animator.setParticleEmitterActive("embers", false)
     end
   end
