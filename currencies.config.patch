@@ -1,114 +1,131 @@
 [
+	// "fu_hidden" - FUs SAIL will not list currencies ith this set to true. Harmless otherise.
   { "op" : "add",
     "path" : "/experienceorb",
     "value" : {
       "representativeItem" : "experienceorb",
-      "playerMax" : 500000
+      "playerMax" : 500000,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/masterypoint",
     "value" : {
       "representativeItem" : "masterypoint",
-      "playerMax" : 100
+      "playerMax" : 100,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/currentlevel",
     "value" : {
       "representativeItem" : "currentlevel",
-      "playerMax" : 50
+      "playerMax" : 50,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/statpoint",
     "value" : {
       "representativeItem" : "statpoint",
-      "playerMax" : 250
+      "playerMax" : 250,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/agilitypoint",
     "value" : {
       "representativeItem" : "agilitypoint",
-      "playerMax" : 50
+      "playerMax" : 50,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/dexteritypoint",
     "value" : {
       "representativeItem" : "dexteritypoint",
-      "playerMax" : 50
+      "playerMax" : 50,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/endurancepoint",
     "value" : {
       "representativeItem" : "endurancepoint",
-      "playerMax" : 50
+      "playerMax" : 50,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/intelligencepoint",
     "value" : {
       "representativeItem" : "intelligencepoint",
-      "playerMax" : 50
+      "playerMax" : 50,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/strengthpoint",
     "value" : {
       "representativeItem" : "strengthpoint",
-      "playerMax" : 50
+      "playerMax" : 50,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/vigorpoint",
     "value" : {
       "representativeItem" : "vigorpoint",
-      "playerMax" : 50
+      "playerMax" : 50,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/vitalitypoint",
     "value" : {
       "representativeItem" : "vitalitypoint",
-      "playerMax" : 50
+      "playerMax" : 50,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/affinitytype",
     "value" : {
       "representativeItem" : "affinitytype",
-      "playerMax" : 8
+      "playerMax" : 8,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/classtype",
     "value" : {
       "representativeItem" : "classtype",
-      "playerMax" : 6
+      "playerMax" : 6,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/spectype",
     "value" : {
       "representativeItem" : "spectype",
-      "playerMax" : 8
+      "playerMax" : 8,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/proftype",
     "value" : {
       "representativeItem" : "proftype",
-      "playerMax" : 9
+      "playerMax" : 9,
+	  "fu_hidden" : true
     }
   },
   { "op" : "add",
     "path" : "/skillbookopen",
     "value" : {
       "representativeItem" : "skillbookopen",
-      "playerMax" : 2
+      "playerMax" : 2,
+	  "fu_hidden" : true
     }
   }
 ]
