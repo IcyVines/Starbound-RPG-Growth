@@ -1,0 +1,19 @@
+{
+  "name" : "ivrpgpurity",
+
+  "effectConfig" : {
+    "speedTime" : 5,
+    "powerTime" : 5
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "purity.lua"
+  ],
+
+  "animationConfig" : "purity.animation",
+
+  "label" : "Purity",
+  "icon" : "/specs/abilities/crusader/purity.png"
+}

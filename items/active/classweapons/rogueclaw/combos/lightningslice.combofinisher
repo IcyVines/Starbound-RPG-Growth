@@ -57,7 +57,7 @@
       "baseDamage" : 6.0,
       "damageSourceKind" : "rogueelectricslash",
       "timeoutGroup" : "primary",
-      "timeout" : 0.2
+      "timeout" : 0.5
     },
 
     "freezeTime" : 0.25,

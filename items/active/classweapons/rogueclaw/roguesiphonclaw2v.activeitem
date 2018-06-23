@@ -6,10 +6,10 @@
   "rarity" : "Rare",
   "description" : "Uncanny...",
   "shortdescription" : "Siphon Cyst",
-  "tooltipKind" : "fistweapon",
+  "tooltipKind" : "base",
   "category" : "Claw",
   "twoHanded" : false,
-  "itemTags" : ["weapon","rogue","claw","fist"],
+  "itemTags" : ["weapon","rogue","claw","fist","melee"],
 
   "inventoryIcon" : "roguesiphonclaw2v.png:front",
   "animation" : "/items/active/weapons/fist/fistweapon.animation",

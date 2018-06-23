@@ -4,6 +4,7 @@ function init()
   self.damageUpdate = 5
   self.timer = 0
   self.damageBonusId = effect.addStatModifierGroup({})
+  self.id = effect.sourceEntity()
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
 end
 
@@ -15,6 +16,11 @@ function update(dt)
     for _,notification in pairs(self.notifications) do
       if notification.hitType == "ShieldHit" then
         if status.resourcePositive("perfectBlock") then
+          local uniqueId = world.entityUniqueId(notification.sourceEntityId)
+          if uniqueId and (uniqueId == "tentacleleft" or uniqueId == "tentacleright") and world.entityCurrency(self.id, "experienceorb") >= 122500 and not status.statusProperty("ivrpgsupaladin") then
+            world.sendEntityMessage(self.id, "sendRadioMessage", "Paladin Unlocked!")
+            status.setStatusProperty("ivrpgsupaladin", true)
+          end
           self.timer = 5
           effect.setStatModifierGroup(self.damageBonusId, {{stat = "powerMultiplier", baseMultiplier = self.powerModifier}})
           animator.setParticleEmitterActive("embers", true)

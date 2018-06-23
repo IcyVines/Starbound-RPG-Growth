@@ -1,0 +1,22 @@
+{
+  "projectileName" : "phaseshiftbolt",
+  "image" : "phaseshiftbolt.png",
+  "animationCycle" : 0.15,
+  "timeToLive" : 0.2,
+  "frameNumber" : 6,
+  "speed" : 50,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "animationLoops" : false,
+  "piercing" : false,
+  "flippable" : true,
+  "lightColor" : [120, 40, 80],
+  "damageKind" : "hidden",
+  "damageType" : "ignoresdef",
+  "damageTeam" : { "type" : "environment" },
+  "statusEffects" : [
+    {"effect" : "energyregen", "duration" : 1},
+    {"effect" : "camouflage25", "duration" : 0.75}, 
+    {"effect" : "invulnerable", "duration" : 0.75}
+  ],
+  "knockback" : 0
+}

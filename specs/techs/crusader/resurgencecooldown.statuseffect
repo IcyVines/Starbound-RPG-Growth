@@ -1,0 +1,9 @@
+{
+  "name" : "ivrpgresurgencecooldown",
+  "effectConfig" : {},
+  "defaultDuration" : 60,
+
+
+  "label" : "Resurgence Cooldown",
+  "icon" : "resurgencecooldown.png"
+}

@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgdarkphase",
+  "type" : "legs",
+
+  "scripts" : ["darkphase.lua"],
+  "animator" : "darkphase.animation",
+
+  "description" : "Wraith Only",
+  "shortDescription" : "Dark Phase",
+  "rarity" : "Legendary",
+  "icon" : "/specs/techs/wraith/darkphase.png",
+
+  "chipCost" : 0,
+  "cost" : 40,
+  "controlForce" : 50,
+  "dashSpeed" : 10
+}

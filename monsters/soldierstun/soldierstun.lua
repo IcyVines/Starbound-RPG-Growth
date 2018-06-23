@@ -23,6 +23,9 @@ function update(dt)
       collisionEnabled = true
     })
   --mcontroller.controlCrouch()
+  if status.isResource("stunned") then
+    status.setResource("stunned", math.max(status.resource("stunned"), effect.duration()))
+  end
 end
 
 function uninit()

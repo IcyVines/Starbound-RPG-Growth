@@ -57,7 +57,7 @@
       "statusEffects" : ["ivrpgweaken"],
       "timeoutGroup" : "primary",
       "damageSourceKind" : "rogueslash",
-      "timeout" : 0.2
+      "timeout" : 0.5
     },
 
     "freezeTime" : 0.25,

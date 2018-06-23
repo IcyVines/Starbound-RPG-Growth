@@ -1,6 +1,6 @@
 {
   "projectileName" : "versabullethl",
-  "image" : "versabullet.png",
+  "image" : "versahbullet.png",
   "physics" : "laser",
   "animationCycle" : 0.25,
   "frameNumber" : 1,

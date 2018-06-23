@@ -59,6 +59,14 @@
     "muzzle" : {}
   },
 
+  "lights" : {
+    "gold" : {
+      "active" : false,
+      "color" : [225, 220, 110],
+      "position" : [0, 0]
+    }
+  },
+
   "sounds" : {
     "raiseShield" : [ ],
     "lowerShield" : [ ],

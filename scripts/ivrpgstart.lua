@@ -4,11 +4,12 @@ local origUninit = uninit
 
 function init()
   origInit()
-  script.setUpdateDelta(9)
+  script.setUpdateDelta(14)
   self.removed = true
   self.xp = player.currency("experienceorb")
   self.id = entity.id()
   self.class = player.currency("classtype")
+  self.spec = player.currency("spectype")
   self.specList = root.assetJson("/specList.config")
   
   local data = root.assetJson("/ivrpgversion.config")
@@ -32,8 +33,8 @@ function init()
   	if status.statPositive("ivrpgucfeedbackloop") then status.addEphemeralEffect("rage", 2) end
   end)
 
-  message.setHandler("killedMonster", function(_, _, level, position, statusEffects, damageType, name)
-  	killedMonster(level, position, statusEffects, damageType, name)
+  message.setHandler("killedEnemy", function(_, _, enemyType, enemyLevel, position, statusEffects, damageDealtForKill, damageKind)
+  	killedEnemy(enemyType, enemyLevel, position, statusEffects, damageDealtForKill, damageKind)
   end)
 
   message.setHandler("modifyResource", function(_, _, type, amount)
@@ -46,6 +47,10 @@ function init()
 
   message.setHandler("addEphemeralEffect", function(_, _, name, duration, sourceId)
     status.addEphemeralEffect(name, duration, sourceId)
+  end)
+
+  message.setHandler("sendRadioMessage", function(_, _, text)
+    sendRadioMessage(text)
   end)
 
 end
@@ -62,6 +67,10 @@ function update(args)
     status.clearPersistentEffects("ivrpgadmin")
   end
 
+  status.clearPersistentEffects("ivrpgchallenge1progress")
+  status.clearPersistentEffects("ivrpgchallenge3progress")
+  status.clearPersistentEffects("ivrpgchallenge2progress")
+
   if self.class ~= player.currency("classtype") then
     if player.currency("spectype") > 0 then
       rescrollSpecialization()
@@ -70,6 +79,8 @@ function update(args)
   end
 
   updateUpgrades()
+  updateSpecs()
+  unlockSpecs()
 
 end
 
@@ -98,9 +109,8 @@ end
 
 function rescrollSpecialization()
   local spec = player.currency("spectype")
-  local specType = self.specList[self.class][spec]
   player.consumeCurrency("spectype", spec)
-  player.giveItem("ivrpgscroll" .. specType)
+  --player.giveItem("ivrpgscroll" .. specType)
 end
 
 function updateXPPulse()    
@@ -127,11 +137,81 @@ function updateUpgrades()
 
 end
 
-function killedMonster(level, position, statusEffects, damageType, name)
+function updateSpecs()
+  if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
+    return
+  end
+end
+
+function unlockSpecs()
+  if type(status.statusProperty("ivrpgsucrusader")) == "number" and status.statusProperty("ivrpgsucrusader") >= 1000 then
+    sendRadioMessage("Crusader Unlocked!")
+    status.setStatusProperty("ivrpgsucrusader", true)
+  end
+
+  if type(status.statusProperty("ivrpgsunecromancer")) == "number" and status.statusProperty("ivrpgsunecromancer") >= 1000 then
+    sendRadioMessage("Necromancer Unlocked!")
+    status.setStatusProperty("ivrpgsunecromancer", true)
+  end
+
+  if type(status.statusProperty("ivrpgsuvanguard")) == "number" and status.statusProperty("ivrpgsuvanguard") >= 500 then
+    sendRadioMessage("Vanguard Unlocked!")
+    status.setStatusProperty("ivrpgsuvanguard", true)
+  end
+end
+
+function sendRadioMessage(text)
+  player.radioMessage({
+    messageId = "specUnlocks",
+    unique = false,
+    senderName = "SAIL",
+    text = text
+  })
+end
+
+function killedEnemy(enemyType, level, position, statusEffects, damage, damageType)
   addToChallengeCount(level)
   dyingEffects(position, statusEffects)
-  killingEffects(damageType)
-  dropUpgradeChips(level, position, name)
+  killingEffects(level, position, statusEffects, damageType, enemyType)
+  dropUpgradeChips(level, position, enemyType)
+  specChecks(enemyType, level, position, statusEffects, damage, damageType)
+end
+
+function specChecks(enemyType, level, position, statusEffects, damage, damageType)
+  if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
+    return
+  end
+  -- Crusader
+  if status.statusProperty("ivrpgsucrusader") ~= true and (self.class == 1 or self.class == 2) and string.find(damageType, "broadsword") then
+    if enemyType == "cultist" or enemyType == "templeguard" or enemyType == "tombguard" then
+      status.setStatusProperty("ivrpgsucrusader", status.statusProperty("ivrpgsucrusader", 0) + 4 * level)
+    elseif string.find(enemyType, "tentacle") then
+      status.setStatusProperty("ivrpgsucrusader", status.statusProperty("ivrpgsucrusader", 0) + level)
+    else
+      status.setStatusProperty("ivrpgsucrusader", status.statusProperty("ivrpgsucrusader", 0) + level / 4)
+    end
+  end
+
+  -- Necromancer
+  if status.statusProperty("ivrpgsunecromancer") ~= true and self.class == 2 then
+    if status.resource("health") / status.stat("maxHealth") <= 0.2 then
+      status.setStatusProperty("ivrpgsunecromancer", status.statusProperty("ivrpgsunecromancer", 0) + level)
+    end
+  end
+
+  -- Vanguard
+  if status.statusProperty("ivrpgsuvanguard") ~= true and (self.class == 4 or self.class == 6) then
+    if string.find(damageType, "bullet") or string.find(damageType, "shotgun") then
+      sb.logInfo(world.magnitude(position, world.entityPosition(self.id)))
+      if world.magnitude(position, world.entityPosition(self.id)) < 5 then
+        status.setStatusProperty("ivrpgsuvanguard", status.statusProperty("ivrpgsuvanguard", 0) + level)
+      end
+    end
+  end
+
+  
+
+
 end
 
 function dropUpgradeChips(level, position, name)
@@ -155,17 +235,17 @@ function addToChallengeCount(level)
   local challenge3 = status.stat("ivrpgchallenge3")
 
 	if challenge1 == 1 and level >= 4 then
-		status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
+    status.setStatusProperty("ivrpgchallenge1progress", status.statusProperty("ivrpgchallenge1progress", 0) + 1)
 	elseif challenge1 == 2 and level >= 5 then
-		status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
+		status.setStatusProperty("ivrpgchallenge1progress", status.statusProperty("ivrpgchallenge1progress", 0) + 1)
 	end
 
 	if challenge2 == 1 and level >= 6 then
-		status.addPersistentEffect("ivrpgchallenge2progress", {stat = "ivrpgchallenge2progress", amount = 1})
+		status.setStatusProperty("ivrpgchallenge2progress", status.statusProperty("ivrpgchallenge2progress", 0) + 1)
 	end
 
 	if challenge3 == 1 and level >= 7 then
-		status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
+		status.setStatusProperty("ivrpgchallenge3progress", status.statusProperty("ivrpgchallenge3progress", 0) + 1)
 	end
 end
 
@@ -184,11 +264,23 @@ function dyingEffects(position, statusEffects)
   end
 end
 
-function killingEffects(damageType)
+function killingEffects(level, position, statusEffects, damageType, name)
 	if status.statPositive("ivrpgucvampirescaress") and damageType == "bloodaether" then
 		status.addEphemeralEffect("rage", 2, self.id)
 		status.addEphemeralEffect("regeneration4", 2, self.id)
 	end
+
+  -- Vigilante
+  if self.spec == 3 and self.class == 4 then
+    if string.find(name, "bandit") or string.find(name, "outlaw") then
+      local allyIds = world.entityQuery(world.entityPosition(self.id), 8, {includedTypes = {"creature"}})
+      for _,id in ipairs(allyIds) do
+        if world.entityDamageTeam(id).type == "friendly" then
+          world.sendEntityMessage(id, "modifyResourcePercentage", "energy", 0.1)
+        end
+      end
+    end
+  end
 end
 
 function hasEphemeralStat(statusEffects, stat)

@@ -10,6 +10,6 @@
   "pickupSoundsMedium" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "pickupSoundsLarge" : [ "/sfx/objects/ancientenergy_pickup1.ogg", "/sfx/objects/ancientenergy_pickup2.ogg", "/sfx/objects/ancientenergy_pickup3.ogg" ],
   "smallStackLimit" : 1,
-  "mediumStackLimit" : 2,
-  "maxStack" : 3
+  "mediumStackLimit" : 4,
+  "maxStack" : 9
 }

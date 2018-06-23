@@ -55,7 +55,7 @@
       "knockback" : 30,
       "knockbackMode" : "facing",
       "timeoutGroup" : "primary",
-      "timeout" : 0.2
+      "timeout" : 0.5
     },
 
     "energyCost" : 30,

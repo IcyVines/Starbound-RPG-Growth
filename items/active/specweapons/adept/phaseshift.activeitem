@@ -1,0 +1,98 @@
+{
+  "itemName" : "ivrpgwphaseshift",
+  "price" : 1200,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "To you, the Universe is nothing.",
+  "shortdescription" : "^red;Phase Shift",
+  "category" : "wand",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","wand"],
+  "tooltipKind" : "base",
+
+  "inventoryIcon" : "phaseshift.png",
+  "animation" : "/items/active/specweapons/adept/phaseshift.animation",
+  "animationParts" : {
+    "handle" : "phaseshift.png",
+    "stone" : "phaseshift.png",
+    "crown" : "phaseshift.png",
+    "chargeEffect" : "phaseshiftanimation.png"
+  },
+
+  "animationCustom" : {
+    "lights" : {
+      "glow" : {
+        "color" : [160, 100, 120],
+        "active" : false
+      }
+    },
+    "sounds" : {
+      "physicalactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
+    }
+  },
+
+  "scripts" : ["/items/active/specweapons/adept/staff.lua"],
+
+  "baseDamageFactor" : 0.5,
+  "elementalType" : "physical",
+
+  "stances" : {
+    "idle" : {
+      "weaponOffset" : [0, 0.5],
+
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "weaponOffset" : [0, 0.5],
+
+      "duration" : 1.0,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "weaponOffset" : [0, 0.5],
+
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "weaponOffset" : [0, 0.5],
+
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : false,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "weaponOffset" : [0, 0.5],
+
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "primaryAbilityType" : "phaseshift",
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

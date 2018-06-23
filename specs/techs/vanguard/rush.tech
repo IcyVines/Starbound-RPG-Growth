@@ -1,0 +1,19 @@
+{
+  "name" : "ivrpgrush",
+  "type" : "body",
+
+  "scripts" : ["rush.lua"],
+  "animator" : "rush.animation",
+
+  "description" : "Vanguard Only",
+  "shortDescription" : "Rush",
+  "rarity" : "Legendary",
+  "icon" : "/specs/techs/vanguard/rush.png",
+
+  "chipCost" : 0,
+
+  "energyCost" : 150,
+  "dashSpeedModifier" : 200.0,
+  "stopAfterDash" : true,
+  "cooldownTime" : 3
+}

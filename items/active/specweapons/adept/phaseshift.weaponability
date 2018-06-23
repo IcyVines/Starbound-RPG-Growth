@@ -1,0 +1,17 @@
+{
+  "ability" : {
+    "type" : "phaseshift",
+    "name" : "Phase Shift",
+    "scripts" : ["/items/active/specweapons/adept/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 10,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "phaseshift",
+    "projectileParameters" : {
+      "baseDamage" : 6
+    }
+  }
+}

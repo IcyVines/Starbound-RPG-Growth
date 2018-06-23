@@ -1,11 +1,15 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
+require "/scripts/ivrpgutil.lua"
 
 function init()
   local bounds = mcontroller.boundBox()
-  script.setUpdateDelta(10)
+  script.setUpdateDelta(15)
+
+  -- General Variables
   self.damageUpdate = 1
   self.damageGivenUpdate = 1
+  self.hitsInflictedUpdate = 5
   self.challengeDamageGivenUpdate = 1
   self.arcExplosion = true
   self.cryoExplosion = true
@@ -14,9 +18,18 @@ function init()
   self.id = entity.id()
   self.affinity = 0
   self.class = 0
-  message.setHandler("addToChallengeCount", function(_, _, level)
-  	addToChallengeCount(level)
+
+  message.setHandler("bleedCheck", function(_, _, damage, sourceKind, sourceId)
+    local bleedChance = status.stat("ivrpgBleedChance")
+    local bleedLength = status.stat("ivrpgBleedLength")
+    if bleedChance > math.random() or sourceKind == "alwaysbleed" or sourceKind == "bloodaether" then
+      bleedLength = ((sourceKind == "alwaysbleed" or sourceKind == "bloodaether") and bleedLength < 1) and 1 or bleedLength
+      world.sendEntityMessage(sourceId, "applySelfDamageRequest", "IgnoresDef", "bleed", damage/2, self.id)
+      world.sendEntityMessage(sourceId, "addEphemeralEffect", "ivrpgweaken", bleedLength, self.id)
+    end
   end)
+
+  -- Configs
   self.specList = root.assetJson("/specList.config")
   self.classList = root.assetJson("/classList.config")
   self.affinityList = root.assetJson("/affinityList.config")
@@ -97,29 +110,9 @@ function update(dt)
     status.clearPersistentEffects("ivrpghardcoreweaponsdisabled")
   end
 
-  self.dnotifications, self.damageGivenUpdate = status.inflictedHitsSince(self.damageGivenUpdate)
-  if self.dnotifications then
-    --sb.logInfo("Damage Taken!!!")
-    for _,notification in pairs(self.dnotifications) do
-      --sb.logInfo("In damage given update")
-      --Rogue Siphon
-      if notification.damageSourceKind == "rogueelectricslash" then
-        status.modifyResource("energy", 20)
-        if status.statPositive("ivrpguccharger") then
-          local playerIds = world.playerQuery(mcontroller.position(), 15, {
-            withoutEntityId = self.id
-          })
-          for _,id in ipairs(playerIds) do
-            world.sendEntityMessage(id, "modifyResource", "energy", 30)
-          end
-        end
-      elseif notification.damageSourceKind == "roguepoisonslash" then status.modifyResource("health", 10)
-      elseif notification.damageSourceKind == "rogueslash" then status.modifyResource("food", 3)
-      end
-    end
-  end
-
   checkLevelUp()
+  updateDamageGiven()
+  updateDamageTaken()
   updateChallenges()
 end
 
@@ -193,40 +186,6 @@ function updateStats()
   end
 end
 
-function shockNearbyTargets(dt)
-  self.tickTimer = not self.tickTimer and 0.5 or self.tickTimer - dt
-  local boltPower = status.stat("powerMultiplier")*5
-  if self.tickTimer <= 0 then
-    self.tickTimer = 0.5
-    local targetIds = world.entityQuery(mcontroller.position(), 8, {
-      withoutEntityId = self.id,
-      includedTypes = {"creature"}
-    })
-
-    shuffle(targetIds)
-
-    for i,id in ipairs(targetIds) do
-      if world.entityCanDamage(self.id, id) and not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
-        local sourceDamageTeam = world.entityDamageTeam(self.id)
-        local directionTo = world.distance(world.entityPosition(id), mcontroller.position())
-        world.spawnProjectile(
-          "teslaboltsmall",
-          mcontroller.position(),
-          self.id,
-          directionTo,
-          false,
-          {
-            power = boltPower,
-            damageTeam = sourceDamageTeam,
-            statusEffects = {"electrified"}
-          }
-        )
-        return
-      end
-    end
-  end
-end
-
 function checkLevelUp()
   local currXP = world.entityCurrency(self.id,"experienceorb")
   if currXP >= (self.level+1)^2*100 and self.level < 50 then
@@ -281,6 +240,7 @@ function updateClassEffects(dt)
     self.classInfo = false
     status.clearPersistentEffects("ivrpgclassboosts")
     status.clearPersistentEffects("ivrpgclasseffects")
+    status.clearPersistentEffects("ivrpgspecstatusbonus")
     return
   end
 
@@ -342,7 +302,7 @@ end
 
 -- Specialization Effects
 function updateSpecInfo()
-  self.specInfo = root.assetJson("/specs/" .. self.specList[self.class][self.spec] .. ".config")
+  self.specInfo = root.assetJson("/specs/" .. self.specList[self.class][self.spec].name .. ".config")
 end
 
 function updateSpecialization()
@@ -351,7 +311,6 @@ function updateSpecialization()
   end
 
   if self.spec == 0 then
-    status.clearPersistentEffects("ivrpgspecweaponbonus")
     status.clearPersistentEffects("ivrpgspecstatusbonus")
     self.specInfo = false
     return
@@ -369,9 +328,10 @@ function updateSpecialization()
   local statuses = getArrayFromType(specEffects, "status")
   local statusConfig = {}
   for k,v in ipairs(statuses) do
+    local classic = v.halvingStat and v.halvingAmount * self.classicBonuses[v.halvingStat] or 0
     local modifier = {}
     modifier["stat"] = v.stat
-    modifier[v.type] = v.amount
+    modifier[v.type] = v.amount * (v.negative and -1 or 1) + classic
     table.insert(statusConfig, modifier)
   end
   status.setPersistentEffects("ivrpgspecstatusbonus", statusConfig)
@@ -380,7 +340,8 @@ function updateSpecialization()
   local movement = getArrayFromType(specEffects, "movement")
   movementConfig = {}
   for k,v in ipairs(movement) do
-    movementConfig[v.type] = v.amount
+    local classic = v.halvingStat and v.halvingAmount * self.classicBonuses[v.halvingStat] or 0
+    movementConfig[v.type] = v.amount + classic
   end
   mcontroller.controlModifiers(movementConfig)
 
@@ -576,7 +537,10 @@ function updateClassicMode()
                 end
                 if loopBreak then break end
               end
-            else
+            elseif not info.twoHanded and not self.twoHanded then
+              weaponsDisabled = false
+              break
+            elseif info.twoHanded and self.twoHanded then
               weaponsDisabled = false
               break
             end
@@ -610,6 +574,9 @@ function updateClassicMode()
                 end
                 if loopBreak then break end
               end
+            elseif not info.twoHanded and not self.twoHanded then
+              weaponsDisabled = false
+              break
             end
           end
         end
@@ -808,44 +775,38 @@ function updateAffinityEffects(dt)
   end
 end
 
-function joinMaps(table1, table2)
-  if not table1 then
-    if not table2 then return nil
-    else return table2 end
-  else
-    if not table2 then return table1
-    else
-      for k,v in pairs(table2) do
-        table1[k] = v
-      end
-      return table1
-    end
-  end
-end
+function shockNearbyTargets(dt)
+  self.tickTimer = not self.tickTimer and 0.5 or self.tickTimer - dt
+  local boltPower = status.stat("powerMultiplier")*5
+  if self.tickTimer <= 0 then
+    self.tickTimer = 0.5
+    local targetIds = world.entityQuery(mcontroller.position(), 8, {
+      withoutEntityId = self.id,
+      includedTypes = {"creature"}
+    })
 
-function getArrayFromType(t, atype)
-  local returnT = {}
-  for k,v in ipairs(t) do
-    if v.type == atype then
-      for x,y in ipairs(v.apply) do
-         table.insert(returnT, y)
-      end
-    end
-  end
-  return returnT
-end
+    shuffle(targetIds)
 
-function getDictionaryFromType(t, atype)
-  local returnT = nil
-  for k,v in ipairs(t) do
-    if v.type == atype then
-      if not returnT then returnT = {} end
-      for x,y in pairs(v.apply) do
-         returnT[x] = y
+    for i,id in ipairs(targetIds) do
+      if world.entityCanDamage(self.id, id) and not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
+        local sourceDamageTeam = world.entityDamageTeam(self.id)
+        local directionTo = world.distance(world.entityPosition(id), mcontroller.position())
+        world.spawnProjectile(
+          "teslaboltsmall",
+          mcontroller.position(),
+          self.id,
+          directionTo,
+          false,
+          {
+            power = boltPower,
+            damageTeam = sourceDamageTeam,
+            statusEffects = {"electrified"}
+          }
+        )
+        return
       end
     end
   end
-  return returnT
 end
 
 function getScaleBonus(scalingList, hands)
@@ -856,36 +817,6 @@ function getScaleBonus(scalingList, hands)
     end
   end
   return scalingDamage
-end
-
-function holdingWeaponsCheck(heldItem, heldItem2, dualWield)
-  if heldItem then
-    if heldItem2 then
-      if dualWield then
-        --Returning True only when two items are equipped and Dual-Wield is specified.
-        return true
-      else
-        if root.itemHasTag(heldItem2, "weapon") then
-          --Second Item is a weapon, and Dual-Wield is not specified, so we return False.
-          return false
-        else
-        	--Second item is not a weapon, so we return True.
-          return true
-        end
-      end
-    else
-      if dualWield then
-        --Returning False because Dual-Wield is specified, but there is only one item equipped.
-        return false
-      else
-        --Returning True because Dual-Wield is not specified, and only one item is equipped.
-        return true
-      end
-    end
-  else
-    --Returning False because no items are equipped.
-    return false
-  end
 end
 
 function getLight()
@@ -911,11 +842,11 @@ end
 
 -- Challenges
 function updateChallenges()
-  self.dnotifications, self.challengeDamageGivenUpdate = status.inflictedDamageSince(self.challengeDamageGivenUpdate)
-  if self.dnotifications then
-    --sb.logInfo("Damage Taken!!!")
-    for _,notification in pairs(self.dnotifications) do
-      --Challenges
+  local notifications = nil
+  notifications, self.challengeDamageGivenUpdate = status.inflictedDamageSince(self.challengeDamageGivenUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      -- Challenges
       local challenge1 = status.stat("ivrpgchallenge1")
       local challenge2 = status.stat("ivrpgchallenge2")
       local challenge3 = status.stat("ivrpgchallenge3")
@@ -923,27 +854,27 @@ function updateChallenges()
       if challenge1 then
         if challenge1 == 3 then
           if updateProgress(notification, "boss", 7, "kluexboss") then
-            status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
+            status.setStatusProperty("ivrpgchallenge1progress", status.statusProperty("ivrpgchallenge1progress", 0) + 1)
           end
         end
       end
 
       if challenge2 then
-		if challenge2 == 2 then
+		    if challenge2 == 2 then
           if updateProgress(notification, "boss", 7, "dragonboss") then
-            status.addPersistentEffect("ivrpgchallenge2progress", {stat = "ivrpgchallenge2progress", amount = 1})
+            status.setStatusProperty("ivrpgchallenge2progress", status.statusProperty("ivrpgchallenge2progress", 0) + 1)
           end
         end
       end
 
       if challenge3 then
-		if challenge3 == 2 then
+		    if challenge3 == 2 then
           if updateProgress(notification, "boss", 7, "vault") then
-            status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
+            status.setStatusProperty("ivrpgchallenge3progress", status.statusProperty("ivrpgchallenge3progress", 0) + 1)
           end
         elseif challenge3 == 3 then
           if updateProgress(notification, "boss", 7, "eyeboss") then
-            status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
+            status.setStatusProperty("ivrpgchallenge3progress", status.statusProperty("ivrpgchallenge3progress", 0) + 1)
           end
         end
       end
@@ -951,11 +882,9 @@ function updateChallenges()
       if updateProgress(notification, "boss", 8, "eyeboss") then
       	world.spawnItem("experienceorb", mcontroller.position(), 1000)
       end
-
       if status.statPositive("ivrpgucskadisblessing") and (self.affinity-1)%4 == 2 and notification.damageSourceKind == "bow" then
         world.sendEntityMessage(notification.targetEntityId, "addEphemeralEffect", "ivrpgembrittle", 3, self.id)
       end
-
       if status.statPositive("ivrpgucbloodseeker") and notification.damageSourceKind == "bloodaether" then
         world.sendEntityMessage(notification.targetEntityId, "hitByBloodAether")
       end
@@ -1012,23 +941,36 @@ function updateProgress(notification, challengeKind, threatTarget, bossKind)
   return false
 end
 
-function addToChallengeCount(level)
-	--sb.logInfo("Added to Challenge Count with Level: " .. level)
-	local challenge1 = status.stat("ivrpgchallenge1")
-  local challenge2 = status.stat("ivrpgchallenge2")
-  local challenge3 = status.stat("ivrpgchallenge3")
-
-	if challenge1 == 1 and level >= 4 then
-		status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
-	elseif challenge1 == 2 and level >= 5 then
-		status.addPersistentEffect("ivrpgchallenge1progress", {stat = "ivrpgchallenge1progress", amount = 1})
-	end
-
-	if challenge2 == 1 and level >= 6 then
-		status.addPersistentEffect("ivrpgchallenge2progress", {stat = "ivrpgchallenge2progress", amount = 1})
-	end
-
-	if challenge3 == 1 and level >= 7 then
-		status.addPersistentEffect("ivrpgchallenge3progress", {stat = "ivrpgchallenge3progress", amount = 1})
-	end
+function updateDamageTaken()
 end
+
+function updateDamageGiven()
+  --[[self.dnotifications, self.damageGivenUpdate = status.inflictedHitsSince(self.damageGivenUpdate)
+  if self.dnotifications then
+    for _,notification in pairs(self.dnotifications) do
+      sb.logInfo("damage")
+    end
+  end]]
+end
+
+--[[
+  Damage Taken Notification
+    targetMaterialKind
+    healthLost
+    position
+    targetEntityId
+    sourceEntityId
+    damageSourceKind
+    damageDealt
+    hitType
+
+  Damage Given Notification
+    damageDealt
+    healthLost
+    position
+    hitType
+    damageSourceKind
+    targetMaterialKind
+    sourceEntityId
+    targetEntityId
+]]

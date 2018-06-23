@@ -26,5 +26,33 @@
         "kill" : "holydamagenumber"
       }
     }
+  },
+  {
+    "op" : "add",
+    "path" : "/demonic",
+    "value" : {
+      "resistanceStat" : "demonicResistance",
+      "damageNumberParticles" : {
+        "hit" : "demonicdamagenumber",
+        "stronghit" : "demonicdamagenumberstrong",
+        "weakhit" : "demonicdamagenumberweak",
+        "shieldhit" : "demonicdamagenumber",
+        "kill" : "demonicdamagenumber"
+      }
+    }
+  },
+  {
+    "op" : "add",
+    "path" : "/bleed",
+    "value" : {
+      "resistanceStat" : "bleedResistance",
+      "damageNumberParticles" : {
+        "hit" : "bleeddamagenumber",
+        "stronghit" : "bleeddamagenumberstrong",
+        "weakhit" : "bleeddamagenumberweak",
+        "shieldhit" : "bleeddamagenumber",
+        "kill" : "bleeddamagenumber"
+      }
+    }
   }
 ]

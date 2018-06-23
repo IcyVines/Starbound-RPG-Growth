@@ -280,7 +280,7 @@ function fire()
   end
 
   setDamage(self.damageConfig, {{self.muzzleOffset[1], self.muzzleOffset[2]}, {self.muzzleOffset[1] + beamLength, self.muzzleOffset[2]}}, self.fireTime)
-
+  animator.setLightActive("gold", true)
   drawBeam(beamEnd, collidePoint)
 end
 
@@ -290,6 +290,7 @@ function endBeam()
   animator.playSound("fireEnd")
   self.beamActive = false
   self.pCooldownTimer = self.pCooldownTime
+  animator.setLightActive("gold", false)
 end
 
 function setDamage(damageConfig, damageArea, damageTimeout)
@@ -405,8 +406,8 @@ function damageRepeatGroup(mode)
   return activeItem.ownerEntityId() .. config.getParameter("itemName") .. activeItem.hand() .. mode
 end
 
-function reset(stillRaised)
-  activeItem.setItemDamageSources({self.knockbackDamageSource})
+function reset()
+  activeItem.setItemDamageSources(self.raised and {self.knockbackDamageSource} or {})
   activeItem.setScriptedAnimationParameter("chains", {})
   --animator.setParticleEmitterActive("beamCollision", false)
   animator.stopAllSounds("fireStart")

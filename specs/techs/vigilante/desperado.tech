@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgdesperado",
+  "type" : "body",
+
+  "scripts" : ["desperado.lua"],
+  "animator" : "desperado.animation",
+
+  "description" : "Vigilante Only",
+  "shortDescription" : "Desperado",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/vigilante/desperado.png",
+
+  "chipCost" : 0
+}
