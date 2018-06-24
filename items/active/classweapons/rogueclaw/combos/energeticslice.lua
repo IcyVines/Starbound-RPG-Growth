@@ -53,7 +53,7 @@ function PowerPunch:updateDamageGiven()
       if status.statPositive("ivrpguccharger") then
         local playerIds = world.playerQuery(mcontroller.position(), 15, {withoutEntityId = self.id})
         for _,id in ipairs(playerIds) do
-          if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and world.entityDamageTeam(id).team == world.entityDamageTeam(self.id).team) then
+          if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.canDamage(self.id, id)) then
             world.sendEntityMessage(id, "modifyResourcePercentage", "energy", 0.1)
           end
         end
