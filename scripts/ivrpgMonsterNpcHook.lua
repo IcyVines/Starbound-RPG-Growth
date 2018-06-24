@@ -160,7 +160,7 @@ function enemyDeath(sourceId, damage, sourceKind, onKillList)
           withoutEntityId = self.id
         })
         for _,id in ipairs(targetIds) do
-          if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
+          if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(sourceId, id)) then
             world.sendEntityMessage(id, "modifyResourcePercentage", v.effect, v.amount)
           end
         end
