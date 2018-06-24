@@ -1,5 +1,5 @@
 function init()
-  if "friendly" == entity.damageTeam().type then
+  if "friendly" == entity.damageTeam().type or ("pvp" == entity.damageTeam().type and not world.entityCanDamage(effect.sourceEntity(), entity.id())) then
      effect.addStatModifierGroup({
       {stat = "invulnerable", amount = 1},
       {stat = "lavaImmunity", amount = 1},

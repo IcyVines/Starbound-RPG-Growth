@@ -20,7 +20,7 @@ function update(dt)
   if self.cooldownTimer <= 0 then
     local entities = world.entityQuery(entity.position(), 1.5, {withoutEntityId = self.id})
     for _, e in ipairs(entities) do
-      if world.entityAggressive(e) then
+      if world.entityAggressive(e) or ("pvp" == world.entityDamageTeam(e).type and world.entityCanDamage(self.id, e)) then
         triggerThorns(self.strength^1.2)
         self.cooldownTimer = self.cooldown
       end
