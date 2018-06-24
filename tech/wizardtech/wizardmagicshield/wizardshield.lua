@@ -1,8 +1,12 @@
 function init()
   self.sourceId = effect.sourceEntity()
   self.id = entity.id()
+end
+
+
+function update(dt)
   if world.entityDamageTeam(self.id).type == "friendly" or (world.entityDamageTeam(self.id).type == "pvp" and not world.entityCanDamage(self.sourceId, self.id)) then
-     effect.addStatModifierGroup({
+    status.setPersistentEffects("ivrpgwizardshield", {
       {stat = "invulnerable", amount = 1},
       {stat = "lavaImmunity", amount = 1},
       {stat = "poisonStatusImmunity", amount = 1},
@@ -17,10 +21,6 @@ function init()
   end
 end
 
-
-function update(dt)
-  
-end
-
 function uninit()
+  status.clearPersistentEffects("ivrpgwizardshield")
 end
