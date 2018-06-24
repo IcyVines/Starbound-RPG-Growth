@@ -17,10 +17,11 @@ function update(dt)
     })
     effect.setParentDirectives("border=2;34ED2A20;4E1D7000")
   else
-    effect.expire()
+    effect.setParentDirectives()
+    status.clearPersistentEffects("ivrpgwizardshield")
   end
 end
 
 function uninit()
-  status.clearPersistentEffects("ivrpgwizardshield")
+
 end
