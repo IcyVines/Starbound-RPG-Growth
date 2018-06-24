@@ -143,7 +143,29 @@ function enemyDeath(sourceId, damage, sourceKind, onKillList)
       end
     end
 
-    if (not ignore) and v.chance > math.random() then
+    if v.type and v.type == "friendly" then
+      local correctEnemy = true
+      if v.npcs then
+        for x,y in ipairs(v.npcs) do
+          if string.find(self.enemyType, y) then
+            correctEnemy = true
+            break
+          end
+          correctEnemy = false
+        end
+      end
+      if correctEnemy and v.effectType and v.effectType == "modifyResourcePercentage" then
+        local targetIds = world.entityQuery(world.entityPosition(sourceId), 15, {
+          includedTypes = {"creature"},
+          withoutEntityId = self.id
+        })
+        for _,id in ipairs(targetIds) do
+          if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and world.entityDamageTeam(id).team == world.entityDamageTeam(sourceId).team) then
+            world.sendEntityMessage(id, "modifyResourcePercentage", v.effect, v.amount)
+          end
+        end
+      end
+    elseif (not ignore) and v.chance > math.random() then
       status.addEphemeralEffect(v.effect, v.length, sourceId)
     end
   end

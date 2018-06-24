@@ -3,3 +3,9 @@ function removeAura(id)
     projectile.die()
   end
 end
+
+function init()
+	mcontroller.applyParameters({
+		collisionEnabled = false
+	})
+end

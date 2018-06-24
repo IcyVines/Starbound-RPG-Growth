@@ -57,7 +57,7 @@ function speedPulse()
       includedTypes = {"creature"}
     })
     for i,id in ipairs(targetIds) do
-    if world.entityDamageTeam(id).type == "friendly" then
+    if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and world.entityDamageTeam(id).team == world.entityDamageTeam(self.id).team) then
       world.sendEntityMessage(id, "addEphemeralEffect", self.speedStatus, self.statusLength, self.id)
     end
     end
@@ -65,4 +65,5 @@ end
 
 function uninit()
   status.clearPersistentEffects("ivrpgagilemagic")
+  animator.setParticleEmitterActive("embers", false)
 end

@@ -10,6 +10,7 @@ function PowerPunch:init()
   self.initDamage = self.baseDamage
   self.abilityTimer = 0
   self.name = item.name()
+  self.id = activeItem.ownerEntityId()
   self.damageGivenUpdate = 5
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
@@ -50,9 +51,11 @@ function PowerPunch:updateDamageGiven()
     if notification.damageSourceKind == "rogueelectricslash" and string.sub(self.name, -1) == "e" then
       status.modifyResourcePercentage("energy", 0.05)
       if status.statPositive("ivrpguccharger") then
-        local playerIds = world.playerQuery(mcontroller.position(), 8, {withoutEntityId = self.id})
+        local playerIds = world.playerQuery(mcontroller.position(), 15, {withoutEntityId = self.id})
         for _,id in ipairs(playerIds) do
-          world.sendEntityMessage(id, "modifyResourcePercentage", "energy", 0.05)
+          if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and world.entityDamageTeam(id).team == world.entityDamageTeam(self.id).team) then
+            world.sendEntityMessage(id, "modifyResourcePercentage", "energy", 0.1)
+          end
         end
       end
     elseif notification.damageSourceKind == "roguepoisonslash" and string.sub(self.name, -1) == "v" then 

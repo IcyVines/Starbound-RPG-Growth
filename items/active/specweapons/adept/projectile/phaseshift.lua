@@ -63,7 +63,7 @@ function createFriendlyProjectile()
   })
   shuffle(targetIds)
   for i,id in ipairs(targetIds) do
-    if world.entityDamageTeam(id).type == "friendly" then
+    if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and world.entityDamageTeam(id).team == world.entityDamageTeam(self.id).team) then
       local sourceDamageTeam = world.entityDamageTeam(self.id)
       local directionTo = world.distance(world.entityPosition(id), mcontroller.position())
       world.spawnProjectile(
