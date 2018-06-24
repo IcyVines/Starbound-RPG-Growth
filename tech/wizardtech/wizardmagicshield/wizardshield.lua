@@ -17,6 +17,7 @@ function update(dt)
       {stat = "fallDamageMultiplier", effectiveMultiplier = 0}
     })
     sb.logInfo(world.entityDamageTeam(self.id).type)
+    sb.logInfo(self.id .. " " .. self.sourceId)
     sb.logInfo("on")
     effect.setParentDirectives("border=2;34ED2A20;4E1D7000")
   else
