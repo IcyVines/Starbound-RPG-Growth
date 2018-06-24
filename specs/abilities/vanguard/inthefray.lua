@@ -12,7 +12,7 @@ function update(dt)
   self.nearAggressiveEntities = 0.5
   local targetIds = world.entityQuery(mcontroller.position(), 10)
   for _,id in ipairs(targetIds) do
-    if world.entityAggressive(id) or (world.entityDamageTeam(id).type == "pvp" and world.entityDamageTeam(id).team ~= world.entityDamageTeam(self.id).team) then
+    if world.entityAggressive(id) or (world.entityDamageTeam(id).type == "pvp" and world.canDamage(self.id, id)) then
       self.nearAggressiveEntities = 1.5
       break
     end

@@ -32,7 +32,7 @@ function healPulse()
       includedTypes = {"creature"}
     })
     for i,id in ipairs(targetIds) do
-		if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and world.entityDamageTeam(id).team == world.entityDamageTeam(self.id).team) then
+		if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.canDamage(self.id, id)) then
 			world.sendEntityMessage(id, "addEphemeralEffect", self.healthStatus, 3, self.id)
 		end
     end
