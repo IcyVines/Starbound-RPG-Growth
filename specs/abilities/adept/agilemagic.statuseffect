@@ -2,7 +2,7 @@
   "name" : "ivrpgagilemagic",
 
   "effectConfig" : {
-    "speedRange" : 16,
+    "speedRange" : 15,
     "speedStatus" : "ivrpgagilemagicspeedboost",
     "statusLength" : 3
   },
