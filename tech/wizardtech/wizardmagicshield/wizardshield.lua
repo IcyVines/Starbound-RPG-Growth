@@ -1,5 +1,7 @@
 function init()
-  if "friendly" == entity.damageTeam().type or ("pvp" == entity.damageTeam().type and not world.entityCanDamage(effect.sourceEntity(), entity.id())) then
+  self.sourceId = effect.sourceEntity()
+  self.id = entity.id()
+  if world.entityDamageTeam(self.id).type == "friendly" or (world.entityDamageTeam(self.id).type == "pvp" and not world.entityCanDamage(self.sourceId, self.id)) then
      effect.addStatModifierGroup({
       {stat = "invulnerable", amount = 1},
       {stat = "lavaImmunity", amount = 1},
@@ -10,6 +12,8 @@ function init()
       {stat = "fallDamageMultiplier", effectiveMultiplier = 0}
     })
     effect.setParentDirectives("border=2;34ED2A20;4E1D7000")
+  else
+    effect.expire()
   end
 end
 
