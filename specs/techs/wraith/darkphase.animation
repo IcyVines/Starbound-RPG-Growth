@@ -1,0 +1,5 @@
+{ 
+  "sounds" : {
+    "ghostly" : ["/sfx/npc/monsters/spookit_fly_loop.ogg"]
+  }
+}

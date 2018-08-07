@@ -11,7 +11,7 @@
   "piercing" : true,
   "bounces" : -1,
 
-  "damageTeam" : { "type" : "friendly" },
+  "damageTeam" : { "type" : "indiscriminate" },
   "onlyHitTerrain" : true,
   "persistentStatusEffects" : ["wizardshield"],
   "statusEffectArea" : [[-64, 0], [-45, 45], [0, 64], [45, 45], [64, 0], [45, -45], [0, -64], [-45, -45]],

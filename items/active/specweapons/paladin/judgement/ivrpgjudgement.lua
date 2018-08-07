@@ -10,6 +10,7 @@ function init()
 end
 
 function update(dt)
+  if world.entityName(entity.id()) == "Heart of Ruin" then return end
   mcontroller.controlParameters({
     gravityEnabled = true,
     collisionEnabled = true

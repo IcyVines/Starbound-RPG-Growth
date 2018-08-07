@@ -5,16 +5,16 @@
   "inventoryIcon" : "explorerspiradrill3.png",
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "tooltipKind" : "tool",
-  "description" : "Ravenous Spira, the drill that can pierce through the heavens.",
-  "shortdescription" : "Ravenous Spira",
+  "tooltipKind" : "base",
+  "description" : "Pierce the Heavens!",
+  "shortdescription" : "^yellow;Ravenous Spira",
   "largeImage" : "explorerspiradrill3.png",
   "image" : "explorerdrill.png:{frame}",
   "scripts" : [ "/items/active/classweapons/explorerdrill/explorerspiradrill.lua" ],
   "handPosition" : [-8, 1],
   "pointable" : true,
   "fireOffset" : [0, 0.3],
-  "itemTags" : ["weapon","tool","explorer","drill"],
+  "itemTags" : ["weapon","tool","explorer","drill","melee"],
 
   "learnBlueprintsOnPickup" : [
     "explorerspiradrill3"
@@ -32,6 +32,7 @@
   "tileDamage" : 1.0,
   "harvestLevel" : 99,
   "damageTileDepth" : 5,
+  "damage" : 8,
   "cost" : 20,
   "spinUpDownTime" : 0.6
 }

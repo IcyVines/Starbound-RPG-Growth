@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgreap",
+  "type" : "Head",
+
+  "scripts" : ["reap.lua"],
+  "animator" : "reap.animation",
+
+  "description" : "Necromancer Only.",
+  "shortDescription" : "Reap",
+  "rarity" : "Legendary",
+  "icon" : "/specs/techs/necromancer/reap.png",
+
+  "chipCost" : 0,
+  "healthCost" : 10,
+  "cooldown" : 2
+}

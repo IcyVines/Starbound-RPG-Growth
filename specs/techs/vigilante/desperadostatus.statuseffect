@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgdesperadostatus",
+  "effectConfig" : {
+
+  },
+
+  "defaultDuration" : 10,
+
+  "scripts" : [
+  	"desperadostatus.lua"
+  ],
+
+  "label" : "Desperado",
+  "icon" : "/specs/techs/vigilante/desperado.png"
+}

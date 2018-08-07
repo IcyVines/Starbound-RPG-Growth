@@ -1,6 +1,6 @@
 {
   "name" : "ivrpgjudgement",
-  "blockingStat" : "holyImmunity",
+  "blockingStat" : "holyStatusImmunity",
   "effectConfig" : {},
   "defaultDuration" : 3,
 

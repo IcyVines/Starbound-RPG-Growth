@@ -3,5 +3,20 @@
       "op": "add",
       "path": "/dropPools/-",
       "value": "ivrpgscrollcryopool"
+    },
+    {
+      "op": "add",
+      "path": "/baseParameters/statusSettings/stats/demonicStatusImmunity",
+      "value": {"baseValue" : 1.0}
+    },
+    {
+      "op": "add",
+      "path": "/baseParameters/statusSettings/stats/holyStatusImmunity",
+      "value": {"baseValue" : 1.0}
+    },
+    {
+      "op": "add",
+      "path": "/baseParameters/statusSettings/stats/bleedStatusImmunity",
+      "value": {"baseValue" : 1.0}
     }
 ]

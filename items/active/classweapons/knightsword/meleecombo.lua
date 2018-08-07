@@ -186,15 +186,30 @@ function MeleeCombo:computeDamageAndCooldowns()
   local totalAttackTime = 0
   local totalDamageFactor = 0
   for i, attackTime in ipairs(attackTimes) do
-    if (i == 8 or i == 9) and self.blinding then self.stepDamageConfig[i] = {
+    if self.blinding then
+      local statusConfig = {
+        {
+          effect = "ivrpgjudgement",
+          duration = 1
+        }
+      }
+      if (i == 8 or i == 9) then
+        statusConfig[2] = {
+          effect = "soldierstun",
+          duration = 3
+        }
+      end
+      self.stepDamageConfig[i] = {
+        damageSourceKind = "holybroadsword",
         baseDamageFactor = self.stepDamageConfig[i].baseDamageFactor,
         knockback = self.stepDamageConfig[i].knockback,
-        statusEffects = {
-          {
-            effect = "soldierstun",
-            duration = 3
-          }
-        }
+        statusEffects = statusConfig
+      }
+    else
+      self.stepDamageConfig[i] = {
+        damageSourceKind = "broadsword",
+        baseDamageFactor = self.stepDamageConfig[i].baseDamageFactor,
+        knockback = self.stepDamageConfig[i].knockback
       }
     end
     self.stepDamageConfig[i] = util.mergeTable(copy(self.damageConfig), self.stepDamageConfig[i])

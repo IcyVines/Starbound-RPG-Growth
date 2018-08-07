@@ -4,12 +4,12 @@
   "level" : 5,
   "maxStack" : 1,
   "rarity" : "Rare",
-  "description" : "Even sharper!",
+  "description" : "Ouch. Even sharper!",
   "shortdescription" : "Siphon Slash",
-  "tooltipKind" : "fistweapon",
+  "tooltipKind" : "base",
   "category" : "Claw",
   "twoHanded" : false,
-  "itemTags" : ["weapon","rogue","claw","fist"],
+  "itemTags" : ["weapon","rogue","claw","fist","melee"],
 
   "learnBlueprintsOnPickup" : [
     "roguesiphonclaw2s",

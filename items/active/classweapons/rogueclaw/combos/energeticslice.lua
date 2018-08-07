@@ -8,7 +8,10 @@ function PowerPunch:init()
   self.cost = config.getParameter("energyCost", 30)
   self.baseDamage = self.damageConfig.baseDamage
   self.initDamage = self.baseDamage
+  self.abilityTimer = 0
   self.name = item.name()
+  self.id = activeItem.ownerEntityId()
+  self.damageGivenUpdate = 5
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
@@ -31,6 +34,35 @@ function PowerPunch:update(dt, fireMode, shiftHeld)
   self.freezeTimer = math.max(0, self.freezeTimer - self.dt)
   if self.freezeTimer > 0 and not mcontroller.onGround() and math.abs(world.gravity(mcontroller.position())) > 0 then
     mcontroller.controlApproachVelocity({0, 0}, 1000)
+  end
+
+  if self.abilityTimer > 0 then
+    self.abilityTimer = math.max(0, self.abilityTimer - dt)
+  end
+
+  self:updateDamageGiven()
+
+end
+
+function PowerPunch:updateDamageGiven()
+  self.notifications, self.damageGivenUpdate = status.inflictedHitsSince(self.damageGivenUpdate)
+  if not self.notifications then return end
+  for _,notification in ipairs(self.notifications) do
+    if notification.damageSourceKind == "rogueelectricslash" and string.sub(self.name, -1) == "e" then
+      status.modifyResourcePercentage("energy", 0.05)
+      if status.statPositive("ivrpguccharger") then
+        local playerIds = world.playerQuery(mcontroller.position(), 15, {withoutEntityId = self.id})
+        for _,id in ipairs(playerIds) do
+          if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
+            world.sendEntityMessage(id, "modifyResourcePercentage", "energy", 0.1)
+          end
+        end
+      end
+    elseif notification.damageSourceKind == "roguepoisonslash" and string.sub(self.name, -1) == "v" then 
+      status.modifyResourcePercentage("health", 0.05)
+    elseif notification.damageSourceKind == "rogueslash" and string.sub(self.name, -1) == "s" then
+      status.modifyResourcePercentage("food", 0.05)
+    end
   end
 end
 

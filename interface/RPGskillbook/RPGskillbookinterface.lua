@@ -22,7 +22,7 @@ function init()
 
   self.classTo = 0
   self.class = player.currency("classtype")
-  self.specTo = 0
+  self.specTo = 1
   self.spec = player.currency("spectype")
   self.profTo = 0
   self.profession = player.currency("proftype")
@@ -100,6 +100,8 @@ function update(dt)
       changeToClasses()
     elseif widget.getChecked("bookTabs.0") then
       changeToOverview()
+    elseif widget.getChecked("bookTabs.5") then
+      changeToSpecialization()
     end
   end
 
@@ -179,8 +181,8 @@ function updateClassInfo()
 end
 
 function updateSpecInfo()
-  if self.spec > 0 then
-    self.specInfo = root.assetJson("/specs/" .. self.specList[self.class][self.spec] .. ".config")
+  if self.spec > 0 and self.class > 0 then
+    self.specInfo = root.assetJson("/specs/" .. self.specList[self.class][self.spec].name .. ".config")
   else
     self.specInfo = nil
   end
@@ -420,11 +422,13 @@ end
 
 function changeToSpecialization()
     widget.setText("tabLabel", "Specialization Tab")
-    if self.level < 35 then
+    self.specTo = 1
+    if self.level < 35 or self.class == 0 then
       widget.setVisible("specializationlayout", false)
       widget.setVisible("specializationslayout", false)
       widget.setVisible("specializationlockedlayout", true)
     elseif self.spec == 0 then
+      updateSpecializationSelect()
       widget.setVisible("specializationlockedlayout", false)
       widget.setVisible("specializationslayout", true)
       widget.setVisible("specializationlayout", false)
@@ -480,9 +484,32 @@ end
 function updateProfessionTab()
 end
 
+function updateSpecializationSelect()
+  self.availableSpecs = self.specList[self.class]
+  local currentSpec = self.availableSpecs[self.specTo]
+
+  widget.setText("specializationslayout.spectitle", currentSpec.title)
+  if currentSpec.titleColor then
+  	widget.setFontColor("specializationslayout.spectitle", currentSpec.titleColor)
+  end
+
+  widget.setText("specializationslayout.desctext", currentSpec.description)
+  widget.setText("specializationslayout.loretext", concatTableValues(currentSpec.flavor, "\n\n"))
+  widget.setText("specializationslayout.weapontext", concatTableValues(currentSpec.weaponText, "\n\n"))
+
+  widget.setText("specializationslayout.unlocktext", currentSpec.unlockText)
+
+  local unlockStatus = currentSpec.unlockStatus
+  local unlocked = status.statusProperty(unlockStatus, false)
+  if unlocked ~= true then unlocked = false end
+
+  widget.setVisible("specializationslayout.unlocktext", not unlocked)
+  widget.setVisible("specializationslayout.selectspec", unlocked)  
+end
+
 function updateSpecializationTab()
   if self.class == 0 or self.spec == 0 then return end
-  self.specType = self.specList[self.class][self.spec]
+  self.specType = self.specList[self.class][self.spec].name
   updateSpecInfo()
   local specInfo = self.specInfo
 
@@ -528,10 +555,24 @@ function unlockSpecTech()
   updateSpecializationTab()
 end
 
+function specRight()
+  self.specTo = (self.specTo == #self.availableSpecs) and 1 or self.specTo + 1
+  updateSpecializationSelect()
+end
+
+function specLeft()
+  self.specTo = (self.specTo == 1) and #self.availableSpecs or self.specTo - 1
+  updateSpecializationSelect()
+end
+
+function chooseSpec()
+  player.addCurrency("spectype", self.specTo)
+end
+
 function rescrollSpecialization()
   if self.class == 0 or self.spec == 0 then return end
   player.consumeCurrency("spectype", self.spec)
-  player.giveItem("ivrpgscroll" .. self.specType)
+  --player.giveItem("ivrpgscroll" .. self.specType)
 end
 
 function concatTableValues(table, delim, required)
@@ -654,14 +695,17 @@ function updateInfo()
     "^gray;" .. getStatPercent(status.stat("grit")) ..
     getStatMultiplier(status.stat("fallDamageMultiplier")) ..
     math.floor((1 + self.strength^self.strengthBonus*.05)*100+.5)/100 .. "^reset;" .. "\n" ..
-    "^red;" .. (math.floor(self.dexterity^self.dexterityBonus*100+.5)/200 + status.stat("ninjaBleed")) .. "%\n" ..
-    (math.floor(self.dexterity^self.dexterityBonus*100+.5)/100 + status.stat("ninjaBleed"))/50 .. "^reset;" .. "\n" ..
+    "^red;" .. (math.floor(10000*status.stat("ivrpgBleedChance"))/100) .. "%\n" ..
+    (math.floor(100*status.stat("ivrpgBleedLength"))/100) .. "^reset;" .. "\n" ..
     "\n\nPercent\n" ..
     "^gray;" .. getStatPercent(status.stat("physicalResistance")) .. "^reset;" ..
     "^green;" .. getStatPercent(status.stat("poisonResistance")) .. "^reset;" ..
     "^blue;" .. getStatPercent(status.stat("iceResistance")) .. "^reset;" .. 
     "^red;" .. getStatPercent(status.stat("fireResistance")) .."^reset;" .. 
     "^yellow;" .. getStatPercent(status.stat("electricResistance")) .. "^reset;" ..
+    "^magenta;" .. getStatPercent(status.stat("novaResistance")) .. "^reset;" .. 
+    "^black;" .. getStatPercent(status.stat("demonicResistance")) .."^reset;" .. 
+    "^yellow;" .. getStatPercent(status.stat("holyResistance")) .. "^reset;" ..
     "^green;" .. getStatPercent(status.stat("radioactiveResistance")) .. "^reset;" ..
     "^gray;" .. getStatPercent(status.stat("shadowResistance")) .. "^reset;" ..
     "^magenta;" .. getStatPercent(status.stat("cosmicResistance")) .. "^reset;")
@@ -1174,9 +1218,9 @@ function updateChallengesText()
   widget.setText("masterylayout.challenge2", self.challengeText[2][challenge2][1])
   widget.setText("masterylayout.challenge3", self.challengeText[3][challenge3][1])
 
-  local prog1 = math.floor(status.stat("ivrpgchallenge1progress"))
-  local prog2 = math.floor(status.stat("ivrpgchallenge2progress"))
-  local prog3 = math.floor(status.stat("ivrpgchallenge3progress"))
+  local prog1 = math.floor(status.statusProperty("ivrpgchallenge1progress", 0))
+  local prog2 = math.floor(status.statusProperty("ivrpgchallenge2progress", 0))
+  local prog3 = math.floor(status.statusProperty("ivrpgchallenge3progress", 0))
 
   local maxprog1 = self.challengeText[1][challenge1][2]
   local maxprog2 = self.challengeText[2][challenge2][2]
@@ -1216,7 +1260,7 @@ function challengeRewards(name)
   local rand = math.random(1,10)
   if name == "challenge1button" then
     status.clearPersistentEffects("ivrpgchallenge1")
-    status.clearPersistentEffects("ivrpgchallenge1progress")
+    status.setStatusProperty("ivrpgchallenge1progress", 0)
     if rand < 4 then
       player.giveItem({"experienceorb", math.random(1000,2000)})
     elseif rand < 7 then
@@ -1231,7 +1275,7 @@ function challengeRewards(name)
     end
   elseif name == "challenge2button" then
     status.clearPersistentEffects("ivrpgchallenge2")
-    status.clearPersistentEffects("ivrpgchallenge2progress")
+    status.setStatusProperty("ivrpgchallenge2progress", 0)
     if rand < 4 then
       player.giveItem({"experienceorb", math.random(2500,5000)})
     elseif rand < 7 then
@@ -1245,7 +1289,7 @@ function challengeRewards(name)
     end
   elseif name == "challenge3button" then
     status.clearPersistentEffects("ivrpgchallenge3")
-    status.clearPersistentEffects("ivrpgchallenge3progress")
+    status.setStatusProperty("ivrpgchallenge3progress", 0)
     if rand < 5 then
       player.giveItem({"essence", math.random(500,750)})
     elseif rand < 7 then
@@ -1265,9 +1309,9 @@ function consumeMasteryCurrency()
   status.clearPersistentEffects("ivrpgchallenge1")
   status.clearPersistentEffects("ivrpgchallenge2")
   status.clearPersistentEffects("ivrpgchallenge3")
-  status.clearPersistentEffects("ivrpgchallenge1progress")
-  status.clearPersistentEffects("ivrpgchallenge2progress")
-  status.clearPersistentEffects("ivrpgchallenge3progress")
+  status.setStatusProperty("ivrpgchallenge1progress", 0)
+  status.setStatusProperty("ivrpgchallenge2progress", 0)
+  status.setStatusProperty("ivrpgchallenge3progress", 0)
 end
 
 function unequipUpgrade(name)

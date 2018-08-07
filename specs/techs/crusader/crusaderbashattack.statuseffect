@@ -1,0 +1,16 @@
+{
+  "name" : "crusaderbashattack",
+  "effectConfig" : {
+    "damageProjectileType" : "knightbashdamage",
+    "cooldown" : 1
+  },
+  "defaultDuration" : 60,
+
+  "scripts" : [
+    "/specs/techs/crusader/crusaderbashattack.lua"
+  ],
+
+  "label" : "Cause Contact Damage",
+  "icon" : "/interface/statuses/thorns.png",
+  "knockback" : 30
+}

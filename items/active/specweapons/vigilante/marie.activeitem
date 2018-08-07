@@ -1,0 +1,97 @@
+{
+  "itemName" : "ivrpgwmarie",
+  "price" : 720,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "A revolver with a booming heart.",
+  "shortdescription" : "Marie",
+  "tooltipKind" : "gun",
+  "category" : "pistol",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","pistol"],
+  "level" : 6,
+  "inventoryIcon" : [
+    { "image" : "marie.png" }
+  ],
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "marie.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol2.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_pistol4.ogg"]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [0, 10, 50]
+      }
+    },
+    "animatedParts" : {
+      "parts" : {
+        "muzzleFlash" : {
+          "properties" : {
+            "offset" : [1.75, -0.5]
+          }
+        }
+      }
+    }
+  },
+
+  "baseOffset" : [0.7, 0.25],
+  "muzzleOffset" : [0.5, 0.75],
+  "gunScale" : [0.8, 0.8],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/vigilante/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.3,
+    "baseDps" : 5,
+    "energyUsage" : 17.5,
+    "inaccuracy" : 0.05,
+    "fireType" : "marie",
+    "projectileCount" : 1,
+    "projectileType" : "mariebullet",
+    "projectileParameters" : {
+      "knockback" : 0,
+      "knockbackRange" : 0
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 10,
+        "weaponRotation" : 10,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 10,
+        "weaponRotation" : 10,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

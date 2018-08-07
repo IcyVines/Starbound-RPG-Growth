@@ -14,7 +14,7 @@ function init()
   self.damageTileDepth = config.getParameter("damageTileDepth",3)
   self.cost = config.getParameter("cost", 10)
   self.name = item.name()
-  self.damageBonus = (self.name == "explorerspiradrill" and 1 or (self.name == "explorerspiradrill2" and 2 or 3))
+  self.damageBonus = config.getParameter("damage", 1)
   self.id = activeItem.ownerEntityId()
   self.spwDamageBonus = 1
   animator.setSoundVolume("active", 0, 0)
@@ -58,19 +58,22 @@ function update(dt, fireMode, shiftHeld, moves)
     end
     self.drops = (shiftHeld and self.name == "explorerspiradrill3") and 0 or 99
     animator.setLightActive("glow", true)
-    --sb.logInfo("layer" .. layer)
     damageTiles(layer)
+    local vigor = world.entityCurrency(self.id, "vigorpoint")
+    local damageTimeout = 0.4 - vigor/200
+    local damageBonus = self.damageBonus + status.stat("powerMultiplier")
 
     animator.setAnimationState("drill", "active")
+    
     activeItem.setItemDamageSources({
         {
           enabled = false,
           attachToPart = drill,
           --poly = {{8, 2.5}, {2, 0.75}, {2, 4.25}},
           poly = {{4.2, -1.55}, {7.85, 0.0}, {4.2, 1.55}},
-          damage = 3*self.damageBonus*self.spwDamageBonus,
+          damage = damageBonus*self.spwDamageBonus,
           damageSourceKind = "electricplasma",
-          damageRepeatTimeout = 0.2,
+          damageRepeatTimeout = damageTimeout,
           damageRepeatGroup = "leftArmDrill",
           knockback = 3,
           rayCheck = true

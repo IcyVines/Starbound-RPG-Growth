@@ -1,0 +1,20 @@
+{
+  "name" : "ivrpgagilemagic",
+
+  "effectConfig" : {
+    "speedRange" : 15,
+    "speedStatus" : "ivrpgagilemagicspeedboost",
+    "statusLength" : 3
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "agilemagic.lua"
+  ],
+
+  "animationConfig" : "agilemagic.animation",
+
+  "label" : "Agile Magic",
+  "icon" : "/specs/abilities/adept/agilemagic.png"
+}

@@ -5,6 +5,6 @@
     { "item" : "goldbar", "count" : 6 },
     { "item" : "diamond", "count" : 2 }
   ],
-	"output" : { "item" : "ivrpgtrueaegis", "count" : 1 },
+	"output" : { "item" : "ivrpgwtrueaegis", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]
 }

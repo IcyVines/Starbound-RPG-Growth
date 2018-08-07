@@ -1,0 +1,17 @@
+{
+  "projectileName" : "ivrpgreapexplosion",
+  "image" : "darkexplosion2.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 12,
+  "speed" : 0,
+  "knockback" : 20,
+  "damagePoly" : [ [-36, 0], [-40, -35], [-26, -42], [0, -36], [32, -40], [50, -20], [36, 0], [45, 36], [40, 45], [0, 36], [-30, 56], [-44, 45] ],
+  "lightColor" : [20, 10, 40],
+  "animationLoops" : false,
+  "piercing" : true,
+  "statusEffects" : [
+    {"effect" : "ivrpgreaped", "duration" : 0.1}
+  ],
+  "flippable" : true,
+  "damageKind" : "demonic"
+}
