@@ -11,7 +11,7 @@
   "piercing" : true,
   "bounces" : -1,
   "flippable" : true,
-  "damageKind" : "electricplasma",
+  "damageKind" : "rushelectricplasma",
   "statusEffects" : [{"effect" : "soldierstun", "duration" : 3}],
   "knockback" : 30
 }

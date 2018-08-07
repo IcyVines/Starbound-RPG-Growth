@@ -13,5 +13,5 @@
     {"effect" : "ivrpgreaped", "duration" : 0.1}
   ],
   "flippable" : true,
-  "damageKind" : "demonic"
+  "damageKind" : "demonicreap"
 }

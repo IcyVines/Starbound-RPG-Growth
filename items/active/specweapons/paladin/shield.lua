@@ -50,7 +50,7 @@ function init()
     damageType = "Knockback",
     sourceEntity = activeItem.ownerEntityId(),
     team = activeItem.ownerTeam(),
-    knockback = self.knockback*2,
+    knockback = self.knockback*1.5,
     rayCheck = true,
     damageRepeatTimeout = 0.25
   }
@@ -124,7 +124,7 @@ function update(dt, fireMode, shiftHeld)
     end
   end
 
-  self.beamLength = math.min(self.origBeamLength + (self.perfectShieldBonus - 1) * 2, 20)
+  self.beamLength = math.min(self.origBeamLength + (self.perfectShieldBonus - 1) * 4, 30)
 
   if status.resourceLocked("energy") then
     self.beamTimer = math.min(self.beamTimer, 0.25)
@@ -303,7 +303,7 @@ function damageSource(damageConfig, damageArea, damageTimeout)
     if knockback and damageConfig.knockbackDirectional ~= false then
       knockback = knockbackMomentum(damageConfig.knockback, damageConfig.knockbackMode, 0, mcontroller.facingDirection())
     end
-    local damage = activeItem.ownerPowerMultiplier() * self.perfectShieldBonus
+    local damage = self.baseDps * activeItem.ownerPowerMultiplier() * self.perfectShieldBonus
 
     local damageLine, damagePoly
     if #damageArea == 2 then

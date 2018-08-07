@@ -1,6 +1,12 @@
+require "/scripts/ivrpgutil.lua"
+
 function init()
   self.critBonusId = effect.addStatModifierGroup({})
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
+  self.id = effect.sourceEntity()
+  self.adeptTimer = 0
+  self.ruinFound = false
+  status.setStatusProperty("ivrpgsuadept", false)
 end
 
 
@@ -23,7 +29,35 @@ function update(dt)
   	effect.setParentDirectives()
   end
 
-  if world.entityCurrency(effect.sourceEntity(), "classtype") ~= 3 then
+  --Adept Check
+  if world.entityCurrency(self.id, "experienceorb") >= 122500 and status.statusProperty("ivrpgsuadept") ~= true and world.entityCurrency(self.id, "intelligencepoint") > 40 and world.entityCurrency(self.id, "agilitypoint") > 40 then
+    local targetEntities = world.monsterQuery(mcontroller.position(), 8, {
+      withoutEntityId = self.id,
+      includedTypes = {"creature"}
+    })
+    self.ruinFound = false
+    if targetEntities then
+      for _,v in ipairs(targetEntities) do
+        if world.entityTypeName(v) == "eyeboss" then
+          self.ruinFound = true
+          break
+        end
+      end
+    end
+
+    if not self.ruinFound then
+      self.adeptTimer = 0
+    else
+      self.adeptTimer = self.adeptTimer + dt
+    end
+
+    if self.adeptTimer >= 30 then
+      world.sendEntityMessage(self.id, "sendRadioMessage", "Adept Unlocked!")
+      status.setStatusProperty("ivrpgsuadept", true)
+    end
+  end
+  
+  if world.entityCurrency(self.id, "classtype") ~= 3 then
     effect.expire()
   end
 end

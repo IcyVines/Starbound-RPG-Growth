@@ -1,3 +1,4 @@
+require "/scripts/ivrpgutil.lua"
 local origInit = init
 local origUpdate = update
 local origUninit = uninit
@@ -158,6 +159,17 @@ function unlockSpecs()
     sendRadioMessage("Vanguard Unlocked!")
     status.setStatusProperty("ivrpgsuvanguard", true)
   end
+
+  if type(status.statusProperty("ivrpgsuwraith")) == "number" and status.statusProperty("ivrpgsuwraithd") >= 1000 then
+    sendRadioMessage("Wraith Unlocked!")
+    status.setStatusProperty("ivrpgsuwraith", true)
+  end
+
+  if type(status.statusProperty("ivrpgsuvigilante")) == "number" and status.statusProperty("ivrpgsuvigilante") >= 100 then
+    sendRadioMessage("Vigilante Unlocked!")
+    status.setStatusProperty("ivrpgsuvigilante", true)
+  end
+
 end
 
 function sendRadioMessage(text)
@@ -194,7 +206,7 @@ function specChecks(enemyType, level, position, statusEffects, damage, damageTyp
 
   -- Necromancer
   if status.statusProperty("ivrpgsunecromancer") ~= true and self.class == 2 then
-    if status.resource("health") / status.stat("maxHealth") <= 0.2 then
+    if status.resource("health") / status.stat("maxHealth") < 0.2 then
       status.setStatusProperty("ivrpgsunecromancer", status.statusProperty("ivrpgsunecromancer", 0) + level)
     end
   end
@@ -202,14 +214,39 @@ function specChecks(enemyType, level, position, statusEffects, damage, damageTyp
   -- Vanguard
   if status.statusProperty("ivrpgsuvanguard") ~= true and (self.class == 4 or self.class == 6) then
     if string.find(damageType, "bullet") or string.find(damageType, "shotgun") then
-      sb.logInfo(world.magnitude(position, world.entityPosition(self.id)))
       if world.magnitude(position, world.entityPosition(self.id)) < 5 then
         status.setStatusProperty("ivrpgsuvanguard", status.statusProperty("ivrpgsuvanguard", 0) + level)
       end
     end
   end
 
-  
+  --Wraith
+  if status.statusProperty("ivrpgsuwraith") ~= true and (self.class == 2 or self.class == 5) then
+    if player.currency("intelligencepoint") > 40 then
+      if hasElement({"skimbus", "spookit", "gosmet", "wisper", "squeem"}, enemyType) then
+        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuvanguard", 0) + level)
+      elseif string.find(enemyType, "tentacleghost") then
+        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuvanguard", 0) + 1)
+      elseif string.find(enemyType, "erchiusghost") then
+        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuvanguard", 0) + 10)
+      end
+    end
+  end
+
+  --Paladin
+  --Completed in Knight Ability Lua
+
+  --Vigilante
+  if status.statusProperty("ivrpgsuvigilante") ~= true and self.class == 4 then
+    if string.find(damageType, "bullet") or string.find(damageType, "shotgun") then
+      if string.find(enemyType, "bandit") or string.find(enemyType, "outlaw") then
+        status.setStatusProperty("ivrpgsuvigilante", status.statusProperty("ivrpgsuvigilante", 0) + level)
+      end
+    end
+  end
+
+  --Adept
+  --Completed in Ninja Ability Lua
 
 
 end

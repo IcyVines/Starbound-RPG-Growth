@@ -1,141 +1,547 @@
 {
-  "itemName" : "ivrpgwforusall",
-  "price" : 1500,
-  "level" : 6,
-  "maxStack" : 1,
-  "rarity" : "legendary",
-  "description" : "Death Comes",
-  "shortdescription" : "For Us All",
-  "tooltipKind" : "base",
-  "category" : "scythe",
-  "twoHanded" : true,
-  "itemTags" : [ "weapon", "melee", "axe", "scythe"],
+	"itemName": "ivrpgwforusall",
+	"price": 1500,
+	"level": 6,
+	"maxStack": 1,
+	"rarity": "legendary",
+	"description": "Death comes for us all",
+	"shortdescription": "Collector",
+	"tooltipKind": "base",
+	"category": "scythe",
+	"twoHanded": true,
+	"itemTags": ["weapon", "melee", "axe", "scythe"],
 
-  "inventoryIcon" : "forusall.png",
-  "animation" : "/items/active/specweapons/necromancer/largeedgedb.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "forusall.png"
-  },
-  "animationCustom" : { },
+	"inventoryIcon": "forusall.png",
+	"animationParts": {
+		"handle": "",
+		"blade": "forusall.png?flipx",
+		"gun": "/assetmissing.png"
+	},
+	"animationCustom": {
+		"animatedParts": {
+			"stateTypes": {
+				"firing": {
+					"default": "off",
+					"states": {
+						"off": {
+							"frames": 1,
+							"cycle": 1,
+							"mode": "loop"
+						},
+						"fire": {
+							"frames": 1,
+							"cycle": 0.07,
+							"mode": "transition",
+							"transition": "off"
+						},
+						"charge": {
+							"frames": 1,
+							"cycle": 0.49,
+							"mode": "transition",
+							"transition": "skill1",
+							"frameProperties": {
+								"immediateSound": ["/sfx/melee/travelingslash_electric6.ogg"]
+							}
+						},
+						"skill1": {
+							"frames": 1,
+							"cycle": 0.5,
+							"mode": "transition",
+							"transition": "skill2",
+							"frameProperties": {
+								"immediateSound": ["/sfx/melee/travelingslash_electric4.ogg"]
+							}
+						},
+						"skill2": {
+							"frames": 1,
+							"cycle": 0.5,
+							"mode": "transition",
+							"transition": "skill3",
+							"frameProperties": {
+								"immediateSound": ["/sfx/melee/travelingslash_electric5.ogg"]
+							}
+						},
+						"skill3": {
+							"frames": 1,
+							"cycle": 0.5,
+							"mode": "transition",
+							"transition": "skill4",
+							"frameProperties": {
+								"immediateSound": ["/sfx/melee/travelingslash_electric3.ogg"]
+							}
+						},
+						"skill4": {
+							"frames": 1,
+							"cycle": 0.5,
+							"mode": "transition",
+							"transition": "skill5",
+							"frameProperties": {
+								"immediateSound": ["/sfx/melee/travelingslash_electric2.ogg"]
+							}
+						},
+						"skill5": {
+							"frames": 1,
+							"cycle": 1,
+							"mode": "transition",
+							"transition": "fullcharge",
+							"frameProperties": {
+								"immediateSound": ["/sfx/melee/travelingslash_electric1.ogg"]
+							}
+						},
+						"fullcharge": {
+							"frames": 1,
+							"cycle": 1,
+							"mode": "loop"
+						}
+					}
+				},
+				"swoosh": {
+					"default": "idle",
+					"states": {
+						"idle": {},
+						"fire": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fire2": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fire3": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						}
+					}
+				}
+			},
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+			"parts": {
+				"gun": {
+					"properties": {
+						"centered": true,
+						"offset": [0, 0],
+						"transformationGroups": ["weapon"]
+					},
+					"partStates": {
+						"firing": {
+							"off": {
+								"properties": {
+									"image": "/assetmissing.png"
+								}
+							},
+							"charge": {
+								"properties": {
+									"image": "/assetmissing.png"
+								}
+							},
+							"fullcharge": {
+								"properties": {
+									"image": "/assetmissing.png"
+								}
+							},
+							"fire": {
+								"properties": {
+									"image": "/assetmissing.png"
+								}
+							}
+						}
+					}
+				},
+				"blade": {
+					"properties": {
+						"zLevel": 0,
+						"centered": true,
+						"image": "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
+						"offset": [0, 1.875],
+						"transformationGroups": ["weapon"],
+						"rotationCenter": [0, 0],
+						"damageArea": [[-0.7, -1.0], [-0.7, 2.5], [0.5, 2.5], [0.5, -1.0]]
+					}
+				},
+				"handle": {
+					"properties": {
+						"zLevel": 1,
+						"centered": true,
+						"image": "<partImage><paletteSwaps>?<directives>",
+						"offset": [0, 1.875],
+						"transformationGroups": ["weapon"],
+						"rotationCenter": [0, 0]
+					}
+				},
 
-  "elementalType" : "physical",
+				"swoosh": {
+					"properties": {
+						"zLevel": -1,
+						"centered": true,
+						"transformationGroups": ["swoosh"],
+						"rotationCenter": [0, 0]
+					},
 
-  "primaryAbilityType" : "broadswordcombo",
-  "primaryAbility" : {
-    "fireTime" : 0.83,
-    "baseDps" : 12,
-    "damageConfig" : {
-      "damageSourceKind" : "broadsword"
-    },
-    "stances" : {
-      "idle" : {
-        "frontArmFrame": "walk.5",
-        "backArmFrame": "rotation",
-        "armRotation": 0,
-        "weaponRotation" : -90,
-        "weaponOffset" : [0, 0],
-        "twoHanded" : true,
-        "allowRotate" : false,
-        "allowFlip" : true,
-        "aimAngle": 0
-      },
-      "windup1" : {
-        "duration" : 0.35,
-        "armRotation" : 90,
-        "weaponRotation" : -10,
-        "twoHanded" : true,
-        "weaponOffset":[0.4,1.7],
-        "allowRotate" : false,
-        "allowFlip" : true
-      },
-      "preslash1" : {
-        "duration" : 0.025,
-        "armRotation" : 55,
-        "weaponRotation" : -45,
-        "twoHanded" : true,
-        "weaponOffset":[0,2.5],
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "fire1" : {
-        "duration" : 0.15,
-        "armRotation" : -45,
-        "weaponRotation" : -45,
-        "twoHanded" : true,
-        "weaponOffset":[0.25,2.5],
-        "allowRotate" : false,
-        "allowFlip" : false
-      },
-      "wait1" : {
-        "duration" : 0.15,
-        "armRotation" : -45,
-        "weaponRotation" : -35,
-        "allowRotate" : false,
-        "weaponOffset":[0.25,2.5],
-        "allowFlip" : true,
-        "twoHanded" : true
-      },
-      "windup2" : {
-        "duration" : 0.25,
-        "armRotation" : -15,
-        "weaponRotation" : -60,
-        "weaponOffset" : [0.25, 2.5],
-        "twoHanded" : true,
-        "allowFlip" : true,
-        "allowRotate" : false
-      },
-      "fire2" : {
-        "duration" : 0.20,
-        "armRotation" : -140,
-        "weaponRotation" : 65,
-        "weaponOffset" : [0.25, 1.5],
-        "twoHanded" : true,
-        "allowFlip" : true,
-        "allowRotate" : false
-      },
-      "wait2" : {
-        "duration" : 0.16,
-        "armRotation" : -150,
-        "weaponRotation" : 55,
-        "weaponOffset" : [0.25, 1.0],
-        "allowRotate" : false,
-        "allowFlip" : true,
-        "twoHanded" : true
-      },
-      "windup3" : {
-        "duration" : 0.15,
-        "armRotation" : -150,
-        "weaponRotation" : 55,
-        "weaponOffset" : [0.25, 0.5],
-        "twoHanded" : true,
-        "allowFlip" : true,
-        "allowRotate" : false
-      },
-      "fire3" : {
-        "duration" : 0.15,
-        "armRotation" : -15,
-        "weaponRotation" : -60,
-        "weaponOffset" : [0.25, 2.5],
-        "twoHanded" : true,
-        "allowFlip" : true,
-        "allowRotate" : false
-      },
-      "wait3" : {
-        "duration" : 0.2,
-        "armRotation" : 0,
-        "weaponRotation" : -40,
-        "weaponOffset" : [0.4,1.7],
-        "allowRotate" : false,
-        "allowFlip" : true,
-        "twoHanded" : true
-      } 
-    }
-  },
+					"partStates": {
+						"swoosh": {
+							"idle": {
+								"properties": {
+									"image": ""
+								}
+							},
+							"fire": {
+								"properties": {
+									"image": "/items/active/weapons/melee/hammer/swoosh/<elementalType>swoosh.png:<frame>",
+									"damageArea": [[-3.5, 2], [-2.5, 5], [1, 5], [3, 1.75], [4, -0.25], [4, -2.25], [3, -4.5], [1.25, -5.25], [0, -2.5]],
+									"offset": [2.4, 1.5]
+								}
+							},
+							"fire2": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh2/<elementalType>swoosh.png:<frame>?0",
+									"offset": [5.0, 1.0],
+									"damageArea": [[-4, 1], [2.5, 1], [2.5, -2], [-4, -2]]
+								}
+							},
+							"fire3": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>?0",
+									"offset": [3.5, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
 
-  "altAbilityType" : "travelingslash",
-  "altAbility" : {},
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+		"transformationGroups": {
+			"weapon": {},
+			"swoosh": {}
+		},
+
+		"particleEmitters": {
+			"physicalswoosh": {
+				"active": false,
+				"transformationGroups": ["swoosh"],
+				"emissionRate": 1,
+				"burstCount": 1,
+				"particles": []
+			},
+			"fireswoosh": {
+				"active": false,
+				"transformationGroups": ["swoosh"],
+				"emissionRate": 50,
+				"burstCount": 4,
+				"particles": [{
+						"particle": "fireswoosh1"
+					}, {
+						"particle": "fireswoosh2"
+					}, {
+						"particle": "fireswoosh3"
+					}
+				]
+			},
+			"electricswoosh": {
+				"active": false,
+				"transformationGroups": ["swoosh"],
+				"emissionRate": 50,
+				"burstCount": 3,
+				"particles": [{
+						"particle": "electricswoosh1"
+					}, {
+						"particle": "electricswoosh2"
+					}, {
+						"particle": "electricswoosh2"
+					}
+				]
+			},
+			"poisonswoosh": {
+				"active": false,
+				"transformationGroups": ["swoosh"],
+				"emissionRate": 50,
+				"burstCount": 3,
+				"particles": [{
+						"particle": "poisonswoosh1"
+					}, {
+						"particle": "poisonswoosh2"
+					}, {
+						"particle": "fireswoosh2"
+					}
+				]
+			},
+			"iceswoosh": {
+				"active": false,
+				"transformationGroups": ["swoosh"],
+				"emissionRate": 50,
+				"burstCount": 3,
+				"particles": [{
+						"particle": "iceswoosh1"
+					}, {
+						"particle": "iceswoosh2"
+					}, {
+						"particle": "iceswoosh3"
+					}
+				]
+			}
+		},
+		"sounds": {
+			"fire": ["/sfx/melee/swing_broadsword.ogg"],
+			"fire2": ["/sfx/melee/swing_shortsword.ogg"],
+			"fire3": ["/sfx/melee/swing_spear.ogg"],
+			"altFire": ["/items/active/specweapons/necromancer/forusallball.ogg"]
+		}
+	},
+
+	"scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
+
+	"elementalType": "physical",
+
+	"primaryAbilityType": "broadswordcombo",
+	"primaryAbility": {
+		"name": "Combo Slash",
+		"type": "broadswordcombo",
+		"scripts": ["/items/active/weapons/melee/meleecombo.lua"],
+		"class": "MeleeCombo",
+
+		"comboSteps": 1,
+
+		"flashTime": 0.15,
+		"flashDirectives": "fade=FFFFFFFF=0.15",
+
+		"swooshOffsetRegions": [
+			[0.75, 0.0, 4.25, 5.0],
+			[3.0, -0.5, 6.5, 2.0],
+			[1.5, -1.0, 5.5, 1.0]
+		],
+
+		// cooldown time multiplier for steps after the first, compounded per combo step
+		"comboSpeedFactor": 0.9,
+
+		"edgeTriggerGrace": 0.25,
+
+		"fireTime": 0.8,
+		"baseDps": 11.5,
+
+		"damageConfig": {
+			"damageSourceKind": "demonicscythe",
+			"statusEffects": [],
+			"knockbackMode": "facing",
+			"timeout": 0.5
+		},
+		"stepDamageConfig": [{
+				"baseDamageFactor": 1.0,
+				"knockback": 15
+			}, {
+				"baseDamageFactor": 0.5,
+				"knockback": 10
+			}, {
+				"baseDamageFactor": 1.0,
+				"knockback": 25
+			}
+		],
+
+		"stances": {
+			"idle": {
+				"armRotation": 20,
+				"weaponRotation": 60,
+				"aimAngle": 0,
+				"allowRotate": false,
+				"allowFlip": true
+			},
+			"windup1": {
+				"duration": 0.3,
+				"armRotation": 10,
+				"weaponRotation": 40,
+				"frontArmFrame": "run.1",
+				"backArmFrame": "jump.4",
+				"weaponOffset": [0, -0.5],
+				"armAngularVelocity": 120,
+				"twoHanded": true,
+				"allowRotate": false,
+				"allowFlip": true
+			},
+			"preslash1": {
+				"duration": 0.05,
+				"armRotation": 40,
+				"weaponRotation": -20,
+				"weaponOffset": [0, 0],
+				"twoHanded": true,
+				"allowRotate": false,
+				"allowFlip": true
+			},
+			"fire1": {
+				"duration": 0.4,
+				"armRotation": -35,
+				"weaponRotation": -55,
+				"weaponOffset": [0, 0],
+				"twoHanded": true,
+				"allowRotate": false,
+				"allowFlip": true
+			},
+			"wait1": {
+				"duration": 0.5,
+				"armRotation": -80,
+				"weaponRotation": 5,
+				"frontArmFrame": "run.2",
+				"backArmFrame": "fall.3",
+				"weaponOffset": [-0.5, -0.5],
+				"twoHanded": true,
+				"allowRotate": false,
+				"allowFlip": true
+			},
+			"windup2": {
+				"duration": 0.3,
+				"armRotation": -120,
+				"weaponRotation": 30,
+				"frontArmFrame": "run.1",
+				"backArmFrame": "jump.4",
+				"weaponOffset": [-0.1, -1],
+				"twoHanded": true,
+				"allowRotate": false,
+				"allowFlip": true
+			},
+			"preslash2": {
+				"duration": 0
+			},
+			"fire2": {
+				"duration": 0
+			},
+			"wait2": {
+				"duration": 0
+			},
+			"windup3": {
+				"duration": 0
+			},
+			"preslash3": {
+				"duration": 0
+			},
+			"fire3": {
+				"duration": 0.0
+			}
+		}
+	},
+
+	"muzzleOffset" : [4, 1],
+
+	"altAbilityType": "chargefire",
+	"altAbility": {
+		"chargeLevels": [{
+				"time": 0,
+				"energyCost": 40,
+				"cooldown": 0.25,
+				"projectileType": "forusallball",
+				"projectileCount": 1,
+				"projectileParameters": {
+					"speed" : 30
+				},
+				"inaccuracy": 0,
+				"baseDamage": 3,
+				"fireSound": "altFire"
+			}, {
+				"time": 0.5,
+				"energyCost": 48,
+				"cooldown": 0.25,
+				"projectileType": "forusallball",
+				"projectileCount": 2,
+				"projectileParameters": {
+					"speed" : 30
+				},
+				"spreadAngle": 10,
+				"baseDamage": 3,
+				"fireSound": "altFire"
+			}, {
+				"time": 1.0,
+				"energyCost": 56,
+				"cooldown": 0.25,
+				"projectileType": "forusallball",
+				"projectileCount": 3,
+				"spreadAngle": 10,
+				"projectileParameters": {
+					"speed" : 30
+				},
+				"inaccuracy": 0,
+				"baseDamage": 3,
+				"fireSound": "altFire"
+			}, {
+				"time": 1.5,
+				"energyCost": 62,
+				"cooldown": 0.25,
+				"projectileType": "forusallball",
+				"projectileCount": 4,
+				"spreadAngle": 10,
+				"projectileParameters": {
+					"speed" : 30
+				},
+				"inaccuracy": 0,
+				"baseDamage": 3,
+				"fireSound": "altFire"
+			}, {
+				"time": 2.0,
+				"energyCost": 68,
+				"cooldown": 0.25,
+				"projectileType": "forusallball",
+				"projectileCount": 5,
+				"spreadAngle": 10,
+				"projectileParameters": {
+					"speed" : 30
+				},
+				"inaccuracy": 0,
+				"baseDamage": 3,
+				"fireSound": "altFire"
+			},
+			 {
+				"time": 2.5,
+				"energyCost": 72,
+				"cooldown": 0.25,
+				"projectileType": "forusallball",
+				"projectileCount": 6,
+				"spreadAngle": 10,
+				"projectileParameters": {
+					"speed" : 30
+				},
+				"inaccuracy": 0,
+				"baseDamage": 3,
+				"fireSound": "altFire"
+			}
+		],
+		"stances": {
+			"idle": {
+				"armRotation": 20,
+				"weaponRotation": 60,
+				"aimAngle": 0,
+				"allowRotate": false,
+				"allowFlip": true
+			},
+			"charge": {
+				"allowFlip": true,
+				"allowRotate": true,
+				"armRotation": 0,
+				"twoHanded": false,
+				"weaponRotation": -90,
+				"weaponOffset": [0, -0.5]
+			},
+			"fire": {
+				"armRotation": 20,
+				"weaponRotation": -90,
+				"twoHanded": false,
+				"duration": 0.5,
+				"allowRotate": false,
+				"allowFlip": true,
+				"weaponOffset": [0, -0.5]
+			},
+			"cooldown": {
+				"allowFlip": true,
+				"allowRotate": false,
+				"armRotation": 0,
+				"duration": 0.8,
+				"twoHanded": false,
+				"weaponOffset": [0, 0],
+				"weaponRotation": -360
+			}
+		}
+	},
+	"builder": "/items/buildscripts/buildunrandweapon.lua"
 }

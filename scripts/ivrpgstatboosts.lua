@@ -22,8 +22,8 @@ function init()
   message.setHandler("bleedCheck", function(_, _, damage, sourceKind, sourceId)
     local bleedChance = status.stat("ivrpgBleedChance")
     local bleedLength = status.stat("ivrpgBleedLength")
-    if bleedChance > math.random() or sourceKind == "alwaysbleed" or sourceKind == "bloodaether" then
-      bleedLength = ((sourceKind == "alwaysbleed" or sourceKind == "bloodaether") and bleedLength < 1) and 1 or bleedLength
+    if bleedChance > math.random() or sourceKind == "alwaysbleed" or sourceKind == "bloodaether" or string.find(sourceKind, "scythe") then
+      bleedLength = ((sourceKind == "alwaysbleed" or sourceKind == "bloodaether" or string.find(sourceKind, "scythe")) and bleedLength < 1) and 1 or bleedLength
       world.sendEntityMessage(sourceId, "applySelfDamageRequest", "IgnoresDef", "bleed", damage/2, self.id)
       world.sendEntityMessage(sourceId, "addEphemeralEffect", "ivrpgweaken", bleedLength, self.id)
     end

@@ -12,9 +12,9 @@ function update(dt)
 end
 
 function deathMist()
-  sb.logInfo("hello")
 	world.spawnProjectile("reapeddamageprojectile", mcontroller.position(), self.id)
   world.spawnProjectile("reapedhealprojectile", mcontroller.position())
+  world.sendEntityMessage(self.id, "enemyReaped")
 end
 
 function uninit()

@@ -5,6 +5,7 @@ require "/scripts/keybinds.lua"
 function init()
   self.multiJumpCount = config.getParameter("multiJumpCount")
   self.cost = config.getParameter("cost")
+  self.maxSpeed = 30
 
   self.wallSlideParameters = config.getParameter("wallSlideParameters")
   self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity")
@@ -112,16 +113,16 @@ function doMultiJump()
       self.facing = mcontroller.facingDirection()
       --self.facing = tech.aimPosition()[1]-mcontroller.position()[1]
     if lrInput == "left" then
-        mcontroller.setXVelocity(-50 + math.min(0, mcontroller.xVelocity()))
+        mcontroller.setXVelocity(-self.maxSpeed + math.min(0, mcontroller.xVelocity()))
         animator.burstParticleEmitter("jumpLeftParticles")
       elseif lrInput == "right" then
-        mcontroller.setXVelocity(50 + math.max(0, mcontroller.xVelocity()))
+        mcontroller.setXVelocity(self.maxSpeed + math.max(0, mcontroller.xVelocity()))
         animator.burstParticleEmitter("jumpRightParticles")
       elseif self.facing < 0 then
-        mcontroller.setXVelocity(-50 + math.min(0, mcontroller.xVelocity()))
+        mcontroller.setXVelocity(-self.maxSpeed + math.min(0, mcontroller.xVelocity()))
         animator.burstParticleEmitter("jumpLeftParticles")
       else
-        mcontroller.setXVelocity(50 + math.max(0, mcontroller.xVelocity()))
+        mcontroller.setXVelocity(self.maxSpeed + math.max(0, mcontroller.xVelocity()))
         animator.burstParticleEmitter("jumpRightParticles")
       end
       self.multiJumpCount = self.multiJumpCount - 1

@@ -5,8 +5,15 @@ function init()
   self.cooldown = config.getParameter("cooldown", 5)
   self.cooldownTimer = 0
   self.rechargeTimer = 0
+  self.mobCharge = 0
+  self.damageGivenUpdate = 5
   self.id = entity.id()
   Bind.create("f", reap)
+
+  message.setHandler("enemyReaped", function(_, _)
+    self.mobCharge = self.mobCharge + 1
+  end)
+
 end
 
 function uninit()
@@ -14,6 +21,17 @@ function uninit()
 end
 
 function reap()
+  if self.cooldownTimer == 0 and (not status.statPositive("activeMovementAbilities")) and self.shiftHeld and self.mobCharge > 0 then
+    self.cooldownTimer = self.cooldown
+    animator.playSound("reap")
+    world.spawnMonster("bonepteropod", mcontroller.position(), {
+      damageTeamType = "friendly",
+      level = self.mobCharge + 1
+    })
+    self.mobCharge = 0
+    return
+  end
+
   if self.cooldownTimer == 0 and (not status.statPositive("activeMovementAbilities")) and status.consumeResource("health", self.healthCost) then
     self.cooldownTimer = self.cooldown
     animator.playSound("reap")
@@ -26,6 +44,8 @@ function reap()
 end
 
 function update(args)
+  self.shiftHeld = not args.moves["run"]
+
   if self.cooldownTimer > 0 then
     self.cooldownTimer = math.max(self.cooldownTimer - args.dt, 0)
     if self.cooldownTimer == 0 then

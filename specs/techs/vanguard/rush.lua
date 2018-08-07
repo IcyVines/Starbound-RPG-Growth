@@ -15,6 +15,7 @@ function init()
   self.endTimer = 0
   self.dashTimer = 0
   self.travelPoint = nil
+  self.damageGivenUpdate = 5
   self.id = entity.id()
   Bind.create("g", rush)
 end
@@ -31,6 +32,21 @@ function rush()
         animator.playSound("activate")
         self.timer = 1
         self.targetId = id
+      end
+    end
+  end
+end
+
+function updateDamageGiven()
+  local notifications = nil
+  notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if notification.damageSourceKind == "rushelectricplasma" then
+        if notification.healthLost > 0 and (world.entityHealth(notification.targetEntityId) and notification.healthLost >= world.entityHealth(notification.targetEntityId)[1]) then
+          status.modifyResourcePercentage("energy", 0.2)
+          status.setResourceLocked("energy", false)
+        end
       end
     end
   end
@@ -53,6 +69,8 @@ function setTravelBuffs(velocity)
 end
 
 function update(args)
+  updateDamageGiven()
+
   if self.timer > 0 then
     setTravelBuffs({0,0})
     tech.setParentDirectives(string.format("?multiply=BE9632%02X", math.floor(self.timer*200 + 55)))

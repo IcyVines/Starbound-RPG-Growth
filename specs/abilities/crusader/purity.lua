@@ -83,7 +83,7 @@ function updateDamageTaken()
   if notifications then
     for _,notification in pairs(notifications) do
       if notification.healthLost > 0 then
-        if notification.damageSourceKind == "slash" then
+        if notification.damageSourceKind == "slash" or notification.damageSourceKind == "lash" then
           self.speedTimer = self.speedTime
           self.speedDrop = math.max(self.speedDrop - 0.05, 0.6)
         end

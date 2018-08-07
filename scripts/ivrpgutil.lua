@@ -37,3 +37,12 @@ function getDictionaryFromType(t, atype)
   end
   return returnT
 end
+
+function hasElement(map, element)
+  for _,v in ipairs(map) do
+    if v == element then
+      return true
+    end
+  end
+  return false
+end

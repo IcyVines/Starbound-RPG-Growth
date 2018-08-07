@@ -8,6 +8,6 @@
       "file" : "/specs/techs/vanguard/rush/explosion/rushexplosion.config"
     }
   ],
-  "damageKind" : "electricplasma",
+  "damageKind" : "rushelectricplasma",
   "timeToLive" : 0
 }
