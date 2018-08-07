@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgbonemonster",
+
+  "effectConfig" : {
+    
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "bonemonster.lua"
+  ],
+
+  "label" : "Undead",
+  "icon" : "/specs/abilities/necromancer/raiseundead.png"
+}

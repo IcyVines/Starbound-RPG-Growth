@@ -1,0 +1,9 @@
+{
+  "name" : "bonepteropod",
+  "category" : "bonepteropod",
+  "type" : "body",
+
+  "frames" : {
+    "body" : "bonepteropod.png"
+  }
+}

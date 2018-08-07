@@ -1,0 +1,140 @@
+{
+  "itemName" : "ivrpgwdangerclose",
+  "price" : 1000,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Sometimes you need to get close to feel that thrill.",
+  "shortdescription" : "^red;Danger Close",
+  "tooltipKind" : "base",
+  "category" : "machinePistol",
+  "twoHanded" : false,
+  "inventoryIcon" : "dangercloseyellow.png",
+  "itemTags" : ["weapon","ranged","machinepistol"],
+  "level" : 6,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "dangercloseyellow.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg" ],
+      "onKill" : ["/sfx/statuseffects/powerup.ogg"],
+      "healthLow" : ["/items/active/specweapons/vanguard/healthLow.ogg"]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [150, 40, 40]
+      }
+    },
+    "animatedParts" : {
+      "stateTypes" : {
+        "imageSwitch" : {
+          "default" : "yellow",
+          "states" : {
+            "yellow" : {},
+            "orange" : {},
+            "red" : {},
+            "red-orange" : {},
+            "red-yellow" : {}
+          }
+        }
+      },
+      "parts" : {
+        "muzzleFlash" : {
+          "properties" : {
+            "offset" : [2.05, 0.05]
+          }
+        },
+        "middle" : {
+          "partStates" : {
+            "imageSwitch" : {
+              "yellow" : {
+                "properties" : {
+                  "image" : "dangercloseyellow.png"
+                }
+              },
+              "orange" : {
+                "properties" : {
+                  "image" : "dangercloseorange.png"
+                }
+              },
+              "red" : {
+                "properties" : {
+                  "image" : "dangerclosered.png"
+                }
+              },
+              "red-orange" : {
+                "properties" : {
+                  "image" : "dangercloseredorange.png"
+                }
+              },
+              "red-yellow" : {
+                "properties" : {
+                  "image" : "dangercloseredyellow.png"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "baseOffset" : [0.825, 0.125],
+  "muzzleOffset" : [0.0, 0.5],
+  "elementalType" : "physical",
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/vanguard/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.15,
+    "baseDps" : 8,
+    "energyUsage" : 20,
+    "inaccuracy" : 0.2,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+    "projectileType" : "dangerclosebullet",
+
+    "projectileParameters" : {
+      "knockbackRange" : 3
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

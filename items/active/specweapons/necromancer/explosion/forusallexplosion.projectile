@@ -1,0 +1,17 @@
+{
+  "projectileName" : "forusallexplosion",
+  "image" : "forusallexplosion.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 6,
+  "speed" : 0,
+  "lightColor" : [120, 60, 100],
+  "pointLight" : true,
+  "damagePoly" : [ [-18, 0], [-14, -14], [0, -18], [14, -14], [18, 0], [14, 14], [0, 18], [-14, 14] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "damageKind" : "demonic",
+  "statusEffects" : ["ivrpgsacrifice"],
+  "knockback" : 30
+}

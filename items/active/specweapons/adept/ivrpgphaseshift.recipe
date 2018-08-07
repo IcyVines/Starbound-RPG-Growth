@@ -1,0 +1,9 @@
+{
+  "input" : [
+  	{ "item" : "phasematter", "count" : 10 },
+    { "item" : "ivrpgetherealblade", "count" : 8 },
+    { "item" : "log", "count" : 2 }
+  ],
+	"output" : { "item" : "ivrpgwphaseshift", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}
