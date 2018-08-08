@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "ivrpgfiringmechanism", "count" : 24 },
+    { "item" : "shadowblock", "count" : 10 },
+    { "item" : "geodegreensample", "count" : 1 }
+  ],
+	"output" : { "item" : "ivrpgwmarie", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

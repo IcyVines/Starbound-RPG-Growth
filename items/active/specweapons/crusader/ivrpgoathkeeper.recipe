@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 24 },
+    { "item" : "ivrpgnovacrystal", "count" : 24 },
+    { "item" : "refinedferozium", "count" : 4 },
+    { "item" : "refinedviolium", "count" : 4 }
+  ],
+	"output" : { "item" : "ivrpgwoathkeeper", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

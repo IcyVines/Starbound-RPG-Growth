@@ -1,0 +1,9 @@
+{
+  "input" : [
+  	{ "item" : "ivrpgnovacrystal", "count" : 4 },
+    { "item" : "ivrpgsquirmingnervebundle", "count" : 24 },
+    { "item" : "refinedviolium", "count" : 6 }
+  ],
+	"output" : { "item" : "ivrpgwsoullesswhisper", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

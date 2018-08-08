@@ -1,0 +1,9 @@
+{
+  "input" : [
+  	{ "item" : "bonematerial", "count" : 6 },
+    { "item" : "ivrpgnovacrystal", "count" : 3 },
+    { "item" : "coalore", "count" : 7 }
+  ],
+	"output" : { "item" : "ivrpgwforusall", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

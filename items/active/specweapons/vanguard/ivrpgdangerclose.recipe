@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "ivrpgfiringmechanism", "count" : 24 },
+    { "item" : "prisiliteore", "count" : 7 },
+    { "item" : "diamond", "count" : 2 }
+  ],
+	"output" : { "item" : "ivrpgwdangerclose", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}
