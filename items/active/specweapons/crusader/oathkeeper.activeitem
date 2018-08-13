@@ -43,15 +43,15 @@
 			"fire10": ["/sfx/npc/boss/cultistboss_beamwindup.ogg"],
 			"fire11": ["/sfx/objects/crystaltrap_on1.ogg"],
 			"fire12": ["/sfx/melee/laser_flip_slash.ogg"],
-			"fire13": ["nah.ogg"],
+			"fire13": [],
 			"fire14": ["/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg"],
 			"fire15": ["/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg"],
 			"fire16": ["/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg"],
 			"fire17": ["/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg"],
 			"fire18": ["/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg"],
-			"fireStart": ["nah.ogg"],
-			"fireLoop": ["nah.ogg"],
-			"fireEnd": ["nah.ogg"],
+			"fireStart": [],
+			"fireLoop": [],
+			"fireEnd": [],
 			"altWindup1": ["/sfx/melee/sword_guard.ogg"],
 			"altWindup2": ["/sfx/melee/sword_parry.ogg"]
 		},
@@ -122,8 +122,8 @@
 							"transition": "idle"
 						},
 						"fire7": {
-							"frames": 6,
-							"cycle": 0.33,
+							"frames": 5,
+							"cycle": 0.20,
 							"mode": "transition",
 							"transition": "idle",
 							"frameProperties": {
@@ -131,7 +131,7 @@
 							}
 						},
 						"fire8": {
-							"frames": 6,
+							"frames": 5,
 							"cycle": 0.3,
 							"mode": "transition",
 							"transition": "idle",
@@ -140,7 +140,7 @@
 							}
 						},
 						"fire9": {
-							"frames": 10,
+							"frames": 6,
 							"cycles": 1,
 							"mode": "transition",
 							"transition": "idle",
@@ -149,13 +149,13 @@
 							}
 						},
 						"fire10": {
-							"frames": 8,
+							"frames": 2,
 							"cycles": 0.05,
 							"mode": "transition",
 							"transition": "idle"
 						},
 						"fire11": {
-							"frames": 4,
+							"frames": 2,
 							"cycles": 0.05,
 							"mode": "transition",
 							"transition": "idle"
@@ -176,7 +176,7 @@
 							}
 						},
 						"fire14": {
-							"frames": 6,
+							"frames": 4,
 							"cycle": 0.33,
 							"mode": "transition",
 							"transition": "idle",
@@ -203,8 +203,8 @@
 							"transition": "idle"
 						},
 						"fire18": {
-							"frames": 10,
-							"cycle": 0.66,
+							"frames": 5,
+							"cycle": 0.5,
 							"mode": "transition",
 							"transition": "idle",
 							"frameProperties": {
