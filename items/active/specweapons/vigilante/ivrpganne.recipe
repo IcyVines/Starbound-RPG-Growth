@@ -1,8 +1,9 @@
 {
   "input" : [
-    { "item" : "ivrpgfiringmechanism", "count" : 24 },
+    { "item" : "ivrpgfiringmechanism", "count" : 3 },
     { "item" : "goldbar", "count" : 6 },
-    { "item" : "geodegreensample", "count" : 1 }
+    { "item" : "scorchedcore", "count" : 1 },
+    { "item" : "geoderedsample", "count" : 1 }
   ],
 	"output" : { "item" : "ivrpgwanne", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

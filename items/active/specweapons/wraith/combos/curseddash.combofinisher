@@ -50,8 +50,8 @@
     "energyCost" : 20,
 
     "damageConfig" : {
-      "statusEffects" : [ ],
-      "baseDamage" : 8.0,
+      "statusEffects" : [ {"effect" : "ivrpgcursed", "duration" : 5} ],
+      "baseDamage" : 4.0,
       "damageSourceKind" : "demonicbroadsword",
       "timeoutGroup" : "primary",
       "timeout" : 0.2

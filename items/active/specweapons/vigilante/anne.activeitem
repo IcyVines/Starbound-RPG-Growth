@@ -3,9 +3,9 @@
   "price" : 720,
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "A revolver with a booming heart.",
-  "shortdescription" : "Anne",
-  "tooltipKind" : "gun",
+  "description" : "Never thought such a rowdy woman could get me right through the heart.",
+  "shortdescription" : "^red;Anne",
+  "tooltipKind" : "base",
   "category" : "pistol",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","pistol"],
@@ -13,6 +13,9 @@
   "inventoryIcon" : [
     { "image" : "anne.png" }
   ],
+
+  "classreq" : 4,
+  "specreq" : 3,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {

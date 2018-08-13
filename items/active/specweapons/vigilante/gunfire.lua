@@ -1,5 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/interp.lua"
+require "/scripts/ivrpgutil.lua"
 
 -- Base gun fire ability
 GunFire = WeaponAbility:new()
@@ -83,6 +84,8 @@ function GunFire:update(dt, fireMode, shiftHeld)
       self:setState(self.auto)
     end
   end
+
+  incorrectWeapon()
 end
 
 function GunFire:canAnneFire()
@@ -193,6 +196,7 @@ end
 
 function GunFire:uninit()
   status.clearPersistentEffects("vigilantedualpistols")
+  incorrectWeapon(true)
 end
 
 function Weapon:updateAim()

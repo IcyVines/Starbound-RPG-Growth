@@ -3,6 +3,7 @@ require "/scripts/vec2.lua"
 require "/scripts/rect.lua"
 require "/scripts/poly.lua"
 require "/scripts/drawingutil.lua"
+require "/scripts/ivrpgutil.lua"
 -- engine callbacks
 function init()
   --View:init()
@@ -118,6 +119,7 @@ function update(dt)
   if player.currency("spectype") ~= self.spec then
     self.spec = player.currency("spectype")
     updateSpecInfo()
+    unlockSpecWeapon()
     if widget.getChecked("bookTabs.5") then
       changeToSpecialization()
     elseif widget.getChecked("bookTabs.0") then
@@ -569,10 +571,16 @@ function chooseSpec()
   player.addCurrency("spectype", self.specTo)
 end
 
-function rescrollSpecialization()
-  if self.class == 0 or self.spec == 0 then return end
-  player.consumeCurrency("spectype", self.spec)
-  --player.giveItem("ivrpgscroll" .. self.specType)
+function unlockSpecWeapon()
+  	if self.spec > 0 then
+	  for _,weapon in ipairs(self.specInfo.weapon.name) do
+	  	player.giveBlueprint(weapon)
+	  end
+	end
+end
+
+function unequipSpecialization()
+	rescrollSpecialization(self.class, self.spec)
 end
 
 function concatTableValues(table, delim, required)
@@ -1154,7 +1162,7 @@ function consumeAllRPGCurrency()
       player.consumeCurrency(k .. "point", player.currency(k .. "point"))
     end
   end
-  rescrollSpecialization()
+  rescrollSpecialization(self.class, self.spec)
   player.consumeCurrency("classtype",player.currency("classtype"))
   player.consumeCurrency("affinitytype",player.currency("affinitytype"))
   player.consumeCurrency("proftype",player.currency("proftype"))

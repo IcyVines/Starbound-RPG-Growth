@@ -7,8 +7,8 @@
   "category" : "shuriken",
   "inventoryIcon" : "aether_shuriken50.png",
   "image" : "aether_shuriken50.png",
-  "shortdescription" : "Blood Aether",
-  "description" : "Blood Aether, a shadowy shuriken that seeks enemies.",
+  "shortdescription" : "^red;Blood Aether",
+  "description" : "Feed me.",
   "itemTags" : ["ninja"],
 
   "ammoUsage" : 0,

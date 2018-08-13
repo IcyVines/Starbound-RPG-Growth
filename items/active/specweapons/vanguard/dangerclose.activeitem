@@ -3,7 +3,7 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Sometimes you need to get close to feel that thrill.",
+  "description" : "It's thrilling getting so close. After all, it lets you hear when their heart stops beating.",
   "shortdescription" : "^red;Danger Close",
   "tooltipKind" : "base",
   "category" : "machinePistol",
@@ -11,6 +11,9 @@
   "inventoryIcon" : "dangercloseyellow.png",
   "itemTags" : ["weapon","ranged","machinepistol"],
   "level" : 6,
+
+  "classreq" : [4, 6],
+  "specreq" : 5,
 
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {

@@ -74,7 +74,7 @@ function update(args)
 
   if self.class ~= player.currency("classtype") then
     if player.currency("spectype") > 0 then
-      rescrollSpecialization()
+      rescrollSpecialization(self.class, player.currency("spectype"))
     end
     self.class = player.currency("classtype")
   end
@@ -106,12 +106,6 @@ function removeTechs()
     player.makeTechUnavailable("roguepoisondash")
     player.makeTechUnavailable("soldiermissilestrike")
     player.makeTechUnavailable("explorerdrill")
-end
-
-function rescrollSpecialization()
-  local spec = player.currency("spectype")
-  player.consumeCurrency("spectype", spec)
-  --player.giveItem("ivrpgscroll" .. specType)
 end
 
 function updateXPPulse()    

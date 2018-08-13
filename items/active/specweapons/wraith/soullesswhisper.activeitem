@@ -11,6 +11,9 @@
   "twoHanded" : false,
   "itemTags" : ["weapon","rogue","claw","fist","melee"],
 
+  "classreq" : [2, 5],
+  "specreq" : 6,
+
   "inventoryIcon" : "soullesswhisper.png:front",
   "animation" : "/items/active/weapons/fist/fistweapon.animation",
   "animationParts" : {
@@ -25,7 +28,7 @@
       "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
     }
   },
-  "scripts" : [ "/items/active/weapons/fist/fistweapon.lua" ],
+  "scripts" : [ "/items/active/specweapons/wraith/fistweapon.lua" ],
 
   "needsEdgeTrigger" : true,
   "edgeTriggerGrace" : 0.1,

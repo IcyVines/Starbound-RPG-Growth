@@ -5,11 +5,14 @@
 	"maxStack": 1,
 	"rarity": "Legendary",
 	"description": "Purity of the Chosen\n^blue;Forged by Crusader Ribs",
-	"shortdescription": "Oathkeeper",
+	"shortdescription": "^blue;Oathkeeper",
 	"tooltipKind": "base",
 	"category": "^orange;Holy Broadsword^reset;",
 	"twoHanded": true,
 	"itemTags": ["weapon", "melee", "broadsword"],
+
+	"classreq" : [1, 2],
+  	"specreq" : 5,
 
 	"inventoryIcon": [{
 			"image": "blade.png:active.1",
@@ -557,7 +560,7 @@
 		}
 	},
 
-	"scripts": ["/items/active/weapons/melee/energymeleeweapon.lua"],
+	"scripts": ["/items/active/specweapons/crusader/energymeleeweapon.lua"],
 	"activeTime": 3.0,
 	"elementalType": "electric",
 	"primaryAbilityType": "broadswordcombo",

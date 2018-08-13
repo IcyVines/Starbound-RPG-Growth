@@ -35,6 +35,8 @@
 
   "baseDamageFactor" : 0.5,
   "elementalType" : "physical",
+  "classreq" : 3,
+  "specreq" : 4,
 
   "stances" : {
     "idle" : {

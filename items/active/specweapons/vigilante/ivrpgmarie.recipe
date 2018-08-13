@@ -1,8 +1,9 @@
 {
   "input" : [
-    { "item" : "ivrpgfiringmechanism", "count" : 24 },
-    { "item" : "shadowblock", "count" : 10 },
-    { "item" : "geodegreensample", "count" : 1 }
+    { "item" : "ivrpgfiringmechanism", "count" : 2 },
+    { "item" : "shadowblock", "count" : 12 },
+    { "item" : "durasteelbar", "count" : 4 },
+    { "item" : "geodebluesample", "count" : 1 }
   ],
 	"output" : { "item" : "ivrpgwmarie", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

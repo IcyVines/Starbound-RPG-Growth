@@ -6,12 +6,15 @@
   "rarity" : "Legendary",
   "category" : "shield",
   "description" : "The Protectorate has fallen. But us? We will never fall.",
-  "shortdescription" : "True Aegis",
-  "tooltipKind" : "Shield",
+  "shortdescription" : "^blue;True Aegis",
+  "tooltipKind" : "base",
   "twoHanded" : true,
   "itemTags" : ["shield","paladin"],
 
   "inventoryIcon" : "true_aegis.png:nearidle",
+
+  "classreq" : 1,
+  "specreq" : 1,
 
   "animation" : "shield.animation",
   "animationParts" : {

@@ -4,12 +4,15 @@
 	"level": 6,
 	"maxStack": 1,
 	"rarity": "legendary",
-	"description": "Death comes for us all",
-	"shortdescription": "Collector",
+	"description": "They say life is important... Well, so is taking it away.",
+	"shortdescription": "^gray;For Us All",
 	"tooltipKind": "base",
-	"category": "scythe",
+	"category": "Scythe",
 	"twoHanded": true,
 	"itemTags": ["weapon", "melee", "axe", "scythe"],
+
+	"classreq" : 2,
+  	"specreq" : 1,
 
 	"inventoryIcon": "forusall.png",
 	"animationParts": {
@@ -295,7 +298,7 @@
 		}
 	},
 
-	"scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts": ["/items/active/specweapons/necromancer/meleeweapon.lua"],
 
 	"elementalType": "physical",
 

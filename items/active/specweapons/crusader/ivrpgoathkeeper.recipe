@@ -1,7 +1,7 @@
 {
   "input" : [
-    { "item" : "ivrpgmeteoricmetalbar", "count" : 24 },
-    { "item" : "ivrpgnovacrystal", "count" : 24 },
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 18 },
+    { "item" : "ivrpgnovacrystal", "count" : 3 },
     { "item" : "refinedferozium", "count" : 4 },
     { "item" : "refinedviolium", "count" : 4 }
   ],

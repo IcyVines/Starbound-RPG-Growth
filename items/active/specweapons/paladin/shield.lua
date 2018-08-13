@@ -2,6 +2,7 @@ require "/scripts/util.lua"
 require "/scripts/status.lua"
 require "/scripts/vec2.lua"
 require "/scripts/interp.lua"
+require "/scripts/ivrpgutil.lua"
 
 function init()
   self.debug = true
@@ -135,6 +136,8 @@ function update(dt, fireMode, shiftHeld)
   end
 
   updateAim()
+
+  incorrectWeapon()
 end
 
 function uninit()
@@ -142,6 +145,7 @@ function uninit()
   activeItem.setItemShieldPolys({})
   activeItem.setItemDamageSources({})
   reset()
+  incorrectWeapon(true)
 end
 
 function updateAim()

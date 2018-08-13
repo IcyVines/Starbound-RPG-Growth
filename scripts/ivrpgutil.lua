@@ -46,3 +46,42 @@ function hasElement(map, element)
   end
   return false
 end
+
+function incorrectWeapon(isUninit)
+
+  stringTag = "ivrpgincorrectweapon" .. activeItem.hand()
+
+  if isUninit then
+    status.clearPersistentEffects(stringTag)
+    return
+  end
+
+  local id = activeItem.ownerEntityId()
+  local class = config.getParameter("classreq")
+  local spec = config.getParameter("specreq")
+
+  if spec and spec ~= world.entityCurrency(id, "spectype") then
+    status.setPersistentEffects(stringTag, {
+      {stat = "powerMultiplier", effectiveMultiplier = 0}
+    })
+    return
+  elseif class and ((type(class) == "table" and not hasElement(class, world.entityCurrency(id, "classtype"))) or (type(class) == "number" and class ~= world.entityCurrency(id, "classtype"))) then
+    status.setPersistentEffects(stringTag, {
+      {stat = "powerMultiplier", effectiveMultiplier = 0}
+    })
+  else
+    status.clearPersistentEffects(stringTag)
+  end
+end
+
+function rescrollSpecialization(class, spec)
+  specList = root.assetJson("/specList.config")
+  local specInfo = nil
+  if class == 0 or spec == 0 then
+    return
+  else
+    specInfo = root.assetJson("/specs/" .. specList[class][spec].name .. ".config")
+  end
+  player.makeTechUnavailable(specInfo.tech.name)
+  player.consumeCurrency("spectype", spec)
+end

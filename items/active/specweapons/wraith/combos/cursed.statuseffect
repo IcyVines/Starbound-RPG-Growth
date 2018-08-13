@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgcursed",
+  "blockingStat" : "demonicStatusImmunity",
+
+  "effectConfig" : {},
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "cursed.lua"
+  ],
+
+  "animationConfig" : "cursed.animation",
+
+  "label" : "Cursed",
+  "icon" : "/specs/abilities/necromancer/raiseundead.png"
+}
