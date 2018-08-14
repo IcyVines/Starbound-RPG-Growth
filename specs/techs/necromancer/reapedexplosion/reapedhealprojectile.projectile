@@ -15,7 +15,7 @@
       "body" : [
         {
           "action" : "particle",
-          "specification" : "purplegas"
+          "specification" : "ivrpgpurplegas"
         }
       ]
     }
