@@ -154,7 +154,7 @@ function unlockSpecs()
     status.setStatusProperty("ivrpgsuvanguard", true)
   end
 
-  if type(status.statusProperty("ivrpgsuwraith")) == "number" and status.statusProperty("ivrpgsuwraithd") >= 1000 then
+  if type(status.statusProperty("ivrpgsuwraith")) == "number" and status.statusProperty("ivrpgsuwraith") >= 1000 then
     sendRadioMessage("Wraith Unlocked!")
     status.setStatusProperty("ivrpgsuwraith", true)
   end
