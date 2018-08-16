@@ -22,7 +22,7 @@ function activate(fireMode, shiftHeld)
           + consumeAllCurrency("vigorpoint")
           + consumeAllCurrency("vitalitypoint")
           - 20
-    for k,v in ipairs(self.affinityInfo.stats) do
+    for k,v in pairs(self.affinityInfo.stats) do
       player.addCurrency(k .. "point", v)
       points = points - v
     end

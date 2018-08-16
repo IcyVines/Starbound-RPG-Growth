@@ -14,8 +14,13 @@ function init()
   self.specList = root.assetJson("/specList.config")
   
   local data = root.assetJson("/ivrpgversion.config")
-  if status.statusProperty("ivrpgversion", "0") ~= data.version then
+  local oldVersion = status.statusProperty("ivrpgversion", "0")
+  if oldVersion ~= data.version then
     status.setStatusProperty("ivrpgversion", data.version)
+    if oldVersion ~= "1.4e" then
+      player.giveItem("ivrpgscrollresetclass")
+      player.giveItem("ivrpgscrollresetaffinity")
+    end
     removeTechs()
   end
   
@@ -218,11 +223,11 @@ function specChecks(enemyType, level, position, statusEffects, damage, damageTyp
   if status.statusProperty("ivrpgsuwraith") ~= true and (self.class == 2 or self.class == 5) then
     if player.currency("intelligencepoint") > 40 then
       if hasElement({"skimbus", "spookit", "gosmet", "wisper", "squeem"}, enemyType) then
-        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuvanguard", 0) + level)
+        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuwraith", 0) + level)
       elseif string.find(enemyType, "tentacleghost") then
-        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuvanguard", 0) + 1)
+        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuwraith", 0) + 1)
       elseif string.find(enemyType, "erchiusghost") then
-        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuvanguard", 0) + 10)
+        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuwraith", 0) + 10)
       end
     end
   end
