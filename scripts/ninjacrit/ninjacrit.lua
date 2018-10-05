@@ -6,7 +6,6 @@ function init()
   self.id = effect.sourceEntity()
   self.adeptTimer = 0
   self.ruinFound = false
-  status.setStatusProperty("ivrpgsuadept", false)
 end
 
 
@@ -52,8 +51,8 @@ function update(dt)
     end
 
     if self.adeptTimer >= 30 then
-      world.sendEntityMessage(self.id, "sendRadioMessage", "Adept Unlocked!")
       status.setStatusProperty("ivrpgsuadept", true)
+      world.sendEntityMessage(self.id, "sendRadioMessage", "Adept Unlocked!")
     end
   end
   
