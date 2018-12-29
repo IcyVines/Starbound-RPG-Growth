@@ -537,10 +537,13 @@ function updateClassicMode()
                 end
                 if loopBreak then break end
               end
-            elseif not info.twoHanded and not self.twoHanded then
+            elseif info.anyHand then
               weaponsDisabled = false
               break
             elseif info.twoHanded and self.twoHanded then
+              weaponsDisabled = false
+              break
+            elseif not info.twoHanded and not self.twoHanded then
               weaponsDisabled = false
               break
             end
@@ -574,6 +577,9 @@ function updateClassicMode()
                 end
                 if loopBreak then break end
               end
+            elseif info.anyHand then
+              weaponsDisabled = false
+              break
             elseif not info.twoHanded and not self.twoHanded then
               weaponsDisabled = false
               break
