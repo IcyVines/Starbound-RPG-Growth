@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgatlasrelief",
+  "effectConfig" : {
+    "grit" : 1,
+    "armor" : 1.2,
+    "power" : 1.10
+  },
+
+  "defaultDuration" : 10,
+
+  "scripts" : [
+  	"atlasrelief.lua"
+  ],
+
+  "label" : "Atlas' Relief",
+  "icon" : "/specs/techs/titan/atlasrelief.png"
+}

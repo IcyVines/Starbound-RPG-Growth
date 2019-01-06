@@ -84,6 +84,55 @@ function update(args)
     self.class = player.currency("classtype")
   end
 
+  -- Pioneer Effect
+  if status.statPositive("ivrpgterranova") then
+    local worldId = player.worldId()
+    local count = 1
+    local coords = {
+      location = {},
+    }
+    if player.worldId():sub(1, 14) == "CelestialWorld" then
+      for c in worldId:gmatch(":([^:]*)") do
+        if count == 4 then
+          coords.planet = tonumber(c)
+          break
+        end
+        (coords.location)[count] = tonumber(c)
+        count = count + 1
+      end
+      --for k,v in pairs(coords.location) do sb.logInfo(v) end
+      if player.worldHasOrbitBookmark(coords) then
+        status.setStatusProperty("ivrpgterranova", "Bookmarked")
+      else
+        status.setStatusProperty("ivrpgterranova", "Not Bookmarked")
+      end
+    else
+      status.setStatusProperty("ivrpgterranova", "Not Celestial")
+    end
+    -- End Pioneer Effect
+
+    --[[for _,v in ipairs(player.orbitBookmarks()) do
+      for k,val in pairs(v) do
+        --sb.logInfo(k)
+        for x,y in pairs(val) do
+          if type(y) == "table" then
+            for r,o in pairs(y) do
+              if type(o) == "table" then
+                for f,g in pairs(o) do
+                  sb.logInfo(x .. " " .. r .. " " .. f .. " " .. g)
+                end
+              else
+                sb.logInfo(x .. " " .. r .. " " .. o)
+              end
+            end
+          else
+            sb.logInfo(x .. " " .. y)
+          end
+        end
+      end
+    end]]
+  end
+
   updateUpgrades()
   updateSpecs()
   unlockSpecs()
@@ -305,18 +354,6 @@ function killingEffects(level, position, statusEffects, damageType, name)
 		status.addEphemeralEffect("rage", 2, self.id)
 		status.addEphemeralEffect("regeneration4", 2, self.id)
 	end
-
-  -- Vigilante
-  if self.spec == 3 and self.class == 4 then
-    if string.find(name, "bandit") or string.find(name, "outlaw") then
-      local allyIds = world.entityQuery(world.entityPosition(self.id), 8, {includedTypes = {"creature"}})
-      for _,id in ipairs(allyIds) do
-        if world.entityDamageTeam(id).type == "friendly" then
-          world.sendEntityMessage(id, "modifyResourcePercentage", "energy", 0.1)
-        end
-      end
-    end
-  end
 end
 
 function hasEphemeralStat(statusEffects, stat)

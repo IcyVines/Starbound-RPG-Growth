@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgtranquilwind",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "gravityTime" : 1,
+    "regenTime" : 4
+  },
+
+  "scripts" : [
+    "tranquilwind.lua"
+  ],
+
+  "animationConfig" : "tranquilwind.animation",
+
+  "label" : "Tranquil Wind",
+  "icon" : "/specs/abilities/kunoichi/tranquilwind.png"
+}

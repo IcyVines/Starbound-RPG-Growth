@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgfightinglion",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "gravityTime" : 1,
+    "regenTime" : 4
+  },
+
+  "scripts" : [
+    "fightinglion.lua"
+  ],
+
+  "animationConfig" : "fightinglion.animation",
+
+  "label" : "Fighting Lion",
+  "icon" : "/specs/abilities/cannoneer/fightinglion.png"
+}

@@ -1,7 +1,7 @@
 {
   "itemName" : "affinitytype",
   "rarity" : "Rare",
-  "inventoryIcon" : "/objects/experience/experienceorb.png",
+  "inventoryIcon" : "affinitytype.png",
   "description" : "Points that change your Affinity.",
   "shortdescription" : "Affinity Type",
   "currency" : "affinitytype",

@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgatlasburden",
+  "type" : "body",
+
+  "scripts" : ["atlasburden.lua"],
+  "animator" : "atlasburden.animation",
+
+  "description" : "Titan Only",
+  "shortDescription" : "Atlas' Burden",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/titan/atlasburden.png",
+
+  "chipCost" : 0
+}

@@ -118,7 +118,7 @@ function updateDamageTaken(notification)
     end
   end
 
-  if world.entityHealth(self.id)[1] <= 0 then
+  if world.entityHealth(self.id)[1] and world.entityHealth(self.id)[1] <= 0 then
     enemyDeath(sourceId, damage, sourceKind, onKillList)
   end
 
@@ -131,42 +131,65 @@ function enemyDeath(sourceId, damage, sourceKind, onKillList)
   -- Class + Spec + Affinity Effects
   local ignore = false
   for k,v in ipairs(onKillList) do
-    
-    -- Only cause effect when killed by...
+    ignore = false
+    -- Only cause effect when target is killed by a specified source...
     if v.fromSourceKind then
+      ignore = true
       for _,kind in ipairs(v.fromSourceKind) do
         if string.find(sourceKind, kind) then
           ignore = false
           break
         end
-        ignore = true
       end
     end
 
-    if v.type and v.type == "friendly" then
-      local correctEnemy = true
-      if v.npcs then
-        for x,y in ipairs(v.npcs) do
-          if string.find(self.enemyType, y) then
-            correctEnemy = true
-            break
-          end
-          correctEnemy = false
+    -- Only cause effect when target type matches one of the specified enemy types...
+    if v.targetList then
+      ignore = true
+      for x,y in ipairs(v.targetList) do
+        if string.find(self.enemyType, y) then
+          ignore = false
+          break
         end
       end
-      if correctEnemy and v.effectType and v.effectType == "modifyResourcePercentage" then
-        local targetIds = world.entityQuery(world.entityPosition(sourceId), 15, {
-          includedTypes = {"creature"},
-          withoutEntityId = self.id
-        })
-        for _,id in ipairs(targetIds) do
-          if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(sourceId, id)) then
-            world.sendEntityMessage(id, "modifyResourcePercentage", v.effect, v.amount)
+    end
+
+    -- Don't cause effect when gender is specified and target is either not an NPC or not gendered correctly...
+    if v.gender and not (world.isNpc(self.id) and npc.gender() == v.gender) then
+      ignore = true
+    end
+
+    local range = v.range and v.range or 10
+    local focalId = v.searchFrom or sourceId
+
+    if v.type then
+      if (not ignore) and v.chance > math.random() then
+        if v.type == "friendly" or v.type == "enemy" or v.type == "allyOnly" then
+        -- Searches nearby entities centering from focalId's position, and not including the target monster.
+          local targetIds = world.entityQuery(world.entityPosition(focalId), range, {
+            includedTypes = {"creature"},
+            withoutEntityId = self.id
+          })
+          -- Loops through found IDs. If we want to give to friendlies, we make sure we aren't giving to non-friendly PvP players. If we ant to give to enemies, we want to give to non-friendly PvP players.
+          for _,id in ipairs(targetIds) do
+            if ((v.type == "friendly" or v.type == "allyOnly") and (world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(sourceId, id))))
+            or (v.type == "enemy" and (world.entityDamageTeam(id).type == "enemy" or (world.entityDamageTeam(id).type == "pvp" and world.entityCanDamage(sourceId, id)))) then
+              -- If allyOnly was specified, we need to make sure we don't give the buff to ourself!
+              if not (v.type == "allyOnly" and id == sourceId) then
+                world.sendEntityMessage(id, v.effectType, v.effect, v.amount or v.length, sourceId)
+              end
+            end
           end
+        elseif v.type == "target" then
+          sb.logInfo("Target chosen for special effect.")
+          status[v.effectType](v.effect, v.amount or v.length, sourceId)
+        elseif v.type == "self" then
+          sb.logInfo("Self chosen for special effect. " .. sourceKind)
+          world.sendEntityMessage(sourceId, v.effectType, v.effect, v.amount or v.length, sourceId)
         end
       end
-    elseif (not ignore) and v.chance > math.random() then
-      status.addEphemeralEffect(v.effect, v.length, sourceId)
+    else
+      sb.logInfo("RPG Growth Error: No 'type' in specified 'onKill' config.")
     end
   end
   sendDyingMessage(sourceId, damage, sourceKind)

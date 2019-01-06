@@ -1,0 +1,19 @@
+{
+  "projectileName" : "ivrpgwluxuriafloweralt",
+  "image" : "luxuriafloweralt.png",
+  "timeToLive" : 0.3,
+  "damageKindImage" : "/interface/statuses/default.png",
+  "speed" : 0,
+  "orientationLocked" : true,
+  "flippable" : true,
+  "lightColor" : [140, 200, 190],
+  "pointLight" : true,
+  "piercing" : true,
+  "bounces" : -1,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/specweapons/kunoichi/flower/ivrpgwluxuriafloweralt.config"
+    }
+  ]
+}

@@ -172,7 +172,9 @@ function updateStats()
               currentConfig[j.amountType] = (extra + (j.amount*self.stats[k]*(j.negative and -1 or 1)))
               table.insert(statConfig, currentConfig)
             elseif j.type == "movement" then
-              movementConfig[j.stat] = (extra + (j.amount*self.stats[k]))
+              if j.stat ~= "airJumpModifier" or not mcontroller.walking() then
+                movementConfig[j.stat] = (extra + (j.amount*self.stats[k]))
+              end
             end
           end
         end
@@ -331,7 +333,7 @@ function updateSpecialization()
     local classic = v.halvingStat and v.halvingAmount * self.classicBonuses[v.halvingStat] or 0
     local modifier = {}
     modifier["stat"] = v.stat
-    modifier[v.type] = v.amount * (v.negative and -1 or 1) + classic
+    modifier[v.type] = v.amount * (v.negative and -1 or 1) + (classic * (v.halvingInverse and -1 or 1))
     table.insert(statusConfig, modifier)
   end
   status.setPersistentEffects("ivrpgspecstatusbonus", statusConfig)

@@ -13,6 +13,8 @@ function init()
   self.tickTime = config.getParameter("boltInterval", 1.0)
   self.tickTimer = self.tickTime
   self.id = effect.sourceEntity()
+
+  world.sendEntityMessage(self.id, "feedbackLoop")
 end
 
 function update(dt)

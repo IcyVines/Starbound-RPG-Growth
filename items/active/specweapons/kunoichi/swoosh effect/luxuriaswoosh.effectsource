@@ -1,0 +1,29 @@
+{
+  "kind" : "ivrpgwluxuriaswoosh",
+  "definition" : {
+    "duration" : 0.01,
+    "loops" : true,
+    "start" : {
+      "particles" : [
+        [ "ivrpgwluxuriaswoosh4", "ivrpgwluxuriaswoosh3", "ivrpgwluxuriaswoosh2", "ivrpgwluxuriaswoosh4", "ivrpgwluxuriaswoosh3", "ivrpgwluxuriaswoosh2", "ivrpgwluxuriaswoosh4", "ivrpgwluxuriaswoosh3", "ivrpgwluxuriaswoosh2" ]
+      ],
+      "sounds" : [
+        [ ]
+      ]
+    },
+    "particles" : [
+      [ "ivrpgwluxuriaswoosh3", "ivrpgwluxuriaswoosh2" ]
+    ],
+    "sounds" : [
+      [ ]
+    ],
+    "stop" : {
+      "particles" : [
+        [ "ivrpgwluxuriaswoosh4", "ivrpgwluxuriaswoosh4", "ivrpgwluxuriaswoosh4", "ivrpgwluxuriaswoosh4", "ivrpgwluxuriaswoosh4", "ivrpgwluxuriaswoosh4" ]
+      ],
+      "sounds" : [
+        [ ]
+      ]
+    }
+  }
+}

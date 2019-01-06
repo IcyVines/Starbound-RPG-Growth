@@ -51,7 +51,7 @@ function incorrectWeapon(isUninit)
 
   stringTag = "ivrpgincorrectweapon" .. activeItem.hand()
 
-  if isUninit then
+  if isUninit or not status.statPositive("ivrpghardcore") then
     status.clearPersistentEffects(stringTag)
     return
   end
@@ -62,12 +62,12 @@ function incorrectWeapon(isUninit)
 
   if spec and spec ~= world.entityCurrency(id, "spectype") then
     status.setPersistentEffects(stringTag, {
-      {stat = "powerMultiplier", effectiveMultiplier = 0}
+      {stat = "powerMultiplier", effectiveMultiplier = 0.1}
     })
     return
   elseif class and ((type(class) == "table" and not hasElement(class, world.entityCurrency(id, "classtype"))) or (type(class) == "number" and class ~= world.entityCurrency(id, "classtype"))) then
     status.setPersistentEffects(stringTag, {
-      {stat = "powerMultiplier", effectiveMultiplier = 0}
+      {stat = "powerMultiplier", effectiveMultiplier = 0.1}
     })
   else
     status.clearPersistentEffects(stringTag)

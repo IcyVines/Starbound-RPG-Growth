@@ -1,0 +1,54 @@
+{
+  "objectName" : "ivrpgflagpioneer",
+  "colonyTags" : ["misc"],
+  "printable" : false,
+  "rarity" : "Common",
+  "objectType" : "teleporter",
+  "category" : "teleportMarker",
+  "price" : 0,
+  "radioMessagesOnPickup" : [ "pickupflag" ],
+  
+  "description" : "The Pioneer flag. Use ^green;[E]^white; to bookmark a teleportation location.",
+  "shortdescription" : "Pioneer Flag",
+  "race" : "generic",
+
+  "apexDescription" : "A Pioneer flag. I can use this as a waypoint for teleportation.",
+  "avianDescription" : "This Pioneer flag can be bookmarked as a destination for my ship teleporter.",
+  "floranDescription" : "Pioneer flag makess good point to teleport back to ussing teleporter!",
+  "glitchDescription" : "Observant. A small locator module attached to this Pioneer flag allows it to be bookmarked for teleportation.",
+  "humanDescription" : "This Pioneer flag can be saved as a location for my teleporter. Then I can return to it at any time.",
+  "hylotlDescription" : "This Pioneer flag can act as a way point, enabling me to return to this point using a teleporter.",
+  "novakidDescription" : "I can bookmark this Pioneer flag for quick teleportin'.",
+
+  "interactAction" : "OpenTeleportDialog",
+  "interactData" : "/interface/warping/destinationonly.config",
+
+  "inventoryIcon" : "flagpioneericon.png",
+  "orientations" : [
+    {
+      "image" : "flagpioneer.png:<color>.<frame>",
+      "flipImages" : true,
+      "direction" : "left",
+      "imagePosition" : [-17, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "flagpioneer.png:<color>.<frame>",
+      "direction" : "right",
+      "imagePosition" : [1, 0],
+      "frames" : 6,
+      "animationCycle" : 1.0,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+  
+  "smashOnBreak" : true
+
+  //"soundEffect" : "/sfx/objects/flag_flap_loop.ogg"
+}

@@ -1,0 +1,29 @@
+{
+  "kind" : "ivrpgwluxuriaswooshalt",
+  "definition" : {
+    "duration" : 0.01,
+    "loops" : true,
+    "start" : {
+      "particles" : [
+        [ "ivrpgwluxuriaswoosh4alt", "largeiceswoosh3", "largeiceswoosh2", "ivrpgwluxuriaswoosh4alt", "largeiceswoosh3", "largeiceswoosh2", "ivrpgwluxuriaswoosh4alt", "largeiceswoosh3", "largeiceswoosh2" ]
+      ],
+      "sounds" : [
+        [ ]
+      ]
+    },
+    "particles" : [
+      [ "largeiceswoosh3", "largeiceswoosh2" ]
+    ],
+    "sounds" : [
+      [ ]
+    ],
+    "stop" : {
+      "particles" : [
+        [ "ivrpgwluxuriaswoosh4alt", "ivrpgwluxuriaswoosh4alt", "ivrpgwluxuriaswoosh4alt", "ivrpgwluxuriaswoosh4alt", "ivrpgwluxuriaswoosh4alt", "ivrpgwluxuriaswoosh4alt" ]
+      ],
+      "sounds" : [
+        [ ]
+      ]
+    }
+  }
+}

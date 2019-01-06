@@ -503,6 +503,11 @@ function updateSpecializationSelect()
 
   local unlockStatus = currentSpec.unlockStatus
   local unlocked = status.statusProperty(unlockStatus, false)
+
+  if type(unlocked) == "number" and currentSpec.unlockNumber then
+  	widget.setText("specializationslayout.unlocktext", currentSpec.unlockText .. " " .. math.floor(unlocked*100)/100 .. "/" .. currentSpec.unlockNumber)
+  end
+
   if unlocked ~= true then unlocked = false end
 
   widget.setVisible("specializationslayout.unlocktext", not unlocked)

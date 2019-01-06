@@ -1,0 +1,23 @@
+{
+  "projectileName" : "ivrpgwluxuriaflowerexplosionalt",
+  "image" : "flowerexplosionsmallalt.png",
+  "animationCycle" : 0.3,
+  "timeToLive" : 1,
+  "frameNumber" : 18,
+  "damageKindImage" : "/interface/statuses/default.png",
+  "speed" : 0,
+  "orientationLocked" : true,
+  "damagePoly" : [ [0, 20], [15, 15], [30, 0], [20, -20], [0, -24], [-20, -20], [-30, 0], [-15, 15] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "emitters" : [],
+  "statusEffects" : [],
+  "damageKind" : "iceplasmawarfan",
+  "damageRepeatTimeout" : 0.3,
+  "lightColor" : [170, 255, 250],
+  "pointLight" : true,
+  "knockback" : 20,
+  "knockbackDirectional" : false
+}

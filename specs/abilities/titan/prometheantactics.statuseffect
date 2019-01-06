@@ -1,0 +1,20 @@
+{
+  "name" : "ivrpgprometheantactics",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "armor" : 10,
+    "allyRange" : 15,
+    "allyStatus" : "ivrpgprometheantacticsarmorboost",
+    "statusLength" : 10
+  },
+
+  "scripts" : [
+    "prometheantactics.lua"
+  ],
+
+  "animationConfig" : "prometheantactics.animation",
+
+  "label" : "Promethean Tactics",
+  "icon" : "/specs/abilities/titan/prometheantactics.png"
+}

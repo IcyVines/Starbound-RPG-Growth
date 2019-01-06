@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgswirlingpetal",
+  "type" : "body",
+
+  "scripts" : ["swirlingpetal.lua"],
+  "animator" : "swirlingpetal.animation",
+
+  "description" : "Kunoichi Only",
+  "shortDescription" : "Swirling Petal",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/kunoichi/swirlingpetal.png",
+
+  "chipCost" : 0
+}

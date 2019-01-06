@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgeinherjar",
+  "type" : "head",
+
+  "scripts" : ["einherjar.lua"],
+  "animator" : "einherjar.animation",
+
+  "description" : "Valkyrie Only",
+  "shortDescription" : "Einherjar",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/valkyrie/einherjar.png",
+
+  "chipCost" : 0
+}

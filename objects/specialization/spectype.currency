@@ -1,7 +1,7 @@
 {
   "itemName" : "spectype",
   "rarity" : "Rare",
-  "inventoryIcon" : "experienceorb.png",
+  "inventoryIcon" : "spectype.png",
   "description" : "A droplet of specialized knowledge.",
   "shortdescription" : "Specialization Droplet",
   "currency" : "spectype",

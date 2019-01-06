@@ -1,7 +1,7 @@
 {
   "itemName" : "classtype",
   "rarity" : "Rare",
-  "inventoryIcon" : "experienceorb.png",
+  "inventoryIcon" : "classtype.png",
   "description" : "A droplet of mysterious power.",
   "shortdescription" : "Class Droplet",
   "currency" : "classtype",

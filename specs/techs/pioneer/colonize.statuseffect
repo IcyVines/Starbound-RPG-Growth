@@ -1,0 +1,9 @@
+{
+  "name" : "ivrpgcolonizecooldown",
+  "effectConfig" : {},
+  "defaultDuration" : 60,
+
+
+  "label" : "Colonize Cooldown",
+  "icon" : "colonizecooldown.png"
+}

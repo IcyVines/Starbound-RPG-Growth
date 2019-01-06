@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgbombsaway",
+  "type" : "legs",
+
+  "scripts" : ["bombsaway.lua"],
+  "animator" : "bombsaway.animation",
+
+  "description" : "Cannoneer Only",
+  "shortDescription" : "Bombs Away",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/cannoneer/bombsaway.png",
+
+  "chipCost" : 0
+}

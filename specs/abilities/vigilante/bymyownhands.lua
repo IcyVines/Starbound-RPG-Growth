@@ -25,7 +25,7 @@ function update(dt)
     speedModifier = math.min(1 + self.nearbyAggressiveNpcs, 2.5)
   })
 
-  if self.nearbyAggressiveNpcs > 1 then
+  if self.nearbyAggressiveNpcs >= 1 then
     animator.setParticleEmitterActive("embers", true)
   else
     animator.setParticleEmitterActive("embers", false)
