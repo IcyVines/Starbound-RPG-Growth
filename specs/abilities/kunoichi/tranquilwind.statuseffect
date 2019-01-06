@@ -3,8 +3,6 @@
 
   "defaultDuration" : 5,
   "effectConfig" : {
-    "gravityTime" : 1,
-    "regenTime" : 4
   },
 
   "scripts" : [

@@ -1,0 +1,48 @@
+{
+  "particleEmitters" : {
+    "statustext" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "Dazed!",
+            "size" : 0.4,
+            "color" : [220, 140, 190, 255],
+            "fade" : 0.4,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.5,
+            "position" : [0.0, 1.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 6],
+            "finalVelocity" : [0, 3],
+            "approach" : [0, 10],
+            "timeToLive" : 0.5,
+            "variance" : {}
+          }
+        }
+      ]
+    },
+    "smoke" : {
+      "enable" : true,
+      "emissionRate" : 2,
+      "offsetRegion" : [ 0, 2.0, 0.0, 2.0 ],
+      "particles" : [
+        { "particle" : "ivrpgpinkcartoonstar" },
+        { "particle" : "ivrpgpinkcartoonstar" },
+        { "particle" : "ivrpgpinkcartoonstar" },
+        { "particle" : "ivrpgpinkcartoonstar" }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "smoke" : { "interpolated" : true }
+  },
+
+
+  "sounds" : {
+    "burn" : [ "/sfx/statuseffects/powerup.ogg" ]
+  }
+}

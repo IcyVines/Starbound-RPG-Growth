@@ -1,0 +1,13 @@
+{
+  "name" : "ivrpgdazed",
+
+  "blockingStat" : "poisonStatusImmunity",
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgdazed.lua"
+  ],
+
+  "animationConfig" : "ivrpgdazed.animation"
+}

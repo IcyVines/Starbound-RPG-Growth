@@ -10,5 +10,21 @@
   "rarity" : "Uncommon",
   "icon" : "/specs/techs/kunoichi/swirlingpetal.png",
 
-  "chipCost" : 0
+  "chipCost" : 0,
+
+  "rotations" : 3,
+  "rotationTime" : 0.2,
+
+  "crouchDuration" : 0.1,
+  "projectileTime" : 0.05,
+
+  "jumpVelocity" : [-35, 20],
+  "jumpDuration" : 0.2,
+  "flipMovementParameters" : {
+    "collisionPoly" : [ [-2.0, -1.0], [-1.0, -2.0], [1.0, -2.0], [2.0, -1.0], [2.0, 1.0], [1.0, 2.0], [-1.0, 2.0], [-2.0, 1.0] ],
+    "bounceFactor" : 0.0
+  },
+  "cooldownTime" : 1,
+  "energyUsage" : 50.0
+
 }

@@ -229,16 +229,8 @@
           "allowFlip" : false,
           "allowRotate" : false,
 
-          "rotations" : 3,
-          "rotationTime" : 0.2,
-
-          "jumpVelocity" : [-35, 20],
-          "jumpDuration" : 0.2,
-          "flipMovementParameters" : {
-            "collisionPoly" : [ [-2.0, -1.0], [-1.0, -2.0], [1.0, -2.0], [2.0, -1.0], [2.0, 1.0], [1.0, 2.0], [-1.0, 2.0], [-2.0, 1.0] ],
-            "bounceFactor" : 0.1
-          },
-          "fireSound" : "travelSlash"
+          "fireSound" : "travelSlash",
+          "cooldown" : 0.1
         },
         "downward" : {
           "duration" : 0.075,
@@ -259,7 +251,7 @@
           "allowFlip" : true,
           "allowRotate" : false,
 
-          "speed" : 20,
+          "speed" : 3500,
 
           "damageConfig" : {
             "knockback" : 30, 

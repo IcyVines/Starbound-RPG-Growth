@@ -1,6 +1,6 @@
 {
   "sounds" : {
     "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
-    "eat" : [ "/sfx/humanoid/eat3.ogg" ]
+    "spin" : [ "/sfx/melee/sword_superspinslash.ogg" ]
   }
 }

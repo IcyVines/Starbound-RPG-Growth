@@ -181,11 +181,26 @@ function enemyDeath(sourceId, damage, sourceKind, onKillList)
             end
           end
         elseif v.type == "target" then
-          sb.logInfo("Target chosen for special effect.")
+          --sb.logInfo("Target chosen for special effect.")
           status[v.effectType](v.effect, v.amount or v.length, sourceId)
         elseif v.type == "self" then
-          sb.logInfo("Self chosen for special effect. " .. sourceKind)
+          --sb.logInfo("Self chosen for special effect. " .. sourceKind)
           world.sendEntityMessage(sourceId, v.effectType, v.effect, v.amount or v.length, sourceId)
+        elseif v.type == "drops" and v.dropList then
+          for _,drop in ipairs(v.dropList) do
+            if drop.item then
+              local amount = drop.amount or 0
+              local levelMultiplier = drop.levelMultiplier or 1
+              if drop.levelCurve then
+                amount = amount * (drop.levelCurve == "exponential" and (self.level^levelMultiplier or self.level*levelMultiplier))
+              end
+              if drop.randomFactor and #drop.randomFactor == 2 then
+                amount = math.floor(amount * math.random(drop.randomFactor[1], drop.randomFactor[2]) / 100 + 0.5)
+              end
+              --sb.logInfo(drop.item .. ": " .. amount)
+              world.spawnItem(drop.item, mcontroller.position(), amount, {}, vec2.mul(mcontroller.velocity(), 0.5))
+            end
+          end
         end
       end
     else

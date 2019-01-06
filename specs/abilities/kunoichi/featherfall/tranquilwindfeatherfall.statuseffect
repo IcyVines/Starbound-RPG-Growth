@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgtranquilwindfeatherfall",
+  "effectConfig" : {
+  	"gravityMultiplier" : 0.4,
+  	"fallDamageMultiplier" : 0.5
+  },
+  "defaultDuration" : 1.0,
+
+  "scripts" : [
+    "tranquilwindfeatherfall.lua"
+  ],
+
+  "animationConfig" : "tranquilwindfeatherfall.animation",
+
+  "label" : "Feather Fall",
+  "icon" : "/specs/abilities/kunoichi/featherfall/tranquilwindfeatherfall.png"
+}

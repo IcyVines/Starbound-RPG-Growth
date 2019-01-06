@@ -43,6 +43,7 @@ function MeleeSlash:init()
   end
 
   self.cooldownTimer = self:cooldownTime()
+  self.backwardTimer = 0
 
   self.weapon.onLeaveAbility = function()
     if self.active then
@@ -60,13 +61,14 @@ function MeleeSlash:update(dt, fireMode, shiftHeld)
 
   if not self.active then animator.setAnimationState("blade", "closed" .. self.hand) end
 
-  self.comboDirection = shiftHeld and "normal" or ((not mcontroller.onGround()) and "aerial" or (mcontroller.crouching() and "downward" or (not mcontroller.running() and "normal" or (mcontroller.facingDirection() == mcontroller.movingDirection() and "forward" or "backward"))))
+  self.comboDirection = shiftHeld and "normal" or ((not mcontroller.onGround()) and "aerial" or (mcontroller.crouching() and "downward" or (not mcontroller.running() and "normal" or ((mcontroller.facingDirection() == mcontroller.movingDirection() and mcontroller.running()) and "forward" or "backward"))))
 
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
+  self.backwardTimer = math.max(0, self.backwardTimer - self.dt)
 
-  if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.energyUsage == 0 or not status.resourceLocked("energy")) and not status.statPositive("activeMovementAbilities") then
+  if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.cooldownTimer == 0 and (self.energyUsage == 0 or not status.resourceLocked("energy")) then
       self.comboDirectionSet = not self.active and "opening" or self.comboDirection
-      if (self.comboDirectionSet == "downward" or self.comboDirectionSet == "aerial") and not status.statPositive("ivrpgwluxuriadownsmash") then
+      if (self.comboDirectionSet == "downward" or self.comboDirectionSet == "aerial") and not status.statPositive("ivrpgwluxuriadownsmash") and not status.statPositive("activeMovementAbilities") then
         self:setState(self.slash)
       else
         self:setState(self.windup)
@@ -84,7 +86,7 @@ end
 
 -- State: windup
 function MeleeSlash:windup()
-  if self.comboDirectionSet == "downward" then self.comboDirectionSet = "normal" end
+  if (self.comboDirectionSet == "downward") or (self.backwardTimer > 0 and self.comboDirectionSet == "backward") then self.comboDirectionSet = "normal" end
   local stance = duplicateTable(self.stances.windup[self.comboDirectionSet])
   local hand = (self.combo % 2 == 1 and self.hand == "primary") and "alt" or ((self.combo % 2 == 1 and self.hand == "alt") and "primary" or self.hand)
 
@@ -95,6 +97,10 @@ function MeleeSlash:windup()
   end
 
   self.weapon:setStance(stance)
+
+  if self.comboDirectionSet == "forward" then
+    status.setPersistentEffects("ivrpgLuxuriaWeaponMovementAbility", {{stat = "activeMovementAbilities", amount = 1}})
+  end
 
   if stance.hold then
     while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
@@ -166,29 +172,6 @@ function MeleeSlash:fire()
   animator.playSound(stance.fireSound or "fire")
   animator.setAnimationState("swoosh", "fire" .. self.hand)
 
-    --[[animator.setAnimationState("swoosh", "flip")
-    local flipTime = stance.rotations * stance.rotationTime
-    local flipTimer = 0
-    local jumpTimer = stance.jumpDuration
-
-    while flipTimer < flipTime do
-      flipTimer = flipTimer + self.dt
-
-      mcontroller.controlParameters(stance.flipMovementParameters)
-
-      if jumpTimer > 0 then
-        jumpTimer = jumpTimer - self.dt
-        mcontroller.setVelocity({stance.jumpVelocity[1] * self.weapon.aimDirection, stance.jumpVelocity[2]})
-      end
-
-      local damageArea = partDamageArea("swoosh")
-      self.weapon:setDamage(damageConfig, damageArea, self.fireTime)
-
-      mcontroller.setRotation(-math.pi * 2 * self.weapon.aimDirection * (flipTimer / stance.rotationTime))
-
-      coroutine.yield()
-    end]]
-    --mcontroller.setRotation(0)
   local facingDirection = mcontroller.facingDirection()
   if self.comboDirectionSet == "backward" then
     -- Backwards Slash + Flower Explosion
@@ -226,16 +209,15 @@ function MeleeSlash:fire()
       }
       world.spawnProjectile(stance.projectileType .. self.hand, position, activeItem.ownerEntityId(), {0, -1}, false, projectileParams)
     end
-    mcontroller.controlForce({0, stance.speed*100})
+    mcontroller.controlForce({0, stance.speed})
   elseif self.comboDirectionSet == "forward" then
     -- Travel Slash
     animator.playSound("travelSlash")
-    status.addEphemeralEffect("invulnerable", stance.duration)
+    status.addPersistentEffects("ivrpgwluxuriainvulnerable", {{stat = "invulnerable", amount = 1}})
     local position = mcontroller.position()
   end
 
   util.wait(stance.duration, function()
-
     if self.comboDirectionSet == "forward" then
       mcontroller.setVelocity({self.weapon.aimDirection * stance.dashSpeed, -200})
       mcontroller.controlMove(self.weapon.aimDirection)
@@ -254,6 +236,16 @@ function MeleeSlash:fire()
     self.weapon:setDamage(damageConfig, damageArea, self.fireTime)
 
   end)
+
+  if self.comboDirectionSet == "backward" then
+    -- Backwards Slash + Flower Explosion
+    self.weapon.aimDirection = -self.weapon.aimDirection
+    self.weapon:updateAim()
+    self.backwardTimer = stance.cooldown
+  elseif self.comboDirectionSet == "forward" then
+    status.clearPersistentEffects("ivrpgLuxuriaWeaponMovementAbility")
+    status.clearPersistentEffects("ivrpgwluxuriainvulnerable")
+  end
 
   if self.stances.winddown[self.comboDirectionSet] then
     self:setState(self.winddown)
@@ -399,6 +391,8 @@ end
 
 function uninit()
   status.clearPersistentEffects("ivrpgwluxuriadownsmash")
+  status.clearPersistentEffects("ivrpgLuxuriaWeaponMovementAbility")
+  status.clearPersistentEffects("ivrpgwluxuriainvulnerable")
   self.weapon:uninit()
   incorrectWeapon()
 end
