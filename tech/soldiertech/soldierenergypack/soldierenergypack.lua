@@ -64,16 +64,19 @@ function update(args)
   
   --Find Directional Input
   self.hDirection = 0
-  self.vDirection = 0
+  self.vDirection = 1
   if args.moves["left"] and not args.moves["right"] then
     self.hDirection = -1
   elseif args.moves["right"] and not args.moves["left"] then
     self.hDirection = 1
   end
+  
   if args.moves["up"] and not args.moves["down"] then
     self.vDirection = 1
   elseif args.moves["down"] and not args.moves["up"] then
     self.vDirection = -1
+  elseif not args.moves["run"] or (args.moves["up"] and args.moves["down"]) then
+    self.vDirection = 0
   end
 
   if self.dashTimer > 0 then

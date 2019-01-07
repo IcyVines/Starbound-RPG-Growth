@@ -66,8 +66,15 @@ function update(dt)
   elseif self.heldItem then
 	   --Bonus for One-Handed Primary
     for k,v in pairs(root.itemTags(self.heldItem)) do
-      if self.weaponScaling.tags[v] then
-        local tagInfo = self.weaponScaling.tags[v]
+      tagInfo = self.weaponScaling.tags[v]
+      if tagInfo and tagInfo.conflictingTags then
+        for _,tag in ipairs(tagInfo.conflictingTags) do
+          if root.itemHasTag(self.heldItem, tag) then
+            tagInfo = false
+          end
+        end
+      end
+      if tagInfo then
         local statAmount = -1
         local amount = 0
         for x,y in pairs(self.twoHanded and tagInfo.twoHanded or tagInfo.oneHanded) do
@@ -86,8 +93,15 @@ function update(dt)
   --Extra Bonus with One-Handed Secondary
   if self.heldItem2 and not self.twoHanded then
     for k,v in pairs(root.itemTags(self.heldItem2)) do
-      if self.weaponScaling.tags[v] then
-        local tagInfo = self.weaponScaling.tags[v]
+      tagInfo = self.weaponScaling.tags[v]
+      if tagInfo and tagInfo.conflictingTags then
+        for _,tag in ipairs(tagInfo.conflictingTags) do
+          if root.itemHasTag(self.heldItem2, tag) then
+            tagInfo = false
+          end
+        end
+      end
+      if tagInfo then
         local statAmount = -1
         local amount = 0
         for x,y in pairs(tagInfo.oneHanded) do

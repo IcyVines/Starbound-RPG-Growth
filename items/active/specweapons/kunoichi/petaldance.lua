@@ -394,7 +394,7 @@ function uninit()
   status.clearPersistentEffects("ivrpgLuxuriaWeaponMovementAbility")
   status.clearPersistentEffects("ivrpgwluxuriainvulnerable")
   self.weapon:uninit()
-  incorrectWeapon()
+  incorrectWeapon(true)
 end
 
 function Weapon:updateAim()

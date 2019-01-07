@@ -12,12 +12,14 @@ function init()
   self.class = player.currency("classtype")
   self.spec = player.currency("spectype")
   self.specList = root.assetJson("/specList.config")
+  self.specsAvailable = {}
+  updateSpecsAvailable()
   
   local data = root.assetJson("/ivrpgversion.config")
   local oldVersion = status.statusProperty("ivrpgversion", "0")
   if oldVersion ~= data.version then
     status.setStatusProperty("ivrpgversion", data.version)
-    if oldVersion ~= "1.4e" then
+    if data.giveScrolls then
       player.giveItem("ivrpgscrollresetclass")
       player.giveItem("ivrpgscrollresetaffinity")
     end
@@ -65,6 +67,7 @@ function update(args)
   origUpdate(args)
 
   updateXPPulse()
+  updateRallyMode()
 
   --admin
   if player.isAdmin() then
@@ -82,6 +85,11 @@ function update(args)
       rescrollSpecialization(self.class, player.currency("spectype"))
     end
     self.class = player.currency("classtype")
+    updateSpecsAvailable()
+  end
+
+  if self.spec ~= player.currency("spectype") then
+    self.spec = player.currency("spectype")
   end
 
   -- Pioneer Effect
@@ -139,6 +147,14 @@ function update(args)
 
 end
 
+function updateSpecsAvailable()
+  if self.class > 0 then
+    self.specsAvailable = self.specList[self.class]
+  else
+    self.specsAvailable = {}
+  end
+end
+
 function uninit()
   origUninit()
   status.removeEphemeralEffect("ivrpgstatboosts")
@@ -177,6 +193,20 @@ function updateXPPulse()
   self.xp = player.currency("experienceorb")
 end
 
+function updateRallyMode()
+  if status.statusProperty("ivrpgrallymode", false) then
+    local targetIds = world.entityQuery(entity.position(), 80, {
+      withoutEntityId = self.id,
+      includedTypes = {"creature"}
+    })
+    for _,id in ipairs(targetIds) do
+      if world.entityAggressive(id) then
+        world.sendEntityMessage(id, "ivrpgRally", math.floor(math.sqrt(self.xp/100)), self.id)
+      end
+    end
+  end
+end
+
 function addXP(new)
   player.giveItem({"experienceorb", new})
   self.xp = player.currency("experienceorb")
@@ -193,29 +223,17 @@ function updateSpecs()
 end
 
 function unlockSpecs()
-  if type(status.statusProperty("ivrpgsucrusader")) == "number" and status.statusProperty("ivrpgsucrusader") >= 1000 then
-    sendRadioMessage("Crusader Unlocked!")
-    status.setStatusProperty("ivrpgsucrusader", true)
+
+  if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
+    return
   end
 
-  if type(status.statusProperty("ivrpgsunecromancer")) == "number" and status.statusProperty("ivrpgsunecromancer") >= 1000 then
-    sendRadioMessage("Necromancer Unlocked!")
-    status.setStatusProperty("ivrpgsunecromancer", true)
-  end
-
-  if type(status.statusProperty("ivrpgsuvanguard")) == "number" and status.statusProperty("ivrpgsuvanguard") >= 500 then
-    sendRadioMessage("Vanguard Unlocked!")
-    status.setStatusProperty("ivrpgsuvanguard", true)
-  end
-
-  if type(status.statusProperty("ivrpgsuwraith")) == "number" and status.statusProperty("ivrpgsuwraith") >= 1000 then
-    sendRadioMessage("Wraith Unlocked!")
-    status.setStatusProperty("ivrpgsuwraith", true)
-  end
-
-  if type(status.statusProperty("ivrpgsuvigilante")) == "number" and status.statusProperty("ivrpgsuvigilante") >= 100 then
-    sendRadioMessage("Vigilante Unlocked!")
-    status.setStatusProperty("ivrpgsuvigilante", true)
+  for _,spec in ipairs(self.specsAvailable) do
+    local unlockStatus = status.statusProperty(spec.unlockStatus)
+    if spec.unlockNumber and type(unlockStatus) == "number" and unlockStatus >= spec.unlockNumber then
+      sendRadioMessage(spec.title .. " Unlocked!")
+      status.setStatusProperty(spec.unlockStatus, true)
+    end
   end
 
 end
@@ -241,61 +259,72 @@ function specChecks(enemyType, level, position, statusEffects, damage, damageTyp
   if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
     return
   end
-  -- Crusader
-  if status.statusProperty("ivrpgsucrusader") ~= true and (self.class == 1 or self.class == 2) and string.find(damageType, "broadsword") then
-    if enemyType == "cultist" or enemyType == "templeguard" or enemyType == "tombguard" then
-      status.setStatusProperty("ivrpgsucrusader", status.statusProperty("ivrpgsucrusader", 0) + 4 * level)
-    elseif string.find(enemyType, "tentacle") then
-      status.setStatusProperty("ivrpgsucrusader", status.statusProperty("ivrpgsucrusader", 0) + level)
-    else
-      status.setStatusProperty("ivrpgsucrusader", status.statusProperty("ivrpgsucrusader", 0) + level / 4)
-    end
-  end
 
-  -- Necromancer
-  if status.statusProperty("ivrpgsunecromancer") ~= true and self.class == 2 then
-    if status.resource("health") / status.stat("maxHealth") < 0.2 then
-      status.setStatusProperty("ivrpgsunecromancer", status.statusProperty("ivrpgsunecromancer", 0) + level)
-    end
-  end
+  for _,spec in ipairs(self.specsAvailable) do
+    if status.statusProperty(spec.unlockStatus) ~= true then
+      local unlockBehavior = spec.unlockBehavior
+      if unlockBehavior then
+        local damageTypes = unlockBehavior.damageTypes
+        local enemyTypes = unlockBehavior.enemyTypes
+        local requiredPosition = unlockBehavior.requiredPosition
+        local requiredCurrency = unlockBehavior.requiredCurrency
+        local ignore = false
+        local trueIgnore = false
+        local healthBonus = 1
+        
+        if damageTypes then
+          ignore = true
+          for _,dType in ipairs(damageTypes) do
+            if string.find(damageType, dType) then
+              ignore = false
+              break
+            end
+          end
+          if ignore then trueIgnore = true end
+        end
 
-  -- Vanguard
-  if status.statusProperty("ivrpgsuvanguard") ~= true and (self.class == 4 or self.class == 6) then
-    if string.find(damageType, "bullet") or string.find(damageType, "shotgun") then
-      if world.magnitude(position, world.entityPosition(self.id)) < 5 then
-        status.setStatusProperty("ivrpgsuvanguard", status.statusProperty("ivrpgsuvanguard", 0) + level)
+        if requiredPosition then
+          ignore = true
+          if requiredPosition.type == "<" and world.magnitude(position, world.entityPosition(self.id)) < requiredPosition.magnitude then
+            ignore = false
+          elseif requiredPosition.type == ">" and world.magnitude(position, world.entityPosition(self.id)) > requiredPosition.magnitude then
+            ignore = false
+          end
+          if ignore then trueIgnore = true end
+        end
+
+        if requiredCurrency then
+          for currency,amount in pairs(requiredCurrency) do
+            if player.currency(currency) < amount then
+              ignore = true
+              break
+            end
+            ignore = false
+          end
+          if ignore then trueIgnore = true end
+        end
+
+        if unlockBehavior.healthUnder then
+          ignore = true
+          if status.resource("health") / status.stat("maxHealth") < unlockBehavior.healthUnder then
+            healthBonus = (status.resource("health") / status.stat("maxHealth") + 0.7)^-5
+            ignore = false
+          end
+          if ignore then trueIgnore = true end
+        end
+
+        if enemyTypes and not trueIgnore then
+          for _,v in ipairs(enemyTypes) do
+            if string.find(enemyType, v.type) then
+              status.setStatusProperty(spec.unlockStatus, status.statusProperty(spec.unlockStatus, 0) + healthBonus * (v.modifier and level * v.modifier or (v.amount or level)))
+              break
+            end
+          end
+        end
+
       end
     end
   end
-
-  --Wraith
-  if status.statusProperty("ivrpgsuwraith") ~= true and (self.class == 2 or self.class == 5) then
-    if player.currency("intelligencepoint") > 40 then
-      if hasElement({"skimbus", "spookit", "gosmet", "wisper", "squeem"}, enemyType) then
-        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuwraith", 0) + level)
-      elseif string.find(enemyType, "tentacleghost") then
-        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuwraith", 0) + 1)
-      elseif string.find(enemyType, "erchiusghost") then
-        status.setStatusProperty("ivrpgsuwraith", status.statusProperty("ivrpgsuwraith", 0) + 10)
-      end
-    end
-  end
-
-  --Paladin
-  --Completed in Knight Ability Lua
-
-  --Vigilante
-  if status.statusProperty("ivrpgsuvigilante") ~= true and self.class == 4 then
-    if string.find(damageType, "bullet") or string.find(damageType, "shotgun") then
-      if string.find(enemyType, "bandit") or string.find(enemyType, "outlaw") then
-        status.setStatusProperty("ivrpgsuvigilante", status.statusProperty("ivrpgsuvigilante", 0) + level)
-      end
-    end
-  end
-
-  --Adept
-  --Completed in Ninja Ability Lua
-
 
 end
 

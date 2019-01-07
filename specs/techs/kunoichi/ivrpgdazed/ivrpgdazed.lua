@@ -29,5 +29,5 @@ end
 
 
 function uninit()
-  animator.setParticleEmitterActive("embers", false)
+  animator.setParticleEmitterActive("smoke", false)
 end

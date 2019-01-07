@@ -127,6 +127,10 @@ function update(dt)
     end
   end
 
+  if widget.getChecked("bookTabs.5") then
+      changeToSpecialization()
+  end
+
   if player.currency("masterypoint") ~= self.mastery then
     self.mastery = player.currency("masterypoint")
     if widget.getChecked("bookTabs.7") then
@@ -294,6 +298,12 @@ function updateOverview(toNext)
     widget.setVisible("overviewlayout.hardcoreweapontext", false)
   end
 
+  if not status.statusProperty("ivrpgrallymode", false) then
+    widget.setText("overviewlayout.rallymodeactive", "Inactive")
+  else
+    widget.setText("overviewlayout.rallymodeactive", "Active")
+  end
+
 end
 
 function updateClassTab()
@@ -424,7 +434,7 @@ end
 
 function changeToSpecialization()
     widget.setText("tabLabel", "Specialization Tab")
-    self.specTo = 1
+    --self.specTo = 1
     if self.level < 35 or self.class == 0 then
       widget.setVisible("specializationlayout", false)
       widget.setVisible("specializationslayout", false)
@@ -509,8 +519,9 @@ function updateSpecializationSelect()
   end
 
   if unlocked ~= true then unlocked = false end
-
+  
   widget.setVisible("specializationslayout.unlocktext", not unlocked)
+  widget.setButtonEnabled("specializationslayout.selectspec", not (currentSpec.gender and currentSpec.gender ~= player.gender()))
   widget.setVisible("specializationslayout.selectspec", unlocked)  
 end
 
@@ -1142,6 +1153,15 @@ function toggleHardcore()
     {
       {stat = "ivrpghardcore", amount = 1}
     })
+  end
+  updateOverview(2*self.level*100+100)
+end
+
+function toggleRallyMode()
+  if status.statusProperty("ivrpgrallymode", true) then
+  	status.setStatusProperty("ivrpgrallymode", false)
+  else
+  	status.setStatusProperty("ivrpgrallymode", true)
   end
   updateOverview(2*self.level*100+100)
 end

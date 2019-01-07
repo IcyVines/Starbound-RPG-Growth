@@ -20,6 +20,13 @@ function setHandlers()
     status.modifyResourcePercentage(type, amount)
   end)
 
+   message.setHandler("ivrpgRally", function(_, _, level, player)
+    self.ivrpgRally[player] = {
+      level = level,
+      timer = 0.5
+    }
+  end)
+
   message.setHandler("hitByBloodAether", function(_, _)
     self.hitByBloodAether = true
   end)
@@ -29,6 +36,8 @@ function loadVariables(enemyType, level)
   self.id = entity.id()
   self.enemyType = enemyType
   self.level = level
+  self.ivrpgRally = {}
+  self.baseParameters = mcontroller.baseParameters()
 end
 
 function updateEffects(dt)
@@ -37,6 +46,84 @@ function updateEffects(dt)
     if self.isMonster then monster.setDamageTeam({type = "friendly", team = 1})
     else npc.setDamageTeam({type = "friendly", team = 1}) end
   end
+
+  --[[ Movement Parameters!!!
+    flySpeed : 8.0
+    groundForce : 100.0
+    gravityMultiplier : 1.5
+    maxMovementPerStep : 0.80000001192093
+    stickyForce : 0.0
+    frictionEnabled : true
+    airForce : 20.0
+    bounceFactor : 0.0
+    standingPoly : table: 0000024A0BC8E0C0
+    maximumPlatformCorrection : 0.019999999552965
+    airFriction : 0.0
+    ambulatingGroundFriction : 1.0
+    walkSpeed : 3.0
+    slopeSlidingFactor : 0.0
+    fallStatusSpeedMin : -4.0
+    liquidImpedance : 0.5
+    liquidFriction : 5.0
+    normalGroundFriction : 14.0
+    gravityEnabled : true
+    fallThroughSustainFrames : 12
+    maximumCorrection : 3.0
+    groundMovementCheckDistance : 0.75
+    groundMovementMaximumSustain : 0.25
+    liquidForce : 30.0
+    groundMovementMinimumSustain : 0.10000000149012
+    physicsEffectCategories : table: 0000024A0BC8E580
+    maximumPlatformCorrectionVelocityFactor : 0.029999999329448
+    speedLimit : 200.0
+    mass : 1.6000000238419
+    runSpeed : 18.199998855591
+    stickyCollision : false
+    minimumLiquidPercentage : 0.5
+    collisionEnabled : true
+    liquidBuoyancy : 0.0
+    crouchingPoly : table: 0000024A0BC8E340
+    liquidJumpProfile : table: 0000024A0BC8E080
+    airJumpProfile : table: 0000024A0BC8E040
+  ]]
+
+  local rallyLevel = 0
+  for id,value in pairs(self.ivrpgRally) do
+    rallyLevel = rallyLevel + math.min(50, value.level)
+    value.timer = math.max(0, value.timer - dt)
+    if value.timer == 0 then
+      self.ivrpgRally[id] = nil
+    end
+  end
+  
+  status.setPersistentEffects("ivrpgRallied", {
+    {stat = "powerMultiplier", baseMultiplier = 1 + math.min(rallyLevel/50, 3)}
+  })
+
+  if rallyLevel > 0 then
+    mcontroller.controlParameters({
+      airFriction = self.baseParameters.airFriction * (1 - math.min(rallyLevel/100, 1))
+    })
+    mcontroller.controlModifiers({
+      groundMovementModifier = 1 + math.min(rallyLevel/50, 2),
+      liquidMovementModifier = 1 + math.min(rallyLevel/50, 2),
+      speedModifier = 1 + math.min(rallyLevel/100, 2)
+    })
+    local targetIds = world.entityQuery(mcontroller.position(), 20, {
+      withoutEntityId = self.id,
+      includedTypes = {"creature"}
+    })
+    for _,id in ipairs(targetIds) do
+      if world.entityAggressive(id) then
+        status.addPersistentEffect("ivrpgRallied", { 
+          stat = "protection",
+          amount = math.min(rallyLevel/5, 40)
+        })
+        break
+      end
+    end
+  end
+
 end
 
 function loadConfigs()

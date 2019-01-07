@@ -1,0 +1,10 @@
+{
+  "input" : [
+  	{ "item" : "diamond", "count" : 1 },
+    { "item" : "ivrpgetherealblade", "count" : 5 },
+    { "item" : "fabric", "count" : 4 },
+    { "item" : "solariumstar", "count" : 2 }
+  ],
+	"output" : { "item" : "ivrpgwluxuria", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}
