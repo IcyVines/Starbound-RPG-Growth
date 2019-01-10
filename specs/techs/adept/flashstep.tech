@@ -11,7 +11,7 @@
   "icon" : "/specs/techs/adept/flashstep.png",
 
   "chipCost" : 0,
-  "cost" : 10,   
+  "cost" : 25,   
   "dashDistance" : 10,
   "dashCooldown" : 0.1,
   "pauseTime" : 0.2,

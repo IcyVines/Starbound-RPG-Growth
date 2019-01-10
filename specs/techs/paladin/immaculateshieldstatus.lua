@@ -2,7 +2,7 @@
 function init()
 	self.id = effect.sourceEntity()
 	self.shieldDecay = config.getParameter("shieldDecay", 0.5)
- 	self.healthStatus = config.getParameter("healthStatus", "regeneration4")
+ 	--self.healthStatus = config.getParameter("healthStatus", "regeneration4")
  	self.healthRange = config.getParameter("healthRange", 8)
  	self.damageUpdate = 5
  	effect.addStatModifierGroup({
@@ -11,6 +11,10 @@ function init()
 end
 
 function update(dt)
+	mcontroller.controlModifiers({
+		speedModifier = 0.75
+	})
+
 	self.notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
 	if self.notifications then
 	for _,notification in pairs(self.notifications) do
@@ -25,7 +29,6 @@ function update(dt)
 end
 
 function healPulse()
-	status.addEphemeralEffect(self.healthStatus, 3)
 	--local sourceDamageTeam = world.entityDamageTeam(self.id)
 	local targetIds = world.entityQuery(mcontroller.position(), self.healthRange, {
       withoutEntityId = self.id,
@@ -33,7 +36,8 @@ function healPulse()
     })
     for i,id in ipairs(targetIds) do
 		if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
-			world.sendEntityMessage(id, "addEphemeralEffect", self.healthStatus, 3, self.id)
+			local healthModifier = 0.07 + (world.entityCurrency(self.id, "strengthpoint") + world.entityCurrency(self.id, "intelligencepoint"))*0.0005
+			world.sendEntityMessage(id, "modifyResource", status.stat("maxHealth")*healthModifier)
 		end
     end
 end

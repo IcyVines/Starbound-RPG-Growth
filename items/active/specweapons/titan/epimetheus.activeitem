@@ -1,0 +1,106 @@
+{
+  "itemName" : "ivrpgwepimetheus",
+  "price" : 1000,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Don't leave even one enemy alive.",
+  "shortdescription" : "^orange;Epimetheus",
+  "tooltipKind" : "base",
+  "category" : "machinePistol",
+  "twoHanded" : false,
+  "inventoryIcon" : "epimetheus.png",
+  "itemTags" : ["weapon","ranged","machinepistol"],
+  "level" : 6,
+
+  "classreq" : 4,
+  "specreq" : 4,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "epimetheus.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg" ],
+      "onKill" : ["/sfx/statuseffects/powerup.ogg"],
+      "healthLow" : ["/items/active/specweapons/vanguard/healthLow.ogg"]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [120, 70, 40]
+      }
+    },
+    "animatedParts" : {
+      "stateTypes" : {
+      },
+      "parts" : {
+        "muzzleFlash" : {
+          "properties" : {
+            "offset" : [2.05, -0.15]
+          }
+        },
+        "middle" : {
+          "partStates" : {
+          }
+        }
+      }
+    }
+  },
+  "baseOffset" : [0.825, 0.125],
+  "muzzleOffset" : [0.0, 0.5],
+  "elementalType" : "physical",
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/titan/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.15,
+    "baseDps" : 8,
+    "energyUsage" : 20,
+    "inaccuracy" : 0.1,
+    "projectileCount" : 1,
+    "fireType" : "auto",
+    "projectileType" : "epimetheusbullet",
+
+    "projectileParameters" : {
+      "knockbackRange" : 3
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

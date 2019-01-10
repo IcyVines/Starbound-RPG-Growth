@@ -195,9 +195,14 @@ function GunFire:damagePerShot()
 end
 
 function GunFire:uninit()
+end
+
+function uninit()
   status.clearPersistentEffects("vigilantedualpistols")
   incorrectWeapon(true)
+  self.weapon:uninit()
 end
+
 
 function Weapon:updateAim()
   self.gunScale = config.getParameter("gunScale", {0.8,0.8})

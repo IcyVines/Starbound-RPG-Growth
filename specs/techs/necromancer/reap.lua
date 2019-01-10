@@ -1,6 +1,7 @@
 require "/scripts/keybinds.lua"
 
 function init()
+  self.bonePteropod = root.assetJson("/monsters/flyers/bonepteropod/bonepteropod.monstertype")
   self.healthCost = config.getParameter("healthCost", 5)
   self.cooldown = config.getParameter("cooldown", 5)
   self.cooldownTimer = 0
@@ -21,21 +22,31 @@ function uninit()
 end
 
 function reap()
+
+  local intelligence = world.entityCurrency(self.id, "intelligencepoint")
+
   if self.cooldownTimer == 0 and (not status.statPositive("activeMovementAbilities")) and self.shiftHeld and self.mobCharge > 0 then
     self.cooldownTimer = self.cooldown
     animator.playSound("reap")
-    world.spawnMonster("bonepteropod", mcontroller.position(), {
-      damageTeamType = "friendly",
-      level = self.mobCharge + 1
-    })
-    self.mobCharge = 0
+    self.mobCharge = math.floor(math.min(self.mobCharge^(1 + intelligence/100), 6))
+    local params = {}
+    params.statusSettings = self.bonePteropod.baseParameters.statusSettings
+    params.statusSettings.stats.maxHealth.baseValue = status.stat("maxHealth")
+    params.statusSettings.stats.protection.baseValue = status.stat("protection")
+    params.statusSettings.stats.powerMultiplier.baseValue = status.stat("powerMultiplier")
+    params.level = 1
+    params.damageTeamType = "friendly"
+    params.aggressive = true
+    while self.mobCharge > 0 do 
+      world.spawnMonster("bonepteropod", mcontroller.position(), params)
+      self.mobCharge = self.mobCharge - 1
+    end
     return
   end
 
   if self.cooldownTimer == 0 and (not status.statPositive("activeMovementAbilities")) and status.consumeResource("health", self.healthCost) then
     self.cooldownTimer = self.cooldown
     animator.playSound("reap")
-    local intelligence = world.entityCurrency(self.id, "intelligencepoint")
     local damageConfig = {
       power = intelligence^0.75 + 9
     }

@@ -9,6 +9,7 @@ function init()
   	{stat = "ivrpgundead", amount = 1},
   	{stat = "powerMultiplier", effectiveMultiplier = 2},
   	{stat = "maxHealth", effectiveMultiplier = 2},
+    {stat = "armor", effectiveMultiplier = 2},
     {stat = "holyResistance", amount = -1},
     {stat = "demonicResistance", amount = 3},
     {stat = "demonicStatusImmunity", amount = 1}

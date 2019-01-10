@@ -905,7 +905,7 @@ function updateChallenges()
       	world.spawnItem("experienceorb", mcontroller.position(), 1000)
       end
       if status.statPositive("ivrpgucskadisblessing") and (self.affinity-1)%4 == 2 and notification.damageSourceKind == "bow" then
-        world.sendEntityMessage(notification.targetEntityId, "addEphemeralEffect", "ivrpgembrittle", 3, self.id)
+        world.sendEntityMessage(notification.targetEntityId, "applyStatusEffect", "ivrpgembrittle", 3, self.id)
       end
       if status.statPositive("ivrpgucbloodseeker") and notification.damageSourceKind == "bloodaether" then
         world.sendEntityMessage(notification.targetEntityId, "hitByBloodAether")

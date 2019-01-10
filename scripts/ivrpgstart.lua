@@ -8,6 +8,8 @@ function init()
   script.setUpdateDelta(14)
   self.removed = true
   self.xp = player.currency("experienceorb")
+  self.xpScalingTimer = 0
+  self.xpScaling = false
   self.id = entity.id()
   self.class = player.currency("classtype")
   self.spec = player.currency("spectype")
@@ -31,6 +33,13 @@ function init()
 
   message.setHandler("addXP", function(_, _, amount)
     addXP(amount)
+  end)
+
+  message.setHandler("setXPScaling", function(_, _, intelligence)
+    if intelligence > (player.currency("intelligencepoint") or 0) * (1 + status.stat("ivrpgintelligecescaling")) and not (self.xpScaling and intelligence <= self.xpScaling) then
+      self.xpScalingTimer = 0.3
+      self.xpScaling = intelligence
+    end
   end)
 
   message.setHandler("hasStat", function(_, _, name)
@@ -63,10 +72,11 @@ function init()
 
 end
 
-function update(args)
-  origUpdate(args)
+function update(dt)
+  origUpdate(dt)
 
-  updateXPPulse()
+  updateXPScalingShare()
+  updateXPPulse(dt)
   updateRallyMode()
 
   --admin
@@ -145,6 +155,12 @@ function update(args)
   updateSpecs()
   unlockSpecs()
 
+  if self.xpScalingTimer > 0 then
+    self.xpScalingTimer = math.max(self.xpScalingTimer - dt, 0)
+  else
+    self.xpScaling = false
+  end
+
 end
 
 function updateSpecsAvailable()
@@ -182,6 +198,11 @@ function updateXPPulse()
   if self.xp then
     local new = player.currency("experienceorb") - self.xp
     if new > 0 then
+      local intelligence = (player.currency("intelligencepoint") or 0) * (1 + status.stat("ivrpgintelligecescaling"))
+      if self.xpScaling and self.xpScaling > intelligence then intelligence = self.xpScaling end
+      local multiplier = intelligence * 0.005
+      if multiplier > 0 then player.giveItem({"experienceorb", new * multiplier}) end
+      new = new * (1 + multiplier)
       local players = world.playerQuery(entity.position(), 60, {
         withoutEntityId = entity.id()
       })
@@ -191,6 +212,15 @@ function updateXPPulse()
     end
   end
   self.xp = player.currency("experienceorb")
+end
+
+function updateXPScalingShare()
+  local players = world.playerQuery(entity.position(), 60, {
+    withoutEntityId = self.id
+  })
+  for _,id in ipairs(players) do
+    world.sendEntityMessage(id, "setXPScaling", (player.currency("intelligencepoint") or 0) * (1 + status.stat("ivrpgintelligecescaling")), self.id)
+  end
 end
 
 function updateRallyMode()

@@ -2,12 +2,9 @@ require "/scripts/vec2.lua"
 require "/scripts/keybinds.lua"
 
 function init()
-  self.durationBonus = 0
-  self.duration = config.getParameter("duration")
-  self.cooldown = config.getParameter("cooldown")
-  self.cost = config.getParameter("cost")
-  self.cooldownTimer = 0
   self.active = false
+  self.damageUpdate = 5
+  self.regenSpeed = config.getParameter("regenSpeed", 0.1)
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=80FC9FFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
   self.rechargeEffectTimer = 0
@@ -17,90 +14,58 @@ end
 
 function magicShield()
   if self.active then
-    deactivate()
-    --[[if self.cooldownTimer > self.cooldown then
-      self.cooldownTimer = 2*self.cooldown - self.cooldownTimer
-      status.addEphemeralEffect("wizardmagicshieldcooldown", self.cooldownTimer)
-    end]]
+    self.active = false
+    tech.setParentDirectives("")
+    animator.playSound("deactivate")
   else
-    --if self.cooldownTimer <= 0 and status.overConsumeResource("energy", self.cost) then
-    if not status.resourceLocked("energy") then
-      self.active = true
-      activateAura()
-      --status.addEphemeralEffect("wizardshield", self.duration)
-      --self.cooldownTimer = self.cooldown + self.duration
-    end
+    self.active = true
+    animator.playSound("activate")
   end
 end
 
 function update(args)
-  --[[if self.cooldownTimer > 0 then
-    self.cooldownTimer = math.max(0, self.cooldownTimer - args.dt)
-    if self.cooldownTimer <= self.cooldown and self.active == true then
-      self.active = false
-      status.removeEphemeralEffect("wizardshield")
-      status.addEphemeralEffect("wizardmagicshieldcooldown", self.cooldownTimer)
-    end
-    if self.cooldownTimer == 0 then
-      self.rechargeEffectTimer = self.rechargeEffectTime
-      tech.setParentDirectives(self.rechargeDirectives)
-      animator.playSound("recharge")
-    end
-  end
-
-  if self.rechargeEffectTimer > 0 then
-    self.rechargeEffectTimer = math.max(0, self.rechargeEffectTimer - args.dt)
-    if self.rechargeEffectTimer == 0 then
-      tech.setParentDirectives()
-    end
-  end]]
-
+  self.health = status.resource("health")
   if self.active then
-    if status.overConsumeResource("energy", args.dt*self.cost) then
-      status.addEphemeralEffect("wizardshield")
+    if status.resource("energy") == 0 then
+      status.setResourceLocked("energy", true)
     else
-      deactivate()
+      status.setResourceLocked("energy", false)
     end
+    status.setResourcePercentage("energyRegenBlock", 1.0)
+    local regenBonus = 1 + (world.entityCurrency(entity.id(), "vigorpoint") + world.entityCurrency(entity.id(), "intelligencepoint")) / 100
+    status.modifyResourcePercentage("energy", args.dt * self.regenSpeed * regenBonus)
+    tech.setParentDirectives("?border=2;34ED2A20;4E1D7000")
+    updateDamageTaken()
   end
 
 end
 
 function uninit()
-  --status.removeEphemeralEffect("wizardmagicshieldcooldown")
-  deactivate()
-end
-
-function activateAura()
-    if not self.shield then
-      self.timeConfig = {
-        timeToLive = math.huge
-      }
-      self.shield = world.spawnProjectile("wizardshieldshare",
-                                            mcontroller.position(),
-                                            entity.id(),
-                                            {0,0},
-                                            true,
-                                            self.timeConfig
-                                           )
-    end
-end
-
-function deactivate()
   self.active = false
-  status.removeEphemeralEffect("wizardshield")
-  deactivateAura()
+  tech.setParentDirectives("")
 end
 
-function deactivateAura()
-    if self.shield then
-      world.entityQuery(mcontroller.position(),1,
-        {
-         withoutEntityId = entity.id(),
-         includedTypes = {"projectile"},
-         callScript = "removeShield",
-         callScriptArgs = {self.shield}
-        }
-      )
-      self.shield = nil
+function updateDamageTaken()
+  self.notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
+  if self.notifications then
+    for _,notification in pairs(self.notifications) do
+      local healthLost = notification.healthLost or 0
+      local InitialHealth = (status.resource("health") or 0) + healthLost
+      local damageDealt = notification.damageDealt or 0
+      if damageDealt > 0 then
+        local newHealth = InitialHealth - damageDealt
+        local energy = status.resource("energy")
+        status.overConsumeResource("energy", damageDealt)
+        if damageDealt > energy then
+          damageDealt = energy
+        end
+        if newHealth + (damageDealt / 2) <= 0 then
+          --Tough Luck
+          return
+        end
+        status.modifyResource("health", damageDealt / 2)
+      end
     end
+  end
 end
+

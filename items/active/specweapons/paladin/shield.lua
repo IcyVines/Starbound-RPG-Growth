@@ -81,6 +81,8 @@ function update(dt, fireMode, shiftHeld)
       chargeBeam()
     elseif fireMode == "alt" and not self.active then
       raiseShield()
+    elseif fireMode == "alt" and self.beamActive and self.beamTimer < 1.5 then
+      self.beamTimer = math.min(self.beamTimer, 0.25)
     end
   end
 
@@ -125,7 +127,7 @@ function update(dt, fireMode, shiftHeld)
     end
   end
 
-  self.beamLength = math.min(self.origBeamLength + (self.perfectShieldBonus - 1) * 4, 30)
+  self.beamLength = math.min(self.origBeamLength + (self.perfectShieldBonus - 1) * 5, 35)
 
   if status.resourceLocked("energy") then
     self.beamTimer = math.min(self.beamTimer, 0.25)
@@ -195,10 +197,11 @@ function raiseShield()
           animator.playSound("perfectBlock")
           animator.burstParticleEmitter("perfectBlock")
           self.perfectShieldBonus = math.min(self.perfectShieldBonus + 0.25, 5)
+          status.addEphemeralEffect("regeneration4", 2 + (self.perfectShieldBonus / 2.5))
           refreshPerfectBlock()
         elseif status.resourcePositive("shieldStamina") then
           animator.playSound("block")
-          self.perfectShieldBonus = math.max(self.perfectShieldBonus - 0.25, 1)
+          if not self.beamActive then self.perfectShieldBonus = math.max(self.perfectShieldBonus - 0.25, 1) end
         else
           self.perfectShieldBonus = 1
           animator.playSound("break")
@@ -293,6 +296,7 @@ function endBeam()
   animator.setParticleEmitterActive("beamCollision", false)
   animator.playSound("fireEnd")
   self.beamActive = false
+  self.beamTimer = 0
   self.pCooldownTimer = self.pCooldownTime
   animator.setLightActive("gold", false)
 end
@@ -308,6 +312,7 @@ function damageSource(damageConfig, damageArea, damageTimeout)
       knockback = knockbackMomentum(damageConfig.knockback, damageConfig.knockbackMode, 0, mcontroller.facingDirection())
     end
     local damage = self.baseDps * activeItem.ownerPowerMultiplier() * self.perfectShieldBonus
+    --if knockback then knockback = knockback * (1 + self.perfectShieldBonus / 10) end
 
     local damageLine, damagePoly
     if #damageArea == 2 then

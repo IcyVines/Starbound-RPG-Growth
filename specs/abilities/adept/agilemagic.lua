@@ -16,11 +16,13 @@ end
 function update(dt)
   local energy = status.resource("energy")
   local maxEnergy = status.stat("maxEnergy")
+  local energyRatio = energy/maxEnergy
   local fullEnergy = energy == maxEnergy
-  status.setPersistentEffects("ivrpgagilemagic", {
-    {stat = "fallDamageMultiplier", effectiveMultiplier = fullEnergy and 0 or 1}
+  status.setPersistentEffects("ivrpgfluctuation", {
+    {stat = "protection", effectiveMultiplier = 0.5 + energyRatio^4}
   })
-  animator.setParticleEmitterActive("feathers", fullEnergy and (not mcontroller.onGround()) and (not mcontroller.liquidMovement()))
+
+  animator.setParticleEmitterActive("embers", fullEnergy)
 
   if energy < maxEnergy then
     self.burstReady = true
@@ -32,11 +34,13 @@ function update(dt)
   end
 
   if self.timer > 0 then
+    animator.setParticleEmitterEmissionRate("embers", 25)
     mcontroller.controlModifiers({
       speedModifier = 1.2
     })
     self.timer = math.max(self.timer - dt, 0)
     if self.timer == 0 then
+      animator.setParticleEmitterEmissionRate("embers", 2)
       animator.setParticleEmitterActive("embers", false)
     end
   end
@@ -64,6 +68,6 @@ function speedPulse()
 end
 
 function uninit()
-  status.clearPersistentEffects("ivrpgagilemagic")
+  status.clearPersistentEffects("ivrpgfluctuation")
   animator.setParticleEmitterActive("embers", false)
 end

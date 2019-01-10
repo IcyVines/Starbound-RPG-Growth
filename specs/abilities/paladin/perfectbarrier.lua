@@ -4,7 +4,7 @@ require "/scripts/util.lua"
 function init()
   self.id = effect.sourceEntity()
   self.damageUpdate = 5
-  self.timer = 0
+  self.resistanceTimer = 0
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
 end
 
@@ -15,17 +15,25 @@ function update(dt)
     for _,notification in pairs(self.notifications) do
       if notification.hitType == "ShieldHit" then
         if status.resourcePositive("perfectBlock") then
-          status.modifyResource("shieldStamina", 0.05)
+          status.modifyResource("shieldStamina", 0.1)
           animator.setParticleEmitterActive("embers", true)
-          self.timer = 0.5
+          self.resistanceTimer = 5
         end
       end
     end
   end
 
-  if self.timer > 0 then
-    self.timer = math.max(self.timer - dt, 0)
-    if self.timer == 0 then
+  if self.resistanceTimer > 0 then
+    status.setPersistentEffects("ivrpgperfectbarrer", {
+      {stat = "physicalResistance", amount = 0.2},
+      {stat = "poisonResistance", amount = 0.2},
+      {stat = "shadowResistance", amount = 0.2},
+      {stat = "demonicResistance", amount = 0.2},
+    })
+    animator.setParticleEmitterActive("embers", true)
+    self.resistanceTimer = math.max(self.resistanceTimer - dt, 0)
+    if self.resistanceTimer == 0 then
+      status.clearPersistentEffects("ivrpgperfectbarrer")
       animator.setParticleEmitterActive("embers", false)
     end
   end
@@ -39,5 +47,5 @@ function update(dt)
 end
 
 function uninit()
-
+  status.clearPersistentEffects("ivrpgperfectbarrer")
 end

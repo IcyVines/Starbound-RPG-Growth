@@ -2,7 +2,7 @@
   "itemName" : "agilitypoint",
   "rarity" : "Rare",
   "inventoryIcon" : "agility.png",
-  "description" : "Agility.",
+  "description" : "Agility",
   "shortdescription" : "Agility",
   "currency" : "agilitypoint",
   "value" : 1,

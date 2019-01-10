@@ -4,7 +4,7 @@
 
   "rarity" : "Legendary",
   "icon" : "/tech/wizardtech/wizardmagicshield/wizardmagicshield.png",
-  "description" : "Cost: 30eps.",
+  "description" : "Energy Regen: 10%/s.",
   "shortDescription" : "Magic Shield",
   "chipCost" : 0,
 
@@ -13,6 +13,7 @@
 
   "cost" : 30,
   "cooldown" : 30,
-  "duration" : 10
+  "duration" : 10,
+  "regenSpeed" : 0.1
 
 }

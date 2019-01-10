@@ -138,10 +138,10 @@
   "damageConfig" : {
       "statusEffects" : [ "ivrpgjudgement" ],
       "damageSourceKind" : "holy",
-      "knockback" : 8
+      "knockback" : 10
   },
   "fireTime" : 0.2,
-  "baseDps" : 2,
+  "baseDps" : 1.8,
   "energyUsage" : 30,
   "chain" : {
     "startOffset" : [0, 0],
@@ -158,7 +158,7 @@
     },
     "fullbright" : true
   },
-  "beamLength" : 10,
+  "beamLength" : 15,
   "beamTransitionTime" : 0.25,
   "beamTransitionFrames" : 10,
 

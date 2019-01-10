@@ -11,7 +11,8 @@ function ControlProjectile:init()
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
   self.durationBonus = 0
   self.baseDuration = 5
-
+  self.cooldownLock = false
+  self.initialEnergyCost = config.getParameter("immediateEnergyCost", 50)
   self.stances = config.getParameter("stances")
 
   activeItem.setCursor("/cursors/reticle0.cursor")
@@ -32,7 +33,6 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
     and not status.resourceLocked("energy") then
-
     self:setState(self.charge)
   end
 end
@@ -60,6 +60,7 @@ function ControlProjectile:charge()
     self:setState(self.charged)
   else
     animator.playSound(self.elementalType.."discharge")
+    self.cooldownLock = false
     self:setState(self.cooldown)
   end
 end
@@ -70,6 +71,8 @@ function ControlProjectile:charged()
   animator.playSound(self.elementalType.."fullcharge")
   animator.playSound(self.elementalType.."chargedloop", -1)
   animator.setParticleEmitterActive(self.elementalType .. "charge", true)
+
+  status.overConsumeResource("energy", self.initialEnergyCost)
 
   self.durationBonus = 0
   local targetValid
@@ -95,8 +98,10 @@ function ControlProjectile:discharge()
   if self:targetValid(activeItem.ownerAimPosition()) then
     animator.playSound(self.elementalType.."activate")
     self:createProjectiles()
+    self.cooldownLock = true
   else
     animator.playSound(self.elementalType.."discharge")
+    self.cooldownLock = false
     self:setState(self.cooldown)
     return
   end
@@ -119,8 +124,8 @@ function ControlProjectile:cooldown()
   animator.setParticleEmitterActive(self.elementalType .. "charge", false)
   activeItem.setCursor("/cursors/reticle0.cursor")
 
-  util.wait(self.stances.cooldown.duration, function()
-
+  util.wait(self.stances.cooldown.duration * (self.cooldownLock and 2 or 1), function()
+    if self.cooldownLock then status.setResourcePercentage("energyRegenBlock", 1.0) end
   end)
 end
 

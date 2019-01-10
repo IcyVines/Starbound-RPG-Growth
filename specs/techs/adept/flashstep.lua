@@ -36,7 +36,7 @@ function prepareFlashStep()
   self.teleportTarget[1] = currentPosition[1] + (self.hDirection * (self.dashMaxDistance + agility / 10) / diagonal / self.shift)
   self.teleportTarget[2] = currentPosition[2] + (self.vDirection * (self.dashMaxDistance + agility / 10) / diagonal / self.shift)
   local intelligence = world.entityCurrency(entity.id(),"intelligencepoint") or 1
-  local cost = self.cost - (intelligence / 12.5)
+  local cost = self.cost - (intelligence / 5)
   local healthCost = (self.teleportCount > self.teleportsBeforeDamage and not status.statPositive("admin")) and (self.healthDamageFactor ^ (self.teleportCount - self.teleportsBeforeDamage)) or 0
   if status.consumeResource("health", healthCost) and status.overConsumeResource("energy", cost) then
     flashStep()

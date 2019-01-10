@@ -300,3 +300,14 @@ end
 function sendDyingMessage(sourceId, damage, sourceKind)
   world.sendEntityMessage(sourceId, "killedEnemy", self.enemyType, self.level, mcontroller.position(), status.activeUniqueStatusEffectSummary(), damage, sourceKind)
 end
+
+function hasEphemeralStat(statusEffects, stat)
+  ephStats = util.map(statusEffects,
+    function (elem)
+      return elem[1]
+    end)
+  for _,v in pairs(ephStats) do
+    if v == stat then return true end
+  end
+  return false
+end

@@ -10,13 +10,16 @@ function GunFire:init()
 
   self.cooldownTimer = self.fireTime
   self.damageGivenUpdate = 5
+  self.damageUpdate = 5
   self.killTimer = 0
+  self.perfectTimer = 0
+  self.killCount = 0
+  self.perfectCount = 0
 
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
 
-  self.color = "yellow"
 end
 
 function GunFire:update(dt, fireMode, shiftHeld)
@@ -32,35 +35,12 @@ function GunFire:update(dt, fireMode, shiftHeld)
     end
   end
 
-  if self.nearAggressiveEntities == 0 then
-    self.color = "yellow"
-  else
-    self.color = "orange"
-  end
-
-  if (status.resource("health") / status.stat("maxHealth")) < 0.3 then
-    if self.healthReset then
-      animator.playSound("healthLow")
-      self.healthReset = false
-    end
-    self.color = "red-" .. self.color
-  else
-    self.healthReset = true
-  end
-
-  self:updateDamageGiven()
+  self:updateDamageGiven(dt)
+  self:checkPerfectShield(dt)
 
   if animator.animationState("firing") ~= "fire" then
     animator.setLightActive("muzzleFlash", false)
   end
-
-  if self.killTimer > 0 then
-    status.modifyResourcePercentage("health", 0.15*dt)
-    status.modifyResourcePercentage("energy", 0.3*dt)
-    self.color = "red"
-    self.killTimer = math.max(0, self.killTimer - dt)
-  end
-  animator.setAnimationState("imageSwitch", self.color)
 
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
@@ -78,19 +58,56 @@ function GunFire:update(dt, fireMode, shiftHeld)
   incorrectWeapon()
 end
 
-function GunFire:updateDamageGiven()
+function GunFire:updateDamageGiven(dt)
   local notifications = nil
   notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
   if notifications then
     for _,notification in pairs(notifications) do
-      if (self.projectileType .. activeItem.hand()) == notification.damageSourceKind then
+      if self.projectileType == notification.damageSourceKind then
         if notification.healthLost > 0 and (world.entityHealth(notification.targetEntityId) and notification.healthLost >= world.entityHealth(notification.targetEntityId)[1]) then
-          self.killTimer = math.min(self.killTimer + 0.5, 1.5)
+          self.killTimer = 20
+          self.killCount = math.min(self.killCount + 1, 8)
           animator.playSound("onKill")
         end
       end
     end
   end
+
+  if self.killTimer > 0 then
+    status.setPersistentEffects("ivrpgwepimetheushealth", {
+      {stat = "maxHealth", effectiveMultiplier = 1 + math.min(self.killCount * 0.025, 0.2)}
+    })
+    self.killTimer = math.max(0, self.killTimer - dt)
+  else
+    status.clearPersistentEffects("ivrpgwepimetheushealth")
+    self.killCount = 0
+  end
+end
+
+function GunFire:checkPerfectShield(dt)
+  local notifications = nil
+  notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if notification.hitType == "ShieldHit" then
+        if status.resourcePositive("perfectBlock") then
+          self.perfectTimer = 10
+          self.perfectCount = math.min(self.perfectCount + 1, 10)
+        end
+      end
+    end
+  end
+
+  if self.perfectTimer > 0 then
+    status.setPersistentEffects("ivrpgwepimetheusenergy", {
+      {stat = "maxEnergy", effectiveMultiplier = 1 + self.perfectCount * 0.03}
+    })
+    self.perfectTimer = math.max(self.perfectTimer - dt, 0)
+  else
+    status.clearPersistentEffects("ivrpgwepimetheusenergy")
+    self.perfectCount = 0
+  end
+
 end
 
 function GunFire:auto()
@@ -103,7 +120,7 @@ function GunFire:auto()
     util.wait(self.stances.fire.duration)
   end
 
-  self.cooldownTimer = self.fireTime - math.min(self.nearAggressiveEntities, 0.1)
+  self.cooldownTimer = self.fireTime
   self:setState(self.cooldown)
 end
 
@@ -164,8 +181,6 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
     projectileType = projectileType[math.random(#projectileType)]
   end
 
-  params.damageKind = projectileType .. activeItem.hand()
-
   local projectileId = 0
   for i = 1, (projectileCount or self.projectileCount) do
     if params.timeToLive then
@@ -203,9 +218,12 @@ function GunFire:damagePerShot()
 end
 
 function GunFire:uninit()
+  
 end
 
 function uninit()
   incorrectWeapon(true)
+  status.clearPersistentEffects("ivrpgwepimetheusenergy")
+  status.clearPersistentEffects("ivrpgwepimetheushealth")
   self.weapon:uninit()
 end

@@ -5,7 +5,8 @@
     "scripts" : ["/items/active/specweapons/adept/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 10,
+    "immediateEnergyCost" : 50,
+    "energyCost" : 100,
 
     "maxCastRange" : 25,
 

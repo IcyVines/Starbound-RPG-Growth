@@ -13,6 +13,8 @@ end
 
 function update(dt)
   fuoldUpdate(dt)
+
+  --Deprecated, was used with the Remove Tech for safe mod uninstall
   if status.statPositive("ivrpgremove") then
   	status.removeEphemeralEffect("ivrpgstatboosts")
   	status.clearPersistentEffects("ivrpgstatboosts")
@@ -26,5 +28,6 @@ function update(dt)
   	script.setUpdateDelta(0)
   	return
   end
+
   status.addEphemeralEffect("ivrpgstatboosts", math.huge)
 end

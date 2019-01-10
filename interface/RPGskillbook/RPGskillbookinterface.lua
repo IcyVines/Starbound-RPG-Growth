@@ -1158,10 +1158,10 @@ function toggleHardcore()
 end
 
 function toggleRallyMode()
-  if status.statusProperty("ivrpgrallymode", true) then
-  	status.setStatusProperty("ivrpgrallymode", false)
-  else
+  if not status.statusProperty("ivrpgrallymode", false) then
   	status.setStatusProperty("ivrpgrallymode", true)
+  else
+  	status.setStatusProperty("ivrpgrallymode", false)
   end
   updateOverview(2*self.level*100+100)
 end
