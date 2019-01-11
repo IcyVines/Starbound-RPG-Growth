@@ -171,6 +171,10 @@ function updateStats()
     self.stats[k] = math.floor(v^self.statBonuses[k])
   end
 
+  for stat, amount in pairs(self.stats) do
+    status.setStatusProperty("ivrpg" .. stat, amount)
+  end
+
   local statConfig = {}
   local movementConfig = {}
   for k,v in pairs(self.statList) do
