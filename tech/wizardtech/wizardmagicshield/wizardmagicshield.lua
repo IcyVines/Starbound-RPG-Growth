@@ -36,8 +36,8 @@ function update(args)
       status.setResourceLocked("energy", false)
     end
     status.setResourcePercentage("energyRegenBlock", 1.0)
-    local regenBonus = 1 + (world.entityCurrency(entity.id(), "vigorpoint") + world.entityCurrency(entity.id(), "intelligencepoint")) / 100
-    status.modifyResourcePercentage("energy", args.dt * self.regenSpeed * regenBonus)
+    local regenBonus = 1 + (status.statusProperty("ivrpgintelligence", 0) + status.statusProperty("ivrpgvigor", 0)) / 100
+    status.modifyResourcePercentage("energy", args.dt * self.regenSpeed * regenBonus * (self.energyCooldownTimer > 0 and 0.5 or 1))
     tech.setParentDirectives("?border=2;34ED2A20;4E1D7000")
     updateDamageTaken()
   end
