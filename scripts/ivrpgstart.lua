@@ -39,6 +39,7 @@ function init()
     if intelligence > status.statusProperty("ivrpgintelligence", 0) and not (self.xpScaling and intelligence <= self.xpScaling) then
       self.xpScalingTimer = 0.3
       self.xpScaling = intelligence
+      sb.logInfo("In setXPScaling, self.xpScaling = " .. self.xpScaling)
     end
   end)
 
@@ -201,12 +202,14 @@ function updateXPPulse()
       local intelligence = status.statusProperty("ivrpgintelligence", 0)
       if self.xpScaling and self.xpScaling > intelligence then intelligence = self.xpScaling end
       local multiplier = intelligence * 0.005
+      sb.logInfo("In updateXPPulse, multiplier = " .. multiplier)
       if multiplier > 0 then player.giveItem({"experienceorb", new * multiplier}) end
       new = new * (1 + multiplier)
       local players = world.playerQuery(entity.position(), 60, {
         withoutEntityId = entity.id()
       })
       for _,id in ipairs(players) do
+        sb.logInfo("In updateXPPulse, shareId = " .. id)
         world.sendEntityMessage(id, "addXP", new)
       end
     end
