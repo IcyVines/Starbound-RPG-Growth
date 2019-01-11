@@ -81,7 +81,7 @@ function update(dt, fireMode, shiftHeld)
       chargeBeam()
     elseif fireMode == "alt" and not self.active then
       raiseShield()
-    elseif fireMode == "alt" and self.beamActive and self.beamTimer < 1.5 then
+    elseif fireMode ~= "primary" and self.beamActive and self.beamTimer < 1.5 then
       self.beamTimer = math.min(self.beamTimer, 0.25)
     end
   end
@@ -111,7 +111,7 @@ function update(dt, fireMode, shiftHeld)
       mcontroller.controlModifiers({runningSuppressed = true})
     end
 
-    if (fireMode ~= "alt" and self.activeTimer >= self.minActiveTime and self.beamTimer == 0) or not status.resourcePositive("shieldStamina") then
+    if ((fireMode ~= "alt" and fireMode ~= "primary") and self.activeTimer >= self.minActiveTime and self.beamTimer == 0) or not status.resourcePositive("shieldStamina") then
       lowerShield()
     end
   end

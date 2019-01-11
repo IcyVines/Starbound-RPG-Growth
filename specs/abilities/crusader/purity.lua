@@ -41,17 +41,7 @@ function update(dt)
     animator.setParticleEmitterEmissionRate("powerEmbers", self.powerUp * self.powerTimer / 5 * 20)
     status.setPersistentEffects("ivrpgpurity", {
       {stat = "powerMultiplier", baseMultiplier = 1 + math.min((self.powerUp * self.powerTimer / 5), 1)},
-      {stat = "physicalResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)},
-      {stat = "poisonResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)},
-      {stat = "iceResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)},
-      {stat = "fireResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)},
-      {stat = "electricResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)},
-      {stat = "shadowResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)},
-      {stat = "radioactiveResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)},
-      {stat = "cosmicResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)},
-      {stat = "demonicResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)},
-      {stat = "holyResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)},
-      {stat = "novaResistance", amount = math.min((self.powerUp * self.powerTimer / 10), 0.5)}
+      {stat = "protection", amount = math.min((self.powerUp * 10 * self.powerTimer), 25)}
     })
     if self.powerTimer == 0 then
       animator.setParticleEmitterActive("powerEmbers", false)

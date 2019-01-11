@@ -5,6 +5,7 @@ function init()
  	--self.healthStatus = config.getParameter("healthStatus", "regeneration4")
  	self.healthRange = config.getParameter("healthRange", 8)
  	self.damageUpdate = 5
+ 	self.maxHealthTimer = 0
  	effect.addStatModifierGroup({
  		{stat = "shieldHealth", effectiveMultiplier = self.shieldDecay}
  	})
@@ -17,14 +18,24 @@ function update(dt)
 
 	self.notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
 	if self.notifications then
-	for _,notification in pairs(self.notifications) do
-	  if notification.hitType == "ShieldHit" then
-	    world.sendEntityMessage(notification.sourceEntityId, "addEphemeralEffect", "ivrpgjudgement", 3, self.id)
-	    if status.resourcePositive("perfectBlock") then
-	      healPulse()
-	    end
-	  end
+		for _,notification in pairs(self.notifications) do
+		  if notification.hitType == "ShieldHit" then
+		    world.sendEntityMessage(notification.sourceEntityId, "addEphemeralEffect", "ivrpgjudgement", 3, self.id)
+		    self.maxHealthTimer = 3
+		    if status.resourcePositive("perfectBlock") then
+		      healPulse()
+		    end
+		  end
+		end
 	end
+
+	if self.maxHealthTimer > 0 then
+		self.maxHealthTimer = math.max(self.maxHealthTimer - dt, 0)
+		status.setPersistentEffects("ivrpgimmaculateshield", {
+	    	{stat = "maxHealth", effectiveMultiplier = 1.1}
+	    })
+	else
+		status.clearPersistentEffects("ivrpgimmaculateshield")
 	end
 end
 
@@ -43,5 +54,5 @@ function healPulse()
 end
 
 function uninit()
-
+	status.clearPersistentEffects("ivrpgimmaculateshield")
 end

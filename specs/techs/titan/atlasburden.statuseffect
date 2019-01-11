@@ -5,7 +5,7 @@
     "jumpModifier" : 0.5,
     "enemyStatus" : "soldierstun",
     "enemyStatusRange" : 15,
-    "enemyStatusLength" : 2,
+    "enemyStatusLength" : 1,
     "allyStatus" : "ivrpgatlasrelief",
     "allyStatusRange" : 15,
     "allyStatusLength" : 10,
