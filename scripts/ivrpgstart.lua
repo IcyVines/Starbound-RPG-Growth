@@ -214,7 +214,7 @@ function updateXPPulse()
       end
     end
   end
-  self.xp = player.currency("experienceorb")
+  self.xp = math.min(player.currency("experienceorb"), 500000)
 end
 
 function updateXPScalingShare()

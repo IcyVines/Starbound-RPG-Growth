@@ -4,7 +4,7 @@
     "path" : "/experienceorb",
     "value" : {
       "representativeItem" : "experienceorb",
-      "playerMax" : 500000,
+      "playerMax" : 1000000,
 	  "sail_hidden" : true
     }
   },
