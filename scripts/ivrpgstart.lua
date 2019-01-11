@@ -81,7 +81,7 @@ function update(dt)
   else
     self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
   end
-
+  sb.logInfo("Update - xpScaling = " .. self.xpScaling)
   updateXPScalingShare()
   updateXPPulse(dt)
   updateRallyMode()
