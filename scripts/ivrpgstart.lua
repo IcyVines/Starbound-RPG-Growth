@@ -198,7 +198,7 @@ function updateXPPulse()
   if self.xp then
     local new = player.currency("experienceorb") - self.xp
     if new > 0 then
-      local intelligence = status.statusProperty("intelligence", 0)
+      local intelligence = status.statusProperty("ivrpgintelligence", 0)
       if self.xpScaling and self.xpScaling > intelligence then intelligence = self.xpScaling end
       local multiplier = intelligence * 0.005
       if multiplier > 0 then player.giveItem({"experienceorb", new * multiplier}) end
@@ -219,7 +219,7 @@ function updateXPScalingShare()
     withoutEntityId = self.id
   })
   for _,id in ipairs(players) do
-    world.sendEntityMessage(id, "setXPScaling", status.statusProperty("intelligence", 0))
+    world.sendEntityMessage(id, "setXPScaling", status.statusProperty("ivrpgintelligence", 0))
   end
 end
 

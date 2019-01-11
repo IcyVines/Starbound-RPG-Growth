@@ -171,7 +171,7 @@ function updateStats()
     self.stats[k] = math.floor(v^self.statBonuses[k])
   end
 
-  for stat, amount in pairs(self.stats) do
+  for stat,amount in pairs(self.stats) do
     status.setStatusProperty("ivrpg" .. stat, amount)
   end
 
