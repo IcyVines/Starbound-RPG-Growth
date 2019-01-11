@@ -38,7 +38,7 @@ function init()
 end
 
 function update(dt)
-  self.xp = world.entityCurrency(self.id, "experienceorb")
+  self.xp = math.min(world.entityCurrency(self.id, "experienceorb"), 500000)
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
   self.classicMode = status.statPositive("ivrpghardcore")
 

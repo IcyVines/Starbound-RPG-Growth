@@ -16,7 +16,7 @@ function init()
   player.addCurrency("skillbookopen", 1)
 
   -- Initiating Level and XP
-  self.xp = player.currency("experienceorb")
+  self.xp = math.min(player.currency("experienceorb"), 500000)
   self.level = player.currency("currentlevel")
   self.mastery = player.currency("masterypoint")
   -- Mastery Conversion: 10000 Experience = 1 Mastery!!
@@ -203,7 +203,7 @@ function updateAffinityInfo()
 end
 
 function updateLevel()
-  self.xp = player.currency("experienceorb")
+  self.xp = math.min(player.currency("experienceorb"), 500000)
   if self.xp < 100 then
     player.addCurrency("experienceorb", 100)
   end
@@ -676,7 +676,7 @@ end
 
 function updateMasteryTab()
   widget.setText("masterylayout.masterypoints", self.mastery)
-  widget.setText("masterylayout.xpover", math.max(0, self.xp - 250000))
+  widget.setText("masterylayout.xpover", math.max(0, math.min(self.xp - 250000, 250000)))
 
   if self.mastery < 3 or self.xp < 250000 then
     widget.setButtonEnabled("masterylayout.prestigebutton", false)
@@ -1179,7 +1179,7 @@ function toggleClassAbility()
 end
 
 function consumeAllRPGCurrency()
-  player.consumeCurrency("experienceorb", self.xp - 100)
+  player.consumeCurrency("experienceorb", player.currency("experienceorb") - 100)
   player.consumeCurrency("currentlevel", self.level - 1)
   player.consumeCurrency("statpoint", player.currency("statpoint"))
   for k,v in pairs(self.statList) do
@@ -1207,7 +1207,7 @@ function purchaseShop()
 end
 
 function refine()
-  local xp = self.xp - 250000
+  local xp = math.min(self.xp, 500000) - 250000
   local mastery = math.floor(xp/10000)
   player.addCurrency("masterypoint", mastery)
   player.consumeCurrency("experienceorb", 10000*mastery)
