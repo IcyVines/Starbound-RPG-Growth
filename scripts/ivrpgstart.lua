@@ -38,7 +38,7 @@ function init()
 
   message.setHandler("setXPScaling", function(_, _, intelligence)
     if intelligence > self.xpScaling then
-      self.xpScalingTimer = 0.3
+      self.xpScalingTimer = 8
       self.xpScaling = intelligence
     end
   end)
@@ -75,12 +75,6 @@ end
 
 function update(dt)
   origUpdate(dt)
-
-  if self.xpScalingTimer > 0 then
-    self.xpScalingTimer = math.max(self.xpScalingTimer - dt, 0)
-  else
-    self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
-  end
 
   updateXPScalingShare()
   updateXPPulse(dt)
@@ -161,6 +155,13 @@ function update(dt)
   updateUpgrades()
   updateSpecs()
   unlockSpecs()
+
+  if self.xpScalingTimer > 0 then
+    self.xpScalingTimer = math.max(self.xpScalingTimer - dt, 0)
+  else
+    self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
+  end
+
 
 end
 
