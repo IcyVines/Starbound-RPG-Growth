@@ -8,6 +8,7 @@ function init()
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=80FC9FFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
   self.rechargeEffectTimer = 0
+  self.energyCooldownTimer = 0
 
   Bind.create("f", magicShield)
 end
@@ -26,8 +27,11 @@ end
 function update(args)
   self.health = status.resource("health")
   if self.active then
-    if status.resource("energy") == 0 then
+    if status.resource("energy") == 0 or self.energyCooldownTimer > 0 then
       status.setResourceLocked("energy", true)
+      if self.energyCooldownTimer == 0 then
+        self.energyCooldownTimer = 0.2
+      end
     else
       status.setResourceLocked("energy", false)
     end
@@ -36,6 +40,10 @@ function update(args)
     status.modifyResourcePercentage("energy", args.dt * self.regenSpeed * regenBonus)
     tech.setParentDirectives("?border=2;34ED2A20;4E1D7000")
     updateDamageTaken()
+  end
+
+  if self.energyCooldownTimer > 0 then
+    self.energyCooldownTimer = math.max(self.energyCooldownTimer - args.dt, 0)
   end
 
 end

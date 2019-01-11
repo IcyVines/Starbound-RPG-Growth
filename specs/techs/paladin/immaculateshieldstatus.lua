@@ -36,7 +36,7 @@ function healPulse()
     })
     for i,id in ipairs(targetIds) do
 		if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
-			local healthModifier = 0.07 + (world.entityCurrency(self.id, "strengthpoint") + world.entityCurrency(self.id, "intelligencepoint"))*0.0005
+			local healthModifier = 0.07 + (status.statusProperty("ivrpgstrength", 0) + status.statusProperty("ivrpgstrength", 0))*0.0005
 			world.sendEntityMessage(id, "modifyResource", "health", status.stat("maxHealth")*healthModifier)
 		end
     end
