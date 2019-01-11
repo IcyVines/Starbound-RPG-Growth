@@ -7,14 +7,17 @@
   "damageKind" : "epimetheusbullet",
   "pointLight" : false,
   "flippable" : true,
+  "emitters" : [ "electricplasma" ],
+  "supportsProcessing" : true,
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+      "file" : "/projectiles/explosions/plasmabulletexplosion/plasmabulletexplosion.config"
     }
   ],
   "statusEffects" : [ ],
   "power" : 5.0,
   "speed" : 150,
+  "lightColor" : [102, 32, 110],
   "knockback" : 0
 }

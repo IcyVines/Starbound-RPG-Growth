@@ -1510,5 +1510,454 @@
       "pool": "experienceorbpool"
       }]
     }
-  ]
+  ],
+  //
+  [{
+      "op": "test",
+      "path": "/ffjunkerTreasureBoss",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ffjunkerTreasureBoss/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffjunkerTreasureBoss/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/ffjunkerTreasureBoss",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ffjunkerTreasureBoss/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffjunkerTreasureBoss/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/ffelitegregTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ffelitegregTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffelitegregTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/ffelitegregTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ffelitegregTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffelitegregTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/meatlumpLoot",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/meatlumpLoot/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/meatlumpLoot/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/meatlumpLoot",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/meatlumpLoot/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/meatlumpLoot/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/toyTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/toyTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/toyTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/toyTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/toyTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/toyTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/ffslimebanditTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ffslimebanditTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffslimebanditTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/ffslimebanditTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ffslimebanditTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffslimebanditTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/lesserBossTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/lesserBossTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/lesserBossTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/lesserBossTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/lesserBossTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/lesserBossTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/lobsterLoot",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/lobsterLoot/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/lobsterLoot/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/lobsterLoot",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/lobsterLoot/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/lobsterLoot/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/darkmetroidTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/darkmetroidTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/darkmetroidTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/darkmetroidTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/darkmetroidTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/darkmetroidTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/fleshreaperhuntLoot",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/fleshreaperhuntLoot/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/fleshreaperhuntLoot/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/fleshreaperhuntLoot",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/fleshreaperhuntLoot/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/fleshreaperhuntLoot/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/ffjunkerTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ffjunkerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffjunkerTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/ffjunkerTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ffjunkerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffjunkerTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/frankLoot",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/frankLoot/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/frankLoot/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/frankLoot",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/frankLoot/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/frankLoot/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/frankLootBoss",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/frankLootBoss/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/frankLootBoss/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/frankLootBoss",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/frankLootBoss/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/frankLootBoss/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/dollfaceTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/dollfaceTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/dollfaceTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/dollfaceTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/dollfaceTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/dollfaceTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/ancientruinsBoss",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ancientruinsBoss/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ancientruinsBoss/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/ancientruinsBoss",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ancientruinsBoss/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ancientruinsBoss/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }]
 ]

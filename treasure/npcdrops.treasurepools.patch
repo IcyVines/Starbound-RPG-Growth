@@ -478,5 +478,709 @@
         {"pool": "ivrpggunpartstargetpool"}
       ]
     }
-  ]
+  ],
+  [{
+      "op": "test",
+      "path": "/avikanGuardDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanGuardDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanGuardDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikanGuardDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanGuardDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanGuardDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/aegiGuardDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiGuardDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/aegiGuardDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/aegiGuardDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiGuardDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/aegiGuardDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/akkimariScavengerDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimariScavengerDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimariScavengerDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/akkimariScavengerDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimariScavengerDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimariScavengerDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/aegiRimDwellerDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiRimDwellerDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/aegiRimDwellerDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/aegiRimDwellerDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiRimDwellerDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/aegiRimDwellerDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/avikanSoldierDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanSoldierDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanSoldierDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikanSoldierDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanSoldierDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanSoldierDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/theleanDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/theleanDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/theleanDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/theleanDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/theleanDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/theleanDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/aegiBriggsDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiBriggsDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/aegiBriggsDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/aegiBriggsDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiBriggsDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/aegiBriggsDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/avikanDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikanDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/aegiPoliceDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiPoliceDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/aegiPoliceDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/aegiPoliceDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiPoliceDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/aegiPoliceDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/akkimariCloakerDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimariCloakerDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimariCloakerDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/akkimariCloakerDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimariCloakerDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimariCloakerDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/trinkGuardDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkGuardDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/trinkGuardDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/trinkGuardDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkGuardDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/trinkGuardDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/trinkEngineerDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkEngineerDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/trinkEngineerDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/trinkEngineerDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkEngineerDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/trinkEngineerDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/avikanRogueCaptainDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanRogueCaptainDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanRogueCaptainDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikanRogueCaptainDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanRogueCaptainDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanRogueCaptainDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/trinkWelderDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkWelderDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/trinkWelderDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/trinkWelderDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkWelderDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/trinkWelderDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/avikanRogueDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanRogueDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanRogueDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikanRogueDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanRogueDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanRogueDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/aegiDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/aegiDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/aegiDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/aegiDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/trinkDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/trinkDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/trinkDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/trinkDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/aegiRimSoldierDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiRimSoldierDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/aegiRimSoldierDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/aegiRimSoldierDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiRimSoldierDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/aegiRimSoldierDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/drodenViolatedDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/drodenViolatedDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/drodenViolatedDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/drodenViolatedDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/drodenViolatedDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/drodenViolatedDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/aegiSoldierDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiSoldierDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/aegiSoldierDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/aegiSoldierDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/aegiSoldierDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/aegiSoldierDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/trinkRimDwellerDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkRimDwellerDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/trinkRimDwellerDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/trinkRimDwellerDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkRimDwellerDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/trinkRimDwellerDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/drodenDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/drodenDeathTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/drodenDeathTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/drodenDeathTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/drodenDeathTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/drodenDeathTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }]
 ]

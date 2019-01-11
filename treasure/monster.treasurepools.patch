@@ -2213,5 +2213,1246 @@
 	    "pool": "experienceorbpool"
 	    }]
 	  }
-	]
+	],
+	//
+	 [
+    {
+      "op": "test",
+      "path": "/sandcrawlerTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/sandcrawlerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/sandcrawlerTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/sandcrawlerTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/sandcrawlerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/sandcrawlerTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/avikanviolateddroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanviolateddroneTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanviolateddroneTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/avikanviolateddroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanviolateddroneTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanviolateddroneTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/ghavorkanTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/ghavorkanTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ghavorkanTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/ghavorkanTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/ghavorkanTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ghavorkanTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/ruinscoutTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/ruinscoutTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ruinscoutTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/ruinscoutTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/ruinscoutTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ruinscoutTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/trinkminidroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/trinkminidroneTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/trinkminidroneTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/trinkminidroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/trinkminidroneTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/trinkminidroneTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/avikanminidroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanminidroneTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanminidroneTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/avikanminidroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanminidroneTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanminidroneTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/farythTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/farythTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/farythTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/farythTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/farythTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/farythTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/centenskeeperTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/centenskeeperTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/centenskeeperTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/centenskeeperTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/centenskeeperTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/centenskeeperTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/centensguardianTreasureGuaranteed",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/centensguardianTreasureGuaranteed/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/centensguardianTreasureGuaranteed/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/centensguardianTreasureGuaranteed",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/centensguardianTreasureGuaranteed/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/centensguardianTreasureGuaranteed/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/akkimariarbiterTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimariarbiterTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimariarbiterTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/akkimariarbiterTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimariarbiterTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimariarbiterTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/akkimarijusticarTreasureGuaranteed",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimarijusticarTreasureGuaranteed/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimarijusticarTreasureGuaranteed/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/akkimarijusticarTreasureGuaranteed",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimarijusticarTreasureGuaranteed/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimarijusticarTreasureGuaranteed/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/avikanlargedroneTreasureGuaranteed",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanlargedroneTreasureGuaranteed/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargedroneTreasureGuaranteed/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/avikanlargedroneTreasureGuaranteed",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanlargedroneTreasureGuaranteed/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargedroneTreasureGuaranteed/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/akkimarichaserTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimarichaserTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimarichaserTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/akkimarichaserTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimarichaserTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimarichaserTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/avikanlargeviolateddroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanlargeviolateddroneTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargeviolateddroneTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/avikanlargeviolateddroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanlargeviolateddroneTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargeviolateddroneTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/akkimariflicTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimariflicTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimariflicTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/akkimariflicTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimariflicTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimariflicTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/avikanlargeviolateddroneTreasureGuaranteed",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanlargeviolateddroneTreasureGuaranteed/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargeviolateddroneTreasureGuaranteed/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/avikanlargeviolateddroneTreasureGuaranteed",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanlargeviolateddroneTreasureGuaranteed/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargeviolateddroneTreasureGuaranteed/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/bonebirdTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/bonebirdTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/bonebirdTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/bonebirdTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/bonebirdTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/bonebirdTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/kadavanvalahrTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/kadavanvalahrTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/kadavanvalahrTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/kadavanvalahrTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/kadavanvalahrTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/kadavanvalahrTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/trinkdroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/trinkdroneTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/trinkdroneTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/trinkdroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/trinkdroneTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/trinkdroneTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/astrofaeTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/astrofaeTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/astrofaeTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/astrofaeTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/astrofaeTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/astrofaeTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/avikanlargedroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanlargedroneTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargedroneTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/avikanlargedroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikanlargedroneTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargedroneTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/kelbetTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/kelbetTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/kelbetTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/kelbetTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/kelbetTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/kelbetTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/kadavangadhurTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/kadavangadhurTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/kadavangadhurTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/kadavangadhurTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/kadavangadhurTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/kadavangadhurTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/sandspitterTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/sandspitterTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/sandspitterTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/sandspitterTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/sandspitterTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/sandspitterTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/kadavanswarmTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/kadavanswarmTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/kadavanswarmTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/kadavanswarmTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/kadavanswarmTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/kadavanswarmTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/akkimaristrikerTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimaristrikerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimaristrikerTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/akkimaristrikerTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimaristrikerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimaristrikerTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/centensguardianTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/centensguardianTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/centensguardianTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/centensguardianTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/centensguardianTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/centensguardianTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/akkimarijusticarTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimarijusticarTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimarijusticarTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/akkimarijusticarTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/akkimarijusticarTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimarijusticarTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/pogolemTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/pogolemTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/pogolemTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/pogolemTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/pogolemTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/pogolemTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/alliancetransportdroneCrateTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/alliancetransportdroneCrateTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/alliancetransportdroneCrateTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/alliancetransportdroneCrateTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/alliancetransportdroneCrateTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/alliancetransportdroneCrateTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ] ,
+    [
+    {
+      "op": "test",
+      "path": "/avikandroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikandroneTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikandroneTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+    ],
+    [
+    {
+      "op": "test",
+      "path": "/avikandroneTreasure",
+      "inverse": false
+    },
+    {
+      "op": "test",
+      "path": "/avikandroneTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikandroneTreasure/0/1/fill",
+      "value": [
+      {
+        "pool": "experienceorbpool"
+      }
+      ]
+    }
+    ]
 ]

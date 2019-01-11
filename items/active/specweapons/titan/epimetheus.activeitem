@@ -24,7 +24,7 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/mp1.ogg", "/sfx/gun/mp2.ogg", "/sfx/gun/mp3.ogg" ],
+      "fire" : [ "/sfx/gun/plasma_mp1.ogg", "/sfx/gun/plasma_mp2.ogg", "/sfx/gun/plasma_mp3.ogg" ],
       "onKill" : ["/sfx/statuseffects/powerup.ogg"],
       "healthLow" : ["/items/active/specweapons/vanguard/healthLow.ogg"]
     },
@@ -62,7 +62,7 @@
     "fireTime" : 0.15,
     "baseDps" : 8,
     "energyUsage" : 20,
-    "inaccuracy" : 0.1,
+    "inaccuracy" : 0.05,
     "projectileCount" : 1,
     "fireType" : "auto",
     "projectileType" : "epimetheusbullet",

@@ -1774,6 +1774,1478 @@
       "pool": "experienceorbpool"
       }]
     }
-  ]
+  ],
   //
+  [{
+      "op": "test",
+      "path": "/huntingglow",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingglow/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingglow/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingglow",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingglow/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingglow/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/farythHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/farythHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/farythHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/farythHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/farythHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/farythHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingghost",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingghost/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingghost/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingghost",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingghost/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingghost/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingmechanical",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingmechanical/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingmechanical/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingmechanical",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingmechanical/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingmechanical/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/akkimariarbiterHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimariarbiterHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimariarbiterHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/akkimariarbiterHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimariarbiterHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimariarbiterHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingflyingchitin",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingflyingchitin/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingflyingchitin/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingflyingchitin",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingflyingchitin/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingflyingchitin/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingflyingchitinhot",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingflyingchitinhot/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingflyingchitinhot/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingflyingchitinhot",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingflyingchitinhot/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingflyingchitinhot/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingminiboss",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingminiboss/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingminiboss/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingminiboss",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingminiboss/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingminiboss/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/tentaHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/tentaHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/tentaHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/tentaHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/tentaHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/tentaHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingflyingchitincold",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingflyingchitincold/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingflyingchitincold/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingflyingchitincold",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingflyingchitincold/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingflyingchitincold/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/avikanlargedroneHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanlargedroneHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargedroneHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikanlargedroneHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanlargedroneHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargedroneHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/trinkdroneHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkdroneHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/trinkdroneHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/trinkdroneHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/trinkdroneHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/trinkdroneHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/kadavangadhurHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/kadavangadhurHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/kadavangadhurHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/kadavangadhurHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/kadavangadhurHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/kadavangadhurHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/centensguardianHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/centensguardianHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/centensguardianHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/centensguardianHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/centensguardianHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/centensguardianHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/sandspitterHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/sandspitterHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/sandspitterHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/sandspitterHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/sandspitterHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/sandspitterHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/kelbetHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/kelbetHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/kelbetHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/kelbetHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/kelbetHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/kelbetHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingquadruped",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingquadruped/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingquadruped/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingquadruped",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingquadruped/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingquadruped/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/kadavanvalahrHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/kadavanvalahrHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/kadavanvalahrHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/kadavanvalahrHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/kadavanvalahrHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/kadavanvalahrHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingchitin",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingchitin/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingchitin/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingchitin",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingchitin/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingchitin/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/akkimaristrikerHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimaristrikerHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimaristrikerHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/akkimaristrikerHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimaristrikerHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimaristrikerHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/avikandroneHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikandroneHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikandroneHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikandroneHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikandroneHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikandroneHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/ghavorkanHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ghavorkanHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ghavorkanHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/ghavorkanHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/ghavorkanHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ghavorkanHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/leadlitTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/leadlitTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/leadlitTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/leadlitTreasure",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/leadlitTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/leadlitTreasure/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/akkimarijusticarHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimarijusticarHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimarijusticarHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/akkimarijusticarHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimarijusticarHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimarijusticarHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingwolf",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingwolf/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingwolf/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingwolf",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingwolf/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingwolf/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/avikanlargeviolateddroneHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanlargeviolateddroneHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargeviolateddroneHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikanlargeviolateddroneHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanlargeviolateddroneHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargeviolateddroneHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/kadavanswarmHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/kadavanswarmHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/kadavanswarmHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/kadavanswarmHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/kadavanswarmHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/kadavanswarmHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingquadrupedchitin",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingquadrupedchitin/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingquadrupedchitin/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingquadrupedchitin",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingquadrupedchitin/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingquadrupedchitin/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/centensguardianHuntingGuaranteed",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/centensguardianHuntingGuaranteed/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/centensguardianHuntingGuaranteed/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/centensguardianHuntingGuaranteed",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/centensguardianHuntingGuaranteed/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/centensguardianHuntingGuaranteed/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/avikanlargedroneHuntingGuaranteed",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanlargedroneHuntingGuaranteed/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargedroneHuntingGuaranteed/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikanlargedroneHuntingGuaranteed",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanlargedroneHuntingGuaranteed/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargedroneHuntingGuaranteed/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingDarkMetroid",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingDarkMetroid/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingDarkMetroid/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingDarkMetroid",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingDarkMetroid/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingDarkMetroid/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingfufirecrab",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingfufirecrab/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingfufirecrab/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingfufirecrab",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingfufirecrab/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingfufirecrab/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingmechanicalLarge",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingmechanicalLarge/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingmechanicalLarge/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingmechanicalLarge",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingmechanicalLarge/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingmechanicalLarge/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingflying",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingflying/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingflying/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingflying",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingflying/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingflying/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/leadlitHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/leadlitHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/leadlitHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/leadlitHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/leadlitHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/leadlitHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/hunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/hunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/hunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/hunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/hunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/hunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/erchibuddrop",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/erchibuddrop/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/erchibuddrop/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/erchibuddrop",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/erchibuddrop/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/erchibuddrop/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingbear",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingbear/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingbear/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingbear",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingbear/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingbear/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/sandcrawlerHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/sandcrawlerHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/sandcrawlerHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/sandcrawlerHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/sandcrawlerHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/sandcrawlerHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/avikanlargeviolateddroneHuntingGuaranteed",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanlargeviolateddroneHuntingGuaranteed/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargeviolateddroneHuntingGuaranteed/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikanlargeviolateddroneHuntingGuaranteed",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanlargeviolateddroneHuntingGuaranteed/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanlargeviolateddroneHuntingGuaranteed/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/avikanviolateddroneHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanviolateddroneHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/avikanviolateddroneHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/avikanviolateddroneHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/avikanviolateddroneHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/avikanviolateddroneHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/snakeHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/snakeHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/snakeHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/snakeHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/snakeHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/snakeHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/centenskeeperHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/centenskeeperHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/centenskeeperHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/centenskeeperHunting",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/centenskeeperHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/centenskeeperHunting/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/akkimarijusticarHuntingGuaranteed",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimarijusticarHuntingGuaranteed/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/akkimarijusticarHuntingGuaranteed/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/akkimarijusticarHuntingGuaranteed",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/akkimarijusticarHuntingGuaranteed/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/akkimarijusticarHuntingGuaranteed/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingplant",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingplant/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingplant/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingplant",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingplant/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingplant/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }] ,
+    [{
+      "op": "test",
+      "path": "/huntingchitincold",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingchitincold/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/huntingchitincold/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }],
+    [{
+      "op": "test",
+      "path": "/huntingchitincold",
+      "inverse": false
+    },{
+      "op": "test",
+      "path": "/huntingchitincold/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/huntingchitincold/0/1/fill",
+      "value": [{
+        "pool": "experienceorbpool"
+      }]
+    }]
 ]
