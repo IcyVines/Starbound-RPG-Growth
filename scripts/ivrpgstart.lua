@@ -8,6 +8,8 @@ function init()
   script.setUpdateDelta(14)
   self.removed = true
   self.xp = player.currency("experienceorb")
+  checkMaxXP()
+  if self.xp > 500000
   self.xpScalingTimer = 0
   self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
   self.id = entity.id()
@@ -214,7 +216,15 @@ function updateXPPulse()
       end
     end
   end
-  self.xp = math.min(player.currency("experienceorb"), 500000)
+  self.xp = player.currency("experienceorb")
+  checkMaxXP()
+end
+
+function checkMaxXP()
+  if (self.xp or 0) > 500000 then
+    player.consumeCurrency("experienceorb", self.xp - 500000)
+  end
+  self.xp = player.currency("experienceorb")
 end
 
 function updateXPScalingShare()
@@ -243,6 +253,7 @@ end
 function addXP(new)
   player.giveItem({"experienceorb", new})
   self.xp = player.currency("experienceorb")
+  checkMaxXP()
 end
 
 function updateUpgrades()
