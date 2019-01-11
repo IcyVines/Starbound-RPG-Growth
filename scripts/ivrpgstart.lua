@@ -81,7 +81,7 @@ function update(dt)
   else
     self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
   end
-  sb.logInfo("Update - xpScaling = " .. self.xpScaling)
+
   updateXPScalingShare()
   updateXPPulse(dt)
   updateRallyMode()
@@ -197,7 +197,9 @@ end
 
 function updateXPPulse()    
   if self.xp then
+    sb.logInfo("updateXPPulse - self.xp = " .. self.xp)
     local new = player.currency("experienceorb") - self.xp
+    sb.logInfo("updateXPPulse - new = " .. new)
     if new > 0 then
       local multiplier = self.xpScaling * 0.005
       sb.logInfo("In updateXPPulse, multiplier = " .. multiplier)
