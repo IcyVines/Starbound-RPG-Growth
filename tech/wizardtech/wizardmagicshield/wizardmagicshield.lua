@@ -30,7 +30,7 @@ function update(args)
     if status.resource("energy") == 0 or self.energyCooldownTimer > 0 then
       status.setResourceLocked("energy", true)
       if self.energyCooldownTimer == 0 then
-        self.energyCooldownTimer = 0.2
+        self.energyCooldownTimer = 0.5
       end
     else
       status.setResourceLocked("energy", false)

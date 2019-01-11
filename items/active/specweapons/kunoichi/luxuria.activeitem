@@ -339,7 +339,7 @@
           "allowFlip" : false,
           "allowRotate" : false,
           "fireSound" : "flail",
-          "energyUsage" : 20
+          "energyUsage" : 50
         },
         "aerialSlash" : {
           "duration" : 0.025,
@@ -358,7 +358,7 @@
           "hover" : true,
           "hoverYSpeed" : 5,
           "hoverForce" : 200,
-          "energyUsage" : 50
+          "energyUsage" : 75
         }
       }
     }
