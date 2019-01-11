@@ -97,17 +97,18 @@ function updateEffects(dt)
   end
   
   status.setPersistentEffects("ivrpgRallied", {
-    {stat = "powerMultiplier", baseMultiplier = 1 + math.min(rallyLevel/50, 3)}
+    {stat = "powerMultiplier", baseMultiplier = 1 + math.min(rallyLevel/50, 3)},
+    {stat = "protection", amount = math.min(rallyLevel/5, 40)}
   })
 
   if rallyLevel > 0 then
     mcontroller.controlParameters({
-      airFriction = self.baseParameters.airFriction * (1 - math.min(rallyLevel/100, 1))
+      airFriction = self.baseParameters.airFriction * (1 - math.min(rallyLevel/150, 0.25))
     })
     mcontroller.controlModifiers({
-      groundMovementModifier = 1 + math.min(rallyLevel/50, 2),
-      liquidMovementModifier = 1 + math.min(rallyLevel/50, 2),
-      speedModifier = 1 + math.min(rallyLevel/100, 2)
+      groundMovementModifier = 1 + math.min(rallyLevel/100, 1),
+      liquidMovementModifier = 1 + math.min(rallyLevel/100, 1),
+      speedModifier = 1 + math.min(rallyLevel/200, 1)
     })
     local targetIds = world.entityQuery(mcontroller.position(), 20, {
       withoutEntityId = self.id,
@@ -117,7 +118,7 @@ function updateEffects(dt)
       if world.entityAggressive(id) then
         status.addPersistentEffect("ivrpgRallied", { 
           stat = "protection",
-          amount = math.min(rallyLevel/5, 40)
+          effectiveMultiplier = 1 + math.min(rallyLevel/100, 1)
         })
         break
       end

@@ -9,10 +9,12 @@ function toggle()
   if self.active then
     self.active = false
     status.removeEphemeralEffect("ivrpgatlasburden")
+    animator.playSound("deactivate")
   else
     self.active = true
     --animator.playSound("on")
     status.addEphemeralEffect("ivrpgatlasburden", math.huge)
+    animator.playSound("activate")
   end
 end
 
