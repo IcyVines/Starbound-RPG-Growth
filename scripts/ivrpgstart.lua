@@ -40,7 +40,6 @@ function init()
     if intelligence > self.xpScaling then
       self.xpScalingTimer = 0.3
       self.xpScaling = intelligence
-      sb.logInfo("In setXPScaling, self.xpScaling = " .. self.xpScaling)
     end
   end)
 
@@ -198,9 +197,7 @@ end
 
 function updateXPPulse()    
   if self.xp then
-    sb.logInfo("updateXPPulse - self.xp = " .. self.xp)
     local new = player.currency("experienceorb") - self.xp
-    sb.logInfo("updateXPPulse - new = " .. new)
     if new > 0 then
       local multiplier = self.xpScaling * 0.005
       sb.logInfo("In updateXPPulse, multiplier = " .. multiplier)
@@ -210,7 +207,6 @@ function updateXPPulse()
         withoutEntityId = self.id
       })
       for _,id in ipairs(players) do
-        sb.logInfo("In updateXPPulse, shareId = " .. id)
         world.sendEntityMessage(id, "addXP", new)
       end
     end
