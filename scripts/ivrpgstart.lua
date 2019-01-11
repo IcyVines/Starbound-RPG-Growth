@@ -9,7 +9,6 @@ function init()
   self.removed = true
   self.xp = player.currency("experienceorb")
   checkMaxXP()
-  if self.xp > 500000
   self.xpScalingTimer = 0
   self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
   self.id = entity.id()
