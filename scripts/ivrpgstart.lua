@@ -201,7 +201,6 @@ function updateXPPulse()
     local new = player.currency("experienceorb") - self.xp
     if new > 0 then
       local multiplier = self.xpScaling * 0.005
-      sb.logInfo("In updateXPPulse, multiplier = " .. multiplier)
       if multiplier > 0 then player.giveItem({"experienceorb", new * multiplier}) end
       new = new * (1 + multiplier)
       local players = world.playerQuery(entity.position(), 60, {
