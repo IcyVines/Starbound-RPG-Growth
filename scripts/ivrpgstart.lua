@@ -9,7 +9,7 @@ function init()
   self.removed = true
   self.xp = player.currency("experienceorb")
   self.xpScalingTimer = 0
-  self.xpScaling = false
+  self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
   self.id = entity.id()
   self.class = player.currency("classtype")
   self.spec = player.currency("spectype")
@@ -36,7 +36,7 @@ function init()
   end)
 
   message.setHandler("setXPScaling", function(_, _, intelligence)
-    if intelligence > status.statusProperty("ivrpgintelligence", 0) and not (self.xpScaling and intelligence <= self.xpScaling) then
+    if intelligence > self.xpScaling then
       self.xpScalingTimer = 0.3
       self.xpScaling = intelligence
       sb.logInfo("In setXPScaling, self.xpScaling = " .. self.xpScaling)
@@ -75,6 +75,12 @@ end
 
 function update(dt)
   origUpdate(dt)
+
+  if self.xpScalingTimer > 0 then
+    self.xpScalingTimer = math.max(self.xpScalingTimer - dt, 0)
+  else
+    self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
+  end
 
   updateXPScalingShare()
   updateXPPulse(dt)
@@ -156,12 +162,6 @@ function update(dt)
   updateSpecs()
   unlockSpecs()
 
-  if self.xpScalingTimer > 0 then
-    self.xpScalingTimer = math.max(self.xpScalingTimer - dt, 0)
-  else
-    self.xpScaling = false
-  end
-
 end
 
 function updateSpecsAvailable()
@@ -199,14 +199,12 @@ function updateXPPulse()
   if self.xp then
     local new = player.currency("experienceorb") - self.xp
     if new > 0 then
-      local intelligence = status.statusProperty("ivrpgintelligence", 0)
-      if self.xpScaling and self.xpScaling > intelligence then intelligence = self.xpScaling end
-      local multiplier = intelligence * 0.005
+      local multiplier = self.xpScaling * 0.005
       sb.logInfo("In updateXPPulse, multiplier = " .. multiplier)
       if multiplier > 0 then player.giveItem({"experienceorb", new * multiplier}) end
       new = new * (1 + multiplier)
       local players = world.playerQuery(entity.position(), 60, {
-        withoutEntityId = entity.id()
+        withoutEntityId = self.id
       })
       for _,id in ipairs(players) do
         sb.logInfo("In updateXPPulse, shareId = " .. id)
