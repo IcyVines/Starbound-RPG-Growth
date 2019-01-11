@@ -15,8 +15,7 @@ end
 
 function update(dt)
   self.id = entity.id()
-  self.strength = world.entityCurrency(self.id,"strengthpoint")
-  self.strength = self.strength == 0 and 1 or self.strength
+  self.strength = status.statusProperty("ivrpgstrength", 1)
   if self.cooldownTimer <= 0 then
     local entities = world.entityQuery(entity.position(), 1.5, {withoutEntityId = self.id})
     for _, e in ipairs(entities) do

@@ -18,8 +18,8 @@ end
 
 function update(args)
   local action = input(args)
-  local agility = world.entityCurrency(entity.id(), "agilitypoint")
-  local energyUsagePerSecond = config.getParameter("energyUsagePerSecond") - ( agility^2 / 200.0 )
+  local agility = status.statusProperty("ivrpgagility", 0)
+  local energyUsagePerSecond = config.getParameter("energyUsagePerSecond", 20) - math.min(agility^0.5, 15)
 
   if action == "explorerglide" and status.overConsumeResource("energy", energyUsagePerSecond * args.dt) and not status.statPositive("activeMovementAbilities") then
     animator.setAnimationState("hover", "on")

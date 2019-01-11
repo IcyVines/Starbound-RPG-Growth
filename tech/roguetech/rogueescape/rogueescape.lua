@@ -81,14 +81,15 @@ function update(args)
         self.wavedashTimer = 0.15
       end
     end
-    self.agility = world.entityCurrency(entity.id(), "agilitypoint")
+    self.agility = status.statusProperty("ivrpgagility", 0)
+    self.agilityModifier = 1 + (self.agility^0.9 / 100)
     if self.vDirectionLocked == 0 or self.hDirectionLocked == 0 then
-      mcontroller.controlApproachVelocity({self.dashSpeed * self.hDirectionLocked * (1+self.agility/100), self.dashSpeed * self.vDirectionLocked * (1+self.agility/100)}, self.dashControlForce)
+      mcontroller.controlApproachVelocity({self.dashSpeed * self.hDirectionLocked * self.agilityModifier, self.dashSpeed * self.vDirectionLocked * self.agilityModifier}, self.dashControlForce)
     else
-      mcontroller.controlApproachVelocity({self.dashSpeed/1.41 * self.hDirectionLocked * (1+self.agility/100), self.dashSpeed/1.41 * self.vDirectionLocked * (1+self.agility/100)}, self.dashControlForce)
+      mcontroller.controlApproachVelocity({self.dashSpeed/1.41 * self.hDirectionLocked * self.agilityModifier, self.dashSpeed/1.41 * self.vDirectionLocked * self.agilityModifier}, self.dashControlForce)
     end
     if self.wavedashTimer > 0 then
-      mcontroller.setXVelocity(self.dashSpeed*self.hDirectionLocked*(1+self.agility/200)*1.5)
+      mcontroller.setXVelocity(self.dashSpeed*self.hDirectionLocked*(1+(self.agility^0.9)/200)*1.5)
       --mcontroller.controlApproachXVelocity(self.dashSpeed*self.hDirectionLocked*(1+self.agility/100)*groundSpeedBonus, self.dashControlForce*controlForceBonus)
     end
     mcontroller.controlMove(self.hDirectionLocked, true)
@@ -156,7 +157,7 @@ function doMultiJump()
   if not canMultiJump() then
     return
   end
-  mcontroller.controlJump(true)
+  --mcontroller.controlJump(true)
   startDash()
   --animator.burstParticleEmitter("jumpParticles")
   self.jumpsLeft = self.jumpsLeft - 1
@@ -196,7 +197,7 @@ function endDash()
   status.clearPersistentEffects("movementAbility")
   local movementParams = mcontroller.baseParameters()
   local currentVelocity = mcontroller.velocity()
-  --mcontroller.setVelocity({0, 0})
+  if self.wavedash and not mcontroller.onGround() then mcontroller.setVelocity(vec2.mul(currentVelocity, 0.6)) end
   animator.setAnimationState("dashing", "off")
   animator.setParticleEmitterActive("dashParticles", false)
 end

@@ -59,8 +59,8 @@ function update(dt, fireMode, shiftHeld, moves)
     self.drops = (shiftHeld and self.name == "explorerspiradrill3") and 0 or 99
     animator.setLightActive("glow", true)
     damageTiles(layer)
-    local vigor = world.entityCurrency(self.id, "vigorpoint")
-    local damageTimeout = 0.4 - vigor/200
+    local vigor = status.statusProperty("ivrpgvigor", 0)
+    local damageTimeout = 0.4 - math.min(vigor/200, 0.3)
     local damageBonus = self.damageBonus + status.stat("powerMultiplier")
 
     animator.setAnimationState("drill", "active")

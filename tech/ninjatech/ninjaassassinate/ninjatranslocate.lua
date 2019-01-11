@@ -48,9 +48,9 @@ function teleport()
     end
     teleportTarget = (isNotMissionWorld or notThroughWalls) and teleportTarget or nil
     if teleportTarget then
-      local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
+      local agility = status.statusProperty("ivrpgagility", 1)
       local distance = world.magnitude(teleportTarget, mcontroller.position())
-      local costPercent = -(1.06^(distance-agility)+20.0)/100.0
+      local costPercent = math.min(-(1.06^(distance*2-agility)+20.0)/100.0, -0.05)
       status.modifyResourcePercentage("energy", costPercent)
       status.overConsumeResource("energy", 1)
       mcontroller.setPosition(teleportTarget)

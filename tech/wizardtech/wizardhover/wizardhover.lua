@@ -26,8 +26,8 @@ function update(args)
   if action == "wizardhover" and status.overConsumeResource("energy", energyUsagePerSecond * args.dt) and not status.statPositive("activeMovementAbilities") then
     animator.setAnimationState("hover", "on")
 
-    local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
-    local maxSpeed = agility^2 / 180.0 + 25
+    local agility = status.statusProperty("ivrpgagility", 0)
+    local maxSpeed = math.min(agility^0.6 + 25, 45)
     local velocity = world.distance(tech.aimPosition(),mcontroller.position())
     --local direction = mcontroller.facingDirection()
     velocity = vec2.mag(velocity) > maxSpeed and vec2.withAngle(vec2.angle(velocity), maxSpeed) or velocity

@@ -73,7 +73,7 @@ function uninit()
 end
 
 function spawnExplosions(x, y)
-    self.strength = world.entityCurrency(entity.id(), "strengthpoint")
+    self.strength = status.statusProperty("ivrpgstrength", 0)
     local damageFallOff = 1
     local bonusKnockback = 0
     if self.peakPerformance then

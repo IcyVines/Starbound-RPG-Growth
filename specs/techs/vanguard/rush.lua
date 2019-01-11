@@ -136,8 +136,8 @@ function endDash()
 end
 
 function spawnExplosion()
-  agility = world.entityCurrency(entity.id(), "agilitypoint") / 2
-  dexterity = world.entityCurrency(entity.id(), "dexteritypoint") / 2
+  agility = status.statusProperty("ivrpgagility", 0) / 2
+  dexterity = status.statusProperty("ivrpgdexterity", 0) / 2
   world.spawnProjectile("ivrpgrushexplosionconfig", mcontroller.position(), self.id, {0,0}, true, {power = 25 + dexterity + agility})
 end
 

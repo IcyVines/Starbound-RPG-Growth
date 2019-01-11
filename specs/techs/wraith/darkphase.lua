@@ -15,7 +15,7 @@ end
 
 function phase()
   local diagonal = math.abs(self.hDirection*self.vDirection) * math.sqrt(2)
-  local agility = world.entityCurrency(entity.id(),"agilitypoint") or 1
+  local agility = status.statusProperty("ivrpgagility", 1)
   local speed = self.dashSpeed + (agility / 10)
   diagonal = diagonal == 0 and 1 or diagonal
 

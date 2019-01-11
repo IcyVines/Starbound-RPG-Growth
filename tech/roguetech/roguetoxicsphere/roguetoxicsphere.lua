@@ -175,7 +175,7 @@ function spawnPoison()
   if (not self.active or self.fireTimer ~= 0) or not status.overConsumeResource("energy", self.poisonEnergyCost) then
     return
   end
-  self.dexterity = world.entityCurrency(entity.id(), "dexteritypoint")
+  self.dexterity = status.statusProperty("ivrpgdexterity", 1)
   self.fireTimer = self.fireBlockTime
   self.power = status.stat("powerMultiplier") * (1 + self.dexterity / 25.0)
   self.damageConfig = {

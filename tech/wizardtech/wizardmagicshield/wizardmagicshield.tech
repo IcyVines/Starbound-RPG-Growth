@@ -14,6 +14,6 @@
   "cost" : 30,
   "cooldown" : 30,
   "duration" : 10,
-  "regenSpeed" : 0.1
+  "regenSpeed" : 0.05
 
 }

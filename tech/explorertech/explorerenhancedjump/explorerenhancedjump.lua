@@ -43,8 +43,8 @@ function update(args)
   updateJumpModifier()
 
   local action = input(args)
-  local agility = world.entityCurrency(entity.id(), "agilitypoint")
-  local energyUsagePerSecond = config.getParameter("energyUsagePerSecond") - ( agility^2 / 200.0 )
+  local agility = status.statusProperty("ivrpgagility", 0)
+  local energyUsagePerSecond = config.getParameter("energyUsagePerSecond", 20) - math.min(agility^0.55, 15)
   local lrInput
   if args.moves["left"] and not args.moves["right"] then
     lrInput = "left"

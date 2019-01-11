@@ -145,7 +145,7 @@ function refreshJumps()
 end
 
 function startDash()
-  self.agility = world.entityCurrency(entity.id(), "agilitypoint")
+  self.agility = status.statusProperty("ivrpgagility", 0)
   self.dashTimer = self.dashDuration+(self.agility/200)
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
   mcontroller.setVelocity({0, 0})

@@ -13,11 +13,11 @@ function init()
   if world.isMonster(self.playerId) or world.isNpc(self.playerId) then
     self.agility = 10
   else
-    self.agility = world.entityCurrency(self.playerId, "agilitypoint")
+    self.agility = world.entityCurrency(self.playerId, "dexteritypoint")
   end
 
   projectile.setTimeToLive(2+self.agility/25)
-  self.hitTimer = 1.3 - self.agility/100
+  self.hitTimer = 1.3 - math.min(self.agility/100, 0.75)
 
   mcontroller.applyParameters(
   	{

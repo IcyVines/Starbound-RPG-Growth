@@ -54,7 +54,7 @@ function update(args)
       local diff = world.distance(self.cursor, mcontroller.position())
       local aimingAngle = vec2.angle(diff)
       local aimingVector = vec2.rotate({1, 0}, aimingAngle)
-      local missileConfig = {power = (world.entityCurrency(entity.id(),"dexteritypoint") + 14)}
+      local missileConfig = {power = (status.statusProperty("ivrpgdexterity", 0) + 14)}
       local projectileName = self.pinpointAccuracy and "soldiertankmissiletracking" or "soldiertankmissile"
       world.spawnProjectile(projectileName, mcontroller.position(), entity.id(), aimingVector, false, missileConfig)
     end

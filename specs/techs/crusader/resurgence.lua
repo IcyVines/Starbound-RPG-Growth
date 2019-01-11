@@ -44,7 +44,7 @@ function update(args)
         and not mcontroller.liquidMovement()
         and not dashBlocked() then
 
-      local agility = world.entityCurrency(entity.id(), "agilitypoint")
+      local agility = math.min(status.statusProperty("ivrpgagility", 0), 61)
       if mcontroller.facingDirection() == self.dashDirection then
         if status.overConsumeResource("energy", (self.energyCostPerSecond - (agility^2 / 75.0)) * args.dt) then
           mcontroller.controlModifiers({speedModifier = self.dashSpeedModifier})
@@ -100,7 +100,7 @@ function checkResurgence()
           status.addEphemeralEffect("ivrpgresurgencecooldown", self.cooldownTime)
           status.modifyResourcePercentage("health", 1)
           status.modifyResourcePercentage("energy", 1)
-          local vigor = world.entityCurrency(self.id, "vigorpoint")
+          local vigor = status.statusProperty("ivrpgvigor", 1)
           world.spawnProjectile("ivrpgresurgenceexplosion", mcontroller.position(), self.id, {0,0}, true, {power = 5 * vigor^1.05, knockback = 50})
         end
       end

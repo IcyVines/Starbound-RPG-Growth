@@ -36,7 +36,7 @@ function update(args)
         and not mcontroller.liquidMovement()
         and not dashBlocked() then
 
-      local agility = world.entityCurrency(entity.id(), "agilitypoint")
+      local agility = math.min(status.statusProperty("ivrpgagility", 0), 61)
       if mcontroller.facingDirection() == self.dashDirection then
         if status.overConsumeResource("energy", (self.energyCostPerSecond - (agility^2 / 75.0)) * args.dt) then
           mcontroller.controlModifiers({speedModifier = self.dashSpeedModifier})

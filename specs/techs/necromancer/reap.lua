@@ -23,7 +23,7 @@ end
 
 function reap()
 
-  local intelligence = world.entityCurrency(self.id, "intelligencepoint")
+  local intelligence = status.statusProperty("ivrpgintelligence", 1)
 
   if self.cooldownTimer == 0 and (not status.statPositive("activeMovementAbilities")) and self.shiftHeld and self.mobCharge > 0 then
     self.cooldownTimer = self.cooldown
