@@ -1,14 +1,14 @@
 {
   "particleEmitters" : {
-    "embers" : {
+   "embers" : {
       "enabled" : true,
-      "emissionRate" : 15.0,
+      "emissionRate" : 30.0,
       "particles" : [
         {
           "particle" : {
             "type" : "ember",
             "size" : 2.0,
-            "color" : [170, 25, 0, 230],
+            "color" : [170, 50, 80, 230],
             "fade" : 0.9,
             "destructionAction" : "shrink",
             "destructionTime" : 0.8,
@@ -24,8 +24,5 @@
         }
       ]
     }
-  },
-  "sounds" : {
-    "thud" : ["/sfx/tech/mech_step.ogg"]
   }
 }

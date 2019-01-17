@@ -10,5 +10,9 @@
   "rarity" : "Uncommon",
   "icon" : "/specs/techs/dragoon/dragonsleap.png",
 
-  "chipCost" : 0
+  "chipCost" : 0,
+  "cost" : 30,
+  "cooldown" : 2.5,
+  "rechargeDirectives" : "?fade=ff230f=0.25",
+  "multiJumpCount" : 2
 }

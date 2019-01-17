@@ -280,14 +280,14 @@ function groundJump()
   local groundDirection = findGroundDirection()
   if groundDirection then
     groundDirection = {util.round(groundDirection[1]), util.round(groundDirection[2])}
-    sb.logInfo("Ground Direction: " .. groundDirection[1] .. ", " .. groundDirection[2])
+    --sb.logInfo("Ground Direction: " .. groundDirection[1] .. ", " .. groundDirection[2])
     if groundDirection[2] == -1 then
       self.jumpDirection = vec2.norm(mcontroller.velocity())
     else 
       self.jumpDirection = {-groundDirection[1], -groundDirection[2]}
     end
     self.damageDisableTimer = self.damageDisableTime
-    sb.logInfo("Jump Direction: " .. self.jumpDirection[1] .. ", " .. self.jumpDirection[2])
+    --sb.logInfo("Jump Direction: " .. self.jumpDirection[1] .. ", " .. self.jumpDirection[2])
   end
 end
 

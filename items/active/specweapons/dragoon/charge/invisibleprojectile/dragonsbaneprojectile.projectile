@@ -1,0 +1,14 @@
+{
+  "projectileName" : "ivrpgdragonsbaneprojectile",
+  "image" : "invisibleprojectile.png",
+  "frameNumber" : 1,
+  "speed" : 0,
+  "damagePoly" : [ [-24, 0], [-17, -17], [0, -24], [17, -17], [24, 0], [17, 17], [0, 24], [-17, 17] ],
+  "animationLoops" : false,
+  "flippable" : true,
+  "damageKind" : "electricplasma",
+  "pierces" : true,
+  "bounces" : -1,
+  "statusEffects" : ["ivrpgoverload"],
+  "timeToLive" : 0.1
+}

@@ -87,10 +87,10 @@ function teleport()
       elseif root.itemHasTag(heldItem, "ninja") then self.tag = "ninja" end
     end
     if self.tag == "melee" then
-      self.dps = self.itemConf.config.primaryAbility.baseDps
+      self.dps = self.itemConf.config.primaryAbility.baseDps or 1
       self.multiplier = 1.5
     elseif self.tag == "ninja" then
-      self.dps = self.itemConf.config.projectileConfig.power
+      self.dps = self.itemConf.config.projectileConfig.power or 1
       self.multiplier = 1.5
     end
     self.damage = self.dps
@@ -102,10 +102,10 @@ function teleport()
       elseif root.itemHasTag(heldItem2, "ninja") then self.tag = "ninja" end
     end
     if self.tag == "melee" then
-      self.dps = self.itemConf.config.primaryAbility.baseDps
+      self.dps = self.itemConf.config.primaryAbility.baseDps or 1
       self.multiplier = self.multiplier == 0 and 1.5 or self.multiplier*1.5
     elseif self.tag == "ninja" then
-      self.dps = self.itemConf.config.projectileConfig.power
+      self.dps = self.itemConf.config.projectileConfig.power or 1
       self.multiplier = self.multiplier == 0 and 1.5 or self.multiplier*1.5
     end
     self.damage = self.damage + self.dps

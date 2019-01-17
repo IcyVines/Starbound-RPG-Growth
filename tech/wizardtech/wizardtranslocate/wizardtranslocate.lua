@@ -47,6 +47,7 @@ end
 function update(args)
   if self.dashCooldownTimer > 0 then
     self.dashCooldownTimer = math.max(0, self.dashCooldownTimer - args.dt)
+    status.setResourcePercentage("energyRegenBlock", 1.0)
     if self.dashCooldownTimer == 0 then
       self.rechargeEffectTimer = self.rechargeEffectTime
       tech.setParentDirectives(self.rechargeDirectives)

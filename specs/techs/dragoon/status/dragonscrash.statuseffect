@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgdragonscrash",
+  "effectConfig" : {},
+  "defaultDuration" : 1.0,
+
+  "scripts" : [
+    "dragonscrash.lua"
+  ],
+
+  "animationConfig" : "dragonscrash.animation",
+
+  "label" : "Dragon's Crash",
+  "icon" : "/specs/techs/dragoon/status/dragonscrash.png"
+}

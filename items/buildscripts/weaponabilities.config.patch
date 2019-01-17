@@ -12,5 +12,6 @@
 { "op" : "add", "path" : "/energywall", "value" : "/items/active/weapons/melee/abilities/hammer/energywall/elementalpillar.weaponability" },
 { "op" : "add", "path" : "/telsaspin", "value" : "/items/active/weapons/melee/abilities/spear/telsaspin/elementalspin.weaponability" },
 { "op" : "add", "path" : "/elementswitch", "value" : "/items/active/weapons/other/sbloodrose/elementswitch.weaponability" },
-{ "op" : "add", "path" : "/phaseshift", "value" : "/items/active/specweapons/adept/phaseshift.weaponability" }
+{ "op" : "add", "path" : "/phaseshift", "value" : "/items/active/specweapons/adept/phaseshift.weaponability" },
+{ "op" : "add", "path" : "/dragooncharge", "value" : "/items/active/specweapons/dragoon/charge/dragooncharge.weaponability" }
 ]

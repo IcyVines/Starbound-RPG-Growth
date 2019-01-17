@@ -9,61 +9,61 @@
         }],
         [1, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 15]},
-                {"weight" : 0.34, "item" : ["experienceorb", 20]},
-                {"weight" : 0.33, "item" : ["experienceorb", 25]}
+                {"weight" : 0.33, "item" : ["experienceorb", 20]},
+                {"weight" : 0.34, "item" : ["experienceorb", 25]},
+                {"weight" : 0.33, "item" : ["experienceorb", 30]}
             ]
         }],
         [2, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 30]},
-                {"weight" : 0.34, "item" : ["experienceorb", 35]},
-                {"weight" : 0.33, "item" : ["experienceorb", 40]}
+                {"weight" : 0.33, "item" : ["experienceorb", 35]},
+                {"weight" : 0.34, "item" : ["experienceorb", 40]},
+                {"weight" : 0.33, "item" : ["experienceorb", 45]}
             ]
         }],
         [3, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 45]},
-                {"weight" : 0.34, "item" : ["experienceorb", 50]},
-                {"weight" : 0.33, "item" : ["experienceorb", 55]}
+                {"weight" : 0.33, "item" : ["experienceorb", 55]},
+                {"weight" : 0.34, "item" : ["experienceorb", 60]},
+                {"weight" : 0.33, "item" : ["experienceorb", 65]}
             ]
         }],
         [4, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 60]},
-                {"weight" : 0.34, "item" : ["experienceorb", 65]},
-                {"weight" : 0.33, "item" : ["experienceorb", 70]}
+                {"weight" : 0.33, "item" : ["experienceorb", 80]},
+                {"weight" : 0.34, "item" : ["experienceorb", 85]},
+                {"weight" : 0.33, "item" : ["experienceorb", 90]}
             ]
         }],
         [5, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 75]},
-                {"weight" : 0.34, "item" : ["experienceorb", 80]},
-                {"weight" : 0.33, "item" : ["experienceorb", 85]}
+                {"weight" : 0.33, "item" : ["experienceorb", 120]},
+                {"weight" : 0.34, "item" : ["experienceorb", 125]},
+                {"weight" : 0.33, "item" : ["experienceorb", 130]}
             ]
         }],
         [6, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 90]},
-                {"weight" : 0.34, "item" : ["experienceorb", 95]},
-                {"weight" : 0.33, "item" : ["experienceorb", 100]},
-                {"weight" : 0.0025, "item" : "ivrpgscrollresetclass"}
+                {"weight" : 0.33, "item" : ["experienceorb", 160]},
+                {"weight" : 0.34, "item" : ["experienceorb", 165]},
+                {"weight" : 0.325, "item" : ["experienceorb", 170]},
+                {"weight" : 0.005, "pool" : "ivrpgscrollpool"}
             ]
         }],
         [7, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 110]},
-                {"weight" : 0.34, "item" : ["experienceorb", 115]},
-                {"weight" : 0.33, "item" : ["experienceorb", 120]},
-                {"weight" : 0.005, "item" : "ivrpgscrollresetclass"}
+                {"weight" : 0.33, "item" : ["experienceorb", 200]},
+                {"weight" : 0.34, "item" : ["experienceorb", 205]},
+                {"weight" : 0.3225, "item" : ["experienceorb", 210]},
+                {"weight" : 0.0075, "pool" : "ivrpgscrollpool"}
             ]
         }],
         [8, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 140]},
-                {"weight" : 0.34, "item" : ["experienceorb", 145]},
-                {"weight" : 0.33, "item" : ["experienceorb", 150]},
-                {"weight" : 0.0075, "item" : "ivrpgscrollresetclass"}
+                {"weight" : 0.33, "item" : ["experienceorb", 250]},
+                {"weight" : 0.34, "item" : ["experienceorb", 255]},
+                {"weight" : 0.32, "item" : ["experienceorb", 260]},
+                {"weight" : 0.01, "pool" : "ivrpgscrollpool"}
             ]
         }]
     ],
@@ -77,7 +77,36 @@
     "experienceorbbosspool" : [
         [0, {
             "pool" : [
-                {"weight" : 1, "item" : ["experienceorb", 100]}
+                {"weight" : 1, "item" : ["experienceorb", 300]}
+            ]
+        }]
+    ],
+    "ivrpgscrollpool" : [
+        [6, {
+            "fill" : [
+                {"item" : ["experienceorb", 180]}
+            ],
+            "pool" : [
+                {"weight" : 0.8, "item" : ["ivrpgscrollresetclass", 1]},
+                {"weight" : 0.2, "item" : ["ivrpgscrollresetaffinity", 1]}
+            ]
+        }],
+        [7, {
+            "fill" : [
+                {"item" : ["experienceorb", 220]}
+            ],
+            "pool" : [
+                {"weight" : 0.8, "item" : ["ivrpgscrollresetclass", 1]},
+                {"weight" : 0.2, "item" : ["ivrpgscrollresetaffinity", 1]}
+            ]
+        }],
+        [8, {
+            "fill" : [
+                {"item" : ["experienceorb", 270]}
+            ],
+            "pool" : [
+                {"weight" : 0.8, "item" : ["ivrpgscrollresetclass", 1]},
+                {"weight" : 0.2, "item" : ["ivrpgscrollresetaffinity", 1]}
             ]
         }]
     ],

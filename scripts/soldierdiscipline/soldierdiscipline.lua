@@ -40,10 +40,12 @@ function update(dt)
 end
 
 function updateDamageGiven(dt)
+  if type(status.statusProperty("ivrpgsutitan", 0)) == "boolean" and status.statusProperty("ivrpgsutitan") then return end
   local notifications = nil
   notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
   if self.perfectTimer > 0 and notifications then
     for _,notification in pairs(notifications) do
+      --Titan
       if string.find(notification.damageSourceKind, "bullet") or string.find(notification.damageSourceKind, "shotgun") then
         if notification.healthLost > 0 and world.entityHealth(notification.targetEntityId) then
           local add = notification.damageDealt
@@ -62,10 +64,15 @@ function checkPerfectShield(dt)
   notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
   if notifications then
     for _,notification in pairs(notifications) do
+      --Titan
       if notification.hitType == "ShieldHit" then
         if status.resourcePositive("perfectBlock") then
           self.perfectTimer = 3
         end
+      end
+      --Dragoon
+      if notification.damageSourceKind and notification.damageSourceKind == "falling" and type(status.statusProperty("ivrpgsudragoon", 0)) == "number" then
+        status.setStatusProperty("ivrpgsudragoon", status.statusProperty("ivrpgsudragoon", 0) + (notification.healthLost/2 or 0))
       end
     end
   end

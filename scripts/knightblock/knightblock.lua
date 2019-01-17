@@ -14,6 +14,7 @@ function update(dt)
   self.notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
   if self.notifications then
     for _,notification in pairs(self.notifications) do
+      --Paladin
       if notification.hitType == "ShieldHit" then
         if status.resourcePositive("perfectBlock") then
           local uniqueId = world.entityUniqueId(notification.sourceEntityId)
@@ -25,6 +26,10 @@ function update(dt)
           effect.setStatModifierGroup(self.damageBonusId, {{stat = "powerMultiplier", baseMultiplier = self.powerModifier}})
           animator.setParticleEmitterActive("embers", true)
         end
+      end
+      --Dragoon
+      if notification.damageSourceKind and notification.damageSourceKind == "falling" and type(status.statusProperty("ivrpgsudragoon", 0)) == "number" then
+        status.setStatusProperty("ivrpgsudragoon", status.statusProperty("ivrpgsudragoon", 0) + (notification.healthLost/2 or 0))
       end
     end
   end

@@ -1,0 +1,147 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "dashSwoosh" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : {
+            },
+            "charge" : {
+              "frames" : 4,
+              "cycle" : 3.0,
+              "properties" : {
+                "persistentSound" : "/sfx/objects/teslaspike.ogg"
+              }
+            },
+            "full" : {
+              "properties" : {
+                //"immediateSound" : "/sfx/gun/grenadeblast3.ogg"
+                "immediateSound" : "/items/active/specweapons/dragoon/charge/thunder2.ogg"
+              }
+            }
+          }
+        }
+      },
+      "parts" : {
+        "dashSwoosh" : {
+          "properties" : {
+            "zLevel" : 1,
+            "centered" : true,
+            "transformationGroups" : ["swoosh"],
+            "offset" : [3.75, 0.0625],
+            "fullbright" : true,
+            "damageArea" : [[-6, 0], [-3.5, 1], [-1.5, 1], [1.5, 0], [-1.5, -1], [-3.5, -1]]
+          },
+          "partStates" : {
+            "dashSwoosh" : {
+              "idle" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "charge" : {
+                "properties" : {
+                  "image" : "/items/active/specweapons/dragoon/charge/chargeswoosh<paletteSwaps>:<frame>"
+                }
+              },
+              "full" : {
+                "properties" : {
+                  "image" : "/items/active/specweapons/dragoon/charge/chargeswoosh<paletteSwaps>:4"
+                }
+              }
+            }
+          }
+        },
+        "blade" : {
+          "properties" : {
+            "zLevel" : 1,
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "offset" : [0.0, 0.0],
+            "transformationGroups" : ["weapon"],
+            "damageArea" : [[0, -0.5], [-0.75, 1.0], [-0.75, 2.75], [0, 4.5], [0.75, 2.75], [0.75, 1.0]]
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "bolt" : [ "/sfx/projectiles/electric_barrier_shock1.ogg" ]
+    }
+  },
+  "animationScripts" : [
+    "/items/active/effects/lightning.lua"
+  ],
+
+  "ability" : {
+    "type" : "dragooncharge",
+    "scripts" : ["/items/active/specweapons/dragoon/charge/charge.lua"],
+    "class" : "Charge",
+
+    "chargeTime" : 3.0,
+    "minChargeTime" : 0.75,
+    "chargeLevels" : 4,
+    // [width, forks, branching, color]
+    "lightningChargeLevels" : [
+      [
+        [1.0, 0, 0.03, [200, 155, 255, 150]],
+        [1.0, 0, 0.06, [215, 185, 255, 150]],
+        [1.0, 0, 0.09, [230, 215, 255, 150]],
+        [1.0, 0, 0.12, [245, 245, 255, 150]]
+      ],
+      [
+        [1.0, 0, 0.03, [255, 155, 120, 150]],
+        [1.0, 0, 0.06, [255, 185, 155, 150]],
+        [1.0, 0, 0.09, [255, 215, 190, 150]],
+        [1.0, 0, 0.12, [255, 245, 225, 150]]
+      ]
+    ],
+    "dashLightning" : [1, 1, 0.12, [255, 255, 255, 50]],
+
+    "holdDamageMultiplier" : 0.1,
+    "holdDamageConfig" : {
+      "timeoutGroup" : "hold",
+      "timeout" : 0.5,
+      "knockback" : 10,
+      "knockbackDirectional" : true,
+      "damageSourceKind" : "electricspear"
+    },
+
+    "dashMaxSpeed" : 250,
+    "dashControlForce" : 2000,
+    "maxDashTime" : 0.2,
+    "maxEnergyUsage" : 100,
+
+    "freezeTime" : 0.2,
+
+    "damageConfig" : {
+    	"baseDamage" : 10,
+    	"timeout" : 0.25,
+    	"timeoutGroup" : "alt"
+    },
+    "baseDps" : 21, // overrides baseDamage in damageConfig
+
+    "cycleRotationOffsets" : [0, 7.5, -7.5],
+    "stances" : {
+      "charge" : {
+        "armRotation" : -135,
+        "weaponRotation" : 45,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 2.0],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "dash" : {
+        "armRotation" : -25,
+        "weaponRotation" : -65,
+        "twoHanded" : true,
+        "weaponOffset" : [0.0, 2.0],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}
