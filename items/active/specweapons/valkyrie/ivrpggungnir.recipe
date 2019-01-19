@@ -1,0 +1,11 @@
+{
+  "input" : [
+  	{ "item" : "solariumstar", "count" : 2 },
+  	{ "item" : "livingroot", "count" : 1 },
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 18 },
+    { "item" : "goldbar", "count" : 6 },
+    { "item" : "diamond", "count" : 1 }
+  ],
+	"output" : { "item" : "ivrpgwgungnir", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

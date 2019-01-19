@@ -1,0 +1,27 @@
+{
+  "projectileName" : "ivrpgwgungnirthrown",
+  "image" : "gungnirthrown.png",
+  "animationCycle" : 0.25,
+  "physics" : "grenade",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 80,
+  "scripts" : ["gungnirtracking.lua"],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/bulletexplosion/bulletexplosion.config"
+    }
+  ],
+  "power" : 200.0,
+  "knockback" : 20,
+  "damageKind" : "holyspeargungnir",
+  "emitters" : [ "lighttrailfast" ],
+  "statusEffects" : [
+    "ivrpgholymark"
+  ],
+  "bounces" : 2,
+  "damagePoly" : [ [-32, 0], [-24, 4], [-20, 2], [8.5, 2], [8.5, 5.5], [20, 5.5], [32, 0], [20, -5.5], [8.5, -5.5], [8.5, -2], [-20, -2], [-24, -4] ]
+}
+
+

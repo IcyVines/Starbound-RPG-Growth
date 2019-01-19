@@ -1227,7 +1227,7 @@
 									"processing": "?saturation=-100"
 								},
 								"fuzzAngle": 180,
-								"inheritDamageFactor": 1,
+								"inheritDamageFactor": 0.2,
 								"config": {
 									"knockback": 30
 								}

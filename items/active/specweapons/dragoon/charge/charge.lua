@@ -97,19 +97,19 @@ function Charge:dash(charge)
   local speed = magnitude / 0.1
 
   world.spawnProjectile("lightningthrower", self.actualPosition, self.id, {0,0}, false, {
-    power = self.damageConfig.baseDamage * self.powerMultiplier * charge * 0.2,
+    power = self.damageConfig.projectileDamage * self.powerMultiplier * charge * 0.2,
     statusEffects = {"ivrpgoverload"},
     timeToLive = 0.36
   })
 
   world.spawnProjectile("lightningthrower", self.endPosition, self.id, {0,0}, false, {
-    power = self.damageConfig.baseDamage * self.powerMultiplier * charge * 0.2,
+    power = self.damageConfig.projectileDamage * self.powerMultiplier * charge * 0.2,
     statusEffects = {"ivrpgoverload"},
     timeToLive = 0.36
   })
 
   world.spawnProjectile("ivrpgdragonsbaneprojectile", self.actualPosition, self.id, directionTo, false, {
-    power = self.damageConfig.baseDamage * self.powerMultiplier * charge,
+    power = self.damageConfig.projectileDamage * self.powerMultiplier * charge,
     speed = speed
   })
 

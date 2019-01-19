@@ -33,7 +33,8 @@
     "scripts" : ["/items/active/specweapons/kunoichi/petaldance.lua"],
     "class" : "MeleeSlash",
     "fireTime" : 0.2,
-    "baseDps" : 28.0,
+    "baseDps" : 14.0,
+    "damageModifier" : 0.5,
     "armRotationOffsets" : [20, -20, 0, 0, -20, 20, 0, 0],
     
     "damageConfig" : {

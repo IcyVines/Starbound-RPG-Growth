@@ -24,9 +24,9 @@ function GunFire:update(dt, fireMode, shiftHeld)
   self.hardLight = status.statPositive("ivrpguchardlight") and self.name == "soldierversagun3"
 
   if self.triggerHappy then
-    self.chargeTime = 0.75
-  else
     self.chargeTime = 1
+  else
+    self.chargeTime = 1.5
   end
 
   if self.hardLight then
@@ -55,11 +55,13 @@ function GunFire:update(dt, fireMode, shiftHeld)
         animator.playSound("charged")
         animator.stopAllSounds("charge")
       end
+    else
+      status.setResourcePercentage("energyRegenBlock", 1.0)
     end
   else
     if self.chargeTimer > 0 then
       animator.stopAllSounds("charge")
-      status.overConsumeResource("energy", self:energyPerShot() * (1 - self.chargeTimer))
+      status.overConsumeResource("energy", self:energyPerShot() * (1.5 - self.chargeTimer))
       self:setState(self.auto)
     end
     self.chargeTimer = 0
@@ -77,8 +79,8 @@ function GunFire:auto()
   end
 
   self.baseInaccuracy = self.inaccuracy
-  self.inaccuracy = self.inaccuracy * (1 - self.chargeTimer)
-  self.extraPower = (1 + self.chargeTimer*0.5)
+  self.inaccuracy = self.inaccuracy * (1.5 - self.chargeTimer)
+  self.extraPower = (1 + (self.chargeTimer*2/3)^3)
 
   self.weapon:setStance(self.stances.fire)
 

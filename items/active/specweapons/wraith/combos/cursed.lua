@@ -9,7 +9,6 @@ function init()
   self.tickTime = 1.0
   self.tickTimer = self.tickTime
   self.random = math.random(1,5)
-  sb.logInfo(self.random)
   self.applied = false
 end
 
@@ -44,7 +43,6 @@ end
 function damageOverTime(dt)
   animator.setParticleEmitterActive("drips", true)
   local random = math.random(1,3)
-  sb.logInfo(random)
   dotDamageType = self.damageTypes[random]
 
   if self.tickTimer <= 0 then

@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgholymark",
+  "blockingStat" : "holyStatusImmunity",
+
+  "effectConfig" : {},
+  "defaultDuration" : 7,
+
+  "scripts" : [
+    "holymark.lua"
+  ],
+
+  "animationConfig" : "holymark.animation",
+
+  "label" : "Holy Mark",
+  "icon" : "/specs/abilities/necromancer/raiseundead.png"
+}

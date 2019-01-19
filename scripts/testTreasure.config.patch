@@ -1,0 +1,54 @@
+[
+	[
+	  {
+	    "op": "test",
+	    "path": "/test1/fill",
+	    "inverse": false
+	  }, 
+	  {
+	    "op": "add",
+	    "path": "/test1/fill/-",
+	    "value": { "pool": "experienceorbpool" } 
+	  }
+	],
+	[
+	  {
+	    "op": "test",
+	    "path": "/test1/fill",
+	    "inverse": true
+	  }, 
+	  {
+	    "op": "add",
+	    "path": "/test1/fill",
+	    "value": [
+	    	{ "pool": "experienceorbpool"}
+	    ]
+	  }
+	],
+	[
+	  {
+	    "op": "test",
+	    "path": "/test2/fill",
+	    "inverse": false
+	  }, 
+	  {
+	    "op": "add",
+	    "path": "/test2/fill/-",
+	    "value": { "pool": "experienceorbpool" } 
+	  }
+	],
+	[
+	  {
+	    "op": "test",
+	    "path": "/test2/fill",
+	    "inverse": true
+	  }, 
+	  {
+	    "op": "add",
+	    "path": "/test2/fill",
+	    "value": [
+	    	{ "pool": "experienceorbpool"}
+	    ]
+	  }
+	]
+]

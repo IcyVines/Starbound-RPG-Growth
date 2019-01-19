@@ -118,7 +118,8 @@
     "damageConfig" : {
     	"baseDamage" : 10,
     	"timeout" : 0.25,
-    	"timeoutGroup" : "alt"
+    	"timeoutGroup" : "alt",
+      "projectileDamage" : 48
     },
     "baseDps" : 21, // overrides baseDamage in damageConfig
 

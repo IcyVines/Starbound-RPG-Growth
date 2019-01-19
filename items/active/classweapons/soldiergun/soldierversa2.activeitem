@@ -59,12 +59,12 @@
     "class" : "GunFire",
 
     "fireTime" : 1.0,
-    "baseDps" : 15,
+    "baseDps" : 11,
     "energyUsage" : 29,
     "projectileCount" : 7,
     "inaccuracy" : 0.15,
     "fireType" : "auto",
-    "chargeTime" : 1.0,
+    "chargeTime" : 1.5,
 
     "projectileType" : "standardbullet",
     "projectileParameters" : {

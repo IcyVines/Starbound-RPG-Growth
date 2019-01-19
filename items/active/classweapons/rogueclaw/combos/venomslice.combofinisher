@@ -54,7 +54,7 @@
 
     "damageConfig" : {
       "statusEffects" : [ "weakpoison" ],
-      "baseDamage" : 6.0,
+      "baseDamage" : 3.5,
       "damageSourceKind" : "roguepoisonslash",
       "timeoutGroup" : "primary",
       "timeout" : 0.5

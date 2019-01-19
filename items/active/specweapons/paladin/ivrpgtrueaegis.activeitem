@@ -4,7 +4,7 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "category" : "shield",
+  "category" : "^orange;Holy Shield",
   "description" : "The Protectorate has fallen. But us? We will never fall.",
   "shortdescription" : "^blue;True Aegis",
   "tooltipKind" : "base",

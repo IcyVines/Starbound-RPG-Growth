@@ -53,7 +53,7 @@
     "class" : "PowerPunch",
 
     "damageConfig" : {
-      "baseDamage" : 6.0,
+      "baseDamage" : 4.5,
       "statusEffects" : ["ivrpgweaken"],
       "timeoutGroup" : "primary",
       "damageSourceKind" : "rogueslash",

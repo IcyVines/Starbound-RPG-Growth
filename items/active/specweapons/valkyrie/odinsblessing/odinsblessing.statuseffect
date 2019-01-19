@@ -1,0 +1,19 @@
+{
+  "name" : "ivrpgodinsblessing",
+  "blockingStat" : "healingStatusImmunity",
+
+  "effectConfig" : {
+    "magicBoost" : 1.5,
+    "regeneration" : 10
+  },
+  "defaultDuration" : 7,
+
+  "scripts" : [
+    "odinsblessing.lua"
+  ],
+
+  "animationConfig" : "odinsblessing.animation",
+
+  "label" : "Odin's Blessing",
+  "icon" : "/items/active/specweapons/valkyrie/odinsblessing/odinsblessing.png"
+}

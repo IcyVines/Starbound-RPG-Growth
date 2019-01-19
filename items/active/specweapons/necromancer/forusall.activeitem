@@ -326,7 +326,7 @@
 		"edgeTriggerGrace": 0.25,
 
 		"fireTime": 0.8,
-		"baseDps": 11.5,
+		"baseDps": 13.5,
 
 		"damageConfig": {
 			"damageSourceKind": "demonicscythe",
@@ -441,7 +441,7 @@
 					"speed" : 30
 				},
 				"inaccuracy": 0,
-				"baseDamage": 3,
+				"baseDamage": 2,
 				"fireSound": "altFire"
 			}, {
 				"time": 0.5,
@@ -453,7 +453,7 @@
 					"speed" : 30
 				},
 				"spreadAngle": 10,
-				"baseDamage": 3,
+				"baseDamage": 4,
 				"fireSound": "altFire"
 			}, {
 				"time": 1.0,
@@ -466,7 +466,7 @@
 					"speed" : 30
 				},
 				"inaccuracy": 0,
-				"baseDamage": 3,
+				"baseDamage": 6,
 				"fireSound": "altFire"
 			}, {
 				"time": 1.5,
@@ -479,7 +479,7 @@
 					"speed" : 30
 				},
 				"inaccuracy": 0,
-				"baseDamage": 3,
+				"baseDamage": 9,
 				"fireSound": "altFire"
 			}, {
 				"time": 2.0,
@@ -492,7 +492,7 @@
 					"speed" : 30
 				},
 				"inaccuracy": 0,
-				"baseDamage": 3,
+				"baseDamage": 13,
 				"fireSound": "altFire"
 			},
 			 {
@@ -506,7 +506,7 @@
 					"speed" : 30
 				},
 				"inaccuracy": 0,
-				"baseDamage": 3,
+				"baseDamage": 18,
 				"fireSound": "altFire"
 			}
 		],

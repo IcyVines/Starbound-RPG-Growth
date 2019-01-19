@@ -1,6 +1,7 @@
 require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
+require "/scripts/ivrpgutil.lua"
 
 function init()
   self.class = world.entityCurrency(activeItem.ownerEntityId(), "classtype") or 4
@@ -28,8 +29,10 @@ function update(dt, fireMode, shiftHeld)
   self.weapon:update(dt, fireMode, shiftHeld)
   self.class = world.entityCurrency(activeItem.ownerEntityId(), "classtype") == 1 and 1 or 4
   animator.setGlobalTag("paletteSwaps", self.class .. ".png")
+  incorrectWeapon()
 end
 
 function uninit()
   self.weapon:uninit()
+  incorrectWeapon(true)
 end

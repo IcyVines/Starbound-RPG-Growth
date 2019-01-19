@@ -1,0 +1,173 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "chargeAnimation" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : {
+            },
+            "charge" : {
+              "frames" : 18,
+              "cycle" : 2.0,
+              "mode" : "transition",
+              "transition" : "full",
+              "properties" : {
+                "persistentSound" : "/sfx/projectiles/zone_healing_loop.ogg"
+              }
+            },
+            "full" : {
+              "frames" : 17,
+              "cycle" : 0.85,
+              "mode" : "loop",
+              "properties" : {
+                "immediateSound" : "/sfx/melee/elemental_aura_deactivate1.ogg",
+                "persistentSound" : "/sfx/projectiles/zone_healing_loop.ogg"
+              }
+            }
+          }
+        },
+        "throwAnimation" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : {
+            },
+            "thrown" : {
+            },
+            "return" :{
+              "frames" : 10,
+              "cycle" : 0.6,
+              "properties" : {
+                "immediateSound" : "/items/active/specweapons/valkyrie/mark/return.ogg"
+              }
+            }
+          }
+        }
+      },
+      "parts" : {
+        "chargeAnimation" : {
+          "properties" : {
+            "zLevel" : 1,
+            "centered" : true,
+            "transformationGroups" : ["swoosh"],
+            "offset" : [0, 0],
+            "fullbright" : true,
+            "damageArea" : [[-6, 0], [-3.5, 1], [-1.5, 1], [1.5, 0], [-1.5, -1], [-3.5, -1]]
+          },
+          "partStates" : {
+            "chargeAnimation" : {
+              "idle" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "charge" : {
+                "properties" : {
+                  "image" : "/items/active/specweapons/valkyrie/mark/chargeup.png:<frame>"
+                }
+              },
+              "full" : {
+                "properties" : {
+                  "image" : "/items/active/specweapons/valkyrie/mark/fullcharge.png:<frame>"
+                }
+              }
+            }
+          }
+        },
+        "blade" : {
+          "properties" : {
+            "zLevel" : 1,
+            "centered" : true,
+            "offset" : [0.0, 0.0],
+            "transformationGroups" : ["weapon"]
+          },
+          "partStates" : {
+            "throwAnimation" : {
+              "idle" : {
+                "properties" : {
+                  "image" : "<partImage><paletteSwaps>",
+                  "damageArea" : [[0, -0.5], [-0.75, 1.0], [-0.75, 2.75], [0, 4.5], [0.75, 2.75], [0.75, 1.0]]
+                }
+              },
+              "thrown" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "return" : {
+                "properties" : {
+                  "image" : "/items/active/specweapons/valkyrie/mark/return.png:<frame>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sounds" : {
+      "bolt" : [ "/sfx/projectiles/electric_barrier_shock1.ogg" ],
+      "charged" : [ "/sfx/melee/elemental_aura_deactivate1.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "type" : "valkyriemark",
+    "scripts" : ["/items/active/specweapons/valkyrie/mark/mark.lua"],
+    "class" : "Mark",
+
+    "chargeTime" : 2.0,
+    "minChargeTime" : 0,
+
+    "holdDamageMultiplier" : 0.1,
+    "holdDamageConfig" : {
+      "timeoutGroup" : "hold",
+      "timeout" : 0.5,
+      "knockback" : 10,
+      "knockbackDirectional" : true,
+      "damageSourceKind" : "holyspeargungnir"
+    },
+
+    "maxEnergyUsage" : 50,
+    "freezeTime" : 0.2,
+
+    "damageConfig" : {
+    	"baseDamage" : 10,
+    	"timeout" : 0.25,
+    	"timeoutGroup" : "alt",
+      "projectileDamage" : 48
+    },
+    "baseDps" : 21,
+
+    "cycleRotationOffsets" : [0, 7.5, -7.5],
+    "stances" : {
+      "idle" : {
+        "armRotation" : -10,
+        "weaponRotation" : 90,
+        "twoHanded" : true,
+        "weaponOffset" : [0.5, 0],
+        "duration" : 0.65,
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "charge" : {
+        "armRotation" : 75,
+        "weaponRotation" : 180,
+        "twoHanded" : false,
+        "weaponOffset" : [0.0, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "throw" : {
+        "armRotation" : 15,
+        "weaponRotation" : 180,
+        "twoHanded" : false,
+        "weaponOffset" : [0.0, 0.5],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}

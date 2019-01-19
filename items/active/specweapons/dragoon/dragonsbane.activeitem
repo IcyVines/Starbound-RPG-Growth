@@ -8,9 +8,13 @@
   "tooltipKind" : "base",
   "category" : "spear",
   "twoHanded" : true,
+  "level" : 6,
   "itemTags" : ["weapon","melee","spear"],
 
   "inventoryIcon" : "dragonsbane4.png",
+
+  "classreq" : [1, 4],
+  "specreq" : 8,
 
   "animation" : "/items/active/specweapons/dragoon/spear.animation",
   "animationParts" : {
@@ -34,7 +38,7 @@
     "class" : "SpearStab",
 
     "fireTime" : 0.9,
-    "baseDps" : 18.0,
+    "baseDps" : 12.0,
 	  "damageConfig" : {
       "statusEffects" : ["ivrpgsear"],
       "damageSourceKind" : "firespear"
@@ -76,7 +80,9 @@
     }
   },
   "altAbilityType" : "dragooncharge",
-  "altAbility" : { },
+  "altAbility" : {
+    "baseDps" : 5.5
+  },
   
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

@@ -9,6 +9,7 @@ function init()
   animator.setGlobalTag("bladeDirectives", "")
 
   self.weapon = Weapon:new()
+  self.damageModifier = config.getParameter("primaryAbility.damageModifier", 1)
 
   self.weapon:addTransformationGroup("weapon", {0,0}, util.toRadians(config.getParameter("baseWeaponRotation", 0)))
   self.weapon:addTransformationGroup("swoosh", {0,0}, math.pi/2)
@@ -162,9 +163,9 @@ function MeleeSlash:fire()
   if stance.damageConfig then
     for k,v in pairs(stance.damageConfig) do
       if k == "baseDamage" then
-        v = v * math.min(((self.combo + 1)/2), 1.5)
+        v = v * math.min(((self.combo + 2)/4), 1.5)
       end
-      damageConfig[k] = v
+      damageConfig[k] = v * self.damageModifier
     end
   end
 
@@ -335,7 +336,7 @@ function MeleeSlash:slashAction()
   local damageConfig = duplicateTable(self.damageConfig)
   if fireStance.damageConfig then
     for k,v in pairs(fireStance.damageConfig) do
-      damageConfig[k] = v
+      damageConfig[k] = v * self.damageModifier
     end
   end
 

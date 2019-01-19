@@ -18,6 +18,11 @@ function init()
   self.specList = root.assetJson("/specList.config")
   self.specsAvailable = {}
   updateSpecsAvailable()
+
+  --Test because someone called into question my programming ability yet are incredibly wrong.
+  --[[local testTreasure = root.assetJson("/scripts/testTreasure.config")
+  sb.logInfo(sb.printJson(testTreasure))
+  ]]
   
   local data = root.assetJson("/ivrpgversion.config")
   local oldVersion = status.statusProperty("ivrpgversion", "0")
@@ -68,6 +73,10 @@ function init()
     status.addEphemeralEffect(name, duration, sourceId)
   end)
 
+  message.setHandler("removeEphemeralEffect", function(_, _, name)
+    status.removeEphemeralEffect(name)
+  end)
+
   message.setHandler("sendRadioMessage", function(_, _, text)
     sendRadioMessage(text)
   end)
@@ -83,7 +92,7 @@ function update(dt)
 
   --admin
   if player.isAdmin() then
-    if not status.statPositive("admin") then status.addPersistentEffect("ivrpgadmin", {stat = "admin", amount = 1}) end
+    status.setPersistentEffects("ivrpgadmin", {{stat = "admin", amount = 1}})
   else
     status.clearPersistentEffects("ivrpgadmin")
   end

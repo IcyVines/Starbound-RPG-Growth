@@ -34,8 +34,9 @@ function update(dt)
     self.position = false
   end
 
-  if mcontroller.onGround() or mcontroller.liquidMovement() or mcontroller.groundMovement() then
+  if not mcontroller.falling() then
     self.beganFall = false
+    self.position = false
   end
 
   if self.timer > 0 then

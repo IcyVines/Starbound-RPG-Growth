@@ -1,0 +1,169 @@
+{
+  "itemName" : "ivrpgwgungnir",
+  "price" : 2000,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "Odin's gift to you.",
+  "shortdescription" : "^#34dbdb;Gungnir^white;",
+  "tooltipKind" : "base",
+  "category" : "^orange;Holy Spear",
+  "twoHanded" : true,
+  "level" : 6,
+  "itemTags" : ["weapon","melee","spear"],
+
+  "inventoryIcon" : "gungnir.png",
+
+  "classreq" : 1,
+  "specreq" : 4,
+
+  "animation" : "/items/active/specweapons/valkyrie/spear.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "gungnir.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_spear_electric1.ogg", "/sfx/melee/swing_spear_electric2.ogg", "/sfx/melee/swing_spear_electric3.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_spear_electric1.ogg", "/sfx/melee/swing_spear_electric2.ogg", "/sfx/melee/swing_spear_electric3.ogg" ],
+      "fire3" : [ "/sfx/melee/swing_spear_electric1.ogg", "/sfx/melee/swing_spear_electric2.ogg", "/sfx/melee/swing_spear_electric3.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/specweapons/valkyrie/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "aimOffset" : -1.0,
+  "primaryAbilityType" : "spearstab",
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/valkyrie/spearstab.lua"],
+    "class" : "SpearStab",
+
+    "fireTime" : 0.9,
+    "baseDps" : 10.0,
+    "comboSteps" : 3,
+    "comboSpeedFactor": 0.9,
+    "edgeTriggerGrace": 0.25,
+    "flashTime": 0.1,
+    "flashDirectives": "?fade=EEEEFF=0.15",
+    "swooshOffsetRegions" : [[3.5, -1.0, 7.5, 1.0]],
+    "cooldownTime" : 1.5,
+
+	  "damageConfig" : {
+      "damageSourceKind" : "holyspeargungnir"
+    },
+
+    "stepDamageConfig": [
+      {
+        "baseDamageFactor": 0.6,
+        "knockback": 12
+      },
+      {
+        "baseDamageFactor": 0.3,
+        "knockback": 10
+      },
+      {
+        "baseDamageFactor": 0.9,
+        "knockback": 20,
+        "statusEffects" : ["ivrpgjudgement"]
+      }
+    ],
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [0, 0.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "windup1" : {
+        "duration" : 0.1,
+        "armRotation" : -70,
+        "weaponRotation" : -20,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 1.15],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "fire1" : {
+        "duration" : 0.3,
+        "armRotation" : -20,
+        "weaponRotation" : -70,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 1.8],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "wait1" : {
+        "duration" : 0.3,
+        "armRotation" : -45,
+        "weaponRotation" : -45,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 1.2],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "windup2" : {
+        "duration" : 0.1,
+        "armRotation" : -70,
+        "weaponRotation" : -20,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.85],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "fire2" : {
+        "duration" : 0.3,
+        "armRotation" : -20,
+        "weaponRotation" : -70,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 0.25],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "wait2" : {
+        "duration" : 0.3,
+        "armRotation" : -60,
+        "weaponRotation" : -30,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 1.15],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "windup3" : {
+        "duration" : 0.1,
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 1.6],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "fire3" : {
+        "duration" : 0.3,
+        "armRotation" : -20,
+        "weaponRotation" : -72.5,
+        "twoHanded" : true,
+        "weaponOffset" : [0, 2.2],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+  "altAbilityType" : "valkyriemark",
+  "altAbility" : {
+    "baseDps" : 5.5
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

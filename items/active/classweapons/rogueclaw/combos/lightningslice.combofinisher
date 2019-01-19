@@ -54,7 +54,7 @@
 
     "damageConfig" : {
       "statusEffects" : [ "electrified" ],
-      "baseDamage" : 6.0,
+      "baseDamage" : 4.0,
       "damageSourceKind" : "rogueelectricslash",
       "timeoutGroup" : "primary",
       "timeout" : 0.5
