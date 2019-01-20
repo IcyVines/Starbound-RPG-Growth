@@ -40,6 +40,7 @@ end
 
 function reset()
   animator.setParticleEmitterActive("embers", false)
+  status.clearPersistentEffects("ivrpgfightinglion")
   status.setPrimaryDirectives()
 end
 

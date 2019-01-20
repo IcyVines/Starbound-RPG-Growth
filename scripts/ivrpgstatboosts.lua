@@ -22,7 +22,7 @@ function init()
   message.setHandler("bleedCheck", function(_, _, damage, sourceKind, sourceId)
     local bleedChance = status.stat("ivrpgBleedChance")
     local bleedLength = status.stat("ivrpgBleedLength")
-    if bleedChance > math.random() or sourceKind == "alwaysbleed" or sourceKind == "bloodaether" or string.find(sourceKind, "scythe") then
+    if (bleedChance > math.random() or sourceKind == "alwaysbleed" or sourceKind == "bloodaether" or string.find(sourceKind, "scythe")) and not (string.find(sourceKind, "bluntforce") or string.find(sourceKind, "hammer")) then
       bleedLength = ((sourceKind == "alwaysbleed" or sourceKind == "bloodaether" or string.find(sourceKind, "scythe")) and bleedLength < 1) and 1 or bleedLength
       world.sendEntityMessage(sourceId, "applySelfDamageRequest", "IgnoresDef", "bleed", damage/2, self.id)
       world.sendEntityMessage(sourceId, "addEphemeralEffect", "ivrpgweaken", bleedLength, self.id)
@@ -906,7 +906,7 @@ function updateChallenges()
       end
 
       if updateProgress(notification, "boss", 8, "eyeboss") then
-      	world.spawnItem("experienceorb", mcontroller.position(), 1000)
+      	world.spawnItem("experienceorb", mcontroller.position(), 2000)
       end
       if status.statPositive("ivrpgucskadisblessing") and (self.affinity-1)%4 == 2 and notification.damageSourceKind == "bow" then
         world.sendEntityMessage(notification.targetEntityId, "applyStatusEffect", "ivrpgembrittle", 3, self.id)

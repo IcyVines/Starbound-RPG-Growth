@@ -103,7 +103,7 @@
     "maxCastRange" : 40,
     "energyCost" : 40,
     "projectileParameters" : {
-      "baseDamage" : 15
+      "baseDamage" : 20
     }
   },
 

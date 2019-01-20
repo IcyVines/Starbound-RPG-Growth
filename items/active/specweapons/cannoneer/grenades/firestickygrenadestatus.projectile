@@ -18,7 +18,7 @@
   "damageType" : "NoDamage",
   "damageKind" : "default",
   "onlyHitTerrain" : true,
-  "timeToLive" : 8,
+  "timeToLive" : 9,
   "persistentAudio" : "/sounds/ivrpgbeep.ogg",
 
   "scripts" : [ "remotegrenade.lua" ]

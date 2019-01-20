@@ -1,0 +1,25 @@
+{
+  "projectileName" : "ivrpgcannonball",
+  "physics" : "grenade",
+  "bounces" : 1,
+  "image" : "cannonball.png",
+  "timeToLive" : 10,
+  "fullbright" : false,
+  "power" : 20,
+  "speed" : 75,
+  "piercing" : true,
+  "knockback" : 50,
+  "damagePoly" : [[-8, 0], [-5,-5], [0,-8], [5,-5], [8, 0], [5, 5], [0, 8], [-5, 5]],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/specs/techs/cannoneer/impact_cannonball.ogg" ]
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+    }
+  ],
+  "damageKind" : "bluntforce",
+  "statusEffects" : [ {"effect" : "soldierstun", "duration" : 0.5} ]
+}

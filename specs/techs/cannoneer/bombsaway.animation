@@ -1,6 +1,65 @@
 {
-  "sounds" : {
-    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
-    "eat" : [ "/sfx/humanoid/eat3.ogg" ]
-  }
+	"particleEmitters" : {
+	  "fireParticles" : {
+	    "emissionRate" : 10.0,
+	    "particles" : [
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0, -0.2]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0, -0.1]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0.1, -0.2]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [-0.1, -0.1]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0, 0]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0, 0]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0, 0]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0, 0]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0, 0]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0, 0.2]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0, 0.1]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [0.1, 0.2]
+	      },
+	      {
+	        "particle" : "rocketbarrelpuff",
+	        "offset" : [-0.1, 0.1]
+	      }
+	    ]
+	  }
+	},
+	"sounds" : {
+		"recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+		"fire" : ["/sfx/gun/tank_shot.ogg"]
+	}
 }

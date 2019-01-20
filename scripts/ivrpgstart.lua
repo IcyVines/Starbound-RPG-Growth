@@ -362,6 +362,11 @@ function specChecks(enemyType, level, position, statusEffects, damage, damageTyp
           if ignore then trueIgnore = true end
         end
 
+        if unlockBehavior.weaponTypes then
+          ignore = not checkWeaponCombo(unlockBehavior.weaponTypes[1], unlockBehavior.weaponTypes[2])
+          if ignore then trueIgnore = true end
+        end
+
         if enemyTypes and not trueIgnore then
           for _,v in ipairs(enemyTypes) do
             if string.find(enemyType, v.type) then
@@ -375,6 +380,16 @@ function specChecks(enemyType, level, position, statusEffects, damage, damageTyp
     end
   end
 
+end
+
+function checkWeaponCombo(tag1, tag2)
+  self.heldItem = world.entityHandItem(self.id, "primary")
+  self.heldItem2 = world.entityHandItem(self.id, "alt")
+  if self.heldItem and self.heldItem2 and ((root.itemHasTag(self.heldItem, tag1) and root.itemHasTag(self.heldItem2, tag2)) or (root.itemHasTag(self.heldItem, tag2) and root.itemHasTag(self.heldItem2, tag1))) then
+    return true
+  else
+    return false
+  end
 end
 
 function dropUpgradeChips(level, position, name)

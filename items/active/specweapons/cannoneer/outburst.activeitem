@@ -69,11 +69,11 @@
     "class" : "GunFire",
 
     "fireTime" : 0.9,
-    "baseDps" : 9,
-    "energyUsage" : 30,
+    "baseDps" : 10,
+    "energyUsage" : 40,
     "inaccuracy" : 0.02,
     "projectileCount" : 5,
-    "minimumTriggerTime" : 0.2,
+    "minimumTriggerTime" : 1,
     "projectiles" : ["outbursticestickygrenadestatus", "outburstfirestickygrenadestatus", "outburstelectricstickygrenadestatus", "outburstpoisonstickygrenadestatus", "outburstremotestickygrenade"],
     "projectileType" : "stickygrenade",
     "projectileParameters" : {

@@ -46,8 +46,8 @@ function GunFire:update(dt, fireMode, shiftHeld)
     end
   end
 
-  if self.fireMode == (self.activatingFireMode or self.abilitySlot) and #storage.activeProjectiles > 0 then
-    self.powerCharge = math.max(self.powerCharge + dt, 5)
+  if self.fireMode == (self.activatingFireMode or self.abilitySlot) and #storage.activeProjectiles > 0 and self.minimumTriggerTimer == 0 then
+    self.powerCharge = math.min(self.powerCharge + dt*5/8, 5)
   end
 
   activeItem.setRecoil(self.recoilTimer > 0)
@@ -102,7 +102,7 @@ end
 function GunFire:powerUpProjectiles()
   for i, projectile in ipairs(storage.activeProjectiles) do
     if world.entityExists(projectile) then
-      world.callScriptedEntity(projectile, "powerUp", self.powerCharge)
+      world.callScriptedEntity(projectile, "powerUp", self.powerCharge, activeItem.ownerPowerMultiplier())
     end
   end 
 end
@@ -170,11 +170,11 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
     local inacChange = 0
     if math.abs(i-3) == 2 then
       inacChange = i - 3
-      params.speed = 50
+      params.speed = 40
     elseif math.abs(i-3) == 1 then
-      params.speed = 50 + (i-3)*5
+      params.speed = 40 + (i-3)*5
     else
-      params.speed = 50
+      params.speed = 40
     end
 
     local projectileId = world.spawnProjectile(
@@ -192,7 +192,6 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
   animator.burstParticleEmitter("fireParticles")
   animator.playSound("fire")
   self.recoilTimer = config.getParameter("recoilTime", 0.15)
-  return projectileId
 end
 
 function GunFire:firePosition()
@@ -216,7 +215,7 @@ function GunFire:energyPerShot()
 end
 
 function GunFire:damagePerShot()
-  return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
+  return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1)) / self.projectileCount
 end
 
 function GunFire:uninit()

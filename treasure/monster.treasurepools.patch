@@ -7,7 +7,7 @@
 			"op": "add",
 			"path": "/erchiushorrorTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 250]
+				"item": ["experienceorb", 500]
 			}
 		}
 	],
@@ -19,7 +19,7 @@
 			"op": "add",
 			"path": "/erchiushorrorTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 250]
+					"item": ["experienceorb", 500]
 				}
 			]
 
@@ -33,7 +33,7 @@
 			"op": "add",
 			"path": "/ixodoomTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 375]
+				"item": ["experienceorb", 750]
 			}
 		}
 	],
@@ -45,7 +45,7 @@
 			"op": "add",
 			"path": "/ixodoomTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 375]
+					"item": ["experienceorb", 750]
 				}
 			]
 
@@ -59,7 +59,7 @@
 			"op": "add",
 			"path": "/asranoxTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 500]
+				"item": ["experienceorb", 1000]
 			}
 		}
 	],
@@ -71,7 +71,7 @@
 			"op": "add",
 			"path": "/asranoxTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 500]
+					"item": ["experienceorb", 1000]
 				}
 			]
 
@@ -85,7 +85,7 @@
 			"op": "add",
 			"path": "/kluexavatarTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 625]
+				"item": ["experienceorb", 1250]
 			}
 		}
 	],
@@ -97,7 +97,7 @@
 			"op": "add",
 			"path": "/kluexavatarTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 625]
+					"item": ["experienceorb", 1250]
 				}
 			]
 
@@ -111,7 +111,7 @@
 			"op": "add",
 			"path": "/bigapeTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 750]
+				"item": ["experienceorb", 1500]
 			}
 		}
 	],
@@ -123,7 +123,7 @@
 			"op": "add",
 			"path": "/bigapeTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 750]
+					"item": ["experienceorb", 1500]
 				}
 			]
 
@@ -137,7 +137,7 @@
 			"op": "add",
 			"path": "/bonedragonTreasure/0/1/fill/-",
 			"value": {
-				"item": ["experienceorb", 875]
+				"item": ["experienceorb", 1750]
 			}
 		}
 	],
@@ -149,7 +149,7 @@
 			"op": "add",
 			"path": "/bonedragonTreasure/0/1/fill",
 			"value": [{
-					"item": ["experienceorb", 875]
+					"item": ["experienceorb", 1750]
 				}
 			]
 
@@ -162,7 +162,7 @@
 		}, {
 			"op": "add",
 			"path": "/guardianTreasure/0/1/fill/-",
-			"value": {"item": ["experienceorb", 1000]}
+			"value": {"item": ["experienceorb", 2000]}
 		}, {
 			"op": "add",
 			"path": "/guardianTreasure/0/1/fill/-",
@@ -177,7 +177,7 @@
 			"op": "add",
 			"path": "/guardianTreasure/0/1/fill",
 			"value": [
-			    {"item": ["experienceorb", 1000]},
+			    {"item": ["experienceorb", 2000]},
 			    {"pool": "ivrpgbosspool"}
 			]
 

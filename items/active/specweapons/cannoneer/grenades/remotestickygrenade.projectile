@@ -20,7 +20,7 @@
   "onlyHitTerrain" : true,
   "persistentAudio" : "/sounds/ivrpgbeep.ogg",
 
-  "timeToLive" : 8,
+  "timeToLive" : 9,
 
   "scripts" : [ "remotegrenade.lua" ]
 }
