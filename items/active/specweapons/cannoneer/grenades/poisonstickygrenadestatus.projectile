@@ -1,0 +1,25 @@
+{
+  "projectileName" : "outburstpoisonstickygrenadestatus",
+  "physics" : "laser",
+  "bounces" : -1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [60, 80, 40],
+  "image" : "poisonstickygrenade.png",
+  "animationCycle" : 1,
+  "frameNumber" : 4,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/poisonexplosionknockbackstatus.config"
+    }
+  ],
+  "power" : 50,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "onlyHitTerrain" : true,
+  "timeToLive" : 8,
+  "persistentAudio" : "/sounds/ivrpgbeep.ogg",
+
+  "scripts" : [ "remotegrenade.lua" ]
+}

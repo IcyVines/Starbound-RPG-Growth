@@ -8,6 +8,7 @@
       "file" : "/items/active/classweapons/wizardstaff/novaexplosionprojectiles/novaexplosionknockback.config"
     }
   ],
-  "damageKind" : "nova",
+  "damageKind" : "NoDamage",
+  "onlyHitTerrain" : true,
   "timeToLive" : 0
 }

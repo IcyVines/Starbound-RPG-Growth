@@ -8,6 +8,7 @@
       "file" : "/projectiles/explosions/regularexplosion2/electricexplosionknockbackstatus.config"
     }
   ],
-  "damageKind" : "electricplasma",
+  "damageKind" : "NoDamage",
+  "onlyHitTerrain" : true,
   "timeToLive" : 0
 }

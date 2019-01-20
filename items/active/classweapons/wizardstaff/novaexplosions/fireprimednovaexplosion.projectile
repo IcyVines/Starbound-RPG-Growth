@@ -8,6 +8,7 @@
       "file" : "/items/active/classweapons/wizardstaff/primednovaexplosions/fireprimedexplosionknockbackstatus.config"
     }
   ],
-  "damageKind" : "fireplasma",
+  "damageKind" : "NoDamage",
+  "onlyHitTerrain" : true,
   "timeToLive" : 0
 }

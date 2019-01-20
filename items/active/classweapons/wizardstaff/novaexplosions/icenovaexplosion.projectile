@@ -8,6 +8,7 @@
       "file" : "/projectiles/explosions/regularexplosion2/iceexplosionknockbackstatus.config"
     }
   ],
-  "damageKind" : "iceplasma",
+  "damageKind" : "NoDamage",
+  "onlyHitTerrain" : true,
   "timeToLive" : 0
 }

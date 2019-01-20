@@ -3,7 +3,7 @@ AdaptableAmmo = WeaponAbility:new()
 function AdaptableAmmo:init()
   self.ammoIndex = math.min(config.getParameter("ammoIndex", 1), #self.elementalTypes)
   self:adaptAbility()
-
+  self.lastIndex = config.getParameter("lastIndex", 1)
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
@@ -11,14 +11,22 @@ end
 
 function AdaptableAmmo:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
-
+  self.shiftHeld = shiftHeld
   if not self.weapon.currentAbility and self.fireMode == (self.activatingFireMode or self.abilitySlot) then
     self:setState(self.switch)
   end
 end
 
 function AdaptableAmmo:switch()
-  self.ammoIndex = (self.ammoIndex % #self.elementalTypes) + 1
+  if self.shiftHeld then
+    local newIndex = self.lastIndex
+    self.lastIndex = self.ammoIndex
+    self.ammoIndex = newIndex
+    activeItem.setInstanceValue("lastIndex", self.lastIndex)
+  else
+    self.ammoIndex = (self.ammoIndex % #self.elementalTypes) + 1
+    self.lastIndex = 1
+  end
   activeItem.setInstanceValue("ammoIndex", self.ammoIndex)
 
   self:adaptAbility()
@@ -37,4 +45,5 @@ function AdaptableAmmo:adaptAbility()
 end
 
 function AdaptableAmmo:uninit()
+  
 end

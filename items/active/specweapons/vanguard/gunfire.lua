@@ -84,7 +84,7 @@ function GunFire:updateDamageGiven()
   if notifications then
     for _,notification in pairs(notifications) do
       if (self.projectileType .. activeItem.hand()) == notification.damageSourceKind then
-        if notification.healthLost > 0 and (world.entityHealth(notification.targetEntityId) and notification.healthLost >= world.entityHealth(notification.targetEntityId)[1]) then
+        if notification.healthLost > 0 and notification.damageDealt > notification.healthLost then
           self.killTimer = math.min(self.killTimer + 0.5, 1.5)
           animator.playSound("onKill")
         end

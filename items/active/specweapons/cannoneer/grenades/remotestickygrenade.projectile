@@ -1,0 +1,26 @@
+{
+  "projectileName" : "outburstremotestickygrenade",
+  "physics" : "laser",
+  "bounces" : -1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [90, 80, 30],
+  "image" : "remotestickygrenade.png",
+  "animationCycle" : 1,
+  "frameNumber" : 4,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/specweapons/cannoneer/grenades/regularexplosionknockback.config"
+    }
+  ],
+  "power" : 50,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "onlyHitTerrain" : true,
+  "persistentAudio" : "/sounds/ivrpgbeep.ogg",
+
+  "timeToLive" : 8,
+
+  "scripts" : [ "remotegrenade.lua" ]
+}

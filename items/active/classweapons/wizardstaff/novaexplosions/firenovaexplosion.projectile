@@ -8,6 +8,7 @@
       "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
     }
   ],
-  "damageKind" : "fireplasma",
+  "damageKind" : "NoDamage",
+  "onlyHitTerrain" : true,
   "timeToLive" : 0
 }

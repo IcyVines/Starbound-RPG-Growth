@@ -87,7 +87,7 @@ function updateDamageGiven()
   notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
   if notifications then
     for _,notification in pairs(notifications) do
-      if world.entityHealth(notification.targetEntityId) and notification.healthLost >= world.entityHealth(notification.targetEntityId)[1] then
+      if notification.damageDealt > notification.healthLost and notification.healthLost > 0 then
         self.powerTimer = math.min((self.powerTimer + self.powerTime), self.powerTimeMax)
         self.powerUp = math.min(self.powerUp + 0.1, 2)
       elseif notification.healthLost > 0 and self.powerTimer > 0 then

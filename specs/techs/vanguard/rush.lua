@@ -43,7 +43,7 @@ function updateDamageGiven()
   if notifications then
     for _,notification in pairs(notifications) do
       if notification.damageSourceKind == "rushelectricplasma" then
-        if notification.healthLost > 0 and (world.entityHealth(notification.targetEntityId) and notification.healthLost >= world.entityHealth(notification.targetEntityId)[1]) then
+        if notification.healthLost > 0 and notification.damageDealt > notification.healthLost then
           status.modifyResourcePercentage("energy", 0.2)
           status.setResourceLocked("energy", false)
         end

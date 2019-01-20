@@ -1,0 +1,135 @@
+{
+  "projectileName" : "outburstshrapnelbomb",
+  "physics" : "stickygrenade",
+  "bounces" : -1,
+  "speed" : 50,
+  "damageKindImage" : "icon.png",
+  "image" : "shrapnelbomb.png",
+  "animationCycle" : 0.1,
+  "frameNumber" : 2,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/vsmallregularexplosion/vsmallregularexplosionnodamage.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/bullet_ricochet6.ogg",
+        "/sfx/projectiles/bullet_ricochet7.ogg",
+        "/sfx/projectiles/bullet_ricochet12.ogg",
+        "/sfx/projectiles/bullet_ricochet13.ogg"
+      ]
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 20
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 340
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 40
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 320
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 60
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 300
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 80
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 280
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 100
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 260
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 120
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 240
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 140
+    },
+    {
+      "action" : "projectile",
+      "type" : "outburstshrapnel",
+      "fuzzAngle" : 5,
+      "inheritDamageFactor" : 0.05,
+      "angleAdjust" : 220
+    }
+  ],
+  "power" : 0,
+  "damageKind" : "shotgunbullet",
+  "timeToLive" : 8,
+
+  "scripts" : [ "/projectiles/activeitems/remotegrenade/remotegrenade.lua" ]
+}

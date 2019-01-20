@@ -930,35 +930,38 @@ function updateProgress(notification, challengeKind, threatTarget, bossKind)
   local monsterName = world.monsterType(targetEntityId)
   local health = world.entityHealth(targetEntityId)
   local healthLost = notification.healthLost
+  local damageDealt = notification.damageDealt
   local hitType = notification.hitType
   local damageTeam = world.entityDamageTeam(targetEntityId)
   local isEnemy = damageTeam and damageTeam.type == "enemy" or false
   local threat = world.threatLevel()
   local bosses = {"crystalboss", "apeboss", "cultistboss", "dragonboss", "eyeboss", "kluexboss", "penguinUfo", "spiderboss", "robotboss", "electricguardianboss", "fireguardianboss", "iceguardianboss", "poisonguardianboss"}
   local vaultGuardians = {"electricguardianboss", "fireguardianboss", "iceguardianboss", "poisonguardianboss"}
-  local notKilled = (targetEntityId ~= self.lastMonster[threatTarget-3])
+  --local notKilled = (targetEntityId ~= self.lastMonster[threatTarget-3])
 
   if challengeKind == "boss" then
-    if notKilled and ((not health) or (healthLost >= health[1])) then
+    --if notKilled and ((not health) or (healthLost >= health[1])) then
+    if healthLost > 0 and damageDealt > healthLost then
       if bossKind == "vault" then
         for _,boss in pairs(vaultGuardians) do
           if boss == monsterName then
-          	self.lastMonster[threatTarget-3] = targetEntityId
+          	--self.lastMonster[threatTarget-3] = targetEntityId
             return true
           end
         end
       else
         if bossKind == monsterName then
-          self.lastMonster[threatTarget-3] = targetEntityId
+          --self.lastMonster[threatTarget-3] = targetEntityId
           return true
         end
       end
     end
   elseif challengeKind == "bosses" then
-    if notKilled and ((not health) or (healthLost >= health[1])) then
+    if healthLost > 0 and damageDealt > healthLost then
+    --if notKilled and ((not health) or (healthLost >= health[1])) then
       for _,boss in pairs(bosses) do
         if boss == monsterName then
-          self.lastMonster[threatTarget-3] = targetEntityId
+          --self.lastMonster[threatTarget-3] = targetEntityId
           return true
         end
       end 

@@ -1,0 +1,123 @@
+{
+  "itemName" : "ivrpgwoutburst",
+  "price" : 1000,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "^red;NOW THAT'S A LOT OF DAMAGE!",
+  "shortdescription" : "^#32ffb4;Outburst",
+  "tooltipKind" : "base",
+  "category" : "grenadeLauncher",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","grenadelauncher"],
+  "level" : 6,
+  "inventoryIcon" : [
+    { "image" : "outburst.png" }
+  ],
+
+  "classreq" : 5,
+  "specreq" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "outburst.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/grenade1.ogg" ],
+      "trigger" : [ "/sfx/interface/rocket_lockon.ogg" ]
+    },
+    "particleEmitters" : {
+      "fireParticles" : {
+        "emissionRate" : 10.0,
+        "particles" : [
+          {
+            "particle" : "rocketbarrelpuff",
+            "offset" : [3, 0.5]
+          },
+          {
+            "particle" : "rocketbarrelpuff",
+            "offset" : [3, 0.5]
+          },
+          {
+            "particle" : "rocketbarrelpuff",
+            "offset" : [3, 0.5]
+          },
+          {
+            "particle" : "rocketbarrelpuff",
+            "offset" : [3, 0.6]
+          },
+          {
+            "particle" : "rocketbarrelpuff",
+            "offset" : [3, 0.4]
+          }
+        ]
+      }
+    }
+  },
+
+  "baseOffset" : [1.6, 0.5],
+  "muzzleOffset" : [2.5, 0.25],
+  "gunScale" : [0.7, 0.7],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/cannoneer/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.9,
+    "baseDps" : 9,
+    "energyUsage" : 30,
+    "inaccuracy" : 0.02,
+    "projectileCount" : 5,
+    "minimumTriggerTime" : 0.2,
+    "projectiles" : ["outbursticestickygrenadestatus", "outburstfirestickygrenadestatus", "outburstelectricstickygrenadestatus", "outburstpoisonstickygrenadestatus", "outburstremotestickygrenade"],
+    "projectileType" : "stickygrenade",
+    "projectileParameters" : {
+      "knockback" : 15,
+      "knockbackRange" : 25
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "prefire" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "duration" : 0.05,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 10,
+        "weaponRotation" : 10,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : -10,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

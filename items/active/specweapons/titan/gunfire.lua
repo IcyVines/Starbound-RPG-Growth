@@ -63,8 +63,8 @@ function GunFire:updateDamageGiven(dt)
   notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
   if notifications then
     for _,notification in pairs(notifications) do
-      if self.projectileType == notification.damageSourceKind then
-        if notification.healthLost > 0 and (world.entityHealth(notification.targetEntityId) and notification.healthLost >= world.entityHealth(notification.targetEntityId)[1]) then
+      if self.projectileType .. activeItem.hand() == notification.damageSourceKind then
+        if notification.healthLost > 0 and notification.damageDealt > notification.healthLost then
           self.killTimer = 20
           self.killCount = math.min(self.killCount + 1, 8)
           animator.playSound("onKill")
@@ -180,6 +180,8 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
   if type(projectileType) == "table" then
     projectileType = projectileType[math.random(#projectileType)]
   end
+
+  params.damageKind = self.projectileType .. activeItem.hand()
 
   local projectileId = 0
   for i = 1, (projectileCount or self.projectileCount) do

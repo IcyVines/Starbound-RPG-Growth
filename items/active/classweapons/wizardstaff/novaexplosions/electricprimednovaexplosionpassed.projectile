@@ -8,6 +8,7 @@
       "file" : "/items/active/classweapons/wizardstaff/primednovaexplosions/electricprimedexplosionknockbackstatuspassed.config"
     }
   ],
-  "damageKind" : "electricplasma",
+  "damageKind" : "NoDamage",
+  "onlyHitTerrain" : true,
   "timeToLive" : 0
 }
