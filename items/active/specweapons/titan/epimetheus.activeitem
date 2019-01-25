@@ -3,7 +3,7 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Legendary",
-  "description" : "Don't leave even one enemy alive.",
+  "description" : "Don't leave even one enemy alive.\n^orange;Weapon Designed by Banny!",
   "shortdescription" : "^orange;Epimetheus",
   "tooltipKind" : "base",
   "category" : "machinePistol",

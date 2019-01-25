@@ -18,6 +18,7 @@ function init()
   self.id = entity.id()
   self.affinity = 0
   self.class = 0
+  self.profession = 0
 
   message.setHandler("bleedCheck", function(_, _, damage, sourceKind, sourceId)
     local bleedChance = status.stat("ivrpgBleedChance")
@@ -33,6 +34,7 @@ function init()
   self.specList = root.assetJson("/specList.config")
   self.classList = root.assetJson("/classList.config")
   self.affinityList = root.assetJson("/affinityList.config")
+  self.profList = root.assetJson("/professionList.config")
   self.statList = root.assetJson("/stats.config")
   self.weaponScaling = root.assetJson("/weaponScaling.config")
 end
@@ -118,6 +120,7 @@ function update(dt)
     end
   end  
 
+  updateProfessionEffects(dt)
   updateClassEffects(dt)
   updateAffinityEffects(dt)
   if not self.classicMode then
@@ -243,6 +246,69 @@ function isInLiquid()
     (mcontroller.liquidId()== 58) or
     (mcontroller.liquidId()== 60) or 
     (mcontroller.liquidId()== 69))
+end
+
+-- Profession Effects
+function updateProfessionInfo()
+  self.profInfo = root.assetJson("/professions/" .. self.profList[self.profession] .. ".config")
+end
+
+function updateProfessionEffects(dt)
+
+  local profession = self.profession
+  self.profession = world.entityCurrency(self.id, "proftype")
+  if self.profession == 0 then
+    status.clearPersistentEffects("ivrpgprofessioneffects")
+    if profession ~= 0 then
+      local profInfo = root.assetJson("/professions/" .. self.profList[profession] .. ".config")
+      status.removeEphemeralEffect(profInfo.ability.name)
+    end
+    self.profInfo = false
+    return
+  end
+
+  updateProfessionInfo()
+  local classicMode = self.classicMode
+
+  -- Ability
+  status.addEphemeralEffect(self.profInfo.ability.name, math.huge)
+
+  -- Stat Bonuses
+  local statDictionary = {}
+  local effectsConfig = {}
+  local movementConfig = {}
+  for k,v in ipairs(self.profInfo.scaling) do
+    table.insert(statDictionary, v)
+  end
+  for k,v in ipairs(self.profInfo.effects) do
+    table.insert(statDictionary, v)
+  end
+  if classicMode then
+    for k,v in ipairs(self.profInfo.classic) do
+      table.insert(statDictionary, v)
+    end
+  end
+
+  for k,v in ipairs(statDictionary) do
+    if v.type == "status" or v.type == "movement" then
+      for x,y in pairs(v.apply) do
+        local classic = y.halvingStat and y.halvingAmount * self.classicBonuses[y.halvingStat] or 0
+        if v.type == "status" then
+          effectConfig = {}
+          effectConfig[y.type] = y.amount * (y.negative and -1 or 1) + classic
+          effectConfig.stat = y.stat
+          table.insert(effectsConfig, effectConfig)
+        elseif v.type == "movement" then
+          movementConfig = {}
+          movementConfig[y.stat] = y.amount + classic
+          mcontroller.controlModifiers(movementConfig)
+        end
+      end
+    end
+  end
+
+  status.setPersistentEffects("ivrpgprofessioneffects", effectsConfig)
+
 end
 
 -- Class Effects
@@ -527,7 +593,8 @@ function updateClassicMode()
   if weaponsDisabled then
     local enablesSpec = self.specInfo and getDictionaryFromType(self.specInfo.classic, "enable")
     local enablesClass = getDictionaryFromType(self.classInfo.classic, "enable")
-    local enables = joinMaps(enablesClass, enablesSpec)
+    local enablesProf = self.profInfo and getDictionaryFromType(self.profInfo.classic, "enable")
+    local enables = joinMaps(joinMaps(enablesClass, enablesSpec), enablesProf)
     local loopBreak = false
     if enables then
       if self.heldItem then

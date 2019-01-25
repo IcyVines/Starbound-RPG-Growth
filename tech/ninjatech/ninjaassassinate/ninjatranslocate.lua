@@ -77,7 +77,7 @@ function teleport()
 
   if twoHanded then
     if not root.itemHasTag(heldItem, "hammer") and root.itemHasTag(heldItem, "melee") then
-      self.dps = self.itemConf.config.primaryAbility.baseDps
+      self.dps = self.itemConf.config.primaryAbility.baseDps or 1
       self.damage = 2*status.stat("powerMultiplier")*self.dps
     end
   else
