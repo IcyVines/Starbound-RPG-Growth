@@ -1,0 +1,31 @@
+{
+  "itemName" : "ivrpgadvancedcapturepod",
+  "price" : 1250,
+  "rarity" : "Rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "advancedcapturepod.png",
+  "image" : "advancedcapturepod.png",
+  "shortdescription" : "Advanced Capture Pod",
+  "description" : "This Capture Pod automatically seeks enemies until it hits a block.",
+  "radioMessagesOnPickup" : [ "pickupcapturepod" ],
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "ivrpgadvancedcapturepod",
+  "projectileConfig" : {
+    "speed" : 40,
+    "level" : 7,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

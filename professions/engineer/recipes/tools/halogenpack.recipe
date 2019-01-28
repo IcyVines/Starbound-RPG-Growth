@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "durasteelbar", "count" : 4 },
+    { "item" : "wire", "count" : 3 },
+    { "item" : "ivrpgelectrumbar", "count" : 1 },
+    { "item" : "siliconboard", "count" : 1 },
+    { "item" : "smallbattery", "count" : 3 }
+  ],
+  "output" : { "item" : "halogenpack", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "tools" ]
+}

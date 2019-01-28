@@ -624,6 +624,17 @@ function updateClassicMode()
                 end
                 if loopBreak then break end
               end
+            elseif info.onlyWithCorrectWeapons then
+              if self.heldItem2 then
+                for x,y in ipairs(root.itemTags(self.heldItem2)) do
+                  if y ~= v and weaponDictionary[y] and weaponDictionary[y].all then
+                    weaponsDisabled = true
+                    break
+                  end
+                  weaponsDisabled = false
+                end
+              end
+              break
             elseif info.anyHand then
               weaponsDisabled = false
               break
@@ -664,6 +675,17 @@ function updateClassicMode()
                 end
                 if loopBreak then break end
               end
+            elseif info.onlyWithCorrectWeapons then
+              if self.heldItem then
+                for x,y in ipairs(root.itemTags(self.heldItem)) do
+                  if y ~= v and weaponDictionary[y] and weaponDictionary[y].all then
+                    weaponsDisabled = true
+                    break
+                  end
+                  weaponsDisabled = false
+                end
+              end
+              break
             elseif info.anyHand then
               weaponsDisabled = false
               break

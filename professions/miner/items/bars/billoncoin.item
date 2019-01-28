@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgbilloncoin",
+  "price" : 100,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "billoncoin.png",
+  "description" : "A coin made of a Silver-Copper alloy that fetches a higher price.",
+  "shortdescription" : "Billon Coin",
+  "itemTags" : [ "reagent" ]
+}

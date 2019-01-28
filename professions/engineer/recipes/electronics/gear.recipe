@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "ivrpgsteelbar", "count" : 1 },
+    { "item" : "ivrpgmagmasample", "count" : 1 }
+  ],
+  "output" : { "item" : "ivrpggear", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "electronics", "all" ]
+}

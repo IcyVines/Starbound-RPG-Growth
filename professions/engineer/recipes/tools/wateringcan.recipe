@@ -1,0 +1,13 @@
+{
+  "input" : [
+    { "item" : "ivrpgsteelbar", "count" : 2 },
+    { "item" : "ivrpgmagmasample", "count" : 1 },
+    { "item" : "greendye", "count" : 1 },
+    { "item" : "reddye", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "wateringcan",
+    "count" : 1
+  },
+  "groups" : [ "ivrpgengineerstation", "tools" ]
+}

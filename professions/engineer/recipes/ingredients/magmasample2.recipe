@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "scorchedcore", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "ivrpgmagmasample",
+    "count" : 3
+  },
+  "groups" : [ "ivrpgengineerstation", "ingredients", "all" ]
+}

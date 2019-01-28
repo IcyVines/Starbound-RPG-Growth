@@ -3,7 +3,7 @@
   "price" : 750,
   "level" : 7,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "description" : "Just sickening. Perfect.",
   "shortdescription" : "^green;Siphon Spore",
   "tooltipKind" : "base",

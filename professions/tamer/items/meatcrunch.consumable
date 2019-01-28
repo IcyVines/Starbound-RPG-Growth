@@ -1,0 +1,27 @@
+{
+  "itemName" : "ivrpgmeatcrunch",
+  "rarity" : "Uncommon",
+  "price" : 12,
+  "category" : "food",
+  "eventCategory" : "cookingIngredient",
+  "inventoryIcon" : "meatcrunch.png",
+  "description" : "Ground bones and meat. Effect: +30 Armor.",
+  "shortdescription" : "Meat Crunch",
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "effects" : [ [
+      {
+        "effect" : "foodpoison"
+      },
+      {
+        "effect" : "ivrpgweaken"
+      }
+    ] ],
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.5,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "corefragmentore", "count" : 5 }
+  ],
+  "output" : {
+    "item" : "volatilepowder",
+    "count" : 3
+  },
+  "groups" : [ "ivrpgengineerstation", "ingredients", "all" ]
+}

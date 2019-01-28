@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "coalore", "count" : 3 },
+    { "item" : "ironbar", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "ivrpgsteelbar",
+    "count" : 2
+  },
+  "duration" : 0.2,
+  "groups" : [ "ivrpgminerstation", "alloys", "all" ]
+}

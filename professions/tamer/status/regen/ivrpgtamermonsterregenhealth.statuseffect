@@ -1,0 +1,23 @@
+{
+  "name" : "ivrpgtamermonsterregenhealth",
+
+  "effectConfig" : {
+    "healTime" : 15,
+    "bonusEffects" : [
+      {
+        "stat" : "maxHealth",
+        "effectiveMultiplier" : 1.5
+      }
+    ]
+  },
+  "defaultDuration" : 15,
+
+  "scripts" : [
+    "ivrpgtamermonsterregen.lua"
+  ],
+
+  "animationConfig" : "ivrpgtamermonsterregen.animation",
+
+  "label" : "Tamer",
+  "icon" : "/professions/tamer/status/rage.png"
+}

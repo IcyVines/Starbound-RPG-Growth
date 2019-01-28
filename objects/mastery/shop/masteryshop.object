@@ -1,7 +1,7 @@
 {
   "objectName" : "ivrpgmasteryshop",
   "colonyTags" : ["commerce"],
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "category" : "crafting",
   "description" : "A masterfully designed wooden desk (with a pinkish hue) for masters to manifest items from mastery.",
   "shortdescription" : "Master's Desk",

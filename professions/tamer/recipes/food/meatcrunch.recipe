@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "alienmeat", "count" : 1 },
+    { "item" : "bone", "count" : 2 }
+  ],
+  "output" : {
+    "item" : "ivrpgmeatcrunch",
+    "count" : 1
+  },
+  "groups" : [ "ivrpgtamerstation", "food" ]
+}

@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgtamerstatus",
+
+  "effectConfig" : {
+    "healingStatus" : "ivrpgtamermonsterstatus"
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgtamerstatus.lua"
+  ],
+
+  "animationConfig" : "ivrpgtamerstatus.animation",
+
+  "label" : "Tamer",
+  "icon" : "/professions/tamer/status/rage.png"
+}

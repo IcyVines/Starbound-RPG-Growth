@@ -2,7 +2,7 @@
   "itemName" : "soldierversagun2",
   "price" : 1500,
   "maxStack" : 1,
-  "rarity" : "Rare",
+  "rarity" : "Legendary",
   "description" : "So... It's a sniper now too?",
   "shortdescription" : "Versa Impact",
   "tooltipKind" : "base",

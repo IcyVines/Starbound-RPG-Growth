@@ -1,0 +1,7 @@
+{
+  "input" : [
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 1 }
+  ],
+  "output" : { "item" : "money", "count" : 60 },
+  "groups" : [ "refinery" ]
+}

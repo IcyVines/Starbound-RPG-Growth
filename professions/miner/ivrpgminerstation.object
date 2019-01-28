@@ -1,0 +1,55 @@
+{
+  "objectName" : "ivrpgminerstation",
+  "colonyTags" : ["commerce", "crafting", "steampunk", "mechanical", "geode"],
+  "rarity" : "Essential",
+  "category" : "crafting",
+  "description" : "A good ol' furnace combined with a tray to make pickaxes.\nDesigned by JM401!",
+  "shortdescription" : "Miner Station",
+  "printable" : false,
+
+  "apexDescription" : "The ores on this table are just for display, but the furnace seems rather efficient.",
+  "avianDescription" : "This warmth emanating from this is quite pleasing.",
+  "floranDescription" : "Hot, like sun!!",
+  "glitchDescription" : "Joking. This table seems to be quite similar to me. Perhaps it is a long lost relative.",
+  "humanDescription" : "I wonder if I can use this to cook.",
+  "hylotlDescription" : "A traditional furnace to melt and mix ores. Quite useful.",
+  "novakidDescription" : "This ain't for Smiths, but ye' can make some pretty good picks with the molds at the top.",
+
+  "inventoryIcon" : "table.png",
+  "orientations" : [
+    {
+      "dualImage" : "table.png:<color>",
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "proftype" : 6,
+
+  "learnBlueprintsOnPickup" : [
+    "ivrpgsteelbar",
+    "ivrpgelectrumbar",
+    "ivrpgplatinumbar",
+    "ivrpgbilloncoin",
+    "copperpickaxe",
+    "ivrpgsteelpickaxe",
+    "silverpickaxe",
+    "ivrpgelectrumpickaxe",
+    "goldpickaxe",
+    "platinumpickaxe",
+    "diamondpickaxe"
+  ],
+
+  "scripts" : ["/professions/table.lua"],
+  "scriptDelta" : 5,
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/professions/miner/ivrpgminerstation.config",
+    "filter" : [ "ivrpgminerstation" ]
+  }
+}

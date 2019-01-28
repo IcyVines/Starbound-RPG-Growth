@@ -27,14 +27,6 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 
-  self.nearAggressiveEntities = 0
-  local targetIds = world.entityQuery(mcontroller.position(), 10)
-  for _,id in ipairs(targetIds) do
-    if world.entityAggressive(id) or (world.entityDamageTeam(id).type == "pvp" and world.entityCanDamage(self.id, id)) then
-      self.nearAggressiveEntities = self.nearAggressiveEntities + 0.025
-    end
-  end
-
   self:updateDamageGiven(dt)
   self:checkPerfectShield(dt)
 
@@ -212,7 +204,7 @@ function GunFire:aimVector(inaccuracy)
 end
 
 function GunFire:energyPerShot()
-  return self.energyUsage * (self.fireTime - math.min(self.nearAggressiveEntities, 0.1)) * (self.energyUsageMultiplier or 1.0)
+  return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
 end
 
 function GunFire:damagePerShot()

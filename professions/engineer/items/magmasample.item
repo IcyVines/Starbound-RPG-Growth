@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgmagmasample",
+  "price" : 20,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "magmasample.png",
+  "description" : "A sample of magma used to melt ingredients.",
+  "shortdescription" : "Magma Sample",
+  "itemTags" : [ "reagent" ]
+}

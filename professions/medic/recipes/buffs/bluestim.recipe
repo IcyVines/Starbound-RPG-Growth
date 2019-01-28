@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "petalblue", "count" : 6 },
+    { "item" : "staticcell", "count" : 1 },
+    { "item" : "syringe", "count" : 2 }
+  ],
+  "output" : {
+    "item" : "bluestim",
+    "count" : 2
+  },
+  "groups" : [ "ivrpgmedicstation", "buffs" ]
+}

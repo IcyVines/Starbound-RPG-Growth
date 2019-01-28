@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "ivrpgplatinumbar", "count" : 6 },
+    { "item" : "ivrpgelectrumbar", "count" : 1 },
+    { "item" : "salve", "count" : 1 },
+    { "item" : "livingroot", "count" : 1 },
+    { "item" : "leather", "count" : 2 },
+    { "item" : "diamond", "count" : 1 }
+  ],
+  "output" : { "item" : "healingcollar1", "count" : 1 },
+  "groups" : [ "ivrpgtamerstation", "accessories" ]
+}

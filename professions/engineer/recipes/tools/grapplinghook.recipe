@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "durasteelbar", "count" : 10 },
+    { "item" : "ivrpgelectrumbar", "count" : 1 },
+    { "item" : "climbingrope", "count" : 1 },
+    { "item" : "ivrpggear", "count" : 1 },
+    { "item" : "ivrpgmagmasample", "count" : 1 },
+    { "item" : "smallbattery", "count" : 3 }
+  ],
+  "output" : { "item" : "grapplinghook", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "tools" ]
+}

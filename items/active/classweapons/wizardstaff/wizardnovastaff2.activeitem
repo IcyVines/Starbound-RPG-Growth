@@ -3,7 +3,7 @@
   "price" : 1500,
   "maxStack" : 1,
   "level" : 5,
-  "rarity" : "rare",
+  "rarity" : "Legendary",
   "description" : "The more dying stars you add, the harder this hits.",
   "shortdescription" : "Super Nova",
   "tooltipKind" : "base",

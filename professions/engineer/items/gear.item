@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpggear",
+  "price" : 20,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "gear.png",
+  "description" : "You'll need these to make more complex machinery.",
+  "shortdescription" : "Steel Gear",
+  "itemTags" : [ "reagent" ]
+}

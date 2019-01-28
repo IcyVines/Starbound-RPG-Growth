@@ -3,7 +3,7 @@
 	"price": 1500,
 	"level": 6,
 	"maxStack": 1,
-	"rarity": "legendary",
+	"rarity": "Essential",
 	"description": "They say life is important... Well, so is taking it away.",
 	"shortdescription": "^gray;For Us All",
 	"tooltipKind": "base",

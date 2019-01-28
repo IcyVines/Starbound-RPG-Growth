@@ -4,7 +4,7 @@
   "category" : "Unique Drill",
   "inventoryIcon" : "explorerspiradrill3.png",
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "tooltipKind" : "base",
   "description" : "Pierce the Heavens!",
   "shortdescription" : "^yellow;Ravenous Spira",

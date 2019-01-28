@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "staticcell", "count" : 1 },
+    { "item" : "goldbar", "count" : 2 },
+    { "item" : "liquidpoison", "count" : 3 }
+  ],
+  "output" : { "item" : "ivrpgspowercell", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "batteries", "all" ]
+}

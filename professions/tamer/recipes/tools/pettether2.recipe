@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "titaniumbar", "count" : 2 },
+    { "item" : "diamond", "count" : 1 },   
+    { "item" : "ivrpgether", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "pettether",
+    "count" : 1
+  },
+  "groups" : [ "ivrpgtamerstation", "tools" ]
+}

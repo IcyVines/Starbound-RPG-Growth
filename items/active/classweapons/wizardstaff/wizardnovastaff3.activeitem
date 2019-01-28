@@ -3,7 +3,7 @@
   "price" : 2250,
   "maxStack" : 1,
   "level" : 7,
-  "rarity" : "legendary",
+  "rarity" : "Essential",
   "description" : "Explosions. Explosions everywhere.",
   "shortdescription" : "^magenta;Primed Nova",
   "tooltipKind" : "base",

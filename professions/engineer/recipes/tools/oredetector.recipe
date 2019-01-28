@@ -1,0 +1,14 @@
+{
+  "input" : [
+    { "item" : "refinedferozium", "count" : 3 },
+    { "item" : "refinedviolium", "count" : 3 },
+    { "item" : "refinedaegisalt", "count" : 3 },
+    { "item" : "ivrpgelectrumbar", "count" : 1 },
+    { "item" : "ivrpgmagmasample", "count" : 1 },
+    { "item" : "wire", "count" : 3 },
+    { "item" : "stickofram", "count" : 1 },
+    { "item" : "smallbattery", "count" : 3 }
+  ],
+  "output" : { "item" : "oredetector", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "tools" ]
+}

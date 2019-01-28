@@ -1,0 +1,19 @@
+{
+  "name" : "ivrpgmedicstatus",
+
+  "effectConfig" : {
+    "healTime" : 60,
+    "healthThreshold" : 0.5,
+    "healingStatus" : "ivrpgmedicregeneration"
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgmedicstatus.lua"
+  ],
+
+  "animationConfig" : "ivrpgmedicstatus.animation",
+
+  "label" : "Medic",
+  "icon" : "/professions/medic/status/heal.png"
+}

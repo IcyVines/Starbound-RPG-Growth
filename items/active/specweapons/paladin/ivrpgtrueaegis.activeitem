@@ -3,7 +3,7 @@
   "level": 6,
   "price" : 1000,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "category" : "^orange;Holy Shield",
   "description" : "The Protectorate has fallen. But us? We will never fall.",
   "shortdescription" : "^blue;True Aegis",

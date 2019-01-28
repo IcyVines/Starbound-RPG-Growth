@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "staticcell", "count" : 1 },
+    { "item" : "ivrpgelectrumbar", "count" : 1 },
+    { "item" : "ivrpgacidsample", "count" : 1 }
+  ],
+  "output" : { "item" : "ivrpgspowercell", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "batteries", "all" ]
+}

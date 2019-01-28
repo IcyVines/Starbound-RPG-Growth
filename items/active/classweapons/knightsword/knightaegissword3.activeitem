@@ -3,7 +3,7 @@
 	"price": 2250,
 	"level": 7,
 	"maxStack": 1,
-	"rarity": "legendary",
+	"rarity": "Essential",
 	"description": "The light reflecting off the blade feels welcoming.\n^blue;Attack Combo by Ribs.",
 	"shortdescription": "^blue;Vital Aegis",
 	"tooltipKind": "base",

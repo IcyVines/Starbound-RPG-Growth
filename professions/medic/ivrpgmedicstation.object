@@ -1,0 +1,41 @@
+{
+  "objectName" : "ivrpgmedicstation",
+  "colonyTags" : ["commerce", "crafting", "science"],
+  "rarity" : "Essential",
+  "category" : "crafting",
+  "description" : "A pristine white cabinet-counter combo covered in medical supplies.\nDesigned by JM401!",
+  "shortdescription" : "Medic Station",
+  "printable" : false,
+
+  "apexDescription" : "This pristine counter covered in sanitary tools should be useful for patching up.",
+  "avianDescription" : "I hope making medicine isn't too heretical.",
+  "floranDescription" : "Table isss very clean. Floran wantss to sstain it red!",
+  "glitchDescription" : "Intrigued. Despite being mechanical, I can somehow still use the bandages from this table.",
+  "humanDescription" : "Now this looks like a proper medicine cabinet. Better look through it.",
+  "hylotlDescription" : "I should be able to make all kinds of medical supplies using this.",
+  "novakidDescription" : "This table isn't much my style, but I reckon I can still use it if I learn how.",
+
+  "inventoryIcon" : "table.png",
+  "orientations" : [
+    {
+      "dualImage" : "table.png:<color>",
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "proftype" : 1,
+
+  "scripts" : ["/professions/table.lua"],
+  "scriptDelta" : 5,
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/professions/medic/ivrpgmedicstation.config",
+    "filter" : [ "ivrpgmedicstation" ]
+  }
+}

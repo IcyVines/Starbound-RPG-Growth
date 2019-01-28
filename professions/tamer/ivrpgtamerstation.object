@@ -1,0 +1,59 @@
+{
+  "objectName" : "ivrpgtamerstation",
+  "colonyTags" : ["commerce", "crafting"],
+  "rarity" : "Essential",
+  "category" : "crafting",
+  "description" : "It might look a bit scary at first, but a Tamer treats their pets right.\nDesigned by JM401!",
+  "shortdescription" : "Tamer Station",
+  "printable" : false,
+
+  "apexDescription" : "The cage is a bit unpleasant, but overall a solid table.",
+  "avianDescription" : "I wouldn't want to be in that cage.",
+  "floranDescription" : "Floran can see sstains from meat and bonesss. Ssadly, meat is for monssters.",
+  "glitchDescription" : "Critical. Even though this table looks uninviting, it is able to accomodate for most monsters.",
+  "humanDescription" : "I was never into whip-play. Well... maybe a bit.",
+  "hylotlDescription" : "This table just doesn't meet my standards, but it will have to do.",
+  "novakidDescription" : "Now that there's a sturdy lookin' whip!",
+
+  "inventoryIcon" : "table.png",
+  "orientations" : [
+    {
+      "dualImage" : "table.png:<color>",
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "proftype" : 2,
+
+  "scripts" : ["/professions/table.lua"],
+  "scriptDelta" : 5,
+
+  "learnBlueprintsOnPickup" : [
+    "damagecollar1",
+    "damagecollar2",
+    "damagecollar3",
+    "healthcollar1",
+    "healthcollar2",
+    "healthcollar3",
+    "healingcollar1",
+    "healingcollar2",
+    "healingcollar3",
+    "lightcollar",
+    "obliviouscollar",
+    "ivrpgadvancedcapturepod",
+    "ivrpgmeatcrunch",
+    "ivrpgtripletreat",
+    "ivrpgveggiemix"
+  ],
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/professions/tamer/ivrpgtamerstation.config",
+    "filter" : [ "ivrpgtamerstation" ]
+  }
+}

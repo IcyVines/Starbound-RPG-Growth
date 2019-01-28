@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "syntheticmaterial", "count" : 1 },
+    { "item" : "livingroot", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "nanowrap",
+    "count" : 8
+  },
+  "groups" : [ "ivrpgmedicstation", "healing" ]
+}

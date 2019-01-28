@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "ivrpgplatinumbar", "count" : 4 },
+    { "item" : "ivrpgsteelbar", "count" : 2 },
+    { "item" : "ivrpgelectrumbar", "count" : 2 },
+    { "item" : "smallbattery", "count" : 2 },
+    { "item" : "siliconboard", "count" : 2 },
+    { "item" : "wire", "count" : 6 }
+  ],
+  "output" : { "item" : "relocator", "count" : 1 },
+  "groups" : [ "ivrpgtamerstation", "tools" ]
+}

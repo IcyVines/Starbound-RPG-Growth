@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "ivrpgplatinumbar", "count" : 6 },
+    { "item" : "ivrpgelectrumbar", "count" : 1 },
+    { "item" : "sharpenedclaw", "count" : 1 },
+    { "item" : "leather", "count" : 2 },
+    { "item" : "diamond", "count" : 1 }
+  ],
+  "output" : { "item" : "damagecollar1", "count" : 1 },
+  "groups" : [ "ivrpgtamerstation", "accessories" ]
+}

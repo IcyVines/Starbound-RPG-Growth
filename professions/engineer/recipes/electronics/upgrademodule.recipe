@@ -1,0 +1,13 @@
+{
+  "input" : [
+    { "item" : "battery", "count" : 1 },
+    { "item" : "siliconboard", "count" : 1 },
+    { "item" : "stickofram", "count" : 1 },
+    { "item" : "ivrpgelectrumbar", "count" : 2 },
+    { "item" : "ivrpgplatinumbar", "count" : 3 },
+    { "item" : "refinedviolium", "count" : 8 },
+    { "item" : "copperbar", "count" : 2 }
+  ],
+  "output" : { "item" : "upgrademodule", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "electronics", "all" ]
+}

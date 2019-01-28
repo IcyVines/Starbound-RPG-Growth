@@ -16,6 +16,7 @@ function init()
   self.class = player.currency("classtype")
   self.spec = player.currency("spectype")
   self.specList = root.assetJson("/specList.config")
+  self.professionTimer = 0
   self.specsAvailable = {}
   updateSpecsAvailable()
 
@@ -113,7 +114,22 @@ function update(dt)
     self.spec = player.currency("spectype")
   end
 
-  -- Pioneer Effect
+  updateProfessionEffects(dt)
+  updateSpecializationEffects(dt)
+
+  updateUpgrades()
+  updateSpecs(dt)
+  unlockSpecs()
+
+  if self.xpScalingTimer > 0 then
+    self.xpScalingTimer = math.max(self.xpScalingTimer - dt, 0)
+  else
+    self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
+  end
+end
+
+function updateSpecializationEffects(dt)
+   -- Pioneer Effect
   if status.statPositive("ivrpgterranova") then
     local worldId = player.worldId()
     local count = 1
@@ -138,41 +154,69 @@ function update(dt)
     else
       status.setStatusProperty("ivrpgterranova", "Not Celestial")
     end
-    -- End Pioneer Effect
+  end
+  -- End Pioneer Effect
+end
 
-    --[[for _,v in ipairs(player.orbitBookmarks()) do
-      for k,val in pairs(v) do
-        --sb.logInfo(k)
-        for x,y in pairs(val) do
-          if type(y) == "table" then
-            for r,o in pairs(y) do
-              if type(o) == "table" then
-                for f,g in pairs(o) do
-                  sb.logInfo(x .. " " .. r .. " " .. f .. " " .. g)
-                end
-              else
-                sb.logInfo(x .. " " .. r .. " " .. o)
-              end
-            end
-          else
-            sb.logInfo(x .. " " .. y)
+function updateProfessionEffects(dt)
+  local proftype = player.currency("proftype")
+  self.professionTimer = math.max(self.professionTimer - dt, 0)
+  -- Medic
+  if not status.statusProperty("ivrpgprofessionpassive", false) then return end
+  if proftype == 1 then
+    if status.resource("health") / status.stat("maxHealth") < 0.25 and not hasEphemeralStats(status.activeUniqueStatusEffectSummary(), {"bandageheal","salveheal","nanowrapheal","medkitheal"}) then
+      local healthItems = {{item = "salve", duration = 10}, {item = "bandage", duration = 1}, {item = "medkit", duration = 10}, {item = "nanowrap", duration = 1}}
+      for _,v in ipairs(healthItems) do
+        if self.professionTimer == 0 and player.hasItem(v.item) then
+          player.consumeItem({v.item, 1})
+          status.addEphemeralEffect(v.item .. "heal", v.duration, self.id)
+          status.setStatusProperty("ivrpgprofessionpassiveactivation", true)
+          self.professionTimer = v.duration
+        end
+      end
+    end
+  elseif proftype == 2 then
+    local foodItems = {
+      {item = "ivrpgmeatcrunch", statusName = "armor"},
+      {item = "ivrpgtripletreat", statusName = "damage"},
+      {item = "ivrpgveggiemix", statusName = "health"},
+      {item = "rawpoultry", statusName = ""},
+      {item = "alienmeat", statusName = ""},
+      {item = "rawfish", statusName = ""}
+    }
+    local item = false
+    for _,v in ipairs(foodItems) do
+      if player.hasItem(v.item) and not hasEphemeralStat(status.activeUniqueStatusEffectSummary(), "ivrpgtamerstatuscooldown") then
+        item = v
+        break
+      end
+    end
+    local targetIds = item and world.monsterQuery(entity.position(), 20)
+    if targetIds then
+      for _,id in ipairs(targetIds) do
+        if world.entityDamageTeam(id).type == "friendly" then
+          local health = world.entityHealth(id)
+          if health and health[1]/health[2] < 0.5 then
+            player.consumeItem({item.item, 1})
+            status.addEphemeralEffect("ivrpgtamerstatuscooldown", 30)
+            world.sendEntityMessage(id, "applyStatusEffect", "ivrpgtamermonsterregen" .. item.statusName, 15, self.id)
+            break
           end
         end
       end
-    end]]
+    end
+  elseif proftype == 7 then
+    if status.resource("energy") / status.stat("maxEnergy") < 0.25 and not hasEphemeralStat(status.activeUniqueStatusEffectSummary(), "ivrpgengineerstatuscooldown") then
+      local energyItems = {{item = "smallbattery", kind = "modifyResource", amount = 20}, {item = "battery", kind = "modifyResource", amount = 60}, {item = "ivrpgspowercell", kind = "modifyResourcePercentage", amount = 0.5}}
+      for _,v in ipairs(energyItems) do
+        if player.hasItem(v.item) then
+          player.consumeItem({v.item, 1})
+          status[v.kind]("energy", v.amount)
+          status.addEphemeralEffect("ivrpgengineerstatuscooldown")
+        end
+      end
+    end
   end
-
-  updateUpgrades()
-  updateSpecs()
-  unlockSpecs()
-
-  if self.xpScalingTimer > 0 then
-    self.xpScalingTimer = math.max(self.xpScalingTimer - dt, 0)
-  else
-    self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
-  end
-
-
 end
 
 function updateSpecsAvailable()
@@ -265,10 +309,35 @@ function updateUpgrades()
 
 end
 
-function updateSpecs()
+function updateSpecs(dt)
   if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
     return
   end
+
+  -- Pioneer
+  if self.class == 6 and type(status.statusProperty("ivrpgsupioneer", 0)) == "number" then
+    local worldId = player.worldId()
+    if worldId:sub(1, 14) == "CelestialWorld" then
+      local visitedPlanets = status.statusProperty("ivrpgsupioneerplanets", {})
+      if not visitedPlanets[worldId] then
+        visitedPlanets[worldId] = 0
+        status.setStatusProperty("ivrpgsupioneerplanets", visitedPlanets)
+      else
+        if type(visitedPlanets[worldId]) == "number" then
+          local time = visitedPlanets[worldId] + dt
+          if time > 180 then
+            visitedPlanets[worldId] = true
+            status.setStatusProperty("ivrpgsupioneer", status.statusProperty("ivrpgsupioneer", 0) + 1)
+          else
+            visitedPlanets[worldId] = time
+          end
+          status.setStatusProperty("ivrpgsupioneerplanets", visitedPlanets)
+        end
+      end
+    end
+  end
+  -- End Pioneer
+
 end
 
 function unlockSpecs()
@@ -456,6 +525,19 @@ function hasEphemeralStat(statusEffects, stat)
     end)
   for _,v in pairs(ephStats) do
     if v == stat then return true end
+  end
+  return false
+end
+
+function hasEphemeralStats(statusEffects, stats)
+  ephStats = util.map(statusEffects,
+    function (elem)
+      return elem[1]
+    end)
+  for _,v in pairs(ephStats) do
+    for _,s in ipairs(stats) do
+      if v == s then return true end
+    end
   end
   return false
 end

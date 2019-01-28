@@ -3,7 +3,7 @@
   "price" : 750,
   "level" : 5,
   "maxStack" : 1,
-  "rarity" : "Rare",
+  "rarity" : "Legendary",
   "description" : "Ouch. Even sharper!",
   "shortdescription" : "Siphon Slash",
   "tooltipKind" : "base",

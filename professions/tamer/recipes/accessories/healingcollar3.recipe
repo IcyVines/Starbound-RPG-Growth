@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "healingcollar2", "count" : 1 },
+    { "item" : "upgrademodule", "count" : 1 },
+    { "item" : "diamond", "count" : 1 },
+    { "item" : "nanowrap", "count" : 1 },
+    { "item" : "livingroot", "count" : 3 }
+  ],
+  "output" : { "item" : "healingcollar3", "count" : 1 },
+  "groups" : [ "ivrpgtamerstation", "accessories" ]
+}

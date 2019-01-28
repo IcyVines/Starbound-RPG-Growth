@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "durasteelore", "count" : 2 },
+    { "item" : "titaniumore", "count" : 2 }
+  ],
+  "output" : {
+    "item" : "ivrpgplatinumbar",
+    "count" : 1
+  },
+  "duration" : 0.15,
+  "groups" : [ "craftingfurnace2", "bars", "all" ]
+}

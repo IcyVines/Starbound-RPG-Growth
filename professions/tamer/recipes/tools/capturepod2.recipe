@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "ivrpgsteelbar", "count" : 10 },
+    { "item" : "diamond", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "capturepod",
+    "count" : 2
+  },
+  "groups" : [ "ivrpgtamerstation", "tools" ]
+}

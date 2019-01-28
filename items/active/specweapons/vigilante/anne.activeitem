@@ -2,7 +2,7 @@
   "itemName" : "ivrpgwanne",
   "price" : 720,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "description" : "Never thought such a rowdy woman could get me right through the heart.",
   "shortdescription" : "^red;Anne",
   "tooltipKind" : "base",

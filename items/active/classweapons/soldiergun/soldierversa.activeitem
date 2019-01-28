@@ -2,7 +2,7 @@
   "itemName" : "soldierversagun",
   "price" : 1000,
   "maxStack" : 1,
-  "rarity" : "Uncommon",
+  "rarity" : "Rare",
   "description" : "A shotgun and an assault rifle? Count me in.",
   "shortdescription" : "Versa",
   "tooltipKind" : "base",

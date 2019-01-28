@@ -2,7 +2,7 @@
   "itemName" : "ivrpgwdangerclose",
   "price" : 1000,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "description" : "It's thrilling getting so close. After all, it lets you hear when their heart stops beating.",
   "shortdescription" : "^red;Danger Close",
   "tooltipKind" : "base",

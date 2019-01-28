@@ -626,7 +626,7 @@
                 [0.35, 1]
             ]
         }],
-        [2, {
+        [1, {
             "pool" : [
                 {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
             ],
@@ -635,7 +635,7 @@
                 [0.40, 1]
             ]
         }],
-        [4, {
+        [2, {
             "pool" : [
                 {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
             ],
@@ -644,13 +644,40 @@
                 [0.45, 1]
             ]
         }],
-        [6, {
+        [3, {
             "pool" : [
                 {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
             ],
             "poolRounds" : [
                 [0.50, 0],
                 [0.50, 1]
+            ]
+        }],
+        [4, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
+            ]
+        }],
+        [5, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.40, 0],
+                [0.60, 1]
+            ]
+        }],
+        [6, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.35, 0],
+                [0.65, 1]
             ]
         }]
     ],

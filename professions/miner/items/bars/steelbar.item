@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgsteelbar",
+  "price" : 70,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "steelbar.png",
+  "description" : "A useful alloy made from Iron and Coal.",
+  "shortdescription" : "Steel Bar",
+  "itemTags" : [ "reagent" ]
+}

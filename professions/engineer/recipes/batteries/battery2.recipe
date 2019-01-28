@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "wire", "count" : 2 },
+    { "item" : "ivrpgelectrumbar", "count" : 1 },
+    { "item" : "ivrpgacidsample", "count" : 2 }
+  ],
+  "output" : { "item" : "battery", "count" : 2 },
+  "groups" : [ "ivrpgengineerstation", "batteries", "all" ]
+}

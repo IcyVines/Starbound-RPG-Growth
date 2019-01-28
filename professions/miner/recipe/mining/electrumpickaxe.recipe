@@ -1,0 +1,14 @@
+{
+  "input" : [
+    { "item" : "plantfibre", "count" : 2 },
+    { "item" : "darkwoodmaterial", "count" : 5 },
+    { "item" : "ironbar", "count" : 1 },
+    { "item" : "ivrpgelectrumbar", "count" : 2 }
+  ],
+  "output" : {
+    "item" : "ivrpgelectrumpickaxe",
+    "count" : 1
+  },
+  "duration" : 0.2,
+  "groups" : [ "ivrpgminerstation", "mining", "all" ]
+}

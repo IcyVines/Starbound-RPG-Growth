@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "damagecollar1", "count" : 1 },
+    { "item" : "upgrademodule", "count" : 1 },
+    { "item" : "sharpenedclaw", "count" : 1 }
+  ],
+  "output" : { "item" : "damagecollar2", "count" : 1 },
+  "groups" : [ "ivrpgtamerstation", "accessories" ]
+}

@@ -1,0 +1,18 @@
+{
+  "projectileName" : "ivrpgnautilusbubble",
+  "image" : "bubble.png",
+  "physics" : "laser",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  
+  "timeToLive" : 15,
+  "emitters" : [],
+
+  "piercing" : true,
+  "bounces" : -1,
+  "onlyHitTerrain" : true,
+  "fullbright" : true,
+
+  "scripts": ["/items/active/specweapons/pioneer/bubble/bubble.lua"],
+  "renderLayer" : "Player+1"
+}

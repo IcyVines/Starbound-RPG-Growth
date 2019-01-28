@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "plantfibre", "count" : 3 }
+  ],
+  "output" : {
+    "item" : "salve",
+    "count" : 1
+  },
+  "groups" : [ "plain", "ivrpgmedicstation", "healing" ]
+}

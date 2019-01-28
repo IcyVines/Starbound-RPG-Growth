@@ -1,0 +1,8 @@
+{
+  "lights" : {
+    "ores" : {
+      "color" : [60, 80, 60, 155],
+      "active" : true
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "ivrpggunparts", "count" : 20 }
+  ],
+  "output" : {
+    "item" : "ivrpgfiringmechanism",
+    "count" : 1
+  },
+  "groups" : [ "ivrpgengineerstation", "ingredients", "all" ]
+}

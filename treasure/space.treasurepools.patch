@@ -75,7 +75,7 @@
 	  {
 	    "op": "add",
 	    "path": "/spaceRock/1/1/fill/-",
-	    "value": {"pool" : "ivrpgmeteoricmetalpool"} 
+	    "value": {"pool" : "ivrpgmeteoricmetaltargetpool"} 
 	  }
 	],
 	[
@@ -89,7 +89,7 @@
 	    "path": "/spaceRock/1/1/fill",
 	    "value": [
 		    {"pool": "experienceorbpool"},
-		    {"pool" : "ivrpgmeteoricmetalpool"}
+		    {"pool" : "ivrpgmeteoricmetaltargetpool"}
 	    ]
 	  }
 	]

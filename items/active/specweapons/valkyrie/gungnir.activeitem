@@ -2,7 +2,7 @@
   "itemName" : "ivrpgwgungnir",
   "price" : 2000,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "description" : "Odin's gift to you.",
   "shortdescription" : "^#34dbdb;Gungnir^white;",
   "tooltipKind" : "base",

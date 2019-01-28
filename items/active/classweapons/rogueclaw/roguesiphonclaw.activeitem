@@ -3,7 +3,7 @@
   "price" : 750,
   "level" : 3,
   "maxStack" : 1,
-  "rarity" : "Uncommon",
+  "rarity" : "Rare",
   "description" : "Careful. It's sharp.",
   "shortdescription" : "Siphon",
   "tooltipKind" : "base",

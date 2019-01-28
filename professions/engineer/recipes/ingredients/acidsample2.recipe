@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "liquidpoison", "count" : 3 },
+    { "item" : "staticcell", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "ivrpgacidsample",
+    "count" : 3
+  },
+  "groups" : [ "ivrpgengineerstation", "ingredients", "all" ]
+}

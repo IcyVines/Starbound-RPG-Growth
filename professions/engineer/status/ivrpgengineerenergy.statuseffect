@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgengineerenergy",
+  "effectConfig" : {
+    "energyModifier" : 1.25
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "/stats/effects/maxenergyscalingboost/maxenergyscalingboost.lua"
+  ],
+
+  "label" : "Engineer's Energy",
+  "icon" : "/professions/engineer/status/maxenergy.png"
+}

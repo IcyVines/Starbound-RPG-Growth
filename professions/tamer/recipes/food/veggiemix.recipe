@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "carrot", "count" : 1 },
+    { "item" : "potato", "count" : 1 },
+    { "item" : "corn", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "ivrpgveggiemix",
+    "count" : 1
+  },
+  "groups" : [ "ivrpgtamerstation", "food" ]
+}

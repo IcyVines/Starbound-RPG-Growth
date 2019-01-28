@@ -2,7 +2,7 @@
   "itemName" : "ivrpgwphaseshift",
   "price" : 1200,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "description" : "To you, the Universe is nothing.",
   "shortdescription" : "^red;Phase Shift",
   "category" : "wand",

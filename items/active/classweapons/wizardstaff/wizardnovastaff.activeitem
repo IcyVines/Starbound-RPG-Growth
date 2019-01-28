@@ -3,7 +3,7 @@
   "price" : 750,
   "maxStack" : 1,
   "level" : 3,
-  "rarity" : "uncommon",
+  "rarity" : "Rare",
   "description" : "Near limitless elemental energy.",
   "shortdescription" : "Nova",
   "tooltipKind" : "base",

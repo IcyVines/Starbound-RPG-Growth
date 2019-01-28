@@ -1,0 +1,12 @@
+{
+  "name" : "ivrpgtamerstatuscooldown",
+
+  "effectConfig" : {
+
+  },
+  "defaultDuration" : 5,
+
+
+  "label" : "Tamer's Feeding Cooldown",
+  "icon" : "/professions/tamer/status/feedingcooldown.png"
+}

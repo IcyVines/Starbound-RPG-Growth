@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "sand2", "count" : 15 },
+    { "item" : "ivrpgmagmasample", "count" : 1}
+  ],
+  "output" : {
+    "item" : "glass",
+    "count" : 10
+  },
+  "groups" : [ "ivrpgengineerstation", "ingredients", "all" ]
+}

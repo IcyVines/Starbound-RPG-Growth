@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgspowercell",
+  "price" : 100,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "spowercell.png",
+  "description" : "Electrically charged cell matter made to function like a battery.",
+  "shortdescription" : "S-Power Cell",
+  "itemTags" : [ "reagent" ]
+}

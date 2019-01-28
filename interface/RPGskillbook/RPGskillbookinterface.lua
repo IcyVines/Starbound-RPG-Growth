@@ -518,6 +518,7 @@ function updateProfessionTab()
   local profInfo = self.profInfo
 
   widget.setText("professionlayout.proftitle", profInfo.title)
+  widget.setFontColor("professionlayout.proftitle", profInfo.color)
   
   widget.setText("professionlayout.classictext", concatTableValues(profInfo.classic, "\n"))
   widget.setText("professionlayout.benefittext", concatTableValues(profInfo.effects, "\n", "benefit"))
@@ -527,9 +528,11 @@ function updateProfessionTab()
 
   widget.setText("professionlayout.passivetext", profInfo.passive.text)
   widget.setText("professionlayout.craftingtext", profInfo.crafting.text)
+  widget.setText("professionlayout.craftingtitle", profInfo.title .. " Station")
   widget.setText("professionlayout.uniquetext", profInfo.ability.text)
 
   widget.setImage("professionlayout.professionicon", profInfo.image)
+  widget.setImage("professionlayout.professionicon2", profInfo.image)
 end
 
 function checkProfessionDescription(name)
@@ -555,6 +558,7 @@ end
 
 function openProfessionCrafting()
   local profInfo = self.profInfo
+  player.giveItem(profInfo.crafting.type, 1)
 end
 
 function toggleProfessionPassive()
@@ -686,6 +690,7 @@ end
 function unequipProfession()
 	player.consumeCurrency("proftype", self.profession)
 	self.profession = 0
+	player.interact("OpenCraftingInterface", {config = "/professions/ivrpgfakeui.config"}, player.id())
 end
 
 

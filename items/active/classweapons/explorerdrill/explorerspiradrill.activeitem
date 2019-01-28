@@ -4,7 +4,7 @@
   "category" : "Unique Drill",
   "inventoryIcon" : "explorerspiradrill.png",
   "maxStack" : 1,
-  "rarity" : "Uncommon",
+  "rarity" : "Rare",
   "tooltipKind" : "tool",
   "description" : "What blocks?",
   "shortdescription" : "Spira",

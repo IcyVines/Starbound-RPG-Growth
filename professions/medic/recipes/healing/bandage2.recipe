@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "fabric", "count" : 14 }
+  ],
+  "output" : {
+    "item" : "bandage",
+    "count" : 10
+  },
+  "groups" : [ "ivrpgmedicstation", "healingbulk" ]
+}

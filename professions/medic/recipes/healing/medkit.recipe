@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "phasematter", "count" : 2 },
+    { "item" : "bandage", "count" : 15 }
+  ],
+  "output" : {
+    "item" : "medkit",
+    "count" : 15
+  },
+  "groups" : [ "ivrpgmedicstation", "healingbulk" ]
+}

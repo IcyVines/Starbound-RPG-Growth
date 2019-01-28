@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgplatinumbar",
+  "price" : 200,
+  "rarity" : "Rare",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "platinumbar.png",
+  "description" : "An alloy made from Durasteel and Titanium that behaves quite like platinum.",
+  "shortdescription" : "D-Platinum Bar",
+  "itemTags" : [ "reagent" ]
+}

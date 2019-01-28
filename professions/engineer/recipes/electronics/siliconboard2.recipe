@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "sand2", "count" : 10 },
+    { "item" : "ivrpgmagmasample", "count" : 1 }
+  ],
+  "output" : { "item" : "siliconboard", "count" : 3 },
+  "groups" : [ "ivrpgengineerstation", "electronics", "all" ]
+}

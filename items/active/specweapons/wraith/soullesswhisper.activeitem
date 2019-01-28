@@ -3,7 +3,7 @@
   "price" : 750,
   "level" : 6,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "description" : "Do you hear that?",
   "shortdescription" : "^gray;Soulless Whisper",
   "tooltipKind" : "base",

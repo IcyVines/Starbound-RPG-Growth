@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "copperbar", "count" : 1 },
+    { "item" : "cryonicextract", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "burnspray",
+    "count" : 2
+  },
+  "groups" : [ "ivrpgmedicstation", "healing" ]
+}

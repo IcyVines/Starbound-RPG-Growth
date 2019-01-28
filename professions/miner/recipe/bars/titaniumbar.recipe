@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "titaniumore", "count" : 3 }
+  ],
+  "output" : {
+    "item" : "titaniumbar",
+    "count" : 2
+  },
+  "duration" : 0.15,
+  "groups" : [ "ivrpgminerstation", "bars", "all" ]
+}

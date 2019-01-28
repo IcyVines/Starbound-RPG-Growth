@@ -3,7 +3,7 @@
 	"price": 750,
 	"level": 3,
 	"maxStack": 1,
-	"rarity": "uncommon",
+	"rarity": "Rare",
 	"description": "Most swords only last a couple swings. Not this one.\n^blue;Attack Combo by Ribs.",
 	"shortdescription": "Aegis",
 	"tooltipKind": "base",

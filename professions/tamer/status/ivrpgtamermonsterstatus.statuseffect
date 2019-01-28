@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgtamermonsterstatus",
+
+  "effectConfig" : {
+    "healTime" : 120
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgtamermonsterstatus.lua"
+  ],
+
+  "animationConfig" : "ivrpgtamermonsterstatus.animation",
+
+  "label" : "Tamer's Pet",
+  "icon" : "/professions/tamer/status/rage.png"
+}

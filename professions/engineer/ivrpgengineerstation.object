@@ -1,0 +1,55 @@
+{
+  "objectName" : "ivrpgengineerstation",
+  "colonyTags" : ["commerce", "crafting", "electronic", "wired", "science"],
+  "rarity" : "Essential",
+  "category" : "crafting",
+  "description" : "A bit cluttered, sure, but an Engineer always gets the job done.\nDesigned by JM401!",
+  "shortdescription" : "Engineer Station",
+  "printable" : false,
+
+  "apexDescription" : "A table perfect for crafting electronic devices.",
+  "avianDescription" : "This table seems too cluttered to be of much use.",
+  "floranDescription" : "Messssy table not good for cutting open monssters.",
+  "glitchDescription" : "Joyful. If I can learn how to use these tools, this table should be very useful to me.",
+  "humanDescription" : "This table kinda reminds of those typical engineering desks. I guess cause it is one.",
+  "hylotlDescription" : "This table isn't very traditional, but I suppose some good can come from it.",
+  "novakidDescription" : "Now these are tools ye' can use to make some pretty cool contraptions.",
+
+  "inventoryIcon" : "table.png",
+  "orientations" : [
+    {
+      "dualImage" : "table.png:<color>",
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "proftype" : 7,
+
+  "scripts" : ["/professions/table.lua"],
+  "scriptDelta" : 5,
+
+  "learnBlueprintsOnPickup" : [
+    "ivrpgacidsample",
+    "ivrpgmagmasample",
+    "stickofram",
+    "ivrpggunparts",
+    "ivrpgspowercell",
+    "ivrpggear",
+    "ivrpgelectromagnet",
+    "ivrpgmotor",
+    "upgrademodule",
+    "techcard",
+    "manipulatormodule"
+  ],
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/professions/engineer/ivrpgengineerstation.config",
+    "filter" : [ "ivrpgengineerstation" ]
+  }
+}

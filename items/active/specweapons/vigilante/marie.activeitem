@@ -2,7 +2,7 @@
   "itemName" : "ivrpgwmarie",
   "price" : 720,
   "maxStack" : 1,
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "description" : "She wasn't very loud, sure, but it don't matter much when your shootin' does the talkin'.",
   "shortdescription" : "^blue;Marie",
   "tooltipKind" : "base",

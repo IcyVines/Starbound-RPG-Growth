@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "halogenpack", "count" : 1 },
+    { "item" : "diamond", "count" : 2 },
+    { "item" : "wire", "count" : 5 }
+  ],
+  "output" : { "item" : "xenonpack", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "tools" ]
+}

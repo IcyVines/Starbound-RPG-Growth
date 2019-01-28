@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgacidsample",
+  "price" : 20,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "acidsample.png",
+  "description" : "A sample of acid made from some potent venom.",
+  "shortdescription" : "Acid Sample",
+  "itemTags" : [ "reagent" ]
+}

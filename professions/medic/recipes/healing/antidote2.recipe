@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "venomsample", "count" : 5 },
+    { "item" : "bottle", "count" : 10 }
+  ],
+  "output" : {
+    "item" : "antidote",
+    "count" : 12
+  },
+  "groups" : [ "ivrpgmedicstation", "healingbulk" ]
+}

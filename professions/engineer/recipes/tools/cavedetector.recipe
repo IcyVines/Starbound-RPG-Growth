@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "durasteelbar", "count" : 5 },
+    { "item" : "ivrpgelectrumbar", "count" : 2 },
+    { "item" : "stickofram", "count" : 1 },
+    { "item" : "ivrpgmagmasample", "count" : 1 },
+    { "item" : "smallbattery", "count" : 3 }
+  ],
+  "output" : { "item" : "cavedetector", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "tools" ]
+}

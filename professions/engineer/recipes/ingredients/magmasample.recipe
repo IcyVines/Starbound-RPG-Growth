@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "liquidlava", "count" : 20 },
+    { "item" : "obsidian", "count" : 2 }
+  ],
+  "output" : {
+    "item" : "ivrpgmagmasample",
+    "count" : 5
+  },
+  "groups" : [ "ivrpgengineerstation", "ingredients", "all" ]
+}

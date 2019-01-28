@@ -1,0 +1,13 @@
+{
+  "input" : [
+    { "item" : "diamond", "count" : 1 },
+    { "item" : "ivrpgplatinumbar", "count" : 1 },
+    { "item" : "ivrpgsteelbar", "count" : 2 }
+  ],
+  "output" : {
+    "item" : "ivrpgmeteoricmetalbar",
+    "count" : 4
+  },
+  "duration" : 0.2,
+  "groups" : [ "ivrpgminerstation", "alloys", "all" ]
+}

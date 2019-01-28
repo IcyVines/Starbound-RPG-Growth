@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "alienmeat", "count" : 1 },
+    { "item" : "rawfish", "count" : 1 },
+    { "item" : "rawpoultry", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "ivrpgtripletreat",
+    "count" : 1
+  },
+  "groups" : [ "ivrpgtamerstation", "food" ]
+}

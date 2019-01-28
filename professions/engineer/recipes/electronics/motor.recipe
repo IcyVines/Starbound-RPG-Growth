@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "wire", "count" : 2 },
+    { "item" : "ivrpgelectromagnet", "count" : 1 },
+    { "item" : "ivrpgsteelbar", "count" : 2 },
+    { "item" : "battery", "count" : 1 }
+  ],
+  "output" : { "item" : "ivrpgmotor", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "electronics", "all" ]
+}

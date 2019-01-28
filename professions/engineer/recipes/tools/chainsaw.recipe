@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "ivrpgmotor", "count" : 1 },
+    { "item" : "ivrpggear", "count" : 2 },
+    { "item" : "goldbar", "count" : 5 },
+    { "item" : "ironbar", "count" : 12 },
+    { "item" : "liquidoil", "count" : 10 },
+    { "item" : "ivrpgmagmasample", "count" : 1 }
+  ],
+  "output" : { "item" : "chainsaw", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "tools", "all" ]
+}

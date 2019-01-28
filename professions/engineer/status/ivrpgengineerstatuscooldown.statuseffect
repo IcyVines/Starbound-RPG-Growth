@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgengineerstatuscooldown",
+
+  "effectConfig" : {
+  },
+  "defaultDuration" : 10,
+  "animationConfig" : "ivrpgengineerstatus.animation",
+  "scripts" : [
+    "ivrpgengineerstatuscooldown.lua"
+  ],
+  "scriptDelta" : 0,
+
+  "label" : "Engineer's Battery Cooldown",
+  "icon" : "/professions/engineer/status/energycooldown.png"
+}

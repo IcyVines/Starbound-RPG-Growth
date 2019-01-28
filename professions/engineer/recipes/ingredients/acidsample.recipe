@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "venomsample", "count" : 1 },
+    { "item" : "staticcell", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "ivrpgacidsample",
+    "count" : 5
+  },
+  "groups" : [ "ivrpgengineerstation", "ingredients", "all" ]
+}

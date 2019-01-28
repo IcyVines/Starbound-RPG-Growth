@@ -1,7 +1,7 @@
 {
   "itemName" : "RPGskillbook",
   "printable" : false,
-  "rarity" : "Legendary",
+  "rarity" : "Essential",
   "description" : "A mystical book that seems to emanate power. Perhaps it can be used somehow.",
   "shortdescription" : "Mysterious Book",
   "race" : "generic",

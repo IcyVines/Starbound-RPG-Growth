@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgelectrumbar",
+  "price" : 80,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "electrumbar.png",
+  "description" : "A super-energetic alloy made from Silver and Gold.",
+  "shortdescription" : "Electrum Bar",
+  "itemTags" : [ "reagent" ]
+}

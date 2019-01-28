@@ -1,0 +1,23 @@
+{
+  "name" : "ivrpgtamermonsterregenarmor",
+
+  "effectConfig" : {
+    "healTime" : 15,
+    "bonusEffects" : [
+      {
+        "stat" : "protection",
+        "amount" : 30
+      }
+    ]
+  },
+  "defaultDuration" : 15,
+
+  "scripts" : [
+    "ivrpgtamermonsterregen.lua"
+  ],
+
+  "animationConfig" : "ivrpgtamermonsterregen.animation",
+
+  "label" : "Tamer",
+  "icon" : "/professions/tamer/status/rage.png"
+}

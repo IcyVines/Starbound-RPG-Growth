@@ -1,0 +1,13 @@
+{
+  "input" : [
+    { "item" : "petalblue", "count" : 3 },
+    { "item" : "petalyellow", "count" : 3 },
+    { "item" : "ivrpgether", "count" : 1 },
+    { "item" : "syringe", "count" : 2 }
+  ],
+  "output" : {
+    "item" : "greenstim",
+    "count" : 2
+  },
+  "groups" : [ "ivrpgmedicstation", "buffs" ]
+}

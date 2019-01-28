@@ -1,0 +1,24 @@
+{
+  "itemName" : "ivrpgtripletreat",
+  "rarity" : "Uncommon",
+  "price" : 12,
+  "category" : "food",
+  "eventCategory" : "cookingIngredient",
+  "inventoryIcon" : "tripletreat.png",
+  "description" : "A combination of chicken, steak, and fish. Effect: 150% Power Multiplier.",
+  "shortdescription" : "Triple Treat",
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "effects" : [ [
+      {
+        "effect" : "foodpoison"
+      }
+    ] ],
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}

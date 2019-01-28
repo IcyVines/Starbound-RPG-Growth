@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "smallbattery", "count" : 2 },
+    { "item" : "siliconboard", "count" : 1 },
+    { "item" : "stickofram", "count" : 1 },
+    { "item" : "ivrpgelectrumbar", "count" : 8 },
+    { "item" : "cryonicextract", "count" : 1 },
+    { "item" : "ivrpgplatinumbar", "count" : 2 }
+  ],
+  "output" : { "item" : "manipulatormodule", "count" : 1 },
+  "groups" : [ "ivrpgengineerstation", "electronics", "all" ]
+}

@@ -1,0 +1,128 @@
+{
+  "itemName" : "ivrpgwnautilus",
+  "price" : 1000,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "Within the spiral lies a dormant power: the questions is, whose?",
+  "shortdescription" : "^yellow;Nautilus",
+  "tooltipKind" : "base",
+  "category" : "Warhorn",
+  "twoHanded" : false,
+  "inventoryIcon" : "nautilus.png",
+  "itemTags" : ["tool", "explorer", "warhorn"],
+  "level" : 6,
+
+  "classreq" : 6,
+  "specreq" : 1,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "nautilus.png",
+    "shield" : "bubble.png",
+    "barrel" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/items/active/specweapons/pioneer/warhorn.ogg" ],
+      "block" : [ "/sfx/projectiles/bubble_blow1.ogg", "/sfx/projectiles/bubble_blow2.ogg", "/sfx/projectiles/bubble_blow3.ogg" ],
+      "break" : [ "/sfx/projectiles/bubble_pop.ogg" ],
+      "liquid" : [ "/items/active/specweapons/pioneer/bubble.ogg" ]
+    },
+    "animatedParts" : {
+      "stateTypes" : {
+        "shield" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : {},
+            "blowing" : {},
+            "up" : {}
+          }
+        }
+      },
+      "parts" : {
+        "shield" : {
+          "properties" : {
+            "zLevel" : 0,
+            "centered" : true,
+            "rotationCenter" : [0, 0]
+          },
+          "partStates" : {
+            "shield" : {
+              "idle" : {
+                "properties" : {
+                }
+              },
+              "blowing" : {
+                "properties" : {
+                  "image" : "<partImage>"
+                }
+              },
+              "up" : {
+                "properties" : {
+                  "image" : "<partImage>:0",
+                  "transformationGroups" : ["bubble"]
+                }
+              }
+            }
+          }
+        },
+        "middle" : {
+          "partStates" : {
+          }
+        }
+      }
+    },
+    "transformationGroups" : {
+      "bubble" : {}
+    }
+  },
+  "baseOffset" : [-0.15, -0.15],
+  "elementalType" : "physical",
+  "shieldPoly" : [[-4, 0], [-3, 3], [0, 4], [3, 3], [4, 0], [3, -3], [0, -4], [-3, -3]],
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/pioneer/fire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 2,
+    "baseDps" : 8,
+    "energyUsage" : 40,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -45,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 2.5,
+        "armRotation" : 40,
+        "frontArmFrame" : "run.3",
+        "weaponRotation" : -75,
+        "twoHanded" : false,
+        "weaponOffset" : [0.5,0],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandshield.lua"
+  
+}

@@ -1,0 +1,19 @@
+{
+  "itemName" : "ivrpgveggiemix",
+  "rarity" : "Uncommon",
+  "price" : 12,
+  "category" : "food",
+  "eventCategory" : "cookingIngredient",
+  "inventoryIcon" : "veggiemix.png",
+  "description" : "A combination of various veggies. Effect: 150% Max Health.",
+  "shortdescription" : "Veggie Mix",
+  "foodValue" : 20,
+  "tooltipKind" : "food",
+  "builder" : "/items/buildscripts/buildfood.lua",
+  "maxStack" : 1,
+  "itemAgingScripts" : ["/scripts/items/rotting.lua"],
+  "rottingMultiplier" : 1.0,
+  "blockingEffects" : [
+    "wellfed"
+  ]
+}
