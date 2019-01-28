@@ -6,5 +6,5 @@
     "item" : "salve",
     "count" : 12
   },
-  "groups" : [ "plain", "ivrpgmedicstation", "healingbulk" ]
+  "groups" : [ "ivrpgmedicstation", "healingbulk" ]
 }
