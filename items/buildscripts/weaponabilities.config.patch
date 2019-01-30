@@ -1,7 +1,6 @@
 [
 { "op" : "add", "path" : "/parryshield", "value" : "/items/active/classweapons/knightsword/parryshield.weaponability" },
 { "op" : "add", "path" : "/aegisswordcombo", "value" : "/items/active/classweapons/knightsword/aegisswordcombo.weaponability" },
-{ "op" : "add", "path" : "/mlgsswordcombo", "value" : "/items/active/weapons/other/mlgs/mlgsswordcombo.weaponability" },
 { "op" : "add", "path" : "/novastaffexplosion", "value" : "/items/active/classweapons/wizardstaff/novastaffexplosion.weaponability" },
 { "op" : "add", "path" : "/novastaffswitch", "value" : "/items/active/classweapons/wizardstaff/novastaffswitch.weaponability" },
 { "op" : "add", "path" : "/versaarfire", "value" : "/items/active/classweapons/soldiergun/versaarfire.weaponability" },
@@ -9,9 +8,8 @@
 { "op" : "add", "path" : "/acidspew", "value" : "/items/active/weapons/melee/abilities/broadsword/acidspew/flamethrowersword.weaponability" },
 { "op" : "add", "path" : "/obsidianShards", "value" : "/items/active/weapons/melee/abilities/broadsword/obsidianShards/obsidianShards.weaponability" },
 { "op" : "add", "path" : "/obsidianShardsWeak", "value" : "/items/active/weapons/melee/abilities/broadsword/obsidianShardsWeak/obsidianShardsWeak.weaponability" },
-{ "op" : "add", "path" : "/energywall", "value" : "/items/active/weapons/melee/abilities/hammer/energywall/elementalpillar.weaponability" },
+{ "op" : "add", "path" : "/ivrpgenergywall", "value" : "/items/active/weapons/melee/abilities/hammer/ivrpgenergywall/elementalpillar.weaponability" },
 { "op" : "add", "path" : "/telsaspin", "value" : "/items/active/weapons/melee/abilities/spear/telsaspin/elementalspin.weaponability" },
-{ "op" : "add", "path" : "/elementswitch", "value" : "/items/active/weapons/other/sbloodrose/elementswitch.weaponability" },
 { "op" : "add", "path" : "/phaseshift", "value" : "/items/active/specweapons/adept/phaseshift.weaponability" },
 { "op" : "add", "path" : "/valkyriemark", "value" : "/items/active/specweapons/valkyrie/mark/valkyriemark.weaponability" },
 { "op" : "add", "path" : "/dragooncharge", "value" : "/items/active/specweapons/dragoon/charge/dragooncharge.weaponability" }

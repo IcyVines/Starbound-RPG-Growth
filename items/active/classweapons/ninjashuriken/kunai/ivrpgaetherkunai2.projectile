@@ -1,0 +1,28 @@
+{
+  "projectileName" : "ivrpgaetherkunai2",
+  "image" : "kunai2.png",
+  "physics" : "bullet",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 60,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/classweapons/ninjashuriken/smokeexplosion/ninjasmokeexplosion.config"
+    }
+  ],
+  "power" : 20.0,
+  "piercing" : true,
+  "knockback" : 10,
+  "timeToLive" : 1,
+  "hitTimer" : 0.25,
+  "beginningCooldown" : 0.2,
+  "controlForce" : 1000,
+  "damageRepeatGroup" : "bloodaetherkunai",
+  "damageRepeatTimeout" : 0.25,
+  "initialWallDeduction" : 0.25,
+  "damageKind" : "bloodaetherbleeddaggertanto",
+  "scripts" : ["/items/active/classweapons/ninjashuriken/kunai/tracking.lua"],
+  "damagePoly" : [ [-2, -3], [7, -5], [16, -3], [16, 2], [7, 4], [-2, 2] ],
+  "emitters" : [ "shadowsmoke" ]
+}

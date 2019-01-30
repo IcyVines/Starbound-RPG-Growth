@@ -78,7 +78,7 @@
     }
   },
 
-  "altAbilityType" : "energywall",
+  "altAbilityType" : "ivrpgenergywall",
   "altAbility" : { },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

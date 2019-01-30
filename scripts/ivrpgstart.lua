@@ -165,7 +165,7 @@ function updateProfessionEffects(dt)
   if not status.statusProperty("ivrpgprofessionpassive", false) then return end
   if proftype == 1 then
     if status.resource("health") / status.stat("maxHealth") < 0.25 and not hasEphemeralStats(status.activeUniqueStatusEffectSummary(), {"bandageheal","salveheal","nanowrapheal","medkitheal"}) then
-      local healthItems = {{item = "salve", duration = 10}, {item = "bandage", duration = 1}, {item = "medkit", duration = 10}, {item = "nanowrap", duration = 1}}
+      local healthItems = { {item = "nanowrap", duration = 1}, {item = "bandage", duration = 1},  {item = "medkit", duration = 10}, {item = "salve", duration = 10}}
       for _,v in ipairs(healthItems) do
         if self.professionTimer == 0 and player.hasItem(v.item) then
           player.consumeItem({v.item, 1})
@@ -512,10 +512,7 @@ function dyingEffects(position, statusEffects)
 end
 
 function killingEffects(level, position, statusEffects, damageType, name)
-	if status.statPositive("ivrpgucvampirescaress") and damageType == "bloodaether" then
-		status.addEphemeralEffect("rage", 2, self.id)
-		status.addEphemeralEffect("regeneration4", 2, self.id)
-	end
+
 end
 
 function hasEphemeralStat(statusEffects, stat)

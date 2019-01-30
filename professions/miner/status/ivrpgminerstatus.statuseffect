@@ -44,6 +44,6 @@
 
   "animationConfig" : "ivrpgminerstatus.animation",
 
-  "label" : "Medic",
+  "label" : "Miner",
   "icon" : "/professions/miner/status/mine.png"
 }

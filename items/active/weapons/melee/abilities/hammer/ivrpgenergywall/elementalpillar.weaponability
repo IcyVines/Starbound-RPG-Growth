@@ -66,8 +66,8 @@
 
   "ability" : {
     "name" : "Plasma Divider",
-    "type" : "energywall",
-    "scripts" : ["/items/active/weapons/melee/abilities/hammer/elementalpillar/elementalpillar.lua"],
+    "type" : "ivrpgenergywall",
+    "scripts" : ["/items/active/weapons/melee/abilities/hammer/elementalpillar/ivrpgelementalpillar.lua"],
     "class" : "ElementalPillar",
 
     "energyUsage" : 160.0,

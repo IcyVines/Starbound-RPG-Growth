@@ -1,0 +1,21 @@
+{
+  "projectileName" : "ivrpgaetherkunai",
+  "image" : "kunai1.png",
+  "physics" : "bullet",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 60,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/classweapons/ninjashuriken/smokeexplosion/ninjasmokeexplosion.config"
+    }
+  ],
+  "power" : 10.0,
+  "piercing" : true,
+  "knockback" : 10,
+  "timeToLive" : 1,
+  "damageKind" : "bleeddaggertanto",
+  "damagePoly" : [ [-2, -3], [5, -4], [12, -3], [12, 2], [5, 3], [-2, 2] ],
+  "emitters" : [ "shadowsmoke" ]
+}

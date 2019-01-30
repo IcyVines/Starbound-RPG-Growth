@@ -1,0 +1,20 @@
+{
+  "projectileName" : "ivrpgdragoonsmallmeteor",
+  "physics" : "grenadezbomb",
+  "bounces" : 0,
+  "image" : "smallmeteor.png",
+  "animationCycle" : 1,
+  "lightColor" : [253, 160, 57],
+  "frameNumber" : 1,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/burstexplosion/fireburstexplosion.config"
+    }
+  ],
+  "power" : 60,
+  "damageType" : "IgnoresDef",
+  "damageKind" : "firespear",
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "emitters" : [ "sparks" ]
+}
