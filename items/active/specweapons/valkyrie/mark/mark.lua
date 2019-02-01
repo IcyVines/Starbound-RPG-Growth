@@ -82,7 +82,7 @@ function Mark:throw(charge)
       movementSuppressed = true,
       gravityEnabled = false
     })
-    mcontroller.setVelocity({0,0})
+    mcontroller.setYVelocity(0)
   end)
 
   self.weapon.aimAngle = 0

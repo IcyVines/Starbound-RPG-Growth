@@ -1294,6 +1294,7 @@ end
 function prestige()
   player.consumeCurrency("masterypoint", 3)
   consumeAllRPGCurrency()
+  player.addCurrency("statpoint", status.statusProperty("ivrpgextrastatpoints", 0))
 end
 
 function purchaseShop()
@@ -1440,6 +1441,7 @@ function consumeMasteryCurrency()
   status.setStatusProperty("ivrpgchallenge1progress", 0)
   status.setStatusProperty("ivrpgchallenge2progress", 0)
   status.setStatusProperty("ivrpgchallenge3progress", 0)
+  status.setStatusProperty("ivrpgextrastatpoints", 0)
 end
 
 function unequipUpgrade(name)

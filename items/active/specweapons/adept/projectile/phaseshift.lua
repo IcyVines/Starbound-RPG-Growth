@@ -38,7 +38,9 @@ function createEnemyProjectile()
   })
   shuffle(targetIds)
   for i,id in ipairs(targetIds) do
-    if world.entityCanDamage(self.id, id) and not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
+    local targetDamageTeam = world.entityDamageTeam(id)
+    targetDamageTeam = targetDamageTeam.type and targetDamageTeam.type == "enemy"
+    if targetDamageTeam and not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
       local sourceDamageTeam = world.entityDamageTeam(self.id)
       local directionTo = vec2.mul(vec2.norm(world.distance(world.entityPosition(id), mcontroller.position())), self.projectileParameters.speed)
       local velocity = world.entityVelocity(id)

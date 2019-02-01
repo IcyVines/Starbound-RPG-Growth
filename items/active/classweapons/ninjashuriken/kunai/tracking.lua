@@ -52,8 +52,10 @@ function update(dt)
   local distance = -1
 
   local entities = world.entityQuery(pos, maxDistance, {withoutEntityId = self.playerId, includedTypes = {"creature"}})
-  for _, e in ipairs(entities) do
-  	if world.entityCanDamage(self.playerId, e) then
+  for _,e in ipairs(entities) do
+    local targetDamageTeam = world.entityDamageTeam(e)
+    targetDamageTeam = targetDamageTeam.type and targetDamageTeam.type == "enemy"
+  	if targetDamageTeam and world.entityCanDamage(self.playerId, e) then
   		epos = world.entityPosition(e)
   		local newDistance = world.magnitude(pos, epos)
   		if (newDistance < distance or distance < 0) then

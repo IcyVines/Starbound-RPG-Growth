@@ -86,7 +86,7 @@
               "properties": {
                 "image": "/projectiles/explosions/doomgrenadeexplosion/doomgrenadeexplosion.png:<frame>?replace;F4988C=e9f296;D93A3A=939119",
                 "offset": [0, 4],
-                "damageArea": [[3, 3], [3, -3], [-3, 3], [-3, -3]],
+                "damageArea": [[-5, 0], [-3.2, -3.2], [0, -5], [3.2, -3.2], [5, 0], [3.2, 3.2], [0, 5], [-3.2, 3.2]],
                 "zLevel": 10,
                 "rotationCenter": [0, 0],
                 "transformationGroups": ["weapon"]

@@ -234,7 +234,7 @@
 								"properties": {
 									"image": "/items/active/classweapons/knightsword/explosions/holyexplosion1/holyexplosion1.png:<frame>?replace;F4988C=FFFFA7;D93A3A=E2C344?scalenearest=0.8",
 									"offset": [3, 2],
-									"damageArea": [[3, 3], [3, -3], [-3, 3], [-3, -3]],
+									"damageArea": [[-5, 0], [-3.2, -3.2], [0, -5], [3.2, -3.2], [5, 0], [3.2, 3.2], [0, 5], [-3.2, 3.2]],
 									"zLevel": 10,
 									"rotationCenter": [0, 10],
 									"transformationGroups": ["weapon"]
@@ -244,7 +244,7 @@
 								"properties": {
 									"image": "/items/active/classweapons/knightsword/explosions/holyexplosion2/holyexplosion2.png:<frame>?replace;D29CE7=FFFFA7;A451C4=E2C344;6A2284=FFFFCC",
 									"offset": [7, 0],
-									"damageArea": [[2, 2], [2, -2], [-2, 2], [-2, -2]],
+									"damageArea": [[-3, 0], [-2, -2], [0, -3], [2, -2], [3, 0], [2, 2], [0, 3], [-2, 2]],
 									"zLevel": 10,
 									"rotationCenter": [0, 0],
 									"transformationGroups": ["swoosh"]

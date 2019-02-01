@@ -34,7 +34,9 @@ function findTarget()
   local magnitude = 31
   if targetIds then
     for _,id in ipairs(targetIds) do
-      if world.entityAggressive(id) and world.entityCanDamage(self.ownerId, id) then
+      local targetDamageTeam = world.entityDamageTeam(id)
+      targetDamageTeam = targetDamageTeam.type and targetDamageTeam.type == "enemy"
+      if targetDamageTeam and world.entityCanDamage(self.ownerId, id) then
         local position = world.entityPosition(id)
         if not world.lineTileCollision(mcontroller.position(), position) then
           local newMagnitude = position and world.magnitude(position, mcontroller.position()) or 31

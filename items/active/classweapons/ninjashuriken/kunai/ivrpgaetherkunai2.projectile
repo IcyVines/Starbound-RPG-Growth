@@ -11,7 +11,7 @@
       "file" : "/items/active/classweapons/ninjashuriken/smokeexplosion/ninjasmokeexplosion.config"
     }
   ],
-  "power" : 20.0,
+  "power" : 15.0,
   "piercing" : true,
   "knockback" : 10,
   "timeToLive" : 1,

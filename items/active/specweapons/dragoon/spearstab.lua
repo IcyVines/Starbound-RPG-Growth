@@ -22,30 +22,45 @@ end
 function SpearStab:hold()
   self.weapon:setStance(self.stances.hold)
   self.weapon:updateAim()
-
+  self.active = false
   self.timer = 0
-  animator.playSound("meteorCharge")
-  self.chargeSound = false
 
-  while self.fireMode == "primary" and status.overConsumeResource("energy", 5*self.dt) do
+  while self.fireMode == "primary" do
     local damageArea = partDamageArea("blade")
     self.weapon:setDamage(self.holdDamageConfig, damageArea)
     self.timer = self.timer + self.dt
-    if self.timer > 1 and not self.chargeSound then
-      self.chargeSound = true
-      animator.playSound("meteorChargeHold", -1)
+    if self.timer > 0.05 then
+      self.timer = self.timer - 0.05
+      if not status.resourceLocked("energy")
+        and not world.lineTileCollision(mcontroller.position(), self:firePosition())
+        and status.overConsumeResource("energy", 100*self.dt) then
+        if not self.active then animator.playSound("flame", -1) end
+        self.active = true
+        world.spawnProjectile("flamethrower", self:firePosition(), activeItem.ownerEntityId(), self:aimVector(0.075), false, {power = 7.5, speed = 25})
+      else
+        animator.stopAllSounds("flame")
+        if self.active then
+          animator.playSound("flameOff")
+          self.active = false
+        end
+      end
     end
     coroutine.yield()
   end
 
-  animator.stopAllSounds("meteorChargeHold")
-  animator.stopAllSounds("meteorCharge")
-  if self.timer > 1 then
-    local positionModifier = {mcontroller.facingDirection() * 6 * math.cos(self.weapon.aimAngle), 6 * math.sin(self.weapon.aimAngle)}
-    local position = vec2.add(vec2.add(mcontroller.position(), activeItem.handPosition()), positionModifier)
-    local power = math.min(self.timer*25, 100)
-    animator.playSound("meteorFire")
-    world.spawnProjectile("ivrpgdragoonsmallmeteor", position, activeItem.ownerEntityId(), positionModifier , false, {power = power, speed = 100, powerMultiplier = activeItem.ownerPowerMultiplier()})
+  if self.active then
+    animator.stopAllSounds("flame")
+    animator.playSound("flameOff")
   end
   self.cooldownTimer = self:cooldownTime()
+end
+
+function SpearStab:firePosition()
+  return vec2.add(mcontroller.position(), activeItem.handPosition({5, 3.4}))
+end
+
+function SpearStab:aimVector(inaccuracy)
+  local aimVector = vec2.rotate({1, 0}, self.weapon.aimAngle + sb.nrand(inaccuracy, 0))
+  aimVector[1] = aimVector[1] * mcontroller.facingDirection()
+  return aimVector
 end

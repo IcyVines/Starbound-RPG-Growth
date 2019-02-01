@@ -236,7 +236,7 @@ function MeleeCombo:fireProjectiles()
   end
 
   local projectileParams = copy(self.projectileParams)
-  projectileParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+  projectileParams.powerMultiplier = activeItem.ownerPowerMultiplier()^0.5
   projectileParams.damageKind = self.damageConfig.damageSourceKind
   projectileParams.timeToLive = 1 + (self.hitTimer / 20)
   projectileParams.subterfuge = status.statPositive("ivrpgucbloodseeker") and self.aetherPowerMultiplier

@@ -55,7 +55,7 @@ function removeTechs()
 end
 
 function consumeAffinityStats()
-  for k,v in ipairs(self.affinityInfo.stats) do
+  for k,v in pairs(self.affinityInfo.stats) do
     player.consumeCurrency(k .. "point", v)
   end
 end

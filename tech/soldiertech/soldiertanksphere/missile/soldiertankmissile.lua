@@ -19,9 +19,11 @@ function update(dt)
   local entityPos = nil
   local pos = mcontroller.position()
   local distance = -1
-  local entities = world.entityQuery(pos, maxDistance, {withoutEntityId = self.playerId, includedTypes = {"creature"}})
+  local entities = world.entityQuery(pos, maxDistance, {withoutEntityId = self.playerId, includedTypes = {"monster", "npc"}})
   for _, e in ipairs(entities) do
-  	if world.entityCanDamage(self.playerId, e) then
+    local targetDamageTeam = world.entityDamageTeam(id)
+    targetDamageTeam = targetDamageTeam.type and targetDamageTeam.type == "enemy"
+  	if targetDamageTeam and world.entityCanDamage(self.playerId, e) then
   		epos = world.entityPosition(e)
   		local newDistance = world.magnitude(pos, epos)
   		if (newDistance < distance or distance < 0) then

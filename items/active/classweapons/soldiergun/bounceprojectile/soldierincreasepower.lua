@@ -27,7 +27,9 @@ function trackTarget()
   local entities = world.entityQuery(pos, 25, {withoutEntityId = self.playerId, includedTypes = {"creature"}})
   for _, e in ipairs(entities) do
   	epos = world.entityPosition(e)
-  	if world.entityCanDamage(self.playerId, e) and not world.lineTileCollision(pos, epos) then
+    local targetDamageTeam = world.entityDamageTeam(id)
+    targetDamageTeam = targetDamageTeam.type and targetDamageTeam.type == "enemy"
+  	if targetDamageTeam and world.entityCanDamage(self.playerId, e) and not world.lineTileCollision(pos, epos) then
   		local newDistance = world.magnitude(pos, epos)
   		if (newDistance < distance or distance < 0) then
   			distance = newDistance

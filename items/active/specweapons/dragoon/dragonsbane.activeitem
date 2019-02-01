@@ -25,7 +25,8 @@
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_spear_fire1.ogg", "/sfx/melee/swing_spear_fire2.ogg", "/sfx/melee/swing_spear_fire3.ogg" ],
       "meteorCharge" : ["/sfx/melee/giantsword_charge_fire.ogg"],
-      "meteorChargeHold" : ["/sfx/projectiles/flame_burning.ogg"],
+      "flame" : [ "/sfx/melee/rocketspear_loop_fire.ogg" ],
+      "flameOff" : [ "/sfx/melee/rocketspear_stop_fire.ogg" ],
       "meteorFire" : [ "/sfx/melee/travelingslash_fire1.ogg",  "/sfx/melee/travelingslash_fire2.ogg",  "/sfx/melee/travelingslash_fire3.ogg" ]
     }
   },
