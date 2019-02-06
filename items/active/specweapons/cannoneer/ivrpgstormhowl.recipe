@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "fabric", "count" : 1 },
+    { "item" : "goldbar", "count" : 3 },
+    { "item" : "cryonicextract", "count" : 4 },
+    { "item" : "refinedferozium", "count" : 4 }
+  ],
+	"output" : { "item" : "ivrpgwstormhowl", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

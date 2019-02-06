@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "copperore", "count" : 4 },
+    { "item" : "silverore", "count" : 3 }
+  ],
+  "output" : {
+    "item" : "ivrpgbilloncoin",
+    "count" : 2
+  },
+  "duration" : 0.2,
+  "groups" : [ "ivrpgminerstation", "alloys", "all" ]
+}

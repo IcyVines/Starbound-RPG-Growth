@@ -18,6 +18,7 @@ function init()
   self.specList = root.assetJson("/specList.config")
   self.professionTimer = 0
   self.specsAvailable = {}
+  self.damageUpdate = 5
   updateSpecsAvailable()
 
   --Test because someone called into question my programming ability yet are incredibly wrong.
@@ -161,7 +162,7 @@ end
 function updateProfessionEffects(dt)
   local proftype = player.currency("proftype")
   self.professionTimer = math.max(self.professionTimer - dt, 0)
-  -- Medic
+  local element = smithDamageTaken()
   if not status.statusProperty("ivrpgprofessionpassive", false) then return end
   if proftype == 1 then
     if status.resource("health") / status.stat("maxHealth") < 0.25 and not hasEphemeralStats(status.activeUniqueStatusEffectSummary(), {"bandageheal","salveheal","nanowrapheal","medkitheal"}) then
@@ -216,7 +217,34 @@ function updateProfessionEffects(dt)
         end
       end
     end
+  elseif proftype == 10 then
+    if element then
+      local time = getEphemeralDuration(status.activeUniqueStatusEffectSummary(), "ivrpgsmithstatusresistance")
+      if status.overConsumeResource("energy", 45 - math.min(45*time, 45)) then
+        status.setStatusProperty("ivrpgsmithstatuselement", element)
+        status.addEphemeralEffect("ivrpgsmithstatusresistance", 15, self.id)
+      end
+    end
   end
+end
+
+function smithDamageTaken()
+  local notifications = nil
+  notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
+  if not status.statusProperty("ivrpgprofessionpassive", false) then return false end
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if notification.damageSourceKind then
+        local elements = {"fire", "electric", "ice", "poison", "holy", "demonic", "nova", "cosmic", "shadow", "radioactive"}
+        for _,element in ipairs(elements) do
+          if string.find(notification.damageSourceKind, element) then
+            return element
+          end
+        end
+      end
+    end
+  end
+  return false
 end
 
 function updateSpecsAvailable()
@@ -513,6 +541,15 @@ end
 
 function killingEffects(level, position, statusEffects, damageType, name)
 
+end
+
+function getEphemeralDuration(statusEffects, stat)
+  for _,array in ipairs(statusEffects) do
+    if array[1] == stat then
+      return array[2]
+    end
+  end
+  return 0
 end
 
 function hasEphemeralStat(statusEffects, stat)

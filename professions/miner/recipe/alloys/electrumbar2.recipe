@@ -1,11 +1,11 @@
 {
   "input" : [
     { "item" : "goldore", "count" : 2 },
-    { "item" : "silverore", "count" : 2 }
+    { "item" : "silverore", "count" : 3 }
   ],
   "output" : {
     "item" : "ivrpgelectrumbar",
-    "count" : 1
+    "count" : 2
   },
   "duration" : 0.15,
   "groups" : [ "craftingfurnace", "bars", "all" ]

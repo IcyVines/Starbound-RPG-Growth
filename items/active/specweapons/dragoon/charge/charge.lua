@@ -69,6 +69,7 @@ function Charge:dash(charge)
     mcontroller.controlApproachVelocity(vec2.mul(aimDirection, self.dashMaxSpeed), self.dashControlForce)
     status.setPersistentEffects("ivrpgdragonsbane", {
       {stat = "protection", amount = 40},
+      {stat = "physicalResistance", amount = 0.25},
       {stat = "electricStatusImmunity", amount = 1},
       {stat = "electricResistance", amount = 1}
     })

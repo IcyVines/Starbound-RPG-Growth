@@ -1,11 +1,11 @@
 {
   "input" : [
-    { "item" : "ironore", "count" : 2 },
+    { "item" : "ironore", "count" : 3 },
     { "item" : "coalore", "count" : 3 }
   ],
   "output" : {
     "item" : "ivrpgsteelbar",
-    "count" : 1
+    "count" : 2
   },
   "duration" : 0.15,
   "groups" : [ "craftingfurnace", "bars", "all" ]

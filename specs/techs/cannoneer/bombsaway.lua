@@ -28,9 +28,10 @@ function launch()
   if self.hDirection == 0 and self.vDirection == 0 then self.hDirection = mcontroller.facingDirection() end
   animator.playSound("fire")
   animator.burstParticleEmitter("fireParticles")
-  local power = self.power + status.statusProperty("ivrpgdexterity") / 5
-  world.spawnProjectile("ivrpgcannonball", mcontroller.position(), entity.id(), self.aimDirection or {self.hDirection, self.vDirection}, false, {power = power, speed = self.cannonballSpeed})
-  mcontroller.controlApproachVelocity(vec2.mul(self.aimDirection or {self.hDirection, self.vDirection}, -self.dashSpeed), self.controlForce)
+  local power = self.power + status.statusProperty("ivrpgdexterity")
+  world.spawnProjectile("ivrpgcannonball", mcontroller.position(), entity.id(), self.aimDirection or {self.hDirection, self.vDirection*2}, false, {power = power, speed = self.cannonballSpeed})
+  mcontroller.setYVelocity(0)
+  mcontroller.controlApproachVelocity(vec2.mul(self.aimDirection or {self.hDirection, self.vDirection*2}, -self.dashSpeed), self.controlForce * 1.2)
 end
 
 function reset()
@@ -45,7 +46,7 @@ function update(args)
   -- Find Directional Input
   directionalInput(args)
 
-  if ((self.shift and self.cooldownTimer == 0 and not self.aerial) or (self.aerial and self.jumpsLeft > 0 and self.aerialCooldownTimer == 0 and not self.wasGrounded)) and self.jumping and (not status.statPositive("activeMovementAbilities")) and status.overConsumeResource("energy", 50) then
+  if ((self.shift and self.cooldownTimer == 0 and not self.aerial) or (self.aerial and self.jumpsLeft > 0 and self.aerialCooldownTimer == 0)) and self.jumping and (not status.statPositive("activeMovementAbilities")) and status.overConsumeResource("energy", self.aerial and 10 or 40) then
     launch()
   else
     reset()
@@ -102,7 +103,13 @@ function directionalInput(args)
     self.vDirection = -1
   end
   if args.moves["run"] then self.shift = false else self.shift = true end
-  if args.moves["jump"] then self.jumping = true else self.jumping = false end
-  if not self.jumping then self.wasGrounded = false elseif mcontroller.onGround() and self.jumping then self.wasGrounded = true end
+  if args.moves["jump"] and not self.lastJump then self.jumping = true else self.jumping = false end
+  self.lastJump = args.moves["jump"]
+
+  if mcontroller.onGround() then self.wasGrounded = true end
   self.aerial = not (mcontroller.onGround() or mcontroller.liquidMovement())
+  if self.aerial and self.wasGrounded then
+    self.wasGrounded = false
+    self.aerialCooldownTimer = 0.2
+  end
 end

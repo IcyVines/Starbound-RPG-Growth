@@ -17,8 +17,7 @@
   "power" : 50,
   "damageType" : "NoDamage",
   "damageKind" : "default",
-  "onlyHitTerrain" : true,
-  "timeToLive" : 9,
+  "timeToLive" : 3,
   "persistentAudio" : "/sounds/ivrpgbeep.ogg",
 
   "scripts" : [ "remotegrenade.lua" ]

@@ -59,6 +59,8 @@ function init()
   self.statList = root.assetJson("/stats.config")
   self.affinityList = root.assetJson("/affinityList.config")
   self.affinityDescriptions = root.assetJson("/affinities/affinityDescriptions.config")
+  self.changelog = root.assetJson("/ivrpgversion.config")
+  self.lastLoreChecked = "changelog"
 
   updateStats()
   updateClassInfo()
@@ -152,6 +154,10 @@ function update(dt)
     updateUpgradeTab()
   end
 
+  if widget.getChecked("bookTabs.10") then
+  	updateLoreTab()
+  end
+
   updateStats()
   if widget.getChecked("bookTabs.4") then
     updateInfo()
@@ -181,6 +187,10 @@ function updateBookTab()
     changeToMastery()
   elseif widget.getChecked("bookTabs.8") then
     changeToUpgrades()
+  elseif widget.getChecked("bookTabs.9") then
+    changeToSkills()
+  elseif widget.getChecked("bookTabs.10") then
+    changeToLore()
   end
 end
 
@@ -393,6 +403,8 @@ function removeLayouts()
   widget.setVisible("specializationslayout",false)
   widget.setVisible("specializationlockedlayout",false)
   widget.setVisible("upgradelayout", false)
+  widget.setVisible("lorelayout",false)
+  widget.setVisible("skillslayout", false)
 end
 
 function changeToOverview()
@@ -509,6 +521,16 @@ function changeToUpgrades()
   widget.setText("tabLabel", "Upgrade Tab")
   widget.setVisible("upgradelayout", true)
   updateUpgradeTab()
+end
+
+function changeToSkills()
+  widget.setText("tabLabel", "Skills Tab")
+  widget.setVisible("skillslayout", true)
+end
+
+function changeToLore()
+  widget.setText("tabLabel", "Lore Tab")
+  widget.setVisible("lorelayout", true)
 end
 
 function updateProfessionTab()
@@ -1452,4 +1474,88 @@ function unequipUpgrade(name)
   status.setPersistentEffects(name, {
     {stat = name, amount = 0}
   })
+end
+
+function updateLoreTab()
+  if widget.getChecked("lorelayout.changelogbutton") then
+  	
+  elseif widget.getChecked("lorelayout.lorebutton") then
+
+  else
+  	widget.setChecked("lorelayout." .. self.lastLoreChecked .. "button", true)
+  	if self.lastLoreChecked == "lore" then
+  	  changeToLoreText()
+  	else
+  	  changeToChangelogText()
+  	end
+  end
+end
+
+function changeToChangelogText()
+  uncheckLoreTabs("changelog")
+  self.lastLoreChecked = "changelog"
+  local changelog = changelogTextHelper()
+  local version = self.changelog.version
+  widget.setText("lorelayout.title", "RPG Growth " .. version)
+  widget.setText("lorelayout.scrollArea.text", changelog)
+end
+
+function changeToLoreText()
+  uncheckLoreTabs("lore")
+  self.lastLoreChecked = "lore"
+  local text = self.textData.lore
+  widget.setText("lorelayout.title", "Lore")
+  widget.setText("lorelayout.scrollArea.text", "Lore Not Available Yet")
+end
+
+function uncheckLoreTabs(name)
+  local tabs = {"lore", "changelog"}
+  for _,tab in ipairs(tabs) do
+  	if tab ~= name then
+  	  widget.setChecked("lorelayout." .. tab .. "button", false)
+  	end
+  end
+end
+
+function changelogTextHelper()
+  local text = self.changelog.text
+  local returnText = ""
+  local colorSwitch = {}
+  local switch = true
+  colorSwitch[true] = "^white;"
+  colorSwitch[false] = "^#d1d1d1;"
+  local previousSpace = false
+  for s in text:gmatch("[^\r\n]+") do
+  	local space = string.match(s, "[%s%s%s%s]+") or ""
+  	if space == previousSpace then
+  	  switch = not switch
+  	else
+  	  switch = true
+  	end
+  	previousSpace = space
+  	if returnText ~= "" and space == "" or space == " " then
+  	  returnText = returnText .. "\n"
+  	end
+  	if string.len(s) > 90 then
+  	  local words = {}
+  	  for word in s:gmatch("%S+") do table.insert(words, word) end
+  	  --sb.logInfo(sb.printJson(words))
+  	  local charCount = string.len(space)
+  	  local line = ""
+  	  for _,word in ipairs(words) do
+  	  	charCount = charCount + string.len(word) + 1
+  	  	if charCount > 90 then
+  	  	  charCount = string.len(space) + string.len(word)
+  	  	  returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
+  	  	  line = word .. " "
+  	  	else
+  	  	  line = line .. word .. " "
+  	  	end
+  	  end
+  	  returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
+  	else
+  	  returnText = returnText .. colorSwitch[switch] .. s .. "\n"
+  	end
+  end
+  return returnText
 end

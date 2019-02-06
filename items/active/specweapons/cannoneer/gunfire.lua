@@ -21,6 +21,7 @@ function GunFire:init()
   self.minimumTriggerTimer = 0
   self.minimumTriggerTime = config.getParameter("primaryAbility.minimumTriggerTime", 0)
   self.projectiles = config.getParameter("primaryAbility.projectiles", {})
+  self.energyCost = config.getParameter("primaryAbility.energyCost", 50)
 
   storage.fireTimer = storage.fireTimer or 0
   self.recoilTimer = 0
@@ -38,7 +39,7 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
-    and #storage.activeProjectiles == 0
+    --and #storage.activeProjectiles == 0
     and self.cooldownTimer == 0
     and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
     if (not status.resourceLocked("energy")) and status.overConsumeResource("energy", self:energyPerShot()) then
@@ -46,19 +47,19 @@ function GunFire:update(dt, fireMode, shiftHeld)
     end
   end
 
-  if self.fireMode == (self.activatingFireMode or self.abilitySlot) and #storage.activeProjectiles > 0 and self.minimumTriggerTimer == 0 then
+  --[[if self.fireMode == (self.activatingFireMode or self.abilitySlot) and #storage.activeProjectiles > 0 and self.minimumTriggerTimer == 0 then
     self.powerCharge = math.min(self.powerCharge + dt*5/8, 5)
-  end
+  end]]
 
   activeItem.setRecoil(self.recoilTimer > 0)
 
-  self:updateProjectiles()
-  self:updateCursor()
-  self:powerUpProjectiles()
+  --self:updateProjectiles()
+  --self:updateCursor()
+  --self:powerUpProjectiles()
 
-  if self.fireMode ~= (self.activatingFireMode or self.abilitySlot) and #storage.activeProjectiles > 0 and self.minimumTriggerTimer == 0 then
+  --[[if self.fireMode ~= (self.activatingFireMode or self.abilitySlot) and #storage.activeProjectiles > 0 and self.minimumTriggerTimer == 0 then
     self:triggerProjectiles()
-  end
+  end]]
 
   incorrectWeapon()
 end
@@ -75,7 +76,7 @@ function GunFire:fire()
   end
 
   self.minimumTriggerTimer = self.minimumTriggerTime
-
+  self.cooldownTimer = 0.5
   --self:setState(self.cooldown)
 end
 
@@ -132,11 +133,11 @@ function GunFire:triggerProjectiles()
 end
 
 function GunFire:updateCursor()
-  if #storage.activeProjectiles > 0 then
-    activeItem.setCursor("/cursors/chargeready.cursor")
-  else
+ -- if #storage.activeProjectiles > 0 then
+    --activeItem.setCursor("/cursors/chargeready.cursor")
+  --else
     activeItem.setCursor("/cursors/reticle0.cursor")
-  end
+ -- end
 end
 
 function GunFire:muzzleFlash()
@@ -170,18 +171,18 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
     local inacChange = 0
     if math.abs(i-3) == 2 then
       inacChange = i - 3
-      params.speed = 40
+      params.speed = 50
     elseif math.abs(i-3) == 1 then
-      params.speed = 40 + (i-3)*5
+      params.speed = 50 + (i-3)*5
     else
-      params.speed = 40
+      params.speed = 50
     end
 
     local projectileId = world.spawnProjectile(
         self.projectiles[i],
         firePosition or self:firePosition(),
         activeItem.ownerEntityId(),
-        self:aimVectorChange(inaccuracy or self.inaccuracy, inacChange*0.1),
+        self:aimVectorChange(inaccuracy or self.inaccuracy, inacChange*0.075),
         false,
         params
       )
@@ -211,17 +212,18 @@ function GunFire:aimVectorChange(inaccuracy, rotation)
 end
 
 function GunFire:energyPerShot()
-  return self.energyUsage * self.fireTime * (self.energyUsageMultiplier or 1.0)
+  return self.energyCost * self.fireTime * (self.energyUsageMultiplier or 1.0)
 end
 
 function GunFire:damagePerShot()
-  return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1)) / self.projectileCount
+  local ratio = status.resource("energy") / status.stat("maxEnergy")
+  return ratio * (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1)) / self.projectileCount
 end
 
 function GunFire:uninit()
-  for i, projectile in ipairs(storage.activeProjectiles) do
+  --[[for i, projectile in ipairs(storage.activeProjectiles) do
     world.callScriptedEntity(projectile, "setTarget", nil)
-  end
+  end]]
 end
 
 function uninit()

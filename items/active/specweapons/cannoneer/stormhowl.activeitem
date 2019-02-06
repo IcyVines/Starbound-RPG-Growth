@@ -1,0 +1,166 @@
+{
+  "itemName" : "ivrpgwstormhowl",
+  "price" : 1000,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "Waves crash violently and winds blow endlessly as the storm howls.",
+  "shortdescription" : "^#bff4ff;Stormhowl",
+  "tooltipKind" : "base",
+  "category" : "shortsword",
+  "twoHanded" : false,
+  "itemTags" : ["weapon", "melee", "shortsword", "cutlass"],
+
+  "inventoryIcon" : "stormhowl.png",
+
+  "animation" : "/items/active/weapons/melee/shortsword/comboshortsword.animation",
+  "animationParts" : {
+    "handle": "",
+    "handleFullbright" : "",
+    "blade" : "stormhowl.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_shortsword_ice1.ogg", "/sfx/melee/swing_shortsword_ice2.ogg", "/sfx/melee/swing_shortsword_ice3.ogg" ],
+      "fire2" : [ "/sfx/melee/swing_spear_ice1.ogg", "/sfx/melee/swing_spear_ice2.ogg", "/sfx/melee/swing_spear_ice3.ogg" ]
+    },
+    "animatedParts" : {
+      "parts" : {
+        "blade" : {
+          "properties" : {
+            "zLevel" : 0,
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>?<bladeDirectives>",
+            "transformationGroups" : ["weapon"],
+            "rotationCenter" : [0, 0]
+          }
+        },
+        "handle" : {
+          "properties" : {
+            "zLevel" : 1,
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "transformationGroups" : ["weapon"],
+            "rotationCenter" : [0, 0]
+          }
+        },
+        "swoosh" : {
+          "properties" : {
+            "zLevel" : -1,
+            "centered" : true,
+            "transformationGroups" : ["swoosh"],
+            "rotationCenter" : [0, 0]
+          },
+
+          "partStates" : {
+            "swoosh" : {
+              "idle" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "fire" : {
+                "properties" : {
+                  "image" : "/items/active/specweapons/cannoneer/<elementalType>swoosh.png:<frame>",
+                  "offset" : [0.0, 2.1],
+                  "damageArea" : [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4.25, -2.75], [-2.5, -2.5]]
+                }
+              },
+              "fire2" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/melee/shortsword/swoosh2/<elementalType>swoosh.png:<frame>",
+                  "offset" : [0.25, 0.125],
+                  "damageArea" : [[-3, 1], [3, 1], [3, -1], [-3, -1]]
+                }
+              }
+            }
+          }
+        }
+      }
+    } 
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "ice",
+
+  "primaryAbilityType" : "shortswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.625,
+    "baseDps" : 7.5,
+    "damageConfig" : {
+      "statusEffects" : [ "ivrpgembrittle" ],
+      "damageSourceKind" : "iceshortsword"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0, 2.25],
+        "aimAngle" : 0,
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "windup1" : {
+        "duration" : 0.1,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0, 2.25],
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "preslash1" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "weaponOffset" : [0, 2.25],
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire1" : {
+        "duration" : 0.15,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "weaponOffset" : [0, 2.25],
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "wait1" : {
+        "duration" : 0.3,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0, 2.25],
+        "allowRotate" : true,
+        "allowFlip" : true,
+        "twoHanded" : false
+      },
+      "windup2" : {
+        "duration" : 0.1,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [0, 2.25],
+        "twoHanded" : false,
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "fire2" : {
+        "duration" : 0.3,
+        "armRotation" : 0,
+        "weaponRotation" : -90,
+        "weaponOffset" : [0, 2.25],
+        "twoHanded" : false,
+        "allowFlip" : true,
+        "allowRotate" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

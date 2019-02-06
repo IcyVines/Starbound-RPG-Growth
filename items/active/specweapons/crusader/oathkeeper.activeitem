@@ -268,7 +268,8 @@
 						"spinSwoosh": {
 							"spin": {
 								"properties": {
-									"image": "/monsters/boss/cultistboss/beam.png:beam.<frame>?replace;FDD14D=b3b3b3;FD8F4D=8c8c8c"
+									"image": "/monsters/boss/cultistboss/beam.png:beam.<frame>?replace;FDD14D=b3b3b3;FD8F4D=8c8c8c",
+									"damageArea": [[22.5, 0.4], [-22.5, 0.4], [-22.5, -0.4], [22.5, -0.4]]
 								}
 							}
 						}
@@ -1185,6 +1186,7 @@
 
 	"altAbilityType": "elementalspin",
 	"altAbility": {
+		"scripts" : ["/items/active/specweapons/crusader/elementalspin.lua"],
 		"energyUsage": 200,
 		"projectileEnergyCost": 40,
 		"spinRate": 0,
@@ -1238,6 +1240,16 @@
 			]
 		},
 		"stances": {
+			"preWindup": {
+				"duration": 1,
+				"armRotation": -20,
+				"weaponRotation": -70,
+				"weaponOffset": [0, 0.5],
+				"twoHanded": true,
+				"allowFlip": true,
+				"allowRotate": false,
+				"aimAngle" : 0
+			},
 			"windup": {
 				"duration": 0.2,
 				"armRotation": -20,

@@ -635,6 +635,8 @@ function updateClassicMode()
                   end
                   weaponsDisabled = false
                 end
+              else
+                weaponsDisabled = false
               end
               break
             elseif info.anyHand then
@@ -686,6 +688,8 @@ function updateClassicMode()
                   end
                   weaponsDisabled = false
                 end
+              else
+                weaponsDisabled = false
               end
               break
             elseif info.anyHand then

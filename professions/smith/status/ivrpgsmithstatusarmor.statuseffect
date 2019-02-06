@@ -1,0 +1,11 @@
+{
+  "name" : "ivrpgsmithstatusarmor",
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "maxarmorboost.lua"
+  ],
+
+  "label" : "Smith's Armor",
+  "icon" : "/professions/smith/status/armorboost.png"
+}

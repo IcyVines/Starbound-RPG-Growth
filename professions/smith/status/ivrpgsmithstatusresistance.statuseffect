@@ -1,0 +1,28 @@
+{
+  "name" : "ivrpgsmithstatusresistance",
+
+  "effectConfig" : {
+    "elementColors" : {
+      "fire" : "aa0000",
+      "electric" : "ffff55",
+      "ice" : "00ffff",
+      "poison" : "1aa508",
+      "holy" : "e0e091",
+      "demonic" : "555555",
+      "nova" : "990099",
+      "shadow" : "999999",
+      "cosmic" : "ffb2ff",
+      "radioactive" : "98ff96"
+    }
+  },
+  "defaultDuration" : 15,
+
+  "scripts" : [
+    "ivrpgsmithstatusresistance.lua"
+  ],
+
+  "animationConfig" : "ivrpgsmithstatus.animation",
+
+  "label" : "Smith's Resistance",
+  "icon" : "/professions/smith/status/resistance.png"
+}

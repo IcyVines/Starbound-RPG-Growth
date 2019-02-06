@@ -2,6 +2,6 @@
   "input" : [
     { "item" : "ivrpgplatinumbar", "count" : 1 }
   ],
-  "output" : { "item" : "money", "count" : 100 },
+  "output" : { "item" : "money", "count" : 50 },
   "groups" : [ "refinery" ]
 }

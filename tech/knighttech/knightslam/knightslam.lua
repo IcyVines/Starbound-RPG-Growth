@@ -9,6 +9,7 @@ function init()
   self.lastYVelocity = 0
   self.lastYPosition = 0
   --timer variables
+  self.liquidTimer = 0
   self.slamCooldownTimer = 0
   self.rechargeEffectTimer = 0
   self.slamCooldown = config.getParameter("cooldown")
@@ -57,11 +58,21 @@ function update(args)
     self.lastYPosition = self.lastYPosition - mcontroller.yPosition()
     if not self.liquidMovement then
       spawnExplosions(mcontroller.xPosition(), mcontroller.yPosition())
+    else
+      mcontroller.setYVelocity(0)
     end
   end
 
   if (mcontroller.groundMovement() and mcontroller.onGround()) or self.liquidMovement then
-    status.removeEphemeralEffect("nofalldamageks")
+    if not self.liquidMovement then
+      status.removeEphemeralEffect("nofalldamageks")
+    else
+      self.liquidTimer = self.liquidTimer + args.dt
+      if self.liquidTimer > 0.2 then
+        self.liquidTimer = 0
+        status.removeEphemeralEffect("nofalldamageks")
+      end
+    end
     refreshJumps()
   end
 
