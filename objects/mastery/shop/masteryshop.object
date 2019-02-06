@@ -7,13 +7,13 @@
   "shortdescription" : "Master's Desk",
   "printable" : false,
 
-  "apexDescription" : "A small table. Despite its simplicity, it seems masterful.",
+  "apexDescription" : "A large table. Despite its gaudy colors, it seems masterful.",
   "avianDescription" : "This table emanates a strong mystical energy.",
-  "floranDescription" : "Old table too fragile for Floran to use for chopping food. But color remindss Floran of meat.",
+  "floranDescription" : "Table too dangerous for Floran to use for chopping food. But color remindss Floran of meat.",
   "glitchDescription" : "Critical. One swift kick and this table might implode.",
-  "humanDescription" : "This table wobbles quite easily, and everytime it does, my stomach hurts.",
+  "humanDescription" : "This table beeps sometimes, and everytime it does, my stomach hurts.",
   "hylotlDescription" : "With a table like this, one can really focus.",
-  "novakidDescription" : "A simple table. Don't really know what this darned thing is capable of.",
+  "novakidDescription" : "A mighty fine table. Don't really know what this darned thing is capable of.",
 
   "inventoryIcon" : "masteryshop.png",
   "orientations" : [
