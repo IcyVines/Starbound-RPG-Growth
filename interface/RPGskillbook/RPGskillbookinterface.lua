@@ -61,7 +61,8 @@ function init()
   self.affinityDescriptions = root.assetJson("/affinities/affinityDescriptions.config")
   self.changelog = root.assetJson("/ivrpgversion.config")
   self.lastLoreChecked = "changelog"
-
+  self.loreDepth = 1
+  self.loreTable = {"lore"}
   updateStats()
   updateClassInfo()
   updateAffinityInfo()
@@ -1496,6 +1497,8 @@ function changeToChangelogText()
   self.lastLoreChecked = "changelog"
   local changelog = changelogTextHelper()
   local version = self.changelog.version
+  widget.setVisible("lorelayout.scrollArea.list", false)
+  widget.setVisible("lorelayout.backarrow", false)
   widget.setText("lorelayout.title", "RPG Growth " .. version)
   widget.setText("lorelayout.scrollArea.text", changelog)
 end
@@ -1503,9 +1506,11 @@ end
 function changeToLoreText()
   uncheckLoreTabs("lore")
   self.lastLoreChecked = "lore"
-  local text = self.textData.lore
+  widget.setVisible("lorelayout.scrollArea.list", true)
+  widget.setVisible("lorelayout.backarrow", true)
   widget.setText("lorelayout.title", "Lore")
-  widget.setText("lorelayout.scrollArea.text", "Lore Not Available Yet")
+  widget.setText("lorelayout.scrollArea.text", "")
+  buildNewLore()
 end
 
 function uncheckLoreTabs(name)
@@ -1515,6 +1520,54 @@ function uncheckLoreTabs(name)
   	  widget.setChecked("lorelayout." .. tab .. "button", false)
   	end
   end
+end
+
+function changeLoreSelection()
+	local selectedLore = widget.getListSelected("lorelayout.scrollArea.list")
+	if selectedLore and type(selectedLore) == "string" then
+		local name = widget.getData("lorelayout.scrollArea.list." .. selectedLore)
+		local unlocks = status.statusProperty("ivrpgloreunlocks", {})
+		if name and unlocks[name] then
+			table.insert(self.loreTable, name)
+			buildNewLore()
+		end
+	end
+end
+
+function buildNewLore()
+  widget.clearListItems("lorelayout.scrollArea.list")
+  widget.setText("lorelayout.scrollArea.text", "")
+  local unlocks = status.statusProperty("ivrpgloreunlocks", {})
+  local loreData = self.textData
+  for _,v in ipairs(self.loreTable) do
+  	widget.setText("lorelayout.title", loreData[v].title or "^red;Lore")
+  	loreData = loreData[v].children
+  end
+  if type(loreData) == "table" then
+  	local added = false
+	for k,v in pairs(loreData) do
+	  local newListItem = widget.addListItem("lorelayout.scrollArea.list")
+	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".title", v.title)
+	  widget.setData("lorelayout.scrollArea.list." .. newListItem, k)
+	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".subtext", unlocks[k] and "" or "^red;Data Obscured.")
+	  added = true
+	end
+	if not added then
+  	  widget.setText("lorelayout.scrollArea.text", "^red;Looks like there's nothing here yet!")
+  	else
+  	  widget.setText("lorelayout.scrollArea.text", "")
+  	end
+  else
+  	widget.setText("lorelayout.scrollArea.text", tostring(loreData))
+  end
+  widget.setButtonEnabled("lorelayout.backarrow", #self.loreTable > 1)
+end
+
+function oneLoreUp()
+	if #self.loreTable > 1 then
+	  table.remove(self.loreTable)
+	end
+	buildNewLore()
 end
 
 function changelogTextHelper()
@@ -1536,7 +1589,7 @@ function changelogTextHelper()
   	if returnText ~= "" and space == "" or space == " " then
   	  returnText = returnText .. "\n"
   	end
-  	if string.len(s) > 90 then
+  	if string.len(s) > 76 then
   	  local words = {}
   	  for word in s:gmatch("%S+") do table.insert(words, word) end
   	  --sb.logInfo(sb.printJson(words))
@@ -1544,7 +1597,7 @@ function changelogTextHelper()
   	  local line = ""
   	  for _,word in ipairs(words) do
   	  	charCount = charCount + string.len(word) + 1
-  	  	if charCount > 90 then
+  	  	if charCount > 76 then
   	  	  charCount = string.len(space) + string.len(word)
   	  	  returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
   	  	  line = word .. " "

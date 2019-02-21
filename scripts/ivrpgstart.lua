@@ -16,6 +16,7 @@ function init()
   self.class = player.currency("classtype")
   self.spec = player.currency("spectype")
   self.specList = root.assetJson("/specList.config")
+  self.loreList = root.assetJson("/loreList.config")
   self.professionTimer = 0
   self.specsAvailable = {}
   self.damageUpdate = 5
@@ -91,6 +92,7 @@ function update(dt)
   updateXPScalingShare()
   updateXPPulse(dt)
   updateRallyMode()
+  updateLore()
 
   --admin
   if player.isAdmin() then
@@ -126,6 +128,21 @@ function update(dt)
     self.xpScalingTimer = math.max(self.xpScalingTimer - dt, 0)
   else
     self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
+  end
+end
+
+function updateLore()
+  local unlocked = false
+  local unlocks = status.statusProperty("ivrpgloreunlocks", {})
+  for _,lore in ipairs(self.loreList) do
+    if not unlocks[lore] then
+      unlocks[lore] = true
+      unlocked = true
+    end
+  end
+  status.setStatusProperty("ivrpgloreunlocks", unlocks)
+  if unlocked then
+    sendRadioMessage("Lore Unlocked")
   end
 end
 
