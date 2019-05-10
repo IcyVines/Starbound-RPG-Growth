@@ -3,6 +3,10 @@ function setHandlers()
     status.addEphemeralEffect(name, duration, sourceId)
   end)
 
+  message.setHandler("removeEphemeralEffect", function(_, _, name)
+    status.removeEphemeralEffect(name)
+  end)
+
   message.setHandler("applySelfDamageRequest", function(_, _, damageType, damageSourceKind, damage, sourceId)
     status.applySelfDamageRequest({
       damageType = damageType,

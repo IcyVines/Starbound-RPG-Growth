@@ -21,6 +21,7 @@
   "dashSpeed" : 75,
   "dashDuration" : 0.25,
   "dashCooldown" : 0.5,
+  "dashType" : "dash",
   
   "stopAfterDash" : true,
   "groundOnly" : true

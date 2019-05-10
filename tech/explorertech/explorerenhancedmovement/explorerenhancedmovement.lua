@@ -24,7 +24,7 @@ function init()
   self.groundOnly = config.getParameter("groundOnly")
   self.stopAfterDash = config.getParameter("stopAfterDash")
   --
-  self.dashType = "dash"
+  self.dashType = "sprint"
   changeDashType()
   Bind.create("g", changeDashType)
   Bind.create("jumping", endDashAlt)

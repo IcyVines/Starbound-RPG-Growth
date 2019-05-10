@@ -1,0 +1,17 @@
+ {
+  "name" : "ivrpgallystance2",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "effect" : "armor"
+  },
+
+  "scripts" : [
+    "allystancestatus.lua"
+  ],
+
+  "animationConfig" : "allystance.animation",
+
+  "label" : "Armor Stance",
+  "icon" : "/specs/techs/captain/allystance_armor.png"
+}

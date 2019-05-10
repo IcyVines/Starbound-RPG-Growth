@@ -35,7 +35,7 @@
     }
   ],
 
-  "proftype" : 0,
+  "proftype" : 10,
   "craftParameters" : {
     "requiredCount" : [2, 5, 1, 1, 1],
     "barLevels" : {
@@ -92,7 +92,7 @@
       "4" : "craft"
     }
   },
-  "scripts" : ["/professions/table.lua", "/professions/smith/upgrade.lua"],
+  "scripts" : ["/professions/table.lua"],
   "scriptDelta" : 5,
 
   "learnBlueprintsOnPickup" : [

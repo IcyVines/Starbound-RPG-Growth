@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "ivrpgspiralpower", "count" : 12 },
+    { "item" : "phasematter", "count" : 1 },
+    { "item" : "hardenedcarapace", "count" : 5 }
+  ],
+	"output" : { "item" : "ivrpgwleadersrally", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

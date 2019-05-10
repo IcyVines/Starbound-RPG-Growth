@@ -1,0 +1,19 @@
+ {
+  "name" : "ivrpgleadersrally",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "power" : 1.5,
+    "resistance" : 0.25,
+    "energy" : 0.1
+  },
+
+  "scripts" : [
+    "leadersrally.lua"
+  ],
+
+  "animationConfig" : "leadersrally.animation",
+
+  "label" : "Leader's Rally",
+  "icon" : "/items/active/specweapons/captain/leadersrallystatus.png"
+}

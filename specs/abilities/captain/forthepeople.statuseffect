@@ -1,0 +1,18 @@
+ {
+  "name" : "ivrpgforthepeople",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "power" : 1.25,
+    "armor" : 15
+  },
+
+  "scripts" : [
+    "forthepeople.lua"
+  ],
+
+  "animationConfig" : "bythepeople.animation",
+
+  "label" : "For The People",
+  "icon" : "/specs/abilities/captain/bythepeople.png"
+}

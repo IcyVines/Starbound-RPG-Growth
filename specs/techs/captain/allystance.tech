@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgallystance",
+  "type" : "head",
+
+  "scripts" : ["allystance.lua"],
+  "animator" : "allystance.animation",
+
+  "description" : "Captain Only",
+  "shortDescription" : "Ally Stance",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/captain/allystance.png",
+
+  "chipCost" : 0
+}

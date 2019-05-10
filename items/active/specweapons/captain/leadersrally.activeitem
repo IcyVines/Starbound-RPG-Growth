@@ -1,0 +1,81 @@
+{
+  "itemName" : "ivrpgwleadersrally",
+  "price" : 1000,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "A beautiful silken flag attached to a shining metal pole.",
+  "shortdescription" : "^yellow;Leader's Rally",
+  "tooltipKind" : "base",
+  "category" : "Flag",
+  "twoHanded" : false,
+  "inventoryIcon" : "leadersrallyicon.png",
+  "itemTags" : ["tool", "explorer", "flag"],
+  "level" : 6,
+
+  "classreq" : 6,
+  "specreq" : 3,
+
+  "animation" : "/items/active/specweapons/captain/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "leadersrallydown.png",
+    "raised" : "leadersrally.png",
+    "barrel" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/items/active/specweapons/pioneer/warhorn.ogg" ],
+      "block" : [ "/sfx/projectiles/bubble_blow1.ogg", "/sfx/projectiles/bubble_blow2.ogg", "/sfx/projectiles/bubble_blow3.ogg" ],
+      "break" : [ "/sfx/projectiles/bubble_pop.ogg" ],
+      "liquid" : [ "/items/active/specweapons/pioneer/bubble.ogg" ]
+    }
+  },
+  "baseOffset" : [0, 0],
+  "elementalType" : "physical",
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/captain/fire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.5,
+    "baseDps" : 8,
+    "energyUsage" : 40,
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -45,
+        "weaponRotation" : 0,
+        "weaponOffset" : [3,3.5],
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 2.5,
+        "armRotation" : 60,
+        "weaponRotation" : -60,
+        "twoHanded" : false,
+        "weaponOffset" : [3,3.5],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.11,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "weaponOffset" : [3,3.5],
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandshield.lua"
+  
+}
