@@ -1,0 +1,10 @@
+[
+  { "op" : "replace",
+    "path" : "/particleEmitters/jump",
+    "value" : {"particles" : []}
+  },
+  { "op" : "replace",
+    "path" : "/particleEmitters/landing",
+    "value" : {"particles" : []}
+  }
+]

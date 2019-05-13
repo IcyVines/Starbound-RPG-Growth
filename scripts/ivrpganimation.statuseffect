@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpganimation",
+  "effectConfig" : {
+  },
+
+  "scriptDelta" : 1,
+  "defaultDuration" : 3,
+  "animationConfig" : "ivrpganimation.animation",
+
+  "scripts" : [
+    "ivrpganimation.lua"
+  ]
+
+}

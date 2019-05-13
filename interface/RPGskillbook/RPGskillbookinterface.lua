@@ -659,7 +659,8 @@ function updateSpecializationTab()
   widget.setText("specializationlayout.techtype", specInfo.tech.type .. " Tech")
   widget.setText("specializationlayout.techtext", specInfo.tech.text)
   
-  widget.setText("specializationlayout.statscalingtext",  concatTableValues(specInfo.effects, "\n", "scaling-up") .. concatTableValues(specInfo.effects, "\n", "scaling-down"))
+  local scalingText = concatTableValues(specInfo.effects, "\n", "scaling-up") .. concatTableValues(specInfo.effects, "\n", "scaling-down")
+  widget.setText("specializationlayout.statscalingtext", scalingText == "" and "-" or scalingText )
 
   widget.setImage("specializationlayout.techicon2", specInfo.tech.image)
   widget.setImage("specializationlayout.effecticon", specInfo.ability.image)

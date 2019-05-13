@@ -206,7 +206,7 @@ function updateStats()
   end
 
   status.setPersistentEffects("ivrpgstatboosts", statConfig)
-  if (not status.statPositive("activeMovementAbilities")) or mcontroller.canJump() or status.statPositive("ninjaVanishSphere") then
+  if (not status.statPositive("activeMovementAbilities")) or mcontroller.canJump() or status.statPositive("ninjaVanishSphere") or status.statPositive("ivrpgshapeshifting") then
     mcontroller.controlModifiers(movementConfig)
   end
 end

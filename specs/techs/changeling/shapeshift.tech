@@ -1,0 +1,94 @@
+{
+  "name" : "ivrpgshapeshift",
+  "type" : "head",
+
+  "scripts" : ["shapeshift.lua"],
+  "animator" : "shapeshift.animation",
+
+  "description" : "Changeling Only",
+  "shortDescription" : "Shapeshift",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/changeling/shapeshift.png",
+
+  "chipCost" : 0,
+
+  "energyCost" : 50,
+
+  "animationParts" : {
+    "poptop" : "poptop/poptop.png",
+    "wisper" : "wisper/wisper.png",
+    "orbide" : "orbide/orbide.png",
+    "adultpoptop" : "adultpoptop/adultpoptop.png"
+  },
+
+  "poptopCollisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, 0.10], [0.8125, -0.40],  [-0.8125, -0.40], [-1.3125, 0.10],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+  "poptopMeltyCollisionPoly" : [ [0.375, 0.96875], [0.625, 0.71875],  [0.625, 0.39375], [0.375, 0.14375],  [-0.4375, 0.14375], [-0.6875, 0.39375],  [-0.6875, 0.71875], [-0.4375, 0.96875] ],
+
+  "poptopMovementParameters" : {
+	"mass" : 1,
+	"walkSpeed" : 2,
+	"runSpeed" : 5,
+
+	"airFriction" : 0,
+
+	"airJumpProfile" : {
+		"jumpSpeed" : 20.0,
+		"jumpInitialPercentage" : 1.0,
+		"jumpHoldTime" : 0.1
+	}
+  },
+
+  "adultpoptopCollisionPoly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
+  "adultpoptopMeltyCollisionPoly" : [ [0.875, 1.61875], [1.125, 1.36875],  [1.375, -1.43125], [1.125, -1.63125],  [-1.125, -1.63125], [-1.375, -1.43125],  [-1.125, 1.36875], [-0.875, 1.61875] ],
+
+  "adultpoptopMovementParameters" : {
+	"mass" : 2.5,
+	"walkSpeed" : 2,
+	"runSpeed" : 3,
+
+	"airFriction" : 0,
+
+	"airJumpProfile" : {
+	"jumpSpeed" : 16.0,
+	"jumpInitialPercentage" : 1.0,
+	"jumpHoldTime" : 0.1
+	}
+  },
+
+  "wisperCollisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+  "wisperMeltyCollisionPoly" : [ [0.125, 0.4375], [0.3125, 0.25], [0.3125, -0.125], [0.125, -0.3125], [-0.125, -0.3125], [-0.3125, -0.125], [-0.3125, 0.25], [-0.125, 0.4375] ],
+
+  "wisperMovementParameters" : {
+	"mass" : 0.5,
+	"walkSpeed" : 4,
+	"runSpeed" : 12,
+	"gravityEnabled" : false,
+
+	"airFriction" : 2.0,
+	"airForce" : 25,
+	"flySpeed" : 8
+  },
+
+  "orbideCollisionPoly" : [ [0.3075, 1.5], [0.75, 1.06], [0.75, -2.93], [0.3075, -3.375], [-0.3075, -3.375], [-0.75, -2.93], [-0.75, 1.06], [-0.3075, 1.5] ],
+  "orbideMeltyCollisionPoly" : [ [0.09125, 1.0625], [0.3125, 0.8425], [0.3125, -1.1525], [0.09125, -1.375], [-0.21625, -1.375], [-0.4375, -1.1525], [-0.4375, 0.8425], [-0.21625, 1.0625] ],
+
+  "orbideMovementParameters" : {
+	"mass" : 1.0,
+	"walkSpeed" : 1,
+	"runSpeed" : 3,
+
+	"airFriction" : 0,
+
+	"airJumpProfile" : {
+	"jumpSpeed" : 25.0,
+	"jumpInitialPercentage" : 1.0,
+	"jumpHoldTime" : 0.2
+	}
+  },
+
+	//Unused
+	"wisperMeltyCollisionPoly2" : [ [0.125, 0.375], [0.3125, 0.1875], [0.3125, -0.1875], [0.125, -0.375], [-0.125, -0.375], [-0.3125, -0.1875], [-0.3125, 0.1875], [-0.125, 0.375] ],
+	"poptopMeltyCollisionPoly2" : [ [0.40625, 0.625], [0.65625, 0.375],  [0.65625, 0.05], [0.40625, -0.2],  [-0.40625, -0.2], [-0.65625, 0.05],  [-0.65625, 0.375], [-0.40625, 0.625] ],
+	"orbideMeltyCollisionPoly2" : [ [0.15375, 0.75], [0.375, 0.53], [0.375, -1.465], [0.15375, -1.6875], [-0.15375, -1.6875], [-0.375, -1.465], [-0.375, 0.53], [-0.15375, 0.75] ],
+	"adultpoptopMeltyCollisionPoly2" : [ [0.875, 1.275], [1.125, 1.025],  [1.375, -1.775], [1.125, -1.975],  [-1.125, -1.975], [-1.375, -1.775],  [-1.125, 1.025], [-0.875, 1.275] ]
+}

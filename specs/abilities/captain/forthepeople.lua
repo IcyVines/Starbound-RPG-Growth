@@ -6,6 +6,7 @@ function init()
   self.power = config.getParameter("power", 1.25)
   self.armor = config.getParameter("armor", 15)
   animator.setParticleEmitterOffsetRegion("posEmbers", mcontroller.boundBox())
+  animator.setParticleEmitterEmissionRate("posEmbers", 5)
   animator.setParticleEmitterActive("posEmbers", true)
   effect.addStatModifierGroup({
     { stat = "powerMultiplier", effectiveMultiplier = self.power },

@@ -6,8 +6,10 @@ function init()
   self.power = config.getParameter("power", 1.25)
   self.resistance = config.getParameter("resistance", 0.25)
   self.energy = config.getParameter("energy", 0.1)
-  animator.setParticleEmitterOffsetRegion("posEmbers", mcontroller.boundBox())
-  animator.setParticleEmitterActive("posEmbers", true)
+  animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
+  animator.setParticleEmitterActive("embers", true)
+  animator.setParticleEmitterOffsetRegion("energy", mcontroller.boundBox())
+  animator.setParticleEmitterActive("energy", true)
   effect.addStatModifierGroup({
     { stat = "powerMultiplier", effectiveMultiplier = self.power },
     { stat = "physicalResistance", amount = self.resistance },
@@ -31,11 +33,5 @@ function update(dt)
   end
 end
 
-function reset()
-  animator.setParticleEmitterActive("posEmbers", false)
-  status.setPrimaryDirectives()
-end
-
 function uninit()
-  reset()
 end

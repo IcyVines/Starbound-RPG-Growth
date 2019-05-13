@@ -1,0 +1,233 @@
+{
+  "particleEmitters" : {
+    "jump" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -2.2],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "jumpMelty" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -1.1],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "land" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -2.2],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "landMelty" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -1.1],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "jumppoptop" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -0.8],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "jumpMeltypoptop" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -0.4],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "landpoptop" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -0.4],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "landMeltypoptop" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, 0.2],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "jumpadultpoptop" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -3.6],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "jumpMeltyadultpoptop" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -1.8],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "landadultpoptop" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -3.8],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "landMeltyadultpoptop" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -1.5],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "jumporbide" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -3.6],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "jumpMeltyorbide" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -1.8],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "landorbide" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -3.2],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "landMeltyorbide" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "position" : [0.0, -1.3],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    }
+  },
+  "transformationGroups" : {
+    "flip" : {
+      "interpolated" : false
+    }
+  }
+}

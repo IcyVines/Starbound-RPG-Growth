@@ -10,7 +10,7 @@ end
 function switch()
   self.oldStance = self.stance
   self.stance = (self.stance + 1) % 4
-  animator.playSound("activate")
+  animator.playSound(self.stance == 0 and "deactivate" or "activate")
 end
 
 function uninit()

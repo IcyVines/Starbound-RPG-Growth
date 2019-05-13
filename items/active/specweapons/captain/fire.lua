@@ -77,7 +77,7 @@ function GunFire:rally()
   })
   for i,id in ipairs(targetIds) do
     if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
-      world.sendEntityMessage(id, "addEphemeralEffect", "ivrpgleadersrally", 0.1, self.id)
+      world.sendEntityMessage(id, "addEphemeralEffect", "ivrpgleadersrally", 1, self.id)
     end
   end
 end

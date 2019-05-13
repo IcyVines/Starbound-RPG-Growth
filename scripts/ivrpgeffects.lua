@@ -29,5 +29,6 @@ function update(dt)
   	return
   end
 
+  status.addEphemeralEffect("ivrpganimation", math.huge)
   status.addEphemeralEffect("ivrpgstatboosts", math.huge)
 end

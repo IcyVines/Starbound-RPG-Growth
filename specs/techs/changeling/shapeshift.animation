@@ -1,0 +1,691 @@
+{
+  "globalTagDefaults" : {
+    "frame" : "1",
+    "directives" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+
+      "wisperState" : {
+        "default" : "off",
+        "states" : {
+          "off" : { 
+            "properties" : {
+              "particleEmittersOff" : [ "flames" ]
+            }
+          },
+          "idle" : {
+            "frames" : 6,
+            "cycle" : 0.9,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "flames" ]
+            }
+          },
+          "fly" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "flames" ]
+            }
+          },
+          "firewindup" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/wisper_windup1.ogg",
+              "particleEmittersOn" : [ "flames" ]
+            }
+          },
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/wisper_fire.ogg",
+              "particleEmittersOn" : [ "flames" ]
+            }
+          }
+        }
+      },
+
+      "poptopState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "music" ]
+            }
+          },
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "music" ]
+            }
+          },
+          "crouch" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "music" ]
+            }
+          },
+          "walk" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "music" ]
+            }
+          },
+         "run" : {
+            "frames" : 8,
+            "cycle" : 0.6,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "music" ]
+            }
+          },
+          "stroll" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "music" ],
+              "persistentSound" : "/sfx/npc/monsters/poptop_sing_loop.ogg",
+              "persistentSoundStopTime" : 0.5
+            }
+          },
+          "jump" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "properties" : {
+              "particleEmittersOff" : [ "music" ],
+              "immediateSound" : "/sfx/npc/monsters/monster_hop.ogg",
+              "immediateSoundRangeMultiplier" : 0.5
+            }
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "properties" : {
+              "particleEmittersOff" : [ "music" ]
+            }
+          },
+          "chargewindup" : {
+            "frames" : 2,
+            "cycle" : 0.4,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "music" ]
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "properties" : {
+              "particleEmittersOff" : [ "music" ]
+            }
+          },
+          "charge" : {
+            "frames" : 4,
+            "cycle" : 0.3,
+            "properties" : {
+              "particleEmittersOff" : [ "music" ],
+              "immediateSound" : "/sfx/npc/monsters/monster_bite2.ogg"
+            }
+          }
+        }
+      },
+
+      "adultpoptopState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },
+          "idle" : {
+            "frames" : 13,
+            "cycle" : 1.5
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "spindust" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "/sfx/blocks/footstep_gravel.ogg", "", "", "", "/sfx/blocks/footstep_gravel.ogg" ]
+            } 
+          },
+          "jump" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/oogler_hop.ogg"
+            }
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "chargewindup" : {
+            "frames" : 3,
+            "cycle" : 0.5,
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
+              "persistentSoundStopTime" : 1.0,
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },
+          "chargewinddown" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
+              "persistentSoundStopTime" : 1.0,
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },
+          "charge" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
+              "persistentSoundStopTime" : 1.0,
+              "immediateSound" : "/sfx/npc/monsters/monster_slash1.ogg",
+              "particleEmittersOff" : [ "spindust" ]
+            }
+          },
+          "roar" : {
+            "frames" : 8,
+            "cycle" : 0.53,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "persistentSound" : "/sfx/npc/quadruped/tiger_pain1.ogg",
+              "persistentSoundStopTime" : 1.25
+            },
+            "frameProperties" : {
+              "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"] ],
+              "particleEmittersOn" : [ [], [], ["spindust"], [], [], [], [], [] ]
+            }
+          }
+        }
+      },
+
+      "orbideState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ]
+            }
+          },
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ]
+              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
+              // "persistentSoundStopTime" : 0.4
+            }
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 1.25,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ]
+              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
+              // "persistentSoundStopTime" : 0.4
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "/sfx/npc/monsters/orbide_step1.ogg", "", "", "", "/sfx/npc/monsters/orbide_step2.ogg" ]
+            } 
+          },
+          "crouch" : {
+            "frames" : 1,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ]
+              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
+              // "persistentSoundStopTime" : 0.4
+            }
+          },
+          "jump" : {
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/oogler_hop.ogg",
+              "particleEmittersOff" : [ "dash" ]
+              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
+              // "persistentSoundStopTime" : 0.4
+            }
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.18,
+            "mode" : "loop",
+            "properties" : {
+            "particleEmittersOff" : [ "dash" ]
+              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
+              // "persistentSoundStopTime" : 0.4
+            }
+          },
+          "chargewindup" : {
+            "frames" : 11,
+            "cycle" : 1,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ],
+              "persistentSound" : "/sfx/npc/monsters/orbide_windup.ogg",
+              "persistentSoundStopTime" : 0.3
+            }
+            /*
+            "frameProperties" : {
+              "immediateSound" : [ "/sfx/npc/monsters/orbide_windup1.ogg", "", "", "", "", "/sfx/npc/monsters/orbide_windup2.ogg", "", "", "", "", "" ]
+            }
+            */
+          },
+          "chargewinddown" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ]
+              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
+              // "persistentSoundStopTime" : 0.4
+            }
+          },
+          "charge" : {
+            "frames" : 4,
+            "cycle" : 0.3,
+            "properties" : {
+              "particleEmittersOn" : [ "dash" ],
+              // "persistentSound" : "/sfx/npc/monsters/orbide_creepy_loop.ogg",
+              // "persistentSoundStopTime" : 0.4
+              "immediateSound" : "/sfx/npc/monsters/orbide_charge.ogg"
+            }
+          },
+          "invulnerablewindup" : {
+            "frames" : 9,
+            "cycle" : 1.2,
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ],
+              "persistentSound" : "/sfx/npc/monsters/orbide_rest.ogg",
+              "persistentSoundStopTime" : 0.4
+            }
+          },
+          "invulnerablewinddown" : {
+            "frames" : 9,
+            "cycle" : 1.2,
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ],
+              "persistentSound" : "/sfx/npc/monsters/orbide_wakeup.ogg",
+              "persistentSoundStopTime" : 0.4
+            }
+          },
+          "invulnerable" : {
+            "frames" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+
+      "wisper" : {
+        "properties" : {
+          "transformationGroups" : [ "monster" ],
+          "offset" : [0.0, 0.125]
+        },
+        "partStates" : {
+          "wisperState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame><directives>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame><directives>"
+              }
+            },
+            "firewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame><directives>"
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:fire.<frame><directives>"
+              }
+            }
+          }
+        }
+      },
+
+      "poptop" : {
+        "properties" : {
+          "transformationGroups" : [ "monster" ],
+          "offset" : [-0.0625, 0.6875]
+        },
+        "partStates" : {
+          "poptopState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame><directives>"
+              }
+            },
+            "crouch" : {
+              "properties" : {
+                "image" : "<partImage>:crouch.<frame><directives>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame><directives>"
+              }
+            },
+            "run" : {
+              "properties" : {
+                "image" : "<partImage>:run.<frame><directives>"
+              }
+            },
+            "stroll" : {
+              "properties" : {
+                "image" : "<partImage>:stroll.<frame><directives>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame><directives>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame><directives>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame><directives>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame><directives>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame><directives>"
+              }
+            }
+          }
+        }
+      },
+
+      "adultpoptop" : {
+        "properties" : {
+          "transformationGroups" : [ "monster" ],
+          "offset" : [0.4, 0.6875]
+        },
+        "partStates" : {
+          "adultpoptopState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame><directives>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame><directives>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame><directives>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame><directives>"
+              }
+            },
+            "roarwindup" : {
+              "properties" : {
+                "image" : "<partImage>:roarwindup.<frame><directives>"
+              }
+            },
+            "roarwinddown" : {
+              "properties" : {
+                "image" : "<partImage>:roarwinddown.<frame><directives>"
+              }
+            },
+            "roar" : {
+              "properties" : {
+                "image" : "<partImage>:roar.<frame><directives>"
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame><directives>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:winddown.<frame><directives>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame>",
+                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame>"
+              }
+            }
+          }
+        }
+      },
+
+      "orbide" : {
+        "properties" : {
+          "transformationGroups" : [ "monster" ],
+          "offset" : [-0.125, 0.625]
+        },
+        "partStates" : {
+          "orbideState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame><directives>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame><directives>"
+              }
+            },
+            "crouch" : {
+              "properties" : {
+                "image" : "<partImage>:crouch.<frame><directives>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame><directives>"
+              }
+            },
+            "invulnerablewindup" : {
+              "properties" : {
+                "image" : "<partImage>:drop.<frame><directives>"
+              },
+              "frameProperties" : {
+                "offset" : [ [-0.125, 0.625], [-0.125, 0.625], [-0.125, 0.625], [-0.125, 0.5], [-0.125, 0.0], [-0.125, -1.125], [-0.125, -2.5], [-0.125, -2.875], [-0.125, -3.0] ]
+              }
+            },
+            "invulnerablewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:rise.<frame><directives>"
+              },
+              "frameProperties" : {
+                "offset" : [ [-0.125, -3.0], [-0.125, -2.875], [-0.125, -2.5], [-0.125, -1.125], [-0.125, -0.125], [-0.125, 0.5], [-0.125, 0.625], [-0.125, 0.625], [-0.125, 0.625] ]
+              }
+            },
+            "invulnerable" : {
+              "properties" : {
+                "image" : "<partImage>:invulnerable.<frame><directives>",
+                "offset" : [-0.125, -3.0]
+              }
+            },
+            "chargewindup" : {
+              "properties" : {
+                "image" : "<partImage>:windup.<frame><directives>"
+              }
+            },
+            "chargewinddown" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame><directives>"
+              }
+            },
+            "charge" : {
+              "properties" : {
+                "image" : "<partImage>:charge.<frame><directives>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame><directives>"
+              }
+            }
+          },
+          "damage" : {
+            "stunned" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame><directives>"
+              }
+            }
+          }
+        }
+      }
+
+    }
+  },
+
+  "transformationGroups" : {
+    "monster" : { "interpolated" : true }
+  },
+
+  "particleEmitters" : {
+    "activateParticles" : {
+      "particles" : [ ]
+    },
+    "deactivateParticles" : {
+      "particles" : [ ]
+    },
+    "spindust" : {
+      "emissionRate" : 15,
+      "offsetRegion" : [ 1.0, -1.0, 2.0, -0.0 ],
+      "particles" : [
+        { "particle" : "mandrafloradust" }
+      ]
+    },
+    "music" : {
+      "emissionRate" : 1,
+      "offsetRegion" : [ -0.0, 1.25, 0.0, 1.25 ],
+      "particles" : [
+        { "particle" : "music" }
+      ]
+    },
+    "dash" : {
+      "emissionRate" : 30,
+      "offsetRegion" : [ -0.625, -1.25, 0.625, 1.25 ],
+      "particles" : [
+        { "particle" : "darkgreyphaseparticle" },
+        { "particle" : "lightgreyphaseparticle" },
+        { "particle" : "darkgreyphaseparticle" },
+        { "particle" : "lightgreyphaseparticle" },
+        { "particle" : "darkgreyphaseparticle" },
+        { "particle" : "lightgreyphaseparticle" },
+        { "particle" : "darkgreyphaseparticle" },
+        { "particle" : "lightgreyphaseparticle" },
+        { "particle" : "darkgreyphaseparticle" },
+        { "particle" : "lightgreyphaseparticle" },
+        { "particle" : "darkgreyphaseparticle" }
+      ]
+    },
+    "flames" : {
+      "active" : false,
+      "emissionRate" : 2.0,
+      "offsetRegion" : [-0.5, -0.5, 0.5, 0.5],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "color" : [180, 121, 254, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "lights" : {
+    "wisperGlow" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [120, 40, 120],
+      "pointLight" : false,
+      "anchorPart" : "wisper"
+    },
+    "orbideGlow" : {
+      "active" : false,
+      "position" : [0.625, 0.625],
+      "color" : [120, 40, 60],
+      "pointLight" : true,
+      "anchorPart" : "orbide"
+    }
+  },
+
+  "sounds" : {
+    "activate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
+    "deactivate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
+    "forceDeactivate" : [ "/sfx/tech/tech_sonicsphere_charge1.ogg" ],
+    //Poptop
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ]
+  }
+}

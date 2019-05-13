@@ -1,8 +1,11 @@
 {
   "input" : [
-    { "item" : "ivrpgspiralpower", "count" : 12 },
-    { "item" : "phasematter", "count" : 1 },
-    { "item" : "hardenedcarapace", "count" : 5 }
+    { "item" : "ivrpgspiralpower", "count" : 4 },
+    { "item" : "goldbar", "count" : 3 },
+    { "item" : "ivrpgplatinumbar", "count" : 4 },
+    { "item" : "fabric", "count" : 10 },
+    { "item" : "silk", "count" : 4 },
+    { "item" : "syntheticmaterial", "count" : 4 }
   ],
 	"output" : { "item" : "ivrpgwleadersrally", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]
