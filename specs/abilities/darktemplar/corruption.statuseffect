@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgcorruption",
+
+  "effectConfig" : {
+    
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "corruption.lua"
+  ],
+
+  "animationConfig" : "corruption.animation",
+
+  "label" : "Corruption",
+  "icon" : "/specs/abilities/darktemplar/corruption.png"
+}

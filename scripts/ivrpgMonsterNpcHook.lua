@@ -11,7 +11,7 @@ function setHandlers()
     status.applySelfDamageRequest({
       damageType = damageType,
       damageSourceKind = damageSourceKind,
-      damage = math.floor(damage/2),
+      damage = math.floor(damage),
       sourceEntityId = sourceId
     })
   end)
