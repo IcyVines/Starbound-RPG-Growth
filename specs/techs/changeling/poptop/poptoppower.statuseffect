@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgpoptoppower",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "maxDuration" : 30
+  },
+
+  "scripts" : [
+    "poptoppower.lua"
+  ],
+
+  "animationConfig" : "poptoppower.animation",
+
+  "label" : "Poptop Power",
+  "icon" : "/specs/techs/changeling/poptop/poptoppower.png"
+}

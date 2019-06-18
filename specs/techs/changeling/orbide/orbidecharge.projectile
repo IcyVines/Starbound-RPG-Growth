@@ -1,0 +1,20 @@
+{
+  "projectileName" : "ivrpgorbidecharge",
+  "image" : "orbidecharge.png",
+  "physics" : "laser",
+  "timeToLive" : 0.3,
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "alwaysbleed",
+  "damagePoly" : [ [2.4, 12], [6, 8], [6, -23], [2.4, -27], [-2.4, -27], [-6, -23], [-6, 8], [-2.4, 12] ],
+  "damageRepeatTimeout" : 0.25,
+
+  "knockback" : 15,
+  "knockbackDirectional" : true,
+
+  "orientationLocked" : true,
+  "emitters" : [ ],
+
+  "piercing" : true,
+  "bounces" : -1
+}

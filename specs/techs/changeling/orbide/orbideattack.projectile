@@ -1,0 +1,21 @@
+{
+  "projectileName" : "ivrpgorbideattack",
+  "image" : "orbidecharge.png",
+  "physics" : "laser",
+  "timeToLive" : 0.2,
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "slash",
+  "damagePoly" : [ [2.4, 12], [16, 16], [21, 12], [22, -5], [6, -23], [2.4, -27], [-2.4, -27], [-6, -23], [-6, 8], [-2.4, 12] ],
+  "damageRepeatTimeout" : 0.25,
+
+  "knockback" : 10,
+  "knockbackDirectional" : true,
+
+  "orientationLocked" : true,
+  "flippable" : true,
+  "emitters" : [ ],
+
+  "piercing" : true,
+  "bounces" : -1
+}
