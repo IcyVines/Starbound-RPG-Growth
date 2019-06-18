@@ -47,9 +47,12 @@ function update(dt)
   self.classicMode = status.statPositive("ivrpghardcore")
 
   updateStats()
+  updateStealth()
 
   self.heldItem = world.entityHandItem(self.id, "primary")
   self.heldItem2 = world.entityHandItem(self.id, "alt")
+  if self.heldItem == "sapling" then self.heldItem = nil end
+  if self.heldItem2 == "sapling" then self.heldItem2 = nil end
   self.itemConf = self.heldItem and root.itemConfig(self.heldItem).config
   self.twoHanded = self.itemConf and self.itemConf.twoHanded or false
   self.category = self.itemConf and self.itemConf.category or false
@@ -133,6 +136,11 @@ function update(dt)
   updateDamageGiven()
   updateDamageTaken()
   updateChallenges()
+end
+
+function updateStealth()
+  local shouldStealth = status.statPositive("invisible") or status.statPositive("ivrpgstealth")
+  world.setProperty("entity["..tostring(self.id).."]Stealthed", shouldStealth)
 end
 
 function updateStats()

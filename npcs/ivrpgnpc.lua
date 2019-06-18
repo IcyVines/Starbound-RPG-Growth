@@ -1,6 +1,7 @@
 require "/scripts/ivrpgMonsterNpcHook.lua"
 local npcOldInit = init
 local npcOldUpdate = update
+local npcOldDamage = damage
 
 function init()
   npcOldInit()
@@ -15,6 +16,7 @@ function update(dt)
 end
 
 function damage(args)
+  npcOldDamage(args)
   sourceId = args.sourceId
   updateDamageTaken(args)
 end

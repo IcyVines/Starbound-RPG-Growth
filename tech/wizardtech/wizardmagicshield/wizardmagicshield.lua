@@ -2,6 +2,7 @@ require "/scripts/vec2.lua"
 require "/scripts/keybinds.lua"
 
 function init()
+  script.setUpdateDelta(4)
   self.active = false
   self.damageUpdate = 5
   self.regenSpeed = config.getParameter("regenSpeed", 0.1)
@@ -55,12 +56,19 @@ end
 
 function updateDamageTaken()
   self.notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
+  self.lastNotification = false
   if self.notifications then
     for _,notification in pairs(self.notifications) do
       local healthLost = notification.healthLost or 0
       local InitialHealth = (status.resource("health") or 0) + healthLost
       local damageDealt = notification.damageDealt or 0
       if damageDealt > 0 then
+        -- For some reason, these damageKinds duplicate in damageTaken function
+        if notification.damageSourceKind
+          and (notification.damageSourceKind == "falling"
+          or notification.damageSourceKind == "poison"
+          or notification.damageSourceKind == "fire")
+          then damageDealt = damageDealt/2 end
         local newHealth = InitialHealth - damageDealt
         local energy = status.resource("energy")
         status.overConsumeResource("energy", damageDealt)

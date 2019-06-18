@@ -4,11 +4,11 @@
     "dimensions" : [8, 5],
 
     "names" : [
-      [ "idle.1", "blink.1" ],
+      [ "idle.1", "blink.1", "crouch.1", "crouchblink.1" ],
       [ "walk.1", "walk.2", "walk.3", "walk.4", "walk.5", "walk.6", "walk.7", "walk.8" ],
       [ "roar.1", "roar.2", "roar.3", "roar.4", "roar.5", "roar.6", "roar.7", "roar.8" ],
       [ "jump.1", "jump.2", "fall.1", "fall.2" ],
-      [ "windup.1", "windup.2", "windup.3", "charge.1", "charge.2", "charge.3", "winddown.1" ]
+      [ "windup.1", "windup.2", "windup.3", "charge.1", "charge.2", "charge.3", "winddown.1"]
     ]
   },
   "aliases" : {
@@ -24,6 +24,27 @@
   	"idle.11" : "idle.1",
   	"idle.12" : "idle.1",
   	"idle.13" : "idle.1",
-    "hurt.1" : "winddown.1"
+    "hurt.1" : "winddown.1",
+
+    "crouch.2" : "crouch.1",
+    "crouch.3" : "crouch.1",
+    "crouch.4" : "crouch.1",
+    "crouch.5" : "crouch.1",
+    "crouch.6" : "crouch.1",
+    "crouch.7" : "crouchblink.1",
+    "crouch.8" :  "crouch.1",
+    "crouch.9" :  "crouchblink.1",
+    "crouch.10" : "crouch.1",
+    "crouch.11" : "crouch.1",
+    "crouch.12" : "crouch.1",
+    "crouch.13" : "crouch.1",
+
+    "devour.1" : "idle.1",
+    "devour.2" : "roar.1",
+    "devour.3" : "roar.2",
+    "devour.4" : "roar.3",
+    "devour.5" : "idle.1",
+    "devour.6" : "idle.1",
+    "devour.7" : "idle.1"
   }
 }

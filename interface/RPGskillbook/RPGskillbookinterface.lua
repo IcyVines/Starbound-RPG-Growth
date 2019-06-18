@@ -652,8 +652,15 @@ function updateSpecializationTab()
   widget.setText("specializationlayout.benefittext", concatTableValues(specInfo.effects, "\n", "benefit"))
   
   widget.setText("specializationlayout.specweapontitle", specInfo.weapon.title)
-  
   widget.setText("specializationlayout.specweapontext", concatTableValues(specInfo.weapon.text, "\n"))
+  if status.statusProperty("ivrpgshapeshift", false) then
+  	widget.setText("specializationlayout.specweaponicontitle", "Creature")
+  	local creature = status.statusProperty("ivrpgshapeshiftC", "")
+  	widget.setText("specializationlayout.specweapontitle", creature == "" and player.species():gsub("^%l", string.upper) or specInfo.tech.transformNames[creature])
+  	widget.setText("specializationlayout.specweapontext", concatTableValues(specInfo.tech.transformText[creature], "\n"))
+  else
+  	widget.setText("specializationlayout.specweaponicontitle", "Weapon")
+  end
   
   widget.setText("specializationlayout.techname", specInfo.tech.title)
   widget.setText("specializationlayout.techtype", specInfo.tech.type .. " Tech")

@@ -1,4 +1,7 @@
+require "/scripts/ivrpgactivestealthintercept.lua"
+
 function setHandlers()
+
   message.setHandler("addEphemeralEffect", function(_, _, name, duration, sourceId)
     status.addEphemeralEffect(name, duration, sourceId)
   end)
@@ -24,11 +27,23 @@ function setHandlers()
     status.modifyResourcePercentage(type, amount)
   end)
 
-   message.setHandler("ivrpgRally", function(_, _, level, player)
+  message.setHandler("ivrpgRally", function(_, _, level, player)
     self.ivrpgRally[player] = {
       level = level,
       timer = 0.5
     }
+  end)
+
+  message.setHandler("ivrpgDevourState", function(_, _, player, position, direction)
+    if self.devourState and self.devourState[3] ~= player then
+      return
+    end
+
+    if self.devourState then
+      self.devourState = false
+    else
+      self.devourState = {position, direction, player}
+    end
   end)
 
   message.setHandler("hitByBloodAether", function(_, _)
@@ -42,6 +57,8 @@ function loadVariables(enemyType, level)
   self.level = level
   self.ivrpgRally = {}
   self.baseParameters = mcontroller.baseParameters()
+  self.devourState = false
+  self.devourTimer = 0
 end
 
 function updateEffects(dt)
@@ -50,6 +67,34 @@ function updateEffects(dt)
     if self.isMonster then monster.setDamageTeam({type = "friendly", team = 1})
     else npc.setDamageTeam({type = "friendly", team = 1}) end
   end
+
+  if self.devourState then
+    self.devourTimer = 0.3
+    status.setPersistentEffects("ivrpgdevourstate", {
+      {stat = "invulnerable", amount = 1}
+    })
+    mcontroller.controlModifiers({
+      movementSuppressed = true,
+      jumpingSuppressed = true
+    })
+    mcontroller.controlParameters({
+      gravityEnabled = false
+    })
+    mcontroller.setXPosition(self.devourState[1][1] + self.devourState[2])
+    local boundBox = mcontroller.boundBox()
+    local yOffset = math.abs((boundBox[2] + boundBox[4] / 2))
+    mcontroller.setYPosition(self.devourState[1][2] + 1 + yOffset)
+  else
+    status.clearPersistentEffects("ivrpgdevourstate")
+  end
+
+  if self.devourTimer > 0 then
+    status.addEphemeralEffect("soldierstun", dt)
+    self.devourTimer = math.max(self.devourTimer - dt, 0)
+  end
+
+  local shouldStealth = status.statPositive("invisible") or status.statPositive("ivrpgstealth")
+  world.setProperty("entity["..tostring(self.id).."]Stealthed", shouldStealth)
 
   --[[ Movement Parameters!!!
     flySpeed : 8.0

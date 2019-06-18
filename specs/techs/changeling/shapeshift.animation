@@ -46,6 +46,13 @@
               "immediateSound" : "/sfx/npc/monsters/wisper_fire.ogg",
               "particleEmittersOn" : [ "flames" ]
             }
+          },
+          "hurt" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "properties" : {
+              "particleEmittersOn" : [ "flames" ]
+            }
           }
         }
       },
@@ -73,8 +80,8 @@
             }
           },
           "walk" : {
-            "frames" : 6,
-            "cycle" : 0.6,
+            "frames" : 8,
+            "cycle" : 0.8,
             "mode" : "loop",
             "properties" : {
               "particleEmittersOff" : [ "music" ]
@@ -136,6 +143,23 @@
               "particleEmittersOff" : [ "music" ],
               "immediateSound" : "/sfx/npc/monsters/monster_bite2.ogg"
             }
+          },
+          "devour" : {
+            "frames" : 7,
+            "cycle" : 0.7,
+            "properties" : {
+              "particleEmittersOff" : [ "music" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "/sfx/npc/monsters/monster_bite2.ogg", "", "" ]
+            } 
+          },
+          "hurt" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "properties" : {
+              "particleEmittersOn" : [ "flames" ]
+            }
           }
         }
       },
@@ -149,6 +173,10 @@
             }
           },
           "idle" : {
+            "frames" : 13,
+            "cycle" : 1.5
+          },
+          "crouch" : {
             "frames" : 13,
             "cycle" : 1.5
           },
@@ -191,8 +219,8 @@
             "mode" : "transition",
             "transition" : "idle",
             "properties" : {
-              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
-              "persistentSoundStopTime" : 1.0,
+              //"persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
+              //"persistentSoundStopTime" : 1.0,
               "particleEmittersOff" : [ "spindust" ]
             }
           },
@@ -200,8 +228,8 @@
             "frames" : 3,
             "cycle" : 0.3,
             "properties" : {
-              "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
-              "persistentSoundStopTime" : 1.0,
+              //"persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
+              //"persistentSoundStopTime" : 1.0,
               "immediateSound" : "/sfx/npc/monsters/monster_slash1.ogg",
               "particleEmittersOff" : [ "spindust" ]
             }
@@ -218,6 +246,23 @@
             "frameProperties" : {
               "particleEmittersOff" : [ [ "spindust" ], [], [], [], [], [], [], ["spindust"] ],
               "particleEmittersOn" : [ [], [], ["spindust"], [], [], [], [], [] ]
+            }
+          },
+          "devour" : {
+            "frames" : 7,
+            "cycle" : 0.7,
+            "properties" : {
+              "particleEmittersOff" : [ "spindust" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "", "/sfx/npc/monsters/monster_bite2.ogg", "", "" ]
+            } 
+          },
+          "hurt" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "properties" : {
+              "particleEmittersOn" : [ "flames" ]
             }
           }
         }
@@ -340,6 +385,21 @@
             "properties" : {
               "particleEmittersOff" : [ "dash" ]
             }
+          },
+          "attack" : {
+            "frames" : 3,
+            "cycle" : 0.2,
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ],
+              "immediateSound" : "/sfx/npc/monsters/monster_slash1.ogg"
+            }
+          },
+          "hurt" : {
+            "frames" : 1,
+            "cycle" : 0.1,
+            "properties" : {
+              "particleEmittersOn" : [ "flames" ]
+            }
           }
         }
       }
@@ -373,6 +433,11 @@
               "properties" : {
                 "image" : "<partImage>:fire.<frame><directives>"
               }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame><directives>"
+              }
             }
           }
         }
@@ -397,7 +462,7 @@
             },
             "walk" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame><directives>"
+                "image" : "<partImage>:stroll.<frame><directives>"
               }
             },
             "run" : {
@@ -434,6 +499,16 @@
               "properties" : {
                 "image" : "<partImage>:charge.<frame><directives>"
               }
+            },
+            "devour" : {
+              "properties" : {
+                "image" : "<partImage>:devour.<frame><directives>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame><directives>"
+              }
             }
           }
         }
@@ -442,13 +517,19 @@
       "adultpoptop" : {
         "properties" : {
           "transformationGroups" : [ "monster" ],
-          "offset" : [0.4, 0.6875]
+          "offset" : [0.4, 0.6875],
+          "renderLayer" : -1
         },
         "partStates" : {
           "adultpoptopState" : {
             "idle" : {
               "properties" : {
                 "image" : "<partImage>:idle.<frame><directives>"
+              }
+            },
+            "crouch" : {
+              "properties" : {
+                "image" : "<partImage>:crouch.<frame><directives>"
               }
             },
             "walk" : {
@@ -458,12 +539,12 @@
             },
             "jump" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame><directives>"
+                "image" : "<partImage>:jump.<frame><directives>"
               }
             },
             "fall" : {
               "properties" : {
-                "image" : "<partImage>:walk.<frame><directives>"
+                "image" : "<partImage>:fall.<frame><directives>"
               }
             },
             "roarwindup" : {
@@ -493,15 +574,17 @@
             },
             "charge" : {
               "properties" : {
-                "image" : "<partImage>:charge.<frame>",
-                "damageArea" : [ [-7.5, 1.9375], [8.0, 0.5625], [8.5, -0.6875], [8.0, -1.9375], [5.5, -2.8125], [2.5, -2.8125], [-2.5, -2.1875], [-6.125, 0.3125] ]
+                "image" : "<partImage>:charge.<frame><directives>"
               }
-            }
-          },
-          "damage" : {
-            "stunned" : {
+            },
+            "devour" : {
               "properties" : {
-                "image" : "<partImage>:hurt.<frame>"
+                "image" : "<partImage>:devour.<frame><directives>"
+              }
+            },
+            "hurt" : {
+              "properties" : {
+                "image" : "<partImage>:hurt.<frame><directives>"
               }
             }
           }
@@ -538,23 +621,16 @@
             "invulnerablewindup" : {
               "properties" : {
                 "image" : "<partImage>:drop.<frame><directives>"
-              },
-              "frameProperties" : {
-                "offset" : [ [-0.125, 0.625], [-0.125, 0.625], [-0.125, 0.625], [-0.125, 0.5], [-0.125, 0.0], [-0.125, -1.125], [-0.125, -2.5], [-0.125, -2.875], [-0.125, -3.0] ]
               }
             },
             "invulnerablewinddown" : {
               "properties" : {
                 "image" : "<partImage>:rise.<frame><directives>"
-              },
-              "frameProperties" : {
-                "offset" : [ [-0.125, -3.0], [-0.125, -2.875], [-0.125, -2.5], [-0.125, -1.125], [-0.125, -0.125], [-0.125, 0.5], [-0.125, 0.625], [-0.125, 0.625], [-0.125, 0.625] ]
               }
             },
             "invulnerable" : {
               "properties" : {
-                "image" : "<partImage>:invulnerable.<frame><directives>",
-                "offset" : [-0.125, -3.0]
+                "image" : "<partImage>:invulnerable.<frame><directives>"
               }
             },
             "chargewindup" : {
@@ -576,10 +652,13 @@
               "properties" : {
                 "image" : "<partImage>:fall.<frame><directives>"
               }
-            }
-          },
-          "damage" : {
-            "stunned" : {
+            },
+            "attack" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame><directives>"
+              }
+            },
+            "hurt" : {
               "properties" : {
                 "image" : "<partImage>:hurt.<frame><directives>"
               }
@@ -686,6 +765,8 @@
     //Poptop
     "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
     "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
-    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ]
+    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
+    //Wisper
+    "ghostly" : ["/sfx/npc/monsters/spookit_fly_loop.ogg"]
   }
 }

@@ -6,14 +6,35 @@ function initCommonParameters()
   self.creature = false
   self.oldCreature = false
   self.oldPoly = false
-  self.hueShift = 0
+  self.damageUpdate = 5
+  self.melty = false
 
+  -- Shared Vars
+  self.fireTimer = 0
+  self.chargeFire = false
+  self.fireCooldownTimer = 0.5
+  self.frameCooldownTimer = 0
+  self.altFrameCooldownTimer = 0
+  self.hueShift = 0
+  self.soundActive = false
+  self.speedModifier = 1
+  self.hurtTimer = 0
+  self.transformedStats = {}
   -- Poptop Vars
-  self.strollTimer = 0
+  self.roarTimer = 0
+  self.devouring = false
+  self.bloodlust = 0
+  self.whistling = false
+  self.whistlingTimer = 0
+  self.roaringTimer = 0
+  self.roaringCooldownTimer = 0
   -- Wisper Vars
   self.idleTimer = 0
   -- Orbide Vars
   self.crouchTimer = 0
+  self.getupTimer = 0
+  self.grit = 0
+  self.invulnerable = false
   -- Bone Vars
 
   self.energyCost = config.getParameter("energyCost")
@@ -29,7 +50,7 @@ end
 function attemptActivation(shiftBack)
   self.oldPoly = (not shiftBack) and self.transformedMovementParameters.collisionPoly or false
   self.transformedMovementParameters = config.getParameter(self.creature .. "MovementParameters")
-  local collisionPoly = config.getParameter(self.creature .. (status.statPositive("ivrpgmeltyblood") and "MeltyCollisionPoly" or  "CollisionPoly"))
+  local collisionPoly = config.getParameter(self.creature .. (self.melty and "MeltyCollisionPoly" or  "CollisionPoly"))
   self.transformedMovementParameters.collisionPoly = collisionPoly
 
   if not tech.parentLounging()
@@ -37,8 +58,8 @@ function attemptActivation(shiftBack)
       and not shiftBack then
 
     local pos = transformPosition()
-    if pos and status.overConsumeResource("energy", self.energyCost) then
-      mcontroller.setPosition(pos)
+    if (pos or self.creature == 'wisper') and status.overConsumeResource("energy", self.energyCost) then
+      mcontroller.setPosition(pos or mcontroller.position())
       activate()
     else
       reset()
@@ -54,6 +75,17 @@ function attemptActivation(shiftBack)
     end
   else
     reset()
+  end
+end
+
+function checkHurtFrame()
+  self.notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
+  if self.notifications then
+    for _,notification in pairs(self.notifications) do
+      if notification.healthLost > 0 then
+        self.hurtTimer = 0.1
+      end
+    end
   end
 end
 
@@ -86,7 +118,7 @@ function reset()
   self.oldPoly = false
   if self.creature then
     self.transformedMovementParameters = config.getParameter(self.creature .. "MovementParameters")
-    local collisionPoly = config.getParameter(self.creature .. (status.statPositive("ivrpgmeltyblood") and "MeltyCollisionPoly" or  "CollisionPoly"))
+    local collisionPoly = config.getParameter(self.creature .. (self.melty and "MeltyCollisionPoly" or  "CollisionPoly"))
     self.transformedMovementParameters.collisionPoly = collisionPoly
   end
 end
@@ -117,26 +149,35 @@ function restoreStoredPosition()
 end
 
 function updateFrame(dt)
+  local faceOnly = self.chargeFire or self.frameCooldownTimer > 0 or self.altFrameCooldownTimer > 0
+  animator.setFlipped(mcontroller.facingDirection() == -1 or (not mcontroller.movingDirection() == 1 and not faceOnly))
+  if faceOnly then
+    if (self.creature == "orbide" or self.creature == "poptop" or self.creature == "adultpoptop") and self.frameCooldownTimer > 0 and self.frameCooldownTimer <= 0.1 then
+      animator.setAnimationState(self.creature .. "State", "chargewinddown")
+    end
+    return
+  end
   if self.creature == "poptop" then
     self.hueShift = 180
     if mcontroller.jumping() then
       animator.setAnimationState(self.creature .. "State", "jump")
     elseif mcontroller.falling() then
       animator.setAnimationState(self.creature .. "State", "fall")
+    elseif (mcontroller.walking() or self.whistling) and mcontroller.onGround() then
+      animator.setAnimationState(self.creature .. "State", self.whistling and "stroll" or "walk")
     elseif mcontroller.running() and mcontroller.onGround()  then
       animator.setAnimationState(self.creature .. "State", "run")
-    elseif mcontroller.walking() and mcontroller.onGround() then
-      animator.setAnimationState(self.creature .. "State", "stroll")
-      self.strollTimer = 0.1
     elseif mcontroller.crouching() and mcontroller.onGround()  then
       animator.setAnimationState(self.creature .. "State", "crouch")
-    elseif self.strollTimer == 0 and mcontroller.onGround() then
+    elseif not self.whistling and mcontroller.onGround() then
       animator.setAnimationState(self.creature .. "State", "idle")
     end
-    self.strollTimer = math.max(self.strollTimer - dt, 0)
   elseif self.creature == "adultpoptop" then
     self.hueShift = 180
-    if mcontroller.jumping() then
+    if self.roaringTimer > 0 then
+      animator.setAnimationState(self.creature .. "State", "roar")
+      suppressMovement()
+    elseif mcontroller.jumping() then
       animator.setAnimationState(self.creature .. "State", "jump")
     elseif mcontroller.falling() then
       animator.setAnimationState(self.creature .. "State", "fall")
@@ -145,14 +186,14 @@ function updateFrame(dt)
     elseif mcontroller.walking() and mcontroller.onGround() then
       animator.setAnimationState(self.creature .. "State", "walk")
     elseif mcontroller.crouching() and mcontroller.onGround() then
-      animator.setAnimationState(self.creature .. "State", "fall")
+      animator.setAnimationState(self.creature .. "State", "crouch")
     elseif mcontroller.onGround() then
       animator.setAnimationState(self.creature .. "State", "idle")
     end
   elseif self.creature == "wisper" then
     self.hueShift = 90
     animator.setLightActive("wisperGlow", true)
-    mcontroller.controlApproachVelocity(vec2.mul({self.hDirection, self.vDirection}, self.transformedMovementParameters.flySpeed), 5)
+    mcontroller.controlApproachVelocity(vec2.mul({self.hDirection, self.vDirection}, self.transformedMovementParameters.flySpeed * self.speedModifier), 5 * self.speedModifier)
     if not mcontroller.flying() then
       animator.setAnimationState(self.creature .. "State", "idle")
       self.idleTimer = 0.1
@@ -163,21 +204,42 @@ function updateFrame(dt)
   elseif self.creature == "orbide" then
     self.hueShift = -240
     animator.setLightActive("orbideGlow", true)
-    if mcontroller.jumping() then
+    animator.setAnimationRate(1)
+    if self.crouchTimer > 0 then
+      animator.setAnimationState(self.creature .. "State", "invulnerablewindup")
+      self.crouchTimer = math.max(self.crouchTimer - dt, 0)
+      if self.crouchTimer == 0 then
+        self.invulnerable = true
+      end
+      suppressMovement()
+    elseif self.invulnerable then
+      animator.setAnimationState(self.creature .. "State", "invulnerable")
+      status.addEphemeralEffect("regeneration1", 0.1, self.id)
+      suppressMovement()
+    elseif self.getupTimer > 0 then
+      animator.setAnimationState(self.creature .. "State", "invulnerablewinddown")
+      self.getupTimer = math.max(self.getupTimer - dt, 0)
+      suppressMovement()
+    elseif mcontroller.jumping() then
       animator.setAnimationState(self.creature .. "State", "jump")
     elseif mcontroller.falling() then
       animator.setAnimationState(self.creature .. "State", "fall")
     elseif mcontroller.running() and mcontroller.onGround()  then
       animator.setAnimationState(self.creature .. "State", "walk")
+      animator.setAnimationRate(self.speedModifier)
     elseif mcontroller.walking() and mcontroller.onGround() then
       animator.setAnimationState(self.creature .. "State", "walk")
+      animator.setAnimationRate(math.max(self.speedModifier/2, 1))
     elseif mcontroller.crouching() and mcontroller.onGround() then
       animator.setAnimationState(self.creature .. "State", "crouch")
     elseif mcontroller.onGround() then
       animator.setAnimationState(self.creature .. "State", "idle")
     end
   end
-  animator.setFlipped(mcontroller.facingDirection() == -1 or mcontroller.movingDirection() == -1)
+  checkHurtFrame()
+  if self.hurtTimer > 0 and not (self.crouchTimer > 0 or self.getupTimer > 0) then
+    animator.setAnimationState(self.creature .. "State", "hurt")
+  end
 end
 
 function updateTransformFade(dt)
@@ -232,6 +294,12 @@ function activate()
   status.setStatusProperty("ivrpgshapeshiftC", self.creature)
   animator.setLightActive("wisperGlow", false)
   animator.setLightActive("orbideGlow", false)
+  self.fireTimer = 0
+  self.chargeFire = false
+  self.invulnerable = false
+  self.getupTimer = 0
+  self.crouchTimer = 0
+  self.transformedStats = config.getParameter(self.creature .. "Stats", {})
   tech.setParentHidden(true)
   tech.setParentOffset({0, positionOffset2()})
   tech.setToolUsageSuppressed(true)
@@ -260,6 +328,12 @@ function deactivate()
   tech.setToolUsageSuppressed(false)
   status.clearPersistentEffects("movementAbility")
   self.transformedMovementParameters = {}
+  self.transformedStats = {}
+  self.fireTimer = 0
+  self.invulnerable = false
+  self.getupTimer = 0
+  self.crouchTimer = 0
+  self.chargeFire = false
   self.active = false
   self.oldCreature = false
   self.creature = false

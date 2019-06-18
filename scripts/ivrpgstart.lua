@@ -1,4 +1,5 @@
 require "/scripts/ivrpgutil.lua"
+require "/scripts/ivrpgactivestealthintercept.lua"
 
 local origInit = init
 local origUpdate = update
@@ -7,6 +8,7 @@ local origUninit = uninit
 function init()
   origInit()
   script.setUpdateDelta(14)
+  performStealthFunctionOverrides()
   self.removed = true
   self.xp = player.currency("experienceorb")
   checkMaxXP()
@@ -26,7 +28,7 @@ function init()
   --[[local testTreasure = root.assetJson("/scripts/testTreasure.config")
   sb.logInfo(sb.printJson(testTreasure))
   ]]
-  
+
   local data = root.assetJson("/ivrpgversion.config")
   local oldVersion = status.statusProperty("ivrpgversion", "0")
   if oldVersion ~= data.version then
@@ -331,6 +333,8 @@ function updateXPScalingShare()
 end
 
 function updateRallyMode()
+  local rallyActive = status.statusProperty("ivrpgrallymode", false)
+  --world.setProperty("ivrpgRallyMode", rallyActive)
   if status.statusProperty("ivrpgrallymode", false) then
     local targetIds = world.entityQuery(entity.position(), 80, {
       withoutEntityId = self.id,

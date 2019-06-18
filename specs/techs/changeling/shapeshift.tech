@@ -21,6 +21,20 @@
     "adultpoptop" : "adultpoptop/adultpoptop.png"
   },
 
+  "wisperStats" : [
+  	{ "stat" : "iceStatusImmunity", "amount" : 1 },
+  	{ "stat" : "iceResistance", "amount" : 3 },
+  	{ "stat" : "fireResistance", "amount" : -0.5 },
+  	{ "stat" : "iceResistance", "amount" : 3 },
+  	{ "stat" : "iceResistance", "amount" : 3 },
+  	{ "stat" : "maxHealth", "baseMultiplier" : 0.5 },
+  	{ "stat" : "maxEnergy", "baseMultiplier" : 1.5 },
+  	{ "stat" : "ivrpgvitalityscaling", "amount" : -0.05 },
+  	{ "stat" : "ivrpgvigorscaling", "amount" : 0.05 },
+  	{ "stat" : "breathProtection", "amount" : 1 }
+  ],
+  "wisperScaling" : "intelligence",
+
   "poptopCollisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, 0.10], [0.8125, -0.40],  [-0.8125, -0.40], [-1.3125, 0.10],  [-1.3125, 0.75], [-0.8125, 1.25] ],
   "poptopMeltyCollisionPoly" : [ [0.375, 0.96875], [0.625, 0.71875],  [0.625, 0.39375], [0.375, 0.14375],  [-0.4375, 0.14375], [-0.6875, 0.39375],  [-0.6875, 0.71875], [-0.4375, 0.96875] ],
 
@@ -38,6 +52,15 @@
 	}
   },
 
+  "poptopStats" : [
+  	{ "stat" : "protection", "amount" : 5 },
+  	{ "stat" : "ivrpgstrengthscaling", "amount" : 0.1 },
+  	{ "stat" : "ivrpgvitalityscaling", "amount" : 0.1 },
+  	{ "stat" : "ivrpgagilityscaling", "amount" : -0.05 },
+  	{ "stat" : "ivrpgendurancescaling", "amount" : 0.05 }
+  ],
+  "poptopScaling" : "strength",
+
   "adultpoptopCollisionPoly" : [ [1.75, 2.55], [2.25, 2.05],  [2.75, -3.55], [2.25, -3.95],  [-2.25, -3.95], [-2.75, -3.55],  [-2.25, 2.05], [-1.75, 2.55] ],
   "adultpoptopMeltyCollisionPoly" : [ [0.875, 1.61875], [1.125, 1.36875],  [1.375, -1.43125], [1.125, -1.63125],  [-1.125, -1.63125], [-1.375, -1.43125],  [-1.125, 1.36875], [-0.875, 1.61875] ],
 
@@ -49,11 +72,20 @@
 	"airFriction" : 0,
 
 	"airJumpProfile" : {
-	"jumpSpeed" : 16.0,
-	"jumpInitialPercentage" : 1.0,
-	"jumpHoldTime" : 0.1
+		"jumpSpeed" : 16.0,
+		"jumpInitialPercentage" : 1.0,
+		"jumpHoldTime" : 0.1
 	}
   },
+
+  "adultpoptopStats" : [
+  	{ "stat" : "protection", "amount" : 15 },
+  	{ "stat" : "ivrpgstrengthscaling", "amount" : 0.25 },
+  	{ "stat" : "ivrpgvitalityscaling", "amount" : 0.2 },
+  	{ "stat" : "ivrpgvigorscaling", "amount" : 0.1 },
+  	{ "stat" : "ivrpgendurancescaling", "amount" : 0.15 }
+  ],
+  "adultpoptopScaling" : "strength",
 
   "wisperCollisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
   "wisperMeltyCollisionPoly" : [ [0.125, 0.4375], [0.3125, 0.25], [0.3125, -0.125], [0.125, -0.3125], [-0.125, -0.3125], [-0.3125, -0.125], [-0.3125, 0.25], [-0.125, 0.4375] ],
@@ -80,11 +112,22 @@
 	"airFriction" : 0,
 
 	"airJumpProfile" : {
-	"jumpSpeed" : 25.0,
-	"jumpInitialPercentage" : 1.0,
-	"jumpHoldTime" : 0.2
+		"jumpSpeed" : 25.0,
+		"jumpInitialPercentage" : 1.0,
+		"jumpHoldTime" : 0.2
 	}
   },
+
+  "orbideStats" : [
+  	{ "stat" : "iceResistance", "amount" : 0.5 },
+  	{ "stat" : "fireResistance", "amount" : 0.5 },
+  	{ "stat" : "electricResistance", "amount" : 0.5 },
+  	{ "stat" : "poisonResistance", "amount" : -0.5 },
+  	{ "stat" : "maxHealth", "baseMultiplier" : 0.75 },
+  	{ "stat" : "ivrpgdexterityscaling", "amount" : 0.1 },
+  	{ "stat" : "ivrpgvitalityscaling", "amount" : -0.05 }
+  ],
+  "orbideScaling" : "dexterity",
 
 	//Unused
 	"wisperMeltyCollisionPoly2" : [ [0.125, 0.375], [0.3125, 0.1875], [0.3125, -0.1875], [0.125, -0.375], [-0.125, -0.375], [-0.3125, -0.1875], [-0.3125, 0.1875], [-0.125, 0.375] ],

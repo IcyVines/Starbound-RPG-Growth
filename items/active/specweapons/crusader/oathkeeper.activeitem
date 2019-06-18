@@ -1215,7 +1215,7 @@
 					"type": "boltguide",
 					"processing": "?saturation=-100",
 					"inheritDamageFactor": 1,
-					"offsetRange": [3, 3, -3, -3],
+					"offsetRange": [-3, -3, 3, 3],
 					"config": {
 						"speed": 0,
 						"timeToLive": 1.5,
