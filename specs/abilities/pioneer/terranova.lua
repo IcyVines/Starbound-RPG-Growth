@@ -21,6 +21,7 @@ function update(dt)
       {stat = "maxEnergy", baseMultiplier = self.modifiers.energy}
     })
     animator.setParticleEmitterActive("embersB", true)
+    animator.setParticleEmitterActive("embersNB", false)
   elseif status.statusProperty("ivrpgterranova", "Not Celestial") == "Not Bookmarked" then
     status.setPersistentEffects("ivrpgterranova", {
       {stat = "physicalResistance", amount = self.modifiers.resistance},
@@ -39,6 +40,7 @@ function update(dt)
       speedModifier = self.modifiers.speed
     })
     animator.setParticleEmitterActive("embersNB", true)
+    animator.setParticleEmitterActive("embersB", false)
   elseif status.statusProperty("ivrpgterranova", "Not Celestial") == "Not Celestial" then
     reset()
   end

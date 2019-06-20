@@ -69,7 +69,7 @@ function update(args)
     elseif not self.sliding then
       self.slideBind:rebind()
       mcontroller.controlFace(self.wall == "left" and 1 or -1)
-      mcontroller.controlApproachVelocity({0, 0}, 1000)
+      mcontroller.controlApproachVelocity({self.wall == "left" and -10 or 10, 0}, 3000)
     elseif self.sliding then
       mcontroller.controlFace(self.wall == "left" and 1 or -1)
       if lrInput and not mcontroller.jumping() and checkWall(lrInput) then

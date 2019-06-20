@@ -137,7 +137,14 @@ function updateLore()
   local unlocked = false
   local unlocks = status.statusProperty("ivrpgloreunlocks", {})
   for _,lore in ipairs(self.loreList) do
-    if not unlocks[lore] then
+    if type(lore) == "table" then
+      for _,spec in ipairs(lore) do
+        if not unlocks[spec] and status.statusProperty("ivrpgsu" .. spec, false) == true then
+          unlocks[spec] = true
+          unlocked = true
+        end
+      end
+    elseif not unlocks[lore] then
       unlocks[lore] = true
       unlocked = true
     end
@@ -151,11 +158,20 @@ end
 function updateSpecializationEffects(dt)
    -- Pioneer Effect
   if status.statPositive("ivrpgterranova") then
+    local teleportMarked = false
     local worldId = player.worldId()
     local count = 1
     local coords = {
       location = {},
     }
+
+    local teleportBookmarks = player.teleportBookmarks()
+    for _,bookmark in ipairs(teleportBookmarks) do
+      if worldId == bookmark.target[1] then
+        teleportMarked = true
+      end
+    end
+
     if player.worldId():sub(1, 14) == "CelestialWorld" then
       for c in worldId:gmatch(":([^:]*)") do
         if count == 4 then
@@ -166,7 +182,7 @@ function updateSpecializationEffects(dt)
         count = count + 1
       end
       --for k,v in pairs(coords.location) do sb.logInfo(v) end
-      if player.worldHasOrbitBookmark(coords) then
+      if player.worldHasOrbitBookmark(coords) or teleportMarked then
         status.setStatusProperty("ivrpgterranova", "Bookmarked")
       else
         status.setStatusProperty("ivrpgterranova", "Not Bookmarked")
@@ -386,6 +402,15 @@ function updateSpecs(dt)
     end
   end
   -- End Pioneer
+
+  -- Captain
+  if self.class == 6 and type(status.statusProperty("ivrpgsucaptain", 0)) == "number" then
+    local shipStats = player.shipUpgrades()
+    if shipStats and shipStats.shipLevel >= 3 and shipStats.crewSize >= 4 then
+      status.setStatusProperty("ivrpgsucaptain", 1)
+    end
+  end
+  -- End Captain
 
 end
 
