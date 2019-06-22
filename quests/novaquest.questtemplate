@@ -25,6 +25,7 @@
         "count" : 32,
         "consume" : true
       }
-    ]
+    ],
+    "giveBlueprints" : ["ivrpgnovacrystal", "wizardnovastaff"]
   }
 }

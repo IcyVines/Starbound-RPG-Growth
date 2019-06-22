@@ -1583,6 +1583,7 @@ function changelogTextHelper()
   local returnText = ""
   local colorSwitch = {}
   local switch = true
+  local maxLength = 72
   colorSwitch[true] = "^white;"
   colorSwitch[false] = "^#d1d1d1;"
   local previousSpace = false
@@ -1597,7 +1598,7 @@ function changelogTextHelper()
   	if returnText ~= "" and space == "" or space == " " then
   	  returnText = returnText .. "\n"
   	end
-  	if string.len(s) > 76 then
+  	if string.len(s) > maxLength then
   	  local words = {}
   	  for word in s:gmatch("%S+") do table.insert(words, word) end
   	  --sb.logInfo(sb.printJson(words))
@@ -1605,7 +1606,7 @@ function changelogTextHelper()
   	  local line = ""
   	  for _,word in ipairs(words) do
   	  	charCount = charCount + string.len(word) + 1
-  	  	if charCount > 76 then
+  	  	if charCount > maxLength then
   	  	  charCount = string.len(space) + string.len(word)
   	  	  returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
   	  	  line = word .. " "

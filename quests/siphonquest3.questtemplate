@@ -30,6 +30,7 @@
         "count" : 1,
         "consume" : true
       }
-    ]
+    ],
+    "giveBlueprints" : ["roguesiphonclaw3s", "roguesiphonclaw3v", "roguesiphonclaw3e"]
   }
 }

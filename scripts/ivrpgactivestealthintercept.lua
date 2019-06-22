@@ -17,7 +17,6 @@ function performStealthFunctionOverrides()
 		}
 		--sb.logInfo("world table altered")
 		function world.entityQuery(a1,a2,a3, ignoresStealth)
-            ignoresStealth = ignoresStealth == nil and true or ignoresStealth
 			local originalReturns = originalWorldQueries["entityQuery"](a1, a2, a3)
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
@@ -32,7 +31,6 @@ function performStealthFunctionOverrides()
 		end
 
 		function world.entityLineQuery(a1,a2,a3, ignoresStealth)
-            ignoresStealth = ignoresStealth == nil and true or ignoresStealth
 			local originalReturns = originalWorldQueries["entityLineQuery"](a1, a2, a3)
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
@@ -44,7 +42,6 @@ function performStealthFunctionOverrides()
 		end
 
 		function world.npcQuery(a1,a2,a3, ignoresStealth)
-            ignoresStealth = ignoresStealth == nil and true or ignoresStealth
 			local originalReturns = originalWorldQueries["npcQuery"](a1, a2, a3)
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
@@ -56,7 +53,6 @@ function performStealthFunctionOverrides()
 		end
 
 		function world.npcLineQuery(a1,a2,a3, ignoresStealth)
-            ignoresStealth = ignoresStealth == nil and true or ignoresStealth
 			local originalReturns = originalWorldQueries["npcLineQuery"](a1, a2, a3)
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
@@ -68,7 +64,6 @@ function performStealthFunctionOverrides()
 		end
 
 		function world.playerQuery(a1,a2,a3, ignoresStealth)
-            ignoresStealth = ignoresStealth == nil and true or ignoresStealth
 			local originalReturns = originalWorldQueries["playerQuery"](a1, a2, a3)
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
@@ -82,7 +77,6 @@ function performStealthFunctionOverrides()
 		end
 
 		function world.monsterQuery(a1,a2,a3, ignoresStealth)
-            ignoresStealth = ignoresStealth == nil and true or ignoresStealth
 			local originalReturns = originalWorldQueries["monsterQuery"](a1, a2, a3)
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
@@ -94,14 +88,12 @@ function performStealthFunctionOverrides()
 		end
 
 		function world.entityExists(a1, ignoresStealth)
-            ignoresStealth = ignoresStealth == nil and true or ignoresStealth
 			local originalReturn = originalWorldQueries["entityExists"](a1)
 			local newReturn = originalReturn and (ignoresStealth or not world.getProperty("entity["..tostring(a1).."]Stealthed"))
 			return newReturn
 		end
 		
 		function world.entityType(a1, ignoresStealth)
-            ignoresStealth = ignoresStealth == nil and true or ignoresStealth
 			local originalReturn = originalWorldQueries["entityType"](a1)
 			local newReturn = originalReturn
 			if world.getProperty("entity["..tostring(ai).."]Stealthed") and not ignoresStealth then
@@ -162,13 +154,11 @@ function performStealthFunctionOverrides()
 		end
 
 		function entity.isValidTarget(a1, ignoresStealth)
-            ignoresStealth = ignoresStealth == nil and true or ignoresStealth
 			local originalReturn = originalEntityQueries["isValidTarget"](a1)
 			local newReturn = originalReturn and (ignoresStealth or not world.getProperty("entity["..tostring(a1).."]Stealthed"))
 			return newReturn
 		end
 		function entity.entityInSight(a1, ignoresStealth)
-            ignoresStealth = ignoresStealth == nil and true or ignoresStealth
 			local originalReturn = originalEntityQueries["entityInSight"](a1)
 			local newReturn = originalReturn and (ignoresStealth or not world.getProperty("entity["..tostring(a1).."]Stealthed"))
 			return newReturn

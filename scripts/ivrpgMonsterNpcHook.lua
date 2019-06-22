@@ -59,6 +59,7 @@ function loadVariables(enemyType, level)
   self.baseParameters = mcontroller.baseParameters()
   self.devourState = false
   self.devourTimer = 0
+  performStealthFunctionOverrides()
 end
 
 function updateEffects(dt)

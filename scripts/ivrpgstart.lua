@@ -24,7 +24,7 @@ function init()
   self.damageUpdate = 5
   updateSpecsAvailable()
 
-  --Test because someone called into question my programming ability yet are incredibly wrong.
+  -- Treasure Test
   --[[local testTreasure = root.assetJson("/scripts/testTreasure.config")
   sb.logInfo(sb.printJson(testTreasure))
   ]]

@@ -31,7 +31,8 @@
         "count" : 1,
         "consume" : true
       }
-    ]
+    ],
+    "giveBlueprints" : ["ninjaaethershuriken2"]
   }
 }
 

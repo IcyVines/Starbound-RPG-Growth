@@ -25,6 +25,7 @@
         "count" : 25,
         "consume" : true
       }
-    ]
+    ],
+    "giveBlueprints" : ["ivrpgfiringmechanism", "soldierversagun"]
   }
 }

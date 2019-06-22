@@ -25,6 +25,7 @@
         "count" : 12,
         "consume" : true
       }
-    ]
+    ],
+    "giveBlueprints" : ["ivrpgetherealblade", "ninjaaethershuriken"]
   }
 }
