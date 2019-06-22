@@ -90,3 +90,15 @@ function rescrollSpecialization(class, spec)
   player.makeTechUnavailable(specInfo.tech.name)
   player.consumeCurrency("spectype", spec)
 end
+
+function friendlyQuery(a1, a2, a3, a4, ignoresStealth)
+  ignoresStealth = ignoresStealth == nil and true or ignoresStealth
+  local targetIds = world.entityQuery(a1, a2, a3, ignoresStealth)
+  local newTargets = {}
+  for _,id in ipairs(targetIds) do
+    if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(a4, id)) then
+      table.insert(newTargets, id)
+    end
+  end
+  return newTargets
+end

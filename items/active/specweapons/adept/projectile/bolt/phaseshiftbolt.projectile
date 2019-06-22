@@ -15,7 +15,7 @@
   "damageTeam" : { "type" : "environment" },
   "statusEffects" : [
     {"effect" : "ivrpgphaseshiftenergyregen", "duration" : 0.75},
-    {"effect" : "camouflage25", "duration" : 0.75}, 
+    {"effect" : "ivrpgcamouflage", "duration" : 0.75}, 
     {"effect" : "invulnerable", "duration" : 0.75}
   ],
   "knockback" : 0

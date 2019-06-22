@@ -37,6 +37,7 @@ function reap()
     params.level = 1
     params.damageTeamType = "friendly"
     params.aggressive = true
+    params.ownerUuid = entity.uniqueId()
     while self.mobCharge > 0 do 
       world.spawnMonster("bonepteropod", mcontroller.position(), params)
       self.mobCharge = self.mobCharge - 1

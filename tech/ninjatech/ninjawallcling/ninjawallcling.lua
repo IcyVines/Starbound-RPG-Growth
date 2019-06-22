@@ -49,8 +49,7 @@ function update(args)
   local action = input(args)
 
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
-    status.removeEphemeralEffect("camouflage25")
-    status.removeEphemeralEffect("invulnerable")
+    status.removeEphemeralEffect("ivrpgjumpcamouflage")
     status.removeEphemeralEffect("nofalldamage")
     refreshJumps()
     if self.wall then
@@ -83,8 +82,7 @@ function update(args)
   end
 
   if status.resource("energy") < 1 or status.statPositive("activeMovementAbilities") then
-    status.removeEphemeralEffect("camouflage25")
-    status.removeEphemeralEffect("invulnerable")
+    status.removeEphemeralEffect("ivrpgjumpcamouflage")
     status.removeEphemeralEffect("nofalldamage")
   end
 
@@ -104,8 +102,7 @@ function doMultiJump()
   --set flashjump player changes
   if canMultiJump() then
     if status.overConsumeResource("energy", self.cost) then
-      status.addEphemeralEffect("camouflage25", .25)
-      status.addEphemeralEffect("invulnerable", .25)
+      status.addEphemeralEffect("ivrpgjumpcamouflage", .25)
       status.addEphemeralEffect("nofalldamage", math.huge)
 
       mcontroller.controlJump(true)

@@ -62,20 +62,18 @@ function update(args)
   end
 
   if self.vanished then
+    mcontroller.setVelocity({0,0})
+    mcontroller.controlParameters({
+      gravityEnabled = false
+    })
+    mcontroller.controlModifiers({
+      speedModifier = 0,
+      airJumpModifier = 0
+    })
     if self.vanishTimer > 0 then
       self.vanishTimer = math.max(0, self.vanishTimer - args.dt)
       status.setResourcePercentage("energyRegenBlock", 1.0)
-      mcontroller.setVelocity({0,0})
-      mcontroller.controlModifiers({
-        speedModifier = 0,
-        airJumpModifier = 0
-      })
     else
-      mcontroller.setVelocity({0,0})
-      mcontroller.controlModifiers({
-        speedModifier = 0,
-        airJumpModifier = 0
-      })
       local projectileId = world.spawnProjectile(
         "invtransdisc",
         tech.aimPosition(),

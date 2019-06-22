@@ -1,4 +1,5 @@
 require "/scripts/util.lua"
+require "/scripts/ivrpgutil.lua"
 require "/scripts/vec2.lua"
 
 function init()
@@ -60,23 +61,20 @@ function createEnemyProjectile()
 end
 
 function createFriendlyProjectile()
-  local targetIds = world.entityQuery(mcontroller.position(), 15, {
+  local targetIds = friendlyQuery(mcontroller.position(), 15, {
     includedTypes = {"creature"}
-  })
+  }, self.id, true)
   shuffle(targetIds)
   for i,id in ipairs(targetIds) do
-    if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
-      local sourceDamageTeam = world.entityDamageTeam(self.id)
-      local directionTo = world.distance(world.entityPosition(id), mcontroller.position())
-      world.spawnProjectile(
-        self.friendlyProjectileType,
-        mcontroller.position(),
-        0,
-        directionTo,
-        false,
-        self.friendlyProjectileParameters
-      )
-      return
-    end
+    local directionTo = world.distance(world.entityPosition(id), mcontroller.position())
+    world.spawnProjectile(
+      self.friendlyProjectileType,
+      mcontroller.position(),
+      0,
+      directionTo,
+      false,
+      self.friendlyProjectileParameters
+    )
+    return
   end
 end

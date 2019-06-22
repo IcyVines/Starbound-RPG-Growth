@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgjumpcamouflage",
+  "effectConfig" : {
+    "alpha" : 0.25,
+    "invulnerable" : true
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgcamouflage.lua"
+  ],
+
+  "label" : "Camouflage",
+  "icon" : "/interface/statuses/invisible.png"
+}
