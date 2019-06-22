@@ -4,7 +4,7 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Waves crash violently and winds blow endlessly as the storm howls.",
+  "description" : "Waves crash violently and winds blow endlessly as the storm howls.\n^green;Designed by Steven Steel!",
   "shortdescription" : "^#bff4ff;Stormhowl",
   "tooltipKind" : "base",
   "category" : "shortsword",

@@ -4,7 +4,7 @@
 	"level": 5,
 	"maxStack": 1,
 	"rarity": "Legendary",
-	"description": "Something lurks within the shadows.",
+	"description": "Something lurks within the shadows.\n^red;Designed by Steven Steel!",
 	"shortdescription": "Shadow Aether",
 	"tooltipKind": "base",
 	"category": "Tantō",
