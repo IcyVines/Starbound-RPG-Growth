@@ -92,7 +92,7 @@
       "4" : "craft"
     }
   },
-  "scripts" : ["/professions/table.lua"],
+  "scripts" : ["/professions/table.lua", "/professions/smith/upgrade.lua"],
   "scriptDelta" : 5,
 
   "learnBlueprintsOnPickup" : [
