@@ -18,6 +18,7 @@ function performStealthFunctionOverrides()
 		--sb.logInfo("world table altered")
 		function world.entityQuery(a1,a2,a3, ignoresStealth)
 			local originalReturns = originalWorldQueries["entityQuery"](a1, a2, a3)
+			if (entity and world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
 				--sb.logInfo("entity["..tostring(id).."]Stealthed: %s", tostring(world.getProperty("entity["..tostring(id).."]Stealthed")))
@@ -32,6 +33,7 @@ function performStealthFunctionOverrides()
 
 		function world.entityLineQuery(a1,a2,a3, ignoresStealth)
 			local originalReturns = originalWorldQueries["entityLineQuery"](a1, a2, a3)
+			if (entity and world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
 				if ignoresStealth or not world.getProperty("entity["..tostring(id).."]Stealthed") then
@@ -43,6 +45,7 @@ function performStealthFunctionOverrides()
 
 		function world.npcQuery(a1,a2,a3, ignoresStealth)
 			local originalReturns = originalWorldQueries["npcQuery"](a1, a2, a3)
+			if (entity and world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
 				if ignoresStealth or not world.getProperty("entity["..tostring(id).."]Stealthed") then
@@ -54,6 +57,7 @@ function performStealthFunctionOverrides()
 
 		function world.npcLineQuery(a1,a2,a3, ignoresStealth)
 			local originalReturns = originalWorldQueries["npcLineQuery"](a1, a2, a3)
+			if (entity and world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
 				if ignoresStealth or not world.getProperty("entity["..tostring(id).."]Stealthed") then
@@ -65,6 +69,7 @@ function performStealthFunctionOverrides()
 
 		function world.playerQuery(a1,a2,a3, ignoresStealth)
 			local originalReturns = originalWorldQueries["playerQuery"](a1, a2, a3)
+			if (entity and world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
 				if ignoresStealth or not world.getProperty("entity["..tostring(id).."]Stealthed") then
@@ -78,6 +83,7 @@ function performStealthFunctionOverrides()
 
 		function world.monsterQuery(a1,a2,a3, ignoresStealth)
 			local originalReturns = originalWorldQueries["monsterQuery"](a1, a2, a3)
+			if (entity and world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local newReturns = {}
 			for _,id in ipairs(originalReturns) do
 				if ignoresStealth or not world.getProperty("entity["..tostring(id).."]Stealthed") then
@@ -89,12 +95,14 @@ function performStealthFunctionOverrides()
 
 		function world.entityExists(a1, ignoresStealth)
 			local originalReturn = originalWorldQueries["entityExists"](a1)
+			if (entity and world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local newReturn = originalReturn and (ignoresStealth or not world.getProperty("entity["..tostring(a1).."]Stealthed"))
 			return newReturn
 		end
 		
 		function world.entityType(a1, ignoresStealth)
 			local originalReturn = originalWorldQueries["entityType"](a1)
+			if (entity and world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local newReturn = originalReturn
 			if world.getProperty("entity["..tostring(ai).."]Stealthed") and not ignoresStealth then
 				newReturn = "none"
@@ -134,6 +142,7 @@ function performStealthFunctionOverrides()
 		--sb.logInfo("entity table altered")
 
 		function entity.closestValidTarget(a1, ignoresStealth)
+			if (world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local targetIds = world.entityQuery(entity.position(), a1, {
 				withoutEntityId = entity.id()
 			}, ignoresStealth)
@@ -155,11 +164,13 @@ function performStealthFunctionOverrides()
 
 		function entity.isValidTarget(a1, ignoresStealth)
 			local originalReturn = originalEntityQueries["isValidTarget"](a1)
+			if (world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local newReturn = originalReturn and (ignoresStealth or not world.getProperty("entity["..tostring(a1).."]Stealthed"))
 			return newReturn
 		end
 		function entity.entityInSight(a1, ignoresStealth)
 			local originalReturn = originalEntityQueries["entityInSight"](a1)
+			if (world.entityDamageTeam(entity.id()).type == "friendly") and ignoresStealth ~= false then ignoresStealth = true end
 			local newReturn = originalReturn and (ignoresStealth or not world.getProperty("entity["..tostring(a1).."]Stealthed"))
 			return newReturn
 		end

@@ -181,7 +181,7 @@ function devour()
   local size = self.creature == "adultpoptop" and 4 or 2
   size = self.melty and size / 2 or size
   for i,id in ipairs(world.entityQuery(mcontroller.position(), size)) do
-    if world.entityAggressive(id) then
+    if world.entityAggressive(id) and world.entityDamageTeam(id).type ~= "friendly" then
       world.sendEntityMessage(id, "ivrpgDevourState", self.id, mcontroller.position(), mcontroller.facingDirection())
       self.devouring = id
       return

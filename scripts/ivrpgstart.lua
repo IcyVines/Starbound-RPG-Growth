@@ -293,6 +293,7 @@ end
 function uninit()
   origUninit()
   status.removeEphemeralEffect("ivrpgstatboosts")
+  status.removeEphemeralEffect("ivrpganimation")
   status.clearPersistentEffects("ivrpgclassboosts")
   status.clearPersistentEffects("ivrpgstatboosts")
   status.clearPersistentEffects("ivrpgaffinityeffects")
