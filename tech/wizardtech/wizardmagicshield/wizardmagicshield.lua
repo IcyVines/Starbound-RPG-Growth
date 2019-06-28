@@ -2,7 +2,6 @@ require "/scripts/vec2.lua"
 require "/scripts/keybinds.lua"
 
 function init()
-  script.setUpdateDelta(4)
   self.active = false
   self.damageUpdate = 5
   self.regenSpeed = config.getParameter("regenSpeed", 0.1)
@@ -38,7 +37,7 @@ function update(args)
     end
     status.setResourcePercentage("energyRegenBlock", 1.0)
     local regenBonus = 1 + math.min((status.statusProperty("ivrpgintelligence", 0) + status.statusProperty("ivrpgvigor", 0)) / 100, 0.5)
-    status.modifyResourcePercentage("energy", 5 * args.dt * self.regenSpeed * regenBonus * (self.energyCooldownTimer > 0 and 0.5 or 1))
+    status.modifyResourcePercentage("energy", args.dt * self.regenSpeed * regenBonus * (self.energyCooldownTimer > 0 and 0.5 or 1))
     --sb.logInfo("Percent: " .. (self.regenSpeed * regenBonus * (self.energyCooldownTimer > 0 and 0.5 or 1)))
     tech.setParentDirectives("?border=2;34ED2A20;4E1D7000")
     updateDamageTaken()
