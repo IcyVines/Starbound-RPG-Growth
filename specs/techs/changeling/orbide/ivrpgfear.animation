@@ -1,0 +1,21 @@
+{
+  "particleEmitters" : {
+    "smoke" : {
+      "enable" : true,
+      "emissionRate" : 1,
+      "offsetRegion" : [ 0, 2.0, 0.0, 2.0 ],
+      "particles" : [
+        { "particle" : "ivrpgfearparticle" }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "smoke" : { "interpolated" : true }
+  },
+
+
+  "sounds" : {
+    "burn" : [ "/sfx/statuseffects/powerup.ogg" ]
+  }
+}

@@ -9,6 +9,8 @@ function init()
 
   self.wallSlideParameters = config.getParameter("wallSlideParameters")
   self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity")
+  self.melty = false
+  self.meltyBounds = poly.boundBox(config.getParameter("meltyPoly"))
   self.sliding = false
   buildSensors()
   self.wallDetectThreshold = config.getParameter("wallDetectThreshold")
@@ -35,7 +37,11 @@ end
 
 function update(args)
 
-  
+  if (status.statPositive("ivrpgmeltyblood") and not self.melty) or (self.melty and not status.statPositive("ivrpgmeltyblood")) then
+    self.melty = not self.melty
+    buildSensors()
+  end
+
   local jumpActivated = args.moves["jump"] and not self.lastJump
   self.lastJump = args.moves["jump"]
 
@@ -56,19 +62,20 @@ function update(args)
       releaseWall()
     end
   elseif self.wall then
-    --mcontroller.controlParameters(self.wallSlideParameters)
     mcontroller.controlParameters(self.wallSlideParameters)
+    self.wallSlideParameters.airFriction = 10
     refreshJumps()
     --self.wallBind:rebind()
 
     if not checkWall(self.wall) or status.statPositive("activeMovementAbilities") or ((lrInput == "right" or lrInput == "left") and lrInput ~= self.wall) then
       releaseWall()
     elseif jumpActivated then
+      mcontroller.controlParameters(self.wallSlideParameters)
       doWallJump()
     elseif not self.sliding then
       self.slideBind:rebind()
+      self.wallSlideParameters.airFriction = 100
       mcontroller.controlFace(self.wall == "left" and 1 or -1)
-      mcontroller.controlApproachVelocity({self.wall == "left" and -10 or 10, 0}, 3000)
     elseif self.sliding then
       mcontroller.controlFace(self.wall == "left" and 1 or -1)
       if lrInput and not mcontroller.jumping() and checkWall(lrInput) then
@@ -143,14 +150,14 @@ function refreshJumps()
 end
 
 function buildSensors()
-  local bounds = poly.boundBox(mcontroller.baseParameters().standingPoly)
+  local bounds = status.statPositive("ivrpgmeltyblood") and self.meltyBounds or poly.boundBox(mcontroller.baseParameters().standingPoly) 
   self.wallSensors = {
     right = {},
     left = {}
   }
   for _, offset in pairs(config.getParameter("wallSensors")) do
-    table.insert(self.wallSensors.left, {bounds[1] - 0.1, bounds[2] + offset})
-    table.insert(self.wallSensors.right, {bounds[3] + 0.1, bounds[2] + offset})
+    table.insert(self.wallSensors.left, {bounds[1] - 0.1, bounds[2] + offset / (status.statPositive("ivrpgmeltyblood") and 2 or 1)})
+    table.insert(self.wallSensors.right, {bounds[3] + 0.1, bounds[2] + offset / (status.statPositive("ivrpgmeltyblood") and 2 or 1)})
   end
 end
 
@@ -163,7 +170,7 @@ function checkWall(wall)
       wallCheck = wallCheck + 1
     end
   end
-  return wallCheck >= self.wallDetectThreshold
+  return wallCheck >= self.wallDetectThreshold / (status.statPositive("ivrpgmeltyblood") and 2 or 1)
 end
 
 function doWallJump()

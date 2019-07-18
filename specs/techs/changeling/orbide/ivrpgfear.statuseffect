@@ -1,0 +1,13 @@
+{
+  "name" : "ivrpgfear",
+
+  "blockingStat" : "demonicStatusImmunity",
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgfear.lua"
+  ],
+
+  "animationConfig" : "ivrpgfear.animation"
+}

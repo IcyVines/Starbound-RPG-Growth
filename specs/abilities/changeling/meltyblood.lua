@@ -3,7 +3,7 @@ require "/scripts/util.lua"
 
 function init()
   self.id = effect.sourceEntity()
-  self.healthPercent = 0.8--config.getParameter("healthPercent", 0.15)
+  self.healthPercent = config.getParameter("healthPercent", 0.15)
   self.transformedMovementParameters = config.getParameter("movementParameters")
   self.basePoly = mcontroller.baseParameters().standingPoly
   self.unmelt = false
@@ -13,6 +13,7 @@ end
 function update(dt)
 
   local melt = status.statusProperty("ivrpgshapeshift", false) and status.resource("health") / status.stat("maxHealth") <= self.healthPercent
+  if status.statusProperty("ivrpgshapeshiftC", "") == "giant" then melt = false end
   if self.unmelt and not melt then
     mcontroller.translate({0,1})
   end

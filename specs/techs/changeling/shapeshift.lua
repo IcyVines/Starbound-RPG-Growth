@@ -16,7 +16,10 @@ end
 function shapeshift()
   if self.frameCooldownTimer > 0 or self.altFrameCooldownTimer > 0 then return end
   self.oldCreature = self.creature
-  if self.shiftHeld and self.downHeld then
+  if self.shiftHeld and self.downHeld and self.giantAvailable then
+    self.giantTransform = true
+    self.creature = false
+    attemptActivation(false)
     return
   elseif self.downHeld then
     self.creature = "orbide"
@@ -30,6 +33,7 @@ end
 
 function alreadyActive()
   if self.chargeFire or self.frameCooldownTimer > 0 or self.altFrameCooldownTimer > 0 or self.invulnerable or self.crouchTimer > 0 or self.getupTimer > 0 or self.roaringTimer > 0 then
+    self.whistling = false
     return true
   end
 end
@@ -49,9 +53,10 @@ function action1()
     toggleEthereal()
   elseif self.creature == "poptop" and mcontroller.onGround() and status.overConsumeResource("energy", self.dt * 10) then
     toggleWhistle()
-  elseif self.creature == "adultpoptop" and self.roaringCooldownTimer == 0 and mcontroller.onGround() and status.overConsumeResource("energy", self.energyCost) then
+  elseif self.creature == "adultpoptop" and self.roaringCooldownTimer == 0 and mcontroller.onGround() and status.overConsumeResource("energy", 2 * self.energyCost) then
+    activateRoar()
     self.roaringTimer = 0.53
-    self.roaringCooldownTimer = 1.25
+    self.roaringCooldownTimer = 2
   elseif self.creature == "orbide" and mcontroller.onGround() and status.resource("energy") > 12 then
     self.crouchTimer = 1.2
   end
@@ -77,18 +82,31 @@ function toggleWhistle()
   status.addEphemeralEffect("ivrpgpoptoppower", self.dt * (self.whistlingTimer) * (100), self.id)
 end
 
+function activateRoar()
+  local targetIds = world.entityQuery(mcontroller.position(), 20, {
+    includedTypes = {"creature"}
+  })
+  for i,id in ipairs(targetIds) do
+    if world.entityDamageTeam(id).type == "enemy" and (world.entityAggressive(id) or world.entityCanDamage(self.id, id)) then
+      world.sendEntityMessage(id, "addEphemeralEffect", "soldierstun", 0.5, self.id)
+      world.sendEntityMessage(id, "addEphemeralEffect", "ivrpgdisoriented", 2, self.id)
+    elseif world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
+      world.sendEntityMessage(id, "addEphemeralEffect", "rage", 5, self.id)
+    end
+  end
+end
 
 --
 
 function action2()
   if alreadyActive() then return end
-  if self.creature == "wisper" and status.overConsumeResource("energy", self.dt * 10) then
+  if self.creature == "wisper" and vec2.mag(mcontroller.velocity()) > 0.1 and status.overConsumeResource("energy", self.dt * 10) then
     self.speedModifier = 2
-  elseif self.creature == "poptop" then
+  elseif self.creature == "poptop" and self.bloodlust > 20 then
     self.oldCreature = self.creature
     self.creature = "adultpoptop"
     attemptActivation(false)
-  elseif self.creature == "orbide" and status.overConsumeResource("energy", self.dt * 10) then
+  elseif self.creature == "orbide" and math.abs(mcontroller.xVelocity()) > 0.1 and status.overConsumeResource("energy", self.dt * 10) then
     self.speedModifier = 3
     self.grit = 1
     mcontroller.controlModifiers({
@@ -149,6 +167,7 @@ end
 function altFire()
   if alreadyActive() or self.fireCooldownTimer > 0 then return end
   if self.creature == "wisper" then
+    wisperAltFire()
   elseif self.creature == "poptop" or self.creature == "adultpoptop" then
     poptopAltFire()
   elseif self.creature == "orbide" then
@@ -157,6 +176,15 @@ function altFire()
 end
 
 -- Alt Fire Functions
+
+function wisperAltFire()
+  if status.overConsumeResource("energy", self.energyCost * 2) then
+    animator.setAnimationState("wisperState", "firewindup")
+    self.chargeFire = true
+    self.wisperExplosion = true
+    self.fireTimer = 0.8
+  end
+end
 
 function poptopAltFire()
   if mcontroller.onGround() and status.overConsumeResource("energy", self.energyCost) then
@@ -169,11 +197,13 @@ end
 function devour()
   if self.devouring then
     local health = world.entityHealth(self.devouring)
-    damage = health and (status.resource("health") > health[1] and health[1] + 1 or health[2] / 4) or health
     if health then
+      damage = status.resource("health") > health[1] and health[1] + 1 or health[2] / 4
       world.sendEntityMessage(self.devouring, "applySelfDamageRequest", "IgnoresDef", "alwaysbleed", damage, self.id)
       if damage < health[1] then world.sendEntityMessage(self.devouring, "ivrpgDevourState", self.id) end
       status.modifyResource("health", damage / 2)
+      self.bloodlust = self.bloodlust + 5
+      self.giantCounter = self.giantCounter + 1
     end
     self.devouring = false
     return
@@ -228,14 +258,13 @@ function update(args)
        self.basePoly = mcontroller.baseParameters().standingPoly
     end
     self.directives = self.directives .. "?hueshift=" .. self.hueShift
+    if string.find(self.creature or "", "poptop") then self.directives = self.directives .. "?fade=FF0000=" .. math.min(self.bloodlust / 50, 0.5) end
+    if self.creature == "adultpoptop" and self.devouring then self.directives = self.directives .. "?multiply=FFFFFFAA" end
   else
     self.basePoly = mcontroller.collisionPoly()
   end
-
-  --[[if not self.specialLast and args.moves["special1"] then
-    attemptActivation()
-  end
-  self.specialLast = args.moves["special1"]]
+  if self.flashTimer > 0 then self.directives = self.directives .. "?fade=FFEEFF=" .. self.flashTimer end
+  if self.giant then self.directives = "?scalenearest=3" end
 
   if not args.moves["special1"] then
     self.forceTimer = nil
@@ -268,16 +297,33 @@ function update(args)
     self.grit = 0
   end
 
+  if not (self.creature == "wisper") then
+    self.wisperExplosion = false
+  end
+
   if self.active then
     local collisionPoly = config.getParameter(self.creature .. (self.melty and "MeltyCollisionPoly" or  "CollisionPoly"))
     self.transformedMovementParameters.collisionPoly = collisionPoly
     mcontroller.controlParameters(self.transformedMovementParameters)
+    if self.creature == "adultpoptop" and not self.devouring and self.bloodlust == 0 then
+      self.oldCreature = self.creature
+      self.creature = "poptop"
+      attemptActivation(false)
+    end
     updateFrame(args.dt)
     checkForceDeactivate(args.dt)
     calculateActives(args.dt)
+  elseif self.giant then
+    mcontroller.controlParameters(config.getParameter("giantMovementParameters"))
+    if mcontroller.crouching() then tech.setParentState("Stand") else tech.setParentState() end
   end
 
   calculatePassives()
+
+  if self.giantCounter >= 50 and not self.giantAvailable then
+    self.giantAvailable = true
+    self.flashTimer = 1
+  end
 
   if self.chargeFire or self.frameCooldownTimer > 0 or self.altFrameCooldownTimer > 0 then
     if self.creature == "wisper" then
@@ -309,8 +355,16 @@ function update(args)
     self.whistlingTimer = 0
   end
   self.roaringTimer = math.max(self.roaringTimer - args.dt, 0)
+  self.bloodlust = math.max(math.min(self.bloodlust, 25) - args.dt, 0)
   self.roaringCooldownTimer = math.max(self.roaringCooldownTimer - args.dt, 0)
   self.lastPosition = mcontroller.position()
+  self.flashTimer = math.max(self.flashTimer - args.dt, 0)
+  if self.giantTimer > 0 then
+    self.giantTimer = math.max(self.giantTimer - args.dt, 0)
+    if self.giantTimer == 0 then
+      deactivate()
+    end
+  end
 end
 
 function calculateActives(dt)
@@ -324,9 +378,22 @@ function calculateActives(dt)
       if self.creature == "wisper" then
         animator.setAnimationState(self.creature .. "State", "fire")
         self.frameCooldownTimer = 0.3
-        world.spawnProjectile("iceshot", mcontroller.position(), self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {speed = 40, power = 20 * status.stat("powerMultiplier")})
+        if self.wisperExplosion then
+          self.wisperExplosion = false
+          local healthPercent = status.resource("health") / status.stat("maxHealth")
+          healthPercent = math.min(healthPercent - 0.01, 0.1)
+          status.modifyResourcePercentage("health", -healthPercent)
+          world.spawnProjectile("iceplasmaexplosionstatus", mcontroller.position(), self.id, {0,0}, true, {
+            power = 500 * status.stat("powerMultiplier") * healthPercent
+          })
+        else
+          world.spawnProjectile("iceshot", mcontroller.position(), self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {speed = 40, power = 20 * status.stat("powerMultiplier")})
+        end
       elseif self.creature == "poptop" or self.creature == "adultpoptop" then
         animator.setAnimationState(self.creature .. "State", "charge")
+        world.spawnProjectile("ivrpg" .. self.creature .. "charge" .. (self.melty and "melty" or ""), {mcontroller.xPosition(), mcontroller.yPosition() + ((self.creature == "poptop" and self.melty) and 0.25 or 0)}, self.id, {mcontroller.facingDirection(),0}, true, {
+          power = 30 * status.stat("powerMultiplier")
+        })
         self.frameCooldownTimer = 0.4
       elseif self.creature == "orbide" then
         animator.setAnimationState(self.creature .. "State", "charge")
@@ -360,17 +427,60 @@ function calculatePassives()
     table.insert(transformedStatsCopy, {stat = "invulnerable", amount = 1})
   end
   table.insert(transformedStatsCopy, {stat = "grit", amount = (self.crouchTimer > 0 or self.getupTimer > 0) and 1 or self.grit})
-  table.insert(transformedStatsCopy, {stat = "powerMultiplier", baseMultiplier = 1 + (self.creature and status.statusProperty("ivrpg" .. config.getParameter(self.creature .. "Scaling"), 0) or 0)/50})
-  status.setPersistentEffects("ivrpgshapeshift", transformedStatsCopy)
+  table.insert(transformedStatsCopy, {stat = "powerMultiplier", baseMultiplier = 1 + (self.creature and status.statusProperty("ivrpg" .. config.getParameter(self.creature .. "Scaling"), 0) or 0)/50 + (string.find(self.creature or "", "poptop") and self.bloodlust/50 or 0)})
+  status.setPersistentEffects("ivrpgshapeshift", self.giant and config.getParameter("giantStats", {}) or transformedStatsCopy)
 
+  killedEnemy()
+  if self.creature == "orbide" then
+    applyFear()
+  end
+
+  if self.giant then
+    if not self.giantHitbox then
+      self.giantHitbox = world.spawnProjectile("ivrpgmeltygiant", mcontroller.position(), self.id, {0,0}, true, {
+        power = 100 * status.stat("powerMultiplier")
+      })
+    end
+  else
+    if self.giantHitbox and world.entityExists(self.giantHitbox) then
+      world.callScriptedEntity(self.giantHitbox, "die")
+    end
+    self.giantHitbox = false
+    self.giantTimer = 0
+  end
 
 end
 
 function meltyBlood()
   self.melty = status.statPositive("ivrpgmeltyblood")
-  if self.melty then
+  if self.melty or self.giant then
     tech.setToolUsageSuppressed(true)
   elseif not self.active then
     tech.setToolUsageSuppressed(false)
+  end
+end
+
+function killedEnemy()
+  local notifications = nil
+  notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if notification.damageDealt > notification.healthLost and notification.healthLost > 0 then
+        if string.find(self.creature or "", "poptop") then self.bloodlust = self.bloodlust + 3 end
+        self.giantCounter = self.giantCounter + (self.giant and 0 or 1)
+      end
+    end
+  end
+end
+
+function applyFear()
+  local targetIds = world.entityQuery(mcontroller.position(), 20, {
+    withoutEntityId = self.id,
+    includedTypes = {"creature"}
+  })
+  for i,id in ipairs(targetIds) do
+    if world.entityDamageTeam(id).type == "enemy" and (world.entityAggressive(id) or world.entityCanDamage(self.id, id)) then
+      world.sendEntityMessage(id, "addEphemeralEffect", "ivrpgfear", 1, self.id)
+    end
   end
 end

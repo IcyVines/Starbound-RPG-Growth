@@ -56,6 +56,66 @@
         }
       ]
     },
+    "jumpgiant" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "size" : 2,
+            "position" : [0.0, -7],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "landgiant" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "size" : 2.5,
+            "position" : [0.0, -7],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "jumpMeltygiant" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "size" : 2,
+            "position" : [0.0, -7],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
+    "landMeltygiant" : {
+      "transformationGroups" : ["flip"],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "size" : 2.5,
+            "position" : [0.0, -7],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    },
     "jumppoptop" : {
       "transformationGroups" : ["flip"],
       "particles" : [
@@ -120,6 +180,7 @@
             "type" : "animated",
             "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
             "fade" : 0.9,
+            "size" : 1.5,
             "position" : [0.0, -3.6],
             "timeToLive" : 0.4
           }
@@ -148,6 +209,7 @@
             "type" : "animated",
             "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
             "fade" : 0.9,
+            "size" : 1.5,
             "position" : [0.0, -3.8],
             "timeToLive" : 0.4
           }

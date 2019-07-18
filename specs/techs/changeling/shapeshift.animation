@@ -517,8 +517,7 @@
       "adultpoptop" : {
         "properties" : {
           "transformationGroups" : [ "monster" ],
-          "offset" : [0.4, 0.6875],
-          "renderLayer" : -1
+          "offset" : [0.4, 0.6875]
         },
         "partStates" : {
           "adultpoptopState" : {

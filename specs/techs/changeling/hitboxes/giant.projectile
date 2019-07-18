@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ivrpgmeltygiant",
+  "image" : "orbidecharge.png",
+  "physics" : "laser",
+  "timeToLive" : 10,
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "slash",
+  "damagePoly" : [ [-18, -48.0], [-8.4, -60], [8.40, -60], [18, -48], [18, 15.6], [8.4, 29.28], [-8.4, 29.28], [-18, 15.6] ],
+  "damageRepeatTimeout" : 0.25,
+  "scripts" : ["giant.lua"],
+
+  "knockback" : 30,
+  "knockbackDirectional" : true,
+
+  "orientationLocked" : true,
+  "flippable" : true,
+  "emitters" : [ ],
+
+  "piercing" : true,
+  "bounces" : -1
+}

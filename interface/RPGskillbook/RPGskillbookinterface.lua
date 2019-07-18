@@ -653,14 +653,6 @@ function updateSpecializationTab()
   
   widget.setText("specializationlayout.specweapontitle", specInfo.weapon.title)
   widget.setText("specializationlayout.specweapontext", concatTableValues(specInfo.weapon.text, "\n"))
-  if status.statusProperty("ivrpgshapeshift", false) then
-  	widget.setText("specializationlayout.specweaponicontitle", "Creature")
-  	local creature = status.statusProperty("ivrpgshapeshiftC", "")
-  	widget.setText("specializationlayout.specweapontitle", creature == "" and player.species():gsub("^%l", string.upper) or specInfo.tech.transformNames[creature])
-  	widget.setText("specializationlayout.specweapontext", concatTableValues(specInfo.tech.transformText[creature], "\n"))
-  else
-  	widget.setText("specializationlayout.specweaponicontitle", "Weapon")
-  end
   
   widget.setText("specializationlayout.techname", specInfo.tech.title)
   widget.setText("specializationlayout.techtype", specInfo.tech.type .. " Tech")
@@ -668,6 +660,18 @@ function updateSpecializationTab()
   
   local scalingText = concatTableValues(specInfo.effects, "\n", "scaling-up") .. concatTableValues(specInfo.effects, "\n", "scaling-down")
   widget.setText("specializationlayout.statscalingtext", scalingText == "" and "-" or scalingText )
+
+  if status.statusProperty("ivrpgshapeshift", false) then
+  	widget.setText("specializationlayout.specweaponicontitle", "Creature")
+  	local creature = status.statusProperty("ivrpgshapeshiftC", "")
+  	widget.setText("specializationlayout.specweapontitle", (creature == "" or creature == "giant") and (creature == "giant" and "Giant " or "") .. player.species():gsub("^%l", string.upper) or specInfo.tech.transformNames[creature])
+  	widget.setText("specializationlayout.specweapontext", concatTableValues(specInfo.tech.transformText[creature], "\n"))
+  	widget.setText("specializationlayout.detrimenttext", concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "detriment"))
+ 	widget.setText("specializationlayout.benefittext", concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "benefit"))
+ 	widget.setText("specializationlayout.statscalingtext", concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "scaling-up") .. concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "scaling-down"))
+  else
+  	widget.setText("specializationlayout.specweaponicontitle", "Weapon")
+  end
 
   widget.setImage("specializationlayout.techicon2", specInfo.tech.image)
   widget.setImage("specializationlayout.effecticon", specInfo.ability.image)

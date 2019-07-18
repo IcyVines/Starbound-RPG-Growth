@@ -21,12 +21,35 @@
     "adultpoptop" : "adultpoptop/adultpoptop.png"
   },
 
+  "giantStats" : [
+  	{"stat" : "invulnerable", "amount" : 1},
+  	{"stat" : "powerMultiplier", "effectiveMultiplier" : 1.5},
+  	{"stat" : "protection", "amount" : 50},
+  	{"stat" : "ivrpgagilityscaling", "amount" : -0.15},
+  	{"stat" : "maxHealth", "baseMultiplier" : 3}
+  ],
+  "giantMovementParameters" : {
+  	"standingPoly" : [ [-2.25, -6.0], [-1.05, -7.5], [1.05, -7.5], [2.25, -6.0], [2.25, 1.95], [1.05, 3.66], [-1.05, 3.66], [-2.25, 1.95] ],
+  	"collisionPoly" : [ [-2.25, -6.0], [-1.05, -7.5], [1.05, -7.5], [2.25, -6.0], [2.25, 1.95], [1.05, 3.66], [-1.05, 3.66], [-2.25, 1.95] ],
+    "crouchingPoly" : [ [-2.25, -6.0], [-1.05, -7.5], [1.05, -7.5], [2.25, -6.0], [2.25, 1.95], [1.05, 3.66], [-1.05, 3.66], [-2.25, 1.95] ],
+    "mass" : 1.6,
+
+    // should keep the player from teleporting through walls
+    "maximumCorrection" : 3,
+    "maxMovementPerStep" : 0.6,
+
+    "liquidFriction" : 13.0,
+    "normalGroundFriction" : 70.0,
+
+    "groundForce" : 250.0,
+    "airForce" : 50.0,
+    "liquidForce" : 80.0
+  },
+
   "wisperStats" : [
   	{ "stat" : "iceStatusImmunity", "amount" : 1 },
   	{ "stat" : "iceResistance", "amount" : 3 },
   	{ "stat" : "fireResistance", "amount" : -0.5 },
-  	{ "stat" : "iceResistance", "amount" : 3 },
-  	{ "stat" : "iceResistance", "amount" : 3 },
   	{ "stat" : "maxHealth", "baseMultiplier" : 0.5 },
   	{ "stat" : "maxEnergy", "baseMultiplier" : 1.5 },
   	{ "stat" : "ivrpgvitalityscaling", "amount" : -0.05 },
@@ -96,7 +119,7 @@
 	"runSpeed" : 12,
 	"gravityEnabled" : false,
 
-	"airFriction" : 2.0,
+	"airFriction" : 10.0,
 	"airForce" : 25,
 	"flySpeed" : 8
   },

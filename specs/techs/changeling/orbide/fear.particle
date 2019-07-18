@@ -1,0 +1,24 @@
+{
+  "kind" : "ivrpgfearparticle",
+  "definition" : {
+    "type" : "textured",
+    "image" : "/specs/techs/changeling/orbide/fear.png",
+    "position" : [0, 0],
+    "initialVelocity" : [0, 0],
+    "finalVelocity" : [0, 0],
+    "approach" : [6, 6],
+    "fade" : 0.25,
+    "destructionAction" : "shrink",
+    "destructionTime" : 0.25,
+    "size" : 0.35,
+    "timeToLive" : 0.25,
+    "fullbright" : false,
+    "collidesForeground" : false,
+    "angularVelocity" : 0,
+    "variance" : {
+      "position" : [1, 0],
+      "initialVelocity" : [3.0, 3.0],
+      "rotation" : 10
+    }
+  }
+}

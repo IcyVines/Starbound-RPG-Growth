@@ -1,0 +1,21 @@
+{
+  "projectileName" : "ivrpgadultpoptopchargemelty",
+  "image" : "orbidecharge.png",
+  "physics" : "laser",
+  "timeToLive" : 0.4,
+  "speed" : 0,
+  "power" : 30,
+  "damageKind" : "slash",
+  "damagePoly" : [ [ 7, 12.95], [9, 10.95], [34.5, 6], [34.5, -8.5], [11, -11.45], [9, -13.05],  [-9, -13.05], [-11, -11.45],  [-26.5, 10.95], [-24.5, 12.95] ],
+  "damageRepeatTimeout" : 0.25,
+
+  "knockback" : 5,
+  "knockbackDirectional" : true,
+
+  "orientationLocked" : true,
+  "flippable" : true,
+  "emitters" : [ ],
+
+  "piercing" : true,
+  "bounces" : -1
+}

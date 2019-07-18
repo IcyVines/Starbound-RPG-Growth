@@ -20,6 +20,15 @@ function initCommonParameters()
   self.speedModifier = 1
   self.hurtTimer = 0
   self.transformedStats = {}
+  self.damageGivenUpdate = 5
+  --Giant Vars
+  self.giantCounter = 0
+  self.flashTimer = 0
+  self.giantAvailable = false
+  self.giant = false
+  self.giantTransform = false
+  self.giantHitbox = false
+  self.giantTimer = 0
   -- Poptop Vars
   self.roarTimer = 0
   self.devouring = false
@@ -30,6 +39,7 @@ function initCommonParameters()
   self.roaringCooldownTimer = 0
   -- Wisper Vars
   self.idleTimer = 0
+  self.wisperExplosion = false
   -- Orbide Vars
   self.crouchTimer = 0
   self.getupTimer = 0
@@ -49,8 +59,8 @@ end
 
 function attemptActivation(shiftBack)
   self.oldPoly = (not shiftBack) and self.transformedMovementParameters.collisionPoly or false
-  self.transformedMovementParameters = config.getParameter(self.creature .. "MovementParameters")
-  local collisionPoly = config.getParameter(self.creature .. (self.melty and "MeltyCollisionPoly" or  "CollisionPoly"))
+  self.transformedMovementParameters = config.getParameter((self.creature or "giant") .. "MovementParameters")
+  local collisionPoly = self.giantTransform and self.transformedMovementParameters.collisionPoly or config.getParameter(self.creature .. (self.melty and "MeltyCollisionPoly" or  "CollisionPoly"))
   self.transformedMovementParameters.collisionPoly = collisionPoly
 
   if not tech.parentLounging()
@@ -58,7 +68,19 @@ function attemptActivation(shiftBack)
       and not shiftBack then
 
     local pos = transformPosition()
-    if (pos or self.creature == 'wisper') and status.overConsumeResource("energy", self.energyCost) then
+
+    if self.giantTransform then
+      if pos then 
+        mcontroller.setPosition(pos or mcontroller.position())
+        self.giantAvailable = false
+        self.giantCounter = 0
+        self.giantTimer = 10
+        deactivate()
+      else
+        reset()
+      end
+      self.giantTransform = false
+    elseif (pos or self.creature == 'wisper') and status.overConsumeResource("energy", self.energyCost) then
       mcontroller.setPosition(pos or mcontroller.position())
       activate()
     else
@@ -238,6 +260,9 @@ function updateFrame(dt)
   end
   checkHurtFrame()
   if self.hurtTimer > 0 and not (self.crouchTimer > 0 or self.getupTimer > 0) then
+    if self.creature == "wisper" then
+      mcontroller.controlApproachVelocity({0,0}, 150)
+    end
     animator.setAnimationState(self.creature .. "State", "hurt")
   end
 end
@@ -248,10 +273,10 @@ function updateTransformFade(dt)
     animator.setGlobalTag("directives", string.format("?fade=FFFFFFFF;%.1f", math.min(1.0, self.transformFadeTimer / (self.transformFadeTime - 0.15))) .. self.directives)
   elseif self.transformFadeTimer < 0 then
     self.transformFadeTimer = math.min(0, self.transformFadeTimer + dt)
-    tech.setParentDirectives(string.format("?fade=FFFFFFFF;%.1f", math.min(1.0, -self.transformFadeTimer / (self.transformFadeTime - 0.15))))
+    tech.setParentDirectives(self.directives .. string.format("?fade=FFFFFFFF;%.1f", math.min(1.0, -self.transformFadeTimer / (self.transformFadeTime - 0.15))))
   else
     animator.setGlobalTag("directives", self.directives)
-    tech.setParentDirectives()
+    tech.setParentDirectives(self.directives)
   end
 end
 
@@ -294,6 +319,7 @@ function activate()
   status.setStatusProperty("ivrpgshapeshiftC", self.creature)
   animator.setLightActive("wisperGlow", false)
   animator.setLightActive("orbideGlow", false)
+  self.giant = false
   self.fireTimer = 0
   self.chargeFire = false
   self.invulnerable = false
@@ -311,9 +337,14 @@ function activate()
 end
 
 function deactivate()
+  self.giant = self.giantTransform
   if self.active then
     animator.burstParticleEmitter("deactivateParticles")
     animator.playSound("deactivate")
+    self.transformFadeTimer = -self.transformFadeTime
+  elseif self.giant then
+    animator.burstParticleEmitter("activateParticles")
+    animator.playSound("activate")
     self.transformFadeTimer = -self.transformFadeTime
   end
   animator.setAnimationState("poptopState", "off")
@@ -321,10 +352,11 @@ function deactivate()
   animator.setAnimationState("orbideState", "off")
   animator.setAnimationState("adultpoptopState", "off")
   animator.stopAllSounds("forceDeactivate")
-  status.setStatusProperty("ivrpgshapeshiftC", "")
+  status.setStatusProperty("ivrpgshapeshiftC", self.giant and "giant" or "")
   animator.setGlobalTag("directives", self.directives)
   tech.setParentHidden(false)
   tech.setParentOffset({0, 0})
+  tech.setParentState()
   tech.setToolUsageSuppressed(false)
   status.clearPersistentEffects("movementAbility")
   self.transformedMovementParameters = {}

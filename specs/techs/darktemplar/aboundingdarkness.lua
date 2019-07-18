@@ -55,7 +55,10 @@ function update(args)
     self.time = self.time + args.dt
     if self.time > 0.5 then
       self.time = 0
-      for i,id in ipairs(world.entityQuery(mcontroller.position(), 7)) do
+      for i,id in ipairs(world.entityQuery(mcontroller.position(), 7, {
+        withoutEntityId = self.id,
+        includedTypes = {"creature"}
+      })) do
         if world.entityAggressive(id) then
             world.sendEntityMessage(id, "applySelfDamageRequest", "IgnoresDef", "demonic", 2, self.id)
             self.damage = self.damage + 2
