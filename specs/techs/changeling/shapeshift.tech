@@ -12,7 +12,7 @@
 
   "chipCost" : 0,
 
-  "energyCost" : 50,
+  "energyCost" : 40,
 
   "animationParts" : {
     "poptop" : "poptop/poptop.png",

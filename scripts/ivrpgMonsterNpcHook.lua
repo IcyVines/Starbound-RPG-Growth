@@ -10,6 +10,10 @@ function setHandlers()
     status.removeEphemeralEffect(name)
   end)
 
+  message.setHandler("setVelocity", function(_, _, velocity)
+    mcontroller.setVelocity(velocity)
+  end)
+
   message.setHandler("applySelfDamageRequest", function(_, _, damageType, damageSourceKind, damage, sourceId)
     status.applySelfDamageRequest({
       damageType = damageType,

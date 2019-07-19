@@ -147,7 +147,7 @@ function orbideFire()
 end
 
 function poptopFire()
-  if status.overConsumeResource("energy", self.energyCost) then
+  if status.overConsumeResource("energy", self.energyCost / 2) then
     animator.setAnimationState("poptopState", "chargewindup")
     self.chargeFire = true
     self.fireTimer = 0.4
@@ -155,7 +155,7 @@ function poptopFire()
 end
 
 function adultpoptopFire()
-  if status.overConsumeResource("energy", self.energyCost) then
+  if status.overConsumeResource("energy", self.energyCost / 2) then
     animator.setAnimationState("adultpoptopState", "chargewindup")
     self.chargeFire = true
     self.fireTimer = 0.5
@@ -178,7 +178,7 @@ end
 -- Alt Fire Functions
 
 function wisperAltFire()
-  if status.overConsumeResource("energy", self.energyCost * 2) then
+  if status.overConsumeResource("energy", self.energyCost / 2) then
     animator.setAnimationState("wisperState", "firewindup")
     self.chargeFire = true
     self.wisperExplosion = true
@@ -200,6 +200,7 @@ function devour()
     if health then
       damage = status.resource("health") > health[1] and health[1] + 1 or health[2] / 4
       world.sendEntityMessage(self.devouring, "applySelfDamageRequest", "IgnoresDef", "alwaysbleed", damage, self.id)
+      world.sendEntityMessage(self.devouring, "setVelocity", {mcontroller.facingDirection()*20, 5})
       if damage < health[1] then world.sendEntityMessage(self.devouring, "ivrpgDevourState", self.id) end
       status.modifyResource("health", damage / 2)
       self.bloodlust = self.bloodlust + 5
@@ -423,7 +424,8 @@ function calculatePassives()
   local transformedStatsCopy = copy(self.transformedStats)
   if self.invulnerable 
     or ((self.creature == "poptop" or self.creature == "adultpoptop" or self.creature == "orbide") and self.frameCooldownTimer > 0.1) 
-    or ((self.creature == "poptop" or self.creature == "adultpoptop") and self.altFrameCooldownTimer > 0) then
+    or ((self.creature == "poptop" or self.creature == "adultpoptop") and self.altFrameCooldownTimer > 0)
+    or self.wisperExplosion then
     table.insert(transformedStatsCopy, {stat = "invulnerable", amount = 1})
   end
   table.insert(transformedStatsCopy, {stat = "grit", amount = (self.crouchTimer > 0 or self.getupTimer > 0) and 1 or self.grit})

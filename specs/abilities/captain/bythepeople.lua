@@ -16,8 +16,8 @@ function update(dt)
   status.setPersistentEffects("ivrpgbythepeople", {
     { stat = "ivrpgendurancescaling", amount = 0.05 * math.min(numberOfAllies - 3, 0) },
     { stat = "ivrpgagilityscaling", amount = 0.05 * math.min(numberOfAllies - 3, 0) },
-    { stat = "ivrpgvigorscaling", amount = 0.05 * numberOfAllies },
-    { stat = "ivrpgvitalityscaling", amount = 0.05 * numberOfAllies }
+    { stat = "ivrpgvigorscaling", amount = 0.025 * math.min(numberOfAllies, 8) },
+    { stat = "ivrpgvitalityscaling", amount = 0.025 * math.min(numberOfAllies, 8) }
   })
 
   --Effect Expires if Specialization is no longer correct.

@@ -80,7 +80,7 @@ function attemptActivation(shiftBack)
         reset()
       end
       self.giantTransform = false
-    elseif (pos or self.creature == 'wisper') and status.overConsumeResource("energy", self.energyCost) then
+    elseif (pos or self.creature == 'wisper') and status.overConsumeResource("energy", self.energyCost / 4) then
       mcontroller.setPosition(pos or mcontroller.position())
       activate()
     else
@@ -236,7 +236,7 @@ function updateFrame(dt)
       suppressMovement()
     elseif self.invulnerable then
       animator.setAnimationState(self.creature .. "State", "invulnerable")
-      status.addEphemeralEffect("regeneration1", 0.1, self.id)
+      status.addEphemeralEffect("regeneration2", 0.1, self.id)
       suppressMovement()
     elseif self.getupTimer > 0 then
       animator.setAnimationState(self.creature .. "State", "invulnerablewinddown")
