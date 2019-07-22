@@ -1,0 +1,118 @@
+{
+  "itemName" : "ivrpgweclipse",
+  "price" : 1200,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "Sweltering heat and cool serenity overtake one another.\n^magenta;Designed by Steven Steel!",
+  "shortdescription" : "^magenta;Eclipse",
+  "category" : "wand",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","wand"],
+  "tooltipKind" : "base",
+
+  "inventoryIcon" : "eclipse.png",
+  "animation" : "/items/active/specweapons/elementress/eclipse.animation",
+  "animationParts" : {
+    "handle" : "eclipse.png",
+    "stone" : "",
+    "crown" : "",
+    "sun" : "eclipsesun.png",
+    "moon" : "eclipsemoon.png",
+    "chargeEffect" : "eclipseanimation.png"
+  },
+
+  "animationCustom" : {
+    "lights" : {
+      "glow" : {
+        "color" : [160, 100, 120],
+        "active" : false
+      }
+    },
+    "sounds" : {
+      "physicalactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
+    }
+  },
+
+  "scripts" : ["/items/active/specweapons/elementress/staff.lua"],
+
+  "baseDamageFactor" : 0.5,
+  "elementalType" : "physical",
+  "classreq" : 2,
+  "specreq" : 4,
+
+  "stances" : {
+    "idle" : {
+      "weaponOffset" : [0, 0.5],
+
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "weaponOffset" : [0, 0.5],
+
+      "duration" : 1.0,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "weaponOffset" : [0, 0.5],
+
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "weaponOffset" : [0, 0.5],
+
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : false,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "weaponOffset" : [0, 0.5],
+
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "primaryAbilityType" : "eclipse",
+  "primaryAbility" : {
+    "type" : "eclipse",
+    "name" : "Eclipse",
+    "scripts" : ["/items/active/specweapons/elementress/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "immediateEnergyCost" : 50,
+    "energyCost" : 100,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "phaseshift",
+    "projectileParameters" : {
+      "baseDamage" : 6
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

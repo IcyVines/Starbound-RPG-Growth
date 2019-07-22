@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "ivrpgnovacrystal", "count" : 1 },
+    { "item" : "fabric", "count" : 2 },
+    { "item" : "logblock", "count" : 2 }
+  ],
+	"output" : { "item" : "ivrpgweclipse", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

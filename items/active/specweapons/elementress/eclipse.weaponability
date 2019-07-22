@@ -1,0 +1,18 @@
+{
+  "ability" : {
+    "type" : "ivrpgeclipse",
+    "name" : "Eclipse",
+    "scripts" : ["/items/active/specweapons/elementress/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "immediateEnergyCost" : 50,
+    "energyCost" : 100,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "phaseshift",
+    "projectileParameters" : {
+      "baseDamage" : 6
+    }
+  }
+}
