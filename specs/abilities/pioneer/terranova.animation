@@ -2,7 +2,7 @@
   "particleEmitters" : {
     "embersB" : {
       "enabled" : true,
-      "emissionRate" : 5.0,
+      "emissionRate" : 2.0,
       "particles" : [
         {
           "particle" : {
@@ -26,7 +26,7 @@
     },
     "embersNB" : {
       "enabled" : true,
-      "emissionRate" : 5.0,
+      "emissionRate" : 2.0,
       "particles" : [
         {
           "particle" : {

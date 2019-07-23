@@ -5,6 +5,11 @@
       "value": "ivrpgscrollarcpool"
     },
     {
+      "op": "replace",
+      "path": "/baseParameters/statusSettings/primaryScriptSources",
+      "value": ["/monsters/ivrpgguardianstatfix.lua"]
+    },
+    {
       "op": "add",
       "path": "/baseParameters/statusSettings/stats/demonicStatusImmunity",
       "value": {"baseValue" : 1.0}

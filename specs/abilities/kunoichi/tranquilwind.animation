@@ -1,8 +1,8 @@
 {
   "particleEmitters" : {
     "embers" : {
-      "enabled" : true,
-      "emissionRate" : 15.0,
+      "enabled" : false,
+      "emissionRate" : 5.0,
       "particles" : [
         {
           "particle" : {

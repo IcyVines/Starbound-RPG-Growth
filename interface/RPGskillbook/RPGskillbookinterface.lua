@@ -462,7 +462,7 @@ end
 function changeToSpecialization()
     widget.setText("tabLabel", "Specialization Tab")
     --self.specTo = 1
-    if self.level < 35 or self.class == 0 then
+    if self.class == 0 then
       widget.setVisible("specializationlayout", false)
       widget.setVisible("specializationslayout", false)
       widget.setVisible("specializationlockedlayout", true)
@@ -611,13 +611,16 @@ function updateSpecializationSelect()
   self.availableSpecs = self.specList[self.class]
   local currentSpec = self.availableSpecs[self.specTo]
 
+  local topText = "\nUse the arrows to navigate through Specializations for your current Class."
+  widget.setText("specializationslayout.subtitle", (self.level < 35 and "^red;Specializations can not be progressed or unlocked until level 35.^reset;" or "Specializations can be unlocked by accomplishing each listed task.") .. topText)
+
   widget.setText("specializationslayout.spectitle", currentSpec.title)
   if currentSpec.titleColor then
   	widget.setFontColor("specializationslayout.spectitle", currentSpec.titleColor)
   end
 
-  widget.setText("specializationslayout.desctext", currentSpec.description)
-  widget.setText("specializationslayout.loretext", concatTableValues(currentSpec.flavor, "\n\n"))
+  widget.setText("specializationslayout.desctext", concatTableValues({currentSpec.description}, "\n\n"))
+  --widget.setText("specializationslayout.loretext", concatTableValues(currentSpec.flavor, "\n\n"))
   widget.setText("specializationslayout.weapontext", concatTableValues(currentSpec.weaponText, "\n\n"))
 
   widget.setText("specializationslayout.unlocktext", currentSpec.unlockText)
@@ -1513,6 +1516,16 @@ function changeToChangelogText()
   widget.setVisible("lorelayout.backarrow", false)
   widget.setText("lorelayout.title", "RPG Growth " .. version)
   widget.setText("lorelayout.scrollArea.text", changelog)
+end
+
+function changeToCreditsText()
+  uncheckLoreTabs("credits")
+  self.lastLoreChecked = "credits"
+  local credits = changelogTextHelper()
+  widget.setVisible("lorelayout.scrollArea.list", false)
+  widget.setVisible("lorelayout.backarrow", false)
+  widget.setText("lorelayout.title", "Credits")
+  widget.setText("lorelayout.scrollArea.text", credits)
 end
 
 function changeToLoreText()

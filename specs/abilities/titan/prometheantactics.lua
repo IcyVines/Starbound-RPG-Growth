@@ -50,7 +50,7 @@ function checkPerfectShields(dt)
       if notification.hitType == "ShieldHit" then
         if status.resourcePositive("perfectBlock") then
           allyArmor()
-          animator.setParticleEmitterEmissionRate("embers", 50)
+          animator.setParticleEmitterEmissionRate("embers", 10)
           self.timer = 1
         end
       end
@@ -60,7 +60,7 @@ function checkPerfectShields(dt)
   if self.timer > 0 then
     self.timer = math.max(self.timer - dt, 0)
     if self.timer == 0 then
-      animator.setParticleEmitterEmissionRate("embers", 10)
+      animator.setParticleEmitterEmissionRate("embers", 2)
     end
   end
 

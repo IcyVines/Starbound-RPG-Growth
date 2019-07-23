@@ -8,7 +8,7 @@ function init()
   self.speedRange = config.getParameter("speedRange")
   self.statusLength = config.getParameter("statusLength")
   self.timer = 0
-  animator.setParticleEmitterOffsetRegion("feathers", mcontroller.boundBox())
+  --animator.setParticleEmitterOffsetRegion("feathers", mcontroller.boundBox())
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
 end
 
@@ -34,7 +34,7 @@ function update(dt)
   end
 
   if self.timer > 0 then
-    animator.setParticleEmitterEmissionRate("embers", 25)
+    animator.setParticleEmitterEmissionRate("embers", 10)
     mcontroller.controlModifiers({
       speedModifier = 1.2
     })

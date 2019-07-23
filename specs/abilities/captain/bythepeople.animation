@@ -2,7 +2,7 @@
   "particleEmitters" : {
     "negEmbers" : {
       "enabled" : true,
-      "emissionRate" : 15.0,
+      "emissionRate" : 5.0,
       "particles" : [
         {
           "particle" : {
@@ -26,7 +26,7 @@
     },
     "posEmbers" : {
       "enabled" : true,
-      "emissionRate" : 15.0,
+      "emissionRate" : 5.0,
       "particles" : [
         {
           "particle" : {

@@ -24,7 +24,7 @@ function init()
   self.groundOnly = config.getParameter("groundOnly")
   self.stopAfterDash = config.getParameter("stopAfterDash")
   --
-  self.dashType = "sprint"
+  self.dashType = status.statusProperty("ivrpgenhanceddash", "sprint")
   changeDashType()
   Bind.create("g", changeDashType)
   Bind.create("jumping", endDashAlt)
@@ -55,6 +55,7 @@ end
 function changeDashType()
   if not status.statPositive("activeMovementAbilities") and self.dashCooldownTimer == 0 then
     status.removeEphemeralEffect("explorermovement" .. self.dashType)
+    status.setStatusProperty("ivrpgenhanceddash", self.dashType)
     self.dashType = self.dashType == "dash" and "sprint" or "dash"
     self.groundOnly = self.dashType == "sprint"
     status.addEphemeralEffect("explorermovement" .. self.dashType, math.huge)

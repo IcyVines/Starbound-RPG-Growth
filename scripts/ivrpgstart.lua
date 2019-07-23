@@ -406,10 +406,17 @@ function updateSpecs(dt)
 
   -- Captain
   if self.class == 6 and type(status.statusProperty("ivrpgsucaptain", 0)) == "number" then
-    local shipStats = player.shipUpgrades()
-    if shipStats and shipStats.shipLevel >= 3 and shipStats.crewSize >= 4 then
-      status.setStatusProperty("ivrpgsucaptain", 1)
+    if player.worldId() ~= player.ownShipWorldId() then return end
+    local crewIds = world.npcQuery(world.entityPosition(self.id), 60)
+    local crewSize = 0
+    if crewIds then
+      for _,id in ipairs(crewIds) do
+        if string.find(world.entityTypeName(id), "crewmember") then
+          crewSize = crewSize + 1
+        end
+      end
     end
+    status.setStatusProperty("ivrpgsucaptain", crewSize)
   end
   -- End Captain
 

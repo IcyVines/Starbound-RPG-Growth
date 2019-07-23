@@ -25,7 +25,7 @@
       ]
     },
     "feathers" : {
-      "enabled" : true,
+      "enabled" : false,
       "emissionRate" : 10.0,
       "emissionRateVariance" : 0.5,
       "particles" : [

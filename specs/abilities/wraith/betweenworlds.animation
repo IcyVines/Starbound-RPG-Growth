@@ -2,7 +2,7 @@
   "particleEmitters" : {
     "embers" : {
       "enabled" : true,
-      "emissionRate" : 15.0,
+      "emissionRate" : 2.0,
       "particles" : [
         {
           "particle" : {

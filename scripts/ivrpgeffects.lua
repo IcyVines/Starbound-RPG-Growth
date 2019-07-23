@@ -1,9 +1,8 @@
-local fuoldInit = init
-local fuoldUpdate = update
-local fuoldUninit = uninit
+local ivrpgoldInit = init
+local ivrpgoldUpdate = update
 
 function init()
-  fuoldInit()
+  ivrpgoldInit()
   self.lastYPosition = 0
   self.lastYVelocity = 0
   self.fallDistance = 0
@@ -12,7 +11,7 @@ function init()
 end
 
 function update(dt)
-  fuoldUpdate(dt)
+  ivrpgoldUpdate(dt)
 
   --Deprecated, was used with the Remove Tech for safe mod uninstall
   if status.statPositive("ivrpgremove") then
