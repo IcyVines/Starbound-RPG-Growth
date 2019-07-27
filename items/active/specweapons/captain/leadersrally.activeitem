@@ -3,7 +3,7 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "A beautiful silken flag attached to a shining metal pole.\n^yellow;Designed by Banny!",
+  "description" : "A beautiful silken flag attached to a shining metal pole.",
   "shortdescription" : "^yellow;Leader's Rally",
   "tooltipKind" : "base",
   "category" : "Flag",

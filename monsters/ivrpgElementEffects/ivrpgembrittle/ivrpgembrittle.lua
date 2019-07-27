@@ -1,7 +1,7 @@
 require "/scripts/util.lua"
 
 function init()
-  effect.setParentDirectives("border=1;00BBFF;00BBFF")
+  effect.setParentDirectives("border=1;00BBFF33;00BBFF33")
   self.effectId = effect.addStatModifierGroup({
     {stat = "physicalResistance", amount = -0.25}
   })

@@ -3,7 +3,7 @@
   "price" : 1200,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Sweltering heat and cool serenity overtake one another.\n^magenta;Designed by Steven Steel!",
+  "description" : "Sweltering heat and cool serenity overtake one another.",
   "shortdescription" : "^magenta;Eclipse",
   "category" : "wand",
   "twoHanded" : false,

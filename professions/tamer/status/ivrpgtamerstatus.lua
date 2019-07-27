@@ -9,7 +9,7 @@ function update(dt)
   local healthRatio = status.resource("health") / status.stat("maxHealth")
   if targetIds then
   	for _,id in ipairs(targetIds) do
-  		if world.entityDamageTeam(id).type == "friendly" then
+  		if world.entityDamageTeam(id).type == "friendly" and world.entityAggressive(id) then
   			world.sendEntityMessage(id, "applyStatusEffect", self.healingStatus, 3 - healthRatio, self.id)
   		end
   	end

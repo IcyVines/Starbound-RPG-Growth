@@ -4,7 +4,7 @@
 	"level": 3,
 	"maxStack": 1,
 	"rarity": "Rare",
-	"description": "A blade that passes through enemies without fault.\n^red;Designed by Steven Steel!",
+	"description": "A blade that passes through enemies without fault.",
 	"shortdescription": "Aether",
 	"tooltipKind": "base",
 	"category": "Tantō",

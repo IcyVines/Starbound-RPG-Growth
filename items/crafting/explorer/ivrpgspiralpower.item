@@ -4,7 +4,7 @@
   "rarity" : "Rare",
   "category" : "craftingMaterial",
   "inventoryIcon" : "spiralpower.png",
-  "description" : "We've somehow made the energy even manlier. And spinnier! ^yellow;Designed by Samey the Hedgehog!",
+  "description" : "We've somehow made the energy even manlier. And spinnier!",
   "shortdescription" : "Spiral Power",
   "learnBlueprintsOnPickup" : [
     "ivrpgspiralpower",

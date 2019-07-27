@@ -2,7 +2,7 @@ function init()
   if status.isResource("stunned") then
     status.setResource("stunned", math.max(status.resource("stunned"), effect.duration()))
   end
-  effect.setParentDirectives("fade=FFFFFF=0.25?border=1;e89819;a36809")
+  effect.setParentDirectives("fade=FFFFFF=0.25?border=1;e8981933;a3680933")
 
   local statusTextRegion = { 0, 1, 0, 1 }
   animator.setParticleEmitterOffsetRegion("statustext", statusTextRegion)

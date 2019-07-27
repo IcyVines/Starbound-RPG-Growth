@@ -1,0 +1,40 @@
+{
+  "name" : "ivrpgalchemiststatus",
+
+  "effectConfig" : {
+    "elements" : {
+      "fire" : 0,
+      "poison" : 0,
+      "ice" : 0,
+      "electric" : 0,
+      "nova" : 0,
+      "demonic" : 0,
+      "holy" : 0,
+      "cosmic" : 0,
+      "radioactive" : 0,
+      "shadow" : 0
+    },
+    "colors" : {
+      "fire" : "FF555522",
+      "poison" : "55FF5522",
+      "ice" : "9999FF22",
+      "electric" : "FFAA5522",
+      "nova" : "FFAAFF22",
+      "demonic" : "00000022",
+      "holy" : "FFFFAA22",
+      "cosmic" : "FF55FF22",
+      "radioactive" : "AAFFAA22",
+      "shadow" : "33333322"
+    }
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgalchemiststatus.lua"
+  ],
+
+  "animationConfig" : "ivrpgalchemiststatus.animation",
+
+  "label" : "Alchemist",
+  "icon" : "/professions/alchemist/status/alchemy.png"
+}

@@ -31,13 +31,6 @@ function setHandlers()
     status.modifyResourcePercentage(type, amount)
   end)
 
-  message.setHandler("ivrpgRally", function(_, _, level, player)
-    self.ivrpgRally[player] = {
-      level = level,
-      timer = 0.5
-    }
-  end)
-
   message.setHandler("ivrpgDevourState", function(_, _, player, position, direction)
     if self.devourState and self.devourState[3] ~= player then
       return
@@ -59,7 +52,6 @@ function loadVariables(enemyType, level)
   self.id = entity.id()
   self.enemyType = enemyType
   self.level = level
-  self.ivrpgRally = {}
   self.baseParameters = mcontroller.baseParameters()
   self.devourState = false
   self.devourTimer = 0
@@ -142,12 +134,10 @@ function updateEffects(dt)
   ]]
 
   local rallyLevel = 0
-  for id,value in pairs(self.ivrpgRally) do
-    rallyLevel = rallyLevel + math.min(50, value.level)
-    value.timer = math.max(0, value.timer - dt)
-    if value.timer == 0 then
-      self.ivrpgRally[id] = nil
-    end
+  local players = world.players()
+  for _,id in ipairs(players) do
+    local rally = world.getProperty("ivrpgRallyMode[" .. id .. "]", 0)
+    rallyLevel = rallyLevel + rally
   end
   
   status.setPersistentEffects("ivrpgRallied", {

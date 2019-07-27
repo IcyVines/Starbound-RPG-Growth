@@ -4,7 +4,7 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "spiralenergy.png",
-  "description" : "What is this strange, manly energy? ^yellow;Designed by Samey the Hedgehog!",
+  "description" : "What is this strange, manly energy?",
   "shortdescription" : "Spiral Energy",
   "itemTags" : [ "reagent" ]
 }

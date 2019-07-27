@@ -1,7 +1,7 @@
 require "/scripts/util.lua"
 
 function init()
-  effect.setParentDirectives("border=1;00AA00;00AA00")
+  effect.setParentDirectives("border=1;00AA0033;00AA0033")
   effect.addStatModifierGroup({
     {stat = "maxHealth", effectiveMultiplier = 0.75}
   })

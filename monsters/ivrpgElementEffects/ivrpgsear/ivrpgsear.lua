@@ -1,5 +1,5 @@
 function init()
-  effect.setParentDirectives("border=1;BF3300;BF3300")
+  effect.setParentDirectives("border=1;BF330033;BF330033")
   effect.addStatModifierGroup({
     {stat = "powerMultiplier", effectiveMultiplier = 0.75}
   })

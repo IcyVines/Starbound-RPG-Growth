@@ -59,7 +59,7 @@ function init()
   self.statList = root.assetJson("/stats.config")
   self.affinityList = root.assetJson("/affinityList.config")
   self.affinityDescriptions = root.assetJson("/affinities/affinityDescriptions.config")
-  self.changelog = root.assetJson("/ivrpgversion.config")
+  self.versionConfig = root.assetJson("/ivrpgversion.config")
   self.lastLoreChecked = "changelog"
   self.loreDepth = 1
   self.loreTable = {"lore"}
@@ -1497,13 +1497,17 @@ function updateLoreTab()
   	
   elseif widget.getChecked("lorelayout.lorebutton") then
 
+  elseif widget.getChecked("lorelayout.creditsbutton") then
+
   else
   	widget.setChecked("lorelayout." .. self.lastLoreChecked .. "button", true)
   	if self.lastLoreChecked == "lore" then
   	  changeToLoreText()
-  	else
+  	elseif self.lastLoreChecked == "changelog" then
   	  changeToChangelogText()
-  	end
+  	else
+      changeToCreditsText()
+    end
   end
 end
 
@@ -1511,7 +1515,7 @@ function changeToChangelogText()
   uncheckLoreTabs("changelog")
   self.lastLoreChecked = "changelog"
   local changelog = changelogTextHelper()
-  local version = self.changelog.version
+  local version = self.versionConfig.version
   widget.setVisible("lorelayout.scrollArea.list", false)
   widget.setVisible("lorelayout.backarrow", false)
   widget.setText("lorelayout.title", "RPG Growth " .. version)
@@ -1539,7 +1543,7 @@ function changeToLoreText()
 end
 
 function uncheckLoreTabs(name)
-  local tabs = {"lore", "changelog"}
+  local tabs = {"lore", "changelog", "credits"}
   for _,tab in ipairs(tabs) do
   	if tab ~= name then
   	  widget.setChecked("lorelayout." .. tab .. "button", false)
@@ -1596,7 +1600,7 @@ function oneLoreUp()
 end
 
 function changelogTextHelper()
-  local text = self.changelog.text
+  local text = self.versionConfig[self.lastLoreChecked]
   local returnText = ""
   local colorSwitch = {}
   local switch = true

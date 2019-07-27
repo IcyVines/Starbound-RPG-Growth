@@ -347,6 +347,8 @@ function deactivate()
     animator.playSound("activate")
     self.transformFadeTimer = -self.transformFadeTime
   end
+  animator.setLightActive("wisperGlow", false)
+  animator.setLightActive("orbideGlow", false)
   animator.setAnimationState("poptopState", "off")
   animator.setAnimationState("wisperState", "off")
   animator.setAnimationState("orbideState", "off")

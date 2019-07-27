@@ -4,7 +4,7 @@ function init()
   animator.setParticleEmitterOffsetRegion("sparks", mcontroller.boundBox())
   animator.setParticleEmitterActive("sparks", true)
   --effect.setParentDirectives("fade=7733AA=0.25")
-  effect.setParentDirectives("border=1;A99C33;A99C33")
+  effect.setParentDirectives("border=1;A99C3333;A99C3333")
 
   script.setUpdateDelta(5)
 

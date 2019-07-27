@@ -88,6 +88,18 @@ function craftingRecipe(items)
 end
 
 function update(dt)
+  local active = false
+  targetIds = world.playerQuery(entity.position(), 10)
+  if targetIds then
+    for _,id in ipairs(targetIds) do
+      if world.entityCurrency(id, "proftype") == config.getParameter("proftype", 10) then
+        active = true
+      end
+    end
+  end
+
+  object.setInteractive(active)
+
   local powerOn = false
 
   for _,item in pairs(world.containerItems(entity.id())) do

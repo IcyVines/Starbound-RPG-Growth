@@ -1,0 +1,17 @@
+[
+	//With existing weights, gives ~2.5% drop chance from common rewards
+	//and hardly impacts vanilla drops. In line with other "rare" drops.
+	{
+		"op": "add",
+		"path": "/fossilBonusTreasure/0/1/pool/-",
+		"value": { "weight": 0.025, "pool": "ivrpgucfossilpool" }
+	},
+	//With existing weights, gives ~4.8% drop chance from rare rewards
+	//and hardly impacts vanilla drops. Half rate of most rewards and 1/4
+	//that of the most common reward.
+	{
+		"op": "add",
+		"path": "/fossilRareBonusTreasure/0/1/pool/-",
+		"value": { "weight": 0.05, "pool": "ivrpgucfossilpool" }
+	}
+]

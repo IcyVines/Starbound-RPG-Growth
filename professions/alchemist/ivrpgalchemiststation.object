@@ -1,0 +1,41 @@
+{
+  "objectName" : "ivrpgalchemiststation",
+  "colonyTags" : ["commerce", "crafting", "science"],
+  "rarity" : "Essential",
+  "category" : "crafting",
+  "description" : "A cluttered desk covered in various bubbling liquids and strange materials.",
+  "shortdescription" : "Alchemist Station",
+  "printable" : false,
+
+  "apexDescription" : "This cluttered counter covered in ingredients should be useful for concocting potions.",
+  "avianDescription" : "The goop that sometimes splashes from the vials gets stuck to my feathers.",
+  "floranDescription" : "Where isss meat? Floran want meat, not goo!",
+  "glitchDescription" : "Cautious. There are many caustic liquids here that could melt my circuits.",
+  "humanDescription" : "I am mad scientist. It's so cool... I'm sure we all know the rest.",
+  "hylotlDescription" : "Potions are kind of... archaic, but I suppose not everything is high-tech.",
+  "novakidDescription" : "I ain't much of a potion-maker, but I s'pose it might be fun.",
+
+  "inventoryIcon" : "table.png",
+  "orientations" : [
+    {
+      "dualImage" : "table.png:<color>",
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "proftype" : 3,
+
+  "scripts" : ["/professions/table.lua"],
+  "scriptDelta" : 5,
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/professions/alchemist/ivrpgalchemiststation.config",
+    "filter" : [ "ivrpgalchemiststation" ]
+  }
+}

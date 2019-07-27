@@ -3,7 +3,7 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "^red;NOW THAT'S A LOT OF DAMAGE!\n^orange;Designed by Banny!",
+  "description" : "^red;NOW THAT'S A LOT OF DAMAGE!",
   "shortdescription" : "^#32ffb4;Outburst",
   "tooltipKind" : "base",
   "category" : "grenadeLauncher",

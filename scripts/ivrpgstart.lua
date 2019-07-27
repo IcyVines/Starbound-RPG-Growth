@@ -11,6 +11,8 @@ function init()
   performStealthFunctionOverrides()
   self.removed = true
   self.xp = player.currency("experienceorb")
+  self.money = player.currency("money")
+  self.moneyDifferential = 0
   checkMaxXP()
   self.xpScalingTimer = 0
   self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
@@ -23,6 +25,8 @@ function init()
   self.specsAvailable = {}
   self.damageUpdate = 5
   updateSpecsAvailable()
+
+  self.rallied = false
 
   -- Treasure Test
   --[[local testTreasure = root.assetJson("/scripts/testTreasure.config")
@@ -91,8 +95,11 @@ end
 function update(dt)
   origUpdate(dt)
 
+  self.players = world.playerQuery(entity.position(), 60, {withoutEntityId = self.id}) or {}
+
   updateXPScalingShare()
   updateXPPulse(dt)
+  updateMoneyDifferential()
   updateRallyMode()
   updateLore()
 
@@ -241,6 +248,11 @@ function updateProfessionEffects(dt)
         end
       end
     end
+  elseif proftype == 3 then
+    if self.moneyDifferential > 3 and status.overConsumeResource("energy", self.moneyDifferential / 2) then
+      player.giveItem({"experienceorb", math.floor(self.moneyDifferential / 4)})
+      player.consumeCurrency("money", math.floor(self.moneyDifferential / 2))
+    end
   elseif proftype == 7 then
     if status.resource("energy") / status.stat("maxEnergy") < 0.25 and not hasEphemeralStat(status.activeUniqueStatusEffectSummary(), "ivrpgengineerstatuscooldown") then
       local energyItems = {{item = "smallbattery", kind = "modifyResource", amount = 20}, {item = "battery", kind = "modifyResource", amount = 60}, {item = "ivrpgspowercell", kind = "modifyResourcePercentage", amount = 0.5}}
@@ -291,6 +303,7 @@ function updateSpecsAvailable()
 end
 
 function uninit()
+  updateRallyMode(true)
   origUninit()
   status.removeEphemeralEffect("ivrpgstatboosts")
   status.removeEphemeralEffect("ivrpganimation")
@@ -321,10 +334,7 @@ function updateXPPulse()
       local multiplier = self.xpScaling * 0.005
       if multiplier > 0 then player.giveItem({"experienceorb", new * multiplier}) end
       new = new * (1 + multiplier)
-      local players = world.playerQuery(entity.position(), 60, {
-        withoutEntityId = self.id
-      })
-      for _,id in ipairs(players) do
+      for _,id in ipairs(self.players) do
         world.sendEntityMessage(id, "addXP", new)
       end
     end
@@ -341,28 +351,23 @@ function checkMaxXP()
 end
 
 function updateXPScalingShare()
-  local players = world.playerQuery(entity.position(), 60, {
-    withoutEntityId = self.id
-  })
-  for _,id in ipairs(players) do
+  for _,id in ipairs(self.players) do
     world.sendEntityMessage(id, "setXPScaling", status.statusProperty("ivrpgintelligence", 0))
   end
 end
 
-function updateRallyMode()
-  local rallyActive = status.statusProperty("ivrpgrallymode", false)
-  --world.setProperty("ivrpgRallyMode", rallyActive)
-  if status.statusProperty("ivrpgrallymode", false) then
-    local targetIds = world.entityQuery(entity.position(), 80, {
-      withoutEntityId = self.id,
-      includedTypes = {"creature"}
-    })
-    for _,id in ipairs(targetIds) do
-      if world.entityAggressive(id) then
-        world.sendEntityMessage(id, "ivrpgRally", math.floor(math.sqrt(self.xp/100)), self.id)
-      end
-    end
+function updateMoneyDifferential()
+  local money = player.currency("money")
+  self.moneyDifferential = 0
+  if money ~= self.money then
+    self.moneyDifferential = math.max(money - self.money, 0)
+    self.money = money
   end
+end
+
+function updateRallyMode(uninit)
+  local rallyActive = status.statusProperty("ivrpgrallymode", false)
+  world.setProperty("ivrpgRallyMode[" .. self.id .. "]", rallyActive and math.floor(math.sqrt(self.xp/100)) or 0)
 end
 
 function addXP(new)
