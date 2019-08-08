@@ -216,9 +216,9 @@ function hover(args)
   animator.setAnimationState("hover", "on")
   local agility = status.statusProperty("ivrpgagility", 0)
   local maxSpeed = math.min(agility^0.6 + 25, 45)
-  local velocity = world.distance(tech.aimPosition(), mcontroller.position())
-  --local direction = mcontroller.facingDirection()
-  velocity = vec2.mag(velocity) > maxSpeed and vec2.withAngle(vec2.angle(velocity), maxSpeed) or velocity
+  local mouseDistance = world.distance(tech.aimPosition(),mcontroller.position())
+  local speedFactor = math.min(vec2.mag(mouseDistance), 10) / 10
+  local velocity = vec2.withAngle(vec2.angle(mouseDistance), maxSpeed * speedFactor)
   velocity = {velocity[1],velocity[2] / 1.5}
   local hoverControlForce = config.getParameter("hoverControlForce")
   mcontroller.controlApproachVelocity(velocity, hoverControlForce)
