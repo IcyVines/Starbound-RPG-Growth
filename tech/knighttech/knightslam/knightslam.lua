@@ -115,6 +115,7 @@ end
 
 function doMultiJump()
   if not canMultiJump() then
+    if self.jumpsLeft == 0 then doSlam() end
     return
   end
   mcontroller.controlJump(true)
