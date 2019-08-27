@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgscrollresetstats",
+  "rarity" : "Legendary",
+  "category" : "scroll",
+  "inventoryIcon" : "scroll.png",
+  "description" : "Looks like even ancient civilizations had self-help magazines...",
+  "shortdescription" : "Stat Reset Scroll",
+  "largeImage" : "scrolllarge.png",
+  "scripts" : ["/items/scrolls/reset.lua"]
+  
+}

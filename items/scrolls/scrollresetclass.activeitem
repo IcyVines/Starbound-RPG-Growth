@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "scroll",
   "inventoryIcon" : "scroll.png",
-  "description" : "Inspiring Stories about legendary heroes. Maybe it's time for a new class of work.",
+  "description" : "Inspiring stories about legendary heroes. Maybe it's time for a new class of work.",
   "shortdescription" : "Class Reset Scroll",
   "largeImage" : "scrolllarge.png",
   "scripts" : ["/items/scrolls/reset.lua"]

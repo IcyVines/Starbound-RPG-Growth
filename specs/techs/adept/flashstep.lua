@@ -21,20 +21,20 @@ function init()
 
   self.hDirection = 0
   self.vDirection = 0
-  self.shift = 1
+  self.shift = false
   
   Bind.create("jumping", prepareFlashStep)
 end
 
 function prepareFlashStep()
-  if self.cooldownTimer ~= 0 or (self.hDirection == 0 and self.vDirection == 0) or status.resourceLocked("energy") or status.statPositive("activeMovementAbilities") then return end
+  if self.cooldownTimer ~= 0 or (self.hDirection == 0 and self.vDirection == 0) or status.resourceLocked("energy") or status.statPositive("activeMovementAbilities") or self.shift then return end
   local currentPosition = mcontroller.position()
   self.teleportTarget = currentPosition
   local diagonal = math.abs(self.hDirection*self.vDirection) * math.sqrt(2)
   local agility = status.statusProperty("ivrpgagility", 1)
   diagonal = diagonal == 0 and 1 or diagonal
-  self.teleportTarget[1] = currentPosition[1] + (self.hDirection * (self.dashMaxDistance + agility / 10) / diagonal / self.shift)
-  self.teleportTarget[2] = currentPosition[2] + (self.vDirection * (self.dashMaxDistance + agility / 10) / diagonal / self.shift)
+  self.teleportTarget[1] = currentPosition[1] + (self.hDirection * (self.dashMaxDistance + agility / 10) / diagonal)
+  self.teleportTarget[2] = currentPosition[2] + (self.vDirection * (self.dashMaxDistance + agility / 10) / diagonal)
   local intelligence = status.statusProperty("ivrpgintelligence", 1)
   local cost = self.cost - math.min(intelligence / 5, 15)
   local healthCost = (self.teleportCount > self.teleportsBeforeDamage and not status.statPositive("admin")) and (self.healthDamageFactor ^ (self.teleportCount - self.teleportsBeforeDamage)) or 0
@@ -81,9 +81,9 @@ function update(args)
   elseif args.moves["down"] and not args.moves["up"] then
     self.vDirection = -1
   end
-  if args.moves["run"] then self.shift = 1 else self.shift = 2 end
+  self.shift = not args.moves["run"]
 
-  mcontroller.controlModifiers({jumpingSuppressed = true})
+  mcontroller.controlModifiers({jumpingSuppressed = not self.shift})
 
   if self.pauseTimer > 0 then
     self.pauseTimer = math.max(self.pauseTimer - args.dt, 0)

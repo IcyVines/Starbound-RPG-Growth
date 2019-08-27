@@ -1,0 +1,7 @@
+{
+  "input" : [
+    { "item" : "masterypoint", "count" : 2 }
+  ],
+	"output" : { "item" : "ivrpgscrollresetstats", "count" : 1 },
+	"groups" : [ "ivrpgmasteryshop", "scrolls", "all" ]
+}

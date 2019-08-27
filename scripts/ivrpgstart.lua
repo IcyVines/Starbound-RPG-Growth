@@ -25,9 +25,7 @@ function init()
   self.specsAvailable = {}
   self.damageUpdate = 5
   updateSpecsAvailable()
-
-  self.rallied = false
-
+  
   -- Treasure Test
   --[[local testTreasure = root.assetJson("/scripts/testTreasure.config")
   sb.logInfo(sb.printJson(testTreasure))
