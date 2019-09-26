@@ -1,0 +1,49 @@
+{
+  "objectName" : "ivrpgcainesmimic",
+  "rarity" : "Legendary",
+  "objectType" : "object",
+
+  "category" : "trap",
+  "price" : 0,
+  "description" : "This chest reminds you of something... bad. Try not to lose sight of it.",
+  "shortdescription" : "Caine's Chest",
+  "race" : "generic",
+  "health" : 1,
+
+  "apexDescription" : "A chest! Wait... something feels off about this.",
+  "avianDescription" : "Often these chests stored valuables. I'm excited... I think.",
+  "floranDescription" : "Chessst! Or isss it? Floran will sssee!",
+  "glitchDescription" : "Cautious. What could be inside?",
+  "humanDescription" : "A chest! Let's open it up... carefully.",
+  "hylotlDescription" : "This kind of looks like a chest in the classic game, Shark Souls.",
+  "novakidDescription" : "It's usually a thrill to open chests, but I'm feelin' a bit off 'bout this one.",
+
+  "inventoryIcon" : "icon2.png",
+  "orientations" : [
+    {
+      "image" : "icon2.png:<color>",
+      "imagePosition" : [-14, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "animation" : "/items/active/weapons/patreon/mimic/object/mimic.animation",
+  "animationParts" : {
+    "chest" : "mimic.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "die" : [ "/sfx/humanoid/humanhurt_female1.ogg", "/sfx/humanoid/humanhurt_female2.ogg", "/sfx/humanoid/humanhurt_female3.ogg" ]
+    }
+  },
+
+  "smashable" : true,
+  "smashDropOptions" : [[
+    ["ivrpgwcaineschest", 1, {}]
+  ]],
+  "smashParticles" : [{ "count" : 6, "particle" : "blood" }],
+  "smashSounds" : [ "/sfx/objects/flesh_break1.ogg" ],
+  "scripts" : ["mimic.lua"]
+}

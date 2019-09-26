@@ -1,0 +1,24 @@
+{
+  "projectileName" : "ivrpgcoinprojectile6",
+  "physics" : "arrow",
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/ropehook_impact12.ogg"
+      ]
+    }
+  ],
+  "image" : "coin6.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "power" : 20,
+  "knockback" : 5,
+  "knockbackDirectional" : true,
+  "damageKind" : "dagger",
+  "timeToLive" : 10,
+  "damagePoly" : [ [2, -2], [2, 2], [-2, 2], [-2, -2] ],
+  "pointLight" : false,
+  "renderLayer" : "Player+1"
+}

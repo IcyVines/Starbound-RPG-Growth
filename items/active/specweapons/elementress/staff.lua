@@ -24,7 +24,6 @@ end
 
 function update(dt, fireMode, shiftHeld)
   self.weapon:update(dt, fireMode, shiftHeld)
-  
   incorrectWeapon()
 end
 

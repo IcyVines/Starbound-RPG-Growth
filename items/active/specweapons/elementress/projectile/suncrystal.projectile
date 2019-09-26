@@ -1,0 +1,52 @@
+{
+  "projectileName" : "ivrpgeclipsecrystalsun",
+  "image" : "suncrystal.png",
+  "physics" : "laser",
+  "bounces" : 0,
+  "flippable" : false,
+  "timeToLive" : 10,
+  "animationCycle" : 0.2,
+  "frameNumber" : 4,
+  "fullbright" : true,
+  "pointLight" : false,
+  "lightColor" : [120, 0, 60],
+  "power" : 0,
+  "damageKind" : "nova",
+  "scripts" : ["seeking.lua"],
+  "attackTime" : 0.9,
+  "projectileParameters" : {
+    "speed" : 50
+  },
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0,
+      "config" : {"timeToLive" : 2}
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.066,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/animations/crystaltrail/crystaltrail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.2,
+        "layer" : "back",
+        "position" : [0.0, 0.0]
+      }
+    }
+  ],
+  "damagePoly" : [ [-8, 0], [2, 3], [8, 0], [2, -3] ],
+  "scriptDelta" : 1
+}

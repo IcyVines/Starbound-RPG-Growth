@@ -1,0 +1,51 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "bite" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "frames" : 1,
+            "cycle" : 0.1
+          },
+          "on" : {
+            "frames" : 3,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "off",
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "/sfx/npc/monsters/monster_bite2.ogg" ]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "chest" : {
+        "properties" : {
+          "centered" : false,
+          "offset" : [-2.125, 0]
+        },
+        "partStates" : {
+          "bite" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:<frame>"
+              }
+            },
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:bite.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

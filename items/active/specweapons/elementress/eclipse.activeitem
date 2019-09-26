@@ -13,30 +13,19 @@
   "inventoryIcon" : "eclipse.png",
   "animation" : "/items/active/specweapons/elementress/eclipse.animation",
   "animationParts" : {
-    "handle" : "eclipse.png",
+    "handle" : "eclipsehandle.png",
     "stone" : "",
     "crown" : "",
-    "sun" : "eclipsesun.png",
-    "moon" : "eclipsemoon.png",
     "chargeEffect" : "eclipseanimation.png"
   },
 
   "animationCustom" : {
-    "lights" : {
-      "glow" : {
-        "color" : [160, 100, 120],
-        "active" : false
-      }
-    },
-    "sounds" : {
-      "physicalactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
-    }
   },
 
   "scripts" : ["/items/active/specweapons/elementress/staff.lua"],
 
   "baseDamageFactor" : 0.5,
-  "elementalType" : "physical",
+  "elementalType" : "nova",
   "classreq" : 2,
   "specreq" : 4,
 
@@ -103,14 +92,14 @@
     "scripts" : ["/items/active/specweapons/elementress/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "immediateEnergyCost" : 50,
-    "energyCost" : 100,
+    "energyCost" : 10,
+    "projectileCount" : 3,
+    "attackSpeed" : 0.6,
+    "maxCastRange" : 20,
 
-    "maxCastRange" : 25,
-
-    "projectileType" : "phaseshift",
+    "projectileType" : "ivrpgeclipsecrystal",
     "projectileParameters" : {
-      "baseDamage" : 6
+      "baseDamage" : 18
     }
   },
 

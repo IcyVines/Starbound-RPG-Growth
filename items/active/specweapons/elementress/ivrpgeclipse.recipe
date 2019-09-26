@@ -2,6 +2,11 @@
   "input" : [
     { "item" : "ivrpgnovacrystal", "count" : 1 },
     { "item" : "fabric", "count" : 2 },
+    { "item" : "goldbar", "count" : 1 },
+    { "item" : "silverbar", "count" : 2 },
+    { "item" : "cryonicextract", "count" : 2 },
+    { "item" : "scorchedcore", "count" : 1 },
+    { "item" : "fabric", "count" : 2 },
     { "item" : "logblock", "count" : 2 }
   ],
 	"output" : { "item" : "ivrpgweclipse", "count" : 1 },

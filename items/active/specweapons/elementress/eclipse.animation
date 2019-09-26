@@ -6,31 +6,98 @@
   "animatedParts" : {
     "stateTypes" : {
       "charge" : {
-        "default" : "idle",
+        "default" : "sunidle",
         "states" : {
           "idle" : {},
-          "charge" : {
-            "frames" : 13,
-            "cycle" : 0.9,
-            "mode" : "transition",
-            "transition" : "spark"
+          "moonidle" : {
+            "properties" : {
+              "lightsOn" : [ "ice" ],
+              "lightsOff" : [ "fire" ]
+            }
           },
-          "spark" : {
+          "mooncharge" : {
+            "frames" : 13,
+            "cycle" : 1.0,
+            "mode" : "transition",
+            "transition" : "moonspark",
+            "properties" : {
+              "lightsOn" : [ "ice" ],
+              "lightsOff" : [ "fire" ]
+            }
+          },
+          "moonspark" : {
             "frames" : 3,
             "cycle" : 0.3,
             "mode" : "transition",
-            "transition" : "charged"
+            "transition" : "mooncharged",
+            "properties" : {
+              "lightsOn" : [ "ice" ],
+              "lightsOff" : [ "fire" ]
+            }
           },
-          "charged" : {
+          "mooncharged" : {
             "frames" : 4,
             "cycle" : 0.5,
-            "mode" : "loop"
+            "mode" : "loop",
+            "properties" : {
+              "lightsOn" : [ "ice" ],
+              "lightsOff" : [ "fire" ]
+            }
           },
-          "discharge" : {
+          "moondischarge" : {
             "frames" : 3,
             "cycle" : 0.3,
             "mode" : "transition",
-            "transition" : "idle"
+            "transition" : "moonidle",
+            "properties" : {
+              "lightsOn" : [ "ice" ],
+              "lightsOff" : [ "fire" ]
+            }
+          },
+          "sunidle" : {
+            "properties" : {
+              "lightsOn" : [ "fire" ],
+              "lightsOff" : [ "ice" ]
+            }
+          },
+          "suncharge" : {
+            "frames" : 12,
+            "cycle" : 0.9,
+            "mode" : "transition",
+            "transition" : "sunspark",
+            "properties" : {
+              "lightsOn" : [ "fire" ],
+              "lightsOff" : [ "ice" ]
+            }
+          },
+          "sunspark" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "suncharged",
+            "properties" : {
+              "lightsOn" : [ "fire" ],
+              "lightsOff" : [ "ice" ]
+            }
+          },
+          "suncharged" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "lightsOn" : [ "fire" ],
+              "lightsOff" : [ "ice" ]
+            }
+          },
+          "sundischarge" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "transition",
+            "transition" : "sunidle",
+            "properties" : {
+              "lightsOn" : [ "fire" ],
+              "lightsOff" : [ "ice" ]
+            }
           }
         }
       }
@@ -64,55 +131,65 @@
           "transformationGroups" : ["weapon"]
         }
       },
-      "sun" : {
-        "properties" : {
-          "zLevel" : 0,
-          "centered" : true,
-          "fullbright" : true,
-          "image" : "<partImage>",
-          "offset" : [0, 0.5],
-          "focalPoint" : [0.0, 0.25],
-          "transformationGroups" : ["weapon"]
-        }
-      },
-      "moon" : {
-        "properties" : {
-          "zLevel" : 2,
-          "centered" : true,
-          "image" : "<partImage><paletteSwaps>",
-          "offset" : [0, 0.5],
-          "transformationGroups" : ["weapon"]
-        }
-      },
       "chargeEffect" : {
         "properties" : {
           "zLevel" : 3,
           "fullbright" : true,
           "centered" : true,
-          "offset" : [0, 0],
+          "offset" : [0, 0.5],
           "transformationGroups" : ["weapon"]
         },
 
         "partStates" : {
           "charge" : {
-            "charge" : {
+            "moonidle" : {
               "properties" : {
-                "image" : "<partImage>:charging.<frame>"
+                "image" : "<partImage>:moon.idle"
               }
             },
-            "spark" : {
+            "mooncharge" : {
               "properties" : {
-                "image" : "<partImage>:spark.<frame>"
+                "image" : "ice.png:charging.<frame>"
               }
             },
-            "charged" : {
+            "moonspark" : {
               "properties" : {
-                "image" : "<partImage>:loop.<frame>"
+                "image" : "ice.png:spark.<frame>"
               }
             },
-            "discharge" : {
+            "mooncharged" : {
               "properties" : {
-                "image" : "<partImage>:discharge.<frame>"
+                "image" : "ice.png:loop.<frame>"
+              }
+            },
+            "moondischarge" : {
+              "properties" : {
+                "image" : "ice.png:discharge.<frame>"
+              }
+            },
+            "sunidle" : {
+              "properties" : {
+                "image" : "<partImage>:sun.idle"
+              }
+            },
+            "suncharge" : {
+              "properties" : {
+                "image" : "fire.png:charging.<frame>"
+              }
+            },
+            "sunspark" : {
+              "properties" : {
+                "image" : "fire.png:spark.<frame>"
+              }
+            },
+            "suncharged" : {
+              "properties" : {
+                "image" : "fire.png:loop.<frame>"
+              }
+            },
+            "sundischarge" : {
+              "properties" : {
+                "image" : "fire.png:discharge.<frame>"
               }
             }
           }
@@ -126,33 +203,57 @@
   },
 
   "lights" : {
-    "glow" : {
-      "active" : true,
+    "fire" : {
+      "active" : false,
       "position" : [0, 1.0],
-      "color" : [0, 0, 0],
+      "color" : [140, 40, 20],
+      "transformationGroups" : ["weapon"]
+    },
+    "ice" : {
+      "active" : false,
+      "position" : [0, 1.0],
+      "color" : [20, 80, 140],
       "transformationGroups" : ["weapon"]
     }
   },
 
   "particleEmitters" : {
-    "physicalcharge" : {
+    "firecharge" : {
       "active" : false,
       "transformationGroups" : ["weapon"],
       "emissionRate" : 10,
       "offsetRegion" : [-0.5, 0.0, 0.5, 1.5],
       "particles" : [
-        {"particle" : "energyblade"},
-        {"particle" : "energyblade2"}
+        {"particle" : "fireswoosh1"},
+        {"particle" : "fireswoosh2"},
+        {"particle" : "fireswoosh3"}
+      ]
+    },
+    "icecharge" : {
+      "active" : false,
+      "transformationGroups" : ["weapon"],
+      "emissionRate" : 10,
+      "offsetRegion" : [-0.5, 0.0, 0.5, 1.5],
+      "particles" : [
+        {"particle" : "iceswoosh1"},
+        {"particle" : "iceswoosh2"},
+        {"particle" : "iceswoosh3"}
       ]
     }
   },
 
   "sounds" : {
-    "physicalcharge" : ["/sfx/melee/staff_charge1.ogg"],
-    "physicalfullcharge" : ["/sfx/melee/elemental_aura_activate.ogg"],
-    "physicalchargedloop" : ["/sfx/melee/charge_full_hold1.ogg"],
-    "physicaldischarge" : ["/sfx/melee/elemental_aura_deactivate1.ogg"],
-    "physicalactivate" : ["/sfx/projectiles/plasma3.ogg"],
+    "firecharge" : ["/sfx/melee/staff_charge2_fire.ogg"],
+    "firefullcharge" : ["/sfx/melee/elemental_aura_activate.ogg"],
+    "firechargedloop" : ["/sfx/melee/staff_charged_fire2.ogg"],
+    "firedischarge" : ["/sfx/melee/elemental_aura_deactivate1.ogg"],
+    "fireactivate" : ["/sfx/melee/travelingslash_fire2.ogg"],
+
+    "icecharge" : ["/sfx/melee/staff_charge3_ice.ogg"],
+    "icefullcharge" : ["/sfx/melee/elemental_aura_activate.ogg"],
+    "icechargedloop" : ["/sfx/melee/staff_charged_ice2.ogg"],
+    "icedischarge" : ["/sfx/melee/elemental_aura_deactivate1.ogg"],
+    "iceactivate" : ["/sfx/melee/travelingslash_ice3.ogg", "/sfx/melee/travelingslash_ice4.ogg"],
 
     "zoneactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
   }

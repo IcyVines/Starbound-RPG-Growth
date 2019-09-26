@@ -1,0 +1,23 @@
+{
+  "frameGrid" : {
+    "size" : [40, 40],
+    "dimensions" : [3, 5],
+    "names" : [
+		[ "1", "2", "idle" ],
+		[ "blink", "open.1", "open.2" ],
+		[ "cry.1", "cry.2", "cry.3" ],
+		[ "angry", "bite.1", "jiggle.3" ],
+		[ "bite.3", "", "jiggle.1" ]
+	]
+  },
+  "aliases" : {
+  	"bite.2" : "bite.1",
+  	"jiggle.2" : "idle",
+    "jiggle.4" : "idle",
+    "jiggle.5" : "jiggle.1",
+    "jiggle.6" : "idle",
+    "jiggle.7" : "jiggle.3",
+  	"close.1" : "2",
+  	"close.2" : "1"
+  }
+}

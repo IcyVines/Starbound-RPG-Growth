@@ -1,0 +1,100 @@
+{
+  "itemName" : "ivrpgwcaineschest",
+  "price" : 1000,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "So, what? Do I just... bludgeon people with her?",
+  "shortdescription" : "^#876543;Caine's Chest",
+  "tooltipKind" : "base",
+  "category" : "Chest?",
+  "twoHanded" : true,
+  "inventoryIcon" : "caineschest.png",
+  "itemTags" : ["patreon", "chest", "unique"],
+  "level" : 6,
+
+  "animation" : "/items/active/weapons/patreon/mimic/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "",
+    "raised" : "cainesmimic.png",
+    "barrel" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/objects/coinstack_small2.ogg", "/sfx/objects/coinstack_small3.ogg" ],
+      "open" : [ "/sfx/objects/fleshdoor_open.ogg" ],
+      "speak" : [ "/sfx/humanoid/human_chatter_female1.ogg", "/sfx/humanoid/human_chatter_female2.ogg", "/sfx/humanoid/human_chatter_female3.ogg" ]
+    }
+  },
+  "baseOffset" : [0, 0],
+  "elementalType" : "physical",
+
+  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/patreon/mimic/fire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 0.5,
+    "baseDps" : 8,
+    "energyUsage" : 40,
+
+    "damageArea": [[-1, 2.5], [2.5, 2.5], [4, 1], [4, 0], [2.5, -1.5], [-1, -1.5]],
+
+    "damageConfig": {
+      "baseDamage" : 50,
+      "damageSourceKind": "bite",
+      "statusEffects": [],
+      "knockbackMode": "facing",
+      "timeout": 0.5,
+      "knockback": 10
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -45,
+        "weaponRotation" : 45,
+        "weaponOffset" : [0.5,1.25],
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : 30,
+        "weaponRotation" : -30,
+        "twoHanded" : true,
+        "weaponOffset" : [0.5,1.5],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "altfire" : {
+        "duration" : 0.1,
+        "armRotation" : 0,
+        "weaponRotation" : -10,
+        "twoHanded" : true,
+        "weaponOffset" : [1,1.5],
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.2,
+        "armRotation" : 2,
+        "weaponRotation" : 2,
+        "weaponOffset" : [0.5,1.5],
+        "twoHanded" : true,
+        "aimAngle" : 0,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

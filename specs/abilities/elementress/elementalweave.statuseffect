@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgelementalweave",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+  },
+
+  "scripts" : [
+    "elementalweave.lua"
+  ],
+
+  "animationConfig" : "elementalweave.animation",
+
+  "label" : "Elemental Weave",
+  "icon" : "/specs/abilities/elementress/elementalweave.png"
+}

@@ -62,7 +62,7 @@ function update(dt)
   self.isBow = self.weapon1 and root.itemHasTag(self.heldItem, "bow") or false
 
   --Weapon Stat Bonuses
-  if self.weaponScaling.items[self.heldItem] then
+  if self.heldItem and self.weaponScaling.items[self.heldItem] then
     local statAmount = 1
     for k,v in pairs(self.weaponScaling.items[self.heldItem]) do
       statAmount = statAmount + self.stats[k]*v
@@ -136,6 +136,19 @@ function update(dt)
   updateDamageGiven()
   updateDamageTaken()
   updateChallenges()
+  test()
+end
+
+function test()
+  local targetIds = world.objectQuery(mcontroller.position(), 3)
+  if targetIds then
+    for _,id in ipairs(targetIds) do
+      if world.entityName(id) == "woodenchest" then
+        --world.spawnItem("ivrpgwcaineschest", world.entityPosition(id))
+        world.sendEntityMessage(id, "break")
+      end
+    end
+  end
 end
 
 function updateStealth()
@@ -222,7 +235,7 @@ end
 function checkLevelUp()
   local currXP = world.entityCurrency(self.id,"experienceorb")
   if currXP >= (self.level+1)^2*100 and self.level < 50 then
-    self.level = self.level + 1
+    self.level = math.min(math.floor(math.sqrt(currXP/100)), 50)
     if self.level == 1 then
       return
     end
