@@ -28,7 +28,7 @@
       "fuzzAngle" : 10,
       "inheritDamageFactor" : 0.5,
       "angleAdjust" : 0,
-      "config" : {"timeToLive" : 2}
+      "config" : {"timeToLive" : 2, "damageTeam" : {"type" : "friendly"}}
     }
   ],
   "periodicActions" : [

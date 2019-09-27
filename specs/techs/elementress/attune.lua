@@ -1,78 +1,87 @@
-require "/scripts/vec2.lua"
-require "/scripts/util.lua"
+require "/scripts/keybinds.lua"
 
 function init()
-  self.id = effect.sourceEntity()
-  self.movementParams = mcontroller.baseParameters()
-  self.elementMod = math.random(3)
-  self.damageGivenUpdate = 5
+  self.id = entity.id()
+  self.active = false
+  self.elementMod = 1
   self.elementList = {"fire", "ice", "electric"}
+  self.element = self.elementList[self.elementMod]
+  self.newMod = {2,3,1}
   self.statusList = {"ivrpgsear", "ivrpgembrittle", "ivrpgoverload"}
   self.borderList = {"bb552233", "2288cc22", "88882233"}
-  self.timer = 15
-  for _,element in ipairs(self.elementList) do
-    animator.setSoundVolume(element .. "Activate", 0.25)
-    animator.setSoundVolume(element .. "Loop", element == "ice" and 0.5 or 0.25)
-  end
-  soundOn("fire")
+  self.projectileList = {"dragonfirelarge", "iceshockwave", "balllightning"}
+  self.projectileList2 = {"molotovflame", "icetrail", "electrictrail"}
+  self.charging = false
+  self.chargeTimer = 5
+  self.cooldownTimer = 0
+  Bind.create("Up", toggle)
+  Bind.create("primaryFire", action1)
+  Bind.create("altFire", action1alt)
 end
 
-
-function update(dt)
-  self.timer = self.timer - dt
-  local element = self.elementList[self.elementMod]
-  status.setPersistentEffects("ivrpgelementalweave", {
-    {stat =  element .. "Resistance", amount = 3},
-    {stat =  element .. "StatusImmunity", amount = 1},
-    {stat =  "lavaImmunity", amount = element == "fire" and 1 or 0}
-  })
-
-  status.setPrimaryDirectives("?border=1;" .. self.borderList[self.elementMod] .. ";" ..  self.borderList[self.elementMod])
-
-  if self.timer <= 0 then
-    local elementMod = math.random(3)
-    self.timer = 10
-    if self.elementMod ~= elementMod then
-      self.elementMod = elementMod
-      soundOn(element)
-    end
-  end
-
-  updateDamageGiven()
-
-  --Effect Expires if Specialization is no longer correct.
-  --Must keep this for every Ability, but change the specttype and classtype!!!
-  if world.entityCurrency(self.id, "spectype") ~= 4 or world.entityCurrency(self.id, "classtype") ~= 2 then
-    effect.expire()
-  end
-end
-
-function soundOn(elementOff)
-  animator.stopAllSounds(elementOff .. "Loop")
-  animator.playSound(self.elementList[self.elementMod] .. "Activate")
-  animator.playSound(self.elementList[self.elementMod] .. "Loop", -1)
-end
-
-function reset()
-  animator.setParticleEmitterActive("embers", false)
-  status.setPrimaryDirectives()
+function toggle()
+  self.elementMod = self.newMod[self.elementMod]
+  self.element = self.elementList[self.elementMod]
+  animator.playSound(self.element .. "Activate")
 end
 
 function uninit()
-  animator.stopAllSounds("fireLoop")
-  animator.stopAllSounds("electricLoop")
-  animator.stopAllSounds("iceLoop")
-  reset()
+  tech.setParentDirectives()
+  --status.removeEphemeralEffect("ivrpgimmaculateshieldstatus")
 end
 
-function updateDamageGiven()
-  local notifications = nil
-  notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
-  if notifications then
-    for _,notification in pairs(notifications) do
-      if notification.healthLost > 0 then
-        world.sendEntityMessage(notification.targetEntityId, "addEphemeralEffect", self.statusList[self.elementMod], 3, self.id)
-      end
+function update(args)
+  tech.setParentDirectives("?fade=" .. self.borderList[self.elementMod] .. "=0.5")
+  status.setPersistentEffects("ivrpgattune", {
+    {stat = self.element .. "StatusImmunity", amount = 1},
+    {stat = self.element .. "Resistance", amount = 3},
+    {stat = "lavaImmunity", amount = self.element == "fire" and 1 or 0}
+  })
+
+  self.dt = args.dt
+  self.shiftHeld = not args.moves["run"]
+  self.specialHeld = args.moves["special2"]
+  if self.specialHeld and self.cooldownTimer == 0 then
+    if self.shiftHeld or self.charging then
+      charge()
+    else
+      action2()
     end
+  else
+    self.charging = false
+    self.chargeTimer = 5
   end
+  self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
+end
+
+function action1(skipCheck)
+  if (not skipCheck) and world.entityHandItem(self.id, "primary") then return end
+  world.spawnProjectile(self.projectileList[self.elementMod], {mcontroller.xPosition(),mcontroller.yPosition()-1}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {powerMultiplier = status.stat("powerMultiplier"), speed = 30})
+end
+
+function action1alt()
+  if not world.entityHandItem(self.id, "alt") then
+    action1(true)
+  end
+end
+
+function action2()
+  world.spawnProjectile(self.projectileList2[self.elementMod], {mcontroller.xPosition(),mcontroller.yPosition()-1}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {powerMultiplier = status.stat("powerMultiplier"), speed = 10})
+  cooldown(1)
+end
+
+function charge( ... )
+  self.charging = true
+  self.chargeTimer = self.chargeTimer - self.dt
+  if self.chargeTimer == 0 then
+    release()
+  end
+end
+
+function release()
+  cooldown(10)
+end
+
+function cooldown(time)
+  self.cooldownTimer = time
 end

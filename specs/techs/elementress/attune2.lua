@@ -9,7 +9,7 @@ function init()
   self.elementList = {"fire", "ice", "electric"}
   self.statusList = {"ivrpgsear", "ivrpgembrittle", "ivrpgoverload"}
   self.borderList = {"bb552233", "2288cc22", "88882233"}
-  self.timer = 30
+  self.timer = 15
   for _,element in ipairs(self.elementList) do
     animator.setSoundVolume(element .. "Activate", 0.25)
     animator.setSoundVolume(element .. "Loop", element == "ice" and 0.5 or 0.25)

@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgattune",
+  "type" : "body",
+
+  "scripts" : ["attune.lua"],
+  "animator" : "attune.animation",
+
+  "description" : "Elementress Only",
+  "shortDescription" : "Attune",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/elementress/attune.png",
+
+  "chipCost" : 0
+}

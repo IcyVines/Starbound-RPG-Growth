@@ -1,16 +1,16 @@
 {
-  "name" : "ivrpgelementalweave",
+  "name" : "ivrpgattune",
 
   "defaultDuration" : 5,
   "effectConfig" : {
   },
 
   "scripts" : [
-    "elementalweave.lua"
+    "attune.lua"
   ],
 
-  "animationConfig" : "elementalweave.animation",
+  "animationConfig" : "attune.animation",
 
   "label" : "Elemental Weave",
-  "icon" : "/specs/abilities/elementress/elementalweave.png"
+  "icon" : "/specs/techs/elementress/attune.png"
 }
