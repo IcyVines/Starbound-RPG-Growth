@@ -41,6 +41,10 @@ function init()
     end
     removeTechs()
   end
+
+  if not status.statusProperty("ivrpgskillpoints") then
+    status.setStatusProperty("ivrpgskillpoints", math.floor(math.sqrt(self.xp/100)))
+  end
   
   sb.logInfo("Chaika's RPG Growth: Version %s", data.version)
   self.upgradeData = root.assetJson("/ivrpgUpMonDic.config")

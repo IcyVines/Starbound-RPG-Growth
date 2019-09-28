@@ -235,10 +235,12 @@ end
 function checkLevelUp()
   local currXP = world.entityCurrency(self.id,"experienceorb")
   if currXP >= (self.level+1)^2*100 and self.level < 50 then
+    local oldLevel = self.level
     self.level = math.min(math.floor(math.sqrt(currXP/100)), 50)
     if self.level == 1 then
       return
     end
+    status.setStatusProperty("ivrpgskillpoints", status.statusProperty("ivrpgskillpoints", 0) + (self.level - oldLevel))
     status.addEphemeralEffect("ivrpglevelup")
   elseif currXP < (self.level+1)^2*100 then
     self.level = math.floor(math.sqrt(currXP/100))

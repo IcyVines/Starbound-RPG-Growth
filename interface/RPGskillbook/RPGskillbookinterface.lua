@@ -63,6 +63,9 @@ function init()
   self.lastLoreChecked = "changelog"
   self.loreDepth = 1
   self.loreTable = {"lore"}
+  self.lastSkillChecked = "body"
+  self.skillDepth = 1
+  self.skillTable = {"skill", "body"}
   updateStats()
   updateClassInfo()
   updateAffinityInfo()
@@ -153,6 +156,10 @@ function update(dt)
 
   if widget.getChecked("bookTabs.8") then
     updateUpgradeTab()
+  end
+
+  if widget.getChecked("bookTabs.9") then
+    updateSkillTab()
   end
 
   if widget.getChecked("bookTabs.10") then
@@ -635,8 +642,8 @@ function updateSpecializationSelect()
   if unlocked ~= true then unlocked = false end
   
   widget.setVisible("specializationslayout.unlocktext", not unlocked)
-  widget.setButtonEnabled("specializationslayout.selectspec", not (currentSpec.gender and currentSpec.gender ~= player.gender()))
-  widget.setVisible("specializationslayout.selectspec", unlocked)  
+  widget.setButtonEnabled("specializationslayout.selectspec", self.level > 34 and not (currentSpec.gender and currentSpec.gender ~= player.gender()))
+  widget.setVisible("specializationslayout.selectspec",  unlocked)  
 end
 
 function updateSpecializationTab()
@@ -1574,14 +1581,14 @@ function buildNewLore()
   end
   if type(loreData) == "table" then
   	local added = false
-	for k,v in pairs(loreData) do
-	  local newListItem = widget.addListItem("lorelayout.scrollArea.list")
-	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".title", v.title)
-	  widget.setData("lorelayout.scrollArea.list." .. newListItem, k)
-	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".subtext", unlocks[k] and "" or "^red;Data Obscured.")
-	  added = true
-	end
-	if not added then
+  	for k,v in pairs(loreData) do
+  	  local newListItem = widget.addListItem("lorelayout.scrollArea.list")
+  	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".title", v.title)
+  	  widget.setData("lorelayout.scrollArea.list." .. newListItem, k)
+  	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".subtext", unlocks[k] and "" or "^red;Data Obscured.")
+  	  added = true
+  	end
+  	if not added then
   	  widget.setText("lorelayout.scrollArea.text", "^red;Looks like there's nothing here yet!")
   	else
   	  widget.setText("lorelayout.scrollArea.text", "")
@@ -1641,4 +1648,272 @@ function changelogTextHelper()
   	end
   end
   return returnText
+end
+
+function updateSkillTab()
+  if widget.getChecked("skillslayout.bodybutton") then
+    if #self.skillTable > 2 then
+      buildNewSkill(true)
+    end
+  elseif widget.getChecked("skillslayout.mindbutton") then
+    if #self.skillTable > 2 then
+      buildNewSkill(true)
+    end
+  elseif widget.getChecked("skillslayout.soulbutton") then
+    if #self.skillTable > 2 then
+      buildNewSkill(true)
+    end
+  else
+    widget.setChecked("skillslayout." .. self.lastSkillChecked .. "button", true)
+    changeSkillArea(self.lastSkillChecked)
+  end
+  local points = status.statusProperty("ivrpgskillpoints", 0)
+  widget.setText("skillslayout.skillpoints", points)
+  widget.setFontColor("skillslayout.skillpoints", points > 0 and "green" or "red")
+end
+
+function changeSkillArea(name)
+  name = string.gsub(name,"button","")
+  uncheckSkillTabs(name)
+  self.lastSkillChecked = name
+  self.skillTable = {"skill", self.lastSkillChecked}
+  widget.setVisible("skillslayout.scrollArea.list", true)
+  widget.setVisible("skillslayout.backarrow", true)
+  widget.setText("skillslayout.title", self.lastSkillChecked:sub(1,1):upper() .. self.lastSkillChecked:sub(2))
+  widget.setText("skillslayout.scrollArea.text", "")
+  buildNewSkill()
+end
+
+function uncheckSkillTabs(name)
+  local tabs = {"body", "mind", "soul"}
+  for _,tab in ipairs(tabs) do
+    if tab ~= name then
+      widget.setChecked("skillslayout." .. tab .. "button", false)
+    end
+  end
+end
+
+function changeSkillSelection()
+  local selectedSkill = widget.getListSelected("skillslayout.scrollArea.list")
+  if selectedSkill and type(selectedSkill) == "string" then
+    local name = widget.getData("skillslayout.scrollArea.list." .. selectedSkill)
+    if name then
+      table.insert(self.skillTable, name)
+      buildNewSkill()
+    end
+  end
+end
+
+function buildNewSkill(ignoreBuild)
+  if not ignoreBuild then
+    widget.clearListItems("skillslayout.scrollArea.list")
+    widget.setText("skillslayout.scrollArea.text", "")
+    widget.setButtonEnabled("skillslayout.equipskill", false)
+    widget.setVisible("skillslayout.equipskill", false)
+    widget.setButtonEnabled("skillslayout.unequipskill", false)
+    widget.setVisible("skillslayout.unequipskill", false)
+    widget.setButtonEnabled("skillslayout.upgradeskill", false)
+    widget.setVisible("skillslayout.upgradeskill", false)
+  end
+  local skillName, skillData, title = returnSkillNameAndData()
+  local activeSkills = status.statusProperty("ivrpgskills", {})
+  widget.setText("skillslayout.title", title or "^red;Body")
+  local skillTier = activeSkills[skillName]
+  if type(skillData.children) == "string" then
+    local text = tostring(skillData.children) .. "\n"
+    local bonusText, upgradeAvailable = addSkillText(skillData.requires, skillTier, skillData.tiers, skillData.tierText)
+    text = text .. bonusText
+    widget.setText("skillslayout.scrollArea.text", text)
+    updateSkillUpgradeButton(activeSkills[skillName], skillData.tiers, upgradeAvailable)
+    -- Add Tiers
+  else
+    local added = false
+    for k,v in pairs(skillData) do
+      local newListItem = widget.addListItem("skillslayout.scrollArea.list")
+      widget.setText("skillslayout.scrollArea.list." .. newListItem .. ".title", v.title)
+      widget.setData("skillslayout.scrollArea.list." .. newListItem, k)
+      local tier = activeSkills[skillName..k]
+      local maxTier = v.tiers or 1
+      local cost = tier and skillCost(v.tiers, tier, v.requires) or 0
+      widget.setText("skillslayout.scrollArea.list." .. newListItem .. ".subtext", tier and ("^green;At Tier " .. tier .. " of " .. maxTier .. "^reset; - ^red;Costs " .. cost) or "^red;Unequipped")
+      added = true
+    end
+    if not added then
+      widget.setText("skillslayout.scrollArea.text", "^red;Looks like there's nothing here yet!")
+    else
+      widget.setText("skillslayout.scrollArea.text", "")
+    end
+  end
+  widget.setButtonEnabled("skillslayout.backarrow", #self.skillTable > 2)
+end
+
+function addSkillText(requires, currentTier, tiers, tierText)
+  local returnText = ""
+  local available = true
+  local bonusText = ""
+
+  if not currentTier then currentTier = 0 end
+  local count = 1
+  for _,text in ipairs(tierText or {}) do
+    returnText = returnText .. (count == currentTier and "\n^green;" or "^reset;\n") .. text
+    count = count + 1
+  end
+
+  if tiers and currentTier < tiers then
+    requires = requires[currentTier + 1]
+  end
+  tiers = tiers or 1
+  -- Return if at max Tier
+  if currentTier == tiers then
+    updateSkillEquipButtons(true)
+    return returnText, false
+  end
+
+  returnText = returnText .. "\n\n^gray;Required For Next Tier^reset;"
+  -- Adds Stat Requirements
+  count = 1
+  for k,v in pairs(requires.stats) do
+    if player.currency(k .. "point") < v then
+      available = false
+      bonusText = "^red;"
+    else
+      bonusText = "^green;"
+    end
+    returnText = returnText .. (count == 1 and "\n^reset;Stats: " or "^reset;, ") .. bonusText .. v .. " in " .. k:gsub("^%l", string.upper)
+    count = count + 1
+  end
+  -- Adds Skill Requirements
+  count = 1
+  local activeSkills = status.statusProperty("ivrpgskills", {})
+  for k,v in pairs(requires.skills) do
+    local tier = activeSkills[k] or 0
+    if tier < v[2] then
+      available = false
+      bonusText = "^red;"
+    else
+      bonusText = "^green;"
+    end
+    returnText = returnText .. (count == 1 and "\n^reset;Skills: " or "^reset;, ") .. bonusText .. v[1] .. " Atleast Tier " .. v[2]
+    count = count + 1
+  end
+  -- Adds Point Requirements
+  if requires.points > status.statusProperty("ivrpgskillpoints", 0) then
+    available = false
+    bonusText = "^red;"
+  else
+    bonusText = "^green;"
+  end
+  returnText = returnText .. "\n^reset;Cost: " .. bonusText .. requires.points .. " Skill Points"
+  updateSkillEquipButtons(currentTier > 0, available)
+  return returnText, available
+end
+
+function oneSkillUp()
+  if #self.skillTable > 2 then
+    table.remove(self.skillTable)
+  end
+  buildNewSkill()
+end
+
+function updateSkillUpgradeButton(tier, tiers, available)
+  local upgrade = false
+  if tier and tiers and tier < tiers then
+    upgrade = true
+  end
+  widget.setButtonEnabled("skillslayout.upgradeskill", upgrade and available)
+  widget.setVisible("skillslayout.upgradeskill", upgrade)
+end
+
+function updateSkillEquipButtons(unequip, available)
+  widget.setButtonEnabled("skillslayout.equipskill", not unequip and available)
+  widget.setVisible("skillslayout.equipskill", not unequip)
+  widget.setButtonEnabled("skillslayout.unequipskill", unequip)
+  widget.setVisible("skillslayout.unequipskill", unequip)
+end
+
+function skillCost(tiers, currentTier, requires)
+  local cost = 0
+  if tiers then
+    for i=1,currentTier do
+      cost = cost + requires[i].points
+    end
+  else
+    cost = requires.points
+  end
+  return cost
+end
+
+function returnSkillNameAndData()
+  local skillData = self.textData
+  local skillName = ""
+  local skillTitle = ""
+  for _,v in ipairs(self.skillTable) do
+    skillName = skillName .. v
+    skillData = skillData[v]
+    skillTitle = skillTitle .. (skillData.title and (skillTitle == "" and "" or " - ") .. skillData.title or "")
+    if type(skillData.children) == "table" then
+      skillData = skillData.children
+    end
+  end
+  return skillName, skillData, skillTitle
+end
+
+function toggleSkill()
+  local activeSkills = status.statusProperty("ivrpgskills", {})
+  local skillName, skillData, skillTitle = returnSkillNameAndData()
+  local skillTier = activeSkills[skillName]
+  local cost = 0
+  if skillTier then
+    cost = skillCost(skillData.tiers, skillTier, skillData.requires)
+    activeSkills[skillName] = nil
+    if skillData.removes then
+      for i=skillTier,1,-1 do
+        for _,v in ipairs(skillData.removes[i]) do
+          removeSkill(v)
+          activeSkills[v] = nil
+        end
+      end
+    end
+    status.setStatusProperty("ivrpgskillpoints", status.statusProperty("ivrpgskillpoints", 0) + cost)
+  else
+    if skillData.tiers then
+      cost = skillData.requires[1].points
+    else
+      cost = skillData.requires.points
+    end
+    activeSkills[skillName] = 1
+    status.setStatusProperty("ivrpgskillpoints", status.statusProperty("ivrpgskillpoints", 0) - cost)
+  end
+  local text = tostring(skillData.children) .. "\n"
+  local bonusText, upgradeAvailable = addSkillText(skillData.requires, activeSkills[skillName], skillData.tiers, skillData.tierText)
+  text = text .. bonusText
+  widget.setText("skillslayout.scrollArea.text", text)
+  updateSkillUpgradeButton(activeSkills[skillName], skillData.tiers, upgradeAvailable)
+  status.setStatusProperty("ivrpgskills", activeSkills)
+end
+
+function removeSkill(name)
+  local activeSkills = status.statusProperty("ivrpgskills", {})
+  local skillData = self.textData["skill"].children[string.sub(name,6,9)].children[string.sub(name,10,-1)]
+  local skillTier = activeSkills[name]
+  if skillTier then
+    local cost = skillCost(skillData.tiers, skillTier, skillData.requires)
+    status.setStatusProperty("ivrpgskillpoints", status.statusProperty("ivrpgskillpoints", 0) + cost)
+  end
+end
+
+function upgradeSkill()
+  local activeSkills = status.statusProperty("ivrpgskills", {})
+  local skillName, skillData, skillTitle = returnSkillNameAndData()
+  local skillTier = activeSkills[skillName]
+  local cost = 0
+  activeSkills[skillName] = skillTier + 1
+  cost = skillData.requires[skillTier + 1].points
+  status.setStatusProperty("ivrpgskillpoints", status.statusProperty("ivrpgskillpoints", 0) - cost)
+  local text = tostring(skillData.children) .. "\n"
+  local bonusText, upgradeAvailable = addSkillText(skillData.requires, activeSkills[skillName], skillData.tiers, skillData.tierText)
+  text = text .. bonusText
+  widget.setText("skillslayout.scrollArea.text", text)
+  updateSkillUpgradeButton(activeSkills[skillName], skillData.tiers, upgradeAvailable)
+  status.setStatusProperty("ivrpgskills", activeSkills)
 end
