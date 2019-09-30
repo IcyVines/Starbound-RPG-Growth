@@ -279,9 +279,10 @@ function updateProfessionEffects(dt)
 end
 
 function updateSkillEffects()
+  local activeSkills = status.statusProperty("ivrpgskills", {})
   if self.class > 0 and self.spec > 0 then
     local gender = self.specList[self.class][self.spec].gender
-    if gender ~= player.gender() and not (activeSkills.skillbodytrueunderstanding and activeSkills.skillmindtrueunderstanding and activeSkills.skillsoultrueunderstanding) then
+    if gender and gender ~= player.gender() and not (activeSkills.skillbodytrueunderstanding and activeSkills.skillmindtrueunderstanding and activeSkills.skillsoultrueunderstanding) then
       rescrollSpecialization(self.class, self.spec)
     end
   end
