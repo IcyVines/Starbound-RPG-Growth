@@ -29,6 +29,10 @@ function init()
       bleedLength = (guaranteed and bleedLength < 1) and 1 or bleedLength
       world.sendEntityMessage(sourceId, "applySelfDamageRequest", "IgnoresDef", "bleed", damage/2, self.id)
       world.sendEntityMessage(sourceId, "addEphemeralEffect", "ivrpgweaken", bleedLength, self.id)
+      -- Dark Templar Bonus Unlock
+      local dark = status.statusProperty("ivrpgsudarktemplar", 0)
+      if self.level > 34 and type(dark) == "number" then status.setStatusProperty("ivrpgsudarktemplar", dark + math.floor(damage/2)) end
+      -- End Unlock
     end
   end)
 
@@ -39,6 +43,7 @@ function init()
   self.profList = root.assetJson("/professionList.config")
   self.statList = root.assetJson("/stats.config")
   self.weaponScaling = root.assetJson("/weaponScaling.config")
+  self.skillList = root.assetJson("/skillList.config")
 end
 
 function update(dt)
@@ -136,19 +141,7 @@ function update(dt)
   updateDamageGiven()
   updateDamageTaken()
   updateChallenges()
-  test()
-end
-
-function test()
-  local targetIds = world.objectQuery(mcontroller.position(), 3)
-  if targetIds then
-    for _,id in ipairs(targetIds) do
-      if world.entityName(id) == "woodenchest" then
-        --world.spawnItem("ivrpgwcaineschest", world.entityPosition(id))
-        world.sendEntityMessage(id, "break")
-      end
-    end
-  end
+  updateSkills()
 end
 
 function updateStealth()
@@ -951,6 +944,47 @@ function shockNearbyTargets(dt)
       end
     end
   end
+end
+
+function updateSkills()
+  local activeSkills = status.statusProperty("ivrpgskills", {})
+  local skillEffects = {}
+  local movementConfig = {}
+  for k,v in pairs(activeSkills) do
+    local skill = self.skillList[k]
+    if skill then
+      local allow = true
+      if skill.when then
+        local count = 1
+        for _,w in ipairs(skill.when) do
+          local amount = skill.whenTiers[count][v]
+          if allow and w.type == "status" and not operate(w.operator2, operate(w.operator, status[w.stat1[1]](w.stat1[2]), status[w.stat2[1]](w.stat2[2])), amount) then
+            allow = false
+          elseif allow and w.type == "world" and not operate(w.operator, world[w.func](), amount) then
+            allow = false
+          end
+          count = count + 1
+        end
+      end
+      if (allow or skill.withoutWhen) and skill.persistentEffects then
+        for i=1,#skill.persistentEffects do
+          local effectConfig = {}
+          effectConfig.stat = skill.persistentEffects[i]
+          effectConfig[skill.effectTypes[i]] = skill.effectTiers[i][v]
+          if allow or (skill.withoutWhen and skill.withoutWhen[i]) then
+            table.insert(skillEffects, effectConfig)
+          end
+        end
+      end
+      if allow and skill.movementEffects then
+        for i=1,#skill.movementEffects do
+          movementConfig[skill.movementEffects[i]] = (movementConfig[skill.movementEffects[i]] or 1) + skill.movementTiers[i][v]
+        end
+      end
+    end
+  end
+  status.setPersistentEffects("ivrpgskilleffects", skillEffects)
+  mcontroller.controlModifiers(movementConfig)
 end
 
 function getScaleBonus(scalingList, hands)

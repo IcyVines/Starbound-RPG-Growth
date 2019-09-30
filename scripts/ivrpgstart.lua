@@ -43,7 +43,7 @@ function init()
   end
 
   if not status.statusProperty("ivrpgskillpoints") then
-    status.setStatusProperty("ivrpgskillpoints", math.floor(math.sqrt(self.xp/100)))
+    status.setStatusProperty("ivrpgskillpoints", math.min(math.floor(math.sqrt(self.xp/100)), 50))
   end
   
   sb.logInfo("Chaika's RPG Growth: Version %s", data.version)
@@ -130,6 +130,7 @@ function update(dt)
 
   updateProfessionEffects(dt)
   updateSpecializationEffects(dt)
+  updateSkillEffects(dt)
 
   updateUpgrades()
   updateSpecs(dt)
@@ -277,7 +278,16 @@ function updateProfessionEffects(dt)
   end
 end
 
-function smithDamageTaken()
+function updateSkillEffects()
+  if self.class > 0 and self.spec > 0 then
+    local gender = self.specList[self.class][self.spec].gender
+    if gender ~= player.gender() and not (activeSkills.skillbodytrueunderstanding and activeSkills.skillmindtrueunderstanding and activeSkills.skillsoultrueunderstanding) then
+      rescrollSpecialization(self.class, self.spec)
+    end
+  end
+end
+
+function smithDamageTaken(dt)
   local notifications = nil
   notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
   if not status.statusProperty("ivrpgprofessionpassive", false) then return false end

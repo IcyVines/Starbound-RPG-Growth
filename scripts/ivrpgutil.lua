@@ -1,3 +1,19 @@
+function operate(operator, x, y)
+  stringToOperation = {
+    ['+'] = function (x, y) return x + y end,
+    ['-'] = function (x, y) return x - y end,
+    ['*'] = function (x, y) return x * y end,
+    ['/'] = function (x, y) return x / y end,
+    ['<'] = function (x, y) return x < y end,
+    ['>'] = function (x, y) return x > y end,
+    ['<='] = function (x, y) return x <= y end,
+    ['>='] = function (x, y) return x >= y end,
+    ['=='] = function (x, y) return x == y end,
+    ['~='] = function (x, y) return x ~= y end
+  }
+  return stringToOperation[operator](x,y)
+end
+
 function joinMaps(table1, table2)
   if not table1 then
     if not table2 then return nil

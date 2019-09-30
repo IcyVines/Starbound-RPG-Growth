@@ -10,16 +10,25 @@ function activate(fireMode, shiftHeld)
   if item.name() == "ivrpgscrollresetaffinity" and self.affinity ~= 9 then
     consumeAffinityStats()
     consumeAllCurrency("affinitytype")
+    resetSkills()
     item.consume(1)
   elseif item.name() == "ivrpgscrollresetclass" and player.currency("classtype") ~= 0 then
     resetStatPoints(true)
     removeTechs()
     consumeAllCurrency("classtype")
+    resetSkills()
     item.consume(1)
   elseif item.name() == "ivrpgscrollresetstats" and player.currency("classtype") ~= 0 then
     local consume = resetStatPoints(false)
+    if consume then resetSkills() end
     item.consume(consume and 1 or 0)
   end
+end
+
+function resetSkills()
+  -- Remove all Skills, since some require Stats, and set Skill Points to maximum.
+  status.setStatusProperty("ivrpgskillpoints", math.min(math.floor(math.sqrt(player.currency("experienceorb")/100)), 50))
+  status.setStatusProperty("ivrpgskills", {})
 end
 
 function resetStatPoints(resetClass)

@@ -7,7 +7,7 @@
 
   "category" : "storage",
   "price" : 70,
-  "description" : "This chest reminds you of something... bad. Try not to lose sight of it.",
+  "description" : "Don't put valuables in this: it reminds you of something... bad. Don't lose sight of it.",
   "shortdescription" : "Caine's Chest",
   "race" : "generic",
   "health" : 1.5,
