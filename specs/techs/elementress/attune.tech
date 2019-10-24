@@ -10,5 +10,6 @@
   "rarity" : "Uncommon",
   "icon" : "/specs/techs/elementress/attune.png",
 
-  "chipCost" : 0
+  "chipCost" : 0,
+  "joltCollisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ]
 }

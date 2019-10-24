@@ -1913,3 +1913,8 @@ function upgradeSkill()
   updateSkillUpgradeButton(activeSkills[skillName], #skillData.tierText, upgradeAvailable)
   status.setStatusProperty("ivrpgskills", activeSkills)
 end
+
+function resetSkills()
+  status.setStatusProperty("ivrpgskills", {})
+  status.setStatusProperty("ivrpgskillpoints", self.level)
+end

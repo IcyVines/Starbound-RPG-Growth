@@ -58,17 +58,17 @@
     },
     "modifiers" : {
       "diamond" : {
-        "stat" : "baseDps",
+        "stat" : ["baseDps"],
         "count" : 1,
         "mod" : 1.2
       },
       "battery" : {
-        "stat" : "energyCost",
+        "stat" : ["energyCost", "energyUsage"],
         "count" : 1,
         "mod" : 0.84
       },
       "coalore" : {
-        "stat" : "none",
+        "stat" : ["none"],
         "count" : 3,
         "mod" : 1
       }
