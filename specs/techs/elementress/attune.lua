@@ -14,21 +14,25 @@ function init()
   self.projectileList = {"dragonfirelarge", "iceshockwave", "balllightning"}
   self.projectileList2 = {"molotovflame", "icetrail", "electrictrail"}
   self.action2List = {worldOnFire, iceBarrier, jolt}
-  self.action2List = {meteor, shards, thunder}
+  self.action3List = {meteor, shards, thunder}
   self.charging = false
-  self.chargeTimer = 5
+  self.chargeTimer = 3
   self.cooldownTimer = 0
   self.joltTimer = 0
+  self.transformFadeTimer = 0
+  self.chargeCooldownTimer = 5
+  self.transformFadeTime = config.getParameter("transformFadeTime", 0.3)
   self.basePoly = mcontroller.baseParameters().standingPoly
   self.joltPoly = config.getParameter("joltCollisionPoly", {})
   self.collisionSet = {"Null", "Block", "Dynamic", "Slippery"}
+  self.directives = ""
   Bind.create("Up", toggle)
   Bind.create("primaryFire", action1)
   Bind.create("altFire", action1alt)
 end
 
 function toggle()
-  if not self.shiftHeld then return end
+  if self.charging or self.active or not self.shiftHeld then return end
   self.elementMod = self.newMod[self.elementMod]
   self.element = self.elementList[self.elementMod]
   animator.playSound(self.element .. "Activate")
@@ -53,18 +57,10 @@ Fire - World On Fire | Ice - Ice Barrier | Electric - Jolt
 Shift + [G]: Perform an action that requires charging.
 Fire - Meteor | Ice - Seeking Shards | Electric - Thunderstorm
 
-Each Ability changes depending on current Weave:
-Basic Projectile: Fire - Explosions | Ice - Slows Targets | Electric - Tracks Targets.
-World On Fire: Fire - Sear | Ice - Explosions | Electric - Lingering Damage.
-Ice Barrier: Fire - Adds Mist | Ice - Double Duration, Cause Embrittle | Electric - Cause Stun.
-Jolt: Fire - Explosions | Ice - Ice Trail | Electric - Increased Distance.
-Meteor: Fire - Increased Size | Ice - Fragments | Electric - Increased Conjure Speed
-Seeking Shards: Fire adds mist, Ice causes Embrittle and increases Shard count, Electric increases Shard speed and adds shard fragments.
-Thunderstorm: Fire - Explosions | Ice - Hail | Electric - Increased Size.
 ]]
 
 function update(args)
-  tech.setParentDirectives("?fade=" .. self.borderList[self.elementMod] .. "=0.5")
+  self.directives = "?fade=" .. self.borderList[self.elementMod] .. "=0.5"
   status.setPersistentEffects("ivrpgattune", {
     {stat = self.element .. "StatusImmunity", amount = 1},
     {stat = self.element .. "Resistance", amount = 3},
@@ -72,21 +68,25 @@ function update(args)
     {stat = "invulnerable", amount = self.active and 1 or 0}
   })
 
+  self.weaveMod = status.stat("ivrpgelementalweave")
+  self.weaveBonus = self.weaveMod == self.elementMod and 2 or 1
+
   self.dt = args.dt
   self.shiftHeld = not args.moves["run"]
   self.specialHeld = args.moves["special2"]
   self.hDirection = args.moves["left"] and -1 or (args.moves["right"] and 1 or 0)
   self.vDirection = args.moves["up"] and 1 or (args.moves["down"] and -1 or 0)
-  if self.specialHeld and self.cooldownTimer == 0 then
-    if self.shiftHeld or self.charging then
+  if self.specialHeld then
+    if (self.shiftHeld or self.charging) and self.chargeCooldownTimer == 0 then
       charge()
-    else
+    elseif self.cooldownTimer == 0 then
       self.action2List[self.elementMod]()
     end
   else
     self.charging = false
-    self.chargeTimer = 5
+    self.chargeTimer = 3
     self.lastProjectilePosition = nil
+    animator.stopAllSounds(self.element .. "Charge")
   end
 
   if self.active then
@@ -110,11 +110,19 @@ function update(args)
       if self.joltTimer == 0 then attemptActivation() end
     end
   end
+
+  self.chargeCooldownTimer = math.max(0, self.chargeCooldownTimer - self.dt)
+
+  updateTransformFade(self.dt)
 end
 
+--[[Each Ability changes depending on current Weave:
+Basic Projectile: Fire - Explosions | Ice - Slows Targets | Electric - Tracks Targets.]]
+
 function action1(skipCheck)
-  if (not skipCheck) and world.entityHandItem(self.id, "primary") then return end
+  if (self.cooldownTimer > 0 or self.active) or ((not skipCheck) and world.entityHandItem(self.id, "primary")) then return end
   world.spawnProjectile(self.projectileList[self.elementMod], {mcontroller.xPosition(),mcontroller.yPosition()-1}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {powerMultiplier = status.stat("powerMultiplier"), speed = 30})
+  cooldown(0.5)
 end
 
 function action1alt()
@@ -123,8 +131,12 @@ function action1alt()
   end
 end
 
+--[[World On Fire: Fire - Sear | Ice - Explosions | Electric - Lingering Damage.
+Ice Barrier: Fire - Adds Mist | Ice - Double Duration, Cause Embrittle | Electric - Cause Stun.
+Jolt: Fire - Explosions | Ice - Ice Trail | Electric - Increased Distance.]]
+
 function worldOnFire()
-  if not status.overConsumeResource("energy", self.dt * 20) then return end
+  if not status.overConsumeResource("energy", self.dt * 20 / self.weaveBonus) then return end
   local targetIds = enemyQuery(mcontroller.position(), 20, {}, self.id, true)
   for _,id in ipairs(targetIds) do
     world.sendEntityMessage(id, "applyStatusEffect", "burning", 0.25, self.id)
@@ -144,7 +156,7 @@ function iceBarrier()
     local position, aimVector = projectilePositionAndAim(self.lastProjectilePosition, vec2.add(self.lastProjectilePosition, vec2.mul(dir, step)))
 
     if world.magnitude(position, mcontroller.position()) >= minDistance and not world.lineTileCollision(position, mcontroller.position()) then
-      if not status.overConsumeResource("energy", 5) then break end
+      if not status.overConsumeResource("energy", 5 / self.weaveBonus) then break end
       world.spawnProjectile("icebarrier", position, self.id, aimVector, false, {power = 0})
     end
   end
@@ -171,7 +183,7 @@ end
 
 function jolt()
   self.joltDirection = {self.hDirection, self.vDirection}
-  if (self.hDirection ~= 0 or self.vDirection ~= 0) and status.overConsumeResource("energy", 10) then
+  if (self.hDirection ~= 0 or self.vDirection ~= 0) and status.overConsumeResource("energy", 10 / self.weaveBonus) then
     attemptActivation()
   end
 end
@@ -197,6 +209,7 @@ function attemptActivation()
 end
 
 function activate()
+  if self.joltTimer == 0 then self.transformFadeTimer = self.transformFadeTime - 0.25 end
   self.active = true
   cooldown(0.2)
   self.joltTimer = 0.21
@@ -209,6 +222,7 @@ end
 
 function deactivate()
   animator.setAnimationState("jolt", "off")
+  self.transformFadeTimer = -self.transformFadeTime
   tech.setParentHidden(false)
   tech.setParentOffset({0, 0})
   tech.setToolUsageSuppressed(false)
@@ -248,7 +262,7 @@ end
 
 function transformPosition(pos)
   pos = pos or mcontroller.position()
-  local groundPos = world.resolvePolyCollision(self.joltPoly, {pos[1], pos[2] - positionOffset()}, 1, self.collisionSet)
+  local groundPos = world.resolvePolyCollision(self.joltPoly, {pos[1], pos[2] - positionOffset() / 2}, 1, self.collisionSet)
   if groundPos then
     return groundPos
   else
@@ -258,11 +272,24 @@ end
 
 function restorePosition(pos)
   pos = pos or mcontroller.position()
-  local groundPos = world.resolvePolyCollision(self.basePoly, {pos[1], pos[2] + positionOffset()}, 1, self.collisionSet)
+  local groundPos = world.resolvePolyCollision(self.basePoly, {pos[1], pos[2] + positionOffset() / 2}, 1, self.collisionSet)
   if groundPos then
     return groundPos
   else
     return world.resolvePolyCollision(self.basePoly, pos, 1, self.collisionSet)
+  end
+end
+
+function updateTransformFade(dt)
+  if self.transformFadeTimer > 0 then
+    self.transformFadeTimer = math.max(0, self.transformFadeTimer - dt)
+    animator.setGlobalTag("joltDirectives", self.directives .. string.format("?fade=FFFFFFFF;%.1f", math.min(1.0, self.transformFadeTimer / (self.transformFadeTime - 0.275))))
+  elseif self.transformFadeTimer < 0 then
+    self.transformFadeTimer = math.min(0, self.transformFadeTimer + dt)
+    tech.setParentDirectives(self.directives .. string.format("?fade=FFFFFFFF;%.1f", math.min(1.0, -self.transformFadeTimer / (self.transformFadeTime - 0.15))))
+  else
+    animator.setGlobalTag("joltDirectives", "")
+    tech.setParentDirectives(self.directives)
   end
 end
 
@@ -276,29 +303,36 @@ function minY(poly)
   return lowest
 end
 
-
 function charge( ... )
   if not self.charging then 
     self.charging = true
-    self.chargeTimer = 5
+    self.chargeTimer = 3
+    animator.playSound(self.element .. "Charge")
   end
-  self.chargeTimer = self.chargeTimer - self.dt
+  self.chargeTimer = math.max(self.chargeTimer - self.dt, 0)
   if self.chargeTimer == 0 then
     self.action3List[self.elementMod]()
-    cooldown(10)
+    animator.playSound(self.element .. "ChargeActivate")
+    self.chargeCooldownTimer = 10
   end
 end
 
+--[[Meteor: Fire - Increased Size | Ice - Fragments | Electric - Increased Conjure Speed
+Seeking Shards: Fire adds mist, Ice causes Embrittle and increases Shard count, Electric increases Shard speed and adds shard fragments.
+Thunderstorm: Fire - Explosions | Ice - Hail | Electric - Increased Size.]]
+
 function meteor( ... )
-  -- body
+  world.spawnProjectile("elementresslargemeteor", {mcontroller.xPosition(), mcontroller.yPosition() + 15}, self.id, {mcontroller.facingDirection() / 2, -1}, false, {power = 100, speed = 50})
 end
 
 function shards( ... )
-  -- body
+  --world.spawnProjectile("icebarrier", position, self.id, aimVector, false, {power = 0})
 end
 
 function thunder( ... )
-  -- body
+  for i=-5,5 do
+    world.spawnProjectile("electricelementcloud", {mcontroller.xPosition() + i, mcontroller.yPosition() + 10}, self.id, {0,0}, false, {power = 10, speed = 0})
+  end
 end
 
 function cooldown(time)

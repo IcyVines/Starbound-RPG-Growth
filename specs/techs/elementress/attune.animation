@@ -1,4 +1,8 @@
 {
+  "globalTagDefaults" : {
+    "joltDirectives" : ""
+  },
+
   "animationParts" : {
     "jolting" : ""
   },
@@ -36,7 +40,7 @@
             "off" : {},
             "on" : {
               "properties" : {
-                "image" : "jolt/balllightning.png:<frame>"
+                "image" : "jolt/balllightning.png:<frame><joltDirectives>"
               }
             }
           }
@@ -159,6 +163,12 @@
     "jolt" : ["/sfx/projectiles/electrical_barrier_break1.ogg","/sfx/projectiles/electrical_barrier_break2.ogg","/sfx/projectiles/electrical_barrier_break5.ogg","/sfx/projectiles/electrical_barrier_break6.ogg"],
     "fireLoop" : ["/sfx/melee/elemental_spin_fire.ogg"],
     "iceLoop" : ["/sfx/melee/elemental_spin_ice.ogg"],
-    "electricLoop" : ["/sfx/melee/elemental_spin_electric.ogg"]
+    "electricLoop" : ["/sfx/melee/elemental_spin_electric.ogg"],
+    "fireCharge" : ["/specs/techs/elementress/charge/charge_fire3.ogg"],
+    "iceCharge" : ["/specs/techs/elementress/charge/charge_ice3.ogg"],
+    "electricCharge" : ["/specs/techs/elementress/charge/charge_electric3.ogg"],
+    "fireChargeActivate" : ["/sfx/melee/travelingslash_fire1.ogg","/sfx/melee/travelingslash_fire2.ogg","/sfx/melee/travelingslash_fire3.ogg"],
+    "iceChargeActivate" : ["/sfx/melee/travelingslash_ice1.ogg","/sfx/melee/travelingslash_ice2.ogg","/sfx/melee/travelingslash_ice3.ogg","/sfx/melee/travelingslash_ice4.ogg"],
+    "electricChargeActivate" : ["/sfx/melee/travelingslash_electric3.ogg","/sfx/melee/travelingslash_electric4.ogg","/sfx/melee/travelingslash_electric5.ogg"]
   }
 }

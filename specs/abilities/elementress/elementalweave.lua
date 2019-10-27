@@ -25,7 +25,7 @@ function update(dt)
     {stat =  element .. "Resistance", amount = 3},
     {stat =  element .. "StatusImmunity", amount = 1},
     {stat =  "lavaImmunity", amount = element == "fire" and 1 or 0},
-    {stat = "ivrpgelementalweave" .. element, amount = 1}
+    {stat = "ivrpgelementalweave", amount = self.elementMod}
   })
 
   status.setPrimaryDirectives("?border=1;" .. self.borderList[self.elementMod] .. ";" ..  self.borderList[self.elementMod])

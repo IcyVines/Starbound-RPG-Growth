@@ -46,14 +46,7 @@ function init()
   self.skillList = root.assetJson("/skillList.config")
 end
 
-function update(dt)
-  self.xp = math.min(world.entityCurrency(self.rpgPlayerID, "experienceorb"), 500000)
-  self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
-  self.classicMode = status.statPositive("ivrpghardcore")
-
-  updateStats()
-  updateStealth()
-
+function updateHeldItems()
   self.heldItem = world.entityHandItem(self.rpgPlayerID, "primary")
   self.heldItem2 = world.entityHandItem(self.rpgPlayerID, "alt")
   if self.heldItem == "sapling" then self.heldItem = nil end
@@ -65,6 +58,18 @@ function update(dt)
   self.weapon1 = self.heldItem and root.itemHasTag(self.heldItem, "weapon") or false
   self.weapon2 = self.heldItem2 and root.itemHasTag(self.heldItem2, "weapon") or false
   self.isBow = self.weapon1 and root.itemHasTag(self.heldItem, "bow") or false
+end
+
+function update(dt)
+
+  self.xp = math.min(world.entityCurrency(self.rpgPlayerID, "experienceorb"), 500000)
+  self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
+  self.classicMode = status.statPositive("ivrpghardcore")
+
+  updateStats()
+  updateStealth()
+  local pStatus, pMessage = pcall(updateHeldItems)
+  if not pStatus then sb.logInfo(pMessage or "There was an error attempting to generate an item config") end
 
   --Weapon Stat Bonuses
   if self.heldItem and self.weaponScaling.items[self.heldItem] then
