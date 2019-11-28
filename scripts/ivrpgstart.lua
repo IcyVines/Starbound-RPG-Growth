@@ -152,7 +152,7 @@ function updateLore()
       for _,spec in ipairs(lore) do
         if not unlocks[spec] and status.statusProperty("ivrpgsu" .. spec, false) == true then
           unlocks[spec] = true
-          sendRadioMessage("Lore Unlocked: Specialization - " .. lore:gsub("^%l",string.upper))
+          sendRadioMessage("Lore Unlocked: Specialization - " .. spec:gsub("^%l",string.upper))
         end
       end
     elseif not unlocks[lore] then
