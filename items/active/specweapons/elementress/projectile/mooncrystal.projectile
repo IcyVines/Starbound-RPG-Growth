@@ -11,6 +11,7 @@
   "pointLight" : false,
   "lightColor" : [60, 0, 120],
   "power" : 0,
+  "knockback" : 0,
   "damageKind" : "nova",
   "scripts" : ["seeking.lua"],
   "attackTime" : 0.9,
@@ -27,7 +28,8 @@
       "type" : "icetrail",
       "fuzzAngle" : 0,
       "inheritDamageFactor" : 0.5,
-      "angleAdjust" : 0
+      "angleAdjust" : 0,
+      "config" : {"knockback" : 0}
     }
   ],
   "periodicActions" : [

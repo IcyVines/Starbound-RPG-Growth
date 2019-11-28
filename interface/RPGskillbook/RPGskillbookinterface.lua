@@ -128,6 +128,7 @@ function update(dt)
     self.spec = player.currency("spectype")
     updateSpecInfo()
     unlockSpecWeapon()
+    unlockSpecLore()
     if widget.getChecked("bookTabs.5") then
       changeToSpecialization()
     elseif widget.getChecked("bookTabs.0") then
@@ -729,11 +730,27 @@ function chooseSpec()
 end
 
 function unlockSpecWeapon()
-  	if self.spec > 0 then
+  if self.spec > 0 then
 	  for _,weapon in ipairs(self.specInfo.weapon.name) do
 	  	player.giveBlueprint(weapon)
 	  end
 	end
+end
+
+function unlockSpecLore()
+  if self.spec > 0 then
+    local loreUnlocks = self.specInfo.loreUnlocks
+    if loreUnlocks then
+      local currentUnlocks = status.statusProperty("ivrpgloreunlocks", {})
+      for lore,title in pairs(loreUnlocks) do
+        if not currentUnlocks[lore] then
+          currentUnlocks[lore] = true
+          sendRadioMessage("Lore Unlocked: " .. title)
+        end
+      end
+      status.setStatusProperty("ivrpgloreunlocks", currentUnlocks)
+    end
+  end  
 end
 
 function unequipSpecialization()

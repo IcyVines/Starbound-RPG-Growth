@@ -130,3 +130,26 @@ function enemyQuery(a1, a2, a3, a4, ignoresStealth)
   end
   return newTargets
 end
+
+function ivrpgBuildItemConfigHelper(id, hand)
+  local heldItem = world.entityHandItem(id, hand)
+  local itemConfig = heldItem and root.itemConfig(heldItem)
+  sb.logInfo(itemConfig.config.category)
+  return itemConfig
+end
+
+function ivrpgBuildItemConfig(id, hand)
+  local pStatus, pMessage = pcall(ivrpgBuildItemConfigHelper, id, hand)
+  if not pStatus then sb.logInfo(pMessage or "There was an error attempting to generate an item config") end
+  return pMessage
+end
+
+-- Only for scripts with access to Player
+function sendRadioMessage(text)
+  player.radioMessage({
+    messageId = "specUnlocks",
+    unique = false,
+    senderName = "SAIL",
+    text = text
+  })
+end

@@ -145,13 +145,14 @@ end
 
 function updateLore()
   local unlocked = false
+  local unlockedSpecs = {}
   local unlocks = status.statusProperty("ivrpgloreunlocks", {})
   for _,lore in ipairs(self.loreList) do
     if type(lore) == "table" then
       for _,spec in ipairs(lore) do
         if not unlocks[spec] and status.statusProperty("ivrpgsu" .. spec, false) == true then
           unlocks[spec] = true
-          unlocked = true
+          sendRadioMessage("Lore Unlocked: Specialization - " .. lore:gsub("^%l",string.upper))
         end
       end
     elseif not unlocks[lore] then
@@ -454,15 +455,6 @@ function unlockSpecs()
     end
   end
 
-end
-
-function sendRadioMessage(text)
-  player.radioMessage({
-    messageId = "specUnlocks",
-    unique = false,
-    senderName = "SAIL",
-    text = text
-  })
 end
 
 function killedEnemy(enemyType, level, position, facing, statusEffects, damage, damageType)

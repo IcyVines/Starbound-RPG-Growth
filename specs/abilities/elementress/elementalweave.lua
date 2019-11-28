@@ -28,6 +28,7 @@ function update(dt)
     {stat = "ivrpgelementalweave", amount = self.elementMod}
   })
 
+  status.addEphemeralEffect("ivrpgelementalweave" .. element)
   status.setPrimaryDirectives("?border=1;" .. self.borderList[self.elementMod] .. ";" ..  self.borderList[self.elementMod])
 
   if self.timer <= 0 then
@@ -57,12 +58,13 @@ end
 function reset()
   animator.setParticleEmitterActive("embers", false)
   status.setPrimaryDirectives()
+  status.clearPersistentEffects("ivrpgelementalweave")
 end
 
 function uninit()
-  animator.stopAllSounds("fireLoop")
-  animator.stopAllSounds("electricLoop")
-  animator.stopAllSounds("iceLoop")
+  for _,element in ipairs(self.elementList) do
+    animator.stopAllSounds(element.."Loop")
+  end
   reset()
 end
 

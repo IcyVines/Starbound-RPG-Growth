@@ -15,13 +15,6 @@
       "action" : "projectile",
       "type" : "molotovflame",
       "fuzzAngle" : 10,
-      "angleAdjust" : -20,
-      "config" : {"timeToLive" : 2, "damageTeam" : {"type" : "friendly"}}
-    },
-    {
-      "action" : "projectile",
-      "type" : "molotovflame",
-      "fuzzAngle" : 10,
       "angleAdjust" : 0,
       "config" : {"timeToLive" : 2, "damageTeam" : {"type" : "friendly"}}
     },
@@ -50,7 +43,7 @@
       "action" : "projectile",
       "type" : "molotovflame",
       "fuzzAngle" : 10,
-      "angleAdjust" : -120,
+      "angleAdjust" : 120,
       "config" : {"timeToLive" : 2, "damageTeam" : {"type" : "friendly"}}
     },
     {
@@ -63,7 +56,7 @@
   ],
   "power" : 60,
   "damageType" : "IgnoresDef",
-  "damageKind" : "fireplasma",
+  "damageKind" : "fire",
   "piercing" : true,
   "damagePoly" : [ [-75, -75], [75, -75], [75, 75], [-75, 75] ],
   "emitters" : [ "sparks" ]

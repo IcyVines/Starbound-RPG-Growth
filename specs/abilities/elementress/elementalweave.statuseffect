@@ -9,8 +9,5 @@
     "elementalweave.lua"
   ],
 
-  "animationConfig" : "elementalweave.animation",
-
-  "label" : "Elemental Weave",
-  "icon" : "/specs/abilities/elementress/elementalweave.png"
+  "animationConfig" : "elementalweave.animation"
 }

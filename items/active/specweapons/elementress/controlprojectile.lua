@@ -106,7 +106,7 @@ function ControlProjectile:charged()
 
   self.durationBonus = 0
   local targetValid
-  while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
+  while self.fireMode == (self.activatingFireMode or self.abilitySlot) and not status.resourceLocked("energy") do
     self.projectileTimer = math.max(self.projectileTimer - self.dt, 0)
     targetValid = self:targetValid(activeItem.ownerAimPosition())
     activeItem.setCursor(targetValid and "/cursors/chargeready.cursor" or "/cursors/chargeinvalid.cursor")

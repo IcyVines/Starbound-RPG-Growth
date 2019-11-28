@@ -1,0 +1,33 @@
+{
+  "projectileName" : "ivrpgsearingmist",
+  "physics" : "statuspod",
+  "bounces" : -1,
+  "timeToLive" : 1,
+  "speed" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "searingmistprojectile.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+      "time" : 0.0,
+      "repeat" : false,
+      "action" : "loop",
+      "count" : 1,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "ivrpgsearingmist"
+        }
+      ]
+    }
+   ],
+  "power" : 0,
+  "piercing" : true,
+  "damageKind" : "applystatus",
+  "damagePoly" : [ [-30, -30], [-30, 30], [30, 30], [30, -30]  ],
+  "flippable" : true,
+  "statusEffects" : [
+    {"effect" : "ivrpgsear", "duration" : 3 }
+  ]
+}

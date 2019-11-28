@@ -1,5 +1,6 @@
 require "/scripts/keybinds.lua"
 require "/scripts/vec2.lua"
+require "/scripts/util.lua"
 require "/scripts/ivrpgutil.lua"
 
 function init()
@@ -11,7 +12,7 @@ function init()
   self.newMod = {2,3,1}
   self.statusList = {"ivrpgsear", "ivrpgembrittle", "ivrpgoverload"}
   self.borderList = {"bb552233", "2288cc22", "88882233"}
-  self.projectileList = {"dragonfirelarge", "iceshockwave", "balllightning"}
+  self.projectileList = {"elementressfireball", "elementressicespike", "elementresselectricspin"}
   self.projectileList2 = {"molotovflame", "icetrail", "electrictrail"}
   self.action2List = {worldOnFire, iceBarrier, jolt}
   self.action3List = {meteor, shards, thunder}
@@ -26,13 +27,21 @@ function init()
   self.joltPoly = config.getParameter("joltCollisionPoly", {})
   self.collisionSet = {"Null", "Block", "Dynamic", "Slippery"}
   self.directives = ""
-  Bind.create("Up", toggle)
+  self.projectiles = {}
+  self.barrierProjectiles = {}
+  self.altBarrierProjectiles = {}
+  self.barrierFacing = 1
+  self.powerUp = false
+  self.iceTimer = 0
+  self.mistTimer = 0
+  self.twoHandedCategories = config.getParameter("twoHandedCategories", {})
+  Bind.create("specialThree", toggle)
   Bind.create("primaryFire", action1)
   Bind.create("altFire", action1alt)
 end
 
 function toggle()
-  if self.charging or self.active or not self.shiftHeld then return end
+  if self.charging or self.active then return end
   self.elementMod = self.newMod[self.elementMod]
   self.element = self.elementList[self.elementMod]
   animator.playSound(self.element .. "Activate")
@@ -47,7 +56,7 @@ end
 
 --[[
 A Body Tech: Press [W] to switch between your current attunement. You are immune to an element while attuned to it. Use Left/Right Click, [G] or hold [Shift]+[G] to use an ability based on your Attuned Element and Affinity.
-When your Attunement and Weave match, ability cooldown and energy cost are halved.
+When your Attunement and Weave match, energy cost is halved.
 
 Primary Fire/Alt Fire: Fire a projectile. - COMPLETE
 
@@ -60,7 +69,7 @@ Fire - Meteor | Ice - Seeking Shards | Electric - Thunderstorm
 ]]
 
 function update(args)
-  self.directives = "?fade=" .. self.borderList[self.elementMod] .. "=0.5"
+  self.directives = "?fade=" .. self.borderList[self.elementMod] .. "=0.25"
   status.setPersistentEffects("ivrpgattune", {
     {stat = self.element .. "StatusImmunity", amount = 1},
     {stat = self.element .. "Resistance", amount = 3},
@@ -70,6 +79,7 @@ function update(args)
 
   self.weaveMod = status.stat("ivrpgelementalweave")
   self.weaveBonus = self.weaveMod == self.elementMod and 2 or 1
+  self.weaveElement = self.elementList[self.weaveMod]
 
   self.dt = args.dt
   self.shiftHeld = not args.moves["run"]
@@ -77,16 +87,67 @@ function update(args)
   self.hDirection = args.moves["left"] and -1 or (args.moves["right"] and 1 or 0)
   self.vDirection = args.moves["up"] and 1 or (args.moves["down"] and -1 or 0)
   if self.specialHeld then
-    if (self.shiftHeld or self.charging) and self.chargeCooldownTimer == 0 then
+    if (self.shiftHeld or self.charging) and self.chargeCooldownTimer == 0 and not status.resourceLocked("energy") and status.overConsumeResource("energy", self.dt * 10 / self.weaveBonus) then
       charge()
-    elseif self.cooldownTimer == 0 then
+    elseif self.cooldownTimer == 0 and not self.shiftHeld then
       self.action2List[self.elementMod]()
     end
   else
     self.charging = false
     self.chargeTimer = 3
     self.lastProjectilePosition = nil
+    killIceBarrier()
     animator.stopAllSounds(self.element .. "Charge")
+  end
+
+  if self.element ~= "ice" or self.shiftHeld then
+    killIceBarrier()
+  end
+
+  if self.weaveElement == "ice" then
+    if #self.barrierProjectiles > 0 then
+      if #self.altBarrierProjectiles == 0 then
+        for i=-2,2 do
+          local projectileId = world.spawnProjectile("elementressicebarrier", vec2.add(mcontroller.position(), {self.barrierFacing * -1 * 3, i}), self.id, {self.barrierFacing * -1, 0}, true, {power = 0, timeToLive = math.huge})
+          if projectileId then table.insert(self.altBarrierProjectiles, projectileId) end
+        end
+      end
+    end
+
+    if self.active and self.iceTimer == 0 then
+      self.iceTimer = 0.03
+      world.spawnProjectile("icetrail", mcontroller.position(), self.id, {0,0}, false, {power = 1, speed = 0})
+    end
+
+  else
+    killIceBarrier(true)
+  end
+
+  if self.weaveElement == "fire" then
+    if self.mistTimer == 0 then
+      for _,id in ipairs(self.barrierProjectiles) do
+        world.spawnProjectile("ivrpgsearingmist", world.entityPosition(id), self.id, {0,0}, false, {})
+      end
+      self.mistTimer = 0.5
+    end
+  else
+
+  end
+
+  local joltBonus = 0
+  local powerUp = false
+  if self.weaveElement == "electric" then
+    powerUp = true
+    joltBonus = 100
+  else
+    powerUp = false  
+  end
+
+  if #self.barrierProjectiles > 0 and self.powerUp ~= powerUp then
+    self.powerUp = powerUp
+    for _,id in ipairs(self.barrierProjectiles) do
+      world.sendEntityMessage(id, "setPower", powerUp and 1 or 0)
+    end
   end
 
   if self.active then
@@ -96,12 +157,24 @@ function update(args)
       collisionPoly = self.joltPoly
     })
     status.setResourcePercentage("energyRegenBlock", 1.0)
-    mcontroller.controlApproachVelocity(vec2.mul(self.joltDirection, 100), 1000)
+    mcontroller.controlApproachVelocity(vec2.mul(self.joltDirection, 100 + joltBonus), 1000 + joltBonus * 5)
     animator.setAnimationState("jolt", "on")
   else
     animator.setAnimationState("jolt", "off")
   end
 
+  if #self.projectiles > 0 then
+    local newProjectiles = {}
+    for k,id in ipairs(self.projectiles) do
+      if world.entityExists(id) then
+        table.insert(newProjectiles, id)
+      end
+    end
+    self.projectiles = copy(newProjectiles)
+  end
+
+  self.iceTimer = math.max(0, self.iceTimer - self.dt)
+  self.mistTimer = math.max(0, self.mistTimer - self.dt)
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
   self.joltTimer = math.max(0, self.joltTimer - self.dt) 
   if self.cooldownTimer == 0 then
@@ -117,52 +190,85 @@ function update(args)
 end
 
 --[[Each Ability changes depending on current Weave:
-Basic Projectile: Fire - Explosions | Ice - Slows Targets | Electric - Tracks Targets.]]
+Basic Projectile: Fire - Increased Damage | Ice - Lasts Longer | Electric - Decreased Cooldown.]]
 
 function action1(skipCheck)
   if (self.cooldownTimer > 0 or self.active) or ((not skipCheck) and world.entityHandItem(self.id, "primary")) then return end
-  world.spawnProjectile(self.projectileList[self.elementMod], {mcontroller.xPosition(),mcontroller.yPosition()-1}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {powerMultiplier = status.stat("powerMultiplier"), speed = 30})
-  cooldown(0.5)
+  if not status.overConsumeResource("energy", 25 / self.weaveBonus) then return end
+  local bonusTime = self.weaveElement == "ice" and 0.2 or 0
+  local bonusDamage = self.weaveElement == "fire" and 1.5 or 1
+  local bonusCooldown = self.weaveElement == "electric" and 0.5 or 0
+  if self.element == "ice" then
+    --world.spawnProjectile(self.projectileList[self.elementMod], {mcontroller.xPosition(),mcontroller.yPosition()-1}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {power = 5, powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 0.5})
+    world.spawnProjectile(self.projectileList[self.elementMod], {mcontroller.xPosition() + mcontroller.facingDirection() * 4, mcontroller.yPosition() - 0.5}, self.id, {mcontroller.facingDirection(), 0}, true, {power = 4 * bonusDamage, powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 0.25 + bonusTime, animationCycle = 0.25 + bonusTime})
+    world.spawnProjectile(self.projectileList[self.elementMod], {mcontroller.xPosition() + mcontroller.facingDirection() * 3, mcontroller.yPosition() - 2.5}, self.id, {mcontroller.facingDirection(), -1}, true, {power = 4 * bonusDamage, powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 0.25 + bonusTime, animationCycle = 0.25 + bonusTime})
+    world.spawnProjectile(self.projectileList[self.elementMod], {mcontroller.xPosition() + mcontroller.facingDirection() * 3, mcontroller.yPosition() + 1.5}, self.id, {mcontroller.facingDirection(), 1}, true, {power = 4 * bonusDamage, powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 0.25 + bonusTime, animationCycle = 0.25 + bonusTime})
+  elseif self.element == "fire" then
+    world.spawnProjectile(self.projectileList[self.elementMod], {mcontroller.xPosition(), mcontroller.yPosition() - 0.5}, self.id, {mcontroller.facingDirection(), 0}, false, {power = 4 * bonusDamage, powerMultiplier = status.stat("powerMultiplier"), speed = 20, timeToLive = 0.5 + bonusTime})
+  elseif self.element == "electric" then
+    world.spawnProjectile(self.projectileList[self.elementMod], {mcontroller.xPosition(), mcontroller.yPosition() - 0.5}, self.id, {0, 0}, true, {power = 2 * bonusDamage, powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 0.8 + bonusTime})
+  end
+  cooldown(1.5 - bonusCooldown)
 end
 
 function action1alt()
+  local itemConfig = ivrpgBuildItemConfig(self.id, "primary")
+  if itemConfig and itemConfig.config and (itemConfig.config.twoHanded or self.twoHandedCategories[itemConfig.config.category]) then return end
   if not world.entityHandItem(self.id, "alt") then
     action1(true)
   end
 end
 
---[[World On Fire: Fire - Sear | Ice - Explosions | Electric - Lingering Damage.
-Ice Barrier: Fire - Adds Mist | Ice - Double Duration, Cause Embrittle | Electric - Cause Stun.
-Jolt: Fire - Explosions | Ice - Ice Trail | Electric - Increased Distance.]]
+--[[
+World On Fire: Fire - Range Up * | Ice - Searing Mist * | Electric - Lingering Damage *
+Ice Barrier: Fire - Searing Mist * | Ice - Both Directions * | Electric - Contact Damage *
+Jolt: Fire - Explode Upon Deactivation * | Ice - Ice Trail * | Electric - Increased Distance *
+]]
 
 function worldOnFire()
   if not status.overConsumeResource("energy", self.dt * 20 / self.weaveBonus) then return end
-  local targetIds = enemyQuery(mcontroller.position(), 20, {}, self.id, true)
+
+  if self.weaveElement == "ice" and self.mistTimer == 0 then
+    world.spawnProjectile("ivrpgsearingmist", vec2.add(mcontroller.position(), {math.random() - 0.5, math.random()*2 - 1}), self.id, {0,0}, false, {})
+    self.mistTimer = 0.1
+  end
+
+  local targetIds = enemyQuery(mcontroller.position(), 15 + (self.weaveElement == "fire" and 10 or 0), {}, self.id, true)
   for _,id in ipairs(targetIds) do
-    world.sendEntityMessage(id, "applyStatusEffect", "burning", 0.25, self.id)
+    world.sendEntityMessage(id, "applyStatusEffect", "burning", 0.25 + (self.weaveElement == "electric" and 5 or 0), self.id)
   end
 end
 
 function iceBarrier()
-  local projectileSource = tech.aimPosition()
-  if world.magnitude(projectileSource, mcontroller.position()) > 10 then return end
-  if not self.lastProjectilePosition then
-    self.lastProjectilePosition = projectileSource
+  local facingDirection = mcontroller.facingDirection()
+  local position = mcontroller.position()
+  if (not status.overConsumeResource("energy", self.dt * 10 / self.weaveBonus)) then
+    killIceBarrier()
+    return
   end
-  local minDistance = world.magnitude(mcontroller.position(), projectileSource) - 1
-  local dir = vec2.mul(vec2.norm(world.distance(projectileSource, self.lastProjectilePosition)), 1)
-  local steps = math.floor(world.magnitude(projectileSource, self.lastProjectilePosition))
-  for step = 1, steps do
-    local position, aimVector = projectilePositionAndAim(self.lastProjectilePosition, vec2.add(self.lastProjectilePosition, vec2.mul(dir, step)))
 
-    if world.magnitude(position, mcontroller.position()) >= minDistance and not world.lineTileCollision(position, mcontroller.position()) then
-      if not status.overConsumeResource("energy", 5 / self.weaveBonus) then break end
-      world.spawnProjectile("icebarrier", position, self.id, aimVector, false, {power = 0})
+  if #self.barrierProjectiles == 0 then 
+    for i=-2,2 do
+      local projectileId = world.spawnProjectile("elementressicebarrier", vec2.add(position, {facingDirection * 3, i}), self.id, {facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
+      if projectileId then table.insert(self.barrierProjectiles, projectileId) end
     end
+    self.barrierFacing = facingDirection
   end
-  if steps > 0 then
-    self.lastProjectilePosition = vec2.add(self.lastProjectilePosition, vec2.mul(dir, steps))
-  end  
+end
+
+function killIceBarrier(altOnly)
+  for _,id in ipairs(self.altBarrierProjectiles) do
+    world.sendEntityMessage(id, "kill")
+  end
+  self.altBarrierProjectiles = {}
+
+  if altOnly then return end
+
+  self.powerUp = false
+  for _,id in ipairs(self.barrierProjectiles) do
+    world.sendEntityMessage(id, "kill")
+  end
+  self.barrierProjectiles = {}
 end
 
 -- returns the aim vector perpendicular to the distance between the passed in vectors
@@ -227,6 +333,9 @@ function deactivate()
   tech.setParentOffset({0, 0})
   tech.setToolUsageSuppressed(false)
   status.clearPersistentEffects("movementAbility")
+  if self.weaveElement == "fire" and self.active then
+    world.spawnProjectile("electricplasmaexplosion", mcontroller.position(), self.id, {0,0}, false, {power = 20, powerMultiplier = status.stat("powerMultiplier"), speed = 0})
+  end
   self.active = false
 end
 
@@ -311,27 +420,64 @@ function charge( ... )
   end
   self.chargeTimer = math.max(self.chargeTimer - self.dt, 0)
   if self.chargeTimer == 0 then
-    self.action3List[self.elementMod]()
     animator.playSound(self.element .. "ChargeActivate")
     self.chargeCooldownTimer = 10
+    self.action3List[self.elementMod]()
+    self.charging = false
+    self.chargeTimer = 3
   end
 end
 
---[[Meteor: Fire - Increased Size | Ice - Fragments | Electric - Increased Conjure Speed
-Seeking Shards: Fire adds mist, Ice causes Embrittle and increases Shard count, Electric increases Shard speed and adds shard fragments.
-Thunderstorm: Fire - Explosions | Ice - Hail | Electric - Increased Size.]]
+--[[
+Meteor: Fire - More Flames * | Ice - Fragments * | Electric - Decreased Cooldown *
+Seeking Shards: Fire - Searing Mist * | Ice - +2 Shards * | Electric - Improved Tracking Range, Faster *
+Thunderstorm: Fire - Explosions | Ice - Hail | Electric - Increased Size *
+]]
 
 function meteor( ... )
-  world.spawnProjectile("elementresslargemeteor", {mcontroller.xPosition(), mcontroller.yPosition() + 15}, self.id, {mcontroller.facingDirection() / 2, -1}, false, {power = 100, speed = 50})
+  local projectileName = "elementresslargemeteor"
+  local range = 1
+  if self.weaveElement == "fire" then
+    projectileName = projectileName .. "fire"
+  elseif self.weaveElement == "ice" then
+    projectileName = projectileName .. "ice"
+    range = 2
+  end
+  world.spawnProjectile(projectileName, {mcontroller.xPosition(), mcontroller.yPosition() + 15}, self.id, {mcontroller.facingDirection() / 2, -1}, false, {power = 50, powerMultiplier = status.stat("powerMultiplier") / 2, speed = 30})
+  for i=-range,range do
+    world.spawnProjectile("elementresssmallmeteor", {mcontroller.xPosition() + i * 5, mcontroller.yPosition() + 10}, self.id, {mcontroller.facingDirection() * math.random(), -1}, false, {power = 5, powerMultiplier = status.stat("powerMultiplier"), speed = 40})
+  end
+  if self.weaveElement == "electric" then self.chargeCooldownTimer = 7.5 end
 end
 
 function shards( ... )
-  --world.spawnProjectile("icebarrier", position, self.id, aimVector, false, {power = 0})
+  local bonusRange = self.weaveElement == "ice" and 1 or 0
+  local range = 1 + bonusRange
+  local projectileName = "ivrpgelementressshard"
+  if self.weaveElement == "fire" then
+    projectileName = projectileName .. "fire"
+  elseif self.weaveElement == "electric" then
+    projectileName = projectileName .. "electric"
+  end
+  for i=-range,range do
+    local projectileId = world.spawnProjectile(projectileName, vec2.add(mcontroller.position(), {i, 0}), self.id, {0,0}, false, {power = 5, randPos = i, powerMultiplier = status.stat("powerMultiplier")})
+    if projectileId then
+      table.insert(self.projectiles, projectileId)
+    end
+  end
 end
 
 function thunder( ... )
-  for i=-5,5 do
-    world.spawnProjectile("electricelementcloud", {mcontroller.xPosition() + i, mcontroller.yPosition() + 10}, self.id, {0,0}, false, {power = 10, speed = 0})
+  local bonusRange = self.weaveElement == "electric" and 2 or 0
+  local range = 3 + bonusRange
+  local projectileName = "elementresselectricelementcloud"
+  if self.weaveElement == "fire" then
+    projectileName = projectileName .. "fire"
+  elseif self.weaveElement == "ice" then
+    projectileName = projectileName .. "ice"
+  end
+  for i=-range,range do
+    world.spawnProjectile(projectileName, {mcontroller.xPosition() + i*3, mcontroller.yPosition() + 12 - math.abs(i/3)}, self.id, {0,0}, false, {power = 5, powerMultiplier = status.stat("powerMultiplier"), speed = 0})
   end
 end
 

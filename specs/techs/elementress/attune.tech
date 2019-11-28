@@ -11,5 +11,39 @@
   "icon" : "/specs/techs/elementress/attune.png",
 
   "chipCost" : 0,
-  "joltCollisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ]
+  "joltCollisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+  "twoHandedCategories" : {
+
+    // BLOCKS
+    "block" : "Block",
+    "liquid" : "Liquid",
+    "platform" : "Platform",
+    "rail" : "Rail",
+
+    // OBJECTS
+    "actionFigure" : "Action Figure",
+    "artifact" : "Artifact",
+    "breakable" : "Breakable",
+    "bug" : "Bug",
+    "crafting" : "Crafting Station",
+    "decorative" : "Decorative",
+    "door" : "Door",
+    "fridgeStorage" : "Refrigerated Storage",
+    "furniture" : "Furniture",
+    "generic" : "Generic",
+    "light" : "Light Source",
+    "other" : "Other",
+    "railPoint" : "Rail Point",
+    "sapling" : "Sapling",
+    "seed" : "Seed",
+    "shippingContainer" : "Shipping Container",
+    "spawner" : "Deed",
+    "storage" : "Storage",
+    "techManagement" : "Tech Management",
+    "teleporter" : "Teleporter",
+    "teleportMarker" : "Teleport Marker",
+    "trap" : "Trap",
+    "wire" : "Wire",
+    "terraformer" : "Terraformer"
+  }
 }
