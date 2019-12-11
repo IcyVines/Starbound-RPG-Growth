@@ -43,16 +43,14 @@ function targetAvailable()
 end
 
 function enemySearch()
-  local targetIds = world.entityQuery(mcontroller.position(), 20, {
+  local targetIds = enemyQuery(mcontroller.position(), 20, {
     withoutEntityId = self.id,
     includedTypes = {"creature"}
-  })
+  }, self.id)
   shuffle(targetIds)
   for i,id in ipairs(targetIds) do
-    local targetDamageTeam = world.entityDamageTeam(id)
-    targetDamageTeam = targetDamageTeam.type and targetDamageTeam.type == "enemy"
     self.target = id
-    if targetDamageTeam and targetAvailable() then
+    if targetAvailable() then
       return
     end
   end

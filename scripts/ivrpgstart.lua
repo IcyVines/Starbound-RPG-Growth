@@ -92,6 +92,15 @@ function init()
     sendRadioMessage(text)
   end)
 
+  message.setHandler("applySelfDamageRequest", function(_, _, damageType, damageSourceKind, damage, sourceId)
+    status.applySelfDamageRequest({
+      damageType = damageType,
+      damageSourceKind = damageSourceKind,
+      damage = math.floor(damage),
+      sourceEntityId = sourceId
+    })
+  end)
+
 end
 
 function update(dt)

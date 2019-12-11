@@ -85,7 +85,7 @@ function updateSearch(dt)
 
   self.queryStep = math.max(0, self.queryStep - 1)
   if self.queryStep == 0 then
-    local near = enemyQuery(mcontroller.position(), 4, { includedTypes = {"monster", "npc"} }, self.id)
+    local near = enemyQuery(mcontroller.position(), 4, { includedTypes = {"creature"} }, self.id)
     if near and #near > 0 then
       self.smokeBlocked = false
     else
