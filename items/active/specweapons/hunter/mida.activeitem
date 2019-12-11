@@ -8,7 +8,7 @@
   "tooltipKind" : "ivrpgweapon",
   "category" : "bow",
   "description" : "Do note that while this weapon has many functionalities, creating ziplines is strictly prohibited under Protectorate Law.",
-  "shortdescription" : "^orange;Mida",
+  "shortdescription" : "^green;Mida",
   "twoHanded" : true,
   "itemTags" : ["weapon", "ranged", "bow"],
 

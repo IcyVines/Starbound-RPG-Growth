@@ -1,10 +1,11 @@
 {
   "input" : [
-    { "item" : "ivrpgfiringmechanism", "count" : 2 },
-    { "item" : "durasteelbar", "count" : 6 },
-    { "item" : "staticcell", "count" : 5 },
-    { "item" : "livingroot", "count" : 10 },
-    { "item" : "diamond", "count" : 1 }
+    { "item" : "refinedviolium", "count" : 4 },
+    { "item" : "refinedaegisalt", "count" : 4 },
+    { "item" : "staticcell", "count" : 3 },
+    { "item" : "scorchedcore", "count" : 3 },
+    { "item" : "siliconboard", "count" : 1 },
+    { "item" : "string", "count" : 30 }
   ],
 	"output" : { "item" : "ivrpgwmida", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]
