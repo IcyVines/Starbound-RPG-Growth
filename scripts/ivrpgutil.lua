@@ -1,3 +1,5 @@
+require "/scripts/ivrpgactivestealthintercept.lua"
+
 function operate(operator, x, y)
   stringToOperation = {
     ['+'] = function (x, y) return x + y end,
@@ -108,6 +110,7 @@ function rescrollSpecialization(class, spec)
 end
 
 function friendlyQuery(a1, a2, a3, a4, ignoresStealth)
+  performStealthFunctionOverrides()
   ignoresStealth = ignoresStealth == nil and true or ignoresStealth
   local targetIds = world.entityQuery(a1, a2, a3, ignoresStealth)
   local newTargets = {}
@@ -120,6 +123,7 @@ function friendlyQuery(a1, a2, a3, a4, ignoresStealth)
 end
 
 function enemyQuery(a1, a2, a3, a4, ignoresStealth)
+  performStealthFunctionOverrides()
   ignoresStealth = ignoresStealth == nil and true or ignoresStealth
   local targetIds = world.entityQuery(a1, a2, a3, ignoresStealth)
   local newTargets = {}
