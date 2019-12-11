@@ -11,7 +11,7 @@ function init()
   self.elementList = {"fire", "electric", "nova"}
   self.element = self.elementList[self.elementMod]
   self.newMod = {2,3,1}
-  --self.statusList = {"ivrpgsear", "ivrpgnovastatus", "ivrpgoverload"}
+  self.borderList = {"FF550022;FF550022", "FFFF9922;FFFF9922", "FF55FF22;FF55FF22"}
   self.cooldownTimer = 5
 
   self.transformFadeTimer = 0
@@ -78,8 +78,8 @@ function uninit()
 end
 
 function update(args)
-  --self.directives = "?fade=" .. self.borderList[self.elementMod] .. "=0.25"
-
+  self.directives = "?border=1;" .. self.borderList[self.elementMod]
+  tech.setParentDirectives(self.directives)
   self.dt = args.dt
   self.shiftHeld = not args.moves["run"]
   self.specialHeld = args.moves["special2"]
@@ -97,7 +97,7 @@ function update(args)
     self.dashCooldownTimer = math.max(0, self.dashCooldownTimer - args.dt)
     if self.dashCooldownTimer == 0 then
       self.rechargeEffectTimer = self.rechargeEffectTime
-      tech.setParentDirectives(self.rechargeDirectives)
+      tech.setParentDirectives(self.rechargeDirectives .. self.directives)
       animator.playSound("recharge")
     end
   end
@@ -105,7 +105,7 @@ function update(args)
   if self.rechargeEffectTimer > 0 then
     self.rechargeEffectTimer = math.max(0, self.rechargeEffectTimer - args.dt)
     if self.rechargeEffectTimer == 0 then
-      tech.setParentDirectives()
+      tech.setParentDirectives(self.directives)
     end
   end
 
@@ -135,7 +135,7 @@ function update(args)
     self.grenadeCooldownTimer = math.max(0, self.grenadeCooldownTimer - args.dt)
     if self.grenadeCooldownTimer == 0 then
       self.rechargeEffectTimer = self.rechargeEffectTime
-      tech.setParentDirectives(self.grenadeRechargeDirectives)
+      tech.setParentDirectives(self.grenadeRechargeDirectives .. self.directives)
       animator.playSound("rechargeGrenade")
     end
   end
