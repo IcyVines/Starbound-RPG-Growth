@@ -51,6 +51,7 @@ function uninit()
   tech.setParentDirectives()
   storePosition()
   deactivate()
+  status.clearPersistentEffects("ivrpgattune")
   --status.removeEphemeralEffect("ivrpgimmaculateshieldstatus")
 end
 

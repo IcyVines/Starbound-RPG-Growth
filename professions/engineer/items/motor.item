@@ -4,7 +4,7 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "motor.png",
-  "description" : "You'll need this motor for any rotating machinery.",
+  "description" : "You'll need this motor for any rotating machinery. From RPG Growth.",
   "shortdescription" : "Motor",
   "itemTags" : [ "reagent" ]
 }

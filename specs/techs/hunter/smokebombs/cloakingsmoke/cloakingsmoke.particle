@@ -1,0 +1,18 @@
+{
+  "kind" : "ivrpgcloakingsmoke",
+  "definition" : {
+    "type" : "animated",
+    "animation" : "specs/techs/hunter/smokebombs/cloakingsmoke/cloakingsmoke.animation",
+    "initialVelocity" : [0, 0],
+    "finalVelocity" : [0, 0],
+    "approach" : [1, 1],
+    "timeToLive" : 2,
+    "size" : 1.0,
+    "layer" : "middle",
+    "variance" : {
+      "initialVelocity" : [3, 3],
+      "rotation" : 360,
+      "angularVelocity" : 0
+    }
+  }
+}

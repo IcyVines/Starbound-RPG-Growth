@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "ivrpgfiringmechanism", "count" : 2 },
+    { "item" : "durasteelbar", "count" : 6 },
+    { "item" : "staticcell", "count" : 5 },
+    { "item" : "livingroot", "count" : 10 },
+    { "item" : "diamond", "count" : 1 }
+  ],
+	"output" : { "item" : "ivrpgwmida", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

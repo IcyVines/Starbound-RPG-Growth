@@ -4,7 +4,7 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "electromagnet.png",
-  "description" : "A magnet made from iron, copper wire, and come good ol' batteries.",
+  "description" : "A magnet made from iron, copper wire, and come good ol' batteries. From RPG Growth.",
   "shortdescription" : "Electromagnet",
   "itemTags" : [ "reagent" ]
 }

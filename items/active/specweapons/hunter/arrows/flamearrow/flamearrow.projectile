@@ -1,0 +1,31 @@
+{
+  "projectileName" : "ivrpgmidaarrowfire",
+  "physics" : "arrow",
+  "pointLight" : true,
+  "lightColor" : [140, 60, 0],
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_arrow.ogg"
+      ]
+    }
+  ],
+  "image" : "flamearrow.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "damageKind" : "bow",
+  "power" : 20,
+  "knockback" : 10,
+  "piercing" : true,
+  "knockbackDirectional" : true,
+  "statusEffects" : [
+    "burning",
+    {"effect" : "ivrpghuntersear", "duration" : 0.1}
+  ],
+  "emitters" : ["flamesfast"],
+  "scripts" : ["/items/active/specweapons/hunter/arrows/arrow.lua"],
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ]
+}

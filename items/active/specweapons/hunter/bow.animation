@@ -1,0 +1,27 @@
+{
+  "globalTagDefaults" : {
+    "cloakEnergy" : ""
+  },
+
+  "animatedParts" : {
+    "parts" : {
+      "bow" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<cloakEnergy><partImage>:<drawFrame>",
+          "transformationGroups" : ["weapon"]
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {}
+  },
+
+  "sounds" : {
+    "draw" : [ ],
+    "release" : [ ],
+    "perfectRelease" : [ ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "projectileName" : "ivrpgchargedmidaarrow",
+  "physics" : "arrow",
+  "image" : "ironarrow.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "emitters" : [ "daggerblue" ],
+  "damageKindImage" : "icon.png",
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_arrow.ogg"
+      ]
+    }
+  ],
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
+    }
+  ],
+  "scripts" : ["/items/active/specweapons/hunter/arrows/arrow.lua"],
+  "power" : 20,
+  "knockback" : 25,
+  "knockbackDirectional" : true,
+  "damageKind" : "bow"
+}

@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgstun",
+  "blockingStat" : "stunImmunity",
+  "effectConfig" : {},
+  "defaultDuration" : 1.5,
+
+  "scripts" : [
+    "soldierstun.lua"
+  ],
+
+  "animationConfig" : "soldierstun.animation",
+
+  "label" : "Stunned",
+  "icon" : "/interface/statuses/slow.png"
+}

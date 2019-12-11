@@ -4,7 +4,7 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "gear.png",
-  "description" : "You'll need these to make more complex machinery.",
+  "description" : "You'll need these to make more complex machinery. From RPG Growth.",
   "shortdescription" : "Steel Gear",
   "itemTags" : [ "reagent" ]
 }

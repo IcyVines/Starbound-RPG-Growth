@@ -1,0 +1,28 @@
+{
+  "projectileName" : "ivrpghuntersmokenova",
+  "physics" : "stickygrenade",
+  "bounces" : -1,
+  "timeToLive" : 20,
+  "damageKindImage" : "icon.png",
+  "image" : "novagrenade.png",
+  "animationCycle" : 0.8,
+  "frameNumber" : 4,
+  "smokeTime" : 1,
+  "timeAfterCollision" : 10,
+  "explodeNearTargets" : true,
+  "scripts" : ["grenade.lua"],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/classweapons/wizardstaff/novaexplosionprojectiles/novaexplosionknockback.config"
+    }
+  ],
+  "power" : 0,
+  "orientationLocked" : true,
+  "damageType" : "NoDamage",
+  "piercing" : true,
+  "persistentAudio" : "/sfx/melee/elemental_aura_poison.ogg",
+  "damageKind" : "default",
+  "smokeType" : "ivrpghunterstarfallsmoke",
+  "noBounce" : true
+}

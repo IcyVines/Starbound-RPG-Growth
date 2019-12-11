@@ -1,0 +1,96 @@
+{
+  "projectileName" : "ivrpghuntersmokefire",
+  "physics" : "grenade",
+  "bounces" : 0,
+  "timeToLive" : 10,
+  "damageKindImage" : "icon.png",
+  "image" : "firegrenade.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/burstexplosion/fireburstexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "ivrpgsearingmist",
+      "fuzzAngle" : 10,
+      "angleAdjust" : 0,
+      "config" : {
+        "power" : 1,
+        "damageRepeatTimeout" : 0.2,
+        "damageKind" : "fireplasma",
+        "damageType" : "IgnoresDef",
+        "periodicActions" : [
+          {
+            "time" : 0.0,
+            "repeat" : false,
+            "action" : "loop",
+            "count" : 20,
+            "body" : [
+              {
+                "action" : "particle",
+                "specification" : "ivrpgsearingmist"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action" : "projectile",
+      "type" : "ivrpghunterfireshard",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 25
+    },
+    {
+      "action" : "projectile",
+      "type" : "ivrpghunterfireshard",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : -25
+    },
+    {
+      "action" : "projectile",
+      "type" : "ivrpghunterfireshard",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "ivrpghunterfireshard",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : -50
+    },
+    {
+      "action" : "projectile",
+      "type" : "ivrpghunterfireshard",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 50
+    },
+    {
+      "action" : "projectile",
+      "type" : "ivrpghunterfireshard",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : -75
+    },
+    {
+      "action" : "projectile",
+      "type" : "ivrpghunterfireshard",
+      "fuzzAngle" : 10,
+      "inheritDamageFactor" : 0.1,
+      "angleAdjust" : 75
+    }
+  ],
+  "power" : 0,
+  "damageType" : "NoDamage",
+  "damagePoly" : [[-5,5], [-5,-5], [5,-5], [5,5]],
+  "persistentAudio" : "/sfx/objects/gasbooster_loop.ogg",
+  "damageKind" : "default"
+}

@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgstarfall",
+  "effectConfig" : {
+  	"protectionModifier" : -50
+  },
+  "blockingStat" : "novaStatusImmunity",
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "wizardnovastatus.lua"
+  ],
+
+  "animationConfig" : "wizardnovastatus.animation",
+  "label" : "Starfall",
+  "icon" : "starfall.png"
+}

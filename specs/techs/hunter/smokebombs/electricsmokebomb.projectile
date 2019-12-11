@@ -1,0 +1,27 @@
+{
+  "projectileName" : "ivrpghuntersmokeelectric",
+  "physics" : "grenade",
+  "bounces" : -1,
+  "timeToLive" : 10,
+  "damageKindImage" : "icon.png",
+  "image" : "electricgrenade.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 7,
+  "lightColor" : [77, 77, 0],
+  "scripts" : ["grenade.lua"],
+  "shockTargets" : true,
+  "smokeType" : "ivrpgcloakingsmoke",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/grenades/shock/shockexplosion.config"
+    }
+  ],
+  "friendlySmoke" : true,
+  "power" : 0,
+  "damageType" : "NoDamage",
+  "piercing" : true,
+  "persistentAudio" : "/sfx/projectiles/electricstickyspikes_loop.ogg",
+  "damageKind" : "default",
+  "emitters" : [ "electricplasma" ]
+}

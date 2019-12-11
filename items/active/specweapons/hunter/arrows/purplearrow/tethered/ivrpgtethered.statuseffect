@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgtethered",
+  "effectConfig" : {
+  	"protectionModifier" : -50
+  },
+  "blockingStat" : "novaStatusImmunity",
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgtethered.lua"
+  ],
+
+  "animationConfig" : "ivrpgtethered.animation"
+}

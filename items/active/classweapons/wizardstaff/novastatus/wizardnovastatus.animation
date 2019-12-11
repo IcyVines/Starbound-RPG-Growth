@@ -31,7 +31,7 @@
         {
           "particle" : {
             "type" : "text",
-            "text" : "Nova!",
+            "text" : "Starfall!",
             "size" : 0.4,
             "color" : [160, 10, 180, 255],
             "fade" : 0.4,

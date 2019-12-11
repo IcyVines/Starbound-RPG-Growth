@@ -4,7 +4,7 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "magmasample.png",
-  "description" : "A sample of magma used to melt ingredients.",
+  "description" : "A sample of magma used to melt ingredients. From RPG Growth.",
   "shortdescription" : "Magma Sample",
   "itemTags" : [ "reagent" ]
 }

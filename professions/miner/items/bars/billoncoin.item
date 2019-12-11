@@ -4,7 +4,7 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "billoncoin.png",
-  "description" : "A coin made of a Silver-Copper alloy that fetches a higher price.",
+  "description" : "A coin made of a Silver-Copper alloy that fetches a higher price. From RPG Growth.",
   "shortdescription" : "Billon Coin",
   "itemTags" : [ "reagent" ]
 }

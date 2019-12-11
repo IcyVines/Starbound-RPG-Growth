@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpghuntersear",
+  "blockingStat" : "fireStatusImmunity",
+
+  "effectConfig" : {
+    "healthDamageFactor" : 0.25
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "sear.lua"
+  ],
+
+  "animationConfig" : "sear.animation",
+
+  "label" : "Burning",
+  "icon" : "/interface/statuses/fire.png"
+}

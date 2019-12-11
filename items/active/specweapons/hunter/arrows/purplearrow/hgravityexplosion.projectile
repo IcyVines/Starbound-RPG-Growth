@@ -1,0 +1,35 @@
+{
+  "projectileName" : "ivrpgmidacollapse",
+  "image" : "hgravityexplosion.png",
+  "animationCycle" : 0.5,
+  "animationLoops" : true,
+  "physics" : "illusion",
+  "renderLayer" : "ForegroundOverlay+1",
+  "frameNumber" : 4,
+  "speed" : 0,
+  "power" : 0.0,
+
+  "bounces" : -1,
+  "piercing" : true,
+  "fullbright" : true,
+  "pointLight" : false,
+  "lightColor" : [140,50,140],
+
+  "timeToLive" : 5,
+  "scripts" : ["/items/active/specweapons/hunter/arrows/purplearrow/tether.lua"],
+  "orientationLocked" : true,
+
+  "boundBox" : [-10, -10, 10, 10],
+  "physicsForces" : {
+    "vacuum" : {
+      "type" : "RadialForceRegion",
+      "outerRadius" : 15,
+      "innerRadius" : 0,
+      "targetRadialVelocity" : -50,
+      "controlForce" : 100,
+      "categoryWhitelist" : ["itemdrop"]
+    }
+  },
+
+  "clientEntityMode" : "ClientSlaveOnly"
+}

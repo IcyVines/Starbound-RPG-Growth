@@ -1,0 +1,36 @@
+{
+  "projectileName" : "ivrpgchargedmidaarrowelectric",
+  "physics" : "arrow",
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_plasma.ogg"
+      ]
+    }
+  ],
+  "actionOnHit" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_plasma.ogg"
+      ]
+    }
+  ],
+  "image" : "energyarrow.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "pointLight" : true,
+  "lightColor" : [130, 150, 40],
+  "emitters" : ["electricplasma"],
+  "statusEffects" : [
+    "electrified"
+  ],
+  "timeToLive" : 10,
+  "scripts" : ["/items/active/specweapons/hunter/arrows/arrow.lua"],
+  "damagePoly" : [ [-10, 0], [2, 4], [10, 0], [2, -4] ],
+  "power" : 20,
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+  "damageKind" : "bow"
+}

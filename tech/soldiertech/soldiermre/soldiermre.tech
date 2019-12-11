@@ -12,5 +12,52 @@
 
   "chipCost" : 0, 
   "foodGain" : 5,
-  "cooldown" : 90.0
+  "cooldown" : 90.0,
+  "grenadeConfig" : {
+    "power" : 0,
+    "speed" : 0,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  },
+  "validGrenades" : {
+    "bomb" : {
+      "name" : "zbomb",
+      "speed" : 25,
+      "power" : 40
+    },
+    "molotov" : {
+      "speed" : 40,
+      "power" : 12
+    },
+    "thorngrenade" : {
+      "speed" : 40,
+      "power" : 20
+    },
+    "stungrenade" : {
+      "speed" : 40,
+      "power" : 20
+    },
+    "ivrpgskittergrenade" : {
+      "speed" : 50,
+      "power" : 40
+    },
+    "ivrpgtripmine" : {
+      "speed" : 50,
+      "power" : 100
+    },
+    "ivrpgshockcharge" : {
+      "speed" : 50,
+      "power" : 20
+    },
+    "ivrpgstungrenade" : {
+      "speed" : 50,
+      "power" : 1
+    }
+  }
 }

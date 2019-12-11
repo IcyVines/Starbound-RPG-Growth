@@ -11,5 +11,7 @@
     "wizardnovastatus.lua"
   ],
 
-  "animationConfig" : "wizardnovastatus.animation"
+  "animationConfig" : "wizardnovastatus.animation",
+  "label" : "Starfall",
+  "icon" : "starfall.png"
 }

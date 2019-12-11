@@ -1,0 +1,35 @@
+{
+  "projectileName" : "ivrpgcloakingsmoke",
+  "physics" : "statuspod",
+  "bounces" : -1,
+  "timeToLive" : 1,
+  "speed" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "cloakingsmokeprojectile.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+      "time" : 0.0,
+      "repeat" : false,
+      "action" : "loop",
+      "count" : 20,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "ivrpgcloakingsmoke"
+        }
+      ]
+    }
+   ],
+  "power" : 0,
+  "piercing" : true,
+  "damageKind" : "applystatus",
+  "damagePoly" : [ [-30, -30], [-30, 30], [30, 30], [30, -30]  ],
+  "flippable" : true,
+  "damageTeam" : {"type" : "environment"},
+  "damageRepeatTimeout" : 0.1,
+  "statusEffects" : [
+    {"effect" : "ivrpgcamouflage", "duration" : 0.2 }
+  ]
+}

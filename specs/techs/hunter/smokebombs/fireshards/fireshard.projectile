@@ -1,0 +1,29 @@
+{
+  "projectileName" : "ivrpghunterfireshard",
+  "image" : "fireshard2.png",
+  "animationCycle" : 0.2,
+  "lightColor" : [150, 130, 100],
+  "frameNumber" : 1,
+  "flippable" : false,
+  "fullbright" : true,
+  "piercing" : false,
+  "damageKindImage" : "icon.png",
+  "physics" : "arrownosticky",
+  "bounces" : 0,
+  "emitters" : [ "defaultorange" ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/fireimpactmute.config"
+    },
+    {
+      "action" : "sound",
+      "options" : ["/sfx/projectiles/firerain_impact.ogg"]
+    }
+  ],
+  "damagePoly" : [ [-5, 0], [1, 2], [5, 0], [1, -2] ],
+  "damageKind" : "fireplasma",
+
+  "speed" : 30,
+  "timeToLive" : 2.5
+}

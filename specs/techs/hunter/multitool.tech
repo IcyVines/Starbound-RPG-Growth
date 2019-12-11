@@ -1,0 +1,33 @@
+{
+  "name" : "ivrpgmultitool",
+  "type" : "body",
+
+  "scripts" : ["multitool.lua"],
+  "animator" : "multitool.animation",
+
+  "description" : "Hunter Only",
+  "shortDescription" : "Multitool",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/hunter/multitool.png",
+
+  "chipCost" : 0,
+
+  "maximumDoubleTapTime" : 0.25,
+  "dashControlForce" : 2000,
+  "dashSpeed" : 50,
+  "dashDuration" : 0.15,
+  "dashCooldown" : 3,
+  "stopAfterDash" : true,
+  "grenadeConfig" : {
+    "power" : 0,
+    "speed" : 0,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+}

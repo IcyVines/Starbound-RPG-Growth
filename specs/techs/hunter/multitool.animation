@@ -1,0 +1,61 @@
+{
+  "globalTagDefaults" : {
+    
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {}
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "fireDashParticles" : {
+      "emissionRate" : 30.0,
+      "particles" : [
+        {
+          "particle" : "ivrpgdashred",
+          "flip" : true
+        }
+      ]
+    },
+    "electricDashParticles" : {
+      "emissionRate" : 30.0,
+      "particles" : [
+        {
+          "particle" : "ivrpgdashyellow",
+          "flip" : true
+        }
+      ]
+    },
+    "novaDashParticles" : {
+      "emissionRate" : 30.0,
+      "particles" : [
+        {
+          "particle" : "ivrpgdashmagenta",
+          "flip" : true
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "startDash" : ["/sfx/tech/vehicle_disappear2.ogg"],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown1.ogg" ],
+    "rechargeGrenade" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+
+    "fireActivate" : ["/sfx/melee/travelingslash_fire1.ogg","/sfx/melee/travelingslash_fire2.ogg","/sfx/melee/travelingslash_fire3.ogg"],
+    "novaActivate" : ["/sfx/melee/laser_weapon_swing1.ogg","/sfx/melee/laser_weapon_swing2.ogg","/sfx/melee/laser_weapon_swing3.ogg"],
+    "electricActivate" : ["/sfx/melee/travelingslash_electric1.ogg","/sfx/melee/travelingslash_electric2.ogg","/sfx/melee/travelingslash_electric7.ogg"],
+
+    "fireChargeActivate" : ["/sfx/melee/travelingslash_fire1.ogg","/sfx/melee/travelingslash_fire2.ogg","/sfx/melee/travelingslash_fire3.ogg"],
+    "novaChargeActivate" : ["/sfx/melee/travelingslash_ice1.ogg","/sfx/melee/travelingslash_ice2.ogg","/sfx/melee/travelingslash_ice3.ogg","/sfx/melee/travelingslash_ice4.ogg"],
+    "electricChargeActivate" : ["/sfx/melee/travelingslash_electric3.ogg","/sfx/melee/travelingslash_electric4.ogg","/sfx/melee/travelingslash_electric5.ogg"]
+  }
+}

@@ -4,7 +4,7 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "acidsample.png",
-  "description" : "A sample of acid made from some potent venom.",
+  "description" : "A sample of acid made from some potent venom. From RPG Growth.",
   "shortdescription" : "Acid Sample",
   "itemTags" : [ "reagent" ]
 }

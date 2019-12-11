@@ -1,0 +1,98 @@
+{
+  "itemName" : "ivrpgwmida",
+  "level" : 6,
+  "price" : 640,
+  "inventoryIcon" : "midabowfull.png:0",
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "tooltipKind" : "ivrpgweapon",
+  "category" : "bow",
+  "description" : "Do note that while this weapon has many functionalities, creating ziplines is strictly prohibited under Protectorate Law.",
+  "shortdescription" : "^orange;Mida",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "animation" : "/items/active/specweapons/hunter/bow.animation",
+  "animationParts" : {
+    "bow" : "midabowfull.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0.5, 0]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "classreq" : 5,
+  "specreq" : 4,
+
+  "scripts" : ["/items/active/specweapons/hunter/bow.lua"],
+
+  "elementalType" : "physical",
+
+  "cloakParameters" : {
+    "" : {
+      "energyPerShot" : 30,
+      "cooldownTime" : 0.4,
+      "inaccuracy" : 0.00,
+      "drawTimeMultiplier" : 1,
+      "projectileParameters" : {
+        "power" : 7,
+        "speed" : 90
+      }
+    },
+    "fire" : {
+      "energyPerShot" : 20,
+      "cooldownTime" : 0.2,
+      "inaccuracy" : 0.01,
+      "drawTimeMultiplier" : 2.5,
+      "projectileParameters" : {
+        "power" : 9,
+        "speed" : 90
+      }
+    },
+    "nova" : {
+      "energyPerShot" : 50,
+      "cooldownTime" : 0.6,
+      "inaccuracy" : 0.00,
+      "drawTimeMultiplier" : 0.8,
+      "projectileParameters" : {
+        "power" : 2,
+        "speed" : 100
+      }
+    },
+    "electric" : {
+      "energyPerShot" : 40,
+      "cooldownTime" : 0.2,
+      "inaccuracy" : 0.02,
+      "drawTimeMultiplier" : 1.5,
+      "projectileParameters" : {
+        "power" : 5,
+        "speed" : 60
+      }
+    }
+  },
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/hunter/bowshot.lua"],
+    "fireOffset" : [1.75, 0.125],
+    "drawFrameSelector" : "poisonBowImageSelector",
+    "drawArmFrames" : ["rotation", "swim.2", "swim.2", "swim.2", "swimIdle.1", "swimIdle.1"],
+    "projectileType" : "ivrpgmidaarrow",
+    "powerProjectileType" : "ivrpgchargedmidaarrow",
+    "inaccuracy" : 0,
+    "projectileParameters" : {
+      "power" : 6.5,
+      "speed" : 120
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildbow.lua"
+}
