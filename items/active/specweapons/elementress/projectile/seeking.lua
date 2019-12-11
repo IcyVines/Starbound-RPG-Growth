@@ -46,7 +46,7 @@ function enemySearch()
   local targetIds = enemyQuery(mcontroller.position(), 20, {
     withoutEntityId = self.id,
     includedTypes = {"creature"}
-  }, self.id)
+  }, self.id, false)
   shuffle(targetIds)
   for i,id in ipairs(targetIds) do
     self.target = id
