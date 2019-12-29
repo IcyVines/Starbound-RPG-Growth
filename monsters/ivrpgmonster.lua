@@ -11,6 +11,7 @@ function init()
   monsterOldInit()
   loadConfigs()
   loadVariables(monster.type(), monster.level())
+  self.isMonster = true
   setHandlers()
   initAI()
 end
