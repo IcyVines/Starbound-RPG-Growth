@@ -1,0 +1,9 @@
+{
+  "name" : "scandroid",
+  "category" : "rpg_corruptedscandroid",
+  "type" : "body",
+
+  "frames" : {
+    "body" : "scandroid_cube.png"
+  }
+}

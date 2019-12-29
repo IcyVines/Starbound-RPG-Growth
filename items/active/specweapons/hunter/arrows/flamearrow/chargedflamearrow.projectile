@@ -10,6 +10,7 @@
   "damageKindImage" : "/interface/statuses/fire.png",
   "damageKind" : "bow",
   "power" : 30,
+  "piercing" : true,
   "knockback" : 25,
   "knockbackDirectional" : true,
   "timeToLive" : 10,

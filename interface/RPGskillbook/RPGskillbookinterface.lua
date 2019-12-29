@@ -1608,7 +1608,7 @@ function buildNewLore()
   end
   if type(loreData) == "table" then
   	local added = false
-  	for k,v in pairs(loreData) do
+  	for k,v in pairsByKeys(loreData) do
   	  local newListItem = widget.addListItem("lorelayout.scrollArea.list")
   	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".title", v.title)
   	  widget.setData("lorelayout.scrollArea.list." .. newListItem, k)
@@ -1621,6 +1621,9 @@ function buildNewLore()
   	  widget.setText("lorelayout.scrollArea.text", "")
   	end
   else
+    if #self.loreTable == 4 and self.loreTable[4] == "enemyintelligence" then
+      loreData = tostring(loreData) .. "\n\n^red;RPG AI " .. (self.versionConfig.RPGAIversion and tostring(self.versionConfig.RPGAIversion) .. " installed. Vanilla monsters will have the following behaviors:^reset; " .. self.versionConfig.RPGAItext or "not installed. Vanilla monsters will not be affected.")
+    end
   	widget.setText("lorelayout.scrollArea.text", tostring(loreData))
   end
   widget.setButtonEnabled("lorelayout.backarrow", #self.loreTable > 1)
@@ -1749,7 +1752,7 @@ function buildNewSkill(ignoreBuild)
     -- Add Tiers
   else
     local added = false
-    for k,v in pairs(skillData) do
+    for k,v in pairsByKeys(skillData) do
       local newListItem = widget.addListItem("skillslayout.scrollArea.list")
       widget.setText("skillslayout.scrollArea.list." .. newListItem .. ".title", v.title)
       widget.setData("skillslayout.scrollArea.list." .. newListItem, k)
