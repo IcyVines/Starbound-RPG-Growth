@@ -2,6 +2,7 @@ function init()
   script.setUpdateDelta(5)
   status.setResourcePercentage("health", 1.0)
   status.setResourcePercentage("energy", 1.0)
+  status.setResourcePercentage("food", 1.0)
   --activateVisualEffects()
 end
 

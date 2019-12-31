@@ -432,6 +432,10 @@ function updateSpecs(dt)
   end
   -- End Pioneer
 
+  local crew = status.statusProperty("ivrpg-crew", {})
+  for k,v in pairs(crew) do
+    --sb.logInfo(tostring(v.name) .. ": " .. sb.printJson(v))
+  end
   -- Captain
   if self.class == 6 and type(status.statusProperty("ivrpgsucaptain", 0)) == "number" then
     if player.worldId() ~= player.ownShipWorldId() then return end

@@ -68,7 +68,7 @@
     "projectileType" : "epimetheusbullet",
 
     "projectileParameters" : {
-      "knockbackRange" : 3
+      "knockback" : 3
     },
 
     "stances" : {
