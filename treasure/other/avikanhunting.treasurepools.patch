@@ -1,0 +1,175 @@
+[  
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/1/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/1/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/1/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/1/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/2/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/2/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/2/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/2/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/3/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/3/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/3/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/3/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/4/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/4/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/4/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/4/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/5/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/5/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/avikanhunting/5/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/avikanhunting/5/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ]
+]

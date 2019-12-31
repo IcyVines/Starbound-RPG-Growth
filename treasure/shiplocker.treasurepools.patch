@@ -1,0 +1,40 @@
+[
+	[
+		{
+	      "op": "test",
+	      "path": "/starterTreasure/0/1/fill",
+	      "inverse": false
+	    }, 
+		{
+			"op": "add",
+			"path": "/starterTreasure/0/1/fill/-",
+			"value": { "item" : "ivrpgwbrokenprotectoratewand" }
+		},
+		{
+		"op": "add",
+		"path": "/starterTreasure/0/1/fill/-",
+		"value": { "item" : "ivrpgwbrokenprotectoratepistol" }
+		},
+		{
+			"op": "add",
+			"path": "/starterTreasure/0/1/fill/-",
+			"value": { "item" : "ivrpgwbrokenprotectoratedagger" }
+		}
+	],
+	[
+		{
+	      "op": "test",
+	      "path": "/starterTreasure/0/1/fill",
+	      "inverse": true
+	    }, 
+		{
+			"op": "add",
+			"path": "/starterTreasure/0/1/fill",
+			"value": [
+				{ "item" : "ivrpgwbrokenprotectoratewand" },
+				{ "item" : "ivrpgwbrokenprotectoratepistol" },
+				{ "item" : "ivrpgwbrokenprotectoratedagger" }
+			]
+		}
+	]
+]

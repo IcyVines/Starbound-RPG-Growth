@@ -1,0 +1,79 @@
+{
+  "projectileName" : "ivrpgpillarplasmaphysical",
+  "image" : "pillarplasma.png",
+  "animationCycle" : 0.4,
+  "lightColor" : [150, 100, 150],
+  "frameNumber" : 8,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "physics" : "default",
+  "emitters" : [ ],
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/melee/giantsword_charge_full.ogg" ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 10,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [250, 100, 250, 255],
+            "fade" : 0.9,
+            "approach" : [30, 30],
+            "light" : [160, 40, 40],
+            "timeToLive" : 0.5,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [2.5, 2.5],
+              "finalVelocity" : [3.0, 3.0],
+              "size" : 0.5,
+              "timeToLive" : 0.3,
+              "fade" : 0.3
+            }
+          }
+        }
+      ]
+    }
+  ],
+
+  "onlyHitTerrain" : true,
+  "bounces" : -1,
+  "damagePoly" : [],
+  "damageKind" : "plasma",
+
+  "speed" : 0,
+  "timeToLive" : 1,
+
+  "scripts" : [ "pillarplasma.lua" ],
+  "scriptDelta" : 1,
+
+  "explosionAction" : {
+    "action" : "actions",
+    "list" : [
+      {
+        "action" : "projectile",
+        "inheritDamageFactor" : 0,
+        "type" : "ivrpgmagentapulsecannonexplosion"
+      },
+      {
+        "action" : "light",
+        "color" : "magenta"
+      }
+    ]
+  },
+
+  "controlRotation" : {
+    "maxSpeed" : 16,
+    "controlForce" : 70,
+    "friction" : 10
+  }
+}
