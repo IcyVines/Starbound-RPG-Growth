@@ -44,6 +44,8 @@
 
     "energyPerShot" : 15,
     "projectileSpawnInterval" : 1.0,
+    "pillarCount" : 18,
+    "pillarDamageRepeatTimeout" : 0.4,
 
     "projectileType" : "ivrpgpillarplasma",
     "projectileParameters" : {

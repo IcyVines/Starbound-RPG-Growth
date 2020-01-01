@@ -146,6 +146,8 @@ function ControlProjectile:createProjectiles()
   local pParams = copy(self.projectileParameters)
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+  pParams.projectileCount = config.getParameter("primaryAbility.pillarCount", 10)
+  pParams.damageRepeatTimeout = config.getParameter("pillarDamageRepeatTimeout", 0.5)
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(

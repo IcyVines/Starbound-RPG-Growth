@@ -29,7 +29,7 @@
       "parts" : {
         "muzzleFlash" : {
           "properties" : {
-            "offset" : [2.05, -0.15]
+            "offset" : [2.05, -0.25]
           }
         },
         "middle" : {
@@ -40,7 +40,7 @@
     }
   },
   "baseOffset" : [0.825, 0.25],
-  "muzzleOffset" : [0.25,0.5],
+  "muzzleOffset" : [0.25, 0.65],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
@@ -51,7 +51,7 @@
     "class" : "GunFire",
 
     "fireTime" : 0.8,
-    "baseDps" : 4,
+    "baseDps" : 5,
     "energyUsage" : 10,
     "inaccuracy" : 0.03,
     "projectileCount" : 1,

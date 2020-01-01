@@ -5,6 +5,8 @@ function init()
   self.controlRotation = config.getParameter("controlRotation")
   self.rotationSpeed = 0
   self.aimPosition = mcontroller.position()
+  self.projectileCount = config.getParameter("projectileCount", 10)
+  self.damageRepeatTimeout = config.getParameter("damageRepeatTimeout", 0.5)
 
   message.setHandler("updateProjectile", function(_, _, aimPosition)
       self.aimPosition = aimPosition
@@ -44,27 +46,24 @@ function activate()
       action = "projectile",
       inheritDamageFactor = 1,
       type = "ivrpgphysicalpillar",
-      config = { rotation = 180}
+      config = { rotation = 180, damageRepeatTimeout = self.damageRepeatTimeout }
     }
   }
 
   local pillarDuration = 1
-  local breakChain = false
   local chainStarted = false
-  local projectileCount = 20
 
-  for i = 0, (projectileCount - 1) do
+  for i = 0, (self.projectileCount - 1) do
     projectileParameters.timeToLive = i * 0.02
     projectileParameters.actionOnTimeout[1].config.timeToLive = pillarDuration - (2 * projectileParameters.timeToLive)
     local yPosition = math.floor(mcontroller.yPosition()) - i
     local isEmpty = not world.pointTileCollision({mcontroller.xPosition(), yPosition}, {"Null", "Block", "Dynamic"})
-    if isEmpty and not chainStarted and not world.pointTileCollision({mcontroller.xPosition(), yPosition - 1}, {"Null", "Block", "Dynamic"}) then
-      --breakChain = true
-    end
-    if isEmpty and not breakChain then
+    if isEmpty then
       world.spawnProjectile("pillarspawner", {mcontroller.xPosition(), yPosition}, projectile.sourceEntity(), {0, -1}, false, projectileParameters)
       if not chainStarted then self.delayTimer = projectileParameters.actionOnTimeout[1].config.timeToLive end
       chainStarted = true
+    else
+      return
     end
   end
 
