@@ -1,6 +1,6 @@
 {
   "input" : [
-    { "item" : "ivrpgspiralpower", "count" : 10 },
+    { "item" : "ivrpgspiralpower", "count" : 5 },
     { "item" : "copperbar", "count" : 2 },
     { "item" : "titaniumbar", "count" : 5 },
     { "item" : "staticcell", "count" : 2 }

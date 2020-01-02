@@ -2,6 +2,6 @@
   "input" : [
     { "item" : "masterypoint", "count" : 1 }
   ],
-	"output" : { "item" : "ivrpgdyingstar", "count" : 16 },
+	"output" : { "item" : "ivrpgdyingstar", "count" : 10 },
 	"groups" : [ "ivrpgmasteryshop", "items", "all" ]
 }

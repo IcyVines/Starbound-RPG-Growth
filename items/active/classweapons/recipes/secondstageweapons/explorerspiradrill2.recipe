@@ -1,7 +1,7 @@
 {
   "input" : [
  	{ "item" : "explorerspiradrill", "count" : 1 },
-    { "item" : "ivrpgspiralpower", "count" : 10 },
+    { "item" : "ivrpgspiralpower", "count" : 5 },
     { "item" : "durasteelbar", "count" : 3 },
     { "item" : "staticcell", "count" : 3 }
   ],

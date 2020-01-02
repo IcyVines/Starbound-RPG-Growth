@@ -1,0 +1,43 @@
+{
+  "id" : "ivrpgnovaquest",
+  "title" : "^green;Shattered Stars",
+  "text" : "Your magical power is growing by the second, and it triggered a collapse that let me search through a long lost archive written by old magicians. Records indicate that a magical stone holds energy fueled by stars. Fighting certain monsters should help me figure out how to extract them.^white;",
+  "completionText" : "The monsters you fought had just the energy I suspected, and defeating them should yield ^magenta;Dying Stars^reset;. You can now craft Nova Crystals in the Furnace and the Nova Staff in your Anvil.",
+  "rewards" : [
+    [
+      [ "experienceorb", 200],
+      [ "ivrpgnovacrystal", 1]
+    ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/ivrpginstance.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "sail"
+    },
+
+    "followUp" : "ivrpgnovaquest2",
+
+    "descriptions" : {
+      "enterInstance" : "Talk to ^orange;Nuru^reset; to travel to the ^orange;arena^reset;",
+      "findGoal" : "Win the arena battle",
+      "turnIn" : "Speak to ^orange;SAIL^reset;."
+    },
+
+    "giveBlueprints" : ["ivrpgnovacrystal", "wizardnovastaff"],
+
+    "warpEntityUid" : "nuruoutpost",
+    "warpAction" : "instanceworld:ivrpgnovaarena",
+    "warpDialog" : "/interface/confirmation/teleportconfirmation.config:ivrpgnovaarena",
+
+    "goalTrigger" : "proximity",
+    "proximityRange" : 20,
+
+    "goalEntityUid" : "novaarenateleporter",
+    "indicateGoal" : false,
+    "trackGoalEntity" : false,
+
+    "turnInEntityUid" : "techstation"
+  }
+}

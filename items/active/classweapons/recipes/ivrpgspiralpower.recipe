@@ -1,6 +1,6 @@
 {
   "input" : [
-    { "item" : "ivrpgspiralenergy", "count" : 5 }
+    { "item" : "ivrpgspiralenergy", "count" : 2 }
   ],
 	"output" : { "item" : "ivrpgspiralpower", "count" : 1 },
 	"groups" : [ "craftingfurnace", "ingredients", "all" ]

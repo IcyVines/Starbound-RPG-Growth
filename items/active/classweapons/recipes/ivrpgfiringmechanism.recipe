@@ -1,6 +1,6 @@
 {
   "input" : [
-    { "item" : "ivrpggunparts", "count" : 25 }
+    { "item" : "ivrpggunparts", "count" : 10 }
   ],
 	"output" : { "item" : "ivrpgfiringmechanism", "count" : 1 },
 	"groups" : [ "craftingfurnace", "ingredients", "all" ]

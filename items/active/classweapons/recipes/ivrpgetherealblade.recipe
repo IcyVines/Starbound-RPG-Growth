@@ -1,6 +1,6 @@
 {
   "input" : [
-    { "item" : "ivrpgether", "count" : 12 }
+    { "item" : "ivrpgether", "count" : 10 }
   ],
 	"output" : { "item" : "ivrpgetherealblade", "count" : 1 },
 	"groups" : [ "craftingfurnace", "ingredients", "all" ]

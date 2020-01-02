@@ -1,7 +1,7 @@
 {
   "input" : [
   	{ "item" : "ninjaaethershuriken", "count" : 1 },
-    { "item" : "ivrpgetherealblade", "count" : 4 },
+    { "item" : "ivrpgetherealblade", "count" : 1 },
     { "item" : "durasteelbar", "count" : 2 },
     { "item" : "phasematter", "count" : 5 }
   ],

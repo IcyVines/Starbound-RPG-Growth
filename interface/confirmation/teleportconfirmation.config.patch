@@ -1,0 +1,46 @@
+[
+  { "op" : "add",
+    "path" : "/ivrpgaetherarena",
+    "value" : {
+      "paneLayout" : "/interface/windowconfig/portraitconfirmation.config:paneLayout",
+      "icon" : "/interface/warping/icon.png",
+      "title" : "Teleport Confirmation",
+      "subtitle" : "Arena Battle : Ether Experiement",
+      "message" : "\n\nAre you sure you're ready to enter the arena? There will be tons of ghosts!",
+      "okCaption" : "Ready",
+      "cancelCaption" : "Not now",
+      "images" : {
+        "portrait" : [
+          {"image" : "/humanoid/nuru/backarm.png:idle.1"},
+          {"image" : "/humanoid/nuru/femalebody.png:idle.1"},
+          {"image" : "/humanoid/nuru/frontarm.png:idle.1"}
+        ]
+      },
+      "labels" : {
+        "name" : "Nuru"
+      }
+    }
+  },
+  { "op" : "add",
+    "path" : "/ivrpgnovaarena",
+    "value" : {
+      "paneLayout" : "/interface/windowconfig/portraitconfirmation.config:paneLayout",
+      "icon" : "/interface/warping/icon.png",
+      "title" : "Teleport Confirmation",
+      "subtitle" : "Arena Battle : Shattered Stars",
+      "message" : "\n\nAre you sure you're ready to enter the arena? There will be tons of energetic monsters!",
+      "okCaption" : "Ready",
+      "cancelCaption" : "Not now",
+      "images" : {
+        "portrait" : [
+          {"image" : "/humanoid/nuru/backarm.png:idle.1"},
+          {"image" : "/humanoid/nuru/femalebody.png:idle.1"},
+          {"image" : "/humanoid/nuru/frontarm.png:idle.1"}
+        ]
+      },
+      "labels" : {
+        "name" : "Nuru"
+      }
+    }
+  }
+]

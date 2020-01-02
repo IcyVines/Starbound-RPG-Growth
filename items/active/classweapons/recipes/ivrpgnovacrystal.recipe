@@ -1,6 +1,6 @@
 {
   "input" : [
-    { "item" : "ivrpgdyingstar", "count" : 32 }
+    { "item" : "ivrpgdyingstar", "count" : 20 }
   ],
 	"output" : { "item" : "ivrpgnovacrystal", "count" : 1 },
 	"groups" : [ "craftingfurnace", "ingredients", "all" ]

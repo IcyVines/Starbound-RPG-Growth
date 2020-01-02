@@ -1,0 +1,43 @@
+{
+  "id" : "ivrpgaetherquest",
+  "title" : "^green;Ether Experiment",
+  "text" : "Due to your abilities, my scanners have often been unable to locate you: this issue has lent itself to a new hypothesis! It seems certain inhabitants of this universe are... not really here. This should mean they cannot interact with anything, but this is not the case. Fighting these ^green;ghosts^reset; should lead to an uncanny discovery.^white;",
+  "completionText" : "The ghosts you fought were made of Phase Matter, but they also produced a substance I've named ^red;Ether^reset;. You can now craft Ethereal Blades in the Furnace and the Aether Tanto in your Anvil.",
+  "rewards" : [
+    [
+      [ "experienceorb", 200],
+      [ "ivrpgetherealblade", 1]
+    ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/ivrpginstance.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "sail"
+    },
+
+    "followUp" : "ivrpgaetherquest2",
+
+    "descriptions" : {
+      "enterInstance" : "Talk to ^orange;Nuru^reset; to travel to the ^orange;arena^reset;",
+      "findGoal" : "Win the arena battle",
+      "turnIn" : "Speak to ^orange;SAIL^reset;."
+    },
+
+    "giveBlueprints" : ["ivrpgetherealblade", "ninjaaethershuriken"],
+
+    "warpEntityUid" : "nuruoutpost",
+    "warpAction" : "instanceworld:ivrpgaetherarena",
+    "warpDialog" : "/interface/confirmation/teleportconfirmation.config:ivrpgaetherarena",
+
+    "goalTrigger" : "proximity",
+    "proximityRange" : 20,
+
+    "goalEntityUid" : "aetherarenateleporter",
+    "indicateGoal" : false,
+    "trackGoalEntity" : false,
+
+    "turnInEntityUid" : "techstation"
+  }
+}
