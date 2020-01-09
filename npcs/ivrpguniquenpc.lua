@@ -10,8 +10,12 @@ function rpg_initUniqueNPC()
     ice = {nova = true, fire = true}
   }
 
+  self.rpg_Health = status.resource("health")
+
   message.setHandler("addToOwnedMonsters", function(_, _, id)
-    table.insert(self.rpg_spawn.activeSummons, id)
+    if self.rpg_spawn then
+      table.insert(self.rpg_spawn.activeSummons, id)
+    end
   end)
 end
 
@@ -41,6 +45,7 @@ function rpg_updateUniqueNPC(dt)
   	  else
   	    self.rpg_armor = {type = v.type, max = v.protection, current = v.protection, tag = v.segments or 10, rechargeTime = v.rechargeTime, breakTime = v.breakTime, segments = v.segments or 10, elementType = v.elementType or "none"}
   	    status.setStatusProperty("ivrpg_npcShield_element", v.elementType)
+        self.rpg_Health = status.resource("health")
       end
       status.addEphemeralEffect("ivrpgNpcShield", math.huge, self.rpg_ID)
   	elseif k == "spawn" then
@@ -69,6 +74,7 @@ function rpg_updateUniqueNPC(dt)
       if self.rpg_stripTimer <= 0 then
         self.rpg_armor.current = self.rpg_armor.max
         status.setStatusProperty("ivrpg_npcShield_sound", "tankFull")
+        self.rpg_Health = status.resource("health")
       end
     end
   elseif self.rpg_armor then
@@ -147,7 +153,7 @@ function rpg_damage(damage, sourceDamage, sourceKind, sourceId)
         self.rpg_armor.current = math.max(self.rpg_armor.current - sourceDamage * matchDamage, 0)
       end
     end
-    status.modifyResource("health", damage)
+    status.setResource("health", self.rpg_Health)
     if self.rpg_armor.current == 0 then
     	if self.rpg_armor.type == "rapid" then
       	rpg_rapidSpark()
@@ -176,9 +182,6 @@ function rpg_stripArmor(strip)
   local effectConfig = {{stat = "protection", amount = strip and 0 or 100 }}
   for _,element in ipairs(elements) do
     table.insert(effectConfig, {stat = element .. "StatusImmunity", amount = strip and 0 or 1})
-    if self.rpg_armor.elementType ~= element and not self.rpg_elementBreaks[self.rpg_armor.elementType][element] then
-      table.insert(effectConfig, {stat = element .. "Resistance", amount = strip and 0 or 3})
-    end
   end
   status.setPersistentEffects("ivrpgstripArmor", effectConfig)
 end
