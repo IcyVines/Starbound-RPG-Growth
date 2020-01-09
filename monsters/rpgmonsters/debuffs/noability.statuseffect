@@ -1,0 +1,20 @@
+{
+  "name" : "ivrpgdnoability",
+  "blockingStat" : "demonicStatusImmunity",
+  "effectConfig" : {
+    "directives" : "?fade=300030=0.6",
+    "effects" : [
+      {"stat" : "activeMovementAbilities", "amount" : 1}
+    ]
+  },
+  "defaultDuration" : 3,
+
+  "scripts" : [
+    "debuff.lua"
+  ],
+
+  "animationConfig" : "noability.animation",
+
+  "label" : "Silenced",
+  "icon" : "noability.png"
+}

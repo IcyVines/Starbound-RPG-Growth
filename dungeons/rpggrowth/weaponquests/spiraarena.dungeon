@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "name" : "ivrpgspiraarena",
+    "species" : "generic",
+    "rules" : [
+    ],
+    "anchor" : [ "ivrpgspiraarena" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 100,
+    "protected" : true
+  },
+
+  "parts" : [
+    {
+      "name" : "ivrpgspiraarena",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "spiraarena.json" ]
+    }
+  ]
+}

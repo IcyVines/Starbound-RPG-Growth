@@ -1,6 +1,8 @@
 require "/tech/doubletap.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.dashControlForce = config.getParameter("dashControlForce")
   self.dashSpeedModifier = config.getParameter("dashSpeedModifier")

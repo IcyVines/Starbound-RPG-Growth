@@ -75,6 +75,62 @@
             ]
         }]
     ],
+    "experienceorbpoolminiboss" : [
+        [0, {
+            "fill" : [
+                {"item" : ["experienceorb", 50]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }],
+        [0.9, {
+            "fill" : [
+                {"item" : ["experienceorb", 100]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }],
+        [1.9, {
+            "fill" : [
+                {"item" : ["experienceorb", 200]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }],
+        [2.9, {
+            "fill" : [
+                {"item" : ["experienceorb", 300]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }],
+        [3.9, {
+            "fill" : [
+                {"item" : ["experienceorb", 400]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }],
+        [4.9, {
+            "fill" : [
+                {"item" : ["experienceorb", 500]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }],
+        [5.9, {
+            "fill" : [
+                {"item" : ["experienceorb", 600]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }],
+        [6.9, {
+            "fill" : [
+                {"item" : ["experienceorb", 700]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }],
+        [7.9, {
+            "fill" : [
+                {"item" : ["experienceorb", 800]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }]
+    ],
     "experienceorbbosspool" : [
         [0, {
             "pool" : [

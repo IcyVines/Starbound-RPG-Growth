@@ -1,0 +1,12 @@
+{
+  "projectileName" : "ivrpgholyexplosion",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "damageKindImage" : "icon.png",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/ivrpgexclusives/explosions/holy/holyexplosion.config"
+    }
+  ],
+  "timeToLive" : 0
+}

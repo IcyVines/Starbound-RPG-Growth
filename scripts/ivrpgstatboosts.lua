@@ -61,7 +61,6 @@ function updateHeldItems()
 end
 
 function update(dt)
-
   self.xp = math.min(world.entityCurrency(self.rpgPlayerID, "experienceorb"), 500000)
   self.level = self.level == -1 and math.floor(math.sqrt(self.xp/100)) or self.level
   self.classicMode = status.statPositive("ivrpghardcore")

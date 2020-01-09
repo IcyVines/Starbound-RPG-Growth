@@ -1585,12 +1585,16 @@ function uncheckLoreTabs(name)
   end
 end
 
+function mechanicsCheck()
+  return (#self.loreTable >= 2 and self.loreTable[2] == "mechanics" and not (#self.loreTable >= 4 and self.loreTable[3] == "enemies"))
+end
+
 function changeLoreSelection()
 	local selectedLore = widget.getListSelected("lorelayout.scrollArea.list")
 	if selectedLore and type(selectedLore) == "string" then
 		local name = widget.getData("lorelayout.scrollArea.list." .. selectedLore)
 		local unlocks = status.statusProperty("ivrpgloreunlocks", {})
-		if name and (unlocks[name] or (#self.loreTable >= 2 and self.loreTable[2] == "mechanics")) then
+		if name and (unlocks[name] or mechanicsCheck()) then
 			table.insert(self.loreTable, name)
 			buildNewLore()
 		end
@@ -1612,7 +1616,7 @@ function buildNewLore()
   	  local newListItem = widget.addListItem("lorelayout.scrollArea.list")
   	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".title", v.title)
   	  widget.setData("lorelayout.scrollArea.list." .. newListItem, k)
-  	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".subtext", (unlocks[k] or (#self.loreTable >= 2 and self.loreTable[2] == "mechanics")) and "" or "^red;Data Obscured")
+  	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".subtext", (unlocks[k] or mechanicsCheck()) and "" or "^red;Data Obscured")
   	  added = true
   	end
   	if not added then
@@ -1937,4 +1941,9 @@ end
 function resetSkills()
   status.setStatusProperty("ivrpgskills", {})
   status.setStatusProperty("ivrpgskillpoints", self.level)
+end
+
+
+function toggleFloatingXPBar()
+  status.setStatusProperty("ivrpglevelbar", not status.statusProperty("ivrpglevelbar", false))
 end

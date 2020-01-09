@@ -1,0 +1,43 @@
+{
+  "id" : "ivrpgaegisquest",
+  "title" : "^green;Meteoric Metal",
+  "text" : "My databanks show that your physical strength is nearly unmatched! I have run a diagnostic and it suggests you would be unrivaled using a normally unwieldable, incredibly heavy metal as the base for a sword. Try fighting ^green;living meteorites^reset; to see if their hard carapace can be used.^white;",
+  "completionText" : "Looks like Masteroids are a great source of this metal, which I've simply dubbed ^blue;Meteoric Metal^reset;. You can now craft Meteoric Metal Bars in the Furnace and the Aegis Broadsword in your Anvil.",
+  "rewards" : [
+    [
+      [ "experienceorb", 200],
+      [ "ivrpgmeteoricmetalbar", 10]
+    ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/ivrpginstance.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "sail"
+    },
+
+    "followUp" : "ivrpgaegisquest2",
+
+    "descriptions" : {
+      "enterInstance" : "Talk to ^orange;Nuru^reset; to travel to the ^orange;arena^reset;",
+      "findGoal" : "Win the arena battle",
+      "turnIn" : "Speak to ^orange;SAIL^reset;."
+    },
+
+    "giveBlueprints" : ["ivrpgmeteoricmetalbar", "knightaegissword"],
+
+    "warpEntityUid" : "nuruoutpost",
+    "warpAction" : "instanceworld:ivrpgaegisarena",
+    "warpDialog" : "/interface/confirmation/teleportconfirmation.config:ivrpgaegisarena",
+
+    "goalTrigger" : "proximity",
+    "proximityRange" : 20,
+
+    "goalEntityUid" : "aegisarenateleporter",
+    "indicateGoal" : false,
+    "trackGoalEntity" : false,
+
+    "turnInEntityUid" : "techstation"
+  }
+}

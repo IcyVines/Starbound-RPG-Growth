@@ -1,7 +1,9 @@
 require "/tech/doubletap.lua"
 require "/scripts/keybinds.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
 
   --dash
   self.airDashing = false

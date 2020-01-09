@@ -1,0 +1,43 @@
+{
+  "id" : "ivrpgsiphonquest",
+  "title" : "^green;Parasitic Poison",
+  "text" : "Your uncanny desire to poison everything has apparently poisoned my circuits as well. In my brief state of corruption, schematics for a dubious weapon were created. I believe the research shows that the required materials may drop from ^green;parasitic or gooey monsters.^reset; Go fight a whole bunch to make sure I am correct.^white;",
+  "completionText" : "The slime that you scraped from those monsters looks a bit... gross. This ^green;Parasitic Goo^reset; can be re-purposed: I have condensed it into a bundle of nerves that you can attach to your arm. You can now craft Squirming Nerve Bundles in the Furnace and the Siphon Claw in your Anvil.",
+  "rewards" : [
+    [
+      [ "experienceorb", 200],
+      [ "ivrpgsquirmingnervebundle", 1]
+    ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/ivrpginstance.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "sail"
+    },
+
+    "followUp" : "ivrpgsiphonquest2",
+
+    "descriptions" : {
+      "enterInstance" : "Talk to ^orange;Nuru^reset; to travel to the ^orange;arena^reset;",
+      "findGoal" : "Win the arena battle",
+      "turnIn" : "Speak to ^orange;SAIL^reset;."
+    },
+
+    "giveBlueprints" : ["ivrpgsquirmingnervebundle", "roguesiphonclaw"],
+
+    "warpEntityUid" : "nuruoutpost",
+    "warpAction" : "instanceworld:ivrpgsiphonarena",
+    "warpDialog" : "/interface/confirmation/teleportconfirmation.config:ivrpgsiphonarena",
+
+    "goalTrigger" : "proximity",
+    "proximityRange" : 20,
+
+    "goalEntityUid" : "siphonarenateleporter",
+    "indicateGoal" : false,
+    "trackGoalEntity" : false,
+
+    "turnInEntityUid" : "techstation"
+  }
+}

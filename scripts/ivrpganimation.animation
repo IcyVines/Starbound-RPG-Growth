@@ -291,5 +291,44 @@
     "flip" : {
       "interpolated" : false
     }
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "level" : {
+        "priority" : 4,
+        "default" : "on",
+        "states" : {
+          "on" : {
+            "frames" : 1
+          },
+          "off" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "levelbar" : {
+        "properties" : {
+          "fullbright" : true,
+          "offset" : [0,2.25]
+        },
+        "partStates" : {
+          "level" : {
+            "on" : {
+              "properties" : {
+                "image" : "/scripts/levelinterface/level_40y.png:<level><leveldirectives>"
+              }
+            },
+            "off" : {}
+          }
+        }
+      }
+    }
+  },
+
+  "globalTagDefaults" : {
+    "level" : "0",
+    "leveldirectives" : "?scalenearest=0.75"
   }
 }

@@ -1,6 +1,8 @@
 require "/scripts/keybinds.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
   self.jumpsLeft = config.getParameter("multiJumpCount")
   self.origJumpsLeft = self.jumpsLeft
   self.cost = config.getParameter("cost")
@@ -23,7 +25,7 @@ function init()
 end
 
 function update(args)
-
+  
   self.peakPerformance = status.statPositive("ivrpgucpeakperformance")
 
   if self.slamCooldownTimer > 0 then

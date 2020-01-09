@@ -1,0 +1,46 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "armor" : {
+        "priority" : 4,
+        "default" : "on",
+        "states" : {
+          "on" : {
+            "frames" : 1
+          }
+        }
+      }
+    },
+    "parts" : {
+      "armor" : {
+        "properties" : {
+          "fullbright" : true,
+          "zLevel" : 15,
+          "offset" : [0,2]
+        },
+        "partStates" : {
+          "armor" : {
+            "on" : {
+              "properties" : {
+                "image" : "/monsters/rpgmonsters/tankinterface/<armorType>.png:<armor><barFlipDirectives>?setcolor=<color>?scalebilinear=0.5;1.0"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "globalTagDefaults" : {
+    "armor" : "100",
+    "barFlipDirectives" : "",
+    "armorType" : "shield",
+    "color" : "FFFFFF"
+  },
+  "sounds" : {
+    "fillTank" : [ "/sfx/tech/tech_superjump.ogg" ],
+    "fillTank2" : [ "/sfx/tools/beamaxe.ogg" ],
+    "tankFull" : [ "/sfx/tech/tech_dashftl.ogg" ],
+    "tankEmpty" : [ "/sfx/tech/tech_blink2.ogg" ],
+    "bolt" : [ "/sfx/projectiles/electric_barrier_shock1.ogg" ]
+  }
+}

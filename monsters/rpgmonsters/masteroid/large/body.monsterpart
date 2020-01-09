@@ -1,0 +1,10 @@
+{
+  "name" : "ivrpg_hardenedmasteroid",
+  "category" : "ivrpg_hardenedmasteroid",
+  "type" : "body",
+
+  "frames" : {
+    "body" : "hardenedmasteroid.png",
+    "bodyfullbright" : "hardenedmasteroidfullbright.png"
+  }
+}

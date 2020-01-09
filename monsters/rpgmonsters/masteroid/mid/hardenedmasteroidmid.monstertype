@@ -1,0 +1,231 @@
+{
+  "type" : "ivrpg_hardenedmasteroidmid",
+  "shortdescription" : "Hardened Masteroid (Medium)",
+  "description" : "A boron-based creature that can split its body and consciousness when damaged.",
+
+  "categories" : [ "ivrpg_hardenedmasteroidmid" ],
+  "parts" : [ "body" ],
+
+  "animation" : "/monsters/space/masteroidmid/masteroidmid.animation",
+
+  "dropPools" : ["spaceRock"],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/monsters/ivrpgmonster.lua"
+    ],
+
+    "ivrpgSize" : 1,
+    "ivrpgRespawn" : true,
+    "ivrpgActions" : {
+      "tank" : {
+        "type" : "burst",
+        "protection" : 100,
+        "rechargeTime" : 5,
+        "breakTime" : 0.5
+      }
+    },
+    "animationCustom" : {
+      "sounds" : {
+        "tankFull" : [ "/sfx/objects/ancientlightplatform_on.ogg" ],
+        "tankEmpty" : [ "/sfx/objects/rock_big_break1.ogg", "/sfx/objects/rock_big_break2.ogg", "/sfx/objects/rock_big_break3.ogg", "/sfx/objects/rock_big_break4.ogg", "/sfx/objects/rock_big_break5.ogg" ]
+      },
+      "particleEmitters" : {
+        "deathPoof" : {
+          "offsetRegion" : [-2, -2, 2, 2],
+          "burstCount" : 5,
+          "particles" : [
+            {"particle" : "ivrpgmasteroidshard1"},
+            {"particle" : "ivrpgmasteroidshard2"},
+            {"particle" : "ivrpgmasteroidshard3"},
+            {"particle" : "ivrpgmasteroidshard4"}
+          ]
+        }
+      }
+    },
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "facingMode" : "transformation",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 50,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 100,
+      "targetOutOfSightTime" : 10.0,
+
+      "hurtWaitForGround" : false,
+
+      "wanderActions" : [
+        {
+          "name" : "action-stop",
+          "parameters" : {
+            "stopForce" : 20
+          }
+        }
+      ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fall",
+          "parameters" : {
+            "flyState" : "fly",
+            "idleState" : "idle",
+            "friction" : 25,
+            "dampenDistance" : 20,
+            "dampenMultiplier" : 2
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.75, 1.75], [1.75, 0.75], [1.75, -0.75], [0.75, -1.75], [-0.75, -1.75], [-1.75, -0.75], [-1.75, 0.75], [-0.75, 1.75] ]	,
+      "damage" : 35,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "impact",
+      "knockback" : 40,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.75, 1.75], [1.75, 0.75], [1.75, -0.75], [0.75, -1.75], [-0.75, -1.75], [-1.75, -0.75], [-1.75, 0.75], [-0.75, 1.75] ]	,
+
+      "mass" : 3.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "bounceFactor" : 0.5,
+      "groundFriction" : 10,
+
+      "airFriction" : 0,
+      "airForce" : 25,
+      "flySpeed" : 15
+    },
+
+    "bodyMaterialKind" : "stone",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "healthLevelFunction" : "spaceMonsterLevelHealthMultiplier",
+    "powerLevelFunction" : "spaceMonsterLevelPowerMultiplier",
+
+    "stunDamageSuppression" : 0.2,
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "stone"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/spacemonster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 0.25
+        },
+        "knockbackStunTime" : {
+          "baseValue" : 0.3
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 2
+        },
+        "maxHealth" : {
+          "baseValue" : 40
+        },
+        "protection" : {
+          "baseValue" : 100.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireResistance" : {
+          "baseValue" : 0.5
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonResistance" : {
+          "baseValue" : 1.0
+        },
+        "novaResistance" : {
+          "baseValue" : 0.0
+        },
+        "demonicResistance" : {
+          "baseValue" : 0.0
+        },
+        "holyResistance" : {
+          "baseValue" : 0.0
+        },
+        "cosmicResistance" : {
+          "baseValue" : 1.0
+        },
+        "shadowResistance" : {
+          "baseValue" : 1.0
+        },
+        "radioactiveResistance" : {
+          "baseValue" : 0.5
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false
+  }
+}

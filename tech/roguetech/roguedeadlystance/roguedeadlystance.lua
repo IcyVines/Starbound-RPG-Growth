@@ -1,6 +1,8 @@
 require "/scripts/keybinds.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
   --[[self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=25492EFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
   self.auraRechargeDirectives = config.getParameter("rechargeDirectives", "?fade=89A04EFF=0.25")

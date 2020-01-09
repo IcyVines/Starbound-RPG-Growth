@@ -5,8 +5,10 @@ require "/scripts/status.lua"
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 require "/scripts/keybinds.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
   initCommonParameters()
 
   self.ignorePlatforms = config.getParameter("ignorePlatforms")
@@ -51,7 +53,7 @@ end
 
 function update(args)
 
-  local action = input(args)
+  local action = inputToAction(args)
   self.glideSphere = status.statPositive("ivrpgucglidesphere")
   self.lrInput = 0
   if args.moves["left"] then
@@ -197,7 +199,7 @@ function update(args)
 end
 
 function updateDrill(args)
-  local action = input(args)
+  local action = inputToAction(args)
   local energyUsagePerSecond = self.drillCost
 
   --[[ if mcontroller.falling() or mcontroller.jumping() then
@@ -266,7 +268,7 @@ function drill()
   }, "foreground", mcontroller.position(), "beamish", self.power, 20)
 end
 
-function input(args)
+function inputToAction(args)
   if args.moves["up"] then
     return "explorerglide"
   elseif args.moves["special1"] then

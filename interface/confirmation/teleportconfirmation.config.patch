@@ -6,7 +6,7 @@
       "icon" : "/interface/warping/icon.png",
       "title" : "Teleport Confirmation",
       "subtitle" : "Arena Battle : Ether Experiement",
-      "message" : "\n\nAre you sure you're ready to enter the arena? There will be tons of ghosts!",
+      "message" : "\n\nAre you sure you're ready to enter the arena? It seems demonic ghosts are haunting it!",
       "okCaption" : "Ready",
       "cancelCaption" : "Not now",
       "images" : {
@@ -28,7 +28,95 @@
       "icon" : "/interface/warping/icon.png",
       "title" : "Teleport Confirmation",
       "subtitle" : "Arena Battle : Shattered Stars",
-      "message" : "\n\nAre you sure you're ready to enter the arena? There will be tons of energetic monsters!",
+      "message" : "\n\nAre you sure you're ready to enter the arena? Energy-radiating monsters are swarming inside!",
+      "okCaption" : "Ready",
+      "cancelCaption" : "Not now",
+      "images" : {
+        "portrait" : [
+          {"image" : "/humanoid/nuru/backarm.png:idle.1"},
+          {"image" : "/humanoid/nuru/femalebody.png:idle.1"},
+          {"image" : "/humanoid/nuru/frontarm.png:idle.1"}
+        ]
+      },
+      "labels" : {
+        "name" : "Nuru"
+      }
+    }
+  },
+  { "op" : "add",
+    "path" : "/ivrpgaegisarena",
+    "value" : {
+      "paneLayout" : "/interface/windowconfig/portraitconfirmation.config:paneLayout",
+      "icon" : "/interface/warping/icon.png",
+      "title" : "Teleport Confirmation",
+      "subtitle" : "Arena Battle : Meteoric Metal",
+      "message" : "\n\nAre you sure you're ready to enter the arena? Only the strongest warriors can take down the Hardened Masteroid inside!",
+      "okCaption" : "Ready",
+      "cancelCaption" : "Not now",
+      "images" : {
+        "portrait" : [
+          {"image" : "/humanoid/nuru/backarm.png:idle.1"},
+          {"image" : "/humanoid/nuru/femalebody.png:idle.1"},
+          {"image" : "/humanoid/nuru/frontarm.png:idle.1"}
+        ]
+      },
+      "labels" : {
+        "name" : "Nuru"
+      }
+    }
+  },
+  { "op" : "add",
+    "path" : "/ivrpgversaarena",
+    "value" : {
+      "paneLayout" : "/interface/windowconfig/portraitconfirmation.config:paneLayout",
+      "icon" : "/interface/warping/icon.png",
+      "title" : "Teleport Confirmation",
+      "subtitle" : "Arena Battle : Worthy Weaponry",
+      "message" : "\n\nAre you sure you're ready to enter the arena? Ruthless outlaws, utilizing haywire robots, are ready to ambush you!",
+      "okCaption" : "Ready",
+      "cancelCaption" : "Not now",
+      "images" : {
+        "portrait" : [
+          {"image" : "/humanoid/nuru/backarm.png:idle.1"},
+          {"image" : "/humanoid/nuru/femalebody.png:idle.1"},
+          {"image" : "/humanoid/nuru/frontarm.png:idle.1"}
+        ]
+      },
+      "labels" : {
+        "name" : "Nuru"
+      }
+    }
+  },
+  { "op" : "add",
+    "path" : "/ivrpgspiraarena",
+    "value" : {
+      "paneLayout" : "/interface/windowconfig/portraitconfirmation.config:paneLayout",
+      "icon" : "/interface/warping/icon.png",
+      "title" : "Teleport Confirmation",
+      "subtitle" : "Arena Battle : Spectacular Spin",
+      "message" : "\n\nAre you sure you're ready to enter the arena? You might get flattened by rolling monsssters!",
+      "okCaption" : "Ready",
+      "cancelCaption" : "Not now",
+      "images" : {
+        "portrait" : [
+          {"image" : "/humanoid/nuru/backarm.png:idle.1"},
+          {"image" : "/humanoid/nuru/femalebody.png:idle.1"},
+          {"image" : "/humanoid/nuru/frontarm.png:idle.1"}
+        ]
+      },
+      "labels" : {
+        "name" : "Nuru"
+      }
+    }
+  },
+  { "op" : "add",
+    "path" : "/ivrpgsiphonarena",
+    "value" : {
+      "paneLayout" : "/interface/windowconfig/portraitconfirmation.config:paneLayout",
+      "icon" : "/interface/warping/icon.png",
+      "title" : "Teleport Confirmation",
+      "subtitle" : "Arena Battle : Parasitic Poison",
+      "message" : "\n\nAre you sure you're ready to enter the arena? Dangerousss, toxic creatures await you.",
       "okCaption" : "Ready",
       "cancelCaption" : "Not now",
       "images" : {

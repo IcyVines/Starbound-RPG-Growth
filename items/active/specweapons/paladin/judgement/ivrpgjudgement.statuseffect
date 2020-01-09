@@ -11,5 +11,5 @@
   "animationConfig" : "ivrpgjudgement.animation",
 
   "label" : "Divine Judgement",
-  "icon" : "/interface/statuses/slow.png"
+  "icon" : "judgement.png"
 }

@@ -1,0 +1,9 @@
+{
+  "name" : "mandraflora",
+  "category" : "ivrpg_monstertonpc",
+  "type" : "body",
+
+  "frames" : {
+    "body" : "monstertonpc.png"
+  }
+}

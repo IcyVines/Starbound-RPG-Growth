@@ -1,0 +1,241 @@
+{
+  "type" : "ivrpg_demonicspookit",
+  "shortdescription" : "Demonic Spookit",
+  "description" : "When it closes its eyes it becomes immune to attacks by entering a different plane of existence.",
+
+  "categories" : [ "demonicspookit" ],
+  "parts" : [ "body" ],
+
+  "animation" : "demonicspookit.animation",
+
+  "dropPools" : [ { "default" : "spookitTreasure", "bow" : "spookitHunting" } ],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/monsters/ivrpgmonster.lua"
+    ],
+
+    "ivrpgActions" : {
+      "debuff" : {
+        "range" : 16,
+        "statusEffects" : ["ivrpgdnoability"]
+      }
+    },
+
+    "behavior" : "monster",
+
+    "renderLayer" : "foregroundEntity",
+
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 50,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : false,
+      "keepTargetInRange" : 100,
+      "targetOutOfSightTime" : 5.0,
+
+      "hurtTime" : 0.25,
+      "hurtWaitForGround" : false,
+
+      "damageTakenActions" : [
+        {
+          "name" : "action-invulnerable",
+          "parameters" : {
+            "windupTime" : 0,
+            "windupState" : "",
+            "winddownTime" : 0,
+            "winddownState" : "idle",
+
+            "invulnerableTime" : 2
+          }
+        }
+      ],
+
+      // Special hook for behavior during the invulnerable action
+      // If this behavior succeeds, invulnerability ends
+      "invulnerableActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "flyState" : ""
+          }
+        }
+      ],
+
+      "foundTargetActions" : [ ],
+
+      "fleeActions" : [ ],
+
+      "hostileActions" : [ ],
+
+      "periodicActions" : [ ],
+
+      "approachActions" : [
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "minRange" : 14,
+            "maxRange" : 16
+          }
+        }
+      ],
+
+      "followActions" : [
+        {
+          "name" : "approach-teleport",
+          "parameters" : {
+          }
+        },
+        {
+          "name" : "approach-fly",
+          "parameters" : {
+            "usePathfinding" : false,
+            "minRange" : 14,
+            "maxRange" : 16
+          }
+        }
+      ],
+
+      "wanderActions" : [
+        {
+          "name" : "emerge-fly"
+        }
+      ],
+
+      "concurrentActions" : [ { "name" : "action-ghostsparkle" } ],
+
+      "concurrentHostileActions" : [ { "name" : "action-ghostsparkle" } ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.125, 1.25], [0.625, 0.75], [0.625, -0.75], [0.125, -1.25], [-0.125, -1.25], [-0.625, -0.75], [-0.625, 0.75], [-0.125, 1.25] ],
+      "damage" : 8,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "demonic",
+      "knockback" : 20,
+      "statusEffects" : [ "ivrpgsacrifice" ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionEnabled" : false,
+      "collisionPoly" : [ [0.125, 1.25], [0.625, 0.75], [0.625, -0.75], [0.125, -1.25], [-0.125, -1.25], [-0.625, -0.75], [-0.625, 0.75], [-0.125, 1.25] ],
+
+      "mass" : 1.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "airFriction" : 0.75,
+      "airForce" : 10,
+      "flySpeed" : 6
+    },
+
+    "bodyMaterialKind" : "organic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "organic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/monster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "knockbackStunTime" : {
+          "baseValue" : 0.25
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 9
+        },
+        "maxHealth" : {
+          "baseValue" : 70
+        },
+        "protection" : {
+          "baseValue" : 0.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "physicalResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireResistance" : {
+          "baseValue" : 0.5
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "iceResistance" : {
+          "baseValue" : 0.5
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "electricResistance" : {
+          "baseValue" : 0.5
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "poisonResistance" : {
+          "baseValue" : 0.5
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "holyResistance" : {
+          "baseValue" : -0.5
+        },
+        "holyStatusImmunity" : {
+          "baseValue" : 0.0
+        },
+        "demonicResistance" : {
+          "baseValue" : 1.0
+        },
+        "demonicStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false
+  }
+}

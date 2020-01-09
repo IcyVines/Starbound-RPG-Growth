@@ -92,6 +92,10 @@ function init()
     sendRadioMessage(text)
   end)
 
+  message.setHandler("interact", function(_, _, scriptType, script, sourceId)
+    player.interact(scriptType, script, sourceId)
+  end)
+
   message.setHandler("applySelfDamageRequest", function(_, _, damageType, damageSourceKind, damage, sourceId)
     status.applySelfDamageRequest({
       damageType = damageType,

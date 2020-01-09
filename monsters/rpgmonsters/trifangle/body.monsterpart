@@ -1,0 +1,10 @@
+{
+  "name" : "trifangle",
+  "category" : "ivrpg_shieldedtrifangle",
+  "type" : "body",
+
+  "frames" : {
+    "body" : "trifangle.png",
+    "bodyfullbright" : "trifanglefullbright.png"
+  }
+}

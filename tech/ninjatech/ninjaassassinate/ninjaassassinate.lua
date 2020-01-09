@@ -1,6 +1,8 @@
 require "/scripts/keybinds.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
   self.dashCooldownTimer = 0
   self.rechargeEffectTimer = 0
 

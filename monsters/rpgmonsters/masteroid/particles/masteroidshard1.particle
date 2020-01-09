@@ -1,0 +1,21 @@
+{
+  "kind" : "ivrpgmasteroidshard1",
+  "definition" : {
+    "type" : "textured",
+    "image" : "/monsters/rpgmonsters/masteroid/particles/masteroidshard1.png",
+    "size" : 1,
+    "destructionTime" : 1,
+    "destructionAction" : "fade",
+    "angularVelocity" : -5,
+    "position" : [0, 0],
+    "initialVelocity" : [0, 0],
+    "approach" : [0, 0],
+    "timeToLive" : 1,
+    "layer" : "middle",
+    "variance" : {
+      "rotation" : 360,
+      "angularVelocity" : 10,
+      "initialVelocity" : [5, 2]
+    }
+  }
+}

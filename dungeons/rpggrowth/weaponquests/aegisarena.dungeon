@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "name" : "ivrpgaegisarena",
+    "species" : "generic",
+    "rules" : [
+    ],
+    "anchor" : [ "ivrpgaegisarena" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 100,
+    "protected" : true
+  },
+
+  "parts" : [
+    {
+      "name" : "ivrpgaegisarena",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "aegisarena.json" ]
+    }
+  ]
+}

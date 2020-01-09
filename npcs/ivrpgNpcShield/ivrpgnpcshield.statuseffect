@@ -1,0 +1,26 @@
+{
+  "name" : "ivrpgNpcShield",
+  "effectConfig" : {
+  	"colors" : {
+  		"none" : "ffffff",
+  		"fire" : "9c0000",
+  		"electric" : "c296ff",
+  		"ice" : "b5f3ff",
+  		"poison" : "00751d",
+  		"nova" : "6d00b0",
+  		"holy" : "c4aa00",
+  		"demonic" : "000000",
+  		"shadow" : "555555",
+  		"cosmic" : "ffa3eb",
+  		"radioactive" : "a3ffa8"
+  	}
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgnpcshield.lua"
+  ],
+
+  "animationConfig" : "ivrpgnpcshield.animation"
+}

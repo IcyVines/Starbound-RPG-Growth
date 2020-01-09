@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "name" : "ivrpgsiphonarena",
+    "species" : "generic",
+    "rules" : [
+    ],
+    "anchor" : [ "ivrpgsiphonarena" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 100,
+    "protected" : true
+  },
+
+  "parts" : [
+    {
+      "name" : "ivrpgsiphonarena",
+      "rules" : [
+        [ "maxSpawnCount", [1] ]
+      ],
+      "def" : [ "tmx", "siphonarena.json" ]
+    }
+  ]
+}

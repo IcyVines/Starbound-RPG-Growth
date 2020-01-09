@@ -5,6 +5,7 @@ function init()
   self.id = effect.sourceEntity()
   self.cloakTimer = 0
   self.crouchTimer = 0
+  self.damageGivenUpdate = 5
   self.energy = status.resource("energy")
   self.cloakTime = config.getParameter("cloakTime", 5)
   self.crouchTime = config.getParameter("crouchTime", 2)
@@ -15,6 +16,8 @@ end
 
 
 function update(dt)
+
+  updateDamageGiven()
 
   if mcontroller.crouching() and self.cloakTimer == 0 then
     self.crouchTimer = self.crouchTimer + dt
@@ -30,10 +33,7 @@ function update(dt)
 
   if self.cloakTimer > 0 then
     if status.resource("energy") < self.energy then
-      status.removeEphemeralEffect("ivrpgcamouflage")
-      self.bleedTimer = self.bleedTime
-      status.addPersistentEffects("ivrpgcloak", {{stat = "ivrpgBleedChance", amount = self.bleedChance}})
-      self.cloakTimer = 0
+      bleedChance()
     end
     self.cloakTimer = math.max(self.cloakTimer - dt, 0)
   end
@@ -50,6 +50,25 @@ function update(dt)
   if world.entityCurrency(self.id, "spectype") ~= 4 or world.entityCurrency(self.id, "classtype") ~= 5 then
     effect.expire()
   end
+end
+
+function updateDamageGiven()
+  local notifications = nil
+  notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if notification.damageDealt > 0 and self.cloakTimer > 0 then
+        bleedChance()
+      end
+    end
+  end
+end
+
+function bleedChance()
+  status.removeEphemeralEffect("ivrpgcamouflage")
+  self.bleedTimer = self.bleedTime
+  status.addPersistentEffects("ivrpgcloak", {{stat = "ivrpgBleedChance", amount = self.bleedChance}})
+  self.cloakTimer = 0
 end
 
 function reset()

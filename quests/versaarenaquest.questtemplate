@@ -1,0 +1,43 @@
+{
+  "id" : "ivrpgversaquest",
+  "title" : "^green;Worthy Weaponry",
+  "text" : "I don't mean to interrupt your training regimen, but I have noticed the weapons you employ could be made more versatile. I have calculated that reverse engineering illegal weapons may yield much needed results. Go 'persuade' some captured Bandits and Space-Faring Robots and see if anything illegal turns up.^white;",
+  "completionText" : "These illegal ^orange;Gun Parts^reset; can be used to make an impressive gun. You'll need to create a specific mechanism, though, but I've already synthesized the blueprint. You can now craft Firing Mechanisms in the Furnace and the Versa Rifle in your Anvil.",
+  "rewards" : [
+    [
+      [ "experienceorb", 200],
+      [ "ivrpgfiringmechanism", 2]
+    ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/ivrpginstance.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "sail"
+    },
+
+    "followUp" : "ivrpgversaquest2",
+
+    "descriptions" : {
+      "enterInstance" : "Talk to ^orange;Nuru^reset; to travel to the ^orange;arena^reset;",
+      "findGoal" : "Win the arena battle",
+      "turnIn" : "Speak to ^orange;SAIL^reset;."
+    },
+
+    "giveBlueprints" : ["ivrpgfiringmechanism", "soldierversagun"],
+
+    "warpEntityUid" : "nuruoutpost",
+    "warpAction" : "instanceworld:ivrpgversaarena",
+    "warpDialog" : "/interface/confirmation/teleportconfirmation.config:ivrpgversaarena",
+
+    "goalTrigger" : "proximity",
+    "proximityRange" : 20,
+
+    "goalEntityUid" : "versaarenateleporter",
+    "indicateGoal" : false,
+    "trackGoalEntity" : false,
+
+    "turnInEntityUid" : "techstation"
+  }
+}

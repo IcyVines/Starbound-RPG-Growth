@@ -3,8 +3,10 @@ require "/scripts/rect.lua"
 require "/scripts/poly.lua"
 require "/scripts/status.lua"
 require "/scripts/vec2.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
   initCommonParameters()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.headingAngle = nil

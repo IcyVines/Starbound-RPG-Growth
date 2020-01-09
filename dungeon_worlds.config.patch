@@ -8,10 +8,10 @@
         "worldSize" : [2000, 2000],
         "dungeonBaseHeight" : 1200,
         "dungeonSurfaceHeight" : 1115,
-        "ambientLightLevel" : [200, 200, 200],
-        "ambientNoises" : "/sfx/environmental/garden_day.ogg",
+        "ambientLightLevel" : [80, 40, 60],
+        "ambientNoises" : "/sfx/environmental/space_loop1.ogg",
         "musicTrack" : "/music/i-was-the-sun.ogg",
-        "biome": "forest",
+        "biome": "midnight",
         "environmentStatusEffects" : ["dontstarve"]
       }
     },
@@ -25,10 +25,78 @@
         "worldSize" : [2000, 2000],
         "dungeonBaseHeight" : 1200,
         "dungeonSurfaceHeight" : 1115,
-        "ambientLightLevel" : [200, 200, 200],
-        "ambientNoises" : "/sfx/environmental/garden_day.ogg",
+        "ambientLightLevel" : [200, 100, 200],
+        "ambientNoises" : "/sfx/environmental/aviantomb.ogg",
         "musicTrack" : "/music/i-was-the-sun.ogg",
-        "biome": "forest",
+        "biome": "arctic",
+        "environmentStatusEffects" : ["dontstarve"]
+      }
+    },
+
+    { "op" : "add",
+    "path" : "/ivrpgaegisarena",
+    "value" : {
+        "primaryDungeon" : "ivrpgaegisarena",
+        "threatLevel" : 3,
+        "gravity" : 10,
+        "worldSize" : [2000, 2000],
+        "dungeonBaseHeight" : 1200,
+        "dungeonSurfaceHeight" : 1115,
+        "ambientLightLevel" : [100, 100, 200],
+        "ambientNoises" : "/sfx/environmental/moon_surface.ogg",
+        "musicTrack" : "/music/i-was-the-sun.ogg",
+        "biome": "asteroidfield",
+        "environmentStatusEffects" : ["dontstarve"]
+      }
+    },
+
+    { "op" : "add",
+    "path" : "/ivrpgspiraarena",
+    "value" : {
+        "primaryDungeon" : "ivrpgspiraarena",
+        "threatLevel" : 3,
+        "gravity" : 80,
+        "worldSize" : [2000, 2000],
+        "dungeonBaseHeight" : 1200,
+        "dungeonSurfaceHeight" : 1115,
+        "ambientLightLevel" : [200, 200, 100],
+        "ambientNoises" : "/sfx/environmental/jungle_day.ogg",
+        "musicTrack" : "/music/i-was-the-sun.ogg",
+        "biome": "jungle",
+        "environmentStatusEffects" : ["dontstarve"]
+      }
+    },
+
+    { "op" : "add",
+    "path" : "/ivrpgversaarena",
+    "value" : {
+        "primaryDungeon" : "ivrpgversaarena",
+        "threatLevel" : 3,
+        "gravity" : 80,
+        "worldSize" : [2000, 2000],
+        "dungeonBaseHeight" : 1200,
+        "dungeonSurfaceHeight" : 1115,
+        "ambientLightLevel" : [200, 150, 100],
+        "ambientNoises" : "/sfx/environmental/tundra_day.ogg",
+        "musicTrack" : "/music/i-was-the-sun.ogg",
+        "biome": "cyberspace",
+        "environmentStatusEffects" : ["dontstarve"]
+      }
+    },
+
+    { "op" : "add",
+    "path" : "/ivrpgsiphonarena",
+    "value" : {
+        "primaryDungeon" : "ivrpgsiphonarena",
+        "threatLevel" : 3,
+        "gravity" : 80,
+        "worldSize" : [2000, 2000],
+        "dungeonBaseHeight" : 1200,
+        "dungeonSurfaceHeight" : 1115,
+        "ambientLightLevel" : [100, 200, 100],
+        "ambientNoises" : "/sfx/environmental/snow_underground.ogg",
+        "musicTrack" : "/music/i-was-the-sun.ogg",
+        "biome": "alien",
         "environmentStatusEffects" : ["dontstarve"]
       }
     }

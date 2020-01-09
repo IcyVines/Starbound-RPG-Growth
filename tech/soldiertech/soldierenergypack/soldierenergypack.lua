@@ -1,6 +1,8 @@
 require "/scripts/keybinds.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
   self.jumpsLeft = config.getParameter("multiJumpCount")
   self.rechargeEffectTimer = 0
   self.dashTimer = 0

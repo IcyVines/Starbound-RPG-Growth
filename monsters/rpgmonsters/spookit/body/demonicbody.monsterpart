@@ -1,0 +1,10 @@
+{
+  "name" : "spookit",
+  "category" : "demonicspookit",
+  "type" : "body",
+
+  "frames" : {
+    "body" : "demonicspookit.png",
+    "bodynobright" : "demonicspookitnobright.png"
+  }
+}

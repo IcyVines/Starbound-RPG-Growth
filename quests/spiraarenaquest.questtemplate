@@ -1,0 +1,43 @@
+{
+  "id" : "ivrpgspiraquest",
+  "title" : "^green;Spectacular Spin",
+  "text" : "You plan to visit many places it seems, and I only realized now that your travels would be made easier if your mining tools were improved. I have begun working on a prototype that I need your help to build: if you can defeat ^green;monsters that can spin,^reset; I may be able to figure something out.^white;",
+  "completionText" : "There seems to be some strange spiraling energy embedded withing these creatures, or ^yellow;Spiral Energy^reset; for short. I've molded it into a more contained form that you can use for crafting. You can now craft Spiral Power in the Furnace and the Spira Drill in your Anvil.",
+  "rewards" : [
+    [
+      [ "experienceorb", 200],
+      [ "ivrpgspiralpower", 5]
+    ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/scripts/ivrpginstance.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "sail"
+    },
+
+    "followUp" : "ivrpgspiraquest2",
+
+    "descriptions" : {
+      "enterInstance" : "Talk to ^orange;Nuru^reset; to travel to the ^orange;arena^reset;",
+      "findGoal" : "Win the arena battle",
+      "turnIn" : "Speak to ^orange;SAIL^reset;."
+    },
+
+    "giveBlueprints" : ["ivrpgspiralpower", "explorerspiradrill"],
+
+    "warpEntityUid" : "nuruoutpost",
+    "warpAction" : "instanceworld:ivrpgspiraarena",
+    "warpDialog" : "/interface/confirmation/teleportconfirmation.config:ivrpgspiraarena",
+
+    "goalTrigger" : "proximity",
+    "proximityRange" : 20,
+
+    "goalEntityUid" : "spiraarenateleporter",
+    "indicateGoal" : false,
+    "trackGoalEntity" : false,
+
+    "turnInEntityUid" : "techstation"
+  }
+}

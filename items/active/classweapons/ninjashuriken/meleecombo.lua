@@ -100,6 +100,7 @@ function MeleeCombo:windup()
   local stance = self.stances["windup"..self.comboStep]
 
   self.weapon:setStance(stance)
+  self.weapon.aimAngle = self.weapon.aimAngle < 0 and math.max(-math.pi/6,self.weapon.aimAngle) or math.min(math.pi/6,self.weapon.aimAngle)
 
   self.edgeTriggerTimer = 0
 
@@ -128,6 +129,7 @@ function MeleeCombo:wait()
   local stance = self.stances["wait"..(self.comboStep - 1)]
 
   self.weapon:setStance(stance)
+  self.weapon.aimAngle = self.weapon.aimAngle < 0 and math.max(-math.pi/6,self.weapon.aimAngle) or math.min(math.pi/6,self.weapon.aimAngle)
 
   util.wait(stance.duration, function()
     if self:shouldActivate() then
@@ -147,6 +149,7 @@ function MeleeCombo:preslash()
 
   self.weapon:setStance(stance)
   self.weapon:updateAim()
+  self.weapon.aimAngle = self.weapon.aimAngle < 0 and math.max(-math.pi/6,self.weapon.aimAngle) or math.min(math.pi/6,self.weapon.aimAngle)
 
   util.wait(stance.duration)
 
@@ -159,6 +162,7 @@ function MeleeCombo:fire()
 
   self.weapon:setStance(stance)
   self.weapon:updateAim()
+  self.weapon.aimAngle = self.weapon.aimAngle < 0 and math.max(-math.pi/6,self.weapon.aimAngle) or math.min(math.pi/6,self.weapon.aimAngle)
 
   local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
   animator.setAnimationState("swoosh", animStateKey)
@@ -240,12 +244,13 @@ function MeleeCombo:fireProjectiles()
   projectileParams.damageKind = self.damageConfig.damageSourceKind
   projectileParams.timeToLive = 1 + (self.hitTimer / 20)
   projectileParams.subterfuge = status.statPositive("ivrpgucbloodseeker") and self.aetherPowerMultiplier
-  world.spawnProjectile(self.projectileType, vec2.add(mcontroller.position(), activeItem.handPosition()), activeItem.ownerEntityId(), {mcontroller.facingDirection(), 0}, false, projectileParams)
+  world.spawnProjectile(self.projectileType, vec2.add(mcontroller.position(), activeItem.handPosition()), activeItem.ownerEntityId(), {mcontroller.facingDirection(), self.weapon.aimAngle}, false, projectileParams)
 
 end
 
 function MeleeCombo:uninit()
   self.weapon:setDamage()
+  self.weapon.aimAngle = 0
 end
 
 function uninit()

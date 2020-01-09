@@ -2,14 +2,17 @@ require "/tech/distortionsphere/distortionsphere.lua"
 require "/scripts/rect.lua"
 require "/scripts/poly.lua"
 require "/scripts/status.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
   initCommonParameters()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
   self.ignorePlatforms = config.getParameter("ignorePlatforms")
   self.damageDisableTime = config.getParameter("damageDisableTime")
   self.damageDisableTimer = 0
   self.headingAngle = nil
+  self.justActivatedTimer = 0
 
   self.normalCollisionSet = {"Block", "Dynamic"}
   if self.ignorePlatforms then
@@ -134,7 +137,6 @@ function update(args)
 
         local moveDirection = vec2.rotate({moveX, 0}, self.headingAngle)
         mcontroller.controlApproachVelocityAlongAngle(math.atan(moveDirection[2], moveDirection[1]), self.ballSpeed, 2000)
-
         self.angularVelocity = -moveX * self.ballSpeed
       else
         --status.overConsumeResource("energy", 0)
@@ -177,7 +179,13 @@ function update(args)
     status.clearPersistentEffects("vanishsphere")
     animator.setAnimationState("ballState", "off")
     self.headingAngle = nil
+    self.justActivatedTimer = 0
     --status.overConsumeResource("energy", 0)
+  end
+
+  if self.justActivatedTimer > 0 then
+    if mcontroller.groundMovement() then mcontroller.controlApproachVelocity({0,0}, 4000) end
+    self.justActivatedTimer = self.justActivatedTimer - args.dt
   end
 
   updateTransformFade(args.dt)
@@ -241,6 +249,7 @@ function attemptActivation()
     local pos = transformPosition()
     if pos then
       mcontroller.setPosition(pos)
+      self.justActivatedTimer = 0.05
       activate()
     elseif self.ghost then
       activate()

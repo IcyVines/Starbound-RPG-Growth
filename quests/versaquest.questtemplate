@@ -1,5 +1,5 @@
 {
-  "id" : "ivrpgversaquest",
+  "id" : "ivrpgversaquest_old",
   "title" : "^green;Weapons Worth Wielding",
   "text" : "I don't mean to interrupt your training regimen, but I have noticed the weapons you employ could be made more versatile. I have calculated that reverse engineering illegal weapons may yield much needed results. Thus, you should go fight Bandits and Space-Faring Robots for these parts.^white;",
   "completionText" : "These illegal gun parts can be used to make an impressive gun. You'll need to create a specific mechanism, though, but I've already created one for you. Go build the Versa in an anvil once you make the second mechanism!",

@@ -1,7 +1,9 @@
 require "/scripts/vec2.lua"
 require "/scripts/keybinds.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
   self.active = false
   self.damageUpdate = 5
   self.regenSpeed = config.getParameter("regenSpeed", 0.1)

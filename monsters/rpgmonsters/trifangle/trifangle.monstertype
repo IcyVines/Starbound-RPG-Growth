@@ -1,0 +1,269 @@
+{
+  "type" : "ivrpg_shieldedtrifangle",
+  "shortdescription" : "Shielded Trifangle",
+  "description" : "An aggressive, pointy space machine. They do have individual personalities - they're just all uniquely angry.",
+
+  "categories" : [ "ivrpg_shieldedtrifangle" ],
+  "parts" : [ "body" ],
+
+  "animation" : "/monsters/space/trifangle/trifangle.animation",
+
+  "dropPools" : ["spaceRobot"],
+
+  "baseParameters" : {
+    "scripts" : [
+      "/monsters/monster.lua",
+      "/monsters/ivrpgmonster.lua"
+    ],
+
+    "ivrpgScaleViaJSON" : true,
+    "ivrpgSize" : 0.75,
+    "ivrpgRespawn" : true,
+    "ivrpgActions" : {
+      "tank" : {
+        "type" : "rapid",
+        "protection" : 30,
+        "segments" : 30,
+        "rechargeTime" : 10,
+        "breakTime" : 0.5
+      }
+    },
+    "aggressive" : true,
+    "animationCustom" : {
+      "animatedParts" : {
+        "stateTypes" : {
+          "armor" : {
+            "priority" : 4,
+            "default" : "on",
+            "states" : {
+              "on" : {
+                "frames" : 1
+              }
+            }
+          }
+        },
+        "parts" : {
+          "armor" : {
+            "properties" : {
+              "fullbright" : true,
+              "zLevel" : 15,
+              "offset" : [0,3]
+            },
+            "partStates" : {
+              "armor" : {
+                "on" : {
+                  "properties" : {
+                    "image" : "/monsters/rpgmonsters/tankinterface/<armorType>.png:<armor><barFlipDirectives>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "globalTagDefaults" : {
+        "armorType" : "rapid",
+        "armor" : "0",
+        "barFlipDirectives" : ""
+      },
+      "sounds" : {
+        "tankFull" : [ "/sfx/objects/ancientlightplatform_on.ogg" ],
+        "tankEmpty" : [ "/sfx/gun/mech_teslastream_fire1.ogg", "/sfx/gun/mech_teslastream_fire2.ogg", "/sfx/gun/mech_teslastream_fire3.ogg", "/sfx/gun/mech_teslastream_fire4.ogg", "/sfx/gun/mech_teslastream_fire5.ogg", "/sfx/gun/mech_teslastream_fire6.ogg" ]
+      }
+    },
+
+    "behavior" : "monster",
+    "deathBehavior" : "monster-death",
+
+    "facingMode" : "transformation",
+
+    "seeThroughLiquid" : false,
+    "behaviorConfig" : {
+      "damageOnTouch" : true,
+
+      "targetQueryRange" : 50,
+      "targetOnDamage" : true,
+      "keepTargetInSight" : true,
+      "keepTargetInRange" : 100,
+      "targetOutOfSightTime" : 10.0,
+
+      "hurtWaitForGround" : false,
+
+      "wanderActions" : [
+        {
+          "name" : "action-stop",
+          "parameters" : {
+            "stopForce" : 20
+          }
+        }
+      ],
+
+      "hostileActions" : [
+       {
+          "name" : "action-fire",
+          "cooldown" : 2,
+          "parameters" : {
+            "requireLineOfSight" : true,
+            "maximumRange" : 15,
+            "minimumRange" : 5,
+            "windupStopForce" : 0,
+            "faceTarget" : false,
+            "rotateToTarget" : true,
+            "windupState" : "firewindup",
+            "windupTime" : 1.0,
+
+            "projectileType" : "firelasershot",
+            "projectileParameters" : {
+              "speed" : 80,
+              "power" : 25
+            },
+            "fireOffset" : [0, 0],
+            "onGround" : false,
+            "fireState" : "",
+            "fireSound" : "fire",
+
+            "winddownStopForce" : 0,
+            "winddownState" : "firewinddown",
+            "winddownTime" : 0.2
+          }
+        },
+        {
+          "name" : "approach-burn",
+          "cooldown" : 0.5,
+          "parameters" : {
+            "burnTime" : 0.5,
+            "approachDistance" : 15,
+            "rotateGroup" : "body",
+            "burnState" : "burn",
+            "idleState" : "burnwinddown"
+          }
+        }
+      ],
+
+      "approachActions" : [
+      ],
+
+      "deathActions" : [
+        {
+          "name" : "action-projectile",
+          "parameters" : {
+            "projectileCount" : 1,
+            "projectileType" : "mechenergypickup",
+            "projectileParameters" : {},
+            "aimDirection" : [1, 0],
+            "inaccuracy" : 0,
+            "fireOffset" : [0, 0]
+          }
+        }
+      ]
+    },
+
+    "touchDamage" : {
+      "poly" : [ [0.625, 0.9375], [1.125, 0.4375], [1.125, -0.4375], [0.625, -0.9375], [-0.625, -0.9375], [-1.125, -0.4375], [-1.125, 0.4375], [-0.625, 0.9375] ],
+      "damage" : 10,
+
+      "teamType" : "enemy",
+      "damageSourceKind" : "impact",
+      "knockback" : 20,
+      "statusEffects" : [ ]
+    },
+
+    "metaBoundBox" : [-4, -4, 4, 4],
+    "scale" : 1.0,
+
+    "movementSettings" : {
+      "collisionPoly" : [ [0.625, 0.9375], [1.125, 0.4375], [1.125, -0.4375], [0.625, -0.9375], [-0.625, -0.9375], [-1.125, -0.4375], [-1.125, 0.4375], [-0.625, 0.9375] ],
+
+      "mass" : 2.0,
+      "walkSpeed" : 4,
+      "runSpeed" : 12,
+      "gravityEnabled" : false,
+
+      "bounceFactor" : 0.25,
+      "groundFriction" : 10,
+
+      "airFriction" : 0.2,
+      "airForce" : 60,
+      "flySpeed" : 10
+    },
+
+    "bodyMaterialKind" : "robotic",
+
+    "knockoutTime" : 0.3,
+    "knockoutAnimationStates" : {
+      "damage" : "stunned"
+    },
+    "deathParticles" : "deathPoof",
+    "knockoutEffect" : "",
+
+    "healthLevelFunction" : "spaceMonsterLevelHealthMultiplier",
+    "powerLevelFunction" : "spaceMonsterLevelPowerMultiplier",
+
+    "statusSettings" : {
+      "statusProperties" : {
+        "targetMaterialKind" : "robotic"
+      },
+
+      "appliesEnvironmentStatusEffects" : false,
+      "appliesWeatherStatusEffects" : true,
+      "minimumLiquidStatusEffectPercentage" : 0.1,
+
+      "primaryScriptSources" : [
+        "/stats/spacemonster_primary.lua"
+      ],
+      "primaryScriptDelta" : 5,
+
+      "stats" : {
+        "grit" : {
+          "baseValue" : 0.25
+        },
+        "knockbackStunTime" : {
+          "baseValue" : 0.3
+        },
+        "knockbackThreshold" : {
+          "baseValue" : 3
+        },
+        "maxHealth" : {
+          "baseValue" : 100
+        },
+        "protection" : {
+          "baseValue" : 100.0
+        },
+        "healthRegen" : {
+          "baseValue" : 0.0
+        },
+        "powerMultiplier" : {
+          "baseValue" : 1.0
+        },
+        "fireStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "iceStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "electricStatusImmunity" : {
+          "baseValue" : 1.0
+        },
+        "poisonStatusImmunity" : {
+          "baseValue" : 1.0
+        }
+      },
+
+      "resources" : {
+        "stunned" : {
+          "deltaValue" : -1.0,
+          "initialValue" : 0.0
+        },
+        "health" : {
+          "maxStat" : "maxHealth",
+          "deltaStat" : "healthRegen",
+          "defaultPercentage" : 100
+        }
+      }
+    },
+
+    "mouthOffset" : [0, 0],
+    "feetOffset" : [0, -8],
+    "capturable" : false
+  }
+}

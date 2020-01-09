@@ -1,6 +1,8 @@
 require "/scripts/keybinds.lua"
+require "/tech/ivrpgopenrpgui.lua"
 
 function init()
+  ivrpg_ttShortcut.initialize()
   self.multiJumpCount = config.getParameter("multiJumpCount")
   self.cost = config.getParameter("cost")
   self.maxSpeed = 25

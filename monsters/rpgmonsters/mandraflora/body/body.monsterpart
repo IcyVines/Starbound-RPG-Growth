@@ -1,0 +1,9 @@
+{
+  "name" : "mandraflora",
+  "category" : "ivrpg_giantmandraflora",
+  "type" : "body",
+
+  "frames" : {
+    "body" : "mandraflora.png"
+  }
+}
