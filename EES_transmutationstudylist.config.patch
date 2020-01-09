@@ -1,0 +1,11 @@
+[
+    // Hunt - T2
+    { "op": "add", "path": "/hunt/T2/ivrpgdyingstar", "value": true},
+    { "op": "add", "path": "/hunt/T2/ivrpgether", "value": true},
+    { "op": "add", "path": "/hunt/T2/ivrpggunparts", "value": true},
+    { "op": "add", "path": "/hunt/T2/ivrpgparasiticgoo", "value": true},
+    { "op": "add", "path": "/hunt/T2/ivrpgspiralenergy", "value": true},
+
+    // Mine - T2
+    { "op": "add", "path": "/mine/T2/ivrpgmeteoricmetal", "value": true}
+]
