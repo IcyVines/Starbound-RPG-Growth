@@ -1,0 +1,9 @@
+{
+  "name" : "parasprite",
+  "category" : "ivrpg_bloodparasprite",
+  "type" : "body",
+
+  "frames" : {
+    "body" : "parasprite.png"
+  }
+}

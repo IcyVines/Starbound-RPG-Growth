@@ -4,10 +4,24 @@ function rpg_initUniqueMonster()
   self.rpg_boundBox = poly.boundBox(self.collisionPoly)
   self.rpg_size = config.getParameter("ivrpgSize", 1)
   self.rpg_respawn = config.getParameter("ivrpgRespawn", false)
+  self.rpg_improvedStats = config.getParameter("ivrpgImprovedStats", {})
   self.animationCustom = root.assetJson("/monsters/rpgmonsters/animation.config")
+
+  if self.rpg_size ~= 1 and not status.statusProperty("ivrpg_monsterresized", false) then
+  	animator.scaleTransformationGroup("body", {self.rpg_size, self.rpg_size})
+  	status.setStatusProperty("ivrpg_monsterresized", true)
+  end
+
   if config.getParameter("rpgOwnerUuid") then
   	world.sendEntityMessage(config.getParameter("rpgOwnerUuid"), "addToOwnedMonsters", self.rpg_ID)
   end
+
+  message.setHandler("killedEnemy", function(_, _, enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind)
+  	if self.rpg_bloodStats then
+  		self.rpg_bloodStats.current = self.rpg_bloodStats.current + 1
+  		status.modifyResourcePercentage("health", 0.2)
+  	end
+  end)
 end
 
 function rpg_updateUniqueMonster(dt)
@@ -42,43 +56,23 @@ function rpg_updateUniqueMonster(dt)
 		  if not self.rpg_breedStats then
 		    self.rpg_breedStats = {breedTypes = v.breedTypes, breedCount = v.breedCount, current = 10, breedTime = v.breedTime, refillTime = v.refillTime or v.breedTime, timer = 0, size = 1}
 		  end
-		  self.rpg_improvedStats = v.improvedStats or {}
 		elseif k == "blood" then
 		  self.animationCustom.globalTagDefaults.armorType = k
-		elseif k == "shield" then
-
+		  if not self.rpg_bloodStats then
+		  	self.rpg_bloodStats = {killsRequired = v.killsRequired, bloodMultiplier = v.bloodMultiplier or 2, growTime = 5, timer = 0, bloodStage = config.getParameter("ivrpgBloodStage", 1), sizeGrowth = v.sizeGrowth or 1, growthStats = v.growthStats or {}, current = 0, tag = "0"}
+		  end
+		  monster.setDamageTeam({team = 42, type = "enemy"})
+		  local effectConfig = {}
+		  for _,stat in ipairs(self.rpg_bloodStats.growthStats) do
+		  	table.insert(effectConfig, {stat = stat, effectiveMultiplier = 1 + (self.rpg_bloodStats.bloodStage - 1) * self.rpg_bloodStats.bloodMultiplier / (self.rpg_bloodStats.timer == 0 and 1 or 2)})
+		  end
+		  status.setPersistentEffects("ivrpgBloodMonster", effectConfig)
+		  rpg_checkForHostiles()
 		end
   end
 
   if self.rpg_respawn then
-  	local newPoly = poly.scale(self.collisionPoly, self.rpg_size)
-    local movementSettings = config.getParameter("movementSettings", {})
-    local touchDamage = config.getParameter("touchDamage", {})
-    movementSettings.collisionPoly = newPoly
-    touchDamage.poly = newPoly
-    world.spawnMonster(monster.type(), mcontroller.position(), {
-      ivrpgSize = config.getParameter("ivrpgScaleViaJSON", false) and 1 or self.rpg_size,
-      ivrpgRespawn = false,
-      movementSettings = movementSettings,
-      touchDamage = touchDamage,
-      metaBoundBox = poly.boundBox(newPoly),
-      aggressive = config.getParameter("aggressive") or false,
-      animationCustom = rpg_createAnimation(config.getParameter("animationCustom") or {}),
-      level = monster.level(),
-      scale = config.getParameter("ivrpgScaleViaJSON", false) and self.rpg_size or 1,
-      damageTeam = entity.damageTeam().team,
-	    damageTeamType = entity.damageTeam().type,
-	    rpgOwnerUuid = config.getParameter("rpgOwnerUuid")
-    })
-    monster.setDropPool(nil)
-    monster.setDeathParticleBurst(nil)
-    monster.setDeathSound(nil)
-    self.deathBehavior = nil
-    self.shouldDie = true
-    --status.addEphemeralEffect("monsterdespawn")
-    status.setPrimaryDirectives(string.format("?multiply=ffffff%02x", 0))
-    status.setResource("health", 0)
-    mcontroller.translate({0, -100000})
+  	rpg_grow(self.rpg_size)
     return
   end
 
@@ -88,6 +82,25 @@ function rpg_updateUniqueMonster(dt)
   end
 
   status.setPersistentEffects("ivrpgUniqueMonster", self.rpg_improvedStats or {})
+
+  if self.rpg_bloodStats then
+  	local blood = math.min(math.ceil((self.rpg_bloodStats.current / self.rpg_bloodStats.killsRequired) * 10), 10)
+  	animator.setGlobalTag("armor", tostring(blood))
+  	animator.setGlobalTag("barFlipDirectives", mcontroller.facingDirection() == 1 and "" or "?flipx")
+  	if self.rpg_bloodStats.timer > 0 then
+  		animator.setGlobalTag("armor", "11")
+  		local scale = (self.rpg_bloodStats.timer - self.rpg_bloodStats.growTime) / -self.rpg_bloodStats.growTime
+  		animator.resetTransformationGroup("body")
+  		animator.scaleTransformationGroup("body", {self.rpg_size + self.rpg_bloodStats.sizeGrowth * scale, self.rpg_size + self.rpg_bloodStats.sizeGrowth * scale})
+  		self.rpg_bloodStats.timer = self.rpg_bloodStats.timer - dt
+  		if self.rpg_bloodStats.timer <= 0 then
+  			rpg_grow((self.rpg_size + self.rpg_bloodStats.sizeGrowth) / self.rpg_size, self.rpg_bloodStats.bloodStage + 1)
+  		end
+  	elseif self.rpg_bloodStats.current >= self.rpg_bloodStats.killsRequired then
+  		self.rpg_bloodStats.timer = self.rpg_bloodStats.growTime
+  		animator.playSound("grow")
+  	end
+  end
 
   if self.rpg_stripTimer and self.rpg_stripTimer > 0 then
     if self.rpg_breakTimer and self.rpg_breakTimer > 0 then
@@ -186,6 +199,18 @@ function rpg_updateUniqueAI(dt)
 	end 
 end
 
+function rpg_checkForHostiles()
+	if self.rpg_bloodStats.target and world.entityExists(self.rpg_bloodStats.target) then
+		monster.flyTo(world.entityPosition(self.rpg_bloodStats.target))
+		return
+	end
+	local targetEntities = enemyQuery(mcontroller.position(), 10, {withoutEntityId = self.rpg_ID, includedTypes = {"creature"}}, self.rpg_ID)
+	for _,id in ipairs(targetEntities) do
+		self.rpg_bloodStats.target = id
+		return
+	end
+end
+
 function rpg_weaken(weaken)
 	status.setPersistentEffects("ivrpgstripArmor", weaken and {
       	{stat="physicalResistance", amount=-0.5},
@@ -275,4 +300,40 @@ function rpg_breedActions(count)
 	for i=1,count do
 		world.spawnMonster(monsters[math.random(10)], vec2.add(mcontroller.position(), {math.random() * 4 - 2, math.random() * 4 - 2}), {ownerUuid = entity.uniqueId() or config.getParameter("ownerUuid"), rpgOwnerUuid = entity.id(), aggressive = true, level = monster.level(), damageTeam = entity.damageTeam().team, damageTeamType = entity.damageTeam().type, dropPools = {"experienceorbpoolsmall"}})
 	end
+end
+
+function rpg_grow(size, bloodStage)
+	local newPoly = poly.scale(self.collisionPoly, size)
+  local movementSettings = config.getParameter("movementSettings", {})
+  local touchDamage = config.getParameter("touchDamage", {})
+  movementSettings.collisionPoly = newPoly
+  touchDamage.poly = newPoly
+  if bloodStage then
+  	--local originalDamage = touchDamage.damage / (bloodStage - 1)
+  	--touchDamage.damage = touchDamage.damage + originalDamage
+  end
+  world.spawnMonster(monster.type(), mcontroller.position(), {
+    ivrpgSize = config.getParameter("ivrpgScaleViaJSON", false) and 1 or (bloodStage and (self.rpg_size + self.rpg_bloodStats.sizeGrowth) or size),
+    ivrpgRespawn = false,
+    movementSettings = movementSettings,
+    touchDamage = touchDamage,
+    metaBoundBox = poly.boundBox(newPoly),
+    aggressive = config.getParameter("aggressive") or false,
+    animationCustom = rpg_createAnimation(config.getParameter("animationCustom") or {}),
+    level = monster.level(),
+    scale = config.getParameter("ivrpgScaleViaJSON", false) and (bloodStage and (self.rpg_size + self.rpg_bloodStats.sizeGrowth) or size) or 1,
+    damageTeam = entity.damageTeam().team,
+    damageTeamType = entity.damageTeam().type,
+    rpgOwnerUuid = config.getParameter("rpgOwnerUuid"),
+    ivrpgBloodStage = bloodStage
+  })
+  monster.setDropPool(nil)
+  monster.setDeathParticleBurst(nil)
+  monster.setDeathSound(nil)
+   if bloodStage then world.spawnProjectile("ivrpg_bloodexplosion", mcontroller.position(), self.rpg_ID, {0,0}, false, {}) end
+  self.deathBehavior = nil
+  self.shouldDie = true
+  status.setPrimaryDirectives(string.format("?multiply=ffffff%02x", 0))
+  status.setResource("health", 0)
+  mcontroller.translate({0, -100000})
 end

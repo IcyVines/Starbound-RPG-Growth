@@ -1,0 +1,21 @@
+{
+  "projectileName" : "ivrpg_bloodexplosion",
+  "image" : "bloodexplosion.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 5,
+  "speed" : 0,
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "onlyHitTerrain" : true,
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/melee/ixodoomclaw_web1.ogg", "/sfx/melee/ixodoomclaw_web2.ogg" ]
+    }
+  ],
+  "damageKind" : "default"
+}

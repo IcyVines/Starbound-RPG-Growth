@@ -188,7 +188,12 @@ function updateDamageTaken(notification)
   local sourceKind = notification.sourceKind
   local sourceId = notification.sourceId
 
-  if world.isMonster(sourceId) or world.isNpc(sourceId) then return end
+  if world.isMonster(sourceId) or world.isNpc(sourceId) then
+    if world.entityHealth(self.rpg_ID)[1] and world.entityHealth(self.rpg_ID)[1] <= 0 then
+      enemyDeath(sourceId, damage, sourceKind, {})
+    end
+    return
+  end
 
   local class = world.entityCurrency(sourceId, "classtype")
   local affinity = world.entityCurrency(sourceId, "affinitytype")
@@ -256,7 +261,6 @@ function updateDamageTaken(notification)
 
   -- Bleed
   world.sendEntityMessage(sourceId, "bleedCheck", damage, sourceKind, self.rpg_ID)
-
 end
 
 function enemyDeath(sourceId, damage, sourceKind, onKillList)
