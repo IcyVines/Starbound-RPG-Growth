@@ -5,7 +5,16 @@ function rpg_initUniqueMonster()
   self.rpg_size = config.getParameter("ivrpgSize", 1)
   self.rpg_respawn = config.getParameter("ivrpgRespawn", false)
   self.rpg_improvedStats = config.getParameter("ivrpgImprovedStats", {})
+  self.rpg_shieldColors = root.assetJson("/monsters/rpgmonsters/shieldColors.config")
   self.animationCustom = root.assetJson("/monsters/rpgmonsters/animation.config")
+  self.rpg_elementBreaks = {
+    demonic = {holy = true},
+    holy = {demonic = true},
+    poison = {demonic = true, holy = true},
+    fire = {nova = true, ice = true},
+    electric = {nova = true},
+    ice = {nova = true, fire = true}
+  }
 
   if self.rpg_size ~= 1 and not status.statusProperty("ivrpg_monsterresized", false) then
   	animator.scaleTransformationGroup("body", {self.rpg_size, self.rpg_size})
@@ -49,7 +58,10 @@ function rpg_updateUniqueMonster(dt)
 		  if self.rpg_armor then
 		    rpg_stripArmor(self.rpg_armor.current == 0)
 		  else
-		    self.rpg_armor = {type = v.type, max = v.protection, current = v.protection, tag = 10, rechargeTime = v.rechargeTime, breakTime = v.breakTime, segments = v.segments or 10}
+		    self.rpg_armor = {type = v.type, max = v.protection, current = v.protection, tag = 10, rechargeTime = v.rechargeTime, breakTime = v.breakTime, segments = v.segments or 10, elementType = v.elementType or "none"}
+		  end
+		  if self.rpg_armor.type == "shield" then
+		  	animator.setGlobalTag("shieldDirectives", "?scalebilinear=0.5;1.0?setcolor=" .. self.rpg_shieldColors[self.rpg_armor.elementType])
 		  end
 		elseif k == "breed" then
 		  self.animationCustom.globalTagDefaults.armorType = k
@@ -110,7 +122,7 @@ function rpg_updateUniqueMonster(dt)
       local newArmor = math.floor((self.rpg_armor.rechargeTime - self.rpg_stripTimer) / self.rpg_armor.rechargeTime * self.rpg_armor.segments)
       if newArmor ~= self.rpg_armor.tag then
         self.rpg_armor.tag = newArmor
-        if newArmor % (self.rpg_armor.segments / 10) == 0 then animator.playSound("fillTank2") end
+        if newArmor % (self.rpg_armor.segments / 10) == 0 and self.rpg_armor.type ~= "shield" then animator.playSound("fillTank2") end
       end
       animator.setGlobalTag("armor", tostring(newArmor))
       self.rpg_stripTimer = self.rpg_stripTimer - dt
@@ -169,7 +181,8 @@ function rpg_updateUniqueMonster(dt)
   end
 
   monster.setDamageBar((self.rpg_armor and self.rpg_armor.current ~= 0) and "none" or "default")
-  if status.resource("health") <= 0 then
+  if status.resource("health") <= 0 and not self.rpg_spawnedTreaasure then
+    self.rpg_spawnedTreaasure = true
   	world.spawnTreasure(mcontroller.position(), "experienceorbpoolminiboss", monster.level())
   end
 
@@ -231,12 +244,16 @@ function rpg_damage(damage, sourceDamage, sourceKind, sourceId)
   if self.rpg_armor and self.rpg_armor.current ~= 0 then
     if self.rpg_armor.type == "burst" then
       local healthPercent = math.floor(sourceDamage / status.stat("maxHealth") * 100)
-      status.modifyResource("health", damage)
       self.rpg_armor.current = math.max(self.rpg_armor.current - math.max(healthPercent, 1), 0)
     elseif self.rpg_armor.type == "rapid" then
-      status.modifyResource("health", damage)
       self.rpg_armor.current = math.max(self.rpg_armor.current - 1, 0)
+    elseif self.rpg_armor.type == "shield" then
+    	local matchDamage = rpg_damageMatchesShield(sourceKind, self.rpg_armor.elementType)
+    	if matchDamage > 0 then
+      	self.rpg_armor.current = math.max(self.rpg_armor.current - sourceDamage * matchDamage, 0)
+      end
     end
+    status.modifyResource("health", damage)
     if self.rpg_armor.current == 0 then
     	if self.rpg_armor.type == "rapid" then
       	rpg_rapidSpark()
@@ -248,6 +265,16 @@ function rpg_damage(damage, sourceDamage, sourceKind, sourceId)
       animator.setGlobalTag("armor", self.rpg_armor.segments + 1)
     end
   end
+end
+
+function rpg_damageMatchesShield(sourceKind, elementType)
+	if string.find(sourceKind, elementType) then return 1 end
+	if self.rpg_elementBreaks[elementType] then
+		for element,_ in pairs(self.rpg_elementBreaks[elementType]) do
+			if string.find(sourceKind, element) then return 0.5 end
+		end
+	end
+	return 0
 end
 
 function rpg_rapidSpark()
@@ -278,13 +305,27 @@ function rpg_rapidSpark()
 end
 
 function rpg_stripArmor(strip)
-  monster.setDamageOnTouch(not strip)
-  status.setPersistentEffects("ivrpgstripArmor", {
-    {stat = "protection", effectiveMultiplier = strip and 0 or 1 },
-    {stat = "grit", amount = 1}
-  })
+	local effectConfig = {
+		{stat = "protection", effectiveMultiplier = strip and 0 or 1 },
+    {stat = "protection", amount = strip and 0 or 100 },
+    {stat = "statusImmunity", amount = strip and 0 or 1 },
+    {stat = "grit", amount = (self.rpg_armor.type == "shield" and 0 or 1)}
+  }
+	if self.rpg_armor.type ~= "shield" then
+  	monster.setDamageOnTouch(not strip)
+  else
+	  local elements = {"physical", "electric", "fire", "ice", "nova", "demonic", "holy", "poison", "shadow", "cosmic", "radioactive"}
+	  for _,element in ipairs(elements) do
+	    table.insert(effectConfig, {stat = element .. "StatusImmunity", amount = strip and 0 or 1})
+	    if self.rpg_armor.elementType ~= element and not self.rpg_elementBreaks[self.rpg_armor.elementType][element] then
+	      table.insert(effectConfig, {stat = element .. "Resistance", amount = strip and 0 or 3})
+	    end
+	  end
+	end
+
+  status.setPersistentEffects("ivrpgstripArmor", effectConfig)
   mcontroller.controlModifiers({
-    speedModifier = strip and 0 or 1
+    speedModifier = (strip and self.rpg_armor.type ~= "shield") and 0 or 1
   })
 end
 

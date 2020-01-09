@@ -18,6 +18,11 @@
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgplatinumbar" } },
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgcaineschest" } },
 
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgwtungstenwandfire" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgwtungstenwandice" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgwtungstenwandelectric" } },
+
+
 // Necessary Scripts
 { "op": "add", "path" : "/deploymentConfig/scripts/-", "value" : "/scripts/ivrpgstart.lua"},
 { "op" : "add", "path" : "/companionsConfig/scripts/-", "value" : "/scripts/ivrpgcompanions.lua"}

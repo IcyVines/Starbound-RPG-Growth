@@ -1,5 +1,15 @@
 function rpg_initUniqueNPC()
   script.setUpdateDelta(1)
+
+  self.rpg_elementBreaks = {
+    demonic = {holy = true},
+    holy = {demonic = true},
+    poison = {demonic = true, holy = true},
+    fire = {nova = true, ice = true},
+    electric = {nova = true},
+    ice = {nova = true, fire = true}
+  }
+
   message.setHandler("addToOwnedMonsters", function(_, _, id)
     table.insert(self.rpg_spawn.activeSummons, id)
   end)
@@ -65,7 +75,8 @@ function rpg_updateUniqueNPC(dt)
     status.setStatusProperty("ivrpg_npcShield_tag", tostring(math.ceil(self.rpg_armor.current / self.rpg_armor.max * self.rpg_armor.segments)))
   end
 
-  if status.resource("health") <= 0 then
+  if status.resource("health") <= 0 and not self.rpg_spawnedTreaasure then
+    self.rpg_spawnedTreaasure = true
   	world.spawnTreasure(mcontroller.position(), "experienceorbpoolminiboss", npc.level())
   end
 
@@ -131,8 +142,9 @@ function rpg_damage(damage, sourceDamage, sourceKind, sourceId)
     elseif self.rpg_armor.type == "rapid" then
       self.rpg_armor.current = math.max(self.rpg_armor.current - 1, 0)
     elseif self.rpg_armor.type == "shield" then
-      if string.find(sourceKind, self.rpg_armor.elementType) then
-        self.rpg_armor.current = math.max(self.rpg_armor.current - sourceDamage, 0)
+      local matchDamage = rpg_damageMatchesShield(sourceKind, self.rpg_armor.elementType)
+      if matchDamage > 0 then
+        self.rpg_armor.current = math.max(self.rpg_armor.current - sourceDamage * matchDamage, 0)
       end
     end
     status.modifyResource("health", damage)
@@ -149,17 +161,24 @@ function rpg_damage(damage, sourceDamage, sourceKind, sourceId)
   end
 end
 
+function rpg_damageMatchesShield(sourceKind, elementType)
+  if string.find(sourceKind, elementType) then return 1 end
+  if self.rpg_elementBreaks[elementType] then
+    for element,_ in pairs(self.rpg_elementBreaks[elementType]) do
+      if string.find(sourceKind, element) then return 0.5 end
+    end
+  end
+  return 0
+end
+
 function rpg_stripArmor(strip)
-  status.setPersistentEffects("ivrpgstripArmor", {
-    {stat = "poisonStatusImmunity", amount = strip and 0 or 1 },
-    {stat = "fireStatusImmunity", amount = strip and 0 or 1 },
-    {stat = "electricStatusImmunity", amount = strip and 0 or 1 },
-    {stat = "iceStatusImmunity", amount = strip and 0 or 1 },
-    {stat = "holyStatusImmunity", amount = strip and 0 or 1 },
-    {stat = "demonicStatusImmunity", amount = strip and 0 or 1 },
-    {stat = "novaStatusImmunity", amount = strip and 0 or 1 },
-    {stat = "cosmicStatusImmunity", amount = strip and 0 or 1 },
-    {stat = "radioactiveStatusImmunity", amount = strip and 0 or 1 },
-    {stat = "shadowStatusImmunity", amount = strip and 0 or 1 }
-  })
+  local elements = {"physical", "electric", "fire", "ice", "nova", "demonic", "holy", "poison", "shadow", "cosmic", "radioactive"}
+  local effectConfig = {{stat = "protection", amount = strip and 0 or 100 }}
+  for _,element in ipairs(elements) do
+    table.insert(effectConfig, {stat = element .. "StatusImmunity", amount = strip and 0 or 1})
+    if self.rpg_armor.elementType ~= element and not self.rpg_elementBreaks[self.rpg_armor.elementType][element] then
+      table.insert(effectConfig, {stat = element .. "Resistance", amount = strip and 0 or 3})
+    end
+  end
+  status.setPersistentEffects("ivrpgstripArmor", effectConfig)
 end

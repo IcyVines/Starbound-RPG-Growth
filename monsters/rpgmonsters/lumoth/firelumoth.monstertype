@@ -1,14 +1,14 @@
 {
-  "type" : "ivrpg_bloodparasprite",
-  "shortdescription" : "Hungry Parasprite",
-  "description" : "A braindead bioweapon created by irresponsible human scientists.",
+  "type" : "ivrpg_firelumoth",
+  "shortdescription" : "Fire Lumoth",
+  "description" : "The flame only stays lit while the Lumoth flaps its wings.",
 
-  "categories" : [ "ivrpg_bloodparasprite" ],
-  "parts" : [ "body" ],
+  "categories" : [ "firelumoth" ],
+  "parts" : [ "body", "bodylit" ],
 
-  "animation" : "/monsters/flyers/parasprite/parasprite.animation",
+  "animation" : "/monsters/ghosts/lumoth/firelumoth.animation",
 
-  "dropPools" : [ "paraspriteHunting" ],
+  "dropPools" : [ "lumothHunting" ],
 
   "baseParameters" : {
     "scripts" : [
@@ -21,30 +21,63 @@
     "ivrpgRespawn" : true,
     "ivrpgSize" : 2,
     "ivrpgImprovedStats" : [
-      {"stat" : "maxHealth", "effectiveMultiplier" : 2},
-      {"stat" : "powerMultiplier", "effectiveMultiplier" : 2},
-      {"stat" : "protection", "amount" : 30},
-      {"stat" : "physicalResistance", "amount" : 0.67},
-      {"stat" : "poisonResistance", "amount" : 0.9},
-      {"stat" : "poisonStatusImmunity", "amount" : 1}
+      {"stat" : "maxHealth", "effectiveMultiplier" : 2}
     ],
     "ivrpgActions" : {
-      "blood" : {
-        "killsRequired" : 5,
-        "bloodMultiplier" : 0.5,
-        "sizeGrowth" : 0.5,
-        "growthStats" : ["maxHealth", "powerMultiplier", "protection"]
+      "tank" : {
+        "type" : "shield",
+        "elementType" : "fire",
+        "segments" : 100,
+        "breakTime" : 5,
+        "rechargeTime" : 5,
+        "protection" : 100
       }
     },
     "aggressive" : true,
     "animationCustom" : {
+      "globalTagDefaults" : {
+        "armor" : "100",
+        "barFlipDirectives" : "",
+        "armorType" : "shield",
+        "shieldDirectives" : "?scalebilinear=0.5;1.0"
+      },
+      "animatedParts" : {
+        "stateTypes" : {
+          "armor" : {
+            "priority" : 4,
+            "default" : "on",
+            "states" : {
+              "on" : {
+                "frames" : 1
+              }
+            }
+          }
+        },
+        "parts" : {
+          "armor" : {
+            "properties" : {
+              "fullbright" : true,
+              "zLevel" : 15,
+              "offset" : [0,2]
+            },
+            "partStates" : {
+              "armor" : {
+                "on" : {
+                  "properties" : {
+                    "image" : "/monsters/rpgmonsters/tankinterface/<armorType>.png:<armor><barFlipDirectives><shieldDirectives>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "sounds" : {
-        "tankFull" : [ "/sfx/objects/plantorb_open.ogg", "/sfx/objects/plantorb_close.ogg" ],
-        "tankEmpty" : [ "/sfx/objects/plant_break1.ogg", "/sfx/objects/plant_break2.ogg", "/sfx/objects/plant_break3.ogg", "/sfx/objects/plant_break4.ogg", "/sfx/objects/plant_break5.ogg", "/sfx/objects/plant_break6.ogg" ]
+        "tankFull" : [ "/sfx/tech/tech_dashftl.ogg" ],
+        "tankEmpty" : [ "/sfx/tech/tech_blink2.ogg" ]
       }
     },
 
-    "seeThroughLiquid" : false,
     "behaviorConfig" : {
       "damageOnTouch" : true,
 
@@ -58,37 +91,17 @@
 
       "fleeActions" : [ ],
 
-      "hostileActions" : [
-        {
-          "name" : "action-charge",
-          "cooldown" : 0.4,
-          "parameters" : {
-            "maximumRange" : 50,
-            "windupStopForce" : 50,
-            "windupState" : "",
-            "windupTime" : 0.0,
-
-            "onGround" : false,
-            "wallCollide" : false,
-            "aimAtTarget" : true,
-            "inaccuracy" : 0.5,
-            "airDirection" : [1, 0],
-            "chargeState" : "charge",
-            "chargeTime" : 0.1,
-            "chargeSpeed" : 30,
-            "chargeControlForce" : 250,
-            "wallCrashSound" : "",
-
-            "winddownTime" : 0.0,
-            "winddownStopForce" : 0,
-            "winddownState" : ""
-          }
-        }
-      ],
+      "hostileActions" : [ ],
 
       "periodicActions" : [ ],
 
       "approachActions" : [
+        {
+          "name" : "approach-swarm",
+          "parameters" : {
+            "usePathfinding" : false
+          }
+        }
       ],
 
       "followActions" : [
@@ -100,19 +113,21 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "flyState" : "idle"
+            "usePathfinding" : false
           }
         }
       ],
 
       "wanderActions" : [
         {
+          "name" : "emerge-fly"
+        },
+        {
           "name" : "wander-fly",
           "parameters" : {
             "wanderTime" : [2,4],
-            "groundDistance" : 4,
-            "ceilingDistance" : 4,
-            "flyState" : "idle",
+            "groundDistance" : 8,
+            "ceilingDistance" : 8,
             "xVelocity" : 8,
             "yVelocity" : 12
           }
@@ -125,34 +140,33 @@
     },
 
     "touchDamage" : {
-      "poly" : [ [0.375, 1.125], [1.125, 0.375], [1.125, -0.375], [0.375, -1.125], [-0.375, -1.125], [-1.125, -0.375], [-1.125, 0.375], [-0.375, 1.125] ],
-      "damage" : 8,
+      "poly" : [ [0.125, 1.125], [0.5, 0.75], [0.5, -0.75], [0.125, -1.125], [-0.125, -1.125], [-0.5, -0.75], [-0.5, 0.75], [-0.125, 1.125] ],
+      "damage" : 10,
 
       "teamType" : "enemy",
-      "damageSourceKind" : "lash",
+      "damageSourceKind" : "firehammer",
       "knockback" : 20,
-      "statusEffects" : [ ]
+      "statusEffects" : [ "burning" ]
     },
 
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
     "movementSettings" : {
-      "collisionPoly" : [ [0.375, 1.125], [1.125, 0.375], [1.125, -0.375], [0.375, -1.125], [-0.375, -1.125], [-1.125, -0.375], [-1.125, 0.375], [-0.375, 1.125] ],
+      "collisionEnabled" : false,
+      "collisionPoly" : [ [0.125, 1.125], [0.5, 0.75], [0.5, -0.75], [0.125, -1.125], [-0.125, -1.125], [-0.5, -0.75], [-0.5, 0.75], [-0.125, 1.125] ],
 
-      "bounceFactor" : 0.75,
-
-      "mass" : 1.0,
+      "mass" : 0.5,
       "walkSpeed" : 4,
       "runSpeed" : 12,
       "gravityEnabled" : false,
 
-      "airFriction" : 5.0,
-      "airForce" : 40,
-      "flySpeed" : 15
+      "airFriction" : 2,
+      "airForce" : 200,
+      "flySpeed" : 10
     },
 
-    "bodyMaterialKind" : "organic",
+    "bodyMaterialKind" : "robotic",
 
     "knockoutTime" : 0.3,
     "knockoutAnimationStates" : {
@@ -163,7 +177,7 @@
 
     "statusSettings" : {
       "statusProperties" : {
-        "targetMaterialKind" : "organic"
+        "targetMaterialKind" : "robotic"
       },
 
       "appliesEnvironmentStatusEffects" : false,
@@ -183,13 +197,10 @@
           "baseValue" : 9
         },
         "maxHealth" : {
-          "baseValue" : 50
+          "baseValue" : 70
         },
         "protection" : {
           "baseValue" : 0.0
-        },
-        "grit" : {
-          "baseValue" : 0.25
         },
         "healthRegen" : {
           "baseValue" : 0.0
@@ -201,10 +212,10 @@
           "baseValue" : 0.0
         },
         "fireResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : 0.5
         },
         "fireStatusImmunity" : {
-          "baseValue" : 0.0
+          "baseValue" : 1.0
         },
         "iceResistance" : {
           "baseValue" : 0.0
@@ -213,7 +224,7 @@
           "baseValue" : 0.0
         },
         "electricResistance" : {
-          "baseValue" : 0.0
+          "baseValue" : -0.5
         },
         "electricStatusImmunity" : {
           "baseValue" : 0.0
@@ -241,6 +252,9 @@
 
     "mouthOffset" : [0, 0],
     "feetOffset" : [0, -8],
-    "capturable" : false
+    "capturable" : true,
+    "captureHealthFraction" : 0.5,
+    "nametagColor" : [64, 200, 255],
+    "captureCollectables" : { "raremonsters" : "firelumoth" }
   }
 }

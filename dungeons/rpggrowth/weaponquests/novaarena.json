@@ -2135,7 +2135,7 @@
                  "name":"",
                  "properties":
                     {
-                     "parameters":"{ \"spawner\" : { \"monsterTypes\" : [\"wisper\", \"narfin\", \"petricub\",\"lumoth\"], \"monsterLevel\" : [3, 3], \"monsterParams\" : { \"dropPools\" : [\"experienceorbpoolsmall\"], \"aggressive\" : true, \"behaviorConfig\" : { \"keepTargetInSight\" : false, \"keepTargetInRange\" : 200, \"targetQueryRange\" : 50 } }, \"position\" : [0, 34], \"positionVariance\" : [0, 0], \"frequency\" : [4,4], \"stock\" : 8, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
+                     "parameters":"{ \"spawner\" : { \"monsterTypes\" : [\"wisper\", \"narfin\", \"petricub\",\"lumoth\"], \"monsterLevel\" : [3, 3], \"monsterParams\" : { \"dropPools\" : [\"experienceorbpoolsmall\"], \"aggressive\" : true, \"behaviorConfig\" : { \"keepTargetInSight\" : false, \"keepTargetInRange\" : 200, \"targetQueryRange\" : 50 } }, \"position\" : [0, 34], \"positionVariance\" : [0, 0], \"frequency\" : [4,4], \"stock\" : 0, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
                     },
                  "rotation":0,
                  "type":"",
@@ -2178,7 +2178,7 @@
                  "name":"",
                  "properties":
                     {
-                     "monster":"lumoth",
+                     "monster":"ivrpg_electricpetricub",
                      "parameters":"{}"
                     },
                  "rotation":0,
@@ -2194,7 +2194,7 @@
                  "name":"",
                  "properties":
                     {
-                     "monster":"petricub",
+                     "monster":"ivrpg_firelumoth",
                      "parameters":"{}"
                     },
                  "rotation":0,
@@ -2210,7 +2210,7 @@
                  "name":"",
                  "properties":
                     {
-                     "monster":"narfin",
+                     "monster":"ivrpg_icenarfin",
                      "parameters":"{}"
                     },
                  "rotation":0,
@@ -2237,29 +2237,13 @@
                  "y": 816
                 },
                 {
-                 "height":8,
-                 "id":422,
-                 "name":"",
-                 "properties":
-                    {
-                     "monster":"ivrpg_holywisper",
-                     "parameters":"{}"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":8,
-                 "x":2720,
-                 "y": 816
-                },
-                {
                  "gid":1686,
                  "height":40,
                  "id":420,
                  "name":"",
                  "properties":
                     {
-                     "parameters":"{ \"spawner\" : { \"monsterTypes\" : [\"wisper\", \"narfin\", \"petricub\",\"lumoth\"], \"monsterLevel\" : [3, 3], \"monsterParams\" : { \"dropPools\" : [\"experienceorbpoolsmall\"], \"aggressive\" : true, \"behaviorConfig\" : { \"keepTargetInSight\" : false, \"keepTargetInRange\" : 200, \"targetQueryRange\" : 50 } }, \"position\" : [0, 34], \"positionVariance\" : [0, 0], \"frequency\" : [4,4], \"stock\" : 8, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
+                     "parameters":"{ \"spawner\" : { \"monsterTypes\" : [\"wisper\", \"narfin\", \"petricub\",\"lumoth\"], \"monsterLevel\" : [3, 3], \"monsterParams\" : { \"dropPools\" : [\"experienceorbpoolsmall\"], \"aggressive\" : true, \"behaviorConfig\" : { \"keepTargetInSight\" : false, \"keepTargetInRange\" : 200, \"targetQueryRange\" : 50 } }, \"position\" : [0, 34], \"positionVariance\" : [0, 0], \"frequency\" : [4,4], \"stock\" : 0, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
                     },
                  "rotation":0,
                  "type":"",

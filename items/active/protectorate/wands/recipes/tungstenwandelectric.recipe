@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "tungstenbar", "count" : 3 },
+    { "item" : "copperbar", "count" : 1 },
+    { "item" : "staticcell", "count" : 1 }
+  ],
+	"output" : { "item" : "ivrpgwtungstenwandelectric", "count" : 1 },
+	"groups" : [ "craftinganvil", "weapons", "all" ]
+}

@@ -1,0 +1,105 @@
+{
+  "itemName" : "ivrpgwtungstenwandfire",
+  "price" : 480,
+  "level" : 2,
+  "maxStack" : 1,
+  "rarity" : "Common",
+  "description" : "A Tungsten Wand with a Scorched Core.",
+  "shortdescription" : "Tungsten Wand - Scorched",
+  "tooltipKind" : "staff",
+  "category" : "wand",
+  "itemTags" : ["weapon","magic","wand"],
+
+  "inventoryIcon" : [
+    {"image" : "/items/active/weapons/wand/generated/stone/fire.png"},
+    {"image" : "tungstenwandcrown.png"},
+    {"image" : "tungstenwandhandle.png"}
+  ],
+
+  "animation" : "/items/active/weapons/wand/generated/generatedwand.animation",
+  "animationParts" : {
+    "handle" : "tungstenwandhandle.png",
+    "stone" : "/items/active/weapons/wand/generated/stone/fire.png",
+    "crown" : "tungstenwandcrown.png",
+    "chargeEffect" : "/items/active/weapons/wand/generated/glow/fire.png"
+  },
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbility" : {
+    "type" : "kluexshooter",
+    "name" : "Magic Pillar",
+    "scripts" : ["/items/active/protectorate/wands/magicpillar.lua"],
+    "class" : "ControlProjectile",
+
+    "maxCastRange" : 20,
+    "energyPerShot" : 15,
+    "projectileSpawnInterval" : 0.8,
+    "pillarDamageRepeatTimeout" : 0.4,
+    "projectileType" : "ivrpgpillarplasma",
+    "projectileParameters" : {
+      "baseDamage" : 3
+    },
+    "projectileDelayEach" : 0.25
+  },
+
+  "stances" : {
+    "idle" : {
+      "weaponOffset" : [0, 1.0],
+
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "weaponOffset" : [0, 1.5],
+
+      "duration" : 1.0,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "weaponOffset" : [0, 1.5],
+
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "weaponOffset" : [0, 1.5],
+
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : false,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "weaponOffset" : [0, 1.0],
+
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
