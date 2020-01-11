@@ -294,8 +294,10 @@ function rpg_rapidSpark()
 		      directionTo,
 		      false,
 		      {
+		      	speed = 100,
 		        power = boltPower,
-		        damageTeam = {type = "friendly"}
+		        damageTeam = {type = "friendly"},
+		        timeToLive = 10
 		      }
 		    )
 	      animator.playSound("bolt")

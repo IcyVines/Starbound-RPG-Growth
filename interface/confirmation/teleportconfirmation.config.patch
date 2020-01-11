@@ -6,7 +6,7 @@
       "icon" : "/interface/warping/icon.png",
       "title" : "Teleport Confirmation",
       "subtitle" : "Arena Battle : Ether Experiement",
-      "message" : "\n\nAre you sure you're ready to enter the arena? It seems demonic ghosts are haunting it!",
+      "message" : "\n\nAre you sure you're ready to enter the arena? It seems demonic ghosts are haunting it, and your abilities might not work the way they normally do. Maybe kill them first?",
       "okCaption" : "Ready",
       "cancelCaption" : "Not now",
       "images" : {
@@ -28,7 +28,7 @@
       "icon" : "/interface/warping/icon.png",
       "title" : "Teleport Confirmation",
       "subtitle" : "Arena Battle : Shattered Stars",
-      "message" : "\n\nAre you sure you're ready to enter the arena? Energy-radiating monsters are swarming inside!",
+      "message" : "\n\nAre you sure you're ready to enter the arena? Energy-radiating monsters are swarming inside! You'll probably want to bring weapons that can deal Fire, Electric, Ice, or Nova Damage.",
       "okCaption" : "Ready",
       "cancelCaption" : "Not now",
       "images" : {
@@ -50,7 +50,7 @@
       "icon" : "/interface/warping/icon.png",
       "title" : "Teleport Confirmation",
       "subtitle" : "Arena Battle : Meteoric Metal",
-      "message" : "\n\nAre you sure you're ready to enter the arena? Only the strongest warriors can take down the Hardened Masteroid inside!",
+      "message" : "\n\nAre you sure you're ready to enter the arena? You'll probably need high-damage weapons like Broadswords or Hammers to take down the Hardened Masteroid within!",
       "okCaption" : "Ready",
       "cancelCaption" : "Not now",
       "images" : {
@@ -72,7 +72,7 @@
       "icon" : "/interface/warping/icon.png",
       "title" : "Teleport Confirmation",
       "subtitle" : "Arena Battle : Worthy Weaponry",
-      "message" : "\n\nAre you sure you're ready to enter the arena? Ruthless outlaws, utilizing haywire robots, are ready to ambush you!",
+      "message" : "\n\nAre you sure you're ready to enter the arena? Ruthless outlaws, utilizing haywire robots, are ready to ambush you! You might want a high-pellet count weapon, like a Shotgun or Machine Pistol.",
       "okCaption" : "Ready",
       "cancelCaption" : "Not now",
       "images" : {
@@ -94,7 +94,7 @@
       "icon" : "/interface/warping/icon.png",
       "title" : "Teleport Confirmation",
       "subtitle" : "Arena Battle : Spectacular Spin",
-      "message" : "\n\nAre you sure you're ready to enter the arena? You might get flattened by rolling monsssters!",
+      "message" : "\n\nAre you sure you're ready to enter the arena? You might get flattened by rolling monsssters! You might want to take down the big guy as soon as you can.",
       "okCaption" : "Ready",
       "cancelCaption" : "Not now",
       "images" : {
@@ -116,7 +116,7 @@
       "icon" : "/interface/warping/icon.png",
       "title" : "Teleport Confirmation",
       "subtitle" : "Arena Battle : Parasitic Poison",
-      "message" : "\n\nAre you sure you're ready to enter the arena? Dangerousss, toxic creatures await you.",
+      "message" : "\n\nAre you sure you're ready to enter the arena? Dangerousss, toxic creatures await you. If you aren't careful, that dangerous red Parasprite might grow too strong to kill.",
       "okCaption" : "Ready",
       "cancelCaption" : "Not now",
       "images" : {
