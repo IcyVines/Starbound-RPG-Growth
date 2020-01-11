@@ -21,6 +21,7 @@ function init()
   self.spec = player.currency("spectype")
   self.specList = root.assetJson("/specList.config")
   self.loreList = root.assetJson("/loreList.config")
+  self.monsterLoreList = root.assetJson("/monsterLoreUnlocks.config")
   self.professionTimer = 0
   self.specsAvailable = {}
   self.damageUpdate = 5
@@ -436,13 +437,13 @@ function updateSpecs(dt)
   end
   -- End Pioneer
 
-  local crew = status.statusProperty("ivrpg-crew", {})
-  for k,v in pairs(crew) do
-    --sb.logInfo(tostring(v.name) .. ": " .. sb.printJson(v))
-  end
   -- Captain
   if self.class == 6 and type(status.statusProperty("ivrpgsucaptain", 0)) == "number" then
-    if player.worldId() ~= player.ownShipWorldId() then return end
+    local crew = status.statusProperty("ivrpg-crew", {})
+    if hashLength(crew) > 0 then
+      status.setStatusProperty("ivrpgsucaptain", hashLength(crew))
+    end
+    --[[if player.worldId() ~= player.ownShipWorldId() then return end
     local crewIds = world.npcQuery(world.entityPosition(self.rpgPlayerID), 60)
     local crewSize = 0
     if crewIds then
@@ -452,7 +453,7 @@ function updateSpecs(dt)
         end
       end
     end
-    status.setStatusProperty("ivrpgsucaptain", crewSize)
+    status.setStatusProperty("ivrpgsucaptain", crewSize)]]
   end
   -- End Captain
 
@@ -480,6 +481,19 @@ function killedEnemy(enemyType, level, position, facing, statusEffects, damage, 
   killingEffects(level, position, statusEffects, damageType, enemyType)
   dropUpgradeChips(level, position, enemyType)
   specChecks(enemyType, level, position, facing, statusEffects, damage, damageType)
+  unlockMonsterLore(enemyType)
+end
+
+function unlockMonsterLore(enemyType)
+  local unlocks = status.statusProperty("ivrpgloreunlocks", {})
+  local unlock = self.monsterLoreList[enemyType]
+  if unlock then
+    local enemyTypeCondensed = enemyType:gsub("ivrpg_","",1)
+    if unlocks[enemyTypeCondensed] then return end
+    unlocks[enemyTypeCondensed] = true
+    sendRadioMessage("Lore Unlocked: Mechanics - Enemies - " .. unlock)
+    status.setStatusProperty("ivrpgloreunlocks", unlocks)
+  end
 end
 
 function specChecks(enemyType, level, position, facing, statusEffects, damage, damageType)

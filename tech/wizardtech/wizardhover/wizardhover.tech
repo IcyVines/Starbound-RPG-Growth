@@ -4,7 +4,7 @@
 
   "rarity" : "Rare",
   "icon" : "/tech/wizardtech/wizardhover/wizardhover.png",
-  "description" : "Cost: 75eps.",
+  "description" : "Cost: 50eps.",
   "shortDescription" : "Controlled Hover",
   "chipCost" : 0,
 
@@ -13,5 +13,5 @@
   "animator" : "wizardhover.animation",
 
   "hoverControlForce" : 400.0,
-  "energyUsagePerSecond" : 75.0
+  "energyUsagePerSecond" : 50.0
 }

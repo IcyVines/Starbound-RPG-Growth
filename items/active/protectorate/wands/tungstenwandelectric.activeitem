@@ -35,9 +35,9 @@
     "class" : "ControlProjectile",
 
     "maxCastRange" : 20,
-    "energyPerShot" : 15,
+    "energyPerShot" : 20,
     "projectileSpawnInterval" : 0.8,
-    "pillarDamageRepeatTimeout" : 0.4,
+    "pillarDamageRepeatTimeout" : 0.8,
     "projectileType" : "ivrpgpillarplasma",
     "projectileParameters" : {
       "baseDamage" : 3

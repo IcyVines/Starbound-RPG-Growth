@@ -2178,7 +2178,7 @@
                  "name":"",
                  "properties":
                     {
-                     "monster":"ivrpg_bloodparasprite",
+                     "monster":"ivrpg_hungryparasprite",
                      "parameters":"{}"
                     },
                  "rotation":0,

@@ -18,19 +18,25 @@ function ControlProjectile:charged()
 
     status.setResourcePercentage("energyRegenBlock", 1.0)
 
+    self.lastPosition = mcontroller.position()
+
     self.projectileSpawnTimer = math.max(0, self.projectileSpawnTimer - self.dt)
-    if self.projectileSpawnTimer == 0 and targetValid and status.overConsumeResource("energy", self.energyPerShot) then
-      self:createProjectiles()
-      if #storage.projectiles > 1 then
-        local delayTime = self.projectileDelayEach
-        local projectileId = storage.projectiles[1]
-        if world.entityExists(projectileId) then
-          world.sendEntityMessage(projectileId, "trigger", delayTime, activeItem.ownerAimPosition())
-          delayTime = delayTime + self.projectileDelayEach
+    if self.projectileSpawnTimer == 0 and targetValid then
+      local energyCon = vec2.mag(world.distance(self.lastPosition, activeItem.ownerAimPosition()))
+      if status.overConsumeResource("energy", self.energyPerShot * util.clamp(energyCon / 10, 0.5, 3)) then
+        self:createProjectiles()
+        self.lastPosition = activeItem.ownerAimPosition()
+        if #storage.projectiles > 1 then
+          local delayTime = self.projectileDelayEach
+          local projectileId = storage.projectiles[1]
+          if world.entityExists(projectileId) then
+            world.sendEntityMessage(projectileId, "trigger", delayTime, activeItem.ownerAimPosition())
+            delayTime = delayTime + self.projectileDelayEach
+          end
+          table.remove(storage.projectiles, 1)
         end
-        table.remove(storage.projectiles, 1)
+        self.projectileSpawnTimer = self.projectileSpawnInterval
       end
-      self.projectileSpawnTimer = self.projectileSpawnInterval
     end
 
     coroutine.yield()
@@ -49,6 +55,8 @@ function ControlProjectile:discharge()
     local delayTime = self.projectileDelayEach
     for _, projectileId in pairs(storage.projectiles) do
       if world.entityExists(projectileId) then
+        local energyCon = vec2.mag(world.distance(self.lastPosition, activeItem.ownerAimPosition()))
+        status.overConsumeResource("energy", self.energyPerShot * util.clamp(energyCon / 10, 0.5, 3))
         world.sendEntityMessage(projectileId, "trigger", delayTime, activeItem.ownerAimPosition())
         delayTime = delayTime + self.projectileDelayEach
       end

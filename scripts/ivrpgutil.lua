@@ -170,3 +170,12 @@ function pairsByKeys(t, f)
   end
   return iter
 end
+
+function hashLength(map)
+  if type(map) ~= "table" then return false end
+  local count = 0
+  for k,v in pairs(map) do
+    count = count + 1
+  end
+  return count
+end

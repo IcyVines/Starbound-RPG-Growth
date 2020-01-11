@@ -188,14 +188,14 @@ function ControlProjectile:createProjectiles()
   local pParams = copy(self.projectileParameters)
   --pParams.statusEffects = {"wizardnovastatus"}
   self.projectileType = self.name == "wizardnovastaff3" and "primednovaexplosion" or self.projectileType
-  self.powerMod = self.elementalType == "ice" and 20 or (self.elementalType == "fire" and -20 or 0)
+  self.powerMod = self.elementalType == "ice" and 0.5 or (self.elementalType == "fire" and -0.5 or 0)
   if self.quicksilver then
     self.quicksilverPower = 50
   else
     self.quicksilverPower = 0
   end
-  pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") * self.bonusDamage / pCount + self.powerMod - self.quicksilverPower
-  pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+  pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") * self.bonusDamage / pCount - self.quicksilverPower
+  pParams.powerMultiplier = activeItem.ownerPowerMultiplier() + self.powerMod
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(

@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgcorporeal",
+  "effectConfig" : {
+
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgcorporeal.lua"
+  ],
+
+  "label" : "Corporeal",
+  "icon" : "ivrpgcorporeal.png"
+}
