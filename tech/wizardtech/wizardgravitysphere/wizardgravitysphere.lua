@@ -161,13 +161,7 @@ function update(args)
 
   self.lastPosition = mcontroller.position()
 
-  if status.statPositive("ivrpguchoversphere") and self.active and args.moves["jump"] and status.overConsumeResource("energy", self.hoverCost * args.dt) then
-    hover(args)
-    self.hovering = true
-  else
-    animator.setAnimationState("hover", "off")
-    self.hovering = false
-  end
+  hover(args)
 
 end
 
@@ -215,14 +209,33 @@ function findGroundDirection()
 end
 
 function hover(args)
-  animator.setAnimationState("hover", "on")
-  local agility = status.statusProperty("ivrpgagility", 0)
-  local maxSpeed = math.min(agility^0.6 + 25, 45)
-  local velocity = world.distance(tech.aimPosition(), mcontroller.position())
-  --local direction = mcontroller.facingDirection()
-  velocity = vec2.mag(velocity) > maxSpeed and vec2.withAngle(vec2.angle(velocity), maxSpeed) or velocity
-  velocity = {velocity[1],velocity[2] / 1.5}
+  local energyUsagePerSecond = config.getParameter("energyUsagePerSecond")
+  local hDirection = args.moves["left"] and -1 or (args.moves["right"] and 1 or 0)
+  local vDirection = args.moves["down"] and -1 or (args.moves["up"] and 1 or 0)
   local hoverControlForce = config.getParameter("hoverControlForce")
-  mcontroller.controlApproachVelocity(velocity, hoverControlForce)
-  self.angularVelocity = -mcontroller.xVelocity()/2
+  local energyOff = (vDirection == -1 and hDirection == 0) and 4 or (vDirection == -1 and 3 or ((hDirection == 0 and vDirection == 0) and 2 or (vDirection == 1 and 0.5 or 1)))
+
+  if status.statPositive("ivrpguchoversphere") and self.active and args.moves["jump"] and status.overConsumeResource("energy", energyUsagePerSecond * args.dt / energyOff) then
+    animator.setAnimationState("hover", "on")
+
+    local agility = status.statusProperty("ivrpgagility", 0)
+    local intelligence = status.statusProperty("ivrpgintelligence", 0)
+    local maxSpeed = math.min(agility^0.9 + intelligence^0.7 + 10, 50)
+    local angle = (hDirection ~= 0 or vDirection ~= 0) and vec2.angle({hDirection, vDirection}) or false
+    local velocity = angle and vec2.withAngle(angle, maxSpeed) or {0,0}
+    mcontroller.controlApproachVelocity(velocity, hoverControlForce)
+    if vDirection == 0 then mcontroller.controlApproachYVelocity(0, hoverControlForce) end
+    self.angularVelocity = -mcontroller.xVelocity()/2
+
+    if not self.active then
+      animator.playSound("activate")
+    end
+    self.hovering = true
+  else
+    if self.hovering then
+      mcontroller.controlApproachVelocity({0,0}, hoverControlForce * 10)
+    end
+    self.hovering = false
+    animator.setAnimationState("hover", "off")
+  end
 end

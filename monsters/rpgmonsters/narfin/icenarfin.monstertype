@@ -1,6 +1,6 @@
 {
-  "type" : "ivrpg_icenarfin",
-  "shortdescription" : "Ice Narfin",
+  "type" : "ivrpg_gianticenarfin",
+  "shortdescription" : "Giant Ice Narfin",
   "description" : "It uses its horns to attract a partner. The light shows during mating season are spectacular.",
 
   "categories" : [ "icenarfin" ],

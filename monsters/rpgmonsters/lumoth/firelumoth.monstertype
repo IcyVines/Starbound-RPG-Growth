@@ -1,6 +1,6 @@
 {
-  "type" : "ivrpg_firelumoth",
-  "shortdescription" : "Fire Lumoth",
+  "type" : "ivrpg_giantfirelumoth",
+  "shortdescription" : "Giant Fire Lumoth",
   "description" : "The flame only stays lit while the Lumoth flaps its wings.",
 
   "categories" : [ "firelumoth" ],

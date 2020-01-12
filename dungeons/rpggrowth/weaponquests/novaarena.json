@@ -2178,7 +2178,7 @@
                  "name":"",
                  "properties":
                     {
-                     "monster":"ivrpg_electricpetricub",
+                     "monster":"ivrpg_giantelectricpetricub",
                      "parameters":"{}"
                     },
                  "rotation":0,
@@ -2194,7 +2194,7 @@
                  "name":"",
                  "properties":
                     {
-                     "monster":"ivrpg_firelumoth",
+                     "monster":"ivrpg_giantfirelumoth",
                      "parameters":"{}"
                     },
                  "rotation":0,
@@ -2210,7 +2210,7 @@
                  "name":"",
                  "properties":
                     {
-                     "monster":"ivrpg_icenarfin",
+                     "monster":"ivrpg_gianticenarfin",
                      "parameters":"{}"
                     },
                  "rotation":0,

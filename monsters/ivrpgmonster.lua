@@ -49,13 +49,16 @@ function rpg_spawnNpc(parameters)
   end
 
   local itemParameters = {}
-
   if parameters.items then
     local npcJson = root.assetJson("/npcs/"..parameters.type..".npctype")
     itemParameters = npcJson.items
     itemParameters.override[1][2][1].primary = parameters.items.primary
   end
   --sb.logInfo(sb.printJson(itemParameters))
+
+  if type(parameters.species) == "table" then
+    parameters.species = parameters.species[math.random(1, #parameters.species)]
+  end
 
   local entityId = world.spawnNpc(mcontroller.position(), parameters.species, parameters.type, monster.level(), generateSeed(), {scriptConfig = newParameters, items = itemParameters})
 

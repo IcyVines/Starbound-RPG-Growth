@@ -252,17 +252,20 @@ function updateProfessionEffects(dt)
         break
       end
     end
-    local targetIds = item and world.monsterQuery(entity.position(), 20)
-    if targetIds then
-      for _,id in ipairs(targetIds) do
-        if world.entityDamageTeam(id).type == "friendly" then
-          local health = world.entityHealth(id)
-          if health and health[1]/health[2] < 0.5 then
-            player.consumeItem({item.item, 1})
-            status.addEphemeralEffect("ivrpgtamerstatuscooldown", 30)
-            world.sendEntityMessage(id, "applyStatusEffect", "ivrpgtamermonsterregen" .. item.statusName, 15, self.rpgPlayerID)
-            break
-          end
+    local petIds = item and status.statusProperty("ivrpg-pets", {})
+    if petIds then
+      for id,v in pairs(petIds) do
+        local health = false
+        local maxHealth = false
+        if v.status then
+          health = v.status.resources and v.status.resources.health
+          maxHealth = v.status.resourceMax and v.status.resourceMax.health
+        end
+        if health and maxHealth and health/maxHealth < 0.5 then
+          player.consumeItem({item.item, 1})
+          status.addEphemeralEffect("ivrpgtamerstatuscooldown", 30)
+          world.sendEntityMessage(id, "applyStatusEffect", "ivrpgtamermonsterregen" .. item.statusName, 15, self.rpgPlayerID)
+          break
         end
       end
     end
@@ -443,17 +446,6 @@ function updateSpecs(dt)
     if hashLength(crew) > 0 then
       status.setStatusProperty("ivrpgsucaptain", hashLength(crew))
     end
-    --[[if player.worldId() ~= player.ownShipWorldId() then return end
-    local crewIds = world.npcQuery(world.entityPosition(self.rpgPlayerID), 60)
-    local crewSize = 0
-    if crewIds then
-      for _,id in ipairs(crewIds) do
-        if string.find(world.entityTypeName(id), "crewmember") then
-          crewSize = crewSize + 1
-        end
-      end
-    end
-    status.setStatusProperty("ivrpgsucaptain", crewSize)]]
   end
   -- End Captain
 

@@ -1,6 +1,6 @@
 {
-  "type" : "ivrpg_electricpetricub",
-  "shortdescription" : "Electric Petricub",
+  "type" : "ivrpg_giantelectricpetricub",
+  "shortdescription" : "Giant Electric Petricub",
   "description" : "It stares at you expectantly with its beady eyes.",
 
   "categories" : [ "electricpetricub" ],
