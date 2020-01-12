@@ -1189,23 +1189,16 @@ function updateClassWeapon()
     widget.setVisible("classlayout.weaponreqlvl", true)
     widget.setVisible("classlayout.unlockquestbutton", false)
     widget.setVisible("classlayout.classweapontext", false)
-  elseif player.hasQuest(self.classInfo.weapon.quest) then
-    widget.setText("classlayout.classweapontext", "Complete the first quest for more information.")
+  else
+    widget.setText("classlayout.classweapontext", "Complete the first quest for more information. If you have abandoned the quest, please reuse the button below.")
     widget.setVisible("classlayout.classweapontext", true)
     widget.setVisible("classlayout.weaponreqlvl", false)
-    widget.setVisible("classlayout.unlockquestbutton", false)
-  else
     widget.setVisible("classlayout.unlockquestbutton", true)
-    widget.setVisible("classlayout.weaponreqlvl", false)
-    widget.setVisible("classlayout.classweapontext", false)
   end
 end
 
 function unlockQuest()
   player.startQuest(self.classInfo.weapon.quest)
-  widget.setVisible("classlayout.unlockquestbutton", false)
-  widget.setText("classlayout.classweapontext", "Complete the first quest for more information.")
-  widget.setVisible("classlayout.classweapontext", true)
 end
 
 function chooseAffinity()
