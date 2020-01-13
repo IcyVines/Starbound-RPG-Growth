@@ -32,14 +32,14 @@ function setHandlers()
   end)
 
   message.setHandler("ivrpgDevourState", function(_, _, player, position, direction)
-    if self.devourState and self.devourState[3] ~= player then
+    if self.rpg_devourState and self.rpg_devourState[3] ~= player then
       return
     end
 
-    if self.devourState then
-      self.devourState = false
+    if self.rpg_devourState then
+      self.rpg_devourState = false
     else
-      self.devourState = {position, direction, player}
+      self.rpg_devourState = {position, direction, player}
     end
   end)
 
@@ -49,24 +49,24 @@ function setHandlers()
 end
 
 function loadVariables(enemyType, level)
-  self.rpg_ID = entity.id()
-  self.enemyType = enemyType
-  self.level = level
-  self.baseParameters = mcontroller.baseParameters()
-  self.devourState = false
-  self.devourTimer = 0
+  self.rpg_Id = entity.id()
+  self.rpg_enemyType = enemyType
+  self.rpg_level = level
+  self.rpg_baseParameters = mcontroller.baseParameters()
+  self.rpg_devourState = false
+  self.rpg_devourTimer = 0
   performStealthFunctionOverrides()
 end
 
 function updateEffects(dt)
   if status.statPositive("ivrpgundead") then
     --status.modifyResourcePercentage("health", 1)
-    if self.isMonster then monster.setDamageTeam({type = "friendly", team = 1})
+    if self.rpg_isMonster then monster.setDamageTeam({type = "friendly", team = 1})
     else npc.setDamageTeam({type = "friendly", team = 1}) end
   end
 
-  if self.devourState then
-    self.devourTimer = 0.3
+  if self.rpg_devourState then
+    self.rpg_devourTimer = 0.3
     status.setPersistentEffects("ivrpgdevourstate", {
       {stat = "invulnerable", amount = 1}
     })
@@ -77,21 +77,21 @@ function updateEffects(dt)
     mcontroller.controlParameters({
       gravityEnabled = false
     })
-    mcontroller.setXPosition(self.devourState[1][1] + self.devourState[2])
+    mcontroller.setXPosition(self.rpg_devourState[1][1] + self.rpg_devourState[2])
     local boundBox = mcontroller.boundBox()
     local yOffset = math.abs((boundBox[2] + boundBox[4] / 2))
-    mcontroller.setYPosition(self.devourState[1][2] + 1 + yOffset)
+    mcontroller.setYPosition(self.rpg_devourState[1][2] + 1 + yOffset)
   else
     status.clearPersistentEffects("ivrpgdevourstate")
   end
 
-  if self.devourTimer > 0 then
+  if self.rpg_devourTimer > 0 then
     status.addEphemeralEffect("soldierstun", dt)
-    self.devourTimer = math.max(self.devourTimer - dt, 0)
+    self.rpg_devourTimer = math.max(self.rpg_devourTimer - dt, 0)
   end
 
   local shouldStealth = status.statPositive("invisible") or status.statPositive("ivrpgstealth")
-  world.setProperty("entity["..tostring(self.rpg_ID).."]Stealthed", shouldStealth)
+  world.setProperty("entity["..tostring(self.rpg_Id).."]Stealthed", shouldStealth)
 
   --[[ Movement Parameters!!!
     flySpeed : 8.0
@@ -147,7 +147,7 @@ function updateEffects(dt)
 
   if rallyLevel > 0 then
     mcontroller.controlParameters({
-      airFriction = self.baseParameters.airFriction * (1 - math.min(rallyLevel/150, 0.25))
+      airFriction = self.rpg_baseParameters.airFriction * (1 - math.min(rallyLevel/150, 0.25))
     })
     mcontroller.controlModifiers({
       groundMovementModifier = 1 + math.min(rallyLevel/100, 1),
@@ -155,7 +155,7 @@ function updateEffects(dt)
       speedModifier = 1 + math.min(rallyLevel/200, 1)
     })
     local targetIds = world.entityQuery(mcontroller.position(), 20, {
-      withoutEntityId = self.rpg_ID,
+      withoutEntityId = self.rpg_Id,
       includedTypes = {"creature"}
     })
     for _,id in ipairs(targetIds) do
@@ -172,15 +172,15 @@ function updateEffects(dt)
 end
 
 function loadConfigs()
-  self.classList = root.assetJson("/ivrpgClassList.config")
-  self.affinityList = root.assetJson("/ivrpgAffinityList.config")
-  self.specList = root.assetJson("/ivrpgSpecList.config")
+  self.rpg_classList = root.assetJson("/ivrpgClassList.config")
+  self.rpg_affinityList = root.assetJson("/ivrpgAffinityList.config")
+  self.rpg_specList = root.assetJson("/ivrpgSpecList.config")
 end
 
 function loadInfo(class, affinity, spec)
-  self.classInfo = (class and class > 0) and root.assetJson("/classes/" .. self.classList[class] .. ".config") or nil
-  self.affinityInfo = (affinity and affinity > 0) and root.assetJson("/affinities/" .. self.affinityList[affinity] .. ".config") or nil
-  self.specInfo = ((class and class > 0) and (spec and spec > 0)) and root.assetJson("/specs/" .. self.specList[class][spec].name .. ".config") or nil
+  self.rpg_classInfo = (class and class > 0) and root.assetJson("/classes/" .. self.rpg_classList[class] .. ".config") or nil
+  self.rpg_affinityInfo = (affinity and affinity > 0) and root.assetJson("/affinities/" .. self.rpg_affinityList[affinity] .. ".config") or nil
+  self.rpg_specInfo = ((class and class > 0) and (spec and spec > 0)) and root.assetJson("/specs/" .. self.rpg_specList[class][spec].name .. ".config") or nil
 end
 
 function updateDamageTaken(notification)
@@ -189,7 +189,7 @@ function updateDamageTaken(notification)
   local sourceId = notification.sourceId
 
   if world.isMonster(sourceId) or world.isNpc(sourceId) then
-    if world.entityHealth(self.rpg_ID)[1] and world.entityHealth(self.rpg_ID)[1] <= 0 then
+    if world.entityHealth(self.rpg_Id)[1] and world.entityHealth(self.rpg_Id)[1] <= 0 then
       enemyDeath(sourceId, damage, sourceKind, {})
     end
     return
@@ -204,8 +204,8 @@ function updateDamageTaken(notification)
   local onHitList = {}
   local onKillList = {}
 
-  if self.classInfo then
-    for k,v in ipairs(self.classInfo.passive) do
+  if self.rpg_classInfo then
+    for k,v in ipairs(self.rpg_classInfo.passive) do
       if v.type == "onHit" then
         for x,y in ipairs(v.apply) do
           table.insert(onHitList, y)
@@ -218,8 +218,8 @@ function updateDamageTaken(notification)
     end
   end
 
-  if self.specInfo then
-    for k,v in ipairs(self.specInfo.ability.apply) do
+  if self.rpg_specInfo then
+    for k,v in ipairs(self.rpg_specInfo.ability.apply) do
       if v.type == "onHit" then
         for x,y in ipairs(v.apply) do
           table.insert(onHitList, y)
@@ -232,8 +232,8 @@ function updateDamageTaken(notification)
     end
   end
 
-  if self.affinityInfo then
-    for k,v in ipairs(self.affinityInfo.passive) do
+  if self.rpg_affinityInfo then
+    for k,v in ipairs(self.rpg_affinityInfo.passive) do
       if v.type == "onHit" then
         for x,y in ipairs(v.apply) do
           table.insert(onHitList, y)
@@ -249,18 +249,18 @@ function updateDamageTaken(notification)
   -- Class + Affinity Effects
   for k,v in ipairs(onHitList) do
     if v.chance > math.random() then
-      local lengthModifier = v.basedOnDamagePercent and (1.0*damage/world.entityHealth(self.rpg_ID)[2]) or 1
+      local lengthModifier = v.basedOnDamagePercent and (1.0*damage/world.entityHealth(self.rpg_Id)[2]) or 1
       lengthModifier = lengthModifier < 0.04 and 0.04 or lengthModifier
       status.addEphemeralEffect(v.effect, v.length * lengthModifier, sourceId)
     end
   end
 
-  if world.entityHealth(self.rpg_ID)[1] and world.entityHealth(self.rpg_ID)[1] <= 0 then
+  if world.entityHealth(self.rpg_Id)[1] and world.entityHealth(self.rpg_Id)[1] <= 0 then
     enemyDeath(sourceId, damage, sourceKind, onKillList)
   end
 
   -- Bleed
-  world.sendEntityMessage(sourceId, "bleedCheck", damage, sourceKind, self.rpg_ID)
+  world.sendEntityMessage(sourceId, "bleedCheck", damage, sourceKind, self.rpg_Id)
 end
 
 function enemyDeath(sourceId, damage, sourceKind, onKillList)
@@ -283,7 +283,7 @@ function enemyDeath(sourceId, damage, sourceKind, onKillList)
     if v.targetList then
       ignore = true
       for x,y in ipairs(v.targetList) do
-        if string.find(self.enemyType, y) then
+        if string.find(self.rpg_enemyType, y) then
           ignore = false
           break
         end
@@ -291,7 +291,7 @@ function enemyDeath(sourceId, damage, sourceKind, onKillList)
     end
 
     -- Don't cause effect when gender is specified and target is either not an NPC or not gendered correctly...
-    if v.gender and not (world.isNpc(self.rpg_ID) and npc.gender() == v.gender) then
+    if v.gender and not (world.isNpc(self.rpg_Id) and npc.gender() == v.gender) then
       ignore = true
     end
 
@@ -304,7 +304,7 @@ function enemyDeath(sourceId, damage, sourceKind, onKillList)
         -- Searches nearby entities centering from focalId's position, and not including the target monster.
           local targetIds = world.entityQuery(world.entityPosition(focalId), range, {
             includedTypes = {"creature"},
-            withoutEntityId = self.rpg_ID
+            withoutEntityId = self.rpg_Id
           })
           -- Loops through found IDs. If we want to give to friendlies, we make sure we aren't giving to non-friendly PvP players. If we ant to give to enemies, we want to give to non-friendly PvP players.
           for _,id in ipairs(targetIds) do
@@ -328,7 +328,7 @@ function enemyDeath(sourceId, damage, sourceKind, onKillList)
               local amount = drop.amount or 0
               local levelMultiplier = drop.levelMultiplier or 1
               if drop.levelCurve then
-                amount = amount * (drop.levelCurve == "exponential" and (self.level^levelMultiplier or self.level*levelMultiplier))
+                amount = amount * (drop.levelCurve == "exponential" and (self.rpg_level^levelMultiplier or self.rpg_level*levelMultiplier))
               end
               if drop.randomFactor and #drop.randomFactor == 2 then
                 amount = math.floor(amount * math.random(drop.randomFactor[1], drop.randomFactor[2]) / 100 + 0.5)
@@ -347,7 +347,7 @@ function enemyDeath(sourceId, damage, sourceKind, onKillList)
 end
 
 function sendDyingMessage(sourceId, damage, sourceKind)
-  world.sendEntityMessage(sourceId, "killedEnemy", self.enemyType, self.level, mcontroller.position(), mcontroller.facingDirection(), status.activeUniqueStatusEffectSummary(), damage, sourceKind)
+  world.sendEntityMessage(sourceId, "killedEnemy", self.rpg_enemyType, self.rpg_level, mcontroller.position(), mcontroller.facingDirection(), status.activeUniqueStatusEffectSummary(), damage, sourceKind)
 end
 
 function hasEphemeralStat(statusEffects, stat)

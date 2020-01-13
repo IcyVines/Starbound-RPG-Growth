@@ -13,7 +13,7 @@ function init()
   monsterOldInit()
   loadConfigs()
   loadVariables(monster.type(), monster.level())
-  self.isMonster = true
+  self.rpg_isMonster = true
   self.rpg_Actions = config.getParameter("ivrpgActions", false)
   if self.rpg_Actions then rpg_initUniqueMonster() end
   setHandlers()

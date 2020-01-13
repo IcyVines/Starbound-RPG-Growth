@@ -9,28 +9,22 @@ function init()
   origInit()
   script.setUpdateDelta(14)
   performStealthFunctionOverrides()
-  self.removed = true
-  self.xp = player.currency("experienceorb")
-  self.money = player.currency("money")
-  self.moneyDifferential = 0
+  self.rpg_xp = player.currency("experienceorb")
+  self.rpg_money = player.currency("money")
+  self.rpg_moneyDifferential = 0
   checkMaxXP()
-  self.xpScalingTimer = 0
-  self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
-  self.rpgPlayerID = entity.id()
-  self.class = player.currency("classtype")
-  self.spec = player.currency("spectype")
-  self.specList = root.assetJson("/ivrpgSpecList.config")
-  self.loreList = root.assetJson("/ivrpgLoreList.config")
-  self.monsterLoreList = root.assetJson("/monsterLoreUnlocks.config")
-  self.professionTimer = 0
-  self.specsAvailable = {}
-  self.damageUpdate = 5
+  self.rpg_xpScalingTimer = 0
+  self.rpg_xpScaling = status.statusProperty("ivrpgintelligence", 0)
+  self.rpg_playerId = entity.id()
+  self.rpg_class = player.currency("classtype")
+  self.rpg_spec = player.currency("spectype")
+  self.rpg_specList = root.assetJson("/ivrpgSpecList.config")
+  self.rpg_loreList = root.assetJson("/ivrpgLoreList.config")
+  self.rpg_monsterLoreList = root.assetJson("/monsterLoreUnlocks.config")
+  self.rpg_professionTimer = 0
+  self.rpg_specsAvailable = {}
+  self.rpg_damageUpdate = 5
   updateSpecsAvailable()
-  
-  -- Treasure Test
-  --[[local testTreasure = root.assetJson("/scripts/testTreasure.config")
-  sb.logInfo(sb.printJson(testTreasure))
-  ]]
 
   local data = root.assetJson("/ivrpgVersion.config")
   local oldVersion = status.statusProperty("ivrpgversion", "0")
@@ -44,20 +38,20 @@ function init()
   end
 
   if not status.statusProperty("ivrpgskillpoints") then
-    status.setStatusProperty("ivrpgskillpoints", math.min(math.floor(math.sqrt(self.xp/100)), 50))
+    status.setStatusProperty("ivrpgskillpoints", math.min(math.floor(math.sqrt(self.rpg_xp/100)), 50))
   end
   
   sb.logInfo("Chaika's RPG Growth: Version %s", data.version)
-  self.upgradeData = root.assetJson("/ivrpgUpMonDic.config")
+  self.rpg_upgradeData = root.assetJson("/ivrpgUpMonDic.config")
 
   message.setHandler("addXP", function(_, _, amount)
     addXP(amount)
   end)
 
   message.setHandler("setXPScaling", function(_, _, intelligence)
-    if intelligence > self.xpScaling then
-      self.xpScalingTimer = 8
-      self.xpScaling = intelligence
+    if intelligence > self.rpg_xpScaling then
+      self.rpg_xpScalingTimer = 8
+      self.rpg_xpScaling = intelligence
     end
   end)
 
@@ -111,7 +105,7 @@ end
 function update(dt)
   origUpdate(dt)
 
-  self.players = world.playerQuery(entity.position(), 60, {withoutEntityId = self.rpgPlayerID}) or {}
+  self.rpg_players = world.playerQuery(entity.position(), 60, {withoutEntityId = self.rpg_playerId}) or {}
 
   updateXPScalingShare()
   updateXPPulse(dt)
@@ -130,16 +124,16 @@ function update(dt)
   status.clearPersistentEffects("ivrpgchallenge3progress")
   status.clearPersistentEffects("ivrpgchallenge2progress")
 
-  if self.class ~= player.currency("classtype") then
+  if self.rpg_class ~= player.currency("classtype") then
     if player.currency("spectype") > 0 then
-      rescrollSpecialization(self.class, player.currency("spectype"))
+      rescrollSpecialization(self.rpg_class, player.currency("spectype"))
     end
-    self.class = player.currency("classtype")
+    self.rpg_class = player.currency("classtype")
     updateSpecsAvailable()
   end
 
-  if self.spec ~= player.currency("spectype") then
-    self.spec = player.currency("spectype")
+  if self.rpg_spec ~= player.currency("spectype") then
+    self.rpg_spec = player.currency("spectype")
   end
 
   updateProfessionEffects(dt)
@@ -150,10 +144,10 @@ function update(dt)
   updateSpecs(dt)
   unlockSpecs()
 
-  if self.xpScalingTimer > 0 then
-    self.xpScalingTimer = math.max(self.xpScalingTimer - dt, 0)
+  if self.rpg_xpScalingTimer > 0 then
+    self.rpg_xpScalingTimer = math.max(self.rpg_xpScalingTimer - dt, 0)
   else
-    self.xpScaling = status.statusProperty("ivrpgintelligence", 0)
+    self.rpg_xpScaling = status.statusProperty("ivrpgintelligence", 0)
   end
 end
 
@@ -161,7 +155,7 @@ function updateLore()
   local unlocked = false
   local unlockedSpecs = {}
   local unlocks = status.statusProperty("ivrpgloreunlocks", {})
-  for _,lore in ipairs(self.loreList) do
+  for _,lore in ipairs(self.rpg_loreList) do
     if type(lore) == "table" then
       for _,spec in ipairs(lore) do
         if not unlocks[spec] and status.statusProperty("ivrpgsu" .. spec, false) == true then
@@ -221,7 +215,7 @@ end
 
 function updateProfessionEffects(dt)
   local proftype = player.currency("proftype")
-  self.professionTimer = math.max(self.professionTimer - dt, 0)
+  self.rpg_professionTimer = math.max(self.rpg_professionTimer - dt, 0)
   local element = smithDamageTaken()
   local pPassive = status.statusProperty("ivrpgprofessionpassive", false)
   self.rpg_jewelerExperience = (proftype == 9) and pPassive
@@ -230,11 +224,11 @@ function updateProfessionEffects(dt)
     if status.resource("health") / status.stat("maxHealth") < 0.25 and not hasEphemeralStats(status.activeUniqueStatusEffectSummary(), {"bandageheal","salveheal","nanowrapheal","medkitheal"}) then
       local healthItems = { {item = "nanowrap", duration = 1}, {item = "bandage", duration = 1},  {item = "medkit", duration = 10}, {item = "salve", duration = 10}}
       for _,v in ipairs(healthItems) do
-        if self.professionTimer == 0 and player.hasItem(v.item) then
+        if self.rpg_professionTimer == 0 and player.hasItem(v.item) then
           player.consumeItem({v.item, 1})
-          status.addEphemeralEffect(v.item .. "heal", v.duration, self.rpgPlayerID)
+          status.addEphemeralEffect(v.item .. "heal", v.duration, self.rpg_playerId)
           status.setStatusProperty("ivrpgprofessionpassiveactivation", true)
-          self.professionTimer = v.duration
+          self.rpg_professionTimer = v.duration
         end
       end
     end
@@ -266,15 +260,15 @@ function updateProfessionEffects(dt)
         if health and maxHealth and health/maxHealth < 0.5 then
           player.consumeItem({item.item, 1})
           status.addEphemeralEffect("ivrpgtamerstatuscooldown", 30)
-          world.sendEntityMessage(id, "applyStatusEffect", "ivrpgtamermonsterregen" .. item.statusName, 15, self.rpgPlayerID)
+          world.sendEntityMessage(id, "applyStatusEffect", "ivrpgtamermonsterregen" .. item.statusName, 15, self.rpg_playerId)
           break
         end
       end
     end
   elseif proftype == 3 then
-    if self.moneyDifferential > 3 and status.overConsumeResource("energy", self.moneyDifferential / 2) then
-      player.giveItem({"experienceorb", math.floor(self.moneyDifferential / 4)})
-      player.consumeCurrency("money", math.floor(self.moneyDifferential / 2))
+    if self.rpg_moneyDifferential > 3 and status.overConsumeResource("energy", self.rpg_moneyDifferential / 2) then
+      player.giveItem({"experienceorb", math.floor(self.rpg_moneyDifferential / 4)})
+      player.consumeCurrency("money", math.floor(self.rpg_moneyDifferential / 2))
     end
   elseif proftype == 7 then
     if status.resource("energy") / status.stat("maxEnergy") < 0.25 and not hasEphemeralStat(status.activeUniqueStatusEffectSummary(), "ivrpgengineerstatuscooldown") then
@@ -292,7 +286,7 @@ function updateProfessionEffects(dt)
       local time = getEphemeralDuration(status.activeUniqueStatusEffectSummary(), "ivrpgsmithstatusresistance")
       if status.overConsumeResource("energy", 45 - math.min(45*time, 45)) then
         status.setStatusProperty("ivrpgsmithstatuselement", element)
-        status.addEphemeralEffect("ivrpgsmithstatusresistance", 15, self.rpgPlayerID)
+        status.addEphemeralEffect("ivrpgsmithstatusresistance", 15, self.rpg_playerId)
       end
     end
   end
@@ -300,17 +294,17 @@ end
 
 function updateSkillEffects()
   local activeSkills = status.statusProperty("ivrpgskills", {})
-  if self.class > 0 and self.spec > 0 then
-    local gender = self.specList[self.class][self.spec].gender
+  if self.rpg_class > 0 and self.rpg_spec > 0 then
+    local gender = self.rpg_specList[self.rpg_class][self.rpg_spec].gender
     if gender and gender ~= player.gender() and not (activeSkills.skillbodytrueunderstanding and activeSkills.skillmindtrueunderstanding and activeSkills.skillsoultrueunderstanding) then
-      rescrollSpecialization(self.class, self.spec)
+      rescrollSpecialization(self.rpg_class, self.rpg_spec)
     end
   end
 end
 
 function smithDamageTaken(dt)
   local notifications = nil
-  notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
+  notifications, self.rpg_damageUpdate = status.damageTakenSince(self.rpg_damageUpdate)
   if not status.statusProperty("ivrpgprofessionpassive", false) then return false end
   if notifications then
     for _,notification in pairs(notifications) do
@@ -342,10 +336,10 @@ function calculateJewelerConversion(experience)
 end
 
 function updateSpecsAvailable()
-  if self.class > 0 then
-    self.specsAvailable = self.specList[self.class]
+  if self.rpg_class > 0 then
+    self.rpg_specsAvailable = self.rpg_specList[self.rpg_class]
   else
-    self.specsAvailable = {}
+    self.rpg_specsAvailable = {}
   end
 end
 
@@ -375,54 +369,54 @@ function removeTechs()
 end
 
 function updateXPPulse()    
-  if self.xp then
-    local new = player.currency("experienceorb") - self.xp
+  if self.rpg_xp then
+    local new = player.currency("experienceorb") - self.rpg_xp
     if new > 0 then
-      local multiplier = self.xpScaling * 0.005
+      local multiplier = self.rpg_xpScaling * 0.005
       if multiplier > 0 then
         local removeXP = calculateJewelerConversion(new * multiplier)
         player.giveItem({"experienceorb", new * multiplier - removeXP})
       end
       new = new * (1 + multiplier)
-      for _,id in ipairs(self.players) do
+      for _,id in ipairs(self.rpg_players) do
         world.sendEntityMessage(id, "addXP", new)
       end
     end
   end
-  self.xp = player.currency("experienceorb")
+  self.rpg_xp = player.currency("experienceorb")
   checkMaxXP()
 end
 
 function checkMaxXP()
-  if (self.xp or 0) > 500000 then
-    player.consumeCurrency("experienceorb", self.xp - 500000)
+  if (self.rpg_xp or 0) > 500000 then
+    player.consumeCurrency("experienceorb", self.rpg_xp - 500000)
   end
-  self.xp = player.currency("experienceorb")
+  self.rpg_xp = player.currency("experienceorb")
 end
 
 function updateXPScalingShare()
-  for _,id in ipairs(self.players) do
+  for _,id in ipairs(self.rpg_players) do
     world.sendEntityMessage(id, "setXPScaling", status.statusProperty("ivrpgintelligence", 0))
   end
 end
 
 function updateMoneyDifferential()
   local money = player.currency("money")
-  self.moneyDifferential = 0
-  if money ~= self.money then
-    self.moneyDifferential = math.max(money - self.money, 0)
-    self.money = money
+  self.rpg_moneyDifferential = 0
+  if money ~= self.rpg_money then
+    self.rpg_moneyDifferential = math.max(money - self.rpg_money, 0)
+    self.rpg_money = money
   end
 end
 
 function updateRallyMode(uninit)
   local rallyActive = status.statusProperty("ivrpgrallymode", false)
-  world.setProperty("ivrpgRallyMode[" .. self.rpgPlayerID .. "]", rallyActive and math.floor(math.sqrt(self.xp/100)) or 0)
+  world.setProperty("ivrpgRallyMode[" .. self.rpg_playerId .. "]", rallyActive and math.floor(math.sqrt(self.rpg_xp/100)) or 0)
 end
 
 function addXP(new)
   player.giveItem({"experienceorb", new})
-  self.xp = player.currency("experienceorb")
+  self.rpg_xp = player.currency("experienceorb")
   checkMaxXP()
 end
 
@@ -436,7 +430,7 @@ function updateSpecs(dt)
   end
 
   -- Pioneer
-  if self.class == 6 and type(status.statusProperty("ivrpgsupioneer", 0)) == "number" then
+  if self.rpg_class == 6 and type(status.statusProperty("ivrpgsupioneer", 0)) == "number" then
     local worldId = player.worldId()
     if worldId:sub(1, 14) == "CelestialWorld" then
       local visitedPlanets = status.statusProperty("ivrpgsupioneerplanets", {})
@@ -460,7 +454,7 @@ function updateSpecs(dt)
   -- End Pioneer
 
   -- Captain
-  if self.class == 6 and type(status.statusProperty("ivrpgsucaptain", 0)) == "number" then
+  if self.rpg_class == 6 and type(status.statusProperty("ivrpgsucaptain", 0)) == "number" then
     local crew = status.statusProperty("ivrpg-crew", {})
     if hashLength(crew) > 0 then
       status.setStatusProperty("ivrpgsucaptain", hashLength(crew))
@@ -476,7 +470,7 @@ function unlockSpecs()
     return
   end
 
-  for _,spec in ipairs(self.specsAvailable) do
+  for _,spec in ipairs(self.rpg_specsAvailable) do
     local unlockStatus = status.statusProperty(spec.unlockStatus)
     if spec.unlockNumber and type(unlockStatus) == "number" and unlockStatus >= spec.unlockNumber then
       sendRadioMessage(spec.title .. " Unlocked!")
@@ -497,7 +491,7 @@ end
 
 function unlockMonsterLore(enemyType)
   local unlocks = status.statusProperty("ivrpgloreunlocks", {})
-  local unlock = self.monsterLoreList[enemyType]
+  local unlock = self.rpg_monsterLoreList[enemyType]
   if unlock then
     local enemyTypeCondensed = enemyType:gsub("ivrpg_","",1)
     if unlocks[enemyTypeCondensed] then return end
@@ -512,7 +506,7 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
     return
   end
 
-  for _,spec in ipairs(self.specsAvailable) do
+  for _,spec in ipairs(self.rpg_specsAvailable) do
     if status.statusProperty(spec.unlockStatus) ~= true then
       local unlockBehavior = spec.unlockBehavior
       if unlockBehavior then
@@ -548,11 +542,11 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
 
         if requiredPosition then
           ignore = true
-          if requiredPosition.type == "<" and world.magnitude(position, world.entityPosition(self.rpgPlayerID)) < requiredPosition.magnitude then
+          if requiredPosition.type == "<" and world.magnitude(position, world.entityPosition(self.rpg_playerId)) < requiredPosition.magnitude then
             ignore = false
-          elseif requiredPosition.type == ">" and world.magnitude(position, world.entityPosition(self.rpgPlayerID)) > requiredPosition.magnitude then
+          elseif requiredPosition.type == ">" and world.magnitude(position, world.entityPosition(self.rpg_playerId)) > requiredPosition.magnitude then
             ignore = false
-          elseif requiredPosition.type == "behind" and facing * world.distance(world.entityPosition(self.rpgPlayerID), position)[1] < 0 then
+          elseif requiredPosition.type == "behind" and facing * world.distance(world.entityPosition(self.rpg_playerId), position)[1] < 0 then
             ignore = false
           end
           if ignore then trueIgnore = true end
@@ -599,9 +593,9 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
 end
 
 function checkWeaponCombo(tag1, tag2)
-  self.heldItem = world.entityHandItem(self.rpgPlayerID, "primary")
-  self.heldItem2 = world.entityHandItem(self.rpgPlayerID, "alt")
-  if self.heldItem and self.heldItem2 and ((root.itemHasTag(self.heldItem, tag1) and root.itemHasTag(self.heldItem2, tag2)) or (root.itemHasTag(self.heldItem, tag2) and root.itemHasTag(self.heldItem2, tag1))) then
+  self.rpg_heldItem = world.entityHandItem(self.rpg_playerId, "primary")
+  self.rpg_heldItem2 = world.entityHandItem(self.rpg_playerId, "alt")
+  if self.rpg_heldItem and self.rpg_heldItem2 and ((root.itemHasTag(self.rpg_heldItem, tag1) and root.itemHasTag(self.rpg_heldItem2, tag2)) or (root.itemHasTag(self.rpg_heldItem, tag2) and root.itemHasTag(self.rpg_heldItem2, tag1))) then
     return true
   else
     return false
@@ -609,11 +603,11 @@ function checkWeaponCombo(tag1, tag2)
 end
 
 function dropUpgradeChips(level, position, name)
-  local monsterData = self.upgradeData.monsters[name]
+  local monsterData = self.rpg_upgradeData.monsters[name]
   if monsterData then
     shuffle(monsterData)
     local item = monsterData[1]
-    local itemData = self.upgradeData.items[item]
+    local itemData = self.rpg_upgradeData.items[item]
     if itemData then
       level = level * itemData
     end
@@ -649,7 +643,7 @@ function dyingEffects(position, statusEffects)
     	world.spawnProjectile(
         	"fireplasmaexplosionstatus",
         	position,
-        	self.rpgPlayerID,
+        	self.rpg_playerId,
         	{0,0},
         	false,
         	{timeToLive = 0.25, power = status.stat("powerMultiplier")*50}

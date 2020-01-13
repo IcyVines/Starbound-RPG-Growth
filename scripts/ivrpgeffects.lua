@@ -3,11 +3,6 @@ local ivrpgoldUpdate = update
 
 function init()
   ivrpgoldInit()
-  self.lastYPosition = 0
-  self.lastYVelocity = 0
-  self.fallDistance = 0
-  --script.setUpdateDelta(10)
-  local bounds = mcontroller.boundBox() --Mcontroller for movement
 end
 
 function update(dt)

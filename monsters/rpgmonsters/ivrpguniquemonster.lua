@@ -22,7 +22,7 @@ function rpg_initUniqueMonster()
   end
 
   if config.getParameter("rpgOwnerUuid") then
-  	world.sendEntityMessage(config.getParameter("rpgOwnerUuid"), "addToOwnedMonsters", self.rpg_ID)
+  	world.sendEntityMessage(config.getParameter("rpgOwnerUuid"), "addToOwnedMonsters", self.rpg_Id)
   end
 
   message.setHandler("killedEnemy", function(_, _, enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind)
@@ -36,20 +36,20 @@ end
 function rpg_updateUniqueMonster(dt)
   for k,v in pairs(self.rpg_Actions) do
 		if k == "debuff" then
-		  local targetEntities = friendlyQuery(mcontroller.position(), v.range, {}, self.rpg_ID, true)
+		  local targetEntities = friendlyQuery(mcontroller.position(), v.range, {}, self.rpg_Id, true)
 		  if targetEntities then
 		    for _,id in ipairs(targetEntities) do
 		      for _,effect in ipairs(v.statusEffects) do
-		        world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_ID)
+		        world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_Id)
 		      end
 		    end
 		  end
 		elseif k == "buff" then
-		  local targetEntities = enemyQuery(mcontroller.position(), v.range, v.self and {} or {withoutEntityId = self.rpg_ID, includedTypes = {"creature"}}, self.rpg_ID, true)
+		  local targetEntities = enemyQuery(mcontroller.position(), v.range, v.self and {} or {withoutEntityId = self.rpg_Id, includedTypes = {"creature"}}, self.rpg_Id, true)
 		  if targetEntities then
 		    for _,id in ipairs(targetEntities) do
 		      for _,effect in ipairs(v.statusEffects) do
-		        world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_ID)
+		        world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_Id)
 		      end
 		    end
 		  end
@@ -147,7 +147,7 @@ function rpg_updateUniqueMonster(dt)
       end
     elseif self.rpg_breedStats.timer == 0 then
       self.rpg_breedStats.timer = self.rpg_breedStats.breedTime
-    elseif world.entityAggressive(self.rpg_ID) and not self.rpg_breedStats.refilling then
+    elseif world.entityAggressive(self.rpg_Id) and not self.rpg_breedStats.refilling then
       local newArmor = math.ceil(self.rpg_breedStats.timer / self.rpg_breedStats.breedTime * 10)
       if newArmor ~= self.rpg_breedStats.current then
         self.rpg_breedStats.current = newArmor
@@ -217,7 +217,7 @@ function rpg_checkForHostiles()
 		monster.flyTo(world.entityPosition(self.rpg_bloodStats.target))
 		return
 	end
-	local targetEntities = enemyQuery(mcontroller.position(), 10, {withoutEntityId = self.rpg_ID, includedTypes = {"creature"}}, self.rpg_ID)
+	local targetEntities = enemyQuery(mcontroller.position(), 10, {withoutEntityId = self.rpg_Id, includedTypes = {"creature"}}, self.rpg_Id)
 	for _,id in ipairs(targetEntities) do
 		self.rpg_bloodStats.target = id
 		return
@@ -282,7 +282,7 @@ function rpg_rapidSpark()
 	local healthDamageFactor = 1.0
 	local boltPower = util.clamp(status.resourceMax("health") * healthDamageFactor * 2, damageClampRange[1], damageClampRange[2])
 
-  local targetEntities = enemyQuery(mcontroller.position(), 30, {withoutEntityId = self.rpg_ID, includedTypes = {"creature"}}, self.rpg_ID, true)
+  local targetEntities = enemyQuery(mcontroller.position(), 30, {withoutEntityId = self.rpg_Id, includedTypes = {"creature"}}, self.rpg_Id, true)
   if targetEntities then
     for _,id in ipairs(targetEntities) do
     	if not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
@@ -290,7 +290,7 @@ function rpg_rapidSpark()
 	      world.spawnProjectile(
 		      "teslaboltsmall",
 		      mcontroller.position(),
-		      self.rpg_ID,
+		      self.rpg_Id,
 		      directionTo,
 		      false,
 		      {
@@ -373,7 +373,7 @@ function rpg_grow(size, bloodStage)
   monster.setDropPool(nil)
   monster.setDeathParticleBurst(nil)
   monster.setDeathSound(nil)
-   if bloodStage then world.spawnProjectile("ivrpg_bloodexplosion", mcontroller.position(), self.rpg_ID, {0,0}, false, {}) end
+   if bloodStage then world.spawnProjectile("ivrpg_bloodexplosion", mcontroller.position(), self.rpg_Id, {0,0}, false, {}) end
   self.deathBehavior = nil
   self.shouldDie = true
   status.setPrimaryDirectives(string.format("?multiply=ffffff%02x", 0))

@@ -22,20 +22,20 @@ end
 function rpg_updateUniqueNPC(dt)
   for k,v in pairs(self.rpg_Actions) do
   	if k == "debuff" then
-  	  local targetEntities = friendlyQuery(mcontroller.position(), v.range, {}, self.rpg_ID, true)
+  	  local targetEntities = friendlyQuery(mcontroller.position(), v.range, {}, self.rpg_Id, true)
   	  if targetEntities then
   	    for _,id in ipairs(targetEntities) do
   	      for _,effect in ipairs(v.statusEffects) do
-  	        world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_ID)
+  	        world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_Id)
   	      end
   	    end
   	  end
   	elseif k == "buff" then
-  	  local targetEntities = enemyQuery(mcontroller.position(), v.range, v.self and {} or {withoutEntityId = self.rpg_ID, includedTypes = {"creature"}}, self.rpg_ID, true)
+  	  local targetEntities = enemyQuery(mcontroller.position(), v.range, v.self and {} or {withoutEntityId = self.rpg_Id, includedTypes = {"creature"}}, self.rpg_Id, true)
   	  if targetEntities then
   	    for _,id in ipairs(targetEntities) do
   	      for _,effect in ipairs(v.statusEffects) do
-  	        world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_ID)
+  	        world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_Id)
   	      end
   	    end
   	  end
@@ -47,7 +47,7 @@ function rpg_updateUniqueNPC(dt)
   	    status.setStatusProperty("ivrpg_npcShield_element", v.elementType)
         self.rpg_Health = status.resource("health")
       end
-      status.addEphemeralEffect("ivrpgNpcShield", math.huge, self.rpg_ID)
+      status.addEphemeralEffect("ivrpgNpcShield", math.huge, self.rpg_Id)
   	elseif k == "spawn" then
       if not self.rpg_spawn then
         self.rpg_spawn = {spawnTypes = v.spawnTypes, frequency = v.frequency, spawnLevel = v.spawnLevel, maxActive = v.maxActive, activeSummons = {}, say = v.say, timer = v.frequency}
@@ -104,8 +104,8 @@ function rpg_spawnMonster()
     level = self.rpg_spawn.spawnLevel,
     damageTeam = entity.damageTeam().team,
     damageTeamType = entity.damageTeam().type,
-    rpgOwnerUuid = self.rpg_ID,
-    aggressive = world.entityAggressive(self.rpg_ID)
+    rpgOwnerUuid = self.rpg_Id,
+    aggressive = world.entityAggressive(self.rpg_Id)
   })
   if monsterId then
     table.insert(self.rpg_spawn.activeSummons, monsterId)
