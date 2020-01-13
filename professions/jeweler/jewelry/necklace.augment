@@ -1,0 +1,21 @@
+{
+  "itemName" : "ivrpgjgoldnecklace",
+  "price" : 5000,
+  "rarity" : "Uncommon",
+  "category" : "eppAugment",
+  "inventoryIcon" : "goldnecklace.png",
+  "description" : "Fashionable Gold Necklace that slightly boosts your damage output.",
+  "shortdescription" : "Gold Necklace",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "damage1n",
+    "displayName" : "Gold Necklace",
+    "displayIcon" : "/professions/jeweler/jewelry/goldnecklace.png",
+    "effects" : [ "rageaugment1" ]
+  },
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

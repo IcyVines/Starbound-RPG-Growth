@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgjewelerstatus",
+
+  "effectConfig" : {
+
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "ivrpgjewelerstatus.lua"
+  ],
+
+  "animationConfig" : "ivrpgjewelerstatus.animation",
+
+  "label" : "Jeweler",
+  "icon" : "/professions/jeweler/status/jewel.png"
+}

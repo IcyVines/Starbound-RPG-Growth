@@ -1,0 +1,41 @@
+{
+  "objectName" : "ivrpgjewelerstation",
+  "colonyTags" : ["commerce", "crafting", "geode"],
+  "rarity" : "Essential",
+  "category" : "crafting",
+  "description" : "A large desk displaying magnificently cut gems. It has many large drawers to fill with jewelry.",
+  "shortdescription" : "Jeweler Station",
+  "printable" : false,
+
+  "apexDescription" : "This desk has many compartments with which to hold jewelry. The displayed tools could be used in interesting ways.",
+  "avianDescription" : "The gems displayed are beautiful. They would look good on a ceremonial crown.",
+  "floranDescription" : "Gemsss cannot be eaten! Unlesssss drawers are filled with meat, Floran not interessted.",
+  "glitchDescription" : "Amazed. The jewels on display have a particularly impressive hardness. Best not get scratched.",
+  "humanDescription" : "Just like mom used to have. Well, maybe a bit bigger than that, but it's the thought that counts.",
+  "hylotlDescription" : "With meticulous handiwork, I bet I could create the finest jewelry on the... planets...",
+  "novakidDescription" : "Now while I can wear some mighty fine jewelry, I bet I can sell'em for a good price instead.",
+
+  "inventoryIcon" : "table.png",
+  "orientations" : [
+    {
+      "dualImage" : "table.png:<color>",
+      "imagePosition" : [-24, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "proftype" : 9,
+
+  "scripts" : ["/professions/table.lua"],
+  "scriptDelta" : 5,
+
+  "interactAction" : "OpenCraftingInterface",
+  "interactData" : {
+    "config" : "/professions/jeweler/ivrpgjewelerstation.config",
+    "filter" : [ "ivrpgjewelerstation" ]
+  }
+}

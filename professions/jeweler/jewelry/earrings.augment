@@ -1,0 +1,21 @@
+{
+  "itemName" : "ivrpgjgoldearrings",
+  "price" : 5000,
+  "rarity" : "Uncommon",
+  "category" : "eppAugment",
+  "inventoryIcon" : "goldearrings.png",
+  "description" : "Fashionable Gold Earrings that slightly boost your damage output.",
+  "shortdescription" : "Gold Earrings",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "damage1",
+    "displayName" : "Gold Earrings",
+    "displayIcon" : "/professions/jeweler/jewelry/goldearrings.png",
+    "effects" : [ "rageaugment1" ]
+  },
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}
