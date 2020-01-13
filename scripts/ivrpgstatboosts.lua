@@ -37,13 +37,13 @@ function init()
   end)
 
   -- Configs
-  self.specList = root.assetJson("/specList.config")
-  self.classList = root.assetJson("/classList.config")
-  self.affinityList = root.assetJson("/affinityList.config")
-  self.profList = root.assetJson("/professionList.config")
-  self.statList = root.assetJson("/stats.config")
-  self.weaponScaling = root.assetJson("/weaponScaling.config")
-  self.skillList = root.assetJson("/skillList.config")
+  self.specList = root.assetJson("/ivrpgSpecList.config")
+  self.classList = root.assetJson("/ivrpgClassList.config")
+  self.affinityList = root.assetJson("/ivrpgAffinityList.config")
+  self.profList = root.assetJson("/ivrpgProfessionList.config")
+  self.statList = root.assetJson("/ivrpgStats.config")
+  self.weaponScaling = root.assetJson("/ivrpgWeaponScaling.config")
+  self.skillList = root.assetJson("/ivrpgSkillList.config")
 end
 
 function updateHeldItems()

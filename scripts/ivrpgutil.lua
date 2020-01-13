@@ -98,7 +98,7 @@ function incorrectWeapon(isUninit)
 end
 
 function rescrollSpecialization(class, spec)
-  specList = root.assetJson("/specList.config")
+  specList = root.assetJson("/ivrpgSpecList.config")
   local specInfo = nil
   if class == 0 or spec == 0 then
     return
@@ -136,8 +136,14 @@ function enemyQuery(a1, a2, a3, a4, ignoresStealth)
 end
 
 function ivrpgBuildItemConfigHelper(id, hand)
-  local heldItem = world.entityHandItem(id, hand)
-  local itemConfig = heldItem and root.itemConfig(heldItem)
+  local heldItem = nil
+  local itemConfig = nil
+  if not hand then
+    itemConfig = root.itemConfig(id)
+  else
+    heldItem = world.entityHandItem(id, hand)
+    itemConfig = heldItem and root.itemConfig(heldItem)
+  end
   return itemConfig
 end
 

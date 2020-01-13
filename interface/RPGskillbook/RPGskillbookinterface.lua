@@ -52,14 +52,14 @@ function init()
   }
 
   -- Loading Configs
-  self.textData = root.assetJson("/ivrpgtext.config")
-  self.classList = root.assetJson("/classList.config")
-  self.specList = root.assetJson("/specList.config")
-  self.profList = root.assetJson("/professionList.config")
-  self.statList = root.assetJson("/stats.config")
-  self.affinityList = root.assetJson("/affinityList.config")
+  self.textData = root.assetJson("/ivrpgText.config")
+  self.classList = root.assetJson("/ivrpgClassList.config")
+  self.specList = root.assetJson("/ivrpgSpecList.config")
+  self.profList = root.assetJson("/ivrpgProfessionList.config")
+  self.statList = root.assetJson("/ivrpgStats.config")
+  self.affinityList = root.assetJson("/ivrpgAffinityList.config")
   self.affinityDescriptions = root.assetJson("/affinities/affinityDescriptions.config")
-  self.versionConfig = root.assetJson("/ivrpgversion.config")
+  self.versionConfig = root.assetJson("/ivrpgVersion.config")
   self.lastLoreChecked = "changelog"
   self.loreDepth = 1
   self.loreTable = {"lore"}

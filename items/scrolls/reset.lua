@@ -1,6 +1,6 @@
 function init()
-  self.affinityList = root.assetJson("/affinityList.config")
-  self.classList = root.assetJson("/classList.config")
+  self.affinityList = root.assetJson("/ivrpgAffinityList.config")
+  self.classList = root.assetJson("/ivrpgClassList.config")
 end
 
 function activate(fireMode, shiftHeld)

@@ -172,9 +172,9 @@ function updateEffects(dt)
 end
 
 function loadConfigs()
-  self.classList = root.assetJson("/classList.config")
-  self.affinityList = root.assetJson("/affinityList.config")
-  self.specList = root.assetJson("/specList.config")
+  self.classList = root.assetJson("/ivrpgClassList.config")
+  self.affinityList = root.assetJson("/ivrpgAffinityList.config")
+  self.specList = root.assetJson("/ivrpgSpecList.config")
 end
 
 function loadInfo(class, affinity, spec)

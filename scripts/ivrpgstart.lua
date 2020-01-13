@@ -19,8 +19,8 @@ function init()
   self.rpgPlayerID = entity.id()
   self.class = player.currency("classtype")
   self.spec = player.currency("spectype")
-  self.specList = root.assetJson("/specList.config")
-  self.loreList = root.assetJson("/loreList.config")
+  self.specList = root.assetJson("/ivrpgSpecList.config")
+  self.loreList = root.assetJson("/ivrpgLoreList.config")
   self.monsterLoreList = root.assetJson("/monsterLoreUnlocks.config")
   self.professionTimer = 0
   self.specsAvailable = {}
@@ -32,7 +32,7 @@ function init()
   sb.logInfo(sb.printJson(testTreasure))
   ]]
 
-  local data = root.assetJson("/ivrpgversion.config")
+  local data = root.assetJson("/ivrpgVersion.config")
   local oldVersion = status.statusProperty("ivrpgversion", "0")
   if oldVersion ~= data.version then
     status.setStatusProperty("ivrpgversion", data.version)
@@ -223,7 +223,9 @@ function updateProfessionEffects(dt)
   local proftype = player.currency("proftype")
   self.professionTimer = math.max(self.professionTimer - dt, 0)
   local element = smithDamageTaken()
-  if not status.statusProperty("ivrpgprofessionpassive", false) then return end
+  local pPassive = status.statusProperty("ivrpgprofessionpassive", false)
+  self.rpg_jewelerExperience = (proftype == 9) and pPassive
+  if not pPassive then return end
   if proftype == 1 then
     if status.resource("health") / status.stat("maxHealth") < 0.25 and not hasEphemeralStats(status.activeUniqueStatusEffectSummary(), {"bandageheal","salveheal","nanowrapheal","medkitheal"}) then
       local healthItems = { {item = "nanowrap", duration = 1}, {item = "bandage", duration = 1},  {item = "medkit", duration = 10}, {item = "salve", duration = 10}}
@@ -325,6 +327,20 @@ function smithDamageTaken(dt)
   return false
 end
 
+function calculateJewelerConversion(experience)
+  if not self.rpg_jewelerExperience then return 0 end
+  experience = math.floor(experience)
+  if experience < 4 then return 0 end
+
+  local food = status.resource("food")
+  local maxConversion = math.max(food - 20, 0)
+  local minRemoval = math.min(maxConversion, experience / 4)
+  if status.consumeResource("food", minRemoval) then
+    player.giveItem({"money", math.floor(minRemoval)})
+    return math.floor(minRemoval * 2)
+  end
+end
+
 function updateSpecsAvailable()
   if self.class > 0 then
     self.specsAvailable = self.specList[self.class]
@@ -363,7 +379,10 @@ function updateXPPulse()
     local new = player.currency("experienceorb") - self.xp
     if new > 0 then
       local multiplier = self.xpScaling * 0.005
-      if multiplier > 0 then player.giveItem({"experienceorb", new * multiplier}) end
+      if multiplier > 0 then
+        local removeXP = calculateJewelerConversion(new * multiplier)
+        player.giveItem({"experienceorb", new * multiplier - removeXP})
+      end
       new = new * (1 + multiplier)
       for _,id in ipairs(self.players) do
         world.sendEntityMessage(id, "addXP", new)

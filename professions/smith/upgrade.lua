@@ -1,5 +1,7 @@
 require "/scripts/util.lua"
+require "/scripts/ivrpgutil.lua"
 
+-- Spaghetti Code City. I made this without thinking about the future. Whoops.
 function craftingRecipe(items)
   if #items ~= 5 then return end
 
@@ -37,13 +39,18 @@ function craftingRecipe(items)
   local newWeapon = copy(weapon)
 
   if recipeType == "upgrade" then
-    local itemConfig = root.itemConfig(weapon)
+    local itemConfig = ivrpgBuildItemConfig(weapon)
+    if not itemConfig then return end
+    local rarity = itemConfig.config and itemConfig.config.rarity
     local highestLevel = weapon.parameters.level or (itemConfig and itemConfig.config and itemConfig.config.level) or 11
     local oldElement = "physical"
     if highestLevel > newLevel then return end
     newWeapon.parameters.level = newLevel
     if elements[items[3].name] ~= "physical" then
-      oldElement = newWeapon.parameters.elementalType
+      oldElement = newWeapon.parameters.elementalType or itemConfig.config.elementalType
+      if oldElement and oldElement ~= elements[items[3].name] and rarity and (rarity == "Essential" or rarity == "Legendary") then
+        return
+      end
       newWeapon.parameters.elementalType = elements[items[3].name]
     end
 
