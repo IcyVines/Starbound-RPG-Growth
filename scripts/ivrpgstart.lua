@@ -20,7 +20,7 @@ function init()
   self.rpg_spec = player.currency("spectype")
   self.rpg_specList = root.assetJson("/ivrpgSpecList.config")
   self.rpg_loreList = root.assetJson("/ivrpgLoreList.config")
-  self.rpg_monsterLoreList = root.assetJson("/monsterLoreUnlocks.config")
+  self.rpg_monsterLoreList = root.assetJson("/ivrpgMonsterLoreUnlocks.config")
   self.rpg_professionTimer = 0
   self.rpg_specsAvailable = {}
   self.rpg_damageUpdate = 5
@@ -519,6 +519,7 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
         local trueIgnore = false
         local healthBonus = 1
         local damageBonus = 1
+        local positionBonus = 1
         
         if damageTypes then
           ignore = true
@@ -542,14 +543,14 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
 
         if requiredPosition then
           ignore = true
-          if requiredPosition.type == "<" and world.magnitude(position, world.entityPosition(self.rpg_playerId)) < requiredPosition.magnitude then
+          if requiredPosition.type == "behind" and facing * world.distance(world.entityPosition(self.rpg_playerId), position)[1] < 0 then
             ignore = false
-          elseif requiredPosition.type == ">" and world.magnitude(position, world.entityPosition(self.rpg_playerId)) > requiredPosition.magnitude then
+            if requiredPosition.optional then positionBonus = 2 end
+          elseif operate(requiredPosition.type, world.magnitude(position, world.entityPosition(self.rpg_playerId)),  requiredPosition.magnitude) then
             ignore = false
-          elseif requiredPosition.type == "behind" and facing * world.distance(world.entityPosition(self.rpg_playerId), position)[1] < 0 then
-            ignore = false
+            if requiredPosition.optional then positionBonus = 2 end
           end
-          if ignore then trueIgnore = true end
+          if ignore and not requiredPosition.optional then trueIgnore = true end
         end
 
         if requiredCurrency then
@@ -580,10 +581,12 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
         if enemyTypes and not trueIgnore then
           for _,v in ipairs(enemyTypes) do
             if string.find(enemyType, v.type) then
-              status.setStatusProperty(spec.unlockStatus, status.statusProperty(spec.unlockStatus, 0) + healthBonus * damageBonus * (v.modifier and level * v.modifier or (v.amount or level)))
+              status.setStatusProperty(spec.unlockStatus, status.statusProperty(spec.unlockStatus, 0) + healthBonus * damageBonus * positionBonus * (v.modifier and level * v.modifier or (v.amount or level)))
               break
             end
           end
+        elseif (not enemyTypes) and not trueIgnore then
+          status.setStatusProperty(spec.unlockStatus, status.statusProperty(spec.unlockStatus, 0) + healthBonus * damageBonus * positionBonus * (v.modifier and level * v.modifier or (v.amount or level)))
         end
 
       end

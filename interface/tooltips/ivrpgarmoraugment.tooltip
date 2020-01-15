@@ -18,7 +18,7 @@
   },
   "descriptionLabel" : {
     "type" : "label",
-    "position" : [9, 115],
+    "position" : [9, 175],
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 123
@@ -32,7 +32,7 @@
   },
   "objectImage" : {
     "type" : "image",
-    "position" : [30, 159],
+    "position" : [30, 217],
     "file" : "",
     "centered" : true,
     "scale" : 2,
@@ -41,26 +41,62 @@
   },
   "augmentIconImageBackground" : {
     "type" : "image",
-    "position" : [11, 166],
+    "position" : [4, 60],
     "zlevel" : 2,
-    "file" : "/interface/tooltips/augment.png"
+    "file" : "/professions/jeweler/jewelry/background.png"
   },
   "augmentIconImage" : {
     "type" : "image",
-    "position" : [6, 38],
+    "position" : [4, 60],
     "zlevel" : 3,
     "file" : ""
   },
   "augmentNameLabel" : {
     "type" : "label",
-    "position" : [30, 42],
-    "value" : ""
+    "position" : [25, 63],
+    "value" : "-"
+  },
+  "ivrpgJewelryImageBackgroundLeft" : {
+    "type" : "image",
+    "position" : [4, 38],
+    "zlevel" : 2,
+    "file" : "/professions/jeweler/jewelry/background.png"
+  },
+  "collarIconImage" : {
+    "type" : "image",
+    "position" : [4, 38],
+    "zlevel" : 3,
+    "file" : "/professions/jeweler/jewelry/unknown.png"
+  },
+  "collarNameLabel" : {
+    "type" : "label",
+    "position" : [24, 43],
+    "value" : "-",
+    "fontSize" : 6
+  },
+  "ivrpgJewelryIconImageBackgroundRight" : {
+    "type" : "image",
+    "position" : [72, 38],
+    "zlevel" : 2,
+    "file" : "/professions/jeweler/jewelry/background.png"
+  },
+  "reelIconImage" : {
+    "type" : "image",
+    "position" : [72, 38],
+    "zlevel" : 3,
+    "file" : "/professions/jeweler/jewelry/unknown.png"
+  },
+  "reelNameLabel" : {
+    "type" : "label",
+    "position" : [92, 43],
+    "value" : "-",
+    "fontSize" : 6
   },
   "statusList" : {
     "scissoring" : false,
     "type" : "list",
     "fillDown" : true,
-    "position" : [0, 194],
+    "position" : [0, 254],
     "schema" : {
       "spacing" : [0, 3],
       "memberSize" : [999, 15],

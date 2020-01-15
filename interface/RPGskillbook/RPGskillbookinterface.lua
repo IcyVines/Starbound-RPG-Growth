@@ -628,7 +628,9 @@ function updateSpecializationSelect()
   	widget.setFontColor("specializationslayout.spectitle", currentSpec.titleColor)
   end
   local disabled = currentSpec.disabled
-  widget.setText("specializationslayout.desctext", (disabled and "^red;Currently Disabled!^reset;\n" or "") .. concatTableValues({currentSpec.description}, "\n\n"))
+  local specDescText = disabled and "^red;Currently Disabled!^reset;\n" or ""
+  specDescText = specDescText .. (currentSpec.gender and "^red;" .. currentSpec.gender:gsub("^%l", string.upper) .. " Only^white;\n" or "")
+  widget.setText("specializationslayout.desctext", specDescText .. concatTableValues({currentSpec.description}, "\n\n"))
   --widget.setText("specializationslayout.loretext", concatTableValues(currentSpec.flavor, "\n\n"))
   widget.setText("specializationslayout.weapontext", concatTableValues(currentSpec.weaponText, "\n\n"))
 

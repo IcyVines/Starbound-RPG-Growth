@@ -3,8 +3,8 @@
 	"colonyTags" : [],
 	"rarity" : "Legendary",
 	"printable" : false,
-	"description" : "Pull the jewelry right out.",
-	"shortdescription" : "^blue;Jewelry Extractor^white;",
+	"description" : "Jewelry get stuck to your clothes? Losing it when you take it off? No problem.",
+	"shortdescription" : "^blue;Jewelry 'Extractor'^white;",
 	"race" : "generic",
 	"category" : "storage",
 	"price" : 0,
@@ -18,15 +18,15 @@
 	"autoCloseCooldown" : 3600,
 	"scripts" : [ "extractor.lua"],
 
-	"apexDescription" : "Machines like these are used to extract augments.",
-	"avianDescription" : "How useful, I can extract any augments I want with this.",
-	"floranDescription" : "Floran can exsstract augmentss with this.",
-	"glitchDescription" : "Impressed. This device can extract any augment.",
-	"humanDescription" : "I can use this to extract any augment. Neat!",
-	"hylotlDescription" : "Such things are useful for extracting augments.",
-	"novakidDescription" : "I can use this here gadget to get back my augments.",
+	"apexDescription" : "A board you can use if you don't want to accidentally drop anything.",
+	"avianDescription" : "I won't lose any pretty jewelry using this.",
+	"floranDescription" : "Jewelry isss not very interessting, ssso I can place it in thissss.",
+	"glitchDescription" : "Disappointed. It's just a board to temporarily hold jewelry.",
+	"humanDescription" : "Wow. It's... just a shelf? I guess it'll help me quickly remove jewelry.",
+	"hylotlDescription" : "This could be a very nice jewelry display if so disired.",
+	"novakidDescription" : "Now this thing right here? This is a mighty fine board.",
 	
-	"lightColor" : [38, 114, 128],
+	"lightColor" : [80, 14, 128],
 	"lightPosition" : [0, 1],
 
 	"flickerPeriod" : 1.2,
@@ -35,38 +35,15 @@
 	"flickerPeriodVariance" : 0.0,
 	"flickerIntensityVariance" : 0.0,
 
-	"inventoryIcon" : "extractoricon.png",
-
-	"animation" : "/professions/jeweler/extractor/extractor.animation",
-	"animationParts" : {
-		"aex" : "extractor.png",
-		"aexlit" : "extractorlit.png"
-	},
-	"animationPosition" : [-6, 0],
-
+	"inventoryIcon" : "extractor.png",
 	"orientations" : [
-		{
-			"imageLayers" : [ { "image" : "extractor.png:off.<frame>", "fullbright" : true }, { "image" : "extractorlit.png:off.<frame>" } ],
-			"imagePosition" : [-6, 0],
+    {
+      "image" : "extractor.png",
+      "imagePosition" : [-16, -8],
 
-			"direction" : "left",
-			"flipImages" : true,
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ]
 
-			"frames" : 1,
-
-			"spaceScan" : 0.1,
-			"anchors" : [ "bottom" ]
-		},
-		{
-			"imageLayers" : [ { "image" : "extractor.png:off.<frame>", "fullbright" : true }, { "image" : "extractorlit.png:off.<frame>" } ],
-			"imagePosition" : [-6, 0],
-
-			"direction" : "right",
-			
-			"frames" : 1,
-
-			"spaceScan" : 0.1,
-			"anchors" : [ "bottom" ]
-		}
-	]
 }

@@ -17,6 +17,8 @@
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgsteelbar" } },
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgplatinumbar" } },
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgcaineschest" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "caltrops" } },
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "gravitrops" } },
 
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgwtungstenwandfire" } },
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgwtungstenwandice" } },

@@ -38,6 +38,7 @@ function update(dt)
 end
 
 function calculateLevelTags()
+  if not self.experience then self.experience = 0 end
   local level = math.floor(math.sqrt(self.experience/100))
   if level == 50 then
     animator.setGlobalTag("level", "50")

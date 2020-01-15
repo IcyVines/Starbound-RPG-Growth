@@ -4,16 +4,19 @@
   "rarity" : "Uncommon",
   "category" : "eppAugment",
   "inventoryIcon" : "goldnecklace.png",
-  "description" : "Fashionable Gold Necklace that slightly boosts your damage output.",
+  "description" : "Fashionable Gold Necklace that slightly boosts your Max Energy.",
   "shortdescription" : "Gold Necklace",
 
   "augment" : {
     "type" : "headarmour",
-    "name" : "damage1n",
+    "name" : "necklace",
     "displayName" : "Gold Necklace",
     "displayIcon" : "/professions/jeweler/jewelry/goldnecklace.png",
-    "effects" : [ "rageaugment1" ]
+    "effects" : [ ]
   },
+
+  "slotType" : "main", //main or alt
+  "jewelStats" : {"maxEnergy" : 2},
 
   "radioMessagesOnPickup" : [ "pickupaugment" ],
 

@@ -62,7 +62,7 @@ end
 function questInteract(entityId)
   if self.onInteract then
     return self.onInteract(entityId)
-  elseif world.entityUniqueId(entityId) == self.turnInEntity then
+  elseif world.entityUniqueId(entityId) == self.turnInEntity or (type(world.entityUniqueId(entityId)) == "string" and string.find(world.entityUniqueId(entityId), self.turnInEntity)) then
     quest.complete()
   end
 end
