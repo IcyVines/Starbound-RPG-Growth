@@ -222,7 +222,12 @@ function updateProfessionEffects(dt)
   if not pPassive then return end
   if proftype == 1 then
     if status.resource("health") / status.stat("maxHealth") < 0.25 and not hasEphemeralStats(status.activeUniqueStatusEffectSummary(), {"bandageheal","salveheal","nanowrapheal","medkitheal"}) then
-      local healthItems = { {item = "nanowrap", duration = 1}, {item = "bandage", duration = 1},  {item = "medkit", duration = 10}, {item = "salve", duration = 10}}
+      local healthItems = {
+      	{item = "nanowrap", duration = 1},
+      	{item = "bandage", duration = 1}, 
+      	{item = "medkit", duration = 10},
+      	{item = "salve", duration = 10}
+      }
       for _,v in ipairs(healthItems) do
         if self.rpg_professionTimer == 0 and player.hasItem(v.item) then
           player.consumeItem({v.item, 1})
@@ -272,7 +277,11 @@ function updateProfessionEffects(dt)
     end
   elseif proftype == 7 then
     if status.resource("energy") / status.stat("maxEnergy") < 0.25 and not hasEphemeralStat(status.activeUniqueStatusEffectSummary(), "ivrpgengineerstatuscooldown") then
-      local energyItems = {{item = "smallbattery", kind = "modifyResource", amount = 20}, {item = "battery", kind = "modifyResource", amount = 60}, {item = "ivrpgspowercell", kind = "modifyResourcePercentage", amount = 0.5}}
+      local energyItems = {
+      	{item = "smallbattery", kind = "modifyResource", amount = 20},
+      	{item = "battery", kind = "modifyResource", amount = 60},
+      	{item = "ivrpgspowercell", kind = "modifyResourcePercentage", amount = 0.5}
+      }
       for _,v in ipairs(energyItems) do
         if player.hasItem(v.item) then
           player.consumeItem({v.item, 1})
@@ -586,7 +595,7 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
             end
           end
         elseif (not enemyTypes) and not trueIgnore then
-          status.setStatusProperty(spec.unlockStatus, status.statusProperty(spec.unlockStatus, 0) + healthBonus * damageBonus * positionBonus * (v.modifier and level * v.modifier or (v.amount or level)))
+          status.setStatusProperty(spec.unlockStatus, status.statusProperty(spec.unlockStatus, 0) + healthBonus * damageBonus * positionBonus * level)
         end
 
       end

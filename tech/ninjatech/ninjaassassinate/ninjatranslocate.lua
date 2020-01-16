@@ -1,3 +1,5 @@
+require "/scripts/ivrpgutil.lua"
+
 function init()
   self.timer = 0
   animator.setAnimationState("blink", "blinkout")
@@ -16,6 +18,8 @@ function init()
     speedModifier = 0,
     airJumpModifier = 0
   })
+
+  self.id = entity.id()
 end
 
 function update(dt)
@@ -62,62 +66,59 @@ function teleport()
   effect.setParentDirectives("")
   animator.burstParticleEmitter("translocate")
   animator.setAnimationState("blink", "blinkin")
-  self.id = entity.id()
-  self.damage = 0
-  self.itemConf = {}
-  self.dps = 0
-  self.multiplier = 0
+
+  local dps = 0
+  local multiplier = 0
+  local damage = 0
+  local twoHanded = false
+
   local heldItem = world.entityHandItem(self.id, "primary")
   local heldItem2 = world.entityHandItem(self.id, "alt")
-  local twoHanded = false
-  if heldItem then
-    self.itemConf = root.itemConfig(heldItem)
-    twoHanded = self.itemConf.config.twoHanded
-  end
+  local itemConf = ivrpgBuildItemConfig(self.id, "primary")
+  if itemConf and itemConf.config and itemConf.config.twoHanded then twoHanded = true end
 
   if twoHanded then
-    if not root.itemHasTag(heldItem, "hammer") and root.itemHasTag(heldItem, "melee") then
-      self.dps = self.itemConf.config.primaryAbility.baseDps or 1
-      self.damage = 2*status.stat("powerMultiplier")*self.dps
+    if heldItem and root.itemHasTag(heldItem, "melee") and not root.itemHasTag(heldItem, "hammer") then
+      dps = getDpsFromConfig(itemConf)
+      damage = 2 * status.stat("powerMultiplier") * dps
     end
   else
-    self.tag = ""
-    if heldItem then 
-      if root.itemHasTag(heldItem, "melee") then self.tag = "melee"
-      elseif root.itemHasTag(heldItem, "ninja") then self.tag = "ninja" end
+    if heldItem and (root.itemHasTag(heldItem, "melee") or root.itemHasTag(heldItem, "ninja") or root.itemHasTag(heldItem, "claw")) then
+      dps = getDpsFromConfig(itemConf)
+      multiplier = 1.5
     end
-    if self.tag == "melee" then
-      self.dps = self.itemConf.config.primaryAbility.baseDps or 1
-      self.multiplier = 1.5
-    elseif self.tag == "ninja" then
-      self.dps = self.itemConf.config.projectileConfig.power or 1
-      self.multiplier = 1.5
+    damage = dps
+
+    dps = 0
+    if heldItem2 and (root.itemHasTag(heldItem2, "melee") or root.itemHasTag(heldItem2, "ninja") or root.itemHasTag(heldItem2, "claw")) then
+      itemConf = ivrpgBuildItemConfig(self.id, "alt")
+      dps = getDpsFromConfig(itemConf)
+      multiplier = multiplier == 0 and 1.5 or multiplier * 1.5
     end
-    self.damage = self.dps
-    self.tag = ""
-    self.dps = 0
-    if heldItem2 then
-      self.itemConf = root.itemConfig(heldItem2)
-      if root.itemHasTag(heldItem2, "melee") then self.tag = "melee"
-      elseif root.itemHasTag(heldItem2, "ninja") then self.tag = "ninja" end
-    end
-    if self.tag == "melee" then
-      self.dps = self.itemConf.config.primaryAbility.baseDps or 1
-      self.multiplier = self.multiplier == 0 and 1.5 or self.multiplier*1.5
-    elseif self.tag == "ninja" then
-      self.dps = self.itemConf.config.projectileConfig.power or 1
-      self.multiplier = self.multiplier == 0 and 1.5 or self.multiplier*1.5
-    end
-    self.damage = self.damage + self.dps
-    self.damage = self.damage*self.multiplier*status.stat("powerMultiplier")
+    damage = damage + dps
+    damage = damage * multiplier * status.stat("powerMultiplier")
   end
 
-  self.damageConfig = {
-    power = self.damage
-  }
-  if self.damage > 0 then
+  if damage > 0 then
+    local damageConfig = {
+      power = damage
+    }
     animator.playSound("slash")
-    world.spawnProjectile("ninjaassassinateswoosh", {mcontroller.xPosition() + mcontroller.facingDirection()*5, mcontroller.yPosition()}, self.id, {0,0}, false, self.damageConfig)
+    world.spawnProjectile("ninjaassassinateswoosh", {mcontroller.xPosition() + mcontroller.facingDirection()*5, mcontroller.yPosition()}, self.id, {0,0}, false, damageConfig)
+  end
+end
+
+function getDpsFromConfig(config)
+  if config and config.config then
+    if config.config.primaryAbility then
+      return config.config.primaryAbility.baseDps or 1
+    elseif config.config.projectileConfig then
+      return config.config.projectileConfig.power or 1
+    else
+      return 1
+    end
+  else
+    return 1
   end
 end
 
