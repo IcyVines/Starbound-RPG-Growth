@@ -1,8 +1,8 @@
 
 function init()
- 	effect.addStatModifierGroup({
- 		{stat = "maxEnergy", effectiveMultiplier = 0.5}
- 	})
+   effect.addStatModifierGroup({
+     {stat = "maxEnergy", effectiveMultiplier = 0.5}
+   })
 end
 
 function update(dt)

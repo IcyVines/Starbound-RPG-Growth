@@ -141,7 +141,7 @@ function update(dt)
   end
 
   if widget.getChecked("bookTabs.6") then
-  	changeToProfession()
+    changeToProfession()
   end
 
   if player.currency("masterypoint") ~= self.mastery then
@@ -164,7 +164,7 @@ function update(dt)
   end
 
   if widget.getChecked("bookTabs.10") then
-  	updateLoreTab()
+    updateLoreTab()
   end
 
   updateStats()
@@ -496,10 +496,10 @@ function changeToProfession()
     else
       widget.setVisible("professionlockedlayout", false)
       if player.currency("proftype") == 0 then
-      	local money = player.currency("money") or 0
-      	widget.setText("professionslayout.pixelamount", math.min(money, 1000) .. "/1000")
-      	widget.setFontColor("professionslayout.pixelamount", money >= 1000 and "white" or "red")
-      	widget.setButtonEnabled("professionslayout.selectprofession", money >= 1000 and self.profTo > 0 and not root.assetJson("/professions/professionDescriptions.config")[self.profList[self.profTo]].disabled)
+        local money = player.currency("money") or 0
+        widget.setText("professionslayout.pixelamount", math.min(money, 1000) .. "/1000")
+        widget.setFontColor("professionslayout.pixelamount", money >= 1000 and "white" or "red")
+        widget.setButtonEnabled("professionslayout.selectprofession", money >= 1000 and self.profTo > 0 and not root.assetJson("/professions/professionDescriptions.config")[self.profList[self.profTo]].disabled)
         widget.setVisible("professionlayout", false)
         widget.setVisible("professionslayout", true)
       else
@@ -544,7 +544,7 @@ function changeToLore()
 end
 
 function updateProfessionTab()
-	--Update the current profession tab with correct info
+  --Update the current profession tab with correct info
   if self.profession == 0 then return end
   updateProfessionInfo()
   local profInfo = self.profInfo
@@ -625,7 +625,7 @@ function updateSpecializationSelect()
 
   widget.setText("specializationslayout.spectitle", currentSpec.title)
   if currentSpec.titleColor then
-  	widget.setFontColor("specializationslayout.spectitle", currentSpec.titleColor)
+    widget.setFontColor("specializationslayout.spectitle", currentSpec.titleColor)
   end
   local disabled = currentSpec.disabled
   local specDescText = disabled and "^red;Currently Disabled!^reset;\n" or ""
@@ -640,7 +640,7 @@ function updateSpecializationSelect()
   local unlocked = status.statusProperty(unlockStatus, false)
 
   if type(unlocked) == "number" and currentSpec.unlockNumber then
-  	widget.setText("specializationslayout.unlocktext", currentSpec.unlockText .. " " .. math.floor(unlocked*100)/100 .. "/" .. currentSpec.unlockNumber)
+    widget.setText("specializationslayout.unlocktext", currentSpec.unlockText .. " " .. math.floor(unlocked*100)/100 .. "/" .. currentSpec.unlockNumber)
   end
 
   if unlocked ~= true then unlocked = false end
@@ -683,15 +683,15 @@ function updateSpecializationTab()
   widget.setText("specializationlayout.statscalingtext", scalingText == "" and "-" or scalingText )
 
   if status.statusProperty("ivrpgshapeshift", false) then
-  	widget.setText("specializationlayout.specweaponicontitle", "Creature")
-  	local creature = status.statusProperty("ivrpgshapeshiftC", "")
-  	widget.setText("specializationlayout.specweapontitle", (creature == "" or creature == "giant") and (creature == "giant" and "Giant " or "") .. player.species():gsub("^%l", string.upper) or specInfo.tech.transformNames[creature])
-  	widget.setText("specializationlayout.specweapontext", concatTableValues(specInfo.tech.transformText[creature], "\n"))
-  	widget.setText("specializationlayout.detrimenttext", concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "detriment"))
- 	widget.setText("specializationlayout.benefittext", concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "benefit"))
- 	widget.setText("specializationlayout.statscalingtext", concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "scaling-up") .. concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "scaling-down"))
+    widget.setText("specializationlayout.specweaponicontitle", "Creature")
+    local creature = status.statusProperty("ivrpgshapeshiftC", "")
+    widget.setText("specializationlayout.specweapontitle", (creature == "" or creature == "giant") and (creature == "giant" and "Giant " or "") .. player.species():gsub("^%l", string.upper) or specInfo.tech.transformNames[creature])
+    widget.setText("specializationlayout.specweapontext", concatTableValues(specInfo.tech.transformText[creature], "\n"))
+    widget.setText("specializationlayout.detrimenttext", concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "detriment"))
+   widget.setText("specializationlayout.benefittext", concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "benefit"))
+   widget.setText("specializationlayout.statscalingtext", concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "scaling-up") .. concatTableValues(specInfo.tech.transformBonusText[creature], "\n", "scaling-down"))
   else
-  	widget.setText("specializationlayout.specweaponicontitle", "Weapon")
+    widget.setText("specializationlayout.specweaponicontitle", "Weapon")
   end
 
   widget.setImage("specializationlayout.techicon2", specInfo.tech.image)
@@ -733,10 +733,10 @@ end
 
 function unlockSpecWeapon()
   if self.spec > 0 then
-	  for _,weapon in ipairs(self.specInfo.weapon.name) do
-	  	player.giveBlueprint(weapon)
-	  end
-	end
+    for _,weapon in ipairs(self.specInfo.weapon.name) do
+      player.giveBlueprint(weapon)
+    end
+  end
 end
 
 function unlockSpecLore()
@@ -756,13 +756,13 @@ function unlockSpecLore()
 end
 
 function unequipSpecialization()
-	rescrollSpecialization(self.class, self.spec)
+  rescrollSpecialization(self.class, self.spec)
 end
 
 function unequipProfession()
-	player.consumeCurrency("proftype", self.profession)
-	self.profession = 0
-	player.interact("OpenCraftingInterface", {config = "/professions/ivrpgfakeui.config"}, player.id())
+  player.consumeCurrency("proftype", self.profession)
+  self.profession = 0
+  player.interact("OpenCraftingInterface", {config = "/professions/ivrpgfakeui.config"}, player.id())
 end
 
 
@@ -1319,9 +1319,9 @@ end
 
 function toggleRallyMode()
   if not status.statusProperty("ivrpgrallymode", false) then
-  	status.setStatusProperty("ivrpgrallymode", true)
+    status.setStatusProperty("ivrpgrallymode", true)
   else
-  	status.setStatusProperty("ivrpgrallymode", false)
+    status.setStatusProperty("ivrpgrallymode", false)
   end
   updateOverview(2*self.level*100+100)
 end
@@ -1523,18 +1523,18 @@ end
 
 function updateLoreTab()
   if widget.getChecked("lorelayout.changelogbutton") then
-  	
+    
   elseif widget.getChecked("lorelayout.lorebutton") then
 
   elseif widget.getChecked("lorelayout.creditsbutton") then
 
   else
-  	widget.setChecked("lorelayout." .. self.lastLoreChecked .. "button", true)
-  	if self.lastLoreChecked == "lore" then
-  	  changeToLoreText()
-  	elseif self.lastLoreChecked == "changelog" then
-  	  changeToChangelogText()
-  	else
+    widget.setChecked("lorelayout." .. self.lastLoreChecked .. "button", true)
+    if self.lastLoreChecked == "lore" then
+      changeToLoreText()
+    elseif self.lastLoreChecked == "changelog" then
+      changeToChangelogText()
+    else
       changeToCreditsText()
     end
   end
@@ -1574,9 +1574,9 @@ end
 function uncheckLoreTabs(name)
   local tabs = {"lore", "changelog", "credits"}
   for _,tab in ipairs(tabs) do
-  	if tab ~= name then
-  	  widget.setChecked("lorelayout." .. tab .. "button", false)
-  	end
+    if tab ~= name then
+      widget.setChecked("lorelayout." .. tab .. "button", false)
+    end
   end
 end
 
@@ -1585,15 +1585,15 @@ function mechanicsCheck()
 end
 
 function changeLoreSelection()
-	local selectedLore = widget.getListSelected("lorelayout.scrollArea.list")
-	if selectedLore and type(selectedLore) == "string" then
-		local name = widget.getData("lorelayout.scrollArea.list." .. selectedLore)
-		local unlocks = status.statusProperty("ivrpgloreunlocks", {})
-		if name and (unlocks[name] or mechanicsCheck()) then
-			table.insert(self.loreTable, name)
-			buildNewLore()
-		end
-	end
+  local selectedLore = widget.getListSelected("lorelayout.scrollArea.list")
+  if selectedLore and type(selectedLore) == "string" then
+    local name = widget.getData("lorelayout.scrollArea.list." .. selectedLore)
+    local unlocks = status.statusProperty("ivrpgloreunlocks", {})
+    if name and (unlocks[name] or mechanicsCheck()) then
+      table.insert(self.loreTable, name)
+      buildNewLore()
+    end
+  end
 end
 
 function buildNewLore()
@@ -1602,37 +1602,37 @@ function buildNewLore()
   local unlocks = status.statusProperty("ivrpgloreunlocks", {})
   local loreData = self.textData
   for _,v in ipairs(self.loreTable) do
-  	widget.setText("lorelayout.title", loreData[v].title or "^red;Lore")
-  	loreData = loreData[v].children
+    widget.setText("lorelayout.title", loreData[v].title or "^red;Lore")
+    loreData = loreData[v].children
   end
   if type(loreData) == "table" then
-  	local added = false
-  	for k,v in pairsByKeys(loreData) do
-  	  local newListItem = widget.addListItem("lorelayout.scrollArea.list")
-  	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".title", v.title)
-  	  widget.setData("lorelayout.scrollArea.list." .. newListItem, k)
-  	  widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".subtext", (unlocks[k] or mechanicsCheck()) and "" or "^red;Data Obscured")
-  	  added = true
-  	end
-  	if not added then
-  	  widget.setText("lorelayout.scrollArea.text", "^red;Looks like there's nothing here yet!")
-  	else
-  	  widget.setText("lorelayout.scrollArea.text", "")
-  	end
+    local added = false
+    for k,v in pairsByKeys(loreData) do
+      local newListItem = widget.addListItem("lorelayout.scrollArea.list")
+      widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".title", v.title)
+      widget.setData("lorelayout.scrollArea.list." .. newListItem, k)
+      widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".subtext", (unlocks[k] or mechanicsCheck()) and "" or "^red;Data Obscured")
+      added = true
+    end
+    if not added then
+      widget.setText("lorelayout.scrollArea.text", "^red;Looks like there's nothing here yet!")
+    else
+      widget.setText("lorelayout.scrollArea.text", "")
+    end
   else
     if #self.loreTable == 4 and self.loreTable[4] == "enemyintelligence" then
       loreData = tostring(loreData) .. "\n\n^red;RPG AI " .. (self.versionConfig.RPGAIversion and tostring(self.versionConfig.RPGAIversion) .. " installed. Vanilla monsters will have the following behaviors:^reset; " .. self.versionConfig.RPGAItext or "not installed. Vanilla monsters will not be affected.")
     end
-  	widget.setText("lorelayout.scrollArea.text", tostring(loreData))
+    widget.setText("lorelayout.scrollArea.text", tostring(loreData))
   end
   widget.setButtonEnabled("lorelayout.backarrow", #self.loreTable > 1)
 end
 
 function oneLoreUp()
-	if #self.loreTable > 1 then
-	  table.remove(self.loreTable)
-	end
-	buildNewLore()
+  if #self.loreTable > 1 then
+    table.remove(self.loreTable)
+  end
+  buildNewLore()
 end
 
 function changelogTextHelper()
@@ -1645,36 +1645,36 @@ function changelogTextHelper()
   colorSwitch[false] = "^#d1d1d1;"
   local previousSpace = false
   for s in text:gmatch("[^\r\n]+") do
-  	local space = string.match(s, "[%s%s%s%s]+") or ""
-  	if space == previousSpace then
-  	  switch = not switch
-  	else
-  	  switch = true
-  	end
-  	previousSpace = space
-  	if returnText ~= "" and space == "" or space == " " then
-  	  returnText = returnText .. "\n"
-  	end
-  	if string.len(s) > maxLength then
-  	  local words = {}
-  	  for word in s:gmatch("%S+") do table.insert(words, word) end
-  	  --sb.logInfo(sb.printJson(words))
-  	  local charCount = string.len(space)
-  	  local line = ""
-  	  for _,word in ipairs(words) do
-  	  	charCount = charCount + string.len(word) + 1
-  	  	if charCount > maxLength then
-  	  	  charCount = string.len(space) + string.len(word)
-  	  	  returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
-  	  	  line = word .. " "
-  	  	else
-  	  	  line = line .. word .. " "
-  	  	end
-  	  end
-  	  returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
-  	else
-  	  returnText = returnText .. colorSwitch[switch] .. s .. "\n"
-  	end
+    local space = string.match(s, "[%s%s%s%s]+") or ""
+    if space == previousSpace then
+      switch = not switch
+    else
+      switch = true
+    end
+    previousSpace = space
+    if returnText ~= "" and space == "" or space == " " then
+      returnText = returnText .. "\n"
+    end
+    if string.len(s) > maxLength then
+      local words = {}
+      for word in s:gmatch("%S+") do table.insert(words, word) end
+      --sb.logInfo(sb.printJson(words))
+      local charCount = string.len(space)
+      local line = ""
+      for _,word in ipairs(words) do
+        charCount = charCount + string.len(word) + 1
+        if charCount > maxLength then
+          charCount = string.len(space) + string.len(word)
+          returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
+          line = word .. " "
+        else
+          line = line .. word .. " "
+        end
+      end
+      returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
+    else
+      returnText = returnText .. colorSwitch[switch] .. s .. "\n"
+    end
   end
   return returnText
 end

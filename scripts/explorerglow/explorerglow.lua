@@ -5,11 +5,11 @@ function init()
 end
 
 function update(dt)
-	self.health = world.entityHealth(self.id)
+  self.health = world.entityHealth(self.id)
   if self.health[1] ~= 0 and self.health[2] ~= 0 and self.health[1]/self.health[2]*100 >= 50 then
     animator.setLightActive("glow", true)
   else
-	  animator.setLightActive("glow", false)
+    animator.setLightActive("glow", false)
     effect.setParentDirectives()
   end
 

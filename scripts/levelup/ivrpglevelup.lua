@@ -45,9 +45,9 @@ function activateVisualEffects()
   }})
 
   for x = -1,1 do
-  	for y = -1,1 do
-  		if x == 0 and y == 0 then else world.spawnProjectile("levelupparticle", mcontroller.position(), entity.id(), {x,y}, true) end
-  	end
+    for y = -1,1 do
+      if x == 0 and y == 0 then else world.spawnProjectile("levelupparticle", mcontroller.position(), entity.id(), {x,y}, true) end
+    end
   end
 end
 

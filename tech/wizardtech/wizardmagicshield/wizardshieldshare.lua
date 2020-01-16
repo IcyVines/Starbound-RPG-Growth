@@ -12,7 +12,7 @@ function update(dt)
 end
 
 function uninit()
-	--deactivateZone()
+  --deactivateZone()
 end
 
 function deactivateZone()

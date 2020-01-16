@@ -24,19 +24,19 @@ end
 
 function update(dt)
   if mcontroller.isColliding() then
-  	self.canGas = true
+    self.canGas = true
     if not self.noBounce then
-    	mcontroller.setYVelocity(mcontroller.onGround() and 15 or -5);
-    	mcontroller.setXVelocity(math.random(-10,10))
+      mcontroller.setYVelocity(mcontroller.onGround() and 15 or -5);
+      mcontroller.setXVelocity(math.random(-10,10))
     end
     if projectile.timeToLive() > self.timeAfterCollision then projectile.setTimeToLive(self.timeAfterCollision) end
   end
 
   if self.gasTimer == 0 and self.canGas then
-  	self.gasTimer = self.gasTime
-  	if self.smoke and (not self.smokeBlocked) then world.spawnProjectile(self.smoke, mcontroller.position(), (not self.ignoreId) and self.id or nil, {0,0}, false, {}) end
+    self.gasTimer = self.gasTime
+    if self.smoke and (not self.smokeBlocked) then world.spawnProjectile(self.smoke, mcontroller.position(), (not self.ignoreId) and self.id or nil, {0,0}, false, {}) end
   elseif self.gasTimer > 0 then
-  	self.gasTimer = math.max(0, self.gasTimer - dt)
+    self.gasTimer = math.max(0, self.gasTimer - dt)
   end
 
   if projectile.getParameter("shockTargets", false) then updateShocks(dt) end

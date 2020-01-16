@@ -6,6 +6,6 @@ function init()
   })
 
   message.setHandler("setPower", function(_, _, power)
-  	projectile.setPower(power)
+    projectile.setPower(power)
   end)
 end

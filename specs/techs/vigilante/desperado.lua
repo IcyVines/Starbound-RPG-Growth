@@ -7,8 +7,8 @@ end
 
 function toggle()
   if self.timer == 0 then
-  	status.addEphemeralEffect("ivrpgdesperadostatus", 5)
-  	self.timer = 35
+    status.addEphemeralEffect("ivrpgdesperadostatus", 5)
+    self.timer = 35
   end
 end
 
@@ -17,5 +17,5 @@ function uninit()
 end
 
 function update(args)
-	self.timer = math.max(0, self.timer - args.dt)
+  self.timer = math.max(0, self.timer - args.dt)
 end

@@ -43,8 +43,8 @@ function update(dt)
 
   if self.cooldown > 0 then
     mcontroller.accelerate({mcontroller.yVelocity()*15,-mcontroller.xVelocity()*15})
-  	self.cooldown = math.max(0, self.cooldown - dt)
-  	return
+    self.cooldown = math.max(0, self.cooldown - dt)
+    return
   end
 
   local maxDistance = self.bloodSeeker and 30 or 20
@@ -55,22 +55,22 @@ function update(dt)
   for _,e in ipairs(entities) do
     local targetDamageTeam = world.entityDamageTeam(e)
     targetDamageTeam = targetDamageTeam.type and targetDamageTeam.type == "enemy"
-  	if targetDamageTeam and world.entityCanDamage(self.playerId, e) then
-  		epos = world.entityPosition(e)
-  		local newDistance = world.magnitude(pos, epos)
-  		if (newDistance < distance or distance < 0) then
-  			distance = newDistance
-  			entityPos = epos
-  		end
-  	end
+    if targetDamageTeam and world.entityCanDamage(self.playerId, e) then
+      epos = world.entityPosition(e)
+      local newDistance = world.magnitude(pos, epos)
+      if (newDistance < distance or distance < 0) then
+        distance = newDistance
+        entityPos = epos
+      end
+    end
   end
 
   if distance > 0 then
-  	if distance < 0.5 then
-  		self.cooldown = self.hitTimer / 2
-  		return
-  	end
-  	local toTarget = world.distance(entityPos, pos)
+    if distance < 0.5 then
+      self.cooldown = self.hitTimer / 2
+      return
+    end
+    local toTarget = world.distance(entityPos, pos)
     toTarget = vec2.norm(toTarget)
     mcontroller.approachVelocity(vec2.mul(toTarget, self.maxSpeed), self.controlForce)
   end

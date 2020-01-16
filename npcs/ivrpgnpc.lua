@@ -15,9 +15,9 @@ function init()
 end
 
 function update(dt)
-	ivrpgOldUpdate(dt)
-	updateEffects(dt)
-	if self.rpg_Actions then rpg_updateUniqueNPC(dt) end
+  ivrpgOldUpdate(dt)
+  updateEffects(dt)
+  if self.rpg_Actions then rpg_updateUniqueNPC(dt) end
 end
 
 function damage(args)

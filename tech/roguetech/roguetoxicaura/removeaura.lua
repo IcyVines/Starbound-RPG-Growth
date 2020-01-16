@@ -5,7 +5,7 @@ function removeAura(id)
 end
 
 function init()
-	mcontroller.applyParameters({
-		collisionEnabled = false
-	})
+  mcontroller.applyParameters({
+    collisionEnabled = false
+  })
 end

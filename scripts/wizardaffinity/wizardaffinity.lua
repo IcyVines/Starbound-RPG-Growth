@@ -33,9 +33,9 @@ function update(dt)
   end
 
   if not status.statPositive("ivrpgclassability") then
-  	effect.setParentDirectives("border=1;c132bf20;c132bf00")
+    effect.setParentDirectives("border=1;c132bf20;c132bf00")
   else
-  	effect.setParentDirectives()
+    effect.setParentDirectives()
   end
 
   if world.entityCurrency(effect.sourceEntity(), "classtype") ~= 2 then

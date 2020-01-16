@@ -8,11 +8,11 @@ function update(dt)
   targetIds = world.monsterQuery(mcontroller.position(), 20)
   local healthRatio = status.resource("health") / status.stat("maxHealth")
   if targetIds then
-  	for _,id in ipairs(targetIds) do
-  		if world.entityDamageTeam(id).type == "friendly" and world.entityAggressive(id) then
-  			world.sendEntityMessage(id, "applyStatusEffect", self.healingStatus, 3 - healthRatio, self.id)
-  		end
-  	end
+    for _,id in ipairs(targetIds) do
+      if world.entityDamageTeam(id).type == "friendly" and world.entityAggressive(id) then
+        world.sendEntityMessage(id, "applyStatusEffect", self.healingStatus, 3 - healthRatio, self.id)
+      end
+    end
   end
 end
 

@@ -21,37 +21,37 @@ end
 
 function rpg_updateUniqueNPC(dt)
   for k,v in pairs(self.rpg_Actions) do
-  	if k == "debuff" then
-  	  local targetEntities = friendlyQuery(mcontroller.position(), v.range, {}, self.rpg_Id, true)
-  	  if targetEntities then
-  	    for _,id in ipairs(targetEntities) do
-  	      for _,effect in ipairs(v.statusEffects) do
-  	        world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_Id)
-  	      end
-  	    end
-  	  end
-  	elseif k == "buff" then
-  	  local targetEntities = enemyQuery(mcontroller.position(), v.range, v.self and {} or {withoutEntityId = self.rpg_Id, includedTypes = {"creature"}}, self.rpg_Id, true)
-  	  if targetEntities then
-  	    for _,id in ipairs(targetEntities) do
-  	      for _,effect in ipairs(v.statusEffects) do
-  	        world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_Id)
-  	      end
-  	    end
-  	  end
-  	elseif k == "tank" then
-  	  if self.rpg_armor then
-  	    rpg_stripArmor(self.rpg_armor.current == 0)
-  	  else
-  	    self.rpg_armor = {type = v.type, max = v.protection, current = v.protection, tag = v.segments or 10, rechargeTime = v.rechargeTime, breakTime = v.breakTime, segments = v.segments or 10, elementType = v.elementType or "none"}
-  	    status.setStatusProperty("ivrpg_npcShield_element", v.elementType)
+    if k == "debuff" then
+      local targetEntities = friendlyQuery(mcontroller.position(), v.range, {}, self.rpg_Id, true)
+      if targetEntities then
+        for _,id in ipairs(targetEntities) do
+          for _,effect in ipairs(v.statusEffects) do
+            world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_Id)
+          end
+        end
+      end
+    elseif k == "buff" then
+      local targetEntities = enemyQuery(mcontroller.position(), v.range, v.self and {} or {withoutEntityId = self.rpg_Id, includedTypes = {"creature"}}, self.rpg_Id, true)
+      if targetEntities then
+        for _,id in ipairs(targetEntities) do
+          for _,effect in ipairs(v.statusEffects) do
+            world.sendEntityMessage(id, "addEphemeralEffect", effect, 1, self.rpg_Id)
+          end
+        end
+      end
+    elseif k == "tank" then
+      if self.rpg_armor then
+        rpg_stripArmor(self.rpg_armor.current == 0)
+      else
+        self.rpg_armor = {type = v.type, max = v.protection, current = v.protection, tag = v.segments or 10, rechargeTime = v.rechargeTime, breakTime = v.breakTime, segments = v.segments or 10, elementType = v.elementType or "none"}
+        status.setStatusProperty("ivrpg_npcShield_element", v.elementType)
         self.rpg_Health = status.resource("health")
       end
       status.addEphemeralEffect("ivrpgNpcShield", math.huge, self.rpg_Id)
-  	elseif k == "spawn" then
+    elseif k == "spawn" then
       if not self.rpg_spawn then
         self.rpg_spawn = {spawnTypes = v.spawnTypes, frequency = v.frequency, spawnLevel = v.spawnLevel, maxActive = v.maxActive, activeSummons = {}, say = v.say, timer = v.frequency}
-  	  end
+      end
     end
   end
 
@@ -83,7 +83,7 @@ function rpg_updateUniqueNPC(dt)
 
   if status.resource("health") <= 0 and not self.rpg_spawnedTreaasure then
     self.rpg_spawnedTreaasure = true
-  	world.spawnTreasure(mcontroller.position(), "experienceorbpoolminiboss", npc.level())
+    world.spawnTreasure(mcontroller.position(), "experienceorbpoolminiboss", npc.level())
   end
 
   if self.rpg_spawn then
@@ -125,18 +125,18 @@ function rpg_checkSummonsActive()
 end
 
 function rpg_weaken(weaken)
-	status.setPersistentEffects("ivrpgstripArmor", weaken and {
-      	{stat="physicalResistance", amount=-0.5},
-      	{stat="iceResistance", amount=-0.5},
-      	{stat="fireResistance", amount=-0.5},
-      	{stat="electricResistance", amount=-0.5},
-      	{stat="poisonResistance", amount=-0.5},
-      	{stat="novaResistance", amount=-0.5},
-      	{stat="demonicResistance", amount=-0.5},
-      	{stat="holyResistance", amount=-0.5},
-      	{stat="shadowResistance", amount=-0.5},
-      	{stat="cosmicResistance", amount=-0.5},
-      	{stat="radioactiveResistance", amount=-0.5}
+  status.setPersistentEffects("ivrpgstripArmor", weaken and {
+        {stat="physicalResistance", amount=-0.5},
+        {stat="iceResistance", amount=-0.5},
+        {stat="fireResistance", amount=-0.5},
+        {stat="electricResistance", amount=-0.5},
+        {stat="poisonResistance", amount=-0.5},
+        {stat="novaResistance", amount=-0.5},
+        {stat="demonicResistance", amount=-0.5},
+        {stat="holyResistance", amount=-0.5},
+        {stat="shadowResistance", amount=-0.5},
+        {stat="cosmicResistance", amount=-0.5},
+        {stat="radioactiveResistance", amount=-0.5}
     } or {})
 end
 
@@ -155,8 +155,8 @@ function rpg_damage(damage, sourceDamage, sourceKind, sourceId)
     end
     status.setResource("health", self.rpg_Health)
     if self.rpg_armor.current == 0 then
-    	if self.rpg_armor.type == "rapid" then
-      	rpg_rapidSpark()
+      if self.rpg_armor.type == "rapid" then
+        rpg_rapidSpark()
       end
       self.rpg_stripTimer = self.rpg_armor.rechargeTime
       self.rpg_breakTimer = self.rpg_armor.breakTime

@@ -10,9 +10,9 @@ function init()
 end
 
 function update(dt)
-	if status.isResource("energy") then
-		status.modifyResourcePercentage("energy", self.energyRegen * dt)
-	end
+  if status.isResource("energy") then
+    status.modifyResourcePercentage("energy", self.energyRegen * dt)
+  end
 end
 
 function uninit()

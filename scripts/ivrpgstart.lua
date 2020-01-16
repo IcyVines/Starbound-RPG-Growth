@@ -60,15 +60,15 @@ function init()
   end)
 
   message.setHandler("feedbackLoop", function(_, _)
-  	if status.statPositive("ivrpgucfeedbackloop") then status.addEphemeralEffect("rage", 2) end
+    if status.statPositive("ivrpgucfeedbackloop") then status.addEphemeralEffect("rage", 2) end
   end)
 
   message.setHandler("killedEnemy", function(_, _, enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind)
-  	killedEnemy(enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind)
+    killedEnemy(enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind)
   end)
 
   message.setHandler("modifyResource", function(_, _, type, amount)
-  	status.modifyResource(type, amount)
+    status.modifyResource(type, amount)
   end)
 
   message.setHandler("modifyResourcePercentage", function(_, _, type, amount)
@@ -625,31 +625,31 @@ function addToChallengeCount(level)
   local challenge2 = status.stat("ivrpgchallenge2")
   local challenge3 = status.stat("ivrpgchallenge3")
 
-	if challenge1 == 1 and level >= 4 then
+  if challenge1 == 1 and level >= 4 then
     status.setStatusProperty("ivrpgchallenge1progress", status.statusProperty("ivrpgchallenge1progress", 0) + 1)
-	elseif challenge1 == 2 and level >= 5 then
-		status.setStatusProperty("ivrpgchallenge1progress", status.statusProperty("ivrpgchallenge1progress", 0) + 1)
-	end
+  elseif challenge1 == 2 and level >= 5 then
+    status.setStatusProperty("ivrpgchallenge1progress", status.statusProperty("ivrpgchallenge1progress", 0) + 1)
+  end
 
-	if challenge2 == 1 and level >= 6 then
-		status.setStatusProperty("ivrpgchallenge2progress", status.statusProperty("ivrpgchallenge2progress", 0) + 1)
-	end
+  if challenge2 == 1 and level >= 6 then
+    status.setStatusProperty("ivrpgchallenge2progress", status.statusProperty("ivrpgchallenge2progress", 0) + 1)
+  end
 
-	if challenge3 == 1 and level >= 7 then
-		status.setStatusProperty("ivrpgchallenge3progress", status.statusProperty("ivrpgchallenge3progress", 0) + 1)
-	end
+  if challenge3 == 1 and level >= 7 then
+    status.setStatusProperty("ivrpgchallenge3progress", status.statusProperty("ivrpgchallenge3progress", 0) + 1)
+  end
 end
 
 function dyingEffects(position, statusEffects)
   if status.statPositive("ivrpgucbloom") then
     if hasEphemeralStat(statusEffects, "ivrpgsear") or hasEphemeralStat(statusEffects, "burning") or hasEphemeralStat(statusEffects, "melting") then
-    	world.spawnProjectile(
-        	"fireplasmaexplosionstatus",
-        	position,
-        	self.rpg_playerId,
-        	{0,0},
-        	false,
-        	{timeToLive = 0.25, power = status.stat("powerMultiplier")*50}
+      world.spawnProjectile(
+          "fireplasmaexplosionstatus",
+          position,
+          self.rpg_playerId,
+          {0,0},
+          false,
+          {timeToLive = 0.25, power = status.stat("powerMultiplier")*50}
       )
     end
   end

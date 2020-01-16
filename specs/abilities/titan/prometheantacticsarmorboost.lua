@@ -7,7 +7,7 @@ function init()
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
   animator.setParticleEmitterActive("embers", true)
   effect.addStatModifierGroup({
-  	{stat = "protection", amount = self.armor}
+    {stat = "protection", amount = self.armor}
   })
 end
 
@@ -16,5 +16,5 @@ function update(dt)
 end
 
 function uninit()
-	animator.setParticleEmitterActive("embers", false)
+  animator.setParticleEmitterActive("embers", false)
 end

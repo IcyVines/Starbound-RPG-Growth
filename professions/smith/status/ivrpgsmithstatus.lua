@@ -8,15 +8,15 @@ end
 
 function update(dt)
   targetIds = world.entityQuery(mcontroller.position(), 10, {
-  	includedTypes = {"player", "npc"}
+    includedTypes = {"player", "npc"}
   })
 
   if targetIds and (status.resource("food") or 70) / 70 > self.hungerThreshold then
-  	for _,id in ipairs(targetIds) do
-  		if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
-  			world.sendEntityMessage(id, "applyStatusEffect", self.armorStatus, 2, self.id)
-  		end
-  	end
+    for _,id in ipairs(targetIds) do
+      if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
+        world.sendEntityMessage(id, "applyStatusEffect", self.armorStatus, 2, self.id)
+      end
+    end
   end
 end
 

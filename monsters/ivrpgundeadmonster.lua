@@ -7,5 +7,5 @@ function init()
 end
 
 function update(dt)
-	monsterOldUpdate(dt)
+  monsterOldUpdate(dt)
 end

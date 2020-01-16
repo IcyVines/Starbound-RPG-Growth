@@ -13,21 +13,21 @@ end
 
 function update(dt)
   targetIds = world.entityQuery(mcontroller.position(), 10, {
-  	includedTypes = {"player", "npc"},
-  	withoutEntityId = self.id
+    includedTypes = {"player", "npc"},
+    withoutEntityId = self.id
   })
 
   if targetIds and status.resource("health") / status.stat("maxHealth") > self.healthThreshold then
-  	for _,id in ipairs(targetIds) do
-  		if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
-  			world.sendEntityMessage(id, "applyStatusEffect", self.healingStatus, 2, self.id)
-  		end
-  	end
+    for _,id in ipairs(targetIds) do
+      if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
+        world.sendEntityMessage(id, "applyStatusEffect", self.healingStatus, 2, self.id)
+      end
+    end
   end
 
   if status.statusProperty("ivrpgprofessionpassiveactivation", false) then
-  	animator.playSound("heal")
-  	status.setStatusProperty("ivrpgprofessionpassiveactivation", false)
+    animator.playSound("heal")
+    status.setStatusProperty("ivrpgprofessionpassiveactivation", false)
   end
 end
 

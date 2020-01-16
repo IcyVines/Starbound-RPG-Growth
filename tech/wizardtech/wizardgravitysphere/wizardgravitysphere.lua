@@ -30,7 +30,7 @@ function init()
     function()
       self.enableZone = true
     end,
-	true
+  true
   )
 
   self.damageListener = damageListener("damageTaken", 
@@ -71,7 +71,7 @@ function update(args)
     else
       deactivateZone()
     end
-	self.enableZone = false
+  self.enableZone = false
     
     if status.resource("health") ~= 0 then
       animator.setParticleEmitterOffsetRegion("healing", mcontroller.boundBox())

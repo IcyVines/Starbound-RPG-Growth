@@ -80,7 +80,7 @@ function update(dt)
       {stat = "powerMultiplier", baseMultiplier = statAmount}
     })
   elseif self.heldItem then
-	   --Bonus for One-Handed Primary
+     --Bonus for One-Handed Primary
     for k,v in pairs(root.itemTags(self.heldItem)) do
       tagInfo = self.weaponScaling.tags[v]
       if tagInfo and tagInfo.conflictingTags then
@@ -1042,7 +1042,7 @@ function updateChallenges()
       end
 
       if challenge2 then
-		    if challenge2 == 2 then
+        if challenge2 == 2 then
           if updateProgress(notification, "boss", 7, "dragonboss") then
             status.setStatusProperty("ivrpgchallenge2progress", status.statusProperty("ivrpgchallenge2progress", 0) + 1)
           end
@@ -1050,7 +1050,7 @@ function updateChallenges()
       end
 
       if challenge3 then
-		    if challenge3 == 2 then
+        if challenge3 == 2 then
           if updateProgress(notification, "boss", 7, "vault") then
             status.setStatusProperty("ivrpgchallenge3progress", status.statusProperty("ivrpgchallenge3progress", 0) + 1)
           end
@@ -1062,7 +1062,7 @@ function updateChallenges()
       end
 
       if updateProgress(notification, "boss", 8, "eyeboss") then
-      	world.spawnItem("experienceorb", mcontroller.position(), 2000)
+        world.spawnItem("experienceorb", mcontroller.position(), 2000)
       end
       if status.statPositive("ivrpgucskadisblessing") and (self.affinity-1)%4 == 2 and notification.damageSourceKind == "bow" then
         world.sendEntityMessage(notification.targetEntityId, "applyStatusEffect", "ivrpgembrittle", 3, self.rpgPlayerID)
@@ -1079,7 +1079,7 @@ function updateProgress(notification, challengeKind, threatTarget, bossKind)
   local targetEntityId = notification.targetEntityId
   local isMonster = world.isMonster(targetEntityId)
   if not isMonster then
-  	return false
+    return false
   end
 
   local isNpc = world.isNpc(targetEntityId)
@@ -1101,7 +1101,7 @@ function updateProgress(notification, challengeKind, threatTarget, bossKind)
       if bossKind == "vault" then
         for _,boss in pairs(vaultGuardians) do
           if boss == monsterName then
-          	--self.lastMonster[threatTarget-3] = targetEntityId
+            --self.lastMonster[threatTarget-3] = targetEntityId
             return true
           end
         end

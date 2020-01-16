@@ -3,7 +3,7 @@ function init()
 end
 
 function update(dt)
-	mcontroller.controlParameters({
-		collisionEnabled = true
-	})
+  mcontroller.controlParameters({
+    collisionEnabled = true
+  })
 end

@@ -11,6 +11,6 @@ function update(dt)
   local oldGravityMultiplier = self.movementParams.gravityMultiplier or 1
   local newGravityMultiplier = self.gravityMultiplier * oldGravityMultiplier
   mcontroller.controlParameters({
-  	gravityMultiplier = newGravityMultiplier
+    gravityMultiplier = newGravityMultiplier
   })
 end

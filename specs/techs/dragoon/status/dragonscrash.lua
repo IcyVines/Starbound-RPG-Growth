@@ -1,7 +1,7 @@
 function init()
   effect.addStatModifierGroup({
-  	{stat = "invulnerable", amount = 1},
-  	{stat = "grit", amount = 1}
+    {stat = "invulnerable", amount = 1},
+    {stat = "grit", amount = 1}
   })
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
   animator.setParticleEmitterActive("embers", true)

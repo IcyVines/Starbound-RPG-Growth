@@ -22,9 +22,9 @@ function init()
 end
 
 function update(dt)
-	monsterOldUpdate(dt)
-	updateEffects(dt)
-	updateAI(dt)
+  monsterOldUpdate(dt)
+  updateEffects(dt)
+  updateAI(dt)
   if self.rpg_Actions then rpg_updateUniqueMonster(dt) end
   if config.getParameter("rpgOwnerUuid") and not world.entityExists(config.getParameter("rpgOwnerUuid")) then
     self.shouldDie = true

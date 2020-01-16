@@ -29,9 +29,9 @@ function update(dt)
   updateDamageGiven(dt)
 
   if not status.statPositive("ivrpgclassability") then
-  	effect.setParentDirectives("border=1;d8a23c20;d8a23c00")
+    effect.setParentDirectives("border=1;d8a23c20;d8a23c00")
   else
-  	effect.setParentDirectives()
+    effect.setParentDirectives()
   end
 
   if world.entityCurrency(effect.sourceEntity(), "classtype") ~= 4 then

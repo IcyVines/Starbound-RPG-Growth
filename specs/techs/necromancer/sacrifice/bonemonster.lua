@@ -11,5 +11,5 @@ function update(dt)
 end
 
 function uninit()
-	status.modifyResourcePercentage("health", -1)
+  status.modifyResourcePercentage("health", -1)
 end

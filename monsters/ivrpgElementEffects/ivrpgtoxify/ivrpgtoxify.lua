@@ -33,8 +33,8 @@ function contagionSpread(dt)
 
       for i,id in ipairs(targetIds) do
         if world.entityCanDamage(self.sourceId, id) and not world.lineTileCollision(mcontroller.position(), world.entityPosition(id)) then
-        	spawnPoison()
-        	world.sendEntityMessage(id, "addEphemeralEffect", "ivrpgtoxify", 5, self.sourceId)
+          spawnPoison()
+          world.sendEntityMessage(id, "addEphemeralEffect", "ivrpgtoxify", 5, self.sourceId)
           return
         end
       end

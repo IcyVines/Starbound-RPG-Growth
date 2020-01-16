@@ -1,7 +1,7 @@
 
 function init()
-	sb.logInfo("player script functional")
-	
+  sb.logInfo("player script functional")
+  
 end
 
 function update(dt)

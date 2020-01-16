@@ -12,7 +12,7 @@ function update(dt)
 end
 
 function deathMist()
-	world.spawnProjectile("reapeddamageprojectile", mcontroller.position(), self.id)
+  world.spawnProjectile("reapeddamageprojectile", mcontroller.position(), self.id)
   world.spawnProjectile("reapedhealprojectile", mcontroller.position())
   world.sendEntityMessage(self.id, "enemyReaped")
 end

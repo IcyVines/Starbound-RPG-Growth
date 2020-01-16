@@ -6,9 +6,9 @@ function init()
   removeAllAfflictions()
   status.modifyResourcePercentage("health", 1)
   effect.addStatModifierGroup({
-  	{stat = "ivrpgundead", amount = 1},
-  	{stat = "powerMultiplier", effectiveMultiplier = 2},
-  	{stat = "maxHealth", effectiveMultiplier = 2},
+    {stat = "ivrpgundead", amount = 1},
+    {stat = "powerMultiplier", effectiveMultiplier = 2},
+    {stat = "maxHealth", effectiveMultiplier = 2},
     {stat = "armor", effectiveMultiplier = 2},
     {stat = "holyResistance", amount = -1},
     {stat = "demonicResistance", amount = 3},
@@ -36,6 +36,6 @@ function update(dt)
 end
 
 function uninit()
-	status.modifyResourcePercentage("health", -1)
-	world.spawnProjectile("reapeddamageprojectile", mcontroller.position(), self.id)
+  status.modifyResourcePercentage("health", -1)
+  world.spawnProjectile("reapeddamageprojectile", mcontroller.position(), self.id)
 end
