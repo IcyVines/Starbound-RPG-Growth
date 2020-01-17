@@ -6,6 +6,7 @@ function init()
   self.multiJumpCount = config.getParameter("multiJumpCount")
   self.cost = config.getParameter("cost")
   self.maxSpeed = 25
+  self.liquidTimer = 0
   refreshJumps()
   Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doMultiJump)
 end
@@ -18,11 +19,22 @@ function update(args)
   elseif args.moves["right"] and not args.moves["left"] then
     self.lrInput = "right"
   end
+
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
-    status.removeEphemeralEffect("ivrpgjumpcamouflage")
-    status.removeEphemeralEffect("nofalldamage")
+    if not mcontroller.liquidMovement() then
+      status.removeEphemeralEffect("nofalldamage")
+      status.removeEphemeralEffect("ivrpgjumpcamouflage")
+      self.liquidTimer = 0
+    else
+      self.liquidTimer = self.liquidTimer + args.dt
+      if self.liquidTimer > 0.2 then
+        self.liquidTimer = 0
+        status.removeEphemeralEffect("nofalldamage")
+        status.removeEphemeralEffect("ivrpgjumpcamouflage")
+      end
+    end
     refreshJumps()
-  elseif status.resource("energy") < 1 or status.statPositive("activeMovementAbilities") then
+  elseif status.resource("energy") == 0 or status.statPositive("activeMovementAbilities") then
     status.removeEphemeralEffect("ivrpgjumpcamouflage")
     status.removeEphemeralEffect("nofalldamage")
   end
@@ -47,9 +59,10 @@ function doMultiJump(args)
       mcontroller.controlJump(true)
       mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()))
       self.facing = mcontroller.facingDirection()
-      --self.facing = tech.aimPosition()[1]-mcontroller.position()[1]
-    
-      if self.lrInput == "left" then
+      if not self.lrInput then
+        animator.burstParticleEmitter("jumpUpParticles")
+        mcontroller.controlApproachYVelocity(config.getParameter("yVelocity", 50), 1000)
+      elseif self.lrInput == "left" then
         mcontroller.setXVelocity(-self.maxSpeed + math.min(0, mcontroller.xVelocity()))
         animator.burstParticleEmitter("jumpLeftParticles")
       elseif self.lrInput == "right" then

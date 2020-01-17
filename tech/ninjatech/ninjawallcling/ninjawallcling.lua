@@ -1,5 +1,6 @@
 require "/scripts/vec2.lua"
 require "/scripts/poly.lua"
+require "/tech/ninjatech/flashjump/flashjump.lua"
 require "/scripts/keybinds.lua"
 require "/tech/ivrpgopenrpgui.lua"
 
@@ -8,6 +9,7 @@ function init()
   self.multiJumpCount = config.getParameter("multiJumpCount")
   self.cost = config.getParameter("cost")
   self.maxSpeed = 30
+  self.liquidTimer = 0
 
   self.wallSlideParameters = config.getParameter("wallSlideParameters")
   self.wallJumpXVelocity = config.getParameter("wallJumpXVelocity")
@@ -47,18 +49,28 @@ function update(args)
   local jumpActivated = args.moves["jump"] and not self.lastJump
   self.lastJump = args.moves["jump"]
 
- lrInput = nil
+  self.lrInput = nil
   if args.moves["left"] and not args.moves["right"] then
-    lrInput = "left"
+    self.lrInput = "left"
   elseif args.moves["right"] and not args.moves["left"] then
-    lrInput = "right"
+    self.lrInput = "right"
   end
 
   local action = input(args)
 
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
-    status.removeEphemeralEffect("ivrpgjumpcamouflage")
-    status.removeEphemeralEffect("nofalldamage")
+    if not mcontroller.liquidMovement() then
+      status.removeEphemeralEffect("nofalldamage")
+      status.removeEphemeralEffect("ivrpgjumpcamouflage")
+      self.liquidTimer = 0
+    else
+      self.liquidTimer = self.liquidTimer + args.dt
+      if self.liquidTimer > 0.2 then
+        self.liquidTimer = 0
+        status.removeEphemeralEffect("nofalldamage")
+        status.removeEphemeralEffect("ivrpgjumpcamouflage")
+      end
+    end
     refreshJumps()
     if self.wall then
       releaseWall()
@@ -69,7 +81,7 @@ function update(args)
     refreshJumps()
     --self.wallBind:rebind()
 
-    if not checkWall(self.wall) or status.statPositive("activeMovementAbilities") or ((lrInput == "right" or lrInput == "left") and lrInput ~= self.wall) then
+    if not checkWall(self.wall) or status.statPositive("activeMovementAbilities") or ((self.lrInput == "right" or self.lrInput == "left") and self.lrInput ~= self.wall) then
       releaseWall()
     elseif jumpActivated then
       mcontroller.controlParameters(self.wallSlideParameters)
@@ -80,13 +92,13 @@ function update(args)
       mcontroller.controlFace(self.wall == "left" and 1 or -1)
     elseif self.sliding then
       mcontroller.controlFace(self.wall == "left" and 1 or -1)
-      if lrInput and not mcontroller.jumping() and checkWall(lrInput) then
-        grabWall(lrInput)
+      if self.lrInput and not mcontroller.jumping() and checkWall(self.lrInput) then
+        grabWall(self.lrInput)
       end    
     end
   elseif not status.statPositive("activeMovementAbilities") then
-    if lrInput and not mcontroller.jumping() and checkWall(lrInput) then
-      grabWall(lrInput)
+    if self.lrInput and not mcontroller.jumping() and checkWall(self.lrInput) then
+      grabWall(self.lrInput)
     end
   end
 
@@ -107,36 +119,6 @@ function canMultiJump()
       and math.abs(world.gravity(mcontroller.position())) > 0
 end
 
-function doMultiJump()
-  --set flashjump player changes
-  if canMultiJump() then
-    if status.overConsumeResource("energy", self.cost) then
-      status.addEphemeralEffect("ivrpgjumpcamouflage", .25)
-      status.addEphemeralEffect("nofalldamage", math.huge)
-
-      mcontroller.controlJump(true)
-      mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()))
-      self.facing = mcontroller.facingDirection()
-      --self.facing = tech.aimPosition()[1]-mcontroller.position()[1]
-    if lrInput == "left" then
-        mcontroller.setXVelocity(-self.maxSpeed + math.min(0, mcontroller.xVelocity()))
-        animator.burstParticleEmitter("jumpLeftParticles")
-      elseif lrInput == "right" then
-        mcontroller.setXVelocity(self.maxSpeed + math.max(0, mcontroller.xVelocity()))
-        animator.burstParticleEmitter("jumpRightParticles")
-      elseif self.facing < 0 then
-        mcontroller.setXVelocity(-self.maxSpeed + math.min(0, mcontroller.xVelocity()))
-        animator.burstParticleEmitter("jumpLeftParticles")
-      else
-        mcontroller.setXVelocity(self.maxSpeed + math.max(0, mcontroller.xVelocity()))
-        animator.burstParticleEmitter("jumpRightParticles")
-      end
-      self.multiJumpCount = self.multiJumpCount - 1
-      animator.playSound("multiJumpSound")
-    end
-  end
-end
-
 function beginSlide()
   if self.wall then
     self.sliding = true
@@ -144,11 +126,6 @@ function beginSlide()
     animator.setParticleEmitterActive("wallSlide."..self.wall, true)
     animator.playSound("wallSlideLoop", -1)
   end
-end
-
-function refreshJumps()
-  self.multiJumpCount = config.getParameter("multiJumpCount")
-  self.applyJumpModifier = false
 end
 
 function buildSensors()

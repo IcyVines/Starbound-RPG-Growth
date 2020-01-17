@@ -4,7 +4,22 @@
       "burstCount" : 8,
       "particles" : [
         {
-          "particle" : "flashjumpright"
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/tech/ninjatech/flashjump/jumpanimation/flashjump.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [0, 50],
+            "size" : 1.3,
+            "rotation" : -90,
+            "timeToLive" : 0.85,
+            "layer" : "back",
+            "light" : [220, 0, 57],
+            "fade" : 0.5,
+            "variance" : {
+              "initialVelocity" : [0.0, 0.0]
+            }
+          }
         }
       ]
     },
@@ -12,7 +27,44 @@
       "burstCount" : 8,
       "particles" : [
         {
-          "particle" : "flashjumpleft"
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/tech/ninjatech/flashjump/jumpanimation/flashjump.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [0, 50],
+            "size" : 1.3,
+            "rotation" : 90,
+            "timeToLive" : 0.85,
+            "layer" : "back",
+            "light" : [220, 0, 57],
+            "fade" : 0.5,
+            "variance" : {
+              "initialVelocity" : [0.0, 0.0]
+            }
+          }
+        }
+      ]
+    },
+    "jumpUpParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/tech/ninjatech/flashjump/jumpanimation/flashjump.animation",
+            "position" : [0, -2],
+            "finalVelocity" : [0, 0],
+            "approach" : [0, 50],
+            "size" : 1.3,
+            "timeToLive" : 0.85,
+            "layer" : "back",
+            "light" : [220, 0, 57],
+            "fade" : 0.5,
+            "variance" : {
+              "initialVelocity" : [0.0, 0.0]
+            }
+          }
         }
       ]
     }

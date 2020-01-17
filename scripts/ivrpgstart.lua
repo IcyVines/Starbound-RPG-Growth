@@ -63,8 +63,8 @@ function init()
     if status.statPositive("ivrpgucfeedbackloop") then status.addEphemeralEffect("rage", 2) end
   end)
 
-  message.setHandler("killedEnemy", function(_, _, enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind)
-    killedEnemy(enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind)
+  message.setHandler("killedEnemy", function(_, _, enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind, bledToDeath)
+    killedEnemy(enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind, bledToDeath)
   end)
 
   message.setHandler("modifyResource", function(_, _, type, amount)
@@ -489,12 +489,12 @@ function unlockSpecs()
 
 end
 
-function killedEnemy(enemyType, level, position, facing, statusEffects, damage, damageType)
+function killedEnemy(enemyType, level, position, facing, statusEffects, damage, damageType, bledToDeath)
   addToChallengeCount(level)
   dyingEffects(position, statusEffects)
-  killingEffects(level, position, statusEffects, damageType, enemyType)
+  killingEffects(level, position, statusEffects, damageType, enemyType, bledToDeath)
   dropUpgradeChips(level, position, enemyType)
-  specChecks(enemyType, level, position, facing, statusEffects, damage, damageType)
+  specChecks(enemyType, level, position, facing, statusEffects, damage, damageType, bledToDeath)
   unlockMonsterLore(enemyType)
 end
 
@@ -510,9 +510,13 @@ function unlockMonsterLore(enemyType)
   end
 end
 
-function specChecks(enemyType, level, position, facing, statusEffects, damage, damageType)
+function specChecks(enemyType, level, position, facing, statusEffects, damage, damageType, bledToDeath)
   if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
     return
+  end
+
+  if bledToDeath then
+  	--sb.logInfo("Bled to death by " .. damageType)
   end
 
   for _,spec in ipairs(self.rpg_specsAvailable) do
@@ -664,6 +668,6 @@ function dyingEffects(position, statusEffects)
   end
 end
 
-function killingEffects(level, position, statusEffects, damageType, name)
+function killingEffects(level, position, statusEffects, damageType, name, bleedKind)
 
 end

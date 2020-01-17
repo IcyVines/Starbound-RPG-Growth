@@ -39,15 +39,14 @@
   "craftParameters" : {
     "requiredCount" : [2, 5, 1, 1, 1],
     "barLevels" : {
-      "copperbar" : 1,
-      "ironbar" : 2,
-      "tungstenbar" : 3,
-      "titaniumbar" : 4,
-      "durasteelbar" : 5,
-      "refinedviolium" : 6,
-      "refinedferozium" : 6,
-      "refinedaegisalt" : 6,
-      "solariumstar" : 7
+      "ironbar" : 1,
+      "tungstenbar" : 2,
+      "titaniumbar" : 3,
+      "durasteelbar" : 4,
+      "refinedviolium" : 5,
+      "refinedferozium" : 5,
+      "refinedaegisalt" : 5,
+      "solariumstar" : 6
     },
     "elements" : {
       "scorchedcore" : "fire",

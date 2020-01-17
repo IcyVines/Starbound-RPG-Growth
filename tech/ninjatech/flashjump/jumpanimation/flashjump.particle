@@ -1,8 +1,8 @@
 {
-  "kind" : "flashjumpright",
+  "kind" : "ivrpgflashjump",
   "definition" : {
     "type" : "animated",
-    "animation" : "/tech/ninjatech/flashjump/flashjumpright.animation",
+    "animation" : "/tech/ninjatech/flashjump/jumpanimation/flashjump.animation",
     "position" : [0, 0],
     "finalVelocity" : [0, 0],
     "approach" : [0, 50],

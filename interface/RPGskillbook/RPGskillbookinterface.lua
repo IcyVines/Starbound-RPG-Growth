@@ -1621,7 +1621,10 @@ function buildNewLore()
     end
   else
     if #self.loreTable == 4 and self.loreTable[4] == "enemyintelligence" then
-      loreData = tostring(loreData) .. "\n\n^red;RPG AI " .. (self.versionConfig.RPGAIversion and tostring(self.versionConfig.RPGAIversion) .. " installed. Vanilla monsters will have the following behaviors:^reset; " .. self.versionConfig.RPGAItext or "not installed. Vanilla monsters will not be affected.")
+      loreData = tostring(loreData) .. "\n\n^red;RPG AI " .. (self.versionConfig.RPGAI_version and
+        (self.versionConfig.RPGAI_refactorVersion ~= self.versionConfig.refactorVersion and "Version does not match RPG Growth and will be ignored." or
+        tostring(self.versionConfig.RPGAI_version) .. " installed. Vanilla monsters will have the following behaviors:^reset; " .. self.versionConfig.RPGAI_text)
+        or "not installed. Vanilla monsters will not be affected.")
     end
     widget.setText("lorelayout.scrollArea.text", tostring(loreData))
   end
@@ -1640,7 +1643,7 @@ function changelogTextHelper()
   local returnText = ""
   local colorSwitch = {}
   local switch = true
-  local maxLength = 72
+  local maxLength = 70
   colorSwitch[true] = "^white;"
   colorSwitch[false] = "^#d1d1d1;"
   local previousSpace = false

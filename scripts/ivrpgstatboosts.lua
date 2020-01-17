@@ -27,7 +27,7 @@ function init()
     local noBleed = string.find(sourceKind, "bluntforce") or string.find(sourceKind, "hammer")
     if (bleedChance > math.random() or guaranteed) and not noBleed then
       bleedLength = (guaranteed and bleedLength < 1) and 1 or bleedLength
-      world.sendEntityMessage(sourceId, "applySelfDamageRequest", "IgnoresDef", "bleed", damage/2, self.rpgPlayerID)
+      world.sendEntityMessage(sourceId, "applySelfDamageRequest", "IgnoresDef", "bleed", damage/2, self.rpgPlayerID, sourceKind)
       world.sendEntityMessage(sourceId, "addEphemeralEffect", "ivrpgweaken", bleedLength, self.rpgPlayerID)
       -- Dark Templar Bonus Unlock
       local dark = status.statusProperty("ivrpgsudarktemplar", 0)

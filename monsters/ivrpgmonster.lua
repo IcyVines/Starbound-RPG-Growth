@@ -17,14 +17,15 @@ function init()
   self.rpg_Actions = config.getParameter("ivrpgActions", false)
   if self.rpg_Actions then rpg_initUniqueMonster() end
   rpg_setHandlers()
-  rpg_initAI()
+  self.versionConfig = root.assetJson("/ivrpgVersion.config")
+  if self.versionConfig.RPGAI_version and self.versionConfig.RPGAI_refactorVersion == self.versionConfig.refactorVersion then rpg_initAI() end
   if config.getParameter("ivrpgSpawnNpc", false) then rpg_spawnNpc(config.getParameter("ivrpgNpcParameters", {})) end
 end
 
 function update(dt)
   monsterOldUpdate(dt)
   rpg_updateEffects(dt)
-  rpg_updateAI(dt)
+  if self.versionConfig.RPGAI_version and self.versionConfig.RPGAI_refactorVersion == self.versionConfig.refactorVersion then rpg_updateAI(dt) end
   if self.rpg_Actions then rpg_updateUniqueMonster(dt) end
   if config.getParameter("rpgOwnerUuid") and not world.entityExists(config.getParameter("rpgOwnerUuid")) then
     self.shouldDie = true

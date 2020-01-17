@@ -12,5 +12,6 @@
 
   "chipCost" : 0,
   "cost" : 10,
-  "multiJumpCount" : 2
+  "multiJumpCount" : 2,
+  "yVelocity" : 50
 }

@@ -14,13 +14,18 @@ function rpg_setHandlers()
     mcontroller.setVelocity(velocity)
   end)
 
-  message.setHandler("applySelfDamageRequest", function(_, _, damageType, damageSourceKind, damage, sourceId)
+  message.setHandler("applySelfDamageRequest", function(_, _, damageType, damageSourceKind, damage, sourceId, bleedKind)
+    local healthBeforeDamage = status.resource("health")
     status.applySelfDamageRequest({
       damageType = damageType,
       damageSourceKind = damageSourceKind,
       damage = math.floor(damage),
       sourceEntityId = sourceId
     })
+    if healthBeforeDamage ~= 0 and status.resource("health") == 0 then
+      local bledToDeath = damageSourceKind == "bleed" and bleedKind
+      rpg_sendDyingMessage(sourceId, damage, bledToDeath and bleedKind or damageSourceKind, bledToDeath)
+    end
   end)
 
   message.setHandler("modifyResource", function(_, _, type, amount)
@@ -346,6 +351,6 @@ function rpg_enemyDeath(sourceId, damage, sourceKind, onKillList)
   rpg_sendDyingMessage(sourceId, damage, sourceKind)
 end
 
-function rpg_sendDyingMessage(sourceId, damage, sourceKind)
-  world.sendEntityMessage(sourceId, "killedEnemy", self.rpg_enemyType, self.rpg_level, mcontroller.position(), mcontroller.facingDirection(), status.activeUniqueStatusEffectSummary(), damage, sourceKind)
+function rpg_sendDyingMessage(sourceId, damage, sourceKind, bledToDeath)
+  world.sendEntityMessage(sourceId, "killedEnemy", self.rpg_enemyType, self.rpg_level, mcontroller.position(), mcontroller.facingDirection(), status.activeUniqueStatusEffectSummary(), damage, sourceKind, bledToDeath)
 end
