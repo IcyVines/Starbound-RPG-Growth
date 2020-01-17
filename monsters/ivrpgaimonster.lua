@@ -1,7 +1,7 @@
-function initAI()
+function rpg_initAI()
   -- Overwritten by RPG AI
 end
 
-function updateAI(dt)
+function rpg_updateAI(dt)
   -- Overwritten by RPG AI
 end

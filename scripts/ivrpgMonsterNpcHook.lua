@@ -1,6 +1,6 @@
 require "/scripts/ivrpgactivestealthintercept.lua"
 
-function setHandlers()
+function rpg_setHandlers()
 
   message.setHandler("addEphemeralEffect", function(_, _, name, duration, sourceId)
     status.addEphemeralEffect(name, duration, sourceId)
@@ -48,7 +48,7 @@ function setHandlers()
   end)
 end
 
-function loadVariables(enemyType, level)
+function rpg_loadVariables(enemyType, level)
   self.rpg_Id = entity.id()
   self.rpg_enemyType = enemyType
   self.rpg_level = level
@@ -58,7 +58,7 @@ function loadVariables(enemyType, level)
   performStealthFunctionOverrides()
 end
 
-function updateEffects(dt)
+function rpg_updateEffects(dt)
   if status.statPositive("ivrpgundead") then
     --status.modifyResourcePercentage("health", 1)
     if self.rpg_isMonster then monster.setDamageTeam({type = "friendly", team = 1})
@@ -85,7 +85,7 @@ function updateEffects(dt)
     status.clearPersistentEffects("ivrpgdevourstate")
   end
 
-  if self.rpg_devourTimer > 0 then
+  if self.rpg_devourTimer and self.rpg_devourTimer > 0 then
     status.addEphemeralEffect("soldierstun", dt)
     self.rpg_devourTimer = math.max(self.rpg_devourTimer - dt, 0)
   end
@@ -171,26 +171,26 @@ function updateEffects(dt)
 
 end
 
-function loadConfigs()
+function rpg_loadConfigs()
   self.rpg_classList = root.assetJson("/ivrpgClassList.config")
   self.rpg_affinityList = root.assetJson("/ivrpgAffinityList.config")
   self.rpg_specList = root.assetJson("/ivrpgSpecList.config")
 end
 
-function loadInfo(class, affinity, spec)
+function rpg_loadInfo(class, affinity, spec)
   self.rpg_classInfo = (class and class > 0) and root.assetJson("/classes/" .. self.rpg_classList[class] .. ".config") or nil
   self.rpg_affinityInfo = (affinity and affinity > 0) and root.assetJson("/affinities/" .. self.rpg_affinityList[affinity] .. ".config") or nil
   self.rpg_specInfo = ((class and class > 0) and (spec and spec > 0)) and root.assetJson("/specs/" .. self.rpg_specList[class][spec].name .. ".config") or nil
 end
 
-function updateDamageTaken(notification)
+function rpg_updateDamageTaken(notification)
   local damage = notification.damage
   local sourceKind = notification.sourceKind
   local sourceId = notification.sourceId
 
   if world.isMonster(sourceId) or world.isNpc(sourceId) then
     if world.entityHealth(self.rpg_Id)[1] and world.entityHealth(self.rpg_Id)[1] <= 0 then
-      enemyDeath(sourceId, damage, sourceKind, {})
+      rpg_enemyDeath(sourceId, damage, sourceKind, {})
     end
     return
   end
@@ -198,7 +198,7 @@ function updateDamageTaken(notification)
   local class = world.entityCurrency(sourceId, "classtype")
   local affinity = world.entityCurrency(sourceId, "affinitytype")
   local spec = world.entityCurrency(sourceId, "spectype")
-  loadInfo(class, affinity, spec)
+  rpg_loadInfo(class, affinity, spec)
 
   -- Class + Affinity Effects
   local onHitList = {}
@@ -256,14 +256,14 @@ function updateDamageTaken(notification)
   end
 
   if world.entityHealth(self.rpg_Id)[1] and world.entityHealth(self.rpg_Id)[1] <= 0 then
-    enemyDeath(sourceId, damage, sourceKind, onKillList)
+    rpg_enemyDeath(sourceId, damage, sourceKind, onKillList)
   end
 
   -- Bleed
   world.sendEntityMessage(sourceId, "bleedCheck", damage, sourceKind, self.rpg_Id)
 end
 
-function enemyDeath(sourceId, damage, sourceKind, onKillList)
+function rpg_enemyDeath(sourceId, damage, sourceKind, onKillList)
   -- Class + Spec + Affinity Effects
   local ignore = false
   for k,v in ipairs(onKillList) do
@@ -343,20 +343,9 @@ function enemyDeath(sourceId, damage, sourceKind, onKillList)
       sb.logInfo("RPG Growth Error: No 'type' in specified 'onKill' config.")
     end
   end
-  sendDyingMessage(sourceId, damage, sourceKind)
+  rpg_sendDyingMessage(sourceId, damage, sourceKind)
 end
 
-function sendDyingMessage(sourceId, damage, sourceKind)
+function rpg_sendDyingMessage(sourceId, damage, sourceKind)
   world.sendEntityMessage(sourceId, "killedEnemy", self.rpg_enemyType, self.rpg_level, mcontroller.position(), mcontroller.facingDirection(), status.activeUniqueStatusEffectSummary(), damage, sourceKind)
-end
-
-function hasEphemeralStat(statusEffects, stat)
-  ephStats = util.map(statusEffects,
-    function (elem)
-      return elem[1]
-    end)
-  for _,v in pairs(ephStats) do
-    if v == stat then return true end
-  end
-  return false
 end

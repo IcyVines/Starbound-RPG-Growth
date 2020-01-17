@@ -667,36 +667,3 @@ end
 function killingEffects(level, position, statusEffects, damageType, name)
 
 end
-
-function getEphemeralDuration(statusEffects, stat)
-  for _,array in ipairs(statusEffects) do
-    if array[1] == stat then
-      return array[2]
-    end
-  end
-  return 0
-end
-
-function hasEphemeralStat(statusEffects, stat)
-  ephStats = util.map(statusEffects,
-    function (elem)
-      return elem[1]
-    end)
-  for _,v in pairs(ephStats) do
-    if v == stat then return true end
-  end
-  return false
-end
-
-function hasEphemeralStats(statusEffects, stats)
-  ephStats = util.map(statusEffects,
-    function (elem)
-      return elem[1]
-    end)
-  for _,v in pairs(ephStats) do
-    for _,s in ipairs(stats) do
-      if v == s then return true end
-    end
-  end
-  return false
-end

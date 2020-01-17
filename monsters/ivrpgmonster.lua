@@ -11,20 +11,20 @@ local monsterOldUpdate = update
 
 function init()
   monsterOldInit()
-  loadConfigs()
-  loadVariables(monster.type(), monster.level())
+  rpg_loadConfigs()
+  rpg_loadVariables(monster.type(), monster.level())
   self.rpg_isMonster = true
   self.rpg_Actions = config.getParameter("ivrpgActions", false)
   if self.rpg_Actions then rpg_initUniqueMonster() end
-  setHandlers()
-  initAI()
+  rpg_setHandlers()
+  rpg_initAI()
   if config.getParameter("ivrpgSpawnNpc", false) then rpg_spawnNpc(config.getParameter("ivrpgNpcParameters", {})) end
 end
 
 function update(dt)
   monsterOldUpdate(dt)
-  updateEffects(dt)
-  updateAI(dt)
+  rpg_updateEffects(dt)
+  rpg_updateAI(dt)
   if self.rpg_Actions then rpg_updateUniqueMonster(dt) end
   if config.getParameter("rpgOwnerUuid") and not world.entityExists(config.getParameter("rpgOwnerUuid")) then
     self.shouldDie = true
@@ -33,7 +33,7 @@ function update(dt)
 end
 
 function damage(args)
-  updateDamageTaken(args)
+  rpg_updateDamageTaken(args)
   if self.rpg_Actions then rpg_damage(args.damage, args.sourceDamage, args.sourceKind, args.sourceId) end
 end
 

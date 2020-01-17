@@ -244,32 +244,6 @@ function checkLevelUp()
   end
 end
 
-function hasEphemeralStat(stat)
-  ephStats = util.map(status.activeUniqueStatusEffectSummary(),
-    function (elem)
-      return elem[1]
-    end)
-  for _,v in pairs(ephStats) do
-    if v == stat then return 1 end
-  end
-  return 0
-end
-
-function isInLiquid()
-  local mouthPosition = vec2.add(mcontroller.position(), status.statusProperty("mouthPosition"))
-  local mouthful = world.liquidAt(mouthposition)
-  return (world.liquidAt(mouthPosition)) and
-    ((mcontroller.liquidId()== 1) or 
-    (mcontroller.liquidId()== 5) or 
-    (mcontroller.liquidId()== 6) or 
-    (mcontroller.liquidId()== 12) or 
-    (mcontroller.liquidId()== 43) or 
-    (mcontroller.liquidId()== 55) or 
-    (mcontroller.liquidId()== 58) or
-    (mcontroller.liquidId()== 60) or 
-    (mcontroller.liquidId()== 69))
-end
-
 -- Profession Effects
 function updateProfessionInfo()
   self.profInfo = root.assetJson("/professions/" .. self.profList[self.profession] .. ".config")
@@ -840,7 +814,7 @@ function updateAffinityEffects(dt)
   end
 
   -- Bonus Effects (Too complicated or specific for configs)
-  local wet = hasEphemeralStat("wet")
+  local wet = hasEphemeralStat(status.activeUniqueStatusEffectSummary(), "wet") and 1 or 0
   local hardcodedAesthetic = false
 
   if affinityMod == 0 then
