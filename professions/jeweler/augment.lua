@@ -15,7 +15,7 @@ function apply(input)
           -- Current Augment is real Augment
           jewelry = {}
           currentAugment = slotType == "main" and augmentConfig or {}
-        elseif (slotType == "alt" and jewelry.right) or jewelry[slotType] then
+        elseif jewelry[slotType] or (slotType == "alt" and jewelry["left"] and jewelry["right"]) then
           -- Current Augment is Jewelry, but has no space
           return nil
         else

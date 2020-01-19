@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgswordswill",
+
+  "effectConfig" : {
+    
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "swordswill.lua"
+  ],
+
+  "animationConfig" : "swordswill.animation",
+
+  "label" : "Corruption",
+  "icon" : "/specs/abilities/samurai/swordswill.png"
+}

@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgsiliconbronzebar",
+  "price" : 30,
+  "rarity" : "Uncommon",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "siliconbronze.png",
+  "description" : "A corrosive-resistant Bronze Alloy made primarily from Copper and Silicon.",
+  "shortdescription" : "Silicon Bronze Bar",
+  "itemTags" : [ "reagent" ]
+}

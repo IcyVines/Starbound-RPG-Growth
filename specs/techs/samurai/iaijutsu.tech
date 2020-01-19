@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgiaijutsu",
+  "type" : "body",
+
+  "scripts" : ["iaijutsu.lua"],
+  "animator" : "iaijutsu.animation",
+
+  "description" : "Samurai Only",
+  "shortDescription" : "Iaijutsu",
+  "rarity" : "Legendary",
+  "icon" : "/specs/techs/samurai/iaijutsu.png",
+
+  "chipCost" : 0
+}
