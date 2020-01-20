@@ -22,11 +22,11 @@ function AdaptableAmmo:switch()
     local newIndex = self.lastIndex
     self.lastIndex = self.ammoIndex
     self.ammoIndex = newIndex
-    activeItem.setInstanceValue("lastIndex", self.lastIndex)
   else
     self.ammoIndex = (self.ammoIndex % #self.elementalTypes) + 1
     self.lastIndex = 1
   end
+  activeItem.setInstanceValue("lastIndex", self.lastIndex)
   activeItem.setInstanceValue("ammoIndex", self.ammoIndex)
 
   self:adaptAbility()

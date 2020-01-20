@@ -52,6 +52,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
       self:setState(self.windupstab)
     end
   end
+
 end
 
 -- State: windup
@@ -115,6 +116,12 @@ function MeleeCombo:preslash()
 
   self.weapon:setStance(stance)
   self.weapon:updateAim()
+
+  if self.comboStep == 2 then
+    self.weapon.aimAngle = self.weapon.aimAngle < 0 and math.max(-math.pi/6,self.weapon.aimAngle) or math.min(math.pi/6,self.weapon.aimAngle)
+  else
+    self.weapon.aimAngle = 0
+  end
 
   util.wait(stance.duration)
 

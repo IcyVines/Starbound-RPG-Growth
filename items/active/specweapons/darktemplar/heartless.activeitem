@@ -158,19 +158,22 @@
             "armAngularVelocity": -217,
             "weaponRotation": -55,
             "weaponAngularVelocity": 250,
-            "weaponOffset": [0.25, 0]
+            "weaponOffset": [0.25, 0],
+            "allowRotate" : false
         },
         "preslash2": {
             "duration": 0.1,
             "armRotation": -110,
             "weaponRotation": 20,
-            "weaponOffset": [0.25, 0]
+            "weaponOffset": [0.25, 0],
+            "allowRotate" : true
         },
         "fire2": {
             "duration": 0.3,
             "armRotation": -20,
             "weaponRotation": -70,
-            "weaponOffset": [0.25, 0]
+            "weaponOffset": [0.25, 0],
+            "allowRotate" : false
         },
         "wait2": {
             "duration": 0.2,

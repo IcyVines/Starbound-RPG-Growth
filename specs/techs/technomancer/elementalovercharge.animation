@@ -1,0 +1,8 @@
+{
+  "sounds" : {
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "activate" : [ "/sfx/interface/energy_full2.ogg" ],
+    "deactivate" : ["/sfx/interface/energy_out2.ogg"],
+    "bolt" : [ "/sfx/projectiles/electric_barrier_shock1.ogg" ]
+  }
+}

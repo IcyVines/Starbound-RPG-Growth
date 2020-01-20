@@ -610,15 +610,18 @@ function updateClassicMode()
               weaponsDisabled = false
               break
             elseif info.with then
+              local allowAlone = info.allowAlone
               if self.heldItem2 then
                 for x,y in ipairs(info.with) do
-                  if root.itemHasTag(self.heldItem2, y) then
+                  if root.itemHasTag(self.heldItem2, y) or (allowAlone and not root.itemHasTag(self.heldItem2, "weapon"))  then
                     weaponsDisabled = false
                     loopBreak = true
                     break
                   end
                 end
                 if loopBreak then break end
+              elseif allowAlone then
+                weaponsDisabled = false
               end
             elseif info.onlyWithCorrectWeapons then
               if self.heldItem2 then
@@ -663,15 +666,18 @@ function updateClassicMode()
               weaponsDisabled = false
               break
             elseif info.with then
+              local allowAlone = info.allowAlone
               if self.heldItem then
                 for x,y in ipairs(info.with) do
-                  if root.itemHasTag(self.heldItem, y) then
+                  if root.itemHasTag(self.heldItem, y) or (allowAlone and not root.itemHasTag(self.heldItem, "weapon")) then
                     weaponsDisabled = false
                     loopBreak = true
                     break
                   end
                 end
                 if loopBreak then break end
+              elseif allowAlone then
+                weaponsDisabled = false
               end
             elseif info.onlyWithCorrectWeapons then
               if self.heldItem then
