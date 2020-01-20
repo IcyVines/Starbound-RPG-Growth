@@ -35,6 +35,9 @@
                 "mode": "transition",
                 "transition": "idle"
               },
+              "fire6": {
+                "cycle": 0.1
+              },
               "firestab" : {
                 "frames" : 3,
                 "cycle" : 0.08,
@@ -75,8 +78,8 @@
                 },
                 "fire3": {
                   "properties": {
-                    "image": "/items/active/weapons/melee/hammer/swoosh/physicalswoosh.png:<frame>?flipx",
-                    "offset": [0.5, 2.5],
+                    "image": "/items/active/weapons/melee/hammer/swoosh/physicalswoosh.png:<frame>?flipy",
+                    "offset": [3, -2.5],
                     "damageArea": [[-4, 1.5], [-1, 4], [-2, 0], [1, -1], [1, -3], [-4.5, -3.5]]
                   }
                 },
@@ -85,6 +88,13 @@
                     "image": "/items/active/weapons/melee/abilities/broadsword/spinslash/spinswoosh.png:<frame>?scalenearest=1.5",
                     "offset": [-2, 0],
                     "damageArea": [[-8, 2], [5, 2], [8, 0], [6, -2], [4, -2], [2, 0], [-8, 0]]
+                  }
+                },
+                "fire6": {
+                  "properties": {
+                    "image": "/items/active/weapons/melee/hammer/swoosh/physicalswoosh.png:<frame>",
+                    "offset": [1.25, 1.5],
+                    "damageArea": [[-3.5, 2], [-2.5, 3], [1, 3], [3, 1.75], [4, -0.25], [4, -2.25], [3, -3.25], [0, -2.5]]
                   }
                 },
                 "firestab" : {
@@ -103,7 +113,8 @@
         "fire": ["/sfx/melee/swing_hammer.ogg"],
         "fire2": ["/sfx/melee/swing_spear.ogg"],
         "fire3": ["/sfx/melee/swing_shortsword.ogg"],
-        "fire4": ["/sfx/melee/swing_broadsword.ogg"]
+        "fire4": ["/sfx/melee/swing_broadsword.ogg"],
+        "fire6": ["/sfx/melee/swing_hammer.ogg"]
       }
     },
     "scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
@@ -225,12 +236,29 @@
             "allowRotate": false,
             "allowFlip": false
         },
+        "windup6": {
+            "duration": 0.1,
+            "armRotation": -30,
+            "weaponRotation": -80,
+            "twoHanded": true,
+            "weaponOffset": [0.25, 0],
+            "allowRotate": true,
+            "allowFlip": true
+        },
+        "fire6": {
+            "duration": 0.2,
+            "weaponOffset": [0.25, 0],
+            "armRotation": -45,
+            "weaponRotation": -55
+        },
         "windupstab" : {
           "duration" : 0.5,
           "armRotation" : -110,
           "weaponRotation" : 20,
           "twoHanded" : true,
           "weaponOffset" : [0, 0],
+          "armAngularVelocity": 300,
+          "weaponAngularVelocity": 200,
 
           "allowRotate" : false,
           "allowFlip" : true

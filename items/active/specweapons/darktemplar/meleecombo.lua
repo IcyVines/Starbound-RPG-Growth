@@ -94,7 +94,7 @@ end
 -- State: wait
 -- waiting for next combo input
 function MeleeCombo:wait()
-  local stance = self.stances["wait"..(self.comboStep - 1)]
+  local stance = self.stances["wait"..(self.comboStep == 6 and 1 or self.comboStep - 1)]
 
   self.weapon:setStance(stance)
 
@@ -105,7 +105,7 @@ function MeleeCombo:wait()
     end
   end)
 
-  self.cooldownTimer = math.max(0, self.cooldowns[self.comboStep - 1] - stance.duration)
+  self.cooldownTimer = math.max(0, self.cooldowns[self.comboStep == 6 and 2 or self.comboStep - 1] - stance.duration)
   self.comboStep = 1
 end
 
@@ -117,12 +117,6 @@ function MeleeCombo:preslash()
   self.weapon:setStance(stance)
   self.weapon:updateAim()
 
-  if self.comboStep == 2 then
-    self.weapon.aimAngle = self.weapon.aimAngle < 0 and math.max(-math.pi/6,self.weapon.aimAngle) or math.min(math.pi/6,self.weapon.aimAngle)
-  else
-    self.weapon.aimAngle = 0
-  end
-
   util.wait(stance.duration)
 
   self:setState(self.fire)
@@ -130,12 +124,13 @@ end
 
 -- State: fire
 function MeleeCombo:fire()
+
   local stance = self.stances["fire"..self.comboStep]
 
   self.weapon:setStance(stance)
   self.weapon:updateAim()
 
-  local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
+  local animStateKey = self.animKeyPrefix .. ((self.comboStep > 1 and self.comboStep < 6) and "fire"..self.comboStep or "fire")
   animator.setAnimationState("swoosh", animStateKey)
   animator.playSound(animStateKey)
 
@@ -145,11 +140,20 @@ function MeleeCombo:fire()
 
   util.wait(stance.duration, function()
     local damageArea = partDamageArea("swoosh")
-    self.weapon:setDamage(self.stepDamageConfig[self.comboStep], damageArea)
+    self.weapon:setDamage(self.stepDamageConfig[self.comboStep == 6 and 1 or self.comboStep], damageArea)
   end)
 
   if self.comboStep < self.comboSteps then
-    self.comboStep = self.comboStep + 1
+    if self.weapon.aimAngle < math.pi / 6 then
+      self.weapon.aimAngle = 0
+      self.comboStep = self.comboStep + 1
+    elseif self.comboStep == 2 then
+      self.comboStep = 6
+    end
+    self:setState(self.wait)
+  elseif self.comboStep == 6 then
+    self.weapon.aimAngle = 0
+    self.comboStep = 3
     self:setState(self.wait)
   else
     self.cooldownTimer = self.cooldowns[self.comboStep]
