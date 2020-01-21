@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 16 },
+    { "item" : "ivrpgetherealblade", "count" : 2 },
+    { "item" : "refinedviolium", "count" : 4 },
+    { "item" : "solariumstar", "count" : 5 }
+  ],
+	"output" : { "item" : "ivrpgwheartless", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

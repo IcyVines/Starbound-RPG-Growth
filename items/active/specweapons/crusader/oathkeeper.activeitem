@@ -12,7 +12,7 @@
 	"itemTags": ["weapon", "melee", "broadsword"],
 
 	"classreq" : [1, 2],
-  	"specreq" : 5,
+  "specreq" : 5,
 
 	"inventoryIcon": [{
 			"image": "blade.png:active.1",

@@ -2,15 +2,20 @@
   "itemName" : "ivrpgwheartless",
   "price": 5000,
   "maxStack": 1,
+  "level" : 6,
   "rarity": "Essential",
-  "description": "I am the heart of darkness",
+  "description": "I forgot what I was supposed to feel: now it's always hunger.",
   "shortdescription": "^#77acc3;Heartless^white;",
-  "tooltipKind": "base",
+  "tooltipKind": "ivrpgweapon",
   "category": "Halberd",
   "twoHanded": true,
   "itemTags": ["weapon", "melee", "halberd"],
   "inventoryIcon": "heartless.png",
   "animation": "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+
+  "classreq" : [1, 3],
+  "specreq" : 9,
+
   "animationParts": {
     "handle": "",
     "blade": "heartless.png"
@@ -66,7 +71,8 @@
                   "properties": {
                     "image": "/items/active/weapons/melee/hammer/swoosh/physicalswoosh.png:<frame>",
                     "offset": [1.25, 1.5],
-                    "damageArea": [[-3.5, 2], [-2.5, 3], [1, 3], [3, 1.75], [4, -0.25], [4, -2.25], [3, -3.25], [0, -2.5]]
+                    "damageArea": [[-5.5, 2], [-2.5, 4], [1, 3], [3, 1.75], [5, -1], [4, -2.25], [3, -3.25], [0, -2.5]],
+                    "damageAreaSpecial": [[-2.5, 4], [-1, 6], [2, 6], [5, -1], [4, -2.25], [3, -3.25], [0, -2.5]]
                   }
                 },
                 "fire2": {
@@ -80,14 +86,14 @@
                   "properties": {
                     "image": "/items/active/weapons/melee/hammer/swoosh/physicalswoosh.png:<frame>?flipy",
                     "offset": [3, -2.5],
-                    "damageArea": [[-4, 1.5], [-1, 4], [-2, 0], [1, -1], [1, -3], [-4.5, -3.5]]
+                    "damageArea": [[4, -1.5], [1, -4], [-3, -3], [-1, 5], [4.5, 3.5]]
                   }
                 },
                 "fire4": {
                   "properties": {
                     "image": "/items/active/weapons/melee/abilities/broadsword/spinslash/spinswoosh.png:<frame>?scalenearest=1.5",
                     "offset": [-2, 0],
-                    "damageArea": [[-8, 2], [5, 2], [8, 0], [6, -2], [4, -2], [2, 0], [-8, 0]]
+                    "damageArea": [[-8, 3], [6, 2.5], [9, 0], [6, -2], [4, -2], [2, -2], [-8, -2]]
                   }
                 },
                 "fire6": {
@@ -115,9 +121,51 @@
         "fire3": ["/sfx/melee/swing_shortsword.ogg"],
         "fire4": ["/sfx/melee/swing_broadsword.ogg"],
         "fire6": ["/sfx/melee/swing_hammer.ogg"]
+      },
+      "particleEmitters" : {
+        "demonicEmbers" : {
+          "active" : false,
+          "transformationGroups" : ["weapon"],
+          "emissionRate" : 0,
+          "offsetRegion" : [-0.5, -1.75, 0.5, 5.5],
+          "burstCount" : 1,
+          "particles" : [
+            { "particle" : "darkphaseparticle"},
+            { "particle" : "darkgreyphaseparticle"}
+          ]
+        },
+        "demonicSparks" : {
+          "active" : false,
+          "transformationGroups" : ["weapon"],
+          "emissionRate" : 10,
+          "offsetRegion" : [-0.5, -1.75, 0.5, 5.5],
+          "burstCount" : 2,
+          "particles" : [
+            { "particle" : {
+              "type" : "animated",
+              "looping" : true,
+              "animation" : "darkteslabolt.animation",
+              "position" : [0, 0],
+              "finalVelocity" : [0, 0],
+              "approach" : [50, 50],
+              "destructionAction" : "shrink",
+              "destructionTime" : 0.425,
+              "fade" : 1,
+              "fullbright" : true,
+              "light" : [25, 0, 0],
+              "size" : 0.5,
+              "layer" : "middle",
+              "timeToLive" : 0.425,
+              "variance" : {
+                "finalVelocity" : [1.5, 1.5],
+                "rotation" : 180
+              }
+            }}
+          ]
+        }
       }
     },
-    "scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
+    "scripts": ["/items/active/specweapons/darktemplar/meleeweapon.lua"],
     "elementalType": "physical",
     "primaryAbilityType": "broadswordcombo",
     "primaryAbility": {
@@ -155,12 +203,14 @@
             "duration": 0.2,
             "weaponOffset": [0.25, 0],
             "armRotation": -45,
+            "twoHanded": true,
             "weaponRotation": -55
         },
         "wait1": {
             "duration": 0.2,
             "weaponOffset": [0.25, 0],
             "armRotation": -45,
+            "twoHanded": true,
             "weaponRotation": -55
         },
         "windup2": {
@@ -170,6 +220,7 @@
             "weaponRotation": -55,
             "weaponAngularVelocity": 250,
             "weaponOffset": [0.25, 0],
+            "twoHanded": true,
             "allowRotate" : false
         },
         "preslash2": {
@@ -177,6 +228,7 @@
             "armRotation": -110,
             "weaponRotation": 20,
             "weaponOffset": [0.25, 0],
+            "twoHanded": true,
             "allowRotate" : true
         },
         "fire2": {
@@ -184,34 +236,39 @@
             "armRotation": -20,
             "weaponRotation": -70,
             "weaponOffset": [0.25, 0],
+            "twoHanded": true,
             "allowRotate" : false
         },
         "wait2": {
             "duration": 0.2,
             "armRotation": -20,
             "weaponRotation": -70,
+            "twoHanded": true,
             "weaponOffset": [0.25, 0]
         },
         "windup3": {
             "duration": 0.15,
             "armRotation": -30,
+            "twoHanded": true,
             "weaponRotation": -80
         },
         "fire3": {
             "duration": 0.2,
             "armRotation": 60,
             "weaponRotation": -100,
+            "twoHanded": true,
             "weaponOffset": [0.5, 0]
         },
         "wait3": {
-            "duration": 0.2,
-            "armRotation": 60,
-            "weaponRotation": 45,
-            "weaponOffset": [0, -1]
+            "duration": 0.3,
+            "armRotation": 40,
+            "weaponRotation": -100,
+            "twoHanded": true,
+            "weaponOffset": [0.5, 0]
         },
         "windup4": {
             "duration": 0.1,
-            "armRotation": 10,
+            "armRotation": 20,
             "weaponRotation": -80,
             "weaponOffset": [0, 1],
             "twoHanded": true,
@@ -220,16 +277,16 @@
         },
         "preslash4": {
             "duration": 0.05,
-            "armRotation": -15,
-            "weaponRotation": -105,
+            "armRotation": -25,
+            "weaponRotation": -80,
             "weaponOffset": [0, 1],
             "twoHanded": true,
             "allowRotate": false,
             "allowFlip": false
         },
         "fire4": {
-            "duration": 0.15,
-            "armRotation": -105,
+            "duration": 0.2,
+            "armRotation": -115,
             "weaponRotation": -150,
             "weaponOffset": [0, 1],
             "twoHanded": true,
@@ -238,8 +295,8 @@
         },
         "windup6": {
             "duration": 0.1,
-            "armRotation": -30,
-            "weaponRotation": -80,
+            "armRotation": -10,
+            "weaponRotation": -60,
             "twoHanded": true,
             "weaponOffset": [0.25, 0],
             "allowRotate": true,
@@ -249,16 +306,16 @@
             "duration": 0.2,
             "weaponOffset": [0.25, 0],
             "armRotation": -45,
+            "twoHanded": true,
             "weaponRotation": -55
         },
         "windupstab" : {
           "duration" : 0.5,
-          "armRotation" : -110,
+          "armRotation" : 0,
           "weaponRotation" : 20,
           "twoHanded" : true,
           "weaponOffset" : [0, 0],
-          "armAngularVelocity": 300,
-          "weaponAngularVelocity": 200,
+          "armAngularVelocity": -270,
 
           "allowRotate" : false,
           "allowFlip" : true
@@ -276,28 +333,42 @@
       },
       "comboSteps": 4,
       "baseDps": 12,
-      "fireTime": 1.0,
+      "fireTime": 0.666,
       "allowHold": false,
       "swooshOffsetRegions": [[0.75, 0.0, 4.25, 5.0], [3.0, -0.5, 6.5, 2.0], [1.5, -1.0, 5.5, 1.0], [3.0, -0.5, 6.5, 2.0]],
       "damageConfig": {
-        "knockback": 10
+        "knockback": 20,
+        "damageSourceKind" : "demonichalberdheartless"
       },
+      "stepExplosionConfig" : [
+        {"type" : "ivrpgdemonicexplosionlarge", "offset" : [5, -2.25]},
+        {"type" : "ivrpgdemonicexplosionsmall", "offset" : [7, -0.6]},
+        {"type" : "ivrpgdemonicexplosionsmall", "offset" : [2.5, 4.25]},
+        {"type" : "ivrpgdemonicexplosionlarge", "offset" : [5, 2]},
+        {"type" : "ivrpgdemonicexplosionsmall", "offset" : [10, -0.6]},
+        {"type" : "ivrpgdemonicexplosionlarge", "offset" : [5, -2.25]},
+        {"type" : "ivrpgdemonicexplosionsmall", "offset" : [-7, 0]}
+      ],
       "stabDamageConfig": {
         "knockback": 30
       },
       "stepDamageConfig": [
         {
-            "baseDamageFactor": 1.0,
-            "knockback": 10
+            "baseDamageFactor": 1.5,
+            "knockback": 20,
+            "statusEffects" : [{"effect" : "ivrpgslammed", "duration" : 10}]
         }, {
             "baseDamageFactor": 1.0,
-            "knockback": 20
+            "knockback": 30
         }, {
             "baseDamageFactor": 0.5,
-            "knockback": 20
+            "knockback": 20,
+            "statusEffects" : [
+              {"effect" : "ivrpglaunched", "duration" : 30}
+            ]
         }, {
-            "baseDamageFactor": 1.0,
-            "knockback": 10
+            "baseDamageFactor": 1.5,
+            "knockback": 30
         }
       ]
   },

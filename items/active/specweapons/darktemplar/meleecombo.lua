@@ -1,11 +1,21 @@
+require "/scripts/util.lua"
+require "/scripts/vec2.lua"
+
 -- Melee primary ability
 MeleeCombo = WeaponAbility:new()
 
 function MeleeCombo:init()
+  message.setHandler("killedEnemyDarkTemplar", function(_, _, enemyLevel, damageKind, bledToDeath)
+    if bledToDeath and bledToDeath == "demonichalberdheartless" or damageKind == "demonichalberdheartless" then
+      local killCount = config.getParameter("killCount", 0)
+      activeItem.setInstanceValue("killCount", killCount + 1)
+    end
+  end)
+
   self.comboStep = 1
 
   self.energyUsage = self.energyUsage or 0
-
+  self.stepExplosionConfig = config.getParameter("primaryAbility.stepExplosionConfig", {})
   self:computeDamageAndCooldowns()
 
   self.weapon:setStance(self.stances.idle)
@@ -24,6 +34,8 @@ end
 -- Ticks on every update regardless if this is the active ability
 function MeleeCombo:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
+
+  self.killCount = config.getParameter("killCount", 0)
 
   if self.cooldownTimer > 0 then
     self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
@@ -45,11 +57,30 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
   end
   self.lastFireMode = fireMode
 
+
+
   if not self.weapon.currentAbility then
     if self:shouldActivate() then
       self:setState(self.windup)
     elseif fireMode == "alt" and self.cooldownTimer == 0 then
       self:setState(self.windupstab)
+    end
+  end
+
+  animator.setParticleEmitterActive("demonicEmbers", self.killCount >= 1)
+  animator.setParticleEmitterActive("demonicSparks", self.killCount >= 10)
+  animator.setParticleEmitterEmissionRate("demonicEmbers", math.min(10, self.killCount))
+  if self.killCount >= 10 then
+    if self.weapon.tickExplodingTimer and self.explodingTimer > 0 then
+      self.explodingTimer = self.explodingTimer - dt
+      if self.explodingTimer <= 0 then
+        self.weapon.tickExplodingTimer = false
+        self.explodingTimer = 0
+        self.killCount = 0
+        activeItem.setInstanceValue("killCount", 0)
+      end
+    else
+      self.explodingTimer = 10
     end
   end
 
@@ -83,8 +114,13 @@ function MeleeCombo:windup()
 end
 
 function MeleeCombo:windupstab()
-  self.weapon:setStance(self.stances.windupstab)
-  util.wait(self.stances.windupstab.duration)
+  if self.comboStep == 2 then
+    self.weapon:setStance(self.stances.windup2)
+    util.wait(self.stances.windup2.duration)
+  else
+    self.weapon:setStance(self.stances.windupstab)
+    util.wait(self.stances.windupstab.duration)
+  end
   if self.energyUsage then
     status.overConsumeResource("energy", self.energyUsage)
   end
@@ -94,7 +130,7 @@ end
 -- State: wait
 -- waiting for next combo input
 function MeleeCombo:wait()
-  local stance = self.stances["wait"..(self.comboStep == 6 and 1 or self.comboStep - 1)]
+  local stance = self.stances["wait"..((self.comboStep == 6 or self.comboStep == 1) and 1 or self.comboStep - 1)]
 
   self.weapon:setStance(stance)
 
@@ -102,11 +138,16 @@ function MeleeCombo:wait()
     if self:shouldActivate() then
       self:setState(self.windup)
       return
+    elseif self.comboStep == 2 and self.fireMode == "alt" and self.cooldownTimer == 0 then
+      self:setState(self.windupstab)
+      self.comboStep = 1
+      return
     end
   end)
 
-  self.cooldownTimer = math.max(0, self.cooldowns[self.comboStep == 6 and 2 or self.comboStep - 1] - stance.duration)
+  self.cooldownTimer = math.max(0, self.cooldowns[(self.comboStep == 6 or self.comboStep == 1) and 1 or self.comboStep - 1] - stance.duration)
   self.comboStep = 1
+  self.weapon.aimAngle = 0
 end
 
 -- State: preslash
@@ -124,7 +165,9 @@ end
 
 -- State: fire
 function MeleeCombo:fire()
-
+  if self.comboStep == 6 then
+    self.weapon.aimAngle = 0
+  end
   local stance = self.stances["fire"..self.comboStep]
 
   self.weapon:setStance(stance)
@@ -135,12 +178,33 @@ function MeleeCombo:fire()
   animator.playSound(animStateKey)
 
   local swooshKey = self.animKeyPrefix .. (self.elementalType or self.weapon.elementalType) .. "swoosh"
-  animator.setParticleEmitterOffsetRegion(swooshKey, self.swooshOffsetRegions[self.comboStep])
+  animator.setParticleEmitterOffsetRegion(swooshKey, self.swooshOffsetRegions[self.comboStep == 6 and 1 or self.comboStep])
   animator.burstParticleEmitter(swooshKey)
 
+  local stepDamageConfig = false
+  if self.comboStep == 6 then
+    stepDamageConfig = copy(self.stepDamageConfig[1])
+    stepDamageConfig.baseDamage = stepDamageConfig.baseDamage * 0.75
+  end
+
+  if self.killCount >= 10 and  self.explodingTimer and self.explodingTimer > 0 then
+    local explosionConfig = self.stepExplosionConfig[self.comboStep]
+    local power = stepDamageConfig and stepDamageConfig.baseDamage or self.stepDamageConfig[self.comboStep].baseDamage * 0.5
+    local offset = vec2.rotate(explosionConfig.offset, self.weapon.aimAngle)
+    offset[1] = offset[1] * mcontroller.facingDirection()
+    world.spawnProjectile(explosionConfig.type, vec2.add(mcontroller.position(), offset), activeItem.ownerEntityId(), {0,0}, false, {power = power})
+    if self.comboStep == 4 then
+      explosionConfig = self.stepExplosionConfig[7]
+      offset = vec2.rotate(explosionConfig.offset, self.weapon.aimAngle)
+      offset[1] = offset[1] * mcontroller.facingDirection()
+      world.spawnProjectile(explosionConfig.type, vec2.add(mcontroller.position(), offset), activeItem.ownerEntityId(), {0,0}, false, {power = power})
+    end
+    self.weapon.tickExplodingTimer = true
+  end
+
   util.wait(stance.duration, function()
-    local damageArea = partDamageArea("swoosh")
-    self.weapon:setDamage(self.stepDamageConfig[self.comboStep == 6 and 1 or self.comboStep], damageArea)
+    local damageArea = partDamageArea("swoosh", self.comboStep == 6 and "damageAreaSpecial")
+    self.weapon:setDamage(stepDamageConfig or self.stepDamageConfig[self.comboStep], damageArea)
   end)
 
   if self.comboStep < self.comboSteps then
@@ -170,16 +234,33 @@ function MeleeCombo:firestab()
   animator.playSound(self.fireSound or "fire")
   animator.burstParticleEmitter((self.elementalType or self.weapon.elementalType) .. "swoosh")
 
+  local stepDamageConfig = copy(self.stepDamageConfig[4])
+  stepDamageConfig.knockback = 70
+
+  if self.killCount >= 10 and self.explodingTimer and self.explodingTimer > 0 then
+    local explosionConfig = self.stepExplosionConfig[5]
+    local power = stepDamageConfig and stepDamageConfig.baseDamage or self.stepDamageConfig[5].baseDamage * 0.5
+    local offset = vec2.rotate(explosionConfig.offset, self.weapon.aimAngle)
+    offset[1] = offset[1] * mcontroller.facingDirection()
+    world.spawnProjectile(explosionConfig.type, vec2.add(mcontroller.position(), offset), activeItem.ownerEntityId(), {0,0}, false, {power = power})
+    self.weapon.tickExplodingTimer = true
+  end
+
   self.moveTimer = self.stances.firestab.duration
   util.wait(self.stances.firestab.duration, function()
     local damageArea = partDamageArea("blade")
-    self.weapon:setDamage(self.stepDamageConfig[2], damageArea, self.fireTime)
+    self.weapon:setDamage(stepDamageConfig, damageArea, self.fireTime)
     mcontroller.controlApproachVelocity({mcontroller.facingDirection() * 100 * (self.moveTimer / self.stances.firestab.duration), 0.1}, 1500)
     mcontroller.controlModifiers({
       movementSuppressed = true,
       jumpingSuppressed = true
     })
     self.moveTimer = self.moveTimer - self.dt
+    if self.moveTimer < 0.2 and self:shouldActivate() then
+      self.comboStep = 3
+      self:setState(self.windup)
+      return
+    end
   end)
 
   self.cooldownTimer = self:getCooldownTime()

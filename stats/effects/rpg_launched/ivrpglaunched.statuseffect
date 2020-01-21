@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpglaunched",
+  "effectConfig" : {
+
+  },
+
+  "defaultDuration" : 5,
+  "scriptDelta" : 1,
+
+  "scripts" : [
+    "ivrpglaunched.lua"
+  ],
+
+  "label" : "Launched",
+  "icon" : "ivrpglaunched.png"
+}

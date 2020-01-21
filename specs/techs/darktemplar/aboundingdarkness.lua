@@ -1,10 +1,17 @@
 require "/scripts/keybinds.lua"
+require "/scripts/ivrpgutil.lua"
 
 function init()
   self.id = entity.id()
   self.active = false
   self.timer = 0
+  self.damageGivenUpdate = 5
   Bind.create("specialTwo", toggle)
+  message.setHandler("damageDealtDarkTemplar", function(_, _, damage, damageKind, bleedKind)
+    if self.active then status.giveResource("health", 1) end
+  end)
+  animator.setSoundPitch("burst2", 1.4)
+  animator.setSoundPitch("burst3", 1.7)
 end
 
 function activate()
@@ -14,22 +21,14 @@ function activate()
   end
   self.active = true
   status.consumeResource("health", self.sacrifice)
-  --world.spawnProjectile("ivrpgdemonicexplosion", mcontroller.position(), self.id, {0,0}, true, {power = 1.5*self.sacrifice})
-  animator.setAnimationState("explosion", "on")
+  initialBurst()
+  initialSounds()
   self.timer = 0
   self.damage = 0
 end
 
 function deactivate()
-  --[[self.scalar = 1.5 - 2.5*status.resource("health") / (self.maxHealth)
-  if self.scalar <= 0 then
-    self.scalar = 1
-  else
-    self.scalar = math.floor(self.scalar*100)/100
-  end]]
-  --status.setPersistentEffects("maxHealthMultiplier", {{stat = "maxHealth", effectiveMultiplier = self.scalar}})
   status.clearPersistentEffects("ivrpgaboundingdarkness")
-  --status.giveResource("health", self.damage)
   self.active = false
   tech.setParentDirectives()
 end
@@ -49,7 +48,6 @@ end
 
 function update(args)
   self.maxHealth = status.stat("maxHealth")
-
   if self.active then
     self.timer = self.timer + args.dt
     local alpha = math.min(self.timer / 60, 0.95)
@@ -58,21 +56,47 @@ function update(args)
       {stat = "healingStatusImmunity",  amount = 1 },
       {stat = "powerMultiplier", amount = 0.15 + math.min((self.timer / 60) * 0.85, 0.85)}
     })
-    if not status.consumeResource("health", (2 + self.maxHealth * 0.05) * args.dt) then
+    updateDamageGiven()
+    removeHealing()
+    if not status.consumeResource("health", (2 + self.maxHealth * 0.005) * args.dt) then
       deactivate()
       return
     end
-    --[[if self.timer > 0.5 then
-      self.timer = 0
-      for i,id in ipairs(world.entityQuery(mcontroller.position(), 7, {
-        withoutEntityId = self.id,
-        includedTypes = {"creature"}
-      })) do
-        if world.entityAggressive(id) then
-            world.sendEntityMessage(id, "applySelfDamageRequest", "IgnoresDef", "demonic", 2, self.id)
-            self.damage = self.damage + 2
-        end
-      end
-    end]]
   end
+end
+
+function initialBurst()
+  animator.setAnimationState("explosion", "on")
+  local targetIds = enemyQuery(mcontroller.position(), 7, {includedTypes = {"creature"}}, self.id, true)
+  for _,id in ipairs(targetIds) do
+    world.sendEntityMessage(id, "applySelfDamageRequest", "IgnoresDef", "demonic", self.sacrifice, self.id)
+  end
+end
+
+function initialSounds()
+  for i=1,3 do
+    animator.setSoundVolume("burst"..i, 1.0)
+    animator.playSound("burst"..i)
+    animator.setSoundVolume("burst"..i, 0, 3)
+  end
+end
+
+function updateDamageGiven()
+  local notifications = nil
+  notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if notification.damageDealt > notification.healthLost and notification.healthLost > 0 then
+        status.giveResource("health", 1)
+      end
+    end
+  end
+end
+
+function removeHealing()
+  status.removeEphemeralEffect("bandageheal")
+  status.removeEphemeralEffect("nanowrapheal")
+  status.removeEphemeralEffect("bottledwaterheal")
+  status.removeEphemeralEffect("medkitheal")
+  status.removeEphemeralEffect("salveheal")
 end

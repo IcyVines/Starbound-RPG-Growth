@@ -29,10 +29,6 @@ function init()
       bleedLength = (guaranteed and bleedLength < 1) and 1 or bleedLength
       world.sendEntityMessage(sourceId, "applySelfDamageRequest", "IgnoresDef", "bleed", damage/2, self.rpgPlayerID, sourceKind)
       world.sendEntityMessage(sourceId, "addEphemeralEffect", "ivrpgweaken", bleedLength, self.rpgPlayerID)
-      -- Dark Templar Bonus Unlock
-      local dark = status.statusProperty("ivrpgsudarktemplar", 0)
-      if self.level > 34 and type(dark) == "number" then status.setStatusProperty("ivrpgsudarktemplar", dark + math.floor(damage/2)) end
-      -- End Unlock
     end
   end)
 

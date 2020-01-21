@@ -65,6 +65,11 @@ function init()
 
   message.setHandler("killedEnemy", function(_, _, enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind, bledToDeath)
     killedEnemy(enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind, bledToDeath)
+    world.sendEntityMessage(self.rpg_playerId, "killedEnemyDarkTemplar", enemyLevel, damageKind, bledToDeath)
+  end)
+
+  message.setHandler("damageDealt", function(_, _, damage, damageKind, bleedKind)
+  	world.sendEntityMessage(self.rpg_playerId, "damageDealtDarkTemplar", damage, damageKind, bleedKind)
   end)
 
   message.setHandler("modifyResource", function(_, _, type, amount)
@@ -160,6 +165,7 @@ function updateLore()
       for _,spec in ipairs(lore) do
         if not unlocks[spec] and status.statusProperty("ivrpgsu" .. spec, false) == true then
           unlocks[spec] = true
+          if spec == "darktemplar" then spec = "Dark Templar" elseif spec == "battlemage" then spec = "Battle Mage" end
           sendRadioMessage("Lore Unlocked: Specialization - " .. spec:gsub("^%l",string.upper))
         end
       end
@@ -514,11 +520,7 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
   if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
     return
   end
-
-  if bledToDeath then
-  	--sb.logInfo("Bled to death by " .. damageType)
-  end
-
+  
   for _,spec in ipairs(self.rpg_specsAvailable) do
     if status.statusProperty(spec.unlockStatus) ~= true then
       local unlockBehavior = spec.unlockBehavior
@@ -533,6 +535,7 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
         local healthBonus = 1
         local damageBonus = 1
         local positionBonus = 1
+        local bleedBonus = bledToDeath and unlockBehavior.bleedBonus or 1
         
         if damageTypes then
           ignore = true
@@ -591,15 +594,17 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
           if ignore then trueIgnore = true end
         end
 
+        local fullBonus = healthBonus * damageBonus * positionBonus * bleedBonus
+
         if enemyTypes and not trueIgnore then
           for _,v in ipairs(enemyTypes) do
             if string.find(enemyType, v.type) then
-              status.setStatusProperty(spec.unlockStatus, status.statusProperty(spec.unlockStatus, 0) + healthBonus * damageBonus * positionBonus * (v.modifier and level * v.modifier or (v.amount or level)))
+              status.setStatusProperty(spec.unlockStatus, status.statusProperty(spec.unlockStatus, 0) + fullBonus * (v.modifier and level * v.modifier or (v.amount or level)))
               break
             end
           end
         elseif (not enemyTypes) and not trueIgnore then
-          status.setStatusProperty(spec.unlockStatus, status.statusProperty(spec.unlockStatus, 0) + healthBonus * damageBonus * positionBonus * level)
+          status.setStatusProperty(spec.unlockStatus, status.statusProperty(spec.unlockStatus, 0) + fullBonus * level)
         end
 
       end

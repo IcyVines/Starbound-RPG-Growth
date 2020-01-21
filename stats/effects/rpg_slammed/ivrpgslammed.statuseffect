@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgslammed",
+  "effectConfig" : {
+
+  },
+
+  "defaultDuration" : 5,
+  "scriptDelta" : 1,
+
+  "scripts" : [
+    "ivrpgslammed.lua"
+  ],
+
+  "label" : "Slammed",
+  "icon" : "ivrpgslammed.png"
+}

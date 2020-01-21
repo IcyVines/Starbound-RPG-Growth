@@ -22,6 +22,11 @@ function rpg_setHandlers()
       damage = math.floor(damage),
       sourceEntityId = sourceId
     })
+
+    if healthBeforeDamage ~= status.resource("health") then
+      world.sendEntityMessage(sourceId, "damageDealt", damage, damageSourceKind, bleedKind)
+    end
+
     if healthBeforeDamage ~= 0 and status.resource("health") == 0 then
       local bledToDeath = damageSourceKind == "bleed" and bleedKind
       rpg_sendDyingMessage(sourceId, damage, bledToDeath and bleedKind or damageSourceKind, bledToDeath)
@@ -260,6 +265,7 @@ function rpg_updateDamageTaken(notification)
     end
   end
 
+  --world.sendEntityMessage(sourceId, "damageDealt", damage, sourceKind)
   if world.entityHealth(self.rpg_Id)[1] and world.entityHealth(self.rpg_Id)[1] <= 0 then
     rpg_enemyDeath(sourceId, damage, sourceKind, onKillList)
   end

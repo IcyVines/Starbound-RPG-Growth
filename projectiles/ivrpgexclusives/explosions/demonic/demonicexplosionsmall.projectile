@@ -1,0 +1,25 @@
+{
+  "projectileName" : "ivrpgdemonicexplosionsmall",
+  "image" : "demonicexplosionsmall.png",
+  "animationCycle" : 0.3,
+  "frameNumber" : 6,
+  "damagePoly" : [ [-22, 0], [-16, -16], [0, -22], [16, -16], [22, 0], [16, 16], [0, 22], [-16, 16] ],
+  "animationLoops" : false,
+  "flippable" : true,
+  "damageKind" : "demonic",
+  "statusEffects" : [
+    "ivrpgsacrifice"
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/gun/plasma_pistol1.ogg", "/sfx/gun/plasma_pistol3.ogg", "/sfx/gun/plasma_pistol4.ogg" ]
+    }
+  ],
+  "piercing" : true,
+  "bounces" : -1,
+  "power" : 0,
+  "speed" : 0
+}

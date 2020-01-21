@@ -22,7 +22,8 @@
       "darkness" : {
         "properties" : {
           "fullbright" : true,
-          "zLevel" : -10
+          "zLevel" : -10,
+          "offset" : [0.1, 0]
         },
         "partStates" : {
           "explosion" : {
@@ -36,5 +37,11 @@
         }
       }
     }
+  },
+
+  "sounds" : {
+  	"burst1" : ["/sfx/instruments/leadguitar/a1.ogg"],
+  	"burst2" : ["/sfx/instruments/leadguitar/a1.ogg"],
+  	"burst3" : ["/sfx/instruments/leadguitar/a1.ogg"]
   }
 }
