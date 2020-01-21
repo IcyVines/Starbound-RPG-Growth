@@ -201,6 +201,17 @@ function ivrpgBuildItemConfig(id, hand)
   return pMessage
 end
 
+function ivrpgHasPath(mcontroller, target)
+  local params = mcontroller.baseParameters()
+  params["flySpeed"] = 24
+  params["gravityEnabled"] = false
+  params["minimumLiquidPercentage"] = 1.1 -- over 100% so never submerged
+  local path = world.findPlatformerPath(mcontroller.position(), target, params)
+  -- sb.logInfo("Path?: " .. sb.printJson(params, 1))
+  -- sb.logInfo("Path?: " .. sb.printJson(path, 1))
+  return path ~= nil
+end
+
 -- Only for scripts with access to Player
 function sendRadioMessage(text)
   player.radioMessage({
