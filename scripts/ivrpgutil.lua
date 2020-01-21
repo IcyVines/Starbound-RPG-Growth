@@ -203,10 +203,12 @@ end
 
 function ivrpgHasPath(mcontroller, target)
   local params = mcontroller.baseParameters()
-  params["flySpeed"] = params["walkSpeed"]
+  params["flySpeed"] = 24
   params["gravityEnabled"] = false
+  params["minimumLiquidPercentage"] = 1.1 -- over 100% so never submerged
   local path = world.findPlatformerPath(mcontroller.position(), target, params)
-  -- sb.logInfo("Path?: " .. sb.printJson(what, 1))
+  -- sb.logInfo("Path?: " .. sb.printJson(params, 1))
+  -- sb.logInfo("Path?: " .. sb.printJson(path, 1))
   return path ~= nil
 end
 
