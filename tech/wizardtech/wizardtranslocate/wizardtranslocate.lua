@@ -1,3 +1,4 @@
+require "/scripts/ivrpgutil.lua"
 require "/scripts/keybinds.lua"
 require "/tech/ivrpgopenrpgui.lua"
 
@@ -19,7 +20,8 @@ end
 function translocate()
   --sb.logInfo("Cooldown: " .. tostring(self.dashCooldownTimer))
   local isNotMissionWorld = ((world.terrestrial() or world.type() == "outpost" or world.type() == "scienceoutpost") and world.dayLength() ~= 100000) or (status.statPositive("admin") or status.statPositive("ivrpgucfourthwall"))
-  local notThroughWalls = not world.lineTileCollision(tech.aimPosition(), mcontroller.position())
+  -- local notThroughWalls = not world.lineTileCollision(tech.aimPosition(), mcontroller.position())
+  local notThroughWalls = ivrpgHasPath(mcontroller, tech.aimPosition())
   if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and (isNotMissionWorld or notThroughWalls) and status.overConsumeResource("energy", 1) then
     local agility = status.statusProperty("ivrpgagility", 0)
     local distance = world.magnitude(tech.aimPosition(), mcontroller.position())
