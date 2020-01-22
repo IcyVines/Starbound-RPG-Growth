@@ -6,11 +6,25 @@ require "/scripts/poly.lua"
 require "/monsters/ivrpgaimonster.lua"
 require "/monsters/rpgmonsters/ivrpguniquemonster.lua"
 
-local monsterOldInit = init
-local monsterOldUpdate = update
+local ivrpgOldInit = init
+local ivrpgOldUpdate = update
+local ivrpgOldDamage = damage
 
 function init()
-  monsterOldInit()
+  ivrpgOldInit()
+  rpg_loadConfigs()
+  rpg_loadVariables(monster.type(), monster.level())
+  self.rpg_isMonster = true
+  self.rpg_Actions = config.getParameter("ivrpgActions", false)
+  if self.rpg_Actions then rpg_initUniqueMonster() end
+  rpg_setHandlers()
+  self.versionConfig = root.assetJson("/ivrpgVersion.config")
+  if self.versionConfig.RPGAI_version and self.versionConfig.RPGAI_refactorVersion == self.versionConfig.refactorVersion then rpg_initAI() end
+  if config.getParameter("ivrpgSpawnNpc", false) then rpg_spawnNpc(config.getParameter("ivrpgNpcParameters", {})) end
+end
+
+function rpg_secondInit()
+  ivrpgOldInit()
   rpg_loadConfigs()
   rpg_loadVariables(monster.type(), monster.level())
   self.rpg_isMonster = true
@@ -23,7 +37,7 @@ function init()
 end
 
 function update(dt)
-  monsterOldUpdate(dt)
+  ivrpgOldUpdate(dt)
   rpg_updateEffects(dt)
   if self.versionConfig.RPGAI_version and self.versionConfig.RPGAI_refactorVersion == self.versionConfig.refactorVersion then rpg_updateAI(dt) end
   if self.rpg_Actions then rpg_updateUniqueMonster(dt) end
@@ -34,6 +48,7 @@ function update(dt)
 end
 
 function damage(args)
+  if ivrpgOldDamage then ivrpgOldDamage(args) end
   rpg_updateDamageTaken(args)
   if self.rpg_Actions then rpg_damage(args.damage, args.sourceDamage, args.sourceKind, args.sourceId) end
 end

@@ -14,6 +14,15 @@ function init()
   rpg_setHandlers()
 end
 
+function rpg_secondInit()
+  ivrpgOldInit()
+  rpg_loadConfigs()
+  rpg_loadVariables(npc.npcType(), npc.level())
+  self.rpg_Actions = config.getParameter("ivrpgActions", false)
+  if self.rpg_Actions then rpg_initUniqueNPC() end
+  rpg_setHandlers()
+end
+
 function update(dt)
   ivrpgOldUpdate(dt)
   rpg_updateEffects(dt)

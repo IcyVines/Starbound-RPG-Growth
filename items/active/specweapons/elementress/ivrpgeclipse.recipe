@@ -5,9 +5,9 @@
     { "item" : "goldbar", "count" : 1 },
     { "item" : "silverbar", "count" : 2 },
     { "item" : "cryonicextract", "count" : 2 },
-    { "item" : "scorchedcore", "count" : 1 },
-    { "item" : "fabric", "count" : 2 },
-    { "item" : "logblock", "count" : 2 }
+    { "item" : "scorchedcore", "count" : 2 },
+    { "item" : "logblock", "count" : 2 },
+    { "item" : "solariumstar", "count" : 3 }
   ],
 	"output" : { "item" : "ivrpgweclipse", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

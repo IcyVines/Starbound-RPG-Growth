@@ -1,9 +1,10 @@
 {
   "input" : [
-    { "item" : "ivrpgfiringmechanism", "count" : 2 },
-    { "item" : "shadowblock", "count" : 12 },
-    { "item" : "durasteelbar", "count" : 4 },
-    { "item" : "geodebluesample", "count" : 1 }
+    { "item" : "ivrpgfiringmechanism", "count" : 1 },
+    { "item" : "durasteelbar", "count" : 6 },
+    { "item" : "staticcell", "count" : 2 },
+    { "item" : "refinedaegisalt", "count" : 2 },
+    { "item" : "solariumstar", "count" : 4 }
   ],
 	"output" : { "item" : "ivrpgwmarie", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

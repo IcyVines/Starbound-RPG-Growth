@@ -92,7 +92,7 @@
     "scripts" : ["/items/active/specweapons/elementress/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 10,
+    "energyCost" : 25,
     "projectileCount" : 3,
     "attackSpeed" : 0.6,
     "maxCastRange" : 20,

@@ -3,8 +3,8 @@
     { "item" : "refinedviolium", "count" : 4 },
     { "item" : "refinedaegisalt", "count" : 4 },
     { "item" : "staticcell", "count" : 3 },
-    { "item" : "scorchedcore", "count" : 3 },
     { "item" : "siliconboard", "count" : 1 },
+    { "item" : "solariumstar", "count" : 8 },
     { "item" : "string", "count" : 30 }
   ],
 	"output" : { "item" : "ivrpgwmida", "count" : 1 },

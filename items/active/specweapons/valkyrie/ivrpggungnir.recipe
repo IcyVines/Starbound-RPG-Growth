@@ -1,8 +1,8 @@
 {
   "input" : [
-  	{ "item" : "solariumstar", "count" : 2 },
+  	{ "item" : "solariumstar", "count" : 5 },
   	{ "item" : "livingroot", "count" : 1 },
-    { "item" : "ivrpgmeteoricmetalbar", "count" : 18 },
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 14 },
     { "item" : "goldbar", "count" : 6 },
     { "item" : "diamond", "count" : 1 }
   ],

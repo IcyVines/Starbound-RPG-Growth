@@ -1,8 +1,9 @@
 {
   "input" : [
   	{ "item" : "bonematerial", "count" : 6 },
-    { "item" : "ivrpgnovacrystal", "count" : 3 },
+    { "item" : "ivrpgnovacrystal", "count" : 2 },
     { "item" : "coalore", "count" : 7 },
+    { "item" : "solariumstar", "count" : 6 },
     { "item" : "refinedviolium", "count" : 4 }
   ],
 	"output" : { "item" : "ivrpgwforusall", "count" : 1 },

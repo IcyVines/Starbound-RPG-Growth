@@ -7,9 +7,10 @@
     { "item" : "ivrpgnovacrystal", "count" : 1 },
     { "item" : "ivrpgfiringmechanism", "count" : 1 },
     { "item" : "liquidoil", "count" : 30 },
-    { "item" : "refinedaegisalt", "count" : 4 },
-    { "item" : "refinedferozium", "count" : 4 },
-    { "item" : "refinedviolium", "count" : 4 }
+    { "item" : "refinedaegisalt", "count" : 2 },
+    { "item" : "refinedferozium", "count" : 2 },
+    { "item" : "refinedviolium", "count" : 2 },
+    { "item" : "solariumstar", "count" : 4 }
   ],
 	"output" : { "item" : "ivrpgwomniathrower", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

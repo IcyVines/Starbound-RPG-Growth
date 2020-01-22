@@ -1,9 +1,10 @@
 {
   "input" : [
-    { "item" : "ivrpgfiringmechanism", "count" : 2 },
+    { "item" : "ivrpgfiringmechanism", "count" : 1 },
     { "item" : "durasteelbar", "count" : 6 },
     { "item" : "staticcell", "count" : 5 },
-    { "item" : "livingroot", "count" : 10 },
+    { "item" : "livingroot", "count" : 5 },
+    { "item" : "solariumstar", "count" : 4 },
     { "item" : "diamond", "count" : 1 }
   ],
 	"output" : { "item" : "ivrpgwepimetheus", "count" : 1 },

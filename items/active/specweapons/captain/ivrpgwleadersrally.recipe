@@ -5,7 +5,8 @@
     { "item" : "ivrpgplatinumbar", "count" : 4 },
     { "item" : "fabric", "count" : 10 },
     { "item" : "silk", "count" : 4 },
-    { "item" : "syntheticmaterial", "count" : 4 }
+    { "item" : "syntheticmaterial", "count" : 4 },
+    { "item" : "solariumstar", "count" : 2 }
   ],
 	"output" : { "item" : "ivrpgwleadersrally", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

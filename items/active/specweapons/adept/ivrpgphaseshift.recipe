@@ -1,8 +1,9 @@
 {
   "input" : [
   	{ "item" : "phasematter", "count" : 10 },
-    { "item" : "ivrpgetherealblade", "count" : 8 },
+    { "item" : "ivrpgetherealblade", "count" : 2 },
     { "item" : "fabric", "count" : 2 },
+    { "item" : "solariumstar", "count" : 4 },
     { "item" : "logblock", "count" : 2 }
   ],
 	"output" : { "item" : "ivrpgwphaseshift", "count" : 1 },

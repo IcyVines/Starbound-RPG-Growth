@@ -213,7 +213,7 @@ function hover(args)
   local hDirection = args.moves["left"] and -1 or (args.moves["right"] and 1 or 0)
   local vDirection = args.moves["down"] and -1 or (args.moves["up"] and 1 or 0)
   local hoverControlForce = config.getParameter("hoverControlForce")
-  local energyOff = (vDirection == -1 and hDirection == 0) and 4 or (vDirection == -1 and 3 or ((hDirection == 0 and vDirection == 0) and 2 or (vDirection == 1 and 0.5 or 1)))
+  local energyOff = (vDirection == -1 and hDirection == 0) and 4 or (vDirection == -1 and 3 or ((hDirection == 0 and vDirection == 0) and 1.5 or (vDirection == 1 and 0.5 or 1)))
 
   if status.statPositive("ivrpguchoversphere") and self.active and args.moves["jump"] and status.overConsumeResource("energy", energyUsagePerSecond * args.dt / energyOff) then
     animator.setAnimationState("hover", "on")

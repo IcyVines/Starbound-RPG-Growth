@@ -64,9 +64,15 @@ function rpg_loadVariables(enemyType, level)
   self.rpg_devourState = false
   self.rpg_devourTimer = 0
   performStealthFunctionOverrides()
+  self.rpg_initPassed = true
 end
 
 function rpg_updateEffects(dt)
+  if not self.rpg_initPassed then
+    sb.logInfo("RPG Growth Warning: Another mod has overwritten a monster or npc's init function without doing a callback. Calling init function again. Please find this mod immediately and alert the author.")
+    rpg_secondInit()
+  end
+
   if status.statPositive("ivrpgundead") then
     --status.modifyResourcePercentage("health", 1)
     if self.rpg_isMonster then monster.setDamageTeam({type = "friendly", team = 1})

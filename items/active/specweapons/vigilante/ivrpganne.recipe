@@ -1,9 +1,10 @@
 {
   "input" : [
-    { "item" : "ivrpgfiringmechanism", "count" : 3 },
+    { "item" : "ivrpgfiringmechanism", "count" : 1 },
     { "item" : "goldbar", "count" : 6 },
-    { "item" : "scorchedcore", "count" : 1 },
-    { "item" : "geoderedsample", "count" : 1 }
+    { "item" : "scorchedcore", "count" : 2 },
+    { "item" : "refinedviolium", "count" : 2 },
+    { "item" : "solariumstar", "count" : 4 }
   ],
 	"output" : { "item" : "ivrpgwanne", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

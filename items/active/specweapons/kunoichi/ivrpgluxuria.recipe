@@ -1,8 +1,8 @@
 {
   "input" : [
   	{ "item" : "diamond", "count" : 1 },
-    { "item" : "ivrpgetherealblade", "count" : 5 },
-    { "item" : "fabric", "count" : 4 },
+    { "item" : "ivrpgetherealblade", "count" : 2 },
+    { "item" : "fabric", "count" : 6 },
     { "item" : "solariumstar", "count" : 2 }
   ],
 	"output" : { "item" : "ivrpgwluxuria", "count" : 1 },

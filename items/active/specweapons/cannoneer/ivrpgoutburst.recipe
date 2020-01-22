@@ -7,7 +7,8 @@
     { "item" : "venomsample", "count" : 2 },
     { "item" : "cryonicextract", "count" : 2 },
     { "item" : "liquidoil", "count" : 20 },
-    { "item" : "refinedaegisalt", "count" : 4 }
+    { "item" : "refinedaegisalt", "count" : 4 },
+    { "item" : "solariumstar", "count" : 4 }
   ],
 	"output" : { "item" : "ivrpgwoutburst", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

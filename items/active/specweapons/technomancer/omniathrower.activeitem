@@ -148,7 +148,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/technomancer/flamethrower.lua"],
     "baseDps" : 10,
-    "energyUsage" : 30,
+    "energyUsage" : 50,
     "fireTime" : 0.065,
     "inaccuracy" : 0.05,
 

@@ -13,9 +13,8 @@ function update(args)
       status.setResourceLocked("energy", false)
     end
     status.setResourcePercentage("energyRegenBlock", 1.0)
-    local regenBonus = 1 + math.min((status.statusProperty("ivrpgintelligence", 0) + status.statusProperty("ivrpgvigor", 0)) / 100, 0.5)
+    local regenBonus = calculateEnergyCost()
     status.modifyResourcePercentage("energy", args.dt * self.regenSpeed * regenBonus * (self.energyCooldownTimer > 0 and 0.5 or 1))
-    --sb.logInfo("Percent: " .. (self.regenSpeed * regenBonus * (self.energyCooldownTimer > 0 and 0.5 or 1)))
     tech.setParentDirectives("?border=2;34ED2A20;4E1D7000")
     updateDamageTaken()
   end
@@ -56,7 +55,7 @@ function updateDamageTaken()
         local energy = status.resource("energy")
         status.overConsumeResource("energy", damageDealt)
 
-        if notification.sourceEntityId and world.entityExists(notification.sourceEntityId) then
+        if notification.sourceEntityId and world.entityExists(notification.sourceEntityId) and world.entityCanDamage(entity.id(), notification.sourceEntityId) then
           local directionTo = world.distance(world.entityPosition(notification.sourceEntityId), mcontroller.position())
           world.spawnProjectile(
             "teslaboltsmall",

@@ -1,8 +1,10 @@
 {
   "input" : [
-  	{ "item" : "ivrpgnovacrystal", "count" : 2 },
+  	{ "item" : "ivrpgnovacrystal", "count" : 1 },
     { "item" : "ivrpgsquirmingnervebundle", "count" : 1 },
-    { "item" : "refinedviolium", "count" : 3 }
+    { "item" : "refinedviolium", "count" : 3 },
+    { "item" : "phasematter", "count" : 1 },
+    { "item" : "solariumstar", "count" : 2 }
   ],
 	"output" : { "item" : "ivrpgwsoullesswhisper", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

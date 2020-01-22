@@ -1,9 +1,9 @@
 {
   "input" : [
-    { "item" : "ivrpgmeteoricmetalbar", "count" : 16 },
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 14 },
     { "item" : "staticcell", "count" : 10 },
     { "item" : "scorchedcore", "count" : 10 },
-    { "item" : "solariumstar", "count" : 2 }
+    { "item" : "solariumstar", "count" : 5 }
   ],
 	"output" : { "item" : "ivrpgwdragonsbane", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

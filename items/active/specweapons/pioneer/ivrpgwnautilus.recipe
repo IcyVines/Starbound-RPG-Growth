@@ -1,7 +1,8 @@
 {
   "input" : [
-    { "item" : "ivrpgspiralpower", "count" : 12 },
+    { "item" : "ivrpgspiralpower", "count" : 8 },
     { "item" : "phasematter", "count" : 1 },
+    { "item" : "solariumstar", "count" : 4 },
     { "item" : "hardenedcarapace", "count" : 5 }
   ],
 	"output" : { "item" : "ivrpgwnautilus", "count" : 1 },

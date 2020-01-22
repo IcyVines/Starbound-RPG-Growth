@@ -587,7 +587,7 @@ function updateClassicMode()
     local enablesSpec = self.specInfo and getDictionaryFromType(self.specInfo.classic, "enable")
     local enablesClass = getDictionaryFromType(self.classInfo.classic, "enable")
     local enablesProf = self.profInfo and getDictionaryFromType(self.profInfo.classic, "enable")
-    local enables = joinMaps(joinMaps(enablesClass, enablesSpec), enablesProf)
+    local enables = joinMaps(joinMaps(enablesClass, enablesProf), enablesSpec)
     local loopBreak = false
     if enables then
       if self.heldItem then

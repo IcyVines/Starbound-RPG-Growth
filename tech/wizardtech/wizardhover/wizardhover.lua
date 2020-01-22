@@ -27,7 +27,7 @@ function update(args)
   local energyUsagePerSecond = config.getParameter("energyUsagePerSecond")
   local hDirection = args.moves["left"] and -1 or (args.moves["right"] and 1 or 0)
   local vDirection = args.moves["down"] and -1 or (args.moves["up"] and 1 or 0)
-  local energyOff = (vDirection == -1 and hDirection == 0) and 4 or (vDirection == -1 and 3 or ((hDirection == 0 and vDirection == 0) and 2 or (vDirection == 1 and 0.5 or 1)))
+  local energyOff = (vDirection == -1 and hDirection == 0) and 4 or (vDirection == -1 and 3 or ((hDirection == 0 and vDirection == 0) and 1.5 or (vDirection == 1 and 0.5 or 1)))
 
   if action == "wizardhover" and (not status.statPositive("activeMovementAbilities")) and status.overConsumeResource("energy", energyUsagePerSecond * args.dt / energyOff)  then
     animator.setAnimationState("hover", "on")

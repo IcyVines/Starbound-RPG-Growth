@@ -4,7 +4,7 @@ require "/tech/ivrpgopenrpgui.lua"
 
 function init()
   ivrpg_ttShortcut.initialize()
-  self.active = false
+  self.active = status.statusProperty("ivrpgmagicshieldactive", false)
   self.damageUpdate = 5
   self.regenSpeed = config.getParameter("regenSpeed", 0.1)
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=80FC9FFF=0.25")
@@ -20,10 +20,16 @@ function magicShield()
     self.active = false
     tech.setParentDirectives("")
     animator.playSound("deactivate")
+    status.setStatusProperty("ivrpgmagicshieldactive", self.active)
   else
     self.active = true
     animator.playSound("activate")
+    status.setStatusProperty("ivrpgmagicshieldactive", self.active)
   end
+end
+
+function calculateEnergyCost()
+  return 1 + math.min((status.statusProperty("ivrpgintelligence", 0) + status.statusProperty("ivrpgvigor", 0)) / 300, 0.40)
 end
 
 function update(args)
@@ -38,9 +44,8 @@ function update(args)
       status.setResourceLocked("energy", false)
     end
     status.setResourcePercentage("energyRegenBlock", 1.0)
-    local regenBonus = 1 + math.min((status.statusProperty("ivrpgintelligence", 0) + status.statusProperty("ivrpgvigor", 0)) / 100, 0.5)
+    local regenBonus = calculateEnergyCost()
     status.modifyResourcePercentage("energy", args.dt * self.regenSpeed * regenBonus * (self.energyCooldownTimer > 0 and 0.5 or 1))
-    --sb.logInfo("Percent: " .. (self.regenSpeed * regenBonus * (self.energyCooldownTimer > 0 and 0.5 or 1)))
     tech.setParentDirectives("?border=2;34ED2A20;4E1D7000")
     updateDamageTaken()
   end
@@ -52,7 +57,6 @@ function update(args)
 end
 
 function uninit()
-  self.active = false
   tech.setParentDirectives("")
 end
 
