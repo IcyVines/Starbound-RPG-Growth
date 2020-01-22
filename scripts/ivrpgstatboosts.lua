@@ -408,8 +408,9 @@ function updateSpecialization()
   for k,v in ipairs(statuses) do
     local classic = v.halvingStat and v.halvingAmount * self.classicBonuses[v.halvingStat] or 0
     local modifier = {}
+    local statModifier = v.statModifier and status.statusProperty("ivrpg" .. v.statModifier, 1) or 1
     modifier["stat"] = v.stat
-    modifier[v.type] = v.amount * (v.negative and -1 or 1) + (classic * (v.halvingInverse and -1 or 1))
+    modifier[v.type] = v.amount * (v.negative and -1 or 1) * statModifier + (classic * (v.halvingInverse and -1 or 1))
     table.insert(statusConfig, modifier)
   end
   status.setPersistentEffects("ivrpgspecstatusbonus", statusConfig)

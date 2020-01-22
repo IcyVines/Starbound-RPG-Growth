@@ -68,7 +68,7 @@ function init()
     world.sendEntityMessage(self.rpg_playerId, "killedEnemyDarkTemplar", enemyLevel, damageKind, bledToDeath)
   end)
 
-  message.setHandler("damageDealt", function(_, _, damage, damageKind, bleedKind)
+  message.setHandler("damageDealt", function(_, _, damage, damageKind, bleedKind, damageNotRegistered)
   	world.sendEntityMessage(self.rpg_playerId, "damageDealtDarkTemplar", damage, damageKind, bleedKind)
   end)
 
@@ -520,7 +520,7 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
   if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
     return
   end
-  
+
   for _,spec in ipairs(self.rpg_specsAvailable) do
     if status.statusProperty(spec.unlockStatus) ~= true then
       local unlockBehavior = spec.unlockBehavior

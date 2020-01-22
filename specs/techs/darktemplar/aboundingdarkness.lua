@@ -6,9 +6,9 @@ function init()
   self.active = false
   self.timer = 0
   self.damageGivenUpdate = 5
-  Bind.create("specialTwo", toggle)
+  Bind.create("specialThree", toggle)
   message.setHandler("damageDealtDarkTemplar", function(_, _, damage, damageKind, bleedKind)
-    if self.active then status.giveResource("health", 1) end
+    if self.active and bleedKind then status.giveResource("health", damage / 2) end
   end)
   animator.setSoundPitch("burst2", 1.4)
   animator.setSoundPitch("burst3", 1.7)
@@ -50,13 +50,13 @@ function update(args)
   self.maxHealth = status.stat("maxHealth")
   if self.active then
     self.timer = self.timer + args.dt
-    local alpha = math.min(self.timer / 60, 0.95)
+    local alpha = math.min(self.timer / 30, 0.95)
     tech.setParentDirectives("?fade=110000=" .. alpha)
     status.setPersistentEffects("ivrpgaboundingdarkness", {
       {stat = "healingStatusImmunity",  amount = 1 },
-      {stat = "powerMultiplier", amount = 0.15 + math.min((self.timer / 60) * 0.85, 0.85)}
+      {stat = "powerMultiplier", amount = 0.15 + math.min((self.timer / 30) * 0.85, 0.85)}
     })
-    updateDamageGiven()
+    --updateDamageGiven()
     removeHealing()
     if not status.consumeResource("health", (2 + self.maxHealth * 0.005) * args.dt) then
       deactivate()
@@ -87,7 +87,7 @@ function updateDamageGiven()
   if notifications then
     for _,notification in pairs(notifications) do
       if notification.damageDealt > notification.healthLost and notification.healthLost > 0 then
-        status.giveResource("health", 1)
+        --status.giveResource("health", self.maxHealth * 0.01)
       end
     end
   end

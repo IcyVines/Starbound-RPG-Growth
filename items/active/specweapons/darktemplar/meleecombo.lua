@@ -20,6 +20,7 @@ function MeleeCombo:init()
 
   self.weapon:setStance(self.stances.idle)
 
+  self.killDirectives = ""
   self.edgeTriggerTimer = 0
   self.flashTimer = 0
   self.cooldownTimer = self.cooldowns[1]
@@ -47,7 +48,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
   if self.flashTimer > 0 then
     self.flashTimer = math.max(0, self.flashTimer - self.dt)
     if self.flashTimer == 0 then
-      animator.setGlobalTag("bladeDirectives", "")
+      animator.setGlobalTag("bladeDirectives", self.killDirectives)
     end
   end
 
@@ -77,9 +78,17 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
         self.weapon.tickExplodingTimer = false
         self.explodingTimer = 0
         self.killCount = 0
+        self.killFlashed = false
+        self.killDirectives = ""
+        animator.setGlobalTag("bladeDirectives", self.killDirectives)
         activeItem.setInstanceValue("killCount", 0)
       end
     else
+      self.killDirectives = "?fade=770000=0.5"
+      if not self.killFlashed then
+        animator.setGlobalTag("bladeDirectives", self.killDirectives)
+        self.killFlashed = true
+      end
       self.explodingTimer = 10
     end
   end
@@ -140,7 +149,6 @@ function MeleeCombo:wait()
       return
     elseif self.comboStep == 2 and self.fireMode == "alt" and self.cooldownTimer == 0 then
       self:setState(self.windupstab)
-      self.comboStep = 1
       return
     end
   end)
@@ -187,19 +195,22 @@ function MeleeCombo:fire()
     stepDamageConfig.baseDamage = stepDamageConfig.baseDamage * 0.75
   end
 
-  if self.killCount >= 10 and  self.explodingTimer and self.explodingTimer > 0 then
+  if self.comboStep == 1 and self.explodingTimer and self.explodingTimer > 0 then
+    self.weapon.tickExplodingTimer = true
+  end
+
+  if self.weapon.tickExplodingTimer and self.explodingTimer and self.explodingTimer > 0 then
     local explosionConfig = self.stepExplosionConfig[self.comboStep]
-    local power = stepDamageConfig and stepDamageConfig.baseDamage or self.stepDamageConfig[self.comboStep].baseDamage * 0.5
+    local power = stepDamageConfig and stepDamageConfig.baseDamage or self.stepDamageConfig[self.comboStep].baseDamage
     local offset = vec2.rotate(explosionConfig.offset, self.weapon.aimAngle)
     offset[1] = offset[1] * mcontroller.facingDirection()
-    world.spawnProjectile(explosionConfig.type, vec2.add(mcontroller.position(), offset), activeItem.ownerEntityId(), {0,0}, false, {power = power})
+    world.spawnProjectile(explosionConfig.type, vec2.add(mcontroller.position(), offset), activeItem.ownerEntityId(), {0,0}, false, {power = power, powerMultiplier = activeItem.ownerPowerMultiplier()})
     if self.comboStep == 4 then
       explosionConfig = self.stepExplosionConfig[7]
       offset = vec2.rotate(explosionConfig.offset, self.weapon.aimAngle)
       offset[1] = offset[1] * mcontroller.facingDirection()
-      world.spawnProjectile(explosionConfig.type, vec2.add(mcontroller.position(), offset), activeItem.ownerEntityId(), {0,0}, false, {power = power})
+      world.spawnProjectile(explosionConfig.type, vec2.add(mcontroller.position(), offset), activeItem.ownerEntityId(), {0,0}, false, {power = power, powerMultiplier = activeItem.ownerPowerMultiplier()})
     end
-    self.weapon.tickExplodingTimer = true
   end
 
   util.wait(stance.duration, function()
@@ -237,13 +248,16 @@ function MeleeCombo:firestab()
   local stepDamageConfig = copy(self.stepDamageConfig[4])
   stepDamageConfig.knockback = 70
 
-  if self.killCount >= 10 and self.explodingTimer and self.explodingTimer > 0 then
+  if self.comboStep ~= 2 and self.explodingTimer and self.explodingTimer > 0 then
+    self.weapon.tickExplodingTimer = true
+  end
+
+  if self.weapon.tickExplodingTimer and self.explodingTimer and self.explodingTimer > 0 then
     local explosionConfig = self.stepExplosionConfig[5]
-    local power = stepDamageConfig and stepDamageConfig.baseDamage or self.stepDamageConfig[5].baseDamage * 0.5
+    local power = stepDamageConfig and stepDamageConfig.baseDamage or self.stepDamageConfig[5].baseDamage
     local offset = vec2.rotate(explosionConfig.offset, self.weapon.aimAngle)
     offset[1] = offset[1] * mcontroller.facingDirection()
-    world.spawnProjectile(explosionConfig.type, vec2.add(mcontroller.position(), offset), activeItem.ownerEntityId(), {0,0}, false, {power = power})
-    self.weapon.tickExplodingTimer = true
+    world.spawnProjectile(explosionConfig.type, vec2.add(mcontroller.position(), offset), activeItem.ownerEntityId(), {0,0}, false, {power = power, powerMultiplier = activeItem.ownerPowerMultiplier()})
   end
 
   self.moveTimer = self.stances.firestab.duration
@@ -251,6 +265,10 @@ function MeleeCombo:firestab()
     local damageArea = partDamageArea("blade")
     self.weapon:setDamage(stepDamageConfig, damageArea, self.fireTime)
     mcontroller.controlApproachVelocity({mcontroller.facingDirection() * 100 * (self.moveTimer / self.stances.firestab.duration), 0.1}, 1500)
+    status.setPersistentEffects("ivrpgheartlessarmor", {
+      {stat = "grit", amount = 1},
+      {stat = "protection", amount = 30}
+    })
     mcontroller.controlModifiers({
       movementSuppressed = true,
       jumpingSuppressed = true
@@ -258,11 +276,13 @@ function MeleeCombo:firestab()
     self.moveTimer = self.moveTimer - self.dt
     if self.moveTimer < 0.2 and self:shouldActivate() then
       self.comboStep = 3
+      status.clearPersistentEffects("ivrpgheartlessarmor")
       self:setState(self.windup)
       return
     end
   end)
-
+  
+  status.clearPersistentEffects("ivrpgheartlessarmor")
   self.cooldownTimer = self:getCooldownTime()
 end
 
@@ -280,8 +300,8 @@ function MeleeCombo:getCooldownTime()
   return self.fireTime - (self.stances.windupstab.duration + self.stances.firestab.duration) / 2
 end
 
-function MeleeCombo:readyFlash()
-  animator.setGlobalTag("bladeDirectives", self.flashDirectives)
+function MeleeCombo:readyFlash(color)
+  animator.setGlobalTag("bladeDirectives", self.killDirectives .. "?" .. (color or self.flashDirectives))
   self.flashTimer = self.flashTime
 end
 
@@ -315,5 +335,6 @@ function MeleeCombo:computeDamageAndCooldowns()
 end
 
 function MeleeCombo:uninit()
+  status.clearPersistentEffects("ivrpgheartlessarmor")
   self.weapon:setDamage()
 end

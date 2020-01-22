@@ -23,9 +23,7 @@ function rpg_setHandlers()
       sourceEntityId = sourceId
     })
 
-    if healthBeforeDamage ~= status.resource("health") then
-      world.sendEntityMessage(sourceId, "damageDealt", damage, damageSourceKind, bleedKind)
-    end
+    world.sendEntityMessage(sourceId, "damageDealt", damage, damageSourceKind, bleedKind, healthBeforeDamage ~= status.resource("health"))
 
     if healthBeforeDamage ~= 0 and status.resource("health") == 0 then
       local bledToDeath = damageSourceKind == "bleed" and bleedKind

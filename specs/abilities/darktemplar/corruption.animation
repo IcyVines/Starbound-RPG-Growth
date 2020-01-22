@@ -2,12 +2,12 @@
   "particleEmitters" : {
     "embers" : {
       "enabled" : true,
-      "emissionRate" : 5.0,
+      "emissionRate" : 3.0,
       "particles" : [
         {
           "particle" : {
             "type" : "ember",
-            "size" : 2.0,
+            "size" : 1.0,
             "color" : [20, 0, 40, 230],
             "fade" : 0.9,
             "destructionAction" : "shrink",
