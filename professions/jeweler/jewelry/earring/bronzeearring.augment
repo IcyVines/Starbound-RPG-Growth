@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgbronzeearring",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "bronzeearring.png",
+  "description" : "Fashionable Bronze Earring that slightly boosts your Max Health.",
+  "shortdescription" : "Bronze Earring",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "earring",
+    "displayName" : "Bronze Earring",
+    "effects" : [ {"stat" : "maxHealth", "amount" : 5} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

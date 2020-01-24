@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgsteelnecklace",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "steelnecklace.png",
+  "description" : "Fashionable Steel Necklace that slightly boosts your Power Multiplier.",
+  "shortdescription" : "Steel Necklace",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "necklace",
+    "displayName" : "Steel Necklace",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.05} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

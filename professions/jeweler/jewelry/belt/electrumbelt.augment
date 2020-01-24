@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgelectrumbelt",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "electrumbelt.png",
+  "description" : "Fashionable Electrum Belt that slightly boosts your Max Energy.",
+  "shortdescription" : "Electrum Belt",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "belt",
+    "displayName" : "Electrum Belt",
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 5} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

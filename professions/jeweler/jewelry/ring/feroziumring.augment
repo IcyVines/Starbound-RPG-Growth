@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgferoziumring",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "feroziumring.png",
+  "description" : "Fashionable Ferozium Ring that boosts your Max Health.",
+  "shortdescription" : "Ferozium Ring",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "ring",
+    "displayName" : "Ferozium Ring",
+    "effects" : [ {"stat" : "maxHealth", "amount" : 10} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

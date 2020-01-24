@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgvioliumearring",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "violiumearring.png",
+  "description" : "Fashionable Violium Earring that boosts your Max Energy.",
+  "shortdescription" : "Violium Earring",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "earring",
+    "displayName" : "Violium Earring",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.1} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

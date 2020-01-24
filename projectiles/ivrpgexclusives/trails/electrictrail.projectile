@@ -1,10 +1,10 @@
 {
-  "projectileName" : "firetrailIVRPG",
-  "image" : "/projectiles/activeitems/traildash/firetrail.png",
+  "projectileName" : "ivrpgelectrictrail",
+  "image" : "/projectiles/activeitems/traildash/electrictrail.png",
   "physics" : "gas",
   "frameNumber" : 3,
-  "animationCycle" : 0.3,
-  "lightColor" : [80, 25, 25],
+  "animationCycle" : 0.15,
+  "lightColor" : [25, 25, 80],
   "power" : 2,
   "speed" : 0,
   "timeToLive" : 2.0,
@@ -14,6 +14,6 @@
   "orientationLocked" : true,
   "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
   "piercing" : true,
-  "damageKind" : "firebarrier",
-  "emitters" : [ "barrierflames" ]
+  "damageKind" : "electricbarrier",
+  "emitters" : [ "barrierelectric" ]
 }

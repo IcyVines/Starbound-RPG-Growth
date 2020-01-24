@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgelectrumring",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "electrumring.png",
+  "description" : "Fashionable Electrum Ring that slightly boosts your Max Energy.",
+  "shortdescription" : "Electrum Ring",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "ring",
+    "displayName" : "Electrum Ring",
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 5} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

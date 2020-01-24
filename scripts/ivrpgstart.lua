@@ -35,6 +35,9 @@ function init()
       player.giveItem("ivrpgscrollresetaffinity")
     end
     removeTechs()
+    --Lines for one update only
+    status.clearPersistentEffects("ivrpgelementalovercharge")
+    status.setStatusProperty("ivrpgmagicshieldactive", false)
   end
 
   if not status.statusProperty("ivrpgskillpoints") then

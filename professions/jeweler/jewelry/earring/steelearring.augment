@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgsteelearring",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "steelearring.png",
+  "description" : "Fashionable Steel Earring that slightly boosts your Power Multiplier.",
+  "shortdescription" : "Steel Earring",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "earring",
+    "displayName" : "Steel Earring",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.05} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

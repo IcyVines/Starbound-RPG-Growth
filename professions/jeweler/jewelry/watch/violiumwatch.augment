@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgvioliumwatch",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "violiumwatch.png",
+  "description" : "Fashionable Violium Watch that boosts your Max Energy.",
+  "shortdescription" : "Violium Watch",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "watch",
+    "displayName" : "Violium Watch",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.1} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

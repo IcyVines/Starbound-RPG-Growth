@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgvioliumnecklace",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "violiumnecklace.png",
+  "description" : "Fashionable Violium Necklace that boosts your Max Energy.",
+  "shortdescription" : "Violium Necklace",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "necklace",
+    "displayName" : "Violium Necklace",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.1} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

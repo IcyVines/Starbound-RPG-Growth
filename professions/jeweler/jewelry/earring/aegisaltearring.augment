@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgaegisaltearring",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "aegisaltearring.png",
+  "description" : "Fashionable Aegisalt Earring that boosts your Max Energy.",
+  "shortdescription" : "Aegisalt Earring",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "earring",
+    "displayName" : "Aegisalt Earring",
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 10} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

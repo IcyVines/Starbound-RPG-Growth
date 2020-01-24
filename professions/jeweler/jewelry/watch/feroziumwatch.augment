@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgferoziumwatch",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "feroziumwatch.png",
+  "description" : "Fashionable Ferozium Watch that boosts your Max Health.",
+  "shortdescription" : "Ferozium Watch",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "watch",
+    "displayName" : "Ferozium Watch",
+    "effects" : [ {"stat" : "maxHealth", "amount" : 10} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

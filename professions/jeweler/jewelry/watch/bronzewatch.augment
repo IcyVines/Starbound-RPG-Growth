@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgbronzewatch",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "bronzewatch.png",
+  "description" : "Fashionable Bronze Watch that slightly boosts your Max Health.",
+  "shortdescription" : "Bronze Watch",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "watch",
+    "displayName" : "Bronze Watch",
+    "effects" : [ {"stat" : "maxHealth", "amount" : 5} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

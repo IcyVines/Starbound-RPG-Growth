@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgferoziumnecklace",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "feroziumnecklace.png",
+  "description" : "Fashionable Ferozium Necklace that boosts your Max Health.",
+  "shortdescription" : "Ferozium Necklace",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "necklace",
+    "displayName" : "Ferozium Necklace",
+    "effects" : [ {"stat" : "maxHealth", "amount" : 10} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

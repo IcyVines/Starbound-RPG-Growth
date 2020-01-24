@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgsteelring",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "steelring.png",
+  "description" : "Fashionable Steel Ring that slightly boosts your Power Multiplier.",
+  "shortdescription" : "Steel Ring",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "ring",
+    "displayName" : "Steel Ring",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.05} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

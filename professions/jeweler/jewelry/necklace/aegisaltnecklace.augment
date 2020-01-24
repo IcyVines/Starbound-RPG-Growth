@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgaegisaltnecklace",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "aegisaltnecklace.png",
+  "description" : "Fashionable Aegisalt Necklace that boosts your Max Energy.",
+  "shortdescription" : "Aegisalt Necklace",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "necklace",
+    "displayName" : "Aegisalt Necklace",
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 10} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

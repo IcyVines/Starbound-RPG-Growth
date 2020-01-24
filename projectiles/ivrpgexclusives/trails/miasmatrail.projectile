@@ -1,5 +1,5 @@
 {
-  "projectileName" : "miasmatrailIVRPG",
+  "projectileName" : "ivrpgmiasmatrail",
   "image" : "/projectiles/activeitems/traildash/poisontrail.png",
   "physics" : "gas",
   "frameNumber" : 3,

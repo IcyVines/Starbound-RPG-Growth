@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgvioliumring",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "violiumring.png",
+  "description" : "Fashionable Violium Ring that boosts your Max Energy.",
+  "shortdescription" : "Violium Ring",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "ring",
+    "displayName" : "Violium Ring",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.1} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

@@ -87,3 +87,8 @@ function updateDamageTaken()
   end
 end
 
+function uninit()
+  tech.setParentDirectives("")
+  status.clearPersistentEffects("ivrpgelementalovercharge")
+end
+

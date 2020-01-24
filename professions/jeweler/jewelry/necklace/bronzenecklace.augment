@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgbronzenecklace",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "bronzenecklace.png",
+  "description" : "Fashionable Bronze Necklace that slightly boosts your Max Health.",
+  "shortdescription" : "Bronze Necklace",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "necklace",
+    "displayName" : "Bronze Necklace",
+    "effects" : [ {"stat" : "maxHealth", "amount" : 5} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

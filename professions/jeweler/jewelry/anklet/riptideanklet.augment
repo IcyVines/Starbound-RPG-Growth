@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgriptideanklet",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "riptideanklet.png",
+  "description" : "An Anklet with a cool wave design. Putting it up to your ear, you can hear people say it's not an earring. ^green;Provides 10% Ice Resistance. ^blue;Jewelers can wear two to gain Swift Swim.",
+  "shortdescription" : "Riptide Anklet",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "anklet",
+    "displayName" : "Riptide Anklet",
+    "effects" : [ {"stat" : "iceResistance", "amount" : 0.1} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

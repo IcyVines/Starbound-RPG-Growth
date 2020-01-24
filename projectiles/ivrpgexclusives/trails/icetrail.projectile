@@ -1,5 +1,5 @@
 {
-  "projectileName" : "icetrailIVRPG",
+  "projectileName" : "ivrpgicetrail",
   "image" : "/projectiles/activeitems/traildash/icetrail.png",
   "physics" : "gas",
   "frameNumber" : 3,

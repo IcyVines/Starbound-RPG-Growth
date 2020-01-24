@@ -831,7 +831,7 @@ function updateAffinityEffects(dt)
     -- Venom & Toxic --
 
     -- Upgrade Chips
-    if status.statPositive("ivrpgucmiasma") and self.affinity then hardcodedAesthetic = "miasmatrailIVRPG" end
+    if status.statPositive("ivrpgucmiasma") and self.affinity then hardcodedAesthetic = "ivrpgmiasmatrail" end
 
   elseif affinityMod == 2 then
     -- Frost & Cryo --
@@ -965,7 +965,9 @@ function updateSkills()
     end
   end
   status.setPersistentEffects("ivrpgskilleffects", skillEffects)
-  mcontroller.controlModifiers(movementConfig)
+  if (not status.statPositive("activeMovementAbilities")) or status.statPositive("ninjaVanishSphere") or status.statPositive("ivrpgshapeshifting") then
+    mcontroller.controlModifiers(movementConfig)
+  end
 end
 
 function getScaleBonus(scalingList, hands)

@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgsoulfireanklet",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "soulfireanklet.png",
+  "tooltipKind" : "ivrpgjewelry",
+  "description" : "Despite the heat emanating from within, the metal feels cold to the touch. ^green;Provides 10% Fire Resistance. ^blue;Jewelers can wear two to gain Lava Immunity.",
+  "shortdescription" : "Soulfire Anklet",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "anklet",
+    "displayName" : "Soulfire Anklet",
+    "effects" : [ {"stat" : "fireResistance", "amount" : 0.1} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

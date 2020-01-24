@@ -21,7 +21,8 @@
     "position" : [9, 175],
     "hAnchor" : "left",
     "vAnchor" : "top",
-    "wrapWidth" : 123
+    "wrapWidth" : 120,
+    "zlevel" : 10
   },
   "rarityLabel" : {
     "type" : "label",
@@ -38,6 +39,11 @@
     "scale" : 2,
     "maxSize" : [ 46, 59 ],
     "minSize" : [ 46, 59 ]
+  },
+  "coverImage" : {
+    "type" : "image",
+    "zlevel" : 9,
+    "file" : "/interface/tooltips/ivrpgbodyarmorcover.png"
   },
   "augmentIconImageBackground" : {
     "type" : "image",
@@ -70,8 +76,11 @@
   },
   "collarNameLabel" : {
     "type" : "label",
-    "position" : [24, 43],
+    "position" : [44, 46],
     "value" : "-",
+    "wrapWidth" : 40,
+    "vAnchor" : "mid",
+    "hAnchor" : "mid",
     "fontSize" : 6
   },
   "ivrpgJewelryIconImageBackgroundRight" : {
@@ -88,8 +97,11 @@
   },
   "reelNameLabel" : {
     "type" : "label",
-    "position" : [92, 43],
+    "position" : [112, 46],
     "value" : "-",
+    "wrapWidth" : 40,
+    "vAnchor" : "mid",
+    "hAnchor" : "mid",
     "fontSize" : 6
   },
   "statusList" : {

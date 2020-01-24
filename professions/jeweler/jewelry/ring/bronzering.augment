@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgbronzering",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "bronzering.png",
+  "description" : "Fashionable Bronze Ring that slightly boosts your Max Health.",
+  "shortdescription" : "Bronze Ring",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "ring",
+    "displayName" : "Bronze Ring",
+    "effects" : [ {"stat" : "maxHealth", "amount" : 5} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgsteelbelt",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "steelbelt.png",
+  "description" : "Fashionable Steel Belt that slightly boosts your Power Multiplier.",
+  "shortdescription" : "Steel Belt",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "belt",
+    "displayName" : "Steel Belt",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.05} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

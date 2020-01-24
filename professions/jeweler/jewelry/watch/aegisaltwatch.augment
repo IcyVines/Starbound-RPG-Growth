@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgaegisaltwatch",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "aegisaltwatch.png",
+  "description" : "Fashionable Aegisalt Watch that boosts your Max Energy.",
+  "shortdescription" : "Aegisalt Watch",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "watch",
+    "displayName" : "Aegisalt Watch",
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 10} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

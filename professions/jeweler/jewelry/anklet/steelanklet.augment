@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgsteelanklet",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "steelanklet.png",
+  "description" : "Fashionable Steel Anklet that slightly boosts your Power Multiplier.",
+  "shortdescription" : "Steel Anklet",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "anklet",
+    "displayName" : "Steel Anklet",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.05} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

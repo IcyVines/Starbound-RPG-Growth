@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgaegisaltbelt",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "aegisaltbelt.png",
+  "description" : "Fashionable Aegisalt Belt that boosts your Max Energy.",
+  "shortdescription" : "Aegisalt Belt",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "belt",
+    "displayName" : "Aegisalt Belt",
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 10} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

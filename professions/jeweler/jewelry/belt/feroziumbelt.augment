@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgferoziumbelt",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "feroziumbelt.png",
+  "description" : "Fashionable Ferozium Belt that boosts your Max Health.",
+  "shortdescription" : "Ferozium Belt",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "belt",
+    "displayName" : "Ferozium Belt",
+    "effects" : [ {"stat" : "maxHealth", "amount" : 10} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

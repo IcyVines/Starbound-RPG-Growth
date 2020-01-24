@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgsteelwatch",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "steelwatch.png",
+  "description" : "Fashionable Steel Watch that slightly boosts your Power Multiplier.",
+  "shortdescription" : "Steel Watch",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "watch",
+    "displayName" : "Steel Watch",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.05} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

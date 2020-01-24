@@ -114,29 +114,48 @@ function removeJewelryFromArmor(slot)
   armor = storage.inventory[1]
   if not armor or not armor.parameters or not armor.parameters.currentAugment or not armor.parameters.currentAugment.rpg_jewelry then return end
 
+  local effects = armor.parameters.currentAugment.effects
+  local index = 1
   local itemStats = false
   if slotType == "main" and armor.parameters.currentAugment.rpg_jewelry.main then
     itemStats = armor.parameters.currentAugment.rpg_jewelry.main.itemStats
     jremove(armor.parameters.currentAugment.rpg_jewelry, "main")
     armor.parameters.currentAugment.displayName = "-"
-    armor.parameters.currentAugment.effects = {{stat = "ivrpgjewelry", amount = 0}}
     armor.parameters.currentAugment.displayIcon = "/professions/jeweler/jewelry/unknown.png"
     armor.parameters.currentAugment.name = "ivrpgnone"
     armor.parameters.currentAugment.type = ""
+    table.remove(effects, index + 1)
+    table.remove(effects, index)
   elseif slotType == "left" and armor.parameters.currentAugment.rpg_jewelry.left then
     armor.parameters.tooltipFields.collarIconImage = "/professions/jeweler/jewelry/unknown.png"
     armor.parameters.tooltipFields.collarNameLabel = "-"
     itemStats = armor.parameters.currentAugment.rpg_jewelry.left.itemStats
     jremove(armor.parameters.currentAugment.rpg_jewelry,"left")
+    if #effects > 2 and armor.parameters.currentAugment.rpg_jewelry.main then
+      index = 3
+    end
+    table.remove(effects, index + 1)
+    table.remove(effects, index)
   elseif slotType == "right" and armor.parameters.currentAugment.rpg_jewelry.right then
     armor.parameters.tooltipFields.reelIconImage = "/professions/jeweler/jewelry/unknown.png"
     armor.parameters.tooltipFields.reelNameLabel = "-"
     itemStats = armor.parameters.currentAugment.rpg_jewelry.right.itemStats
     jremove(armor.parameters.currentAugment.rpg_jewelry,"right")
+    if #effects > 2 then
+      if armor.parameters.currentAugment.rpg_jewelry.main then
+        index = index + 2
+      end
+      if armor.parameters.currentAugment.rpg_jewelry.left then
+        index = index + 2
+      end
+    end
+    table.remove(effects, index + 1)
+    table.remove(effects, index)
   else
     return
   end
 
+  --[[
   if itemStats then
     local armorStatusEffects = armor.parameters.leveledStatusEffects
     if armorStatusEffects then
@@ -148,7 +167,7 @@ function removeJewelryFromArmor(slot)
       end
     end
   end
-
+  ]]
   containerTakeItem(0)
   containerPutItem(armor, 0)
 end

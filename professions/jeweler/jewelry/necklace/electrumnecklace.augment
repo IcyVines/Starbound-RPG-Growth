@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgelectrumnecklace",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "electrumnecklace.png",
+  "description" : "Fashionable Electrum Necklace that slightly boosts your Max Energy.",
+  "shortdescription" : "Electrum Necklace",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "necklace",
+    "displayName" : "Electrum Necklace",
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 5} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

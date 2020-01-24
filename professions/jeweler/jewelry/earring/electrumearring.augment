@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgelectrumearring",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "electrumearring.png",
+  "description" : "Fashionable Electrum Earring that slightly boosts your Max Energy.",
+  "shortdescription" : "Electrum Earring",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "earring",
+    "displayName" : "Electrum Earring",
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 5} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

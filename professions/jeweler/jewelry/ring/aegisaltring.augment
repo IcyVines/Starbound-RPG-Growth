@@ -1,0 +1,22 @@
+{
+  "itemName" : "ivrpgaegisaltring",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "Jewelry",
+  "inventoryIcon" : "aegisaltring.png",
+  "description" : "Fashionable Aegisalt Ring that boosts your Max Energy.",
+  "shortdescription" : "Aegisalt Ring",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "ring",
+    "displayName" : "Aegisalt Ring",
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 10} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

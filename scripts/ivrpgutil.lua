@@ -65,6 +65,13 @@ function hasElement(map, element)
   return false
 end
 
+function unpack (t, i)
+  i = i or 1
+  if t[i] ~= nil then
+    return t[i], unpack(t, i + 1)
+  end
+end
+
 function getEphemeralDuration(statusEffects, stat)
   for _,array in ipairs(statusEffects) do
     if array[1] == stat then

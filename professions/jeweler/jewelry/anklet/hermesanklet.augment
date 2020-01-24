@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpghermesanklet",
+  "price" : 50,
+  "rarity" : "Uncommon",
+  "category" : "Jewelry",
+  "inventoryIcon" : "hermesanklet.png",
+  "tooltipKind" : "ivrpgjewelry",
+  "description" : "An Anklet with white, velvet wings that has magical properties. ^green;Provides 5% Fall Damage Resistance. ^blue;Jewelers can wear two to gain Feather Falling.",
+  "shortdescription" : "Hermes' Anklet",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "anklet",
+    "displayName" : "Hermes' Anklet",
+    "effects" : [ {"stat" : "fallDamageMultiplier", "amount" : -0.05} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}
