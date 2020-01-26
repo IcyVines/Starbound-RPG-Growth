@@ -4,6 +4,9 @@
 
   },
 
+  "blockingStat" : "statusImmunity",
+
+
   "defaultDuration" : 5,
   "scriptDelta" : 1,
 
