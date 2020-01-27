@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgelectrumbelt",
-  "price" : 50,
+  "price" : 500,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "electrumbelt.png",
-  "description" : "Fashionable Electrum Belt that slightly boosts your Max Energy.",
+  "description" : "Fashionable Electrum Belt that slightly boosts your Max Energy. ^green;Provides +5 Max Energy. ^blue;",
   "shortdescription" : "Electrum Belt",
 
   "augment" : {

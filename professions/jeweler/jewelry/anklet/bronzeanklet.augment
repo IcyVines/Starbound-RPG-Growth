@@ -1,17 +1,18 @@
 {
   "itemName" : "ivrpgbronzeanklet",
-  "price" : 50,
+  "price" : 400,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "bronzeanklet.png",
-  "description" : "Fashionable Bronze Anklet that slightly boosts your Max Health.",
+  "description" : "Fashionable Bronze Anklet that slightly boosts your Max Health. ^green;Provides +2.5 Max Health. ^blue;",
   "shortdescription" : "Bronze Anklet",
 
   "augment" : {
     "type" : "legarmour",
     "name" : "anklet",
     "displayName" : "Bronze Anklet",
-    "effects" : [ {"stat" : "maxHealth", "amount" : 5} ]
+    "effects" : [ {"stat" : "maxHealth", "amount" : 2.5} ]
   },
 
   "slotType" : "alt",

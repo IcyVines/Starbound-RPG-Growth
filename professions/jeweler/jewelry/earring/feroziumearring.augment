@@ -1,17 +1,18 @@
 {
   "itemName" : "ivrpgferoziumearring",
-  "price" : 100,
+  "price" : 1000,
   "rarity" : "Rare",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "feroziumearring.png",
-  "description" : "Fashionable Ferozium Earring that boosts your Max Health.",
+  "description" : "Fashionable Ferozium Earring that boosts your Max Health. ^green;Provides +5 Max Health. ^blue;",
   "shortdescription" : "Ferozium Earring",
 
   "augment" : {
     "type" : "headarmour",
     "name" : "earring",
     "displayName" : "Ferozium Earring",
-    "effects" : [ {"stat" : "maxHealth", "amount" : 10} ]
+    "effects" : [ {"stat" : "maxHealth", "amount" : 5} ]
   },
 
   "slotType" : "alt",

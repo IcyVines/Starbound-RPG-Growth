@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "ivrpgplatinumbar", "count" : 2 },
+    { "item" : "ivrpgfeather", "count" : 2 },
+    { "item" : "sharpenedclaw", "count" : 1 }
+  ],
+  "output" : { "item" : "ivrpgeaglesearring", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "head", "all" ]
+}

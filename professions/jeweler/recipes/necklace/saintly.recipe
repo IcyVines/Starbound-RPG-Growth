@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "string", "count" : 10 },
+    { "item" : "silk", "count" : 3 },
+    { "item" : "livingroot", "count" : 5 }
+  ],
+  "output" : { "item" : "ivrpgsaintlycharm", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "head", "all" ]
+}

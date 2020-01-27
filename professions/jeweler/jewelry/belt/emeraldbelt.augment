@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgemeraldbelt",
+  "price" : 10000,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "emeraldbelt.png",
+  "description" : "Infused with Life Energy, Bright Green Diamonds adorned to this belt grant good Karma to its wearer. ^green;Provides +20% Holy Resistance. ^blue;Jewelers gain Holy Status Immunity.",
+  "shortdescription" : "Emerald Belt",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "belt",
+    "displayName" : "Emerald Belt",
+    "effects" : [ {"stat" : "holyResistance", "amount" : 0.2} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

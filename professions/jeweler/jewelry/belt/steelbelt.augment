@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgsteelbelt",
-  "price" : 50,
+  "price" : 450,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "steelbelt.png",
-  "description" : "Fashionable Steel Belt that slightly boosts your Power Multiplier.",
+  "description" : "Fashionable Steel Belt that slightly boosts your Powerful Multiplier. ^green;Provides +5% Power Multiplier. ^blue;",
   "shortdescription" : "Steel Belt",
 
   "augment" : {

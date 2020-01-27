@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgferoziumbelt",
-  "price" : 100,
+  "price" : 1250,
   "rarity" : "Rare",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "feroziumbelt.png",
-  "description" : "Fashionable Ferozium Belt that boosts your Max Health.",
+  "description" : "Fashionable Ferozium Belt that boosts your Max Health. ^green;Provides +10 Max Health. ^blue;",
   "shortdescription" : "Ferozium Belt",
 
   "augment" : {

@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "smallbattery", "count" : 1 },
+    { "item" : "siliconboard", "count" : 1 },
+    { "item" : "ivrpgplatinumbar", "count" : 2 },
+    { "item" : "leather", "count" : 2 },
+    { "item" : "solariumstar", "count" : 4 }
+  ],
+  "output" : { "item" : "ivrpgsolarpoweredwatch", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "chest", "all" ]
+}

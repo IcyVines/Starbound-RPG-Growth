@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgvioliumwatch",
-  "price" : 100,
+  "price" : 2000,
   "rarity" : "Rare",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "violiumwatch.png",
-  "description" : "Fashionable Violium Watch that boosts your Max Energy.",
+  "description" : "Fashionable Violium Watch that boosts your Powerful Multiplier. ^green;Provides +10% Power Multiplier. ^blue;",
   "shortdescription" : "Violium Watch",
 
   "augment" : {

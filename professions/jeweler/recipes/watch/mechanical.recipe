@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "ivrpggear", "count" : 3 },
+    { "item" : "silverbar", "count" : 2 },
+    { "item" : "ivrpgplatinumbar", "count" : 3 },
+    { "item" : "leather", "count" : 2 }
+  ],
+  "output" : { "item" : "ivrpgmechanicalwatch", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "chest", "all" ]
+}

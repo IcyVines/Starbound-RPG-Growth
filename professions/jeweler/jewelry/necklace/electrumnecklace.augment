@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgelectrumnecklace",
-  "price" : 50,
+  "price" : 400,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "electrumnecklace.png",
-  "description" : "Fashionable Electrum Necklace that slightly boosts your Max Energy.",
+  "description" : "Fashionable Electrum Necklace that slightly boosts your Max Energy. ^green;Provides +5 Max Energy. ^blue;",
   "shortdescription" : "Electrum Necklace",
 
   "augment" : {

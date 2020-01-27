@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "ivrpgelectrumbar", "count" : 3 },
+    { "item" : "ivrpgsiliconbronzebar", "count" : 2 },
+    { "item" : "ivrpgsteelbar", "count" : 5 },
+    { "item" : "bluedye", "count" : 3 },
+    { "item" : "darkwoodmaterial", "count" : 10 }
+  ],
+  "output" : { "item" : "ivrpgjextractor", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "misc", "all" ]
+}

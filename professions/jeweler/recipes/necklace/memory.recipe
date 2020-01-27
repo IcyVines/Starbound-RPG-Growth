@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "ivrpgplatinumbar", "count" : 1 },
+    { "item" : "ivrpgelectrumbar", "count" : 2 },
+    { "item" : "ivrpgsiliconbronzebar", "count" : 2 }
+  ],
+  "output" : { "item" : "ivrpgmemorylocket", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "head", "all" ]
+}

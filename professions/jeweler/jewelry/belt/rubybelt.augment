@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgrubybelt",
+  "price" : 10000,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "rubybelt.png",
+  "description" : "Infused with Infernal Energy, Blood Red Diamonds adorned to this belt help warm its wearer up. ^green;Provides +20% Ice Resistance. ^blue;Jewelers gain Ice Status Immunity.",
+  "shortdescription" : "Ruby Belt",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "belt",
+    "displayName" : "Ruby Belt",
+    "effects" : [ {"stat" : "iceResistance", "amount" : 0.2} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

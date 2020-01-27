@@ -1,0 +1,10 @@
+{
+  "itemName" : "ivrpgfeather",
+  "price" : 10,
+  "rarity" : "Rare",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "feather.png",
+  "description" : "A soft feather. Used by RPG Growth.",
+  "shortdescription" : "Feather",
+  "itemTags" : [ "reagent" ]
+}

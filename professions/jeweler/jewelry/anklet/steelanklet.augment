@@ -1,17 +1,18 @@
 {
   "itemName" : "ivrpgsteelanklet",
-  "price" : 50,
+  "price" : 450,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "steelanklet.png",
-  "description" : "Fashionable Steel Anklet that slightly boosts your Power Multiplier.",
+  "description" : "Fashionable Steel Anklet that slightly boosts your Powerful Multiplier. ^green;Provides +2.5% Power Multiplier. ^blue;",
   "shortdescription" : "Steel Anklet",
 
   "augment" : {
     "type" : "legarmour",
     "name" : "anklet",
     "displayName" : "Steel Anklet",
-    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.05} ]
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.025} ]
   },
 
   "slotType" : "alt",

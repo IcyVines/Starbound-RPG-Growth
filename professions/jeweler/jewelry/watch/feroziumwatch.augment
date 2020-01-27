@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgferoziumwatch",
-  "price" : 100,
+  "price" : 2000,
   "rarity" : "Rare",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "feroziumwatch.png",
-  "description" : "Fashionable Ferozium Watch that boosts your Max Health.",
+  "description" : "Fashionable Ferozium Watch that boosts your Max Health. ^green;Provides +10 Max Health. ^blue;",
   "shortdescription" : "Ferozium Watch",
 
   "augment" : {

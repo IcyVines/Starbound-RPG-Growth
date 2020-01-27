@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "silverbar", "count" : 2 },
+    { "item" : "leather", "count" : 5 },
+    { "item" : "scorchedcore", "count" : 1 },
+    { "item" : "diamond", "count" : 3 },
+    { "item" : "reddye", "count" : 2 }
+  ],
+  "output" : { "item" : "ivrpgrubybelt", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "leg", "all" ]
+}

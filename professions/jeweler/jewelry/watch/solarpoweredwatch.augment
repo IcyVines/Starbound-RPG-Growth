@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgsolarpoweredwatch",
+  "price" : 2500,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "solarpoweredwatch.png",
+  "description" : "This watch is self-sustaining. Neat! ^green;Provides +15 Max Energy. ^blue;Jewelers gain minor Energy Regen.",
+  "shortdescription" : "Solar-Powered Watch",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "watch",
+    "displayName" : "Solar-Powered Watch",
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 15} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

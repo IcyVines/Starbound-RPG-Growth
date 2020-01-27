@@ -3,21 +3,9 @@
 
   "effectConfig" : {
     "jewelry" : {
-      "ivrpgriptideanklet" : {
-        "required" : 2,
-        "status" : "addEphemeralEffect",
-        "parameters" : ["swimboost", 10]
-      },
-      "ivrpghermesanklet" : {
-        "required" : 2,
-        "status" : "addEphemeralEffect",
-        "parameters" : ["nofalldamage", 10]
-      },
-      "ivrpgsoulfireanklet" : {
-        "required" : 2,
-        "status" : "setPersistentEffects",
-        "parameters" : ["ivrpgsoulfireanklet", [{"stat" : "lavaImmunity", "amount" : 1}]]
-      }
+      "names" : ["soulfireanklet", "riptideanklet", "hermesanklet", "mechanicalwatch", "hitechwatch", "solarpoweredwatch", "saintlycharm", "memorylocket", "purifyingpendant", "rubybelt", "sapphirebelt", "emeraldbelt", "fluxring", "spitefulring", "eaglesearring", "dawnsearring", "dusksearring", "jextractor"],
+      "types" : ["watch", "belt", "ring", "earring", "necklace", "anklet"],
+      "materials" : ["electrum", "bronze", "steel", "ferozium", "violium", "aegisalt"]
     }
   },
   "defaultDuration" : 5,

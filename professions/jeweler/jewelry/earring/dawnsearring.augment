@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgdawnsearring",
+  "price" : 1050,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "dawnsearring.png",
+  "description" : "A bright red earring that evokes the warm radiance of the sun. ^green;Provides +10% Fire Resistance. ^blue;Jewelers can wear two to gain +25% Power Multiplier during daytime.",
+  "shortdescription" : "Dawn's Earring",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "earring",
+    "displayName" : "Dawn's Earring",
+    "effects" : [ {"stat" : "fireResistance", "amount" : 0.1} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

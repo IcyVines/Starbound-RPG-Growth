@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgspitefulring",
+  "price" : 750,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "spitefulring.png",
+  "description" : "This Ring holds a rather extreme grudge towards those that attempt to harm its master. ^green;Provides +3% Power Multiplier. ^blue;Jewelers can wear two to gain Thorns.",
+  "shortdescription" : "Spiteful Ring",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "ring",
+    "displayName" : "Spiteful Ring",
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.03} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

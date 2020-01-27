@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgsteelnecklace",
-  "price" : 50,
+  "price" : 350,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "steelnecklace.png",
-  "description" : "Fashionable Steel Necklace that slightly boosts your Power Multiplier.",
+  "description" : "Fashionable Steel Necklace that slightly boosts your Powerful Multiplier. ^green;Provides +5% Power Multiplier. ^blue;",
   "shortdescription" : "Steel Necklace",
 
   "augment" : {

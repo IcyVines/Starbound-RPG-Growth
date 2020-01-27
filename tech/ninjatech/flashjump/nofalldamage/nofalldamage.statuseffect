@@ -1,0 +1,14 @@
+{
+  "name" : "nofalldamagefj",
+  "effectConfig" : {},
+  "defaultDuration" : 1.0,
+
+  "scripts" : [
+    "nofalldamage.lua"
+  ],
+
+  "animationConfig" : "nofalldamage.animation",
+
+  "label" : "Flash Jump Safe Fall",
+  "icon" : "/interface/statuses/nofalldamage.png?multiply=FF0000"
+}

@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgsapphirebelt",
+  "price" : 10000,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "sapphirebelt.png",
+  "description" : "Infused with Cryo Energy, Dark Blue Diamonds adorned to this belt help cool its wearer down. ^green;Provides +20% Fire Resistance. ^blue;Jewelers gain Fire Status Immunity.",
+  "shortdescription" : "Sapphire Belt",
+
+  "augment" : {
+    "type" : "legarmour",
+    "name" : "belt",
+    "displayName" : "Sapphire Belt",
+    "effects" : [ {"stat" : "fireResistance", "amount" : 0.2} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgbronzenecklace",
-  "price" : 50,
+  "price" : 300,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "bronzenecklace.png",
-  "description" : "Fashionable Bronze Necklace that slightly boosts your Max Health.",
+  "description" : "Fashionable Bronze Necklace that slightly boosts your Max Health. ^green;Provides +5 Max Health. ^blue;",
   "shortdescription" : "Bronze Necklace",
 
   "augment" : {

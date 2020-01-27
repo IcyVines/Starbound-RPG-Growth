@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "silverbar", "count" : 1 },
+    { "item" : "ivrpgplatinumbar", "count" : 2 },
+    { "item" : "cryonicextract", "count" : 1 },
+    { "item" : "solariumstar", "count" : 1 }
+  ],
+  "output" : { "item" : "ivrpgdusksearring", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "head", "all" ]
+}

@@ -1,17 +1,18 @@
 {
   "itemName" : "ivrpgferoziumanklet",
-  "price" : 100,
+  "price" : 1500,
   "rarity" : "Rare",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "feroziumanklet.png",
-  "description" : "Fashionable Ferozium Anklet that boosts your Max Health.",
+  "description" : "Fashionable Ferozium Anklet that boosts your Max Health. ^green;Provides +5 Max Health. ^blue;",
   "shortdescription" : "Ferozium Anklet",
 
   "augment" : {
     "type" : "legarmour",
     "name" : "anklet",
     "displayName" : "Ferozium Anklet",
-    "effects" : [ {"stat" : "maxHealth", "amount" : 10} ]
+    "effects" : [ {"stat" : "maxHealth", "amount" : 5} ]
   },
 
   "slotType" : "alt",

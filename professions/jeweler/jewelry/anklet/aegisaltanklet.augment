@@ -1,17 +1,18 @@
 {
   "itemName" : "ivrpgaegisaltanklet",
-  "price" : 100,
+  "price" : 1500,
   "rarity" : "Rare",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "aegisaltanklet.png",
-  "description" : "Fashionable Aegisalt Anklet that slightly your Max Energy.",
+  "description" : "Fashionable Aegisalt Anklet that slightly your Max Energy. ^green;Provides +5 Max Energy. ^blue;",
   "shortdescription" : "Aegisalt Anklet",
 
   "augment" : {
     "type" : "legarmour",
     "name" : "anklet",
     "displayName" : "Aegisalt Anklet",
-    "effects" : [ {"stat" : "maxEnergy", "amount" : 10} ]
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 5} ]
   },
 
   "slotType" : "alt",

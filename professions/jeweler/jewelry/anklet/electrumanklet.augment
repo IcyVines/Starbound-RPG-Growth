@@ -1,17 +1,18 @@
 {
   "itemName" : "ivrpgelectrumanklet",
-  "price" : 50,
+  "price" : 500,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "electrumanklet.png",
-  "description" : "Fashionable Electrum Anklet that slightly boosts your Max Energy.",
+  "description" : "Fashionable Electrum Anklet that slightly boosts your Max Energy. ^green;Provides +2.5 Max Energy. ^blue;",
   "shortdescription" : "Electrum Anklet",
 
   "augment" : {
     "type" : "legarmour",
     "name" : "anklet",
     "displayName" : "Electrum Anklet",
-    "effects" : [ {"stat" : "maxEnergy", "amount" : 5} ]
+    "effects" : [ {"stat" : "maxEnergy", "amount" : 2.5} ]
   },
 
   "slotType" : "alt",

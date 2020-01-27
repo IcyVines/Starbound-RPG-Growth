@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgpurifyingpendant",
+  "price" : 500,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "purifyingpendant.png",
+  "description" : "This Pendant uses magical energy (and science!) to purify surrounding toxins. ^green;Provides +20% Poison Resistance. ^blue;Jewelers gain Poison Status Immunity.",
+  "shortdescription" : "Purifying Pendant",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "necklace",
+    "displayName" : "Purifying Pendant",
+    "effects" : [ {"stat" : "poisonResistance", "amount" : 0.2} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

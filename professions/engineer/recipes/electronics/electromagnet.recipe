@@ -3,7 +3,7 @@
     { "item" : "ironbar", "count" : 1 },
     { "item" : "ivrpgmagmasample", "count" : 1 },
     { "item" : "wire", "count" : 2 },
-	{ "item" : "staticcell", "count" : 1 }
+		{ "item" : "staticcell", "count" : 1 }
   ],
   "output" : { "item" : "ivrpgelectromagnet", "count" : 1 },
   "groups" : [ "ivrpgengineerstation", "electronics", "all" ]

@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgdusksearring",
+  "price" : 1050,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "dusksearring.png",
+  "description" : "A light blue earring that evokes the cool brilliance of the moon. ^green;Provides +10% Ice Resistance. ^blue;Jewelers can wear two to gain +25% Power Multiplier during nighttime.",
+  "shortdescription" : "Dusk's Earring",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "earring",
+    "displayName" : "Dusk's Earring",
+    "effects" : [ {"stat" : "iceResistance", "amount" : 0.1} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

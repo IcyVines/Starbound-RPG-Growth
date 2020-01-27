@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "smallbattery", "count" : 2 },
+    { "item" : "siliconboard", "count" : 1 },
+    { "item" : "solariumstar", "count" : 1 },
+    { "item" : "stickofram", "count" : 1 },
+    { "item" : "syntheticmaterial", "count" : 2 },
+    { "item" : "ivrpgelectrumbar", "count" : 3 }
+  ],
+  "output" : { "item" : "ivrpghitechwatch", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "chest", "all" ]
+}

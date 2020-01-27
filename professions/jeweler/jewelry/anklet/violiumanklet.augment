@@ -1,17 +1,18 @@
 {
   "itemName" : "ivrpgvioliumanklet",
-  "price" : 100,
+  "price" : 1500,
   "rarity" : "Rare",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "violiumanklet.png",
-  "description" : "Fashionable Violium Anklet that boosts your Power Multiplier.",
+  "description" : "Fashionable Violium Anklet that boosts your Powerful Multiplier. ^green;Provides +5% Power Multiplier. ^blue;",
   "shortdescription" : "Violium Anklet",
 
   "augment" : {
     "type" : "legarmour",
     "name" : "anklet",
     "displayName" : "Violium Anklet",
-    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.1} ]
+    "effects" : [ {"stat" : "powerMultiplier", "amount" : 0.05} ]
   },
 
   "slotType" : "alt",

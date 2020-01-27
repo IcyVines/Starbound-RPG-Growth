@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "ivrpgplatinumbar", "count" : 2 },
+    { "item" : "refinedaegisalt", "count" : 3 }
+  ],
+  "output" : { "item" : "ivrpgaegisaltanklet", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "leg", "all" ]
+}

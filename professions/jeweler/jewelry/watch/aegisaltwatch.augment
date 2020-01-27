@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgaegisaltwatch",
-  "price" : 100,
+  "price" : 2000,
   "rarity" : "Rare",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "aegisaltwatch.png",
-  "description" : "Fashionable Aegisalt Watch that boosts your Max Energy.",
+  "description" : "Fashionable Aegisalt Watch that boosts your Max Energy. ^green;Provides +10 Max Energy. ^blue;",
   "shortdescription" : "Aegisalt Watch",
 
   "augment" : {

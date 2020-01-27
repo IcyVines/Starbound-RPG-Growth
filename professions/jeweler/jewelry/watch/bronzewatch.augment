@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgbronzewatch",
-  "price" : 50,
+  "price" : 650,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "bronzewatch.png",
-  "description" : "Fashionable Bronze Watch that slightly boosts your Max Health.",
+  "description" : "Fashionable Bronze Watch that slightly boosts your Max Health. ^green;Provides +5 Max Health. ^blue;",
   "shortdescription" : "Bronze Watch",
 
   "augment" : {

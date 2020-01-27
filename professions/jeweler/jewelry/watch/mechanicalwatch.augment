@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgmechanicalwatch",
+  "price" : 1500,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "mechanicalwatch.png",
+  "description" : "A purely mechanical watch; watching the gears spin is quite invigorating. ^green;Provides -0.1 Energy Regen Delay. ^blue;Jewelers gain increased Vigor Scaling.",
+  "shortdescription" : "Mechanical Watch",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "watch",
+    "displayName" : "Mechanical Watch",
+    "effects" : [ {"stat" : "energyRegenBlockTime", "amount" : -0.1} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

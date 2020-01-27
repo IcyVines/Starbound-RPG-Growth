@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "silverbar", "count" : 2 },
+    { "item" : "ivrpgsiliconbronzebar", "count" : 3 }
+  ],
+  "output" : { "item" : "ivrpgbronzeanklet", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "leg", "all" ]
+}

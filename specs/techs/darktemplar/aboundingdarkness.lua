@@ -8,7 +8,7 @@ function init()
   self.damageGivenUpdate = 5
   Bind.create("specialThree", toggle)
   message.setHandler("damageDealtDarkTemplar", function(_, _, damage, damageKind, bleedKind)
-    if self.active and bleedKind then status.giveResource("health", damage / 4) end
+    if self.active and bleedKind then status.giveResource("health", damage / 3) end
   end)
   animator.setSoundPitch("burst2", 1.4)
   animator.setSoundPitch("burst3", 1.7)

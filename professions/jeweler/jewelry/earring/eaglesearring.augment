@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgeaglesearring",
+  "price" : 750,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "eaglesearring.png",
+  "description" : "A tribal earring for those who hunt their pray from afar with keen eyes. ^green;Provides +2.5% Bleed Chance. ^blue;Jewelers can wear two to gain increased Dexterity Scaling.",
+  "shortdescription" : "Eagle's Earring",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "earring",
+    "displayName" : "Eagle's Earring",
+    "effects" : [ {"stat" : "ivrpgBleedChance", "amount" : 0.025} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

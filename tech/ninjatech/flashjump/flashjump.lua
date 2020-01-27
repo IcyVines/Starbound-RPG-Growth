@@ -22,21 +22,21 @@ function update(args)
 
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
     if not mcontroller.liquidMovement() then
-      status.removeEphemeralEffect("nofalldamage")
+      status.removeEphemeralEffect("nofalldamagefj")
       status.removeEphemeralEffect("ivrpgjumpcamouflage")
       self.liquidTimer = 0
     else
       self.liquidTimer = self.liquidTimer + args.dt
       if self.liquidTimer > 0.2 then
         self.liquidTimer = 0
-        status.removeEphemeralEffect("nofalldamage")
+        status.removeEphemeralEffect("nofalldamagefj")
         status.removeEphemeralEffect("ivrpgjumpcamouflage")
       end
     end
     refreshJumps()
   elseif status.resource("energy") == 0 or status.statPositive("activeMovementAbilities") then
     status.removeEphemeralEffect("ivrpgjumpcamouflage")
-    status.removeEphemeralEffect("nofalldamage")
+    status.removeEphemeralEffect("nofalldamagefj")
   end
 end
 
@@ -54,7 +54,7 @@ function doMultiJump(args)
   if canMultiJump() then
     if status.overConsumeResource("energy", self.cost) then
       status.addEphemeralEffect("ivrpgjumpcamouflage", .25)
-      status.addEphemeralEffect("nofalldamage", math.huge)
+      status.addEphemeralEffect("nofalldamagefj", math.huge)
 
       mcontroller.controlJump(true)
       mcontroller.setYVelocity(math.max(0, mcontroller.yVelocity()))

@@ -1,7 +1,7 @@
 {
   "itemName" : "ivrpgriptideanklet",
-  "price" : 50,
-  "rarity" : "Uncommon",
+  "price" : 1500,
+  "rarity" : "Legendary",
   "category" : "Jewelry",
   "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "riptideanklet.png",

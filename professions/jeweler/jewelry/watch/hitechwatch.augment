@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpghitechwatch",
+  "price" : 2500,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "hitechwatch.png",
+  "description" : "This has a ton of awesome features, but its rather bright glow is what's really impressive. ^green;Provides Glow. ^blue;Jewelers gain increased Intelligence Scaling.",
+  "shortdescription" : "Hi-Tech Watch",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "watch",
+    "displayName" : "Hi-Tech Watch",
+    "effects" : [ "glow" ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

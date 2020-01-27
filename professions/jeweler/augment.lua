@@ -1,4 +1,5 @@
 require "/scripts/augments/item.lua"
+require "/scripts/util.lua"
 
 function apply(input)
   local augmentConfig = config.getParameter("augment")
@@ -22,8 +23,6 @@ function apply(input)
           return nil
         else
           -- Jewelry exists on item.
-          currentAugment = slotType == "main" and augmentConfig or currentAugment
-          currentAugment.rpg_jewelry = jewelry
         end
       else
         -- Current Augment does not exist
@@ -49,6 +48,7 @@ function apply(input)
           currentAugment.displayIcon = "/professions/jeweler/jewelry/unknown.png"
         end
       elseif slotType == "main" then
+        currentAugment.displayName = augmentConfig.displayName
         currentAugment.displayIcon = prefix .. suffix
       end
       output:setInstanceValue("tooltipFields", tooltipFields)
@@ -63,15 +63,8 @@ function apply(input)
       local effectConfig = newAugmentEffects(slotType, newEffects, oldEffects, jewelry)
       currentAugment.effects = effectConfig
       -- Apply new bonus to armor
-      local armorStatusEffects = output:instanceValue("leveledStatusEffects", baseLeveledStatusEffects)
-      --[[local itemStats = jewelry[slotType].itemStats
-      for _,v in pairs(armorStatusEffects) do
-        if itemStats[v.stat] then
-          if v.amount then v.amount = v.amount + itemStats[v.stat] end
-          if v.baseMultiplier then v.baseMultiplier = v.baseMultiplier + itemStats[v.stat] end
-        end
-      end]]
-      output:setInstanceValue("leveledStatusEffects", armorStatusEffects)
+      --local armorStatusEffects = output:instanceValue("leveledStatusEffects", baseLeveledStatusEffects)
+      --output:setInstanceValue("leveledStatusEffects", armorStatusEffects)
       augmentConfig = currentAugment
       augmentConfig.rpg_jewelry = jewelry
       output:setInstanceValue("currentAugment", augmentConfig)
@@ -81,29 +74,29 @@ function apply(input)
 end
 
 function newAugmentEffects(slotType, new, old, jewelry)
-  new = new or {}
+  new = new[1] or {stat = "ivrpgjewelryplaceholder", amount = 0}
   old = old or {}
   transfer = {}
   if slotType == "right" then
-    table.insert(old, {stat = config.getParameter("itemName", ""), amount = 1})
-    table.insert(old, new[1])
-    transfer = old
+    transfer = copy(old)
+    table.insert(transfer, {stat = config.getParameter("itemName", "ivrpgjewelryplaceholder"), amount = 1})
+    table.insert(transfer, new)
   elseif slotType == "left" then
     if jewelry.main then
       for i=1,2 do
         table.insert(transfer, old[i])
       end
     end
-    table.insert(transfer, {stat = config.getParameter("itemName", ""), amount = 1})
-    table.insert(transfer, new[1])
+    table.insert(transfer, {stat = config.getParameter("itemName", "ivrpgjewelryplaceholder"), amount = 1})
+    table.insert(transfer, new)
     if jewelry.right then
-      for i=5,6 do
+      for i=3,4 do
         table.insert(transfer, old[i])
       end
     end
   elseif slotType == "main" then
-    table.insert(transfer, {stat = config.getParameter("itemName", ""), amount = 1})
-    table.insert(transfer, new[1])
+    table.insert(transfer, {stat = config.getParameter("itemName", "ivrpgjewelryplaceholder"), amount = 1})
+    table.insert(transfer, new)
     for _,v in ipairs(old) do
       table.insert(transfer, v)
     end

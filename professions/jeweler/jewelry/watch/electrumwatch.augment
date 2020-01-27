@@ -1,10 +1,11 @@
 {
   "itemName" : "ivrpgelectrumwatch",
-  "price" : 50,
+  "price" : 750,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "electrumwatch.png",
-  "description" : "Fashionable Electrum Watch that slightly boosts your Max Energy.",
+  "description" : "Fashionable Electrum Watch that slightly boosts your Max Energy. ^green;Provides +5 Max Energy. ^blue;",
   "shortdescription" : "Electrum Watch",
 
   "augment" : {

@@ -60,14 +60,14 @@ function update(args)
 
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
     if not mcontroller.liquidMovement() then
-      status.removeEphemeralEffect("nofalldamage")
+      status.removeEphemeralEffect("nofalldamagefj")
       status.removeEphemeralEffect("ivrpgjumpcamouflage")
       self.liquidTimer = 0
     else
       self.liquidTimer = self.liquidTimer + args.dt
       if self.liquidTimer > 0.2 then
         self.liquidTimer = 0
-        status.removeEphemeralEffect("nofalldamage")
+        status.removeEphemeralEffect("nofalldamagefj")
         status.removeEphemeralEffect("ivrpgjumpcamouflage")
       end
     end
@@ -104,7 +104,7 @@ function update(args)
 
   if status.resource("energy") < 1 or status.statPositive("activeMovementAbilities") then
     status.removeEphemeralEffect("ivrpgjumpcamouflage")
-    status.removeEphemeralEffect("nofalldamage")
+    status.removeEphemeralEffect("nofalldamagefj")
   end
 
 end

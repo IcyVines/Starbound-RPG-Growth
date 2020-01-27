@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "silverbar", "count" : 1 },
+    { "item" : "ivrpgplatinumbar", "count" : 2 },
+    { "item" : "refinedaegisalt", "count" : 3 }
+  ],
+  "output" : { "item" : "ivrpgaegisaltnecklace", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "head", "all" ]
+}

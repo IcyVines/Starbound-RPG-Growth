@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgsaintlycharm",
+  "price" : 1750,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "saintlycharm.png",
+  "description" : "A Holy Charm sewn from Living Root and Silk that wards off Demonic Spirits. ^green;Provides +20% Demonic Resistance. ^blue;Jewelers gain Demonic Status Immunity.",
+  "shortdescription" : "Saintly Charm",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "necklace",
+    "displayName" : "Saintly Charm",
+    "effects" : [ {"stat" : "demonicResistance", "amount" : 0.2} ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

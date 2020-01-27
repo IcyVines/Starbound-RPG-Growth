@@ -1,20 +1,22 @@
 {
-  "itemName" : "ivrpgjghostlyring",
-  "price" : 5000,
-  "rarity" : "Uncommon",
-  "category" : "eppAugment",
-  "inventoryIcon" : "goldnecklace.png",
+  "itemName" : "ivrpgghostlyring",
+  "price" : 2500,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "fluxring.png",
   "description" : "An eering ring that glows green.",
   "shortdescription" : "Ghostly Ring",
 
   "augment" : {
     "type" : "chestarmour",
-    "name" : "ghostly",
+    "name" : "ring",
     "displayName" : "Ghostly Ring",
-    "displayIcon" : "/professions/jeweler/jewelry/goldnecklace.png",
-    "effects" : [ "camouflage35", "ghostlyglow", {"stat" : "wetImmunity", "amount" : 1.0 }, {"stat" : "fireStatusImmunity", "amount" : 1.0 }, {"stat" : "iceStatusImmunity", "amount" : 1.0 }, {"stat" : "electricStatusImmunity", "amount" : 1.0 }, {"stat" : "poisonStatusImmunity", "amount" : 1.0 } ]
+    "effects" : [ "camouflage35" ]
   },
 
+  "slotType" : "alt",
+  
   "radioMessagesOnPickup" : [ "pickupcollar" ],
 
   "scripts" : [ "/professions/jeweler/augment.lua" ]

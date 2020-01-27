@@ -25,7 +25,7 @@ function update(dt)
       self.cloakTimer = self.cloakTime
       self.crouchTimer = 0
       animator.playSound("cloak")
-      status.addEphemeralEffect("ivrpgcamouflage", 5)
+      status.addEphemeralEffect("ivrpgcamouflagehunter", 5)
     end
   else
     self.crouchTimer = 0
@@ -65,7 +65,7 @@ function updateDamageGiven()
 end
 
 function bleedChance()
-  status.removeEphemeralEffect("ivrpgcamouflage")
+  status.removeEphemeralEffect("ivrpgcamouflagehunter")
   self.bleedTimer = self.bleedTime
   status.addPersistentEffects("ivrpgcloak", {{stat = "ivrpgBleedChance", amount = self.bleedChance}})
   self.cloakTimer = 0

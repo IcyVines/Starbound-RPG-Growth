@@ -36,8 +36,6 @@ function init()
     end
     removeTechs()
     --Lines for one update only
-    status.clearPersistentEffects("ivrpgelementalovercharge")
-    status.setStatusProperty("ivrpgmagicshieldactive", false)
   end
 
   if not status.statusProperty("ivrpgskillpoints") then
@@ -97,6 +95,16 @@ function init()
 
   message.setHandler("interact", function(_, _, scriptType, script, sourceId)
     player.interact(scriptType, script, sourceId)
+  end)
+
+  message.setHandler("giveBlueprint", function(_, _, blueprint)
+    if type(blueprint) == "string" then
+    	player.giveBlueprint(blueprint)
+    elseif type(blueprint) == "table" then
+    	for _,bp in ipairs(blueprint) do
+    		player.giveBlueprint(bp)
+    	end
+    end
   end)
 
   message.setHandler("applySelfDamageRequest", function(_, _, damageType, damageSourceKind, damage, sourceId)
@@ -375,6 +383,7 @@ function uninit()
   status.removeEphemeralEffect("wizardaffinity")
   status.removeEphemeralEffect("roguepoison")
   status.removeEphemeralEffect("soldierdiscipline")
+  status.clearPersistentEffects("ivrpgelementalovercharge")
 end
 
 function removeTechs()

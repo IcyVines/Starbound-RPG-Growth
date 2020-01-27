@@ -73,14 +73,33 @@
     {
       "op": "test",
       "path": "/huntingflying/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/huntingflying/0/1/fill/-",
+      "value": {
+      "pool": "ivrpgfeatherpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/huntingflying/0/1/fill",
       "inverse": true
     }, 
     {
       "op": "add",
       "path": "/huntingflying/0/1/fill",
-      "value": [{
-      "pool": "experienceorbpool"
-      }]
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        },
+        {
+          "pool": "ivrpgfeatherpool"
+        }
+      ]
     }
   ],
   [

@@ -4,7 +4,7 @@
 
   },
 
-  "blockingStat" : "statusImmunity",
+  "blockingStat" : "grit",
 
   "defaultDuration" : 5,
   "scriptDelta" : 1,

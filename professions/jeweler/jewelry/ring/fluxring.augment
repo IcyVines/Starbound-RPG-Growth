@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgfluxring",
+  "price" : 750,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "fluxring.png",
+  "description" : "A Ring that, despite its minute size, emulates a Faraday Cage. ^green;Provides +10% Electric Resistance. ^blue;Jewelers can wear two to gain Electric Status Immunity.",
+  "shortdescription" : "Flux Ring",
+
+  "augment" : {
+    "type" : "chestarmour",
+    "name" : "ring",
+    "displayName" : "Flux Ring",
+    "effects" : [ {"stat" : "electricResistance", "amount" : 0.1} ]
+  },
+
+  "slotType" : "alt",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

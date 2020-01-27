@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "silverbar", "count" : 1 },
+    { "item" : "ivrpgplatinumbar", "count" : 2 },
+    { "item" : "bone", "count" : 3 },
+    { "item" : "thornfruit", "count" : 1 }
+  ],
+  "output" : { "item" : "ivrpgspitefulring", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "chest", "all" ]
+}

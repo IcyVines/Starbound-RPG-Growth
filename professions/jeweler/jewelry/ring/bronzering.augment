@@ -1,17 +1,18 @@
 {
   "itemName" : "ivrpgbronzering",
-  "price" : 50,
+  "price" : 325,
   "rarity" : "Uncommon",
   "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
   "inventoryIcon" : "bronzering.png",
-  "description" : "Fashionable Bronze Ring that slightly boosts your Max Health.",
+  "description" : "Fashionable Bronze Ring that slightly boosts your Max Health. ^green;Provides +2.5 Max Health. ^blue;",
   "shortdescription" : "Bronze Ring",
 
   "augment" : {
     "type" : "chestarmour",
     "name" : "ring",
     "displayName" : "Bronze Ring",
-    "effects" : [ {"stat" : "maxHealth", "amount" : 5} ]
+    "effects" : [ {"stat" : "maxHealth", "amount" : 2.5} ]
   },
 
   "slotType" : "alt",

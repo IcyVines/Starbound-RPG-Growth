@@ -4,7 +4,7 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "siliconbronze.png",
-  "description" : "A corrosive-resistant Bronze Alloy made primarily from Copper and Silicon.",
+  "description" : "A corrosive-resistant Bronze Alloy made primarily from Copper and Silicon. From RPG Growth.",
   "shortdescription" : "Silicon Bronze Bar",
   "itemTags" : [ "reagent" ]
 }

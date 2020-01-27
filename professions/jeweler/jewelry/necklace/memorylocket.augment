@@ -1,0 +1,23 @@
+{
+  "itemName" : "ivrpgmemorylocket",
+  "price" : 500,
+  "rarity" : "Legendary",
+  "category" : "Jewelry",
+  "tooltipKind" : "ivrpgjewelry",
+  "inventoryIcon" : "memorylocket.png",
+  "description" : "To remind you of those you love and those you lost. ^green;Provides +5 Max Health and +5 Max Energy. ^blue;Jewelers gain +5 Protection.",
+  "shortdescription" : "Memory Locket",
+
+  "augment" : {
+    "type" : "headarmour",
+    "name" : "necklace",
+    "displayName" : "Memory Locket",
+    "effects" : [ "ivrpgmemento" ]
+  },
+
+  "slotType" : "main",
+
+  "radioMessagesOnPickup" : [ "pickupaugment" ],
+
+  "scripts" : [ "/professions/jeweler/augment.lua" ]
+}

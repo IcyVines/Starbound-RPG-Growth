@@ -1,0 +1,9 @@
+{
+  "input" : [
+    { "item" : "silverbar", "count" : 1 },
+    { "item" : "antidote", "count" : 1 },
+    { "item" : "ivrpgelectrumbar", "count" : 3 }
+  ],
+  "output" : { "item" : "ivrpgpurifyingpendant", "count" : 1 },
+  "groups" : [ "ivrpgjewelerstation", "head", "all" ]
+}
