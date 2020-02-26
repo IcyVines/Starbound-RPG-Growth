@@ -571,9 +571,11 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
 
         if requiredPosition then
           ignore = true
-          if requiredPosition.type == "behind" and facing * world.distance(world.entityPosition(self.rpg_playerId), position)[1] < 0 then
-            ignore = false
-            if requiredPosition.optional then positionBonus = 2 end
+          if requiredPosition.type == "behind" then
+            if facing * world.distance(world.entityPosition(self.rpg_playerId), position)[1] < 0 then
+              ignore = false
+              if requiredPosition.optional then positionBonus = 2 end
+            end
           elseif operate(requiredPosition.type, world.magnitude(position, world.entityPosition(self.rpg_playerId)),  requiredPosition.magnitude) then
             ignore = false
             if requiredPosition.optional then positionBonus = 2 end

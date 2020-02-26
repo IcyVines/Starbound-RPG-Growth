@@ -48,7 +48,6 @@
 
     "behavior" : "monster",
     "deathBehavior" : "monster-death",
-
     "facingMode" : "transformation",
 
     "seeThroughLiquid" : false,

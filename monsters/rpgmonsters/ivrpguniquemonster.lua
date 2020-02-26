@@ -92,7 +92,7 @@ function rpg_updateUniqueMonster(dt)
     animator.scaleTransformationGroup("body", {self.rpg_size, self.rpg_size})
     status.setStatusProperty("ivrpg_monsterresized", true)
   end
-
+  
   status.setPersistentEffects("ivrpgUniqueMonster", self.rpg_improvedStats or {})
 
   if self.rpg_bloodStats then
