@@ -1,0 +1,429 @@
+ [
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpoolsmall"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolsmall"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_sniper/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_sniper/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpoolsmall"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_sniper/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_sniper/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolsmall"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_trooper/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_trooper/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_trooper/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_trooper/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_psycho/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_psycho/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpoolsmall"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_psycho/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_psycho/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolsmall"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_zealot/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_zealot/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpoolsmall"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_zealot/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_zealot/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolsmall"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_parasite/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_parasite/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpoolsmall"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_parasite/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_parasite/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolsmall"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_trooper/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_trooper/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_zombie_scientist/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_zombie_scientist/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_demon_1/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_demon_1/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_demon_1/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_demon_1/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_3boss/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_3boss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolminiboss"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_3boss/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_3boss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolminiboss"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_4boss/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_4boss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolminiboss"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_4boss/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_4boss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolminiboss"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_lastboss/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_lastboss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolboss"
+      }]
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_lastboss/0/1/fill",
+      "value": [{
+      "item": ["experienceorb", 2000]
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_lastboss/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_lastboss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolboss"
+      }]
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_lastboss/0/1/fill",
+      "value": [{
+      "item": ["experienceorb", 2000]
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs1_lastboss/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs1_lastboss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolboss"
+      }]
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs1_lastboss/0/1/fill",
+      "value": [{
+      "item": ["experienceorb", 1500]
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_hiddenmidboss/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_hiddenmidboss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolminiboss"
+      }]
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_hiddenmidboss/0/1/fill",
+      "value": [{
+      "item": ["experienceorb", 1000]
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_hiddenmidboss/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_hiddenmidboss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolminiboss"
+      }]
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_hiddenmidboss/0/1/fill",
+      "value": [{
+      "item": ["experienceorb", 1000]
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_hiddenboss/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_hiddenboss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolboss"
+      }]
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_hiddenboss/0/1/fill",
+      "value": [{
+      "item": ["experienceorb", 1500]
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_hiddenboss/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_hiddenboss/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolboss"
+      }]
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs0_hiddenboss/0/1/fill",
+      "value": [{
+      "item": ["experienceorb", 1500]
+      }]
+    }
+  ]
+ ]
