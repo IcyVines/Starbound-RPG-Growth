@@ -67,6 +67,33 @@ function update(dt)
   if not pStatus then sb.logInfo(pMessage or "There was an error attempting to generate an item config") end
 
   --Weapon Stat Bonuses
+  local stringFind = false
+  local stringFind2 = false
+  if self.heldItem or self.heldItem2 then
+    for name,t in pairs(self.weaponScaling.finds) do
+      if self.heldItem and string.find(self.heldItem, name) then
+        local statAmount = 1
+        for k,v in pairs(t) do
+          statAmount = statAmount + self.stats[k]*v
+        end
+        status.addPersistentEffects("ivrpgstatboosts", {
+          {stat = "powerMultiplier", baseMultiplier = statAmount}
+        })
+        stringFind = true
+      end
+      if self.heldItem2 and string.find(self.heldItem2, name) then
+        local statAmount = 1
+        for k,v in pairs(t) do
+          statAmount = statAmount + self.stats[k]*v
+        end
+        status.addPersistentEffects("ivrpgstatboosts", {
+          {stat = "powerMultiplier", baseMultiplier = statAmount}
+        })
+        stringFind2 = true
+      end
+    end
+  end
+
   if self.heldItem and self.weaponScaling.items[self.heldItem] then
     local statAmount = 1
     for k,v in pairs(self.weaponScaling.items[self.heldItem]) do
@@ -75,7 +102,7 @@ function update(dt)
     status.addPersistentEffects("ivrpgstatboosts", {
       {stat = "powerMultiplier", baseMultiplier = statAmount}
     })
-  elseif self.heldItem then
+  elseif self.heldItem and not stringFind then
      --Bonus for One-Handed Primary
     for k,v in pairs(root.itemTags(self.heldItem)) do
       tagInfo = self.weaponScaling.tags[v]
@@ -103,7 +130,7 @@ function update(dt)
     end
   end
   --Extra Bonus with One-Handed Secondary
-  if self.heldItem2 and not self.twoHanded then
+  if self.heldItem2 and not self.twoHanded and not stringFind2 then
     for k,v in pairs(root.itemTags(self.heldItem2)) do
       tagInfo = self.weaponScaling.tags[v]
       if tagInfo and tagInfo.conflictingTags then
@@ -701,6 +728,14 @@ function updateClassicMode()
       end
       if weaponsDisabled and (self.heldItem and enables[self.heldItem] and enables[self.heldItem].named) then
         weaponsDisabled = false
+      end
+      if weaponsDisabled then
+        local enablesFind = getDictionaryFromType(self.classInfo.classic, "enable_find")
+        for name,t in pairs(enablesFind) do
+          if (self.heldItem and string.find(self.heldItem, name)) or (self.heldItem2 and string.find(self.heldItem2, name)) then
+            weaponsDisabled = false
+          end
+        end
       end
     end
   end
