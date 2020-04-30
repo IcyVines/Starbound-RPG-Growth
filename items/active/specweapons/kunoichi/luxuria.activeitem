@@ -1,370 +1,408 @@
 {
-  "itemName" : "ivrpgwluxuria",
-  "price" : 1000,
-  "maxStack" : 1,
-  "rarity" : "Essential",
-  "level" : 6,
-  "description" : "Beautiful painted petals bely this razor-sharp War-Fan.",
-  "shortdescription" : "^#ffaafa;Luxuria^white;",
-  "tooltipKind" : "base",
-  "category" : "War-Fan",
-  "twoHanded" : false,
-  "itemTags" : ["weapon","melee","warfan"],
-
-  "inventoryIcon" : "luxuria_curved.png",
-
-  "animation" : "/items/active/specweapons/kunoichi/luxuria.animation",
-  "animationParts" : {
-    "handle" : "",
-    "blade" : "luxuria_closed.png",
-    "openBlade" : "luxuria_curved.png"
+  "itemName": "ivrpgwluxuria",
+  "price": 1000,
+  "maxStack": 1,
+  "rarity": "Essential",
+  "level": 6,
+  "description": "Beautiful painted petals bely this razor-sharp War-Fan.",
+  "shortdescription": "^#ffaafa;Luxuria^white;",
+  "tooltipKind": "base",
+  "category": "War-Fan",
+  "twoHanded": false,
+  "itemTags": [
+    "weapon",
+    "melee",
+    "warfan"
+  ],
+  "inventoryIcon": "luxuria_curved.png",
+  "animation": "/items/active/specweapons/kunoichi/luxuria.animation",
+  "animationParts": {
+    "handle": "",
+    "blade": "luxuria_closed.png",
+    "openBlade": "luxuria_curved.png"
   },
-  
-  "animationCustom" : { },
-  "scale" : [0.85, 0.85],
-
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
-
-  "elementalType" : "physical",
-  "classreq" : 3,
-  "specreq" : 3,
-
-  "primaryAbility" : {
-    "scripts" : ["/items/active/specweapons/kunoichi/petaldance.lua"],
-    "class" : "MeleeSlash",
-    "fireTime" : 0.2,
-    "baseDps" : 14.0,
-    "damageModifier" : 0.5,
-    "armRotationOffsets" : [20, -20, 0, 0, -20, 20, 0, 0],
-    
-    "damageConfig" : {
-      "damageSourceKind" : "warfan",
-      "statusEffects" : [ ],
-      "knockbackMode" : "facing",
-      "knockback" : 10,
-      "timeout" : 0.2,
-      "timeoutGroup" : "primary"
+  "animationCustom": {},
+  "scale": [
+    0.85,
+    0.85
+  ],
+  "scripts": [
+    "/items/active/weapons/melee/meleeweapon.lua"
+  ],
+  "elementalType": "physical",
+  "classreq": 3,
+  "specreq": 3,
+  "primaryAbility": {
+    "scripts": [
+      "/items/active/specweapons/kunoichi/petaldance.lua"
+    ],
+    "class": "MeleeSlash",
+    "fireTime": 0.2,
+    "baseDps": 14,
+    "damageModifier": 0.7,
+    "armRotationOffsets": [
+      20,
+      -20,
+      0,
+      0,
+      -20,
+      20,
+      0,
+      0
+    ],
+    "damageConfig": {
+      "damageSourceKind": "warfan",
+      "statusEffects": [],
+      "knockbackMode": "facing",
+      "knockback": 10,
+      "timeout": 0.2,
+      "timeoutGroup": "primary"
     },
-	
-    "stances" : {
-      "idle" : {
-        "armRotation" : -70,
-        "weaponRotation" : -180,
-        "weaponOffset" : [0, 0.95],
-
-        "allowFlip" : true,
-        "allowRotate" : false
+    "stances": {
+      "idle": {
+        "armRotation": -70,
+        "weaponRotation": -180,
+        "weaponOffset": [
+          0,
+          0.95
+        ],
+        "allowFlip": true,
+        "allowRotate": false
       },
-      "readyIdleprimary" : {
-        "armRotation" : -70,
-        "weaponRotation" : -85,
-        "weaponOffset" : [0, 0.95],
-
-        "allowFlip" : true,
-        "allowRotate" : false
+      "readyIdleprimary": {
+        "armRotation": -70,
+        "weaponRotation": -85,
+        "weaponOffset": [
+          0,
+          0.95
+        ],
+        "allowFlip": true,
+        "allowRotate": false
       },
-      "readyIdlealt" : {
-        "armRotation" : 90,
-        "weaponRotation" : -70,
-        "weaponOffset" : [0, 0.95],
-
-        "allowFlip" : true,
-        "allowRotate" : false
+      "readyIdlealt": {
+        "armRotation": 90,
+        "weaponRotation": -70,
+        "weaponOffset": [
+          0,
+          0.95
+        ],
+        "allowFlip": true,
+        "allowRotate": false
       },
-      "windup" : {
-        "opening" : {
-          "duration" : 0.2,
-          "armRotation" : -80,
-          "weaponRotation" : -190,
-          "weaponOffset" : [0, 0.95],
-
-          "allowFlip" : true,
-          "allowRotate" : false
+      "windup": {
+        "opening": {
+          "duration": 0.2,
+          "armRotation": -80,
+          "weaponRotation": -190,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "allowFlip": true,
+          "allowRotate": false
         },
-        "normal" : {
-          "duration" : 0.25,
-          "armRotation" : -80,
-          "weaponRotation" : -85,
-          "weaponOffset" : [0, 0.95],
-
-          "alt" : {
-            "armRotation" : 100,
-            "weaponRotation" : -70
+        "normal": {
+          "duration": 0.25,
+          "armRotation": -80,
+          "weaponRotation": -85,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "alt": {
+            "armRotation": 100,
+            "weaponRotation": -70
           },
-
-          "allowRotate" : false,
-          "allowFlip" : true
+          "allowRotate": false,
+          "allowFlip": true
         },
-        "forward" : {
-          "duration" : 0.4,
-          "armRotation" : -90,
-          "weaponRotation" : -80,
-          "weaponOffset" : [0, 0.95],
-
-          "alt" : {
-            "armRotation" : 100,
-            "weaponRotation" : -70
+        "forward": {
+          "duration": 0.4,
+          "armRotation": -90,
+          "weaponRotation": -80,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "alt": {
+            "armRotation": 100,
+            "weaponRotation": -70
           },
-
-          "allowFlip" : true,
-          "allowRotate" : false
+          "allowFlip": true,
+          "allowRotate": false
         },
-        "backward" : {
-          "duration" : 0.2,
-          "armRotation" : 0,
-          "weaponRotation" : -75,
-          "weaponOffset" : [0, 0.95],
-
-          "alt" : {
-            "armRotation" : 0,
-            "weaponRotation" : -75
+        "backward": {
+          "duration": 0.2,
+          "armRotation": 0,
+          "weaponRotation": -75,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "alt": {
+            "armRotation": 0,
+            "weaponRotation": -75
           },
-
-          "allowFlip" : false,
-          "allowRotate" : false
+          "allowFlip": false,
+          "allowRotate": false
         },
-        "downward" : {
-          "duration" : 0.075,
-          "armRotation" : -0,
-          "weaponRotation" : -70,
-          "weaponOffset" : [0, 0.95],
-
-          "allowFlip" : false,
-          "allowRotate" : false
+        "downward": {
+          "duration": 0.075,
+          "armRotation": 0,
+          "weaponRotation": -70,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "allowFlip": false,
+          "allowRotate": false
         },
-        "aerial" : {
-          "duration" : 0.2,
-          "armRotation" : 90,
-          "weaponRotation" : -90,
-          "weaponOffset" : [0, 0.95],
-
-          "allowFlip" : true,
-          "allowRotate" : false
+        "aerial": {
+          "duration": 0.2,
+          "armRotation": 90,
+          "weaponRotation": -90,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "allowFlip": true,
+          "allowRotate": false
         }
       },
-      "fire" : {
-        "opening" : {
-          "duration" : 0.3,
-          "armRotation" : 0,
-          "weaponRotation" : -50,
-          "weaponOffset" : [0, 0.95],
-
-          "damageConfig" : {
-            "knockback" : 20, 
-            "baseDamage" : 16 
+      "fire": {
+        "opening": {
+          "duration": 0.3,
+          "armRotation": 0,
+          "weaponRotation": -50,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "damageConfig": {
+            "knockback": 20,
+            "baseDamage": 16
           },
-
-          "allowFlip" : true,
-          "allowRotate" : false,
-          "fireSound" : "open"
+          "allowFlip": true,
+          "allowRotate": false,
+          "fireSound": "open"
         },
-        "normal" : {
-          "duration" : 0.3,
-          "armRotation" : 35,
-          "weaponRotation" : -75,
-          "weaponOffset" : [0, 0.95],
-
-          "alt" : {
-            "armRotation" : -45,
-            "weaponRotation" : -75
+        "normal": {
+          "duration": 0.3,
+          "armRotation": 35,
+          "weaponRotation": -75,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "alt": {
+            "armRotation": -45,
+            "weaponRotation": -75
           },
-
-          "damageConfig" : {
-            "knockback" : 15, 
-            "baseDamage" : 13 
+          "damageConfig": {
+            "knockback": 15,
+            "baseDamage": 13
           },
-
-          "allowRotate" : false,
-          "allowFlip" : true,
-          "projectileOffset" : [0, 0],
-          "projectileType" : "ivrpgwluxuriatravelingswoosh",
-          "projectilePowerMultiplier" : 0.5,
-          "projectileKnockbackMultiplier" : 2,
-          "fireSound" : "travelSlash",
-          "energyUsage" : 35
+          "allowRotate": false,
+          "allowFlip": true,
+          "projectileOffset": [
+            0,
+            0
+          ],
+          "projectileType": "ivrpgwluxuriatravelingswoosh",
+          "projectilePowerMultiplier": 1,
+          "projectileKnockbackMultiplier": 2,
+          "fireSound": "travelSlash",
+          "energyUsage": 10
         },
-        "forward" : {
-          "duration" : 0.1,
-          "armRotation" : 30,
-          "weaponRotation" : -75,
-          "weaponOffset" : [0, 0.95],
-
-          "alt" : {
-            "armRotation" : -45,
-            "weaponRotation" : -75
+        "forward": {
+          "duration": 0.1,
+          "armRotation": 30,
+          "weaponRotation": -75,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "alt": {
+            "armRotation": -45,
+            "weaponRotation": -75
           },
-
-          "damageConfig" : {
-            "knockback" : 40, 
-            "baseDamage" : 20 
+          "damageConfig": {
+            "knockback": 40,
+            "baseDamage": 20
           },
-
-          "dashSpeed" : 160,
-
-          "allowFlip" : false,
-          "allowRotate" : false,
-          "fireSound" : "dash"
+          "dashSpeed": 160,
+          "allowFlip": false,
+          "allowRotate": false,
+          "fireSound": "dash"
         },
-        "backward" : {
-          "duration" : 0.3,
-          "armRotation" : 0,
-          "weaponRotation" : -75,
-          "weaponOffset" : [0, 0.95],
-
-          "alt" : {
-            "armRotation" : 0,
-            "weaponRotation" : -75
+        "backward": {
+          "duration": 0.3,
+          "armRotation": 0,
+          "weaponRotation": -75,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "alt": {
+            "armRotation": 0,
+            "weaponRotation": -75
           },
-
-          "damageConfig" : {
-            "knockback" : 20, 
-            "baseDamage" : 11 
+          "damageConfig": {
+            "knockback": 20,
+            "baseDamage": 11
           },
-
-          "projectileOffset" : [-4, 0],
-          "projectileType" : "ivrpgwluxuriaflower",
-          "projectilePowerMultiplier" : 0.5,
-          "projectileKnockbackMultiplier" : 0.5,
-          "energyUsage" : 20,
-
-          "allowFlip" : false,
-          "allowRotate" : false,
-
-          "fireSound" : "travelSlash",
-          "cooldown" : 0.1
+          "projectileOffset": [
+            -4,
+            0
+          ],
+          "projectileType": "ivrpgwluxuriaflower",
+          "projectilePowerMultiplier": 2,
+          "projectileKnockbackMultiplier": 2,
+          "energyUsage": 30,
+          "allowFlip": false,
+          "allowRotate": false,
+          "fireSound": "travelSlash",
+          "cooldown": 0.1
         },
-        "downward" : {
-          "duration" : 0.075,
-          "armRotation" : -45,
-          "weaponRotation" : 40,
-          "weaponOffset" : [0, 0.95],
-
-          "allowFlip" : false,
-          "allowRotate" : false,
-          "fireSound" : "flail"
+        "downward": {
+          "duration": 0.075,
+          "armRotation": -45,
+          "weaponRotation": 40,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "allowFlip": false,
+          "allowRotate": false,
+          "fireSound": "flail"
         },
-        "aerial" : {
-          "duration" : 0.5,
-          "armRotation" : -70,
-          "weaponRotation" : -90,
-          "weaponOffset" : [0, 0.95],
-
-          "allowFlip" : true,
-          "allowRotate" : false,
-
-          "speed" : 3500,
-
-          "damageConfig" : {
-            "knockback" : 30, 
-            "baseDamage" : 20 
+        "aerial": {
+          "duration": 0.5,
+          "armRotation": -70,
+          "weaponRotation": -90,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "allowFlip": true,
+          "allowRotate": false,
+          "speed": 3500,
+          "damageConfig": {
+            "knockback": 30,
+            "baseDamage": 20
           },
-
-          "projectileOffset" : [0, 0],
-          "projectileType" : "ivrpgwluxuriatravelingswoosh",
-          "projectilePowerMultiplier" : 0.5,
-          "projectileKnockbackMultiplier" : 1,
-          "fireSound" : "travelSlash",
-          "energyUsage" : 20
+          "projectileOffset": [
+            0,
+            0
+          ],
+          "projectileType": "ivrpgwluxuriatravelingswoosh",
+          "projectilePowerMultiplier": 0.5,
+          "projectileKnockbackMultiplier": 1,
+          "fireSound": "travelSlash",
+          "energyUsage": 10
         }
       },
-      "winddown" : {
-        "normal" : {
-          "duration" : 0.1,
-          "armRotation" : 35,
-          "weaponRotation" : -75,
-          "weaponOffset" : [0, 0.95],
-
-          "alt" : {
-            "armRotation" : -45,
-            "weaponRotation" : -75
+      "winddown": {
+        "normal": {
+          "duration": 0.1,
+          "armRotation": 35,
+          "weaponRotation": -75,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "alt": {
+            "armRotation": -45,
+            "weaponRotation": -75
           },
-
-          "allowRotate" : false,
-          "allowFlip" : true
+          "allowRotate": false,
+          "allowFlip": true
         },
-        "forward" : {
-          "duration" : 0.1,
-          "armRotation" : 30,
-          "weaponRotation" : -75,
-          "weaponOffset" : [0, 0.95],
-
-          "alt" : {
-            "armRotation" : -45,
-            "weaponRotation" : -75
+        "forward": {
+          "duration": 0.1,
+          "armRotation": 30,
+          "weaponRotation": -75,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "alt": {
+            "armRotation": -45,
+            "weaponRotation": -75
           },
-
-          "allowFlip" : true,
-          "allowRotate" : false
+          "allowFlip": true,
+          "allowRotate": false
         }
       },
-      "slash" : {
-        "downwardWindup" : {
-          "duration" : 0.075,
-          "armRotation" : -0,
-          "weaponRotation" : -60,
-          "weaponOffset" : [0, 0.95],
-
-          "alt" : {
-            "armRotation" : 20,
-            "weaponRotation" : -60
+      "slash": {
+        "downwardWindup": {
+          "duration": 0.075,
+          "armRotation": 0,
+          "weaponRotation": -60,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "alt": {
+            "armRotation": 20,
+            "weaponRotation": -60
           },
-
-          "allowFlip" : false,
-          "allowRotate" : false
+          "allowFlip": false,
+          "allowRotate": false
         },
-        "aerialWindup" : {
-          "duration" : 0.025,
-          "armRotation" : 0,
-          "weaponRotation" : -80,
-          "weaponOffset" : [0, 0.95],
-
-          "allowFlip" : false,
-          "allowRotate" : false
+        "aerialWindup": {
+          "duration": 0.025,
+          "armRotation": 0,
+          "weaponRotation": -80,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "allowFlip": false,
+          "allowRotate": false
         },
-        "downwardSlash" : {
-          "duration" : 0.075,
-          "armRotation" : -45,
-          "weaponRotation" : -70,
-          "weaponOffset" : [0, 0.95],
-
-          "alt" : {
-            "armRotation" : 0,
-            "weaponRotation" : -70
+        "downwardSlash": {
+          "duration": 0.075,
+          "armRotation": -45,
+          "weaponRotation": -70,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "alt": {
+            "armRotation": 0,
+            "weaponRotation": -70
           },
-
-          "damageConfig" : {
-            "knockback" : 15, 
-            "baseDamage" : 10 
+          "damageConfig": {
+            "knockback": 15,
+            "baseDamage": 10
           },
-
-          "allowFlip" : false,
-          "allowRotate" : false,
-          "fireSound" : "flail",
-          "energyUsage" : 50
+          "allowFlip": false,
+          "allowRotate": false,
+          "fireSound": "flail",
+          "energyUsage": 30
         },
-        "aerialSlash" : {
-          "duration" : 0.025,
-          "armRotation" : -45,
-          "weaponRotation" : -45,
-          "weaponOffset" : [0, 0.95],
-
-          "damageConfig" : {
-            "knockback" : 10, 
-            "baseDamage" : 9 
+        "aerialSlash": {
+          "duration": 0.025,
+          "armRotation": -45,
+          "weaponRotation": -45,
+          "weaponOffset": [
+            0,
+            0.95
+          ],
+          "damageConfig": {
+            "knockback": 10,
+            "baseDamage": 9
           },
-
-          "allowFlip" : false,
-          "allowRotate" : false,
-
-          "hover" : true,
-          "hoverYSpeed" : 5,
-          "hoverForce" : 200,
-          "energyUsage" : 75
+          "allowFlip": false,
+          "allowRotate": false,
+          "hover": true,
+          "hoverYSpeed": 5,
+          "hoverForce": 200,
+          "energyUsage": 50
         }
       }
     }
   },
-  
-  "builder" : "/items/buildscripts/buildunrandweapon.lua"
-  
+  "builder": "/items/buildscripts/buildunrandweapon.lua"
 }
