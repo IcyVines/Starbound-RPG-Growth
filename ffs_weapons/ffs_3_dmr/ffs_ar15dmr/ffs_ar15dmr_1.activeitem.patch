@@ -1,0 +1,12 @@
+[
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "rpgffs"
+  },
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "rpgffssniper"
+  }
+]
