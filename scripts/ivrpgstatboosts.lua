@@ -67,6 +67,9 @@ function update(dt)
   if not pStatus then sb.logInfo(pMessage or "There was an error attempting to generate an item config") end
 
   --Weapon Stat Bonuses
+  
+  --[[
+  Based on String Finds, removed for optimization reasons
   local stringFind = false
   local stringFind2 = false
   if self.heldItem or self.heldItem2 then
@@ -93,6 +96,7 @@ function update(dt)
       end
     end
   end
+  ]]
 
   if self.heldItem and self.weaponScaling.items[self.heldItem] then
     local statAmount = 1
@@ -102,7 +106,7 @@ function update(dt)
     status.addPersistentEffects("ivrpgstatboosts", {
       {stat = "powerMultiplier", baseMultiplier = statAmount}
     })
-  elseif self.heldItem and not stringFind then
+  elseif self.heldItem then
      --Bonus for One-Handed Primary
     for k,v in pairs(root.itemTags(self.heldItem)) do
       tagInfo = self.weaponScaling.tags[v]
@@ -130,7 +134,7 @@ function update(dt)
     end
   end
   --Extra Bonus with One-Handed Secondary
-  if self.heldItem2 and not self.twoHanded and not stringFind2 then
+  if self.heldItem2 and not self.twoHanded then
     for k,v in pairs(root.itemTags(self.heldItem2)) do
       tagInfo = self.weaponScaling.tags[v]
       if tagInfo and tagInfo.conflictingTags then
@@ -729,6 +733,8 @@ function updateClassicMode()
       if weaponsDisabled and (self.heldItem and enables[self.heldItem] and enables[self.heldItem].named) then
         weaponsDisabled = false
       end
+      --[[
+      String Find stuff disabled for optimization reasons
       if weaponsDisabled then
         local enablesFind = getDictionaryFromType(self.classInfo.classic, "enable_find")
         for name,t in pairs(enablesFind) do
@@ -737,6 +743,7 @@ function updateClassicMode()
           end
         end
       end
+      ]]
     end
   end
 
