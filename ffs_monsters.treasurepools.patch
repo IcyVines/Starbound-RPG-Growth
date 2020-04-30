@@ -2,6 +2,62 @@
   [
     {
       "op": "test",
+      "path": "/ffs_cultist/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpoolsmall"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpoolsmall"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_vehicle/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_vehicle/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_vehicle/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_vehicle/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
       "path": "/ffs_pirates/0/1/fill",
       "inverse": false
     }, 
