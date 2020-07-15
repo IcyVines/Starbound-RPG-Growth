@@ -58,6 +58,170 @@
     "ivrpgstungrenade" : {
       "speed" : 50,
       "power" : 1
+    },
+    "ffs_frag_1" : {
+      "speed" : 50,
+      "power" : 63
+    },
+    "ffs_frag_rgo_1" : {
+      "speed" : 50,
+      "power" : 63
+    },
+    "ffs_molotov" : {
+      "name" : "ffs_molotov_2",
+      "speed" : 25,
+      "power" : 1
+    },
+    "ffs_smoke" : {
+      "name" : "ffs_smoke",
+      "speed" : 25,
+      "power" : 1
+    },
+    "ffs_smoke_airsupport" : {
+      "name" : "ffs_smoke_airsupport_start",
+      "speed" : 25,
+      "power" : 1
+    },
+    "ue_molotovbomb" : {
+      "speed" : 31.5,
+      "power" : 17.5
+    },
+    "ue_handheldtorpedo" : {
+      "speed" : 1,
+      "power" : 30.2
+    },
+    "ue_m1883smokegrenade" : {
+      "speed" : 50,
+      "power" : 1
+    },
+    "ue_no775" : {
+      "speed" : 29.8,
+      "power" : 100.1
+    },
+    "ue_pineapplegrenade" : {
+      "speed" : 32.5,
+      "power" : 17.5
+    },
+    "ue_rebelfrag" : {
+      "speed" : 46.5,
+      "power" : 27.5
+    },
+    "ue_rsf1grenade" : {
+      "speed" : 35,
+      "power" : 13.5
+    },
+    "akkimari-nailbomb" : {
+      "name" : "akkimarinailbomb",
+      "speed" : 50,
+      "power" : 20
+    },
+    "akkimari-vaashbomb" : {
+      "name" : "akkimarivaashbomb",
+      "speed" : 50,
+      "power" : 15
+    },
+    "allianceexplosivecharge" : {
+      "speed" : 15,
+      "power" : 50
+    },
+    "alliancethrowablegrenade" : {
+      "speed" : 40,
+      "power" : 40
+    },
+    "avikanexplosive" : {
+      "speed" : 15,
+      "power" : 50
+    },
+    "avikansandbomb" : {
+      "speed" : 40,
+      "power" : 40
+    },
+    "avikanthrowablegrenade" : {
+      "speed" : 40,
+      "power" : 40
+    },
+    "trinkfrostgrenade" : {
+      "speed" : 40,
+      "power" : 20
+    },
+    "fu_beebriefcase" : {
+      "speed" : 40,
+      "power" : 1.5
+    },
+    "bellamortecore" : {
+      "name" : "bellamortebomb",
+      "speed" : 50,
+      "power" : 14
+    },
+    "antigravgrenade" : {
+      "name" : "antigravbomb",
+      "speed" : 35,
+      "power" : 0
+    },
+    "gravgrenade" : {
+      "name" : "gravbomb",
+      "speed" : 35,
+      "power" : 0
+    },
+    "pekkitfreeze_freezegrenade" : {
+      "name" : "gravbomb",
+      "speed" : 45,
+      "power" : 1
+    },
+    "pekkitfreeze_freezegrenade" : {
+      "name" : "gravbomb",
+      "speed" : 45,
+      "power" : 1
+    },
+    "fuwolfcase" : {
+      "speed" : 40,
+      "power" : 1.5
+    },
+    "chilibomb" : {
+      "speed" : 45,
+      "power" : 10,
+      "level" : 2
+    },
+    "ignuschili" : {
+      "name" : "ignus",
+      "speed" : 45,
+      "power" : 9,
+      "level" : 2
+    },
+    "ignuschili" : {
+      "name" : "ignus",
+      "speed" : 45,
+      "power" : 9,
+      "level" : 2
+    },
+    "ignuschili2" : {
+      "name" : "ignus2",
+      "speed" : 65,
+      "power" : 11,
+      "level" : 4
+    },
+    "madnessbomb" : {
+      "name" : "madnessbombteam",
+      "speed" : 45,
+      "power" : 10,
+      "level" : 2
+    },
+    "nailbomb" : {
+      "name" : "nailbombthrown",
+      "speed" : 45,
+      "power" : 5
+    },
+    "radienbulb" : {
+      "name" : "radienbulbthrown",
+      "speed" : 45,
+      "power" : 3,
+      "level" : 2
+    },
+    "shockshroom" : {
+      "name" : "shroomshock",
+      "speed" : 45,
+      "power" : 8,
+      "level" : 3
     }
   }
 }
