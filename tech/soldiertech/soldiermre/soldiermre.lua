@@ -35,7 +35,7 @@ function eat()
 end
 
 function lobGrenade()
-  local handItem = world.entityHandItem(self.id, "alt")
+  local handItem = world.entityHandItem(self.id, "primary")
   if handItem then
     local grenade = self.validGrenades[handItem]
     if grenade and status.overConsumeResource("energy", 20) then
