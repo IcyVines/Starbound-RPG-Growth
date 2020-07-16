@@ -42,7 +42,7 @@ function lobGrenade()
       self.grenadeConfig.power = grenade.power / 2 or 0
       self.grenadeConfig.speed = grenade.speed or 0
       world.spawnProjectile(grenade.name or handItem, mcontroller.position(), self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, self.grenadeConfig)
-      self.grenadeCooldownTimer = 5
+      self.grenadeCooldownTimer = 2
     end
   end
 end
