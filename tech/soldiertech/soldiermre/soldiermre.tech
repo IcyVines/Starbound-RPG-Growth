@@ -69,17 +69,17 @@
     },
     "ffs_molotov" : {
       "name" : "ffs_molotov_2",
-      "speed" : 25,
+      "speed" : 50,
       "power" : 1
     },
     "ffs_smoke" : {
       "name" : "ffs_smoke",
-      "speed" : 25,
+      "speed" : 50,
       "power" : 1
     },
     "ffs_smoke_airsupport" : {
       "name" : "ffs_smoke_airsupport_start",
-      "speed" : 25,
+      "speed" : 50,
       "power" : 1
     },
     "ue_molotovbomb" : {
