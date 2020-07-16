@@ -222,6 +222,11 @@
       "speed" : 45,
       "power" : 8,
       "level" : 3
+    },
+    "ancientgrenade" : {
+      "name" : "ancientgrenadethrown",
+      "speed" : 25,
+      "power" : 40
     }
   }
 }
