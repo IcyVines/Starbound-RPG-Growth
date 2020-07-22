@@ -1,0 +1,17 @@
+ {
+  "name" : "ivrpgbattleaura1",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "effect" : "power"
+  },
+
+  "scripts" : [
+    "battleaurastatus.lua"
+  ],
+
+  "animationConfig" : "battleaura.animation",
+
+  "label" : "Blood Aura",
+  "icon" : "/specs/techs/battlemage/battleaura_blood.png"
+}

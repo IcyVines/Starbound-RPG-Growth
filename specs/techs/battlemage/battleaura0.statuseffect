@@ -1,0 +1,17 @@
+ {
+  "name" : "ivrpgbattleaura0",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "effect" : "none"
+  },
+
+  "scripts" : [
+    "battleaurastatus.lua"
+  ],
+
+  "animationConfig" : "battleaura.animation",
+
+  "label" : "No Aura",
+  "icon" : "/specs/techs/battlemage/battleaura.png"
+}
