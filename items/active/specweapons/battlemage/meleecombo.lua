@@ -61,7 +61,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
       and not status.resourceLocked("energy") then
 
     if self.active then
-      self:setState(self.empoweredwindup)
+      self:setState(self.empoweredwindupslam)
     else
       self:setState(self.empower)
     end
@@ -80,19 +80,6 @@ function MeleeCombo:empower()
   util.wait(self.stances.empower.durationAfter)
 end
 
-function MeleeCombo:empoweredwindup()
-  self.weapon:setStance(self.stances.empoweredwindup)
-  self.weapon:updateAim()
-
-  util.wait(self.stances.empoweredwindup.duration)
-  
- if self.fireMode == "alt" then
-  self:setState(self.empoweredwindupslam)
-  else
-  self:setState(self.empoweredfire)
- end
-end
-
 function MeleeCombo:empoweredwindupslam()
   self.weapon:setStance(self.stances.empoweredwindupslam)
   self.weapon:updateAim()
@@ -100,24 +87,6 @@ function MeleeCombo:empoweredwindupslam()
   util.wait(self.stances.empoweredwindupslam.duration)
 
   self:setState(self.empoweredslam)
-end
-
-function MeleeCombo:empoweredfire()
-  self.weapon:setStance(self.stances.empoweredfire)
-  self.weapon:updateAim()
-
-  local position = vec2.add(mcontroller.position(), {self.projectileOffset[1] * mcontroller.facingDirection(), self.projectileOffset[2]})
-  local params = {
-    powerMultiplier = activeItem.ownerPowerMultiplier(),
-    power = self:damageAmount()
-  }
-  world.spawnProjectile(self.projectileType, position, activeItem.ownerEntityId(), self:aimVector(), false, params)
-
-  animator.playSound("slash")
-  status.overConsumeResource("energy", self.projectileEnergyUsage)
-
-  util.wait(self.stances.empoweredfire.duration / 2)
-
 end
 
 function MeleeCombo:empoweredslam()
@@ -161,7 +130,7 @@ function MeleeCombo:windup()
       coroutine.yield()
     end
   else
-    util.wait(stance.duration)
+    util.wait(stance.duration - (self.active and 0.075 or 0))
   end
 
   if self.energyUsage then
@@ -217,7 +186,7 @@ function MeleeCombo:fire()
   animator.setAnimationState("swoosh", animStateKey)
   animator.playSound(animStateKey)
 
-  local swooshKey = self.animKeyPrefix .. (self.elementalType or self.weapon.elementalType) .. "swoosh"
+  local swooshKey = (self.elementalType or self.weapon.elementalType) .. "swoosh"
   animator.setParticleEmitterOffsetRegion(swooshKey, self.swooshOffsetRegions[self.comboStep])
   animator.burstParticleEmitter(swooshKey)
 
@@ -230,7 +199,7 @@ function MeleeCombo:fire()
     self.comboStep = self.comboStep + 1
     self:setState(self.wait)
   else
-    self.cooldownTimer = self.cooldowns[self.comboStep]
+    self.cooldownTimer = self.cooldowns[self.comboStep] - (self.active and 0.2 or 0)
     self.comboStep = 1
   end
 end
@@ -283,9 +252,4 @@ end
 
 function MeleeCombo:uninit()
   self.weapon:setDamage()
-end
-
-function uninit()
-  incorrectWeapon(true)
-  self.weapon:uninit()
 end

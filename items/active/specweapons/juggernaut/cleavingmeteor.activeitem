@@ -1,0 +1,88 @@
+{
+  "itemName" : "ivrpgwcleavingmeteor",
+  "price" : 5000,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "Layer upon layer of molten meteoric metal gives this brutal cleaver a demonic red tint. Its weight crushes moreso than it cleaves, though.",
+  "shortdescription" : "^red;Cleaving Meteor^white;",
+  "tooltipKind" : "ivrpgweapon",
+  "category" : "Cleaver",
+  "level" : 6,
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword","hammer"],
+
+  "inventoryIcon" : "cleavingmeteor.png",
+
+  "animation" : "TWhammer.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "cleavingmeteor.png"
+  },
+  "animationCustom" : {
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.0, 4.0],
+      "color" : [105, 22, 18]
+    }},
+    "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
+      "offset" : [-1.0, 1.0]
+    }}}},
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "fire",
+
+  "primaryAbilityType" : "hammersmash",
+  "primaryAbility" : {
+    "fireTime" : 1.0,
+    "baseDps" : 56.66,
+    "damageConfig" : {
+      "damageSourceKind" : "hammer"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : 0,
+        "weaponOffset" : [0.5, 2.7]
+      },
+      "windup" : {
+        "duration" : 0.8,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.4, 1.75],
+
+        // Windup animation
+        "idleHammerAngle" : -10,
+        "windupHammerAngle" : 0,
+        "dropHammerAngle" : 60,
+        "bounceHammerAngle" : 55,
+
+        "minWindup" : 0.7,
+        "windupBaseAngle" : -10,
+        "windupAngleRange" : 70
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "weaponOffset" : [0.4, 2.0]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -35,
+        "weaponRotation" : -55,
+        "smashTimer" : 1.5,
+        "weaponOffset" : [0.6, 2.0]
+      }
+    }
+  },
+
+  "altAbilityType" : "demonsword",
+  "altAbility" : { },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

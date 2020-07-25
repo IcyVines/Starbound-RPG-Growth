@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "ivrpgnovacrystal", "count" : 2 },
+    { "item" : "fabric", "count" : 3 },
+    { "item" : "goldbar", "count" : 4 },
+    { "item" : "solariumstar", "count" : 8 }
+  ],
+	"output" : { "item" : "ivrpgwsolstice", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

@@ -1,6 +1,7 @@
 require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
+require "/scripts/ivrpgutil.lua"
 
 function init()
   animator.setGlobalTag("paletteSwaps", config.getParameter("paletteSwaps", ""))
@@ -45,14 +46,16 @@ function update(dt, fireMode, shiftHeld)
   self.weapon:update(dt, fireMode, shiftHeld)
 
   setActive(self.primaryAbility.active)
+  incorrectWeapon()
 end
 
 function setActive(active)
   if self.active ~= active then
     self.active = active
     if self.active then
-      --animator.setAnimationState("sword", "extend")
-      --self.primaryAbility.animKeyPrefix = "active"
+      animator.setGlobalTag("activeDirective", "active")
+      animator.setLightActive("glow", true)
+      self.primaryAbility.animKeyPrefix = "active"
       self.primaryAbility.baseDps = self.activeBaseDps
       self.elementalType = self.activeElementalType
       self.weapon.elementalType = self.activeElementalType
@@ -60,8 +63,9 @@ function setActive(active)
       self.primaryAbility.energyUsage = self.activeEnergyUsage
       self.primaryAbility:computeDamageAndCooldowns()
     else
-      --animator.setAnimationState("sword", "retract")
-      --self.primaryAbility.animKeyPrefix = "inactive"
+      animator.setGlobalTag("activeDirective", "")
+      animator.setLightActive("glow", false)
+      self.primaryAbility.animKeyPrefix = ""
       self.primaryAbility.baseDps = self.inactiveBaseDps
       self.elementalType = self.inactiveElementalType
       self.weapon.elementalType = self.inactiveElementalType
@@ -73,6 +77,7 @@ function setActive(active)
 end
 
 function uninit()
+  incorrectWeapon(true)
   self.weapon:uninit()
 end
 

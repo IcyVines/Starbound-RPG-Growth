@@ -1,11 +1,11 @@
 {
 	"itemName": "ivrpgwsolstice",
-	"price": 200,
+	"price": 4200,
 	"level": 6,
 	"maxStack": 1,
-	"rarity": "Legendary",
+	"rarity": "Essential",
 	"description": "The highest point you'll ever get.",
-	"shortdescription": "Solstice",
+	"shortdescription": "^magenta;Solstice",
 	"tooltipKind": "base",
 	"category": "staff",
 	"twoHanded": true,
@@ -22,21 +22,27 @@
 		"blade": "solstice.png"
 	},
 	"animationCustom": {
+		"globalTagDefaults" : {
+	    "activeDirective" : ""
+	  },
 		"sounds": {
 			"fire": ["/sfx/melee/swing_spear.ogg"],
 			"fire2": ["/sfx/melee/swing_broadsword.ogg"],
 			"fire3": ["/sfx/melee/swing_spear.ogg"],
-			"fire4": ["/sfx/melee/swing_spear.ogg"],
-			"fire5": ["/sfx/melee/swing_broadsword.ogg"],
+			"fire4": ["/sfx/melee/swing_broadsword.ogg"],
+			"fire5": ["/sfx/melee/swing_spear.ogg"],
 			"fire6": ["/sfx/melee/swing_spear.ogg"],
-			"fire7": ["/sfx/melee/swing_spear.ogg"],
+			"fire7": ["/sfx/melee/swing_broadsword.ogg"],
 			"fire8": ["/sfx/melee/swing_broadsword.ogg"],
-			"activefire" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
-   		"activefire2" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
-    	"activefire3" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
-    	"activefire4" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
-    	"activefire5" : [ "/sfx/melee/laser_weapon_swing1.ogg", "/sfx/melee/laser_weapon_swing2.ogg", "/sfx/melee/laser_weapon_swing3.ogg" ],
-    	"empower" : [],
+			"activefire" : [ "/sfx/melee/laser_weapon_swing1.ogg" ],
+   		"activefire2" : [ "/sfx/melee/laser_weapon_swing2.ogg" ],
+    	"activefire3" : [ "/sfx/melee/laser_weapon_swing3.ogg" ],
+    	"activefire4" : [ "/sfx/melee/laser_weapon_swing2.ogg" ],
+    	"activefire5" : [ "/sfx/melee/laser_weapon_swing1.ogg" ],
+    	"activefire6" : [ "/sfx/melee/laser_weapon_swing1.ogg" ],
+    	"activefire7" : [ "/sfx/melee/laser_weapon_swing3.ogg" ],
+    	"activefire8" : [ "/sfx/melee/laser_weapon_swing2.ogg" ],
+    	"empower" : ["/sfx/melee/energywhip_swing2.ogg"],
     	"slash" : ["/sfx/melee/laser_weapon_swing2.ogg"],
 	  	"slam" : ["/sfx/gun/grenadeblast1.ogg", "/sfx/gun/grenadeblast2.ogg", "/sfx/gun/grenadeblast3.ogg"]
 		},
@@ -93,6 +99,54 @@
 							"cycle": 0.1,
 							"mode": "transition",
 							"transition": "idle"
+						},
+						"activefire": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"activefire2": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"activefire3": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"activefire4": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"activefire5": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"activefire6": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"activefire7": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"activefire8": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
 						}
 					}
 				}
@@ -103,7 +157,7 @@
 					"properties": {
 						"zLevel": 0,
 						"centered": true,
-						"image": "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
+						"image": "<activeDirective><partImage><paletteSwaps>?<directives>?<bladeDirectives>",
 						"offset": [0, 5.875],
 						"transformationGroups": ["weapon"],
 						"rotationCenter": [0, 0],
@@ -151,23 +205,23 @@
 							},
 							"fire3": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>?flipy",
-									"offset": [1, -2.5],
-									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>?flipx?scalenearest=0.75",
+									"offset": [0, 2],
+									"damageArea": [[-4, -3], [-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -3]]
 								}
 							},
 							"fire4": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh2/<elementalType>swoosh.png:<frame>",
-									"offset": [6.0, 1.0],
-									"damageArea": [[-4, 1], [2.5, 1], [2.5, -2], [-4, -2]]
+									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>",
+									"offset": [1, 2],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
 								}
 							},
 							"fire5": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>",
-									"offset": [1, 2.5],
-									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
 								}
 							},
 							"fire6": {
@@ -180,13 +234,69 @@
 							"fire7": {
 								"properties": {
 									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>?flipy",
-									"offset": [1, -2.5],
+									"offset": [1, -1.5],
 									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
 								}
 							},
 							"fire8": {
 								"properties": {
 									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>?flipy?flipx",
+									"offset": [3, -2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+							"activefire": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh/novaswoosh.png:<frame>",
+									"offset": [1, 2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+							"activefire2": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh3/novaswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"activefire3": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh/novaswoosh.png:<frame>?flipx?scalenearest=0.75",
+									"offset": [0, 2],
+									"damageArea": [[-4, -3], [-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -3]]
+								}
+							},
+							"activefire4": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh/novaswoosh.png:<frame>",
+									"offset": [1.0, 2],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+							"activefire5": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh3/novaswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"activefire6": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh3/novaswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"activefire7": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh/novaswoosh.png:<frame>?flipy",
+									"offset": [1, -1.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+							"activefire8": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh/novaswoosh.png:<frame>?flipy?flipx",
 									"offset": [3, -2.5],
 									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
 								}
@@ -201,6 +311,15 @@
 			"weapon": {},
 			"swoosh": {}
 		},
+
+		"lights" : {
+	    "glow" : {
+	      "active" : false,
+	      "position" : [-0.5, 10.0],
+	      "color" : [150, 60, 150],
+	      "transformationGroups" : ["weapon"]
+	    }
+	  },
 
 		"particleEmitters": {
 			"<elementalType>swoosh": {
@@ -270,12 +389,12 @@
 	      "active" : false,
 	      "transformationGroups" : ["swoosh"],
 	      "particles" : [
-	        { "particle" : "icetrailwide"},
-	        { "particle" : "icetrailwide"},
-	        { "particle" : "icetrailwide"},
-	        { "particle" : "icetrail"},
-	        { "particle" : "icetrail"},
-	        { "particle" : "icetrail"}
+	        { "particle" : "corrosive"},
+	        { "particle" : "corrosive"},
+	        { "particle" : "corrosive"},
+	        { "particle" : "frozenslow"},
+	        { "particle" : "frozenslow"},
+	        { "particle" : "frozenslow"}
 	      ]
     	}
 		}
@@ -310,17 +429,14 @@
 		"baseDps": 11,
 
 		"energyPerSecond" : 0,
-    "projectileOffset" : [1, 0],
-    "projectileType" : "mlgstravelingswoosh",
-	  "projectileEnergyUsage": 50,
     "baseDamage" : 12,
 	  "slamOffset" : [4.5, 0],
-	  "slamType" : "mlgsexplosion",
+	  "slamType" : "novaexplosionknockback",
 	  "slamDamage" : 30,
 	  "cooldownTime" : 1.0,
 
 		"damageConfig": {
-			"damageSourceKind": "broadsword",
+			"damageSourceKind": "bluntstaff",
 			"statusEffects": [],
 			"knockbackMode": "facing",
 			"timeout": 0.5
@@ -332,20 +448,20 @@
 				"baseDamageFactor": 0.7,
 				"knockback": 15
 			}, {
-				"baseDamageFactor": 0.6,
+				"baseDamageFactor": 0.9,
 				"knockback": 10
 			}, {
 				"baseDamageFactor": 1.0,
-				"knockback": 20
+				"knockback": 15
 			}, {
-				"baseDamageFactor": 1.1,
+				"baseDamageFactor": 0.7,
 				"knockback": 20
 			}, {
 				"baseDamageFactor": 0.7,
 				"knockback": 20
 			}, {
 				"baseDamageFactor": 1.0,
-				"knockback": 20
+				"knockback": 15
 			}, {
 				"baseDamageFactor": 1.3,
 				"knockback": 20
@@ -396,7 +512,6 @@
 				"allowFlip": true,
 				"allowRotate": false
 			},
-
 			"windup2": {
 				"duration": 0.15,
 				"armRotation": -150,
@@ -444,7 +559,7 @@
 			"wait3": {
 				"duration": 0.2,
 				"armRotation": 70,
-				"weaponRotation": -150,
+				"weaponRotation": 30,
 				"weaponOffset": [0, 0],
 				"twoHanded": true,
 				"allowFlip": true,
@@ -454,6 +569,7 @@
 				"duration": 0.15,
 				"armRotation": 90,
 				"weaponRotation": 20,
+				"weaponAngularVelocity": -1440,
 				"twoHanded": true,
 				"allowRotate": false,
 				"allowFlip": true
@@ -467,7 +583,7 @@
 				"allowFlip": true
 			},
 			"wait4": {
-				"duration": 0.2,
+				"duration": 0.1,
 				"armRotation": -45,
 				"weaponRotation": -55,
 				"twoHanded": true,
@@ -476,24 +592,24 @@
 			},
 			"windup5": {
 				"duration": 0.2,
-				"armRotation": 90,
-				"weaponRotation": 20,
+				"armRotation": -150,
+				"weaponRotation": 50,
 				"twoHanded": true,
 				"allowRotate": false,
 				"allowFlip": true
 			},
 			"fire5": {
-				"duration": 0.3,
-				"armRotation": -60,
-				"weaponRotation": -55,
+				"duration": 0.2,
+				"armRotation": -30,
+				"weaponRotation": -70,
 				"twoHanded": true,
 				"allowRotate": false,
 				"allowFlip": false
 			},
 			"wait5": {
 				"duration": 0.2,
-				"armRotation": -60,
-				"weaponRotation": -55,
+				"armRotation": -30,
+				"weaponRotation": -70,
 				"twoHanded": true,
 				"allowRotate": false,
 				"allowFlip": false
@@ -569,11 +685,11 @@
 			"empower" : {
         "durationBefore" : 0.2,
         "durationAfter" : 0.5,
-        "armRotation" : 90,
-        "weaponRotation" : -90,
+        "armRotation" : 60,
+        "weaponRotation" : -60,
         "twoHanded" : true,
 
-        "weaponOffset" : [0.5, -0.375],
+        "weaponOffset" : [1, -0.375],
 
         "allowRotate" : false,
         "allowFlip" : false
@@ -613,8 +729,8 @@
   "activeEnergyUsage": 15,
   "inactiveElementalType" : "physical",
   "activeElementalType" : "nova",
-  "inactiveDamageType": "broadsword",
-  "activeDamageType" : "nova",
+  "inactiveDamageType": "bluntstaff",
+  "activeDamageType" : "novastaff",
   "inactiveEnergyUsage": 0,
 
 	"builder": "/items/buildscripts/buildunrandweapon.lua"

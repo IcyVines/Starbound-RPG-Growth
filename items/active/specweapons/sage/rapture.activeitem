@@ -1,0 +1,48 @@
+{
+  "itemName" : "ivrpgwrapture",
+  "price" : 5000,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "Atop the mountains, you realize a weapon is no substitute for a coat. Amidst battle, however...",
+  "shortdescription" : "^#77acc3;Rapture^white;",
+  "tooltipKind" : "ivrpgweapon",
+  "category" : "Quarterstaff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","melee","broadsword"],
+
+  "inventoryIcon" : "rapture.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/combobroadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "rapture.png"
+  },
+  
+  
+  "animationCustom" : { },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "broadswordcombo",
+  "primaryAbility" : {
+    "fireTime" : 0.8,
+    "baseDps" : 15.0,
+	
+    "stances" : {
+      "idle" : {
+        "armRotation" : -100,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "weaponOffset" : [0,0],
+
+        "allowRotate" : false,
+        "allowFlip" : true
+     }
+    }
+  },
+  
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

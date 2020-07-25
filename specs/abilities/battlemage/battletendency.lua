@@ -12,10 +12,9 @@ end
 function update(dt)
   self.nearbyAggressive = 0
   local targetIds = enemyQuery(mcontroller.position(), 15, {}, self.id)
-  self.nearbyAggressive = #targetIds / 3
-
+  self.nearbyAggressive = #targetIds / 2
   status.setPersistentEffects("battlemagebattletendency", {
-    {stat = "powerMultiplier", baseMultiplier = math.min(0.75 + self.nearbyAggressive, 3)}
+    {stat = "powerMultiplier", baseMultiplier = math.min(0.5 + self.nearbyAggressive, 3)}
   })
 
   animator.setParticleEmitterActive("rageEmbers", self.nearbyAggressive > 0)
