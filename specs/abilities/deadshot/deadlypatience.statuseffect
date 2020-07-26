@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgdeadlypatience",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "gravityTime" : 1,
+    "regenTime" : 4
+  },
+
+  "scripts" : [
+    "deadlypatience.lua"
+  ],
+
+  "animationConfig" : "deadlypatience.animation",
+
+  "label" : "Flightless",
+  "icon" : "/specs/abilities/deadshot/deadlypatience.png"
+}

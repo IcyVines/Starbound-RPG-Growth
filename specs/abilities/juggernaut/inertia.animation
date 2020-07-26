@@ -1,0 +1,5 @@
+{
+  "sounds" : {
+    "thud" : ["/sfx/tech/mech_step.ogg"]
+  }
+}

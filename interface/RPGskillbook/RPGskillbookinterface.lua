@@ -324,18 +324,22 @@ function updateOverview(toNext)
   
   if status.statPositive("ivrpghardcore") then
     widget.setText("overviewlayout.hardcoretoggletext", "Active")
+    widget.setFontColor("overviewlayout.hardcoretoggletext", "green")
     widget.setVisible("overviewlayout.hardcoretext", true)
     widget.setVisible("overviewlayout.hardcoreweapontext", true)
   else
     widget.setText("overviewlayout.hardcoretoggletext", "Inactive")
+    widget.setFontColor("overviewlayout.hardcoretoggletext", "red")
     widget.setVisible("overviewlayout.hardcoretext", false)
     widget.setVisible("overviewlayout.hardcoreweapontext", false)
   end
 
   if not status.statusProperty("ivrpgrallymode", false) then
     widget.setText("overviewlayout.rallymodeactive", "Inactive")
+    widget.setFontColor("overviewlayout.rallymodeactive", "red")
   else
     widget.setText("overviewlayout.rallymodeactive", "Active")
+    widget.setFontColor("overviewlayout.rallymodeactive", "green")
   end
 
 end

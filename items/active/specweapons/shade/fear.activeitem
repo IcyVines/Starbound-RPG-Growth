@@ -1,0 +1,50 @@
+{
+  "itemName" : "ivrpgwfear",
+  "price" : 1500,
+  "inventoryIcon" : "fear_icon.png",
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "tooltipKind" : "ivrpgweapon",
+  "category" : "bow",
+  "description" : "Rattling: the sound of bones creaking as the string is pulled. And from out of sight, an arrow is loosed. Crunch: the sounds of bones ^red;breaking^reset;.",
+  "shortdescription" : "FEAR",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "ranged", "bow"],
+
+  "radioMessagesOnPickup" : [ "pickupbow" ],
+
+  "level" : 6,
+  "classreq" : 3,
+  "specreq" : 2,
+
+  "animation" : "/items/active/weapons/bow/bow.animation",
+  "animationParts" : {
+    "bow" : "fear.png"
+  },
+
+  "animationCustom" : {
+    "animatedParts" : { "parts" : { "bow" : { "properties" : {
+      "offset" : [0, -0.0625]
+    }}}},
+    "sounds" : {
+      "draw" : [ "/sfx/gun/bow_draw1.ogg", "/sfx/gun/bow_draw2.ogg", "/sfx/gun/bow_draw3.ogg" ],
+      "release" : [ "/sfx/gun/bow_loose.ogg" ],
+      "perfectRelease" : [ "/sfx/gun/bow_loose_perfect.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/specweapons/shade/bow.lua"],
+
+  "primaryAbilityType" : "bowshot",
+  "primaryAbility" : {
+  	"scripts" : ["/items/active/specweapons/shade/bowshot.lua"],
+  	"inaccuracy" : 0,
+    "projectileType" : "ivrpgfeararrow",
+    "powerProjectileType" : "ivrpgchargedfeararrow",
+    "projectileParameters" : {
+      "power" : 6.5
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildbow.lua"
+}

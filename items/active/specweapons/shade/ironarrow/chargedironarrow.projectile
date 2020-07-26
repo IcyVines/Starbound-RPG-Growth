@@ -1,0 +1,37 @@
+{
+  "projectileName" : "ivrpgchargedfeararrow",
+  "physics" : "arrow",
+  "image" : "chargedironarrow_small.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "emitters" : [ "daggerblue" ],
+  "damageKindImage" : "icon.png",
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "actionOnCollide" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/impact_arrow.ogg"
+      ]
+    }
+  ],
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
+    }
+  ],
+  //"scripts" : ["/items/active/specweapons/hunter/arrows/arrow.lua"],
+  "power" : 30,
+  "flippable" : true,
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+  "statusEffects" : [{"effect" : "ivrpgsacrifice", "duration" : 5}],
+  "scripts" : ["/items/active/specweapons/shade/ironarrow/arrow.lua"],
+  "damageKind" : "bow"
+}
