@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgquasarstatus",
+  "effectConfig" : {
+    "shieldDecay" : 0.5,
+    "healthStatus" : "regeneration4",
+    "healthRange" : 15
+  },
+
+  "defaultDuration" : 10,
+
+  "scripts" : [
+  	"quasarstatus.lua"
+  ],
+
+  "label" : "Quasar",
+  "icon" : "/specs/techs/shade/quasar.png"
+}
