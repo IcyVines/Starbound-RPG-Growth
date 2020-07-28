@@ -35,14 +35,19 @@
 
   "scripts" : ["/items/active/specweapons/shade/bow.lua"],
 
+  "drawTimeMultiplier" : 0.75,
+
   "primaryAbilityType" : "bowshot",
   "primaryAbility" : {
   	"scripts" : ["/items/active/specweapons/shade/bowshot.lua"],
   	"inaccuracy" : 0,
     "projectileType" : "ivrpgfeararrow",
     "powerProjectileType" : "ivrpgchargedfeararrow",
+    "energyPerShot" : 30,
+    "cooldownTime" : 0.4,
     "projectileParameters" : {
-      "power" : 6.5
+      "power" : 9.5,
+      "speed" : 90
     }
   },
 

@@ -1,0 +1,18 @@
+{
+  "kind" : "ivrpgblackoutgas",
+  "definition" : {
+    "type" : "animated",
+    "animation" : "/items/active/specweapons/shade/mine/gas/blackoutgas.animation",
+    "initialVelocity" : [0, 0],
+    "finalVelocity" : [0, 0],
+    "approach" : [1, 1],
+    "timeToLive" : 1.4,
+    "size" : 1.0,
+    "layer" : "middle",
+    "variance" : {
+      "initialVelocity" : [4, 4],
+      "rotation" : 360,
+      "angularVelocity" : 0
+    }
+  }
+}

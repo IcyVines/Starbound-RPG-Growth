@@ -1,0 +1,23 @@
+{
+  "projectileName" : "ivrpgblackoutmine",
+  "physics" : "stickygrenade",
+  "bounces" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [80, 0, 80],
+  "image" : "blackoutmine.png",
+  "animationCycle" : 0.8,
+  "orientationLocked" : false,
+  "timeToLive" : 3,
+  "frameNumber" : 4,
+  "power" : 0,
+  "renderLayer" : "MiddleParticle+2",
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "onlyHitTerrain" : true,
+  "movementSettings" : {
+    "collisionPoly" : [ [-1.5, -1.5], [1.5, -1.5], [1.5, 0.5], [-1.5, 0.5] ]
+  },
+  "persistentAudio" : "/sfx/projectiles/guidedrocket_loop1.ogg",
+  "scripts" : [ "blackoutmine.lua" ]
+}

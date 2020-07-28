@@ -633,7 +633,7 @@ function updateSpecializationSelect()
   end
   local disabled = currentSpec.disabled
   local specDescText = disabled and "^red;Currently Disabled!^reset;\n" or ""
-  specDescText = specDescText .. (currentSpec.gender and "^red;" .. currentSpec.gender:gsub("^%l", string.upper) .. " Only^white;\n" or "")
+  specDescText = specDescText .. (currentSpec.gender and "^red;" .. currentSpec.gender:gsub("^%l", string.upper) .. " Only\nEquip all three 'True Understanding' skills in the Skills Tab (K) to equip!^white;\n" or "")
   widget.setText("specializationslayout.desctext", specDescText .. concatTableValues({currentSpec.description}, "\n\n"))
   --widget.setText("specializationslayout.loretext", concatTableValues(currentSpec.flavor, "\n\n"))
   widget.setText("specializationslayout.weapontext", concatTableValues(currentSpec.weaponText, "\n\n"))

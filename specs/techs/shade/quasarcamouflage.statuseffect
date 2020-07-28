@@ -1,5 +1,5 @@
 {
-  "name" : "ivrpgquasarstatus",
+  "name" : "ivrpgquasarcamouflage",
   "effectConfig" : {
     "shieldDecay" : 0.5,
     "healthStatus" : "regeneration4",
@@ -9,7 +9,7 @@
   "defaultDuration" : 10,
 
   "scripts" : [
-  	"quasarstatus.lua"
+  	"quasarcamouflage.lua"
   ],
 
   "label" : "Quasar",

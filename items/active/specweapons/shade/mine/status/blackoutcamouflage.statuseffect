@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgblackoutcamouflage",
+  "effectConfig" : {
+
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+  	"blackoutcamouflage.lua"
+  ],
+
+  "label" : "Blackout Camo",
+  "icon" : "/items/active/specweapons/shade/mine/status/blackoutcamouflage.png"
+}

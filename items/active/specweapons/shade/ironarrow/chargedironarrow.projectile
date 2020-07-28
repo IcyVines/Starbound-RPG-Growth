@@ -7,7 +7,7 @@
   "emitters" : [ "daggerblue" ],
   "damageKindImage" : "icon.png",
   "timeToLive" : 10,
-  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ],
+  "damagePoly" : [ [-8, -2], [8, -2], [8, 2], [-8, 2] ],
   "actionOnCollide" : [
     {
       "action" : "config",
@@ -26,7 +26,6 @@
       "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
     }
   ],
-  //"scripts" : ["/items/active/specweapons/hunter/arrows/arrow.lua"],
   "power" : 30,
   "flippable" : true,
   "knockback" : 20,

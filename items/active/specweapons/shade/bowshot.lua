@@ -5,7 +5,7 @@ BowShot = WeaponAbility:new()
 
 function BowShot:init()
   self.energyPerShot = self.energyPerShot or 0
-
+  self.drawTimeMultiplier = config.getParameter("drawTimeMultiplier", 1)
   self.drawTime = 0
   self.cooldownTimer = self.cooldownTime
 
@@ -45,7 +45,7 @@ function BowShot:draw()
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     if self.walkWhileFiring then mcontroller.controlModifiers({runningSuppressed = true}) end
 
-    self.drawTime = self.drawTime + self.dt
+    self.drawTime = self.drawTime + (self.dt * self.drawTimeMultiplier)
 
     local drawFrame = math.floor(root.evalFunction(self.drawFrameSelector, self.drawTime))
     animator.setGlobalTag("drawFrame", drawFrame)
@@ -54,6 +54,7 @@ function BowShot:draw()
     coroutine.yield()
   end
 
+  self.altFire = ""
   self:setState(self.fire)
 end
 
@@ -65,7 +66,7 @@ function BowShot:drawAlt()
   while self.fireMode == "alt" do
     if self.walkWhileFiring then mcontroller.controlModifiers({runningSuppressed = true}) end
 
-    self.drawTime = self.drawTime + self.dt
+    self.drawTime = self.drawTime + (self.dt * self.drawTimeMultiplier * 0.75)
 
     local drawFrame = math.floor(root.evalFunction(self.drawFrameSelector, self.drawTime))
     animator.setGlobalTag("drawFrame", drawFrame)
@@ -74,7 +75,14 @@ function BowShot:drawAlt()
     coroutine.yield()
   end
 
-  self:setState(self.fire)
+  if self.drawTime < 0.25 then
+    animator.stopAllSounds("draw")
+    animator.setGlobalTag("drawFrame", "0")
+    self.drawTime = 0
+  else
+    self.altFire = "mine"
+    self:setState(self.fire)
+  end
 end
 
 function BowShot:fire()
@@ -85,7 +93,7 @@ function BowShot:fire()
 
   if not world.pointTileCollision(self:firePosition()) and status.overConsumeResource("energy", self.energyPerShot) then
     world.spawnProjectile(
-        self:perfectTiming() and self.powerProjectileType or self.projectileType,
+        (self:perfectTiming() and self.powerProjectileType or self.projectileType) .. self.altFire,
         self:firePosition(),
         activeItem.ownerEntityId(),
         self:aimVector(),
@@ -122,6 +130,7 @@ function BowShot:currentProjectileParameters()
   projectileParameters.power = projectileParameters.power
       * self.weapon.damageLevelMultiplier
       * root.evalFunction(self.drawPowerMultiplier, self.drawTime)
+      * (self.altFire == "mine" and 0.5 or 1)
   projectileParameters.powerMultiplier = activeItem.ownerPowerMultiplier()
 
   return projectileParameters

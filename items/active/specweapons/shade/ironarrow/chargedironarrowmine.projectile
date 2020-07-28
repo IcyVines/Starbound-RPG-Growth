@@ -1,10 +1,14 @@
 {
-  "projectileName" : "ivrpgfeararrow",
+  "projectileName" : "ivrpgchargedfeararrowmine",
   "physics" : "arrow",
   "actionOnCollide" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
+      "file" : "/items/active/specweapons/shade/mine/bouldersmashexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "ivrpgchargedblackoutmine"
     },
     {
       "action" : "sound",
@@ -19,15 +23,22 @@
       "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
     }
   ],
-  "image" : "ironarrow_small.png",
+  "image" : "chargedironarrow_mine.png",
   "animationCycle" : 0.25,
   "frameNumber" : 1,
   "damageKindImage" : "icon.png",
+  "emitters" : [ "daggerblue" ],
   "power" : 25,
   "knockback" : 10,
   "knockbackDirectional" : true,
   "flippable" : true,
+  "piercing" : true,
+  "expireAfterHit" : true,
   "scripts" : ["/items/active/specweapons/shade/ironarrow/arrow.lua"],
+  "statusEffects" : [{"effect" : "ivrpgsacrifice", "duration" : 5}],
+  "movementSettings" : {
+    "collisionPoly" : [ [-0.8, -0.1], [0.8, -0.1], [0.8, 0.1], [-0.8, 0.1] ]
+  },
   "damageKind" : "bow",
   "timeToLive" : 10,
   "damagePoly" : [ [-8, -2], [8, -2], [8, 2], [-8, 2] ]

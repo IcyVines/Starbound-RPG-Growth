@@ -1,0 +1,34 @@
+{
+  "projectileName" : "ivrpgblackoutgas",
+  "physics" : "statuspod",
+  "bounces" : -1,
+  "timeToLive" : 1.6,
+  "speed" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "blackoutgas_null.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+      "time" : 0.0,
+      "repeat" : false,
+      "action" : "loop",
+      "count" : 20,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "ivrpgblackoutgas"
+        }
+      ]
+    }
+   ],
+  "power" : 0,
+  "piercing" : true,
+  "damageKind" : "applystatus",
+  "damagePoly" : [ [-30, -30], [-30, 30], [30, 30], [30, -30]  ],
+  "damageTeam" : {"type" : "environment"},
+  "flippable" : true,
+  "statusEffects" : [
+    {"effect" : "ivrpgblackoutcamouflage", "duration" : 0.5 }
+  ]
+}
