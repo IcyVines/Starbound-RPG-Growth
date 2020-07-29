@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "refinedviolium", "count" : 4 },
+    { "item" : "bonematerial", "count" : 6 },
+    { "item" : "solariumstar", "count" : 8 },
+    { "item" : "ivrpgetherealblade", "count" : 1 }
+  ],
+	"output" : { "item" : "ivrpgwfear", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

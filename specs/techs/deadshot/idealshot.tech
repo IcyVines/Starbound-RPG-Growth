@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgidealshot",
+  "type" : "head",
+
+  "scripts" : ["idealshot.lua"],
+  "animator" : "idealshot.animation",
+
+  "description" : "Deadshot Only",
+  "shortDescription" : "Ideal Shot",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/deadshot/idealshot.png",
+
+  "chipCost" : 0,
+  "cooldown" : 30.0,
+  "duration" : 10
+}

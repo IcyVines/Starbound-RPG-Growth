@@ -31,7 +31,7 @@ function update(dt)
     if world.lineTileCollision(mcontroller.position(), {mcontroller.xPosition() + i * 1.5, mcontroller.yPosition()}) then
       self.stuckDirection = i == -1 and "left" or "right"
       break
-    elseif world.lineTileCollision(mcontroller.position(), {mcontroller.xPosition(), mcontroller.yPosition() + i}) then
+    elseif world.lineTileCollision(mcontroller.position(), {mcontroller.xPosition() + 0.5, mcontroller.yPosition() + i * 1.2}) or world.lineTileCollision(mcontroller.position(), {mcontroller.xPosition() - 0.5, mcontroller.yPosition() + i * 1.2}) then
       self.stuckDirection = i == 1 and "top" or "bottom"--self.stuckDirection
       break
     end

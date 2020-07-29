@@ -13,19 +13,22 @@ function toggle()
     animator.playSound("activate")
     status.addEphemeralEffect("ivrpgquasarcamouflage", math.huge)
   elseif self.active then
-    weaken()
     animator.playSound("deactivate")
     reset()
+    weaken()
   end
 end
 
 function weaken()
-
+  status.setPersistentEffects("ivrpgquasarweaken", {
+    {stat = "energyRegenPercentageRate", effectiveMultiplier = 0.5}
+  })
 end
 
 function reset()
   self.active = false
   status.removeEphemeralEffect("ivrpgquasarcamouflage")
+  status.clearPersistentEffects("ivrpgquasarweaken")
 end
 
 function uninit()
@@ -35,5 +38,9 @@ end
 function update(args)
   if not hasEphemeralStat(status.activeUniqueStatusEffectSummary(), "ivrpgquasarcamouflage") then
     self.active = false
+  end
+
+  if status.resource("energy") == status.resourceMax("energy") then
+    status.clearPersistentEffects("ivrpgquasarweaken")
   end
 end

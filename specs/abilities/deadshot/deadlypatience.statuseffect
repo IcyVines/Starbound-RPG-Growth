@@ -13,6 +13,6 @@
 
   "animationConfig" : "deadlypatience.animation",
 
-  "label" : "Flightless",
+  "label" : "Deadly Patience",
   "icon" : "/specs/abilities/deadshot/deadlypatience.png"
 }

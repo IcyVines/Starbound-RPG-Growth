@@ -10,7 +10,7 @@ end
 
 function update(dt)
 
-  if mcontroller.onGround() and mcontroller.xVelocity() == 0 then
+  if mcontroller.groundMovement() and not mcontroller.running() and not mcontroller.walking() then
     self.timer = self.timer + dt
   else
     self.timer = 0

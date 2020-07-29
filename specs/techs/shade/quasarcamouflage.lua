@@ -1,8 +1,8 @@
 
 function init()
   self.id = effect.sourceEntity()
-  self.damageGivenUpdate = 5
-  local alpha = math.floor(config.getParameter("alpha", 0.5) * 255)
+  self.damageGivenUpdate = 3
+  local alpha = math.floor(config.getParameter("alpha", 0.25) * 255)
   effect.setParentDirectives(string.format("?multiply=ffffff%02x", alpha))
   effect.addStatModifierGroup({
     {stat = "ivrpgstealth", amount = 1},
@@ -40,5 +40,7 @@ function burst(entity)
 end
 
 function weaken()
-
+  status.setPersistentEffects("ivrpgquasarweaken", {
+    {stat = "energyRegenPercentageRate", effectiveMultiplier = 0.5}
+  })
 end

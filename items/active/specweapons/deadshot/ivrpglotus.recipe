@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "ivrpgfiringmechanism", "count" : 2 },
+    { "item" : "refinedaegisalt", "count" : 3 },
+    { "item" : "refinedviolium", "count" : 3 },
+    { "item" : "solariumstar", "count" : 6 }
+  ],
+	"output" : { "item" : "ivrpgwlotus", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

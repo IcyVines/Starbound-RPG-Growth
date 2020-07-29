@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 20 },
+    { "item" : "refinedviolium", "count" : 4 },
+    { "item" : "scorchedcore", "count" : 2 },
+    { "item" : "solariumstar", "count" : 6 }
+  ],
+	"output" : { "item" : "ivrpgwcleavingmeteor", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

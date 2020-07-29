@@ -1,0 +1,8 @@
+{
+  "name" : "ivrpgidealshotcooldown",
+
+  "defaultDuration" : 10,
+
+  "label" : "Ideal Shot Cooldown",
+  "icon" : "/specs/techs/deadshot/idealshotcooldown.png"
+}

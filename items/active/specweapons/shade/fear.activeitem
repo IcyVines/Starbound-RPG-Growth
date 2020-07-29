@@ -7,7 +7,7 @@
   "tooltipKind" : "ivrpgweapon",
   "category" : "bow",
   "description" : "Rattling: the sound of bones creaking as the string is pulled. And from out of sight, an arrow is loosed. Crunch: the sounds of bones ^red;breaking^reset;.",
-  "shortdescription" : "FEAR",
+  "shortdescription" : "^gray;FEAR",
   "twoHanded" : true,
   "itemTags" : ["weapon", "ranged", "bow"],
 
