@@ -9,7 +9,7 @@
   "category" : "Cleaver",
   "level" : 6,
   "twoHanded" : true,
-  "itemTags" : ["weapon","melee","broadsword","hammer"],
+  "itemTags" : ["weapon","melee","broadsword","hammer","cleaver"],
 
   "inventoryIcon" : "cleavingmeteor.png",
 
@@ -39,9 +39,11 @@
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
     "fireTime" : 1.0,
-    "baseDps" : 56.66,
+    "baseDps" : 16.66,
     "damageConfig" : {
-      "damageSourceKind" : "hammer"
+      "damageSourceKind" : "hammer",
+      "knockback" : 30,
+      "knockbackMode" : "facing"
     },
     "stances" : {
       "idle" : {
@@ -81,7 +83,7 @@
     }
   },
 
-  "altAbilityType" : "demonsword",
+  "altAbilityType" : "juggernautmeteorcleave",
   "altAbility" : { },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

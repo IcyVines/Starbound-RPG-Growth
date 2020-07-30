@@ -20,7 +20,7 @@ function update(dt)
     self.runTime = self.runTimer
   end
 
-  local collision = world.lineCollision(vec2.add(mcontroller.position(), {self.previousRunDirection, 1}), vec2.add(mcontroller.position(), {self.previousRunDirection, -1}), {"Block", "Dynamic", "Slippery"})
+  local collision = world.lineCollision(vec2.add(mcontroller.position(), {self.previousRunDirection, 1.25}), vec2.add(mcontroller.position(), {self.previousRunDirection, -1}), {"Block", "Dynamic", "Slippery"})
 
   if self.slideTimer > 0 or (self.previousRunDirection ~= 0 and self.previousRunDirection ~= self.runDirection) or collision then
     self.slideTimer = self.slideTimer + dt
@@ -38,7 +38,7 @@ function update(dt)
     if mcontroller.onGround() then mcontroller.addMomentum({self.runTimer * self.runDirection, 0}) end
   end
 
-  status.setPersistentEffects("ivrpginertia", {{stat = "powerMultiplier", baseMultiplier = 1 + math.min(math.abs(mcontroller.xVelocity()) / 100, 1)}})
+  status.setPersistentEffects("ivrpginertia", {{stat = "powerMultiplier", baseMultiplier = 1 + math.min((math.abs(mcontroller.xVelocity()) ^ 1.2) / 100, 2)}})
 
   if math.abs(mcontroller.xVelocity()) > 30 and collision then
     animator.playSound("thud")

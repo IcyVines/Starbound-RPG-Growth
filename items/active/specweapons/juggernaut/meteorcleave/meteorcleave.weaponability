@@ -1,0 +1,221 @@
+{
+  "animationParts" : { },
+  "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "giantBlade" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : { },
+            "charge" : {
+              "cycle" : 0.8,
+              "mode" : "transition",
+              "transition" : "fullwindup"
+            },
+            "fullwindup" : {
+              "frames" : 2,
+              "cycle" : 0.066,
+              "mode" : "transition",
+              "transition" : "full"
+            },
+            "full" : {
+              "frames" : 3,
+              "cycle" : 0.2,
+              "mode" : "loop"
+            }
+          }
+        },
+        "giantSwoosh" : {
+          "default" : "idle",
+          "states" : {
+            "idle" : { },
+            "slash" : {
+              "frames" : 3,
+              "cycle" : 0.1,
+              "mode" : "transition",
+              "transition": "idle",
+              "properties" : {
+                "immediateSound" : "/sfx/melee/charge_full_swing1.ogg"
+              }
+            }
+          }
+        }
+      },
+      "parts" : {
+        "giantblade" : {
+          "properties" : {
+            "zLevel" : -1,
+            "centered" : true,
+            "image" : "<giantBlade>",
+            "offset" : [0, 3.5],
+            "transformationGroups" : ["weapon"],
+            "rotationCenter" : [0, 0],
+            "damageArea" : [ [-0.5, -1.0], [-0.5, 5.0], [0.75, 5.0], [0.5, -1.0] ]
+          },
+          "partStates" : {
+            "giantBlade" : {
+              "idle" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "charge" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "fullwindup" : {
+                "properties" : {
+                  "image" : "/items/active/specweapons/juggernaut/meteorcleave/<elementalType>blade.png:charge.<frame>"
+                }
+              },
+              "full" : {
+                "properties" : {
+                  "image" : "/items/active/specweapons/juggernaut/meteorcleave/<elementalType>blade.png:full.<frame>"
+                }
+              }
+            }
+          }
+        },
+        "giantswoosh" : {
+          "properties" : {
+            "zLevel" : -1,
+            "centered" : true,
+            "offset" : [2, 2.5],
+            "transformationGroups" : ["swoosh"],
+            "rotationCenter" : [0, 0]
+          },
+
+          "partStates" : {
+            "giantSwoosh" : {
+              "idle" : {
+                "properties" : {
+                  "image" : ""
+                }
+              },
+              "slash" : {
+                "properties" : {
+                  "image" : "/items/active/specweapons/juggernaut/meteorcleave/swoosh/<elementalType>swoosh.png:<frame>",
+                  "damageArea" : [[-7.5, 3], [-3.75, 4.5], [1.5, 4.5], [6, 2.625], [7.5, -0.375], [7.5, -3.375], [6, -4.5], [0, -3.25]]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "particleEmitters" : {
+      "fireSwordCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-0.75, 0.0, 0.75, 5.5],
+        "particles" : [
+          { "particle" : "fireswoosh1"},
+          { "particle" : "fireswoosh2"},
+          { "particle" : "fireswoosh3"}
+        ]
+      },
+      "electricSwordCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-0.75, 0.0, 0.75, 5.5],
+        "particles" : [
+          { "particle" : "electricswoosh1"},
+          { "particle" : "electricswoosh2"},
+          { "particle" : "electricswoosh2"}
+        ]
+      },
+      "iceSwordCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-0.75, 0.0, 0.75, 5.5],
+        "particles" : [
+          { "particle" : "iceswoosh1"},
+          { "particle" : "iceswoosh2"},
+          { "particle" : "iceswoosh3"}
+        ]
+      },
+      "poisonSwordCharge" : {
+        "active" : false,
+        "transformationGroups" : ["weapon"],
+        "emissionRate" : 30,
+        "offsetRegion" : [-0.75, 0.0, 0.75, 5.5],
+        "particles" : [
+          { "particle" : "poisonswoosh1"},
+          { "particle" : "poisonswoosh2"},
+          { "particle" : "fireswoosh2"}
+        ]
+      }
+    },
+    "sounds" : {
+      "firecharge" : [ "/sfx/melee/giantsword_charge_fire.ogg" ],
+      "firefullwindup" : [ "/sfx/melee/giantsword_charge_full.ogg" ],
+      "firefull" : [ "/sfx/melee/giantsword_charged_fire.ogg" ],
+      "electriccharge" : [ "/sfx/melee/giantsword_charge_electric.ogg" ],
+      "electricfullwindup" : [ "/sfx/melee/giantsword_charge_full.ogg" ],
+      "electricfull" : [ "/sfx/melee/giantsword_charged_electric.ogg" ],
+      "icecharge" : [ "/sfx/melee/giantsword_charge_ice.ogg" ],
+      "icefullwindup" : [ "/sfx/melee/giantsword_charge_full.ogg" ],
+      "icefull" : [ "/sfx/melee/giantsword_charged_ice.ogg" ],
+      "poisoncharge" : [ "/sfx/melee/giantsword_charge_poison.ogg" ],
+      "poisonfullwindup" : [ "/sfx/melee/giantsword_charge_full.ogg" ],
+      "poisonfull" : [ "/sfx/melee/giantsword_charged_poison.ogg" ]
+    }
+  },
+
+  "ability" : {
+    "name" : "Meteor Cleave",
+    "type" : "juggernautmeteorcleave",
+    "scripts" : ["/items/active/specweapons/juggernaut/meteorcleave/meteorcleave.lua"],
+    "class" : "MeteorCleave",
+
+    "energyUsage" : 120.0,
+    "chargeTime" : 0.8,
+    "elementalConfig" : {
+      "fire" : {
+        "damageConfig" : { "statusEffects" : [ "burning" ] }
+      },
+      "ice" : {
+        "damageConfig" : { "statusEffects" : [ "frostslow" ] }
+      },
+      "poison" : {
+        "damageConfig" : { "statusEffects" : [ "weakpoison" ] }
+      },
+      "electric" : {
+        "damageConfig" : { "statusEffects" : [ "electrified" ] }
+      }
+    },
+    "damageConfig" : {
+      "damageSourceKind" : "<elementalType>hammer",
+      "baseDamage" : 26.66,
+      "knockback" : 40,
+      "knockbackMode" : "facing",
+      "timeoutGroup" : "alt",
+      "timeout" : 0.8,
+      "statusEffects" : [ "burning" ]
+    },
+    "cooldownTime" : 1.0,
+    "stances" : {
+      "windup" : {
+        "armRotation" : 70,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "slash" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  }
+}
