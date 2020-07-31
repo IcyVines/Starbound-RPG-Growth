@@ -6,43 +6,67 @@ function init()
   self.controlForce = config.getParameter("controlForce", 1000)
   self.maxSpeed = config.getParameter("speed", 60)
   self.start = true
-  self.pathLength = 0
-  self.pathStep = 1
   self.path = nil
   script.setUpdateDelta(1)
-  --[[mcontroller.applyParameters({
-    collisionEnabled = false
-  })]]
 end
 
 function update(dt)
   if self.start then
     self.direction = vec2.norm(mcontroller.velocity())
-    self.nextPosition = vec2.add(mcontroller.position(), vec2.mul(self.direction, 20))
+    mcontroller.setVelocity({0,0})
     self.start = false
   end
-  
-  if self.path then
-    --sb.logInfo(sb.printJson(path))
-    self.pathLength = #self.path
-    if self.pathStep <= self.pathLength then
-      mcontroller.setPosition(self.path[self.pathStep].target.position)
-      self.pathStep = self.pathStep + 2
-    else
 
+  if world.magnitude(world.entityPosition(self.playerId), mcontroller.position()) > 50 then
+    mcontroller.setVelocity(vec2.mul(self.direction, 150))
+    mcontroller.applyParameters({
+        collisionEnabled = true
+      })
+    return
+  end
+
+  if self.path then
+    mcontroller.applyParameters({
+        collisionEnabled = false
+      })
+    -- sb.logInfo(sb.printJson(path))
+    if self.pathStep <= #self.path then
+      mcontroller.setPosition(self.path[self.pathStep].target.position)
+      self.pathStep = self.pathStep + 1
+    else
+      self.nextPosition = vec2.add(mcontroller.position(), vec2.mul(self.direction, 20))
+      self.path = path()
+      if self.path then
+        self.pathStep = 1
+      else
+        mcontroller.setVelocity(vec2.mul(self.direction, 150))
+        mcontroller.applyParameters({
+            collisionEnabled = true
+          })
+      end
     end
   else
-    self.path = hasPath()
+
+    self.nextPosition = vec2.add(mcontroller.position(), vec2.mul(self.direction, 20))
+    self.path = path()
+    if self.path then
+      self.pathStep = 1
+    else
+      mcontroller.setVelocity(vec2.mul(self.direction, 150))
+      mcontroller.applyParameters({
+          collisionEnabled = true
+        })
+    end
   end
 end
 
-function hasPath()
+function path()
   local params = mcontroller.parameters()
-  params["flySpeed"] = 100
+  params["flySpeed"] = self.maxSpeed
   params["gravityEnabled"] = false
   params["minimumLiquidPercentage"] = 1.1 -- over 100% so never submerged
   local path = world.findPlatformerPath(mcontroller.position(), self.nextPosition, params)
   -- sb.logInfo("Path?: " .. sb.printJson(params, 1))
-  -- sb.logInfo("Path?: " .. sb.printJson(path, 1))
+  sb.logInfo("Path?: " .. sb.printJson(path))
   return path
 end
