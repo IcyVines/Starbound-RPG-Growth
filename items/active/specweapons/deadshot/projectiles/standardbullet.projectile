@@ -1,14 +1,12 @@
 {
-  "projectileName" : "ivrpglotusbullet",
-  "image" : "lotusbullet.png",
+  "projectileName" : "ivrpgstandardlotusbullet",
+  "image" : "lotusbullet_large.png",
   "physics" : "laser",
   "animationCycle" : 0.25,
   "frameNumber" : 1,
   "damageKind" : "lotusbullet",
   "pointLight" : false,
   "flippable" : true,
-  "scripts" : ["pathing.lua"],
-  "emitters" : ["electricplasma"],
   "actionOnReap" : [
     {
       "action" : "config",

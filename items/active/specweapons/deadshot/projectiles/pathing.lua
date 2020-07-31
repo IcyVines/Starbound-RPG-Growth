@@ -31,7 +31,9 @@ function update(dt)
       })
     -- sb.logInfo(sb.printJson(path))
     if self.pathStep <= #self.path then
+      local rotation = vec2.angle(world.distance(self.path[self.pathStep].target.position, self.path[self.pathStep].source.position))
       mcontroller.setPosition(self.path[self.pathStep].target.position)
+      mcontroller.setRotation(rotation)
       self.pathStep = self.pathStep + 1
     else
       self.nextPosition = vec2.add(mcontroller.position(), vec2.mul(self.direction, 20))
@@ -41,21 +43,29 @@ function update(dt)
       else
         mcontroller.setVelocity(vec2.mul(self.direction, 150))
         mcontroller.applyParameters({
-            collisionEnabled = true
-          })
+          collisionEnabled = true
+        })
       end
     end
   else
 
     self.nextPosition = vec2.add(mcontroller.position(), vec2.mul(self.direction, 20))
+    local collisions = world.lineTileCollision(mcontroller.position(), self.nextPosition, {"Block", "Slippery", "Dynamic"})
+    if not collisions then
+      mcontroller.setVelocity(vec2.mul(self.direction, 150))
+      mcontroller.applyParameters({
+        collisionEnabled = true
+      })
+      return
+    end
     self.path = path()
     if self.path then
       self.pathStep = 1
     else
       mcontroller.setVelocity(vec2.mul(self.direction, 150))
       mcontroller.applyParameters({
-          collisionEnabled = true
-        })
+        collisionEnabled = true
+      })
     end
   end
 end
@@ -67,6 +77,6 @@ function path()
   params["minimumLiquidPercentage"] = 1.1 -- over 100% so never submerged
   local path = world.findPlatformerPath(mcontroller.position(), self.nextPosition, params)
   -- sb.logInfo("Path?: " .. sb.printJson(params, 1))
-  sb.logInfo("Path?: " .. sb.printJson(path))
+  --sb.logInfo("Path?: " .. sb.printJson(path))
   return path
 end

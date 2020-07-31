@@ -20,6 +20,35 @@
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },
   "animationCustom" : {
+    "animatedParts" : {
+      "stateTypes" : {
+        "imageSwitch" : {
+          "default" : "default",
+          "states" : {
+            "default" : {},
+            "powered" : {}
+          }
+        }
+      },
+      "parts" : {
+        "middle" : {
+          "partStates" : {
+            "imageSwitch" : {
+              "default" : {
+                "properties" : {
+                  "image" : "lotus.png"
+                }
+              },
+              "powered" : {
+                "properties" : {
+                  "image" : "powered_lotus.png"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "sounds" : {
       "fire" : [ "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg" ]
     }
@@ -47,7 +76,7 @@
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "standardbullet",
+    "projectileType" : "ivrpgstandardlotusbullet",
     "projectileParameters" : {
       "knockback" : 20
     },

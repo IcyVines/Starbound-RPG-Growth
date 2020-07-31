@@ -67,6 +67,7 @@ function init()
   message.setHandler("killedEnemy", function(_, _, enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind, bledToDeath)
     killedEnemy(enemyType, enemyLevel, position, facing, statusEffects, damageDealtForKill, damageKind, bledToDeath)
     world.sendEntityMessage(self.rpg_playerId, "killedEnemyDarkTemplar", enemyLevel, damageKind, bledToDeath)
+    world.sendEntityMessage(self.rpg_playerId, "killedEnemyDeadshot", enemyLevel, damageKind, bledToDeath)
   end)
 
   message.setHandler("damageDealt", function(_, _, damage, damageKind, bleedKind, damageNotRegistered)

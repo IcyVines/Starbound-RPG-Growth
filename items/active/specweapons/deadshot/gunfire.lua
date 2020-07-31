@@ -6,9 +6,18 @@ require "/scripts/ivrpgutil.lua"
 GunFire = WeaponAbility:new()
 
 function GunFire:init()
+  message.setHandler("killedEnemyDeadshot", function(_, _, enemyLevel, damageKind, bledToDeath)
+    if bledToDeath and bledToDeath == "lotusbullet" then
+      activeItem.setInstanceValue("powered", true)
+    elseif damageKind == "lotusbullet" then
+      self.energyMultiplier = math.min(self.energyMultiplier + 0.05, 0.5)
+    end
+  end)
+
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
+  self.energyMultiplier = 0
 
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
@@ -32,12 +41,18 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
     if self.fireMode == (self.activatingFireMode or self.abilitySlot) and status.overConsumeResource("energy", self:energyPerShot()) then
       self:setState(self.auto)
-    elseif self.fireMode == "alt" and status.overConsumeResource("energy", self:energyPerShot() * 2) then
+    elseif self.fireMode == "alt" and status.overConsumeResource("energy", status.resource("energy")) then
       self:setState(self.burst)
     end
   end
 
-  incorrectWeapon()
+  if config.getParameter("powered", false) then
+    animator.setAnimationState("imageSwitch", "powered")
+  else
+    animator.setAnimationState("imageSwitch", "default")
+  end
+
+  status.setPersistentEffects("ivrpgwlotus", {{stat = "maxEnergy", baseMultiplier = 1 + self.energyMultiplier}})
 end
 
 function GunFire:auto()
@@ -57,7 +72,7 @@ end
 function GunFire:burst()
   self.weapon:setStance(self.stances.fire)
 
-  self:fireProjectile("ivrpglotusbullet")
+  self:fireProjectile("ivrpglotusbullet", {power = self:damagePerShot() * 0.75})
   self:muzzleFlash()
 
   if self.stances.fire.duration then
@@ -96,7 +111,7 @@ end
 
 function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, firePosition, projectileCount)
   local params = sb.jsonMerge(self.projectileParameters, projectileParams or {})
-  params.power = self:damagePerShot()
+  params.power = params.power or self:damagePerShot()
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.speed = util.randomInRange(params.speed)
 
@@ -142,9 +157,11 @@ function GunFire:energyPerShot()
 end
 
 function GunFire:damagePerShot()
-  return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
+  local powered = config.getParameter("powered", false)
+  activeItem.setInstanceValue("powered", false)
+  return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount * (powered and 1.25 or 1)
 end
 
 function GunFire:uninit()
-  incorrectWeapon(true)
+  
 end
