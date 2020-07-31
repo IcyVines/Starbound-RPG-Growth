@@ -603,7 +603,7 @@ end
 
 function changeProfessionDescription(name)
   local textArray = root.assetJson("/professions/professionDescriptions.config")[name]
-  local disabledText = (textArray.disabled and name ~= "default") and "\n^red;Not Yet Available!" or ""
+  local disabledText = (textArray.disabled and name ~= "default") and "\n^red;Not Released Yet!" or ""
   widget.setText("professionslayout.professiondescription", textArray.text .. disabledText) 
   widget.setFontColor("professionslayout." .. name .. "title", textArray.color)
   local enoughMoney = (player.currency("money") or 0) >= 1000
@@ -632,7 +632,7 @@ function updateSpecializationSelect()
     widget.setFontColor("specializationslayout.spectitle", currentSpec.titleColor)
   end
   local disabled = currentSpec.disabled
-  local specDescText = disabled and "^red;Currently Disabled!^reset;\n" or ""
+  local specDescText = disabled and "^red;Not Released Yet!^reset;\n" or ""
   specDescText = specDescText .. (currentSpec.gender and "^red;" .. currentSpec.gender:gsub("^%l", string.upper) .. " Only\nEquip all three 'True Understanding' skills in the Skills Tab (K) to equip!^white;\n" or "")
   widget.setText("specializationslayout.desctext", specDescText .. concatTableValues({currentSpec.description}, "\n\n"))
   --widget.setText("specializationslayout.loretext", concatTableValues(currentSpec.flavor, "\n\n"))

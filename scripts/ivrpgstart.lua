@@ -631,6 +631,14 @@ end
 function checkWeaponCombo(tag1, tag2)
   self.rpg_heldItem = world.entityHandItem(self.rpg_playerId, "primary")
   self.rpg_heldItem2 = world.entityHandItem(self.rpg_playerId, "alt")
+  if tag1 == tag2 then
+    if (self.rpg_heldItem and root.itemHasTag(self.rpg_heldItem, tag1)) or (self.rpg_heldItem2 and root.itemHasTag(self.rpg_heldItem2, tag2)) then
+      return true
+    else
+      return false
+    end
+  end
+  
   if self.rpg_heldItem and self.rpg_heldItem2 and ((root.itemHasTag(self.rpg_heldItem, tag1) and root.itemHasTag(self.rpg_heldItem2, tag2)) or (root.itemHasTag(self.rpg_heldItem, tag2) and root.itemHasTag(self.rpg_heldItem2, tag1))) then
     return true
   else

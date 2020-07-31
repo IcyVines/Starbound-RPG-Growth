@@ -189,7 +189,7 @@
       }
     },
     "damageConfig" : {
-      "damageSourceKind" : "<elementalType>hammer",
+      "damageSourceKind" : "cleavingmeteorfirehammer",
       "baseDamage" : 26.66,
       "knockback" : 40,
       "knockbackMode" : "facing",

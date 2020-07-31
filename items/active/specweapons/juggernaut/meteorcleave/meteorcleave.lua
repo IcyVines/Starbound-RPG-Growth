@@ -5,6 +5,7 @@ MeteorCleave = WeaponAbility:new()
 
 function MeteorCleave:init()
   self.cooldownTimer = self.cooldownTime
+  self.damageGivenUpdate = 5
   self:reset()
 end
 
@@ -15,6 +16,29 @@ function MeteorCleave:update(dt, fireMode, shiftHeld)
 
   if self.fireMode == "alt" and self.weapon.currentState == nil and self.cooldownTimer == 0 and not status.resourceLocked("energy")then
     self:setState(self.windup)
+  end
+
+  self:updateDamageGiven()
+end
+
+function MeteorCleave:updateDamageGiven()
+  local notifications = nil
+  notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if "cleavingmeteorfirehammer" == notification.damageSourceKind then
+        if notification.healthLost > 0 and notification.damageDealt > notification.healthLost and world.entityExists(notification.targetEntityId) then
+          world.spawnProjectile(
+            "fireplasmaexplosionstatus",
+            world.entityPosition(notification.targetEntityId),
+            activeItem.ownerEntityId(),
+            {0,0},
+            false,
+            {timeToLive = 0.25, power = status.stat("powerMultiplier")*50}
+          )
+        end
+      end
+    end
   end
 end
 
@@ -45,7 +69,7 @@ function MeteorCleave:windup()
     coroutine.yield()
   end
 
-  if chargeTimer == 0 and status.overConsumeResource("energy", self.energyUsage) then
+  if chargeTimer == 0 and status.overConsumeResource("energy", status.resource("energy")) then
     self:setState(self.slash)
   end
 end

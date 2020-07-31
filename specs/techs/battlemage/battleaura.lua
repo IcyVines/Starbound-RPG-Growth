@@ -10,7 +10,11 @@ end
 
 function switch()
   self.oldStance = self.stance
-  self.stance = (self.stance + 1) % 4
+  if self.shiftHeld then
+    self.stance = (self.stance - 1) % 4
+  else
+    self.stance = (self.stance + 1) % 4
+  end
   animator.playSound(self.stance == 0 and "deactivate" or "activate")
 end
 
@@ -22,6 +26,7 @@ function uninit()
 end
 
 function update(args)
+  self.shiftHeld = not args.moves["run"]
   status.addEphemeralEffect("ivrpgbattleaura" .. self.stance, 2)
   status.removeEphemeralEffect("ivrpgbattleaura" .. self.oldStance)
   nearbyAllies()

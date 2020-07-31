@@ -1,6 +1,6 @@
 {
   "name" : "ivrpgidealshot",
-  "type" : "head",
+  "type" : "body",
 
   "scripts" : ["idealshot.lua"],
   "animator" : "idealshot.animation",

@@ -4,6 +4,8 @@ require "/scripts/ivrpgutil.lua"
 
 function init()
   self.active = false
+  self.damageGivenUpdate = 5
+  self.id = entity.id()
   Bind.create("Up", toggle)
 end
 
@@ -36,11 +38,34 @@ function uninit()
 end
 
 function update(args)
-  if not hasEphemeralStat(status.activeUniqueStatusEffectSummary(), "ivrpgquasarcamouflage") then
+  if not status.uniqueStatusEffectActive("ivrpgquasarcamouflage") then
     self.active = false
   end
+
+  updateDamageGiven()
 
   if status.resource("energy") == status.resourceMax("energy") then
     status.clearPersistentEffects("ivrpgquasarweaken")
   end
 end
+
+function updateDamageGiven()
+  local notifications = nil
+  notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if notification.healthLost > 0 and self.active then
+        burst(notification.targetEntityId)
+      end
+    end
+  end
+end
+
+function burst(entity)
+  if not world.entityExists(entity) then return end
+  local energy = status.resource("energy")
+  status.overConsumeResource("energy", energy + 1)
+  world.spawnProjectile("ivrpgquasarcollapse", world.entityPosition(entity), self.id, {0,0}, false, {power = energy, powerMultiplier = status.stat("powerMultiplier")})
+  reset()
+end
+

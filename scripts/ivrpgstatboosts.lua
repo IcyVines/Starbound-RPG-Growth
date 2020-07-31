@@ -807,7 +807,7 @@ function updateClassicMode()
     local requires = getDictionaryFromType(self.specInfo.classic, "require")
     if not requires then return end
     for k,v in pairs(requires) do
-      if (not self.heldItem or (self.heldItem and not root.itemHasTag(self.heldItem, k))) and (not self.heldItem2 or (self.heldItem2 and not root.itemHasTag(self.heldItem2, k))) then
+      if (not self.heldItem or (self.heldItem and not root.itemHasTag(self.heldItem, k))) and (not self.heldItem2 or (self.heldItem2 and not root.itemHasTag(self.heldItem2, k))) or (v.twoHanded and not self.twoHanded) then
         status.addPersistentEffect("ivrpgweaponbonus", {stat = "powerMultiplier", baseMultiplier = v.amount}) 
       end
     end
