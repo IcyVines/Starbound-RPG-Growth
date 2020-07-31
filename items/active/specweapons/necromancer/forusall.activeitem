@@ -306,7 +306,7 @@
 	"primaryAbility": {
 		"name": "Combo Slash",
 		"type": "broadswordcombo",
-		"scripts": ["/items/active/weapons/melee/meleecombo.lua"],
+		"scripts": ["/items/active/specweapons/necromancer/meleecombo.lua"],
 		"class": "MeleeCombo",
 
 		"comboSteps": 1,
