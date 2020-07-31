@@ -35,6 +35,18 @@ function eat()
 end
 
 function lobGrenade()
+  local handItemAlt = world.entityHandItem(self.id, "alt")
+  if handItemAlt then
+    local grenade = self.validGrenades[handItemAlt]
+    if grenade and status.overConsumeResource("energy", 20) then
+      self.grenadeConfig.power = grenade.power / 2 or 0
+      self.grenadeConfig.speed = grenade.speed or 0
+      world.spawnProjectile(grenade.name or handItemAlt, mcontroller.position(), self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, self.grenadeConfig)
+      self.grenadeCooldownTimer = 2
+    end
+    return
+  end
+  
   local handItem = world.entityHandItem(self.id, "primary")
   if handItem then
     local grenade = self.validGrenades[handItem]
@@ -44,6 +56,7 @@ function lobGrenade()
       world.spawnProjectile(grenade.name or handItem, mcontroller.position(), self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, self.grenadeConfig)
       self.grenadeCooldownTimer = 2
     end
+    return
   end
 end
 

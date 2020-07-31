@@ -24,15 +24,15 @@ function GunFire:update(dt, fireMode, shiftHeld)
     animator.setLightActive("muzzleFlash", false)
   end
 
-  if self.fireMode == (self.activatingFireMode or self.abilitySlot)
+  if (self.fireMode == (self.activatingFireMode or self.abilitySlot) or self.fireMode == "alt")
     and not self.weapon.currentAbility
     and self.cooldownTimer == 0
     and not status.resourceLocked("energy")
     and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
 
-    if self.fireType == "auto" and status.overConsumeResource("energy", self:energyPerShot()) then
+    if self.fireMode == (self.activatingFireMode or self.abilitySlot) and status.overConsumeResource("energy", self:energyPerShot()) then
       self:setState(self.auto)
-    elseif self.fireType == "burst" then
+    elseif self.fireMode == "alt" and status.overConsumeResource("energy", self:energyPerShot() * 2) then
       self:setState(self.burst)
     end
   end
@@ -57,19 +57,15 @@ end
 function GunFire:burst()
   self.weapon:setStance(self.stances.fire)
 
-  local shots = self.burstCount
-  while shots > 0 and status.overConsumeResource("energy", self:energyPerShot()) do
-    self:fireProjectile()
-    self:muzzleFlash()
-    shots = shots - 1
+  self:fireProjectile("ivrpglotusbullet")
+  self:muzzleFlash()
 
-    self.weapon.relativeWeaponRotation = util.toRadians(interp.linear(1 - shots / self.burstCount, 0, self.stances.fire.weaponRotation))
-    self.weapon.relativeArmRotation = util.toRadians(interp.linear(1 - shots / self.burstCount, 0, self.stances.fire.armRotation))
-
-    util.wait(self.burstTime)
+  if self.stances.fire.duration then
+    util.wait(self.stances.fire.duration)
   end
 
-  self.cooldownTimer = (self.fireTime - self.burstTime) * self.burstCount
+  self.cooldownTimer = self.fireTime
+  self:setState(self.cooldown)
 end
 
 function GunFire:cooldown()

@@ -168,11 +168,6 @@
       "speed" : 45,
       "power" : 1
     },
-    "pekkitfreeze_freezegrenade" : {
-      "name" : "gravbomb",
-      "speed" : 45,
-      "power" : 1
-    },
     "fuwolfcase" : {
       "speed" : 40,
       "power" : 1.5
@@ -180,12 +175,6 @@
     "chilibomb" : {
       "speed" : 45,
       "power" : 10,
-      "level" : 2
-    },
-    "ignuschili" : {
-      "name" : "ignus",
-      "speed" : 45,
-      "power" : 9,
       "level" : 2
     },
     "ignuschili" : {
