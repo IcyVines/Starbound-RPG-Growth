@@ -73,8 +73,7 @@ function GunFire:burst()
   self.weapon:setStance(self.stances.fire)
 
   projectile = self:fireProjectile("ivrpglotusbullet", {power = self:damagePerShot() * 0.75})
-  local firePos = vec2.add(mcontroller.position(), activeItem.handPosition(self.weapon.muzzleOffset))
-  local suggestion = world.distance(activeItem.ownerAimPosition(), firePos)
+  local suggestion = world.distance(activeItem.ownerAimPosition(), self:firePosition())
   world.callScriptedEntity(projectile, "findNextPos", suggestion, 2048)
   self:muzzleFlash()
 
@@ -146,6 +145,7 @@ end
 function GunFire:firePosition()
   local offset = copy(self.weapon.muzzleOffset)
   offset[2] = 0.5
+  offset[1] = offset[1] - 0.5
   return vec2.add(mcontroller.position(), activeItem.handPosition(offset))
 end
 

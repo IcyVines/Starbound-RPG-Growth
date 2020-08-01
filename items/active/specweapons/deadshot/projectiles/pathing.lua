@@ -7,6 +7,7 @@ function init()
   self.maxSpeed = config.getParameter("speed", 150) or 150
   self.start = true
   self.path = nil
+  self.timer = 0
   script.setUpdateDelta(1)
   -- self.magicDist = 128
   self.resolution = 16
@@ -38,6 +39,12 @@ function setSmart(mag)
 end
 
 function update(dt)
+  if self.timer < 0.05 then
+    setSmart(false)
+    self.timer = self.timer + dt
+    return
+  end
+
   if self.path then
     setSmart(true)
     -- sb.logInfo(sb.printJson(path))
