@@ -1,0 +1,23 @@
+{
+  "projectileName" : "ivrpgsoulessence",
+  "physics" : "laser",
+  "bounces" : -1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [220, 220, 220],
+  "image" : "soulessence.png",
+  "animationCycle" : 2,
+  "frameNumber" : 8,
+  "power" : 0,
+  "speed" : 0,
+  "emitters" : ["stargazer1", "stargazer2", "stargazer3"],
+  "damageType" : "IgnoresDef",
+  "damageKind" : "applystatus",
+  "damageTeam" : {"type" : "environment"},
+  "damagePoly" : [ [-8, 0], [-5.5, -5.5], [0, -8], [5.5, -5.5], [8, 0], [5.5, 5.5], [0, 8], [-5.5, 5.5] ],
+  "timeToLive" : 10,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
+  "scripts" : [ "tracking.lua" ]
+}

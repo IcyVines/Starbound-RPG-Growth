@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgsoulconversionstatus",
+
+  "effectConfig" : {
+    
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "soulconversionstatus.lua"
+  ],
+
+  "label" : "Mortal Coil",
+  "icon" : "/specs/abilities/sage/soulconversion.png"
+}

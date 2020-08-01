@@ -57,7 +57,7 @@
   "classreq" : 4,
   "specreq" : 2,
 
-  "baseOffset" : [1.0, 0],
+  "baseOffset" : [1.0, 0.25],
   "muzzleOffset" : [2.875, 0.125],
 
   "scripts" : ["/items/active/specweapons/deadshot/gun.lua"],
