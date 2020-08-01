@@ -20,7 +20,7 @@ function init()
   local a = A153154(self.iters)
   -- sb.logInfo(sb.printJson(a))
   for i = 1, self.iters do
-    self.magic[i] = 2*halton(i,1,2)-1
+    self.magic[i] = 2*halton(a[i],1,2)-1
   end
   -- sb.logInfo(sb.printJson(self.magic))
 
