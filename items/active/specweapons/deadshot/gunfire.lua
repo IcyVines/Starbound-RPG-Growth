@@ -72,7 +72,10 @@ end
 function GunFire:burst()
   self.weapon:setStance(self.stances.fire)
 
-  self:fireProjectile("ivrpglotusbullet", {power = self:damagePerShot() * 0.75})
+  projectile = self:fireProjectile("ivrpglotusbullet", {power = self:damagePerShot() * 0.75})
+  local firePos = vec2.add(mcontroller.position(), activeItem.handPosition(self.weapon.muzzleOffset))
+  local suggestion = world.distance(activeItem.ownerAimPosition(), firePos)
+  world.callScriptedEntity(projectile, "findNextPos", suggestion, 2048)
   self:muzzleFlash()
 
   if self.stances.fire.duration then
@@ -129,12 +132,12 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
     end
 
     projectileId = world.spawnProjectile(
-        projectileType,
-        firePosition or self:firePosition(),
-        activeItem.ownerEntityId(),
-        self:aimVector(inaccuracy or self.inaccuracy),
-        false,
-        params
+      projectileType,
+      firePosition or self:firePosition(),
+      activeItem.ownerEntityId(),
+      self:aimVector(inaccuracy or self.inaccuracy),
+      false,
+      params
       )
   end
   return projectileId
@@ -163,5 +166,5 @@ function GunFire:damagePerShot()
 end
 
 function GunFire:uninit()
-  
+
 end
