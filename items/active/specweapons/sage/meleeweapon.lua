@@ -2,6 +2,7 @@ require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
 require "/scripts/ivrpgutil.lua"
+require "/scripts/versioningutils.lua"
 
 function init()
   animator.setGlobalTag("paletteSwaps", config.getParameter("paletteSwaps", ""))
@@ -35,6 +36,7 @@ function setElement(element)
   if self.elementalType ~= element then
     self.elementalType = element
     self.weapon.elementalType = element
+    activeItem.setInstanceValue("elementalType", element)
     animator.setGlobalTag("elementalType", self.elementalType)
     self.primaryAbility.damageConfig.damageSourceKind = (self.elementalType ~= "physical" and self.elementalType or "") .. "broadsword"
     self.primaryAbility:computeDamageAndCooldowns()

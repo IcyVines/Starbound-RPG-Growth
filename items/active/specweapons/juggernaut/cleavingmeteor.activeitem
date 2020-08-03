@@ -13,6 +13,9 @@
 
   "inventoryIcon" : "cleavingmeteor.png",
 
+  "specreq" : 2,
+  "classreq" : 1,
+
   "animation" : "TWhammer.animation",
   "animationParts" : {
     "handle" : "",
@@ -32,12 +35,13 @@
     }
   },
 
-  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+  "scripts" : ["/items/active/specweapons/juggernaut/meleeweapon.lua"],
 
   "elementalType" : "fire",
 
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/juggernaut/hammersmash.lua"],
     "fireTime" : 1.0,
     "baseDps" : 16.66,
     "damageConfig" : {

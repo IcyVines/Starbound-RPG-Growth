@@ -232,7 +232,11 @@ end
 function pairsByKeys(t, f)
   local a = {}
   for n in pairs(t) do table.insert(a, n) end
-  table.sort(a, f)
+  if f then
+    table.sort(a, function(a,b) return f(t, a, b) end)
+  else
+    table.sort(a, f)
+  end
   local i = 0      -- iterator variable
   local iter = function ()   -- iterator function
     i = i + 1

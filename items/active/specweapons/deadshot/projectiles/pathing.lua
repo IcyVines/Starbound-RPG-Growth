@@ -11,7 +11,7 @@ function init()
   script.setUpdateDelta(1)
   -- self.magicDist = 128
   self.resolution = 16
-  self.iters = 32 -- even number please
+  self.iters = 8 -- even number please
   self.maxNodes = 2048
   self.direction = vec2.norm(mcontroller.velocity())
   -- sb.logInfo("Direction: " .. sb.printJson(self.direction))

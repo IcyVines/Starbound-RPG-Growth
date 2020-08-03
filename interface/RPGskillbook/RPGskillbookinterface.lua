@@ -63,6 +63,7 @@ function init()
   self.lastLoreChecked = "changelog"
   self.loreDepth = 1
   self.loreTable = {"lore"}
+  self.logTable = {"changelog"}
   self.lastSkillChecked = "body"
   self.skillDepth = 1
   self.skillTable = {"skill", "body"}
@@ -633,7 +634,10 @@ function updateSpecializationSelect()
   end
   local disabled = currentSpec.disabled
   local specDescText = disabled and "^red;Not Released Yet!^reset;\n" or ""
-  specDescText = specDescText .. (currentSpec.gender and "^red;" .. currentSpec.gender:gsub("^%l", string.upper) .. " Only\nEquip all three 'True Understanding' skills in the Skills Tab (K) to equip!^white;\n" or "")
+  specDescText = specDescText .. (currentSpec.gender and "^red;" .. currentSpec.gender:gsub("^%l", string.upper) .. " Only^white;\n" or "")
+  if currentSpec.gender and currentSpec.gender ~= player.gender() then
+    specDescText = specDescText .. "^red;Equip all three 'True Understanding' skills in the Skills Tab (K) to equip!^white;\n"
+  end
   widget.setText("specializationslayout.desctext", specDescText .. concatTableValues({currentSpec.description}, "\n\n"))
   --widget.setText("specializationslayout.loretext", concatTableValues(currentSpec.flavor, "\n\n"))
   widget.setText("specializationslayout.weapontext", concatTableValues(currentSpec.weaponText, "\n\n"))
@@ -1546,28 +1550,102 @@ end
 
 function changeToChangelogText()
   uncheckLoreTabs("changelog")
-  self.lastLoreChecked = "changelog"
-  local changelog = changelogTextHelper()
   local version = self.versionConfig.version
-  widget.setVisible("lorelayout.scrollArea.list", false)
-  widget.setVisible("lorelayout.backarrow", false)
+  widget.setVisible("lorelayout.scrollArea.list", true)
+  widget.setVisible("lorelayout.backarrow", true)
   widget.setText("lorelayout.title", "RPG Growth " .. version)
-  widget.setText("lorelayout.scrollArea.text", changelog)
+  widget.setText("lorelayout.scrollArea.text", "")
+  self.logTable = {self.lastLoreChecked}
+  buildNewLog()
+end
+
+function buildNewLog()
+  widget.clearListItems("lorelayout.scrollArea.list")
+  widget.setText("lorelayout.scrollArea.text", "")
+  local logData = self.versionConfig
+  for _,v in ipairs(self.logTable) do
+    widget.setText("lorelayout.title", logData[v].title or "^red;Changelog")
+    logData = logData[v].children
+  end
+  if type(logData) == "table" then
+    local added = false
+    for k,v in (self.lastLoreChecked == "changelog" and pairsByKeys(logData, function(t, a, b) return t[b].version < t[a].version end) or pairsByKeys(logData)) do
+      local newListItem = widget.addListItem("lorelayout.scrollArea.list")
+      widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".title", v.title)
+      widget.setData("lorelayout.scrollArea.list." .. newListItem, k)
+      added = true
+    end
+    if not added then
+      widget.setText("lorelayout.scrollArea.text", "^red;Looks like there's nothing here yet!")
+    else
+      widget.setText("lorelayout.scrollArea.text", "")
+    end
+  else
+    widget.setText("lorelayout.scrollArea.text", changelogTextHelper(tostring(logData)))
+  end
+  widget.setButtonEnabled("lorelayout.backarrow", #self.logTable > 1)
+end
+
+function changelogTextHelper(text)
+  --local text = self.versionConfig[self.lastLoreChecked]
+  local returnText = ""
+  local colorSwitch = {}
+  local switch = true
+  local maxLength = 73
+  colorSwitch[true] = "^white;"
+  colorSwitch[false] = "^#d1d1d1;"
+  local previousSpace = false
+  for s in text:gmatch("[^\r\n]+") do
+    local space = string.match(s, "[%s%s%s%s]*") or ""
+    if space == previousSpace then
+      switch = not switch
+    else
+      switch = true
+    end
+    previousSpace = space
+    if returnText ~= "" and (space == "" or space == " ") then
+      returnText = returnText .. "\n"
+    end
+    if string.len(s) > maxLength then
+      local words = {}
+      for word in s:gmatch("%S+") do table.insert(words, word) end
+      --sb.logInfo(sb.printJson(words))
+      local charCount = string.len(space)
+      local line = ""
+      for _,word in ipairs(words) do
+        charCount = charCount + string.len(word) + (line == "" and 0 or 1)
+        if charCount > maxLength then
+          charCount = string.len(space) + string.len(word)
+          returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
+          line = word
+        else
+          if line ~= "" then
+            line = line .. " " .. word
+          else
+            line = word
+          end
+        end
+      end
+      returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
+    else
+      returnText = returnText .. colorSwitch[switch] .. s .. "\n"
+    end
+  end
+  return returnText
 end
 
 function changeToCreditsText()
   uncheckLoreTabs("credits")
-  self.lastLoreChecked = "credits"
-  local credits = changelogTextHelper()
-  widget.setVisible("lorelayout.scrollArea.list", false)
-  widget.setVisible("lorelayout.backarrow", false)
+  widget.setVisible("lorelayout.scrollArea.list", true)
+  widget.setVisible("lorelayout.backarrow", true)
   widget.setText("lorelayout.title", "Credits")
-  widget.setText("lorelayout.scrollArea.text", credits)
+  widget.setText("lorelayout.scrollArea.text", "")
+  self.logTable = {self.lastLoreChecked}
+  buildNewLog()
 end
 
 function changeToLoreText()
   uncheckLoreTabs("lore")
-  self.lastLoreChecked = "lore"
   widget.setVisible("lorelayout.scrollArea.list", true)
   widget.setVisible("lorelayout.backarrow", true)
   widget.setText("lorelayout.title", "Lore")
@@ -1576,6 +1654,7 @@ function changeToLoreText()
 end
 
 function uncheckLoreTabs(name)
+  self.lastLoreChecked = name
   local tabs = {"lore", "changelog", "credits"}
   for _,tab in ipairs(tabs) do
     if tab ~= name then
@@ -1589,13 +1668,24 @@ function mechanicsCheck()
 end
 
 function changeLoreSelection()
-  local selectedLore = widget.getListSelected("lorelayout.scrollArea.list")
-  if selectedLore and type(selectedLore) == "string" then
-    local name = widget.getData("lorelayout.scrollArea.list." .. selectedLore)
-    local unlocks = status.statusProperty("ivrpgloreunlocks", {})
-    if name and (unlocks[name] or mechanicsCheck()) then
-      table.insert(self.loreTable, name)
-      buildNewLore()
+  if self.lastLoreChecked == "lore" then
+    local selectedLore = widget.getListSelected("lorelayout.scrollArea.list")
+    if selectedLore and type(selectedLore) == "string" then
+      local name = widget.getData("lorelayout.scrollArea.list." .. selectedLore)
+      local unlocks = status.statusProperty("ivrpgloreunlocks", {})
+      if name and (unlocks[name] or mechanicsCheck()) then
+        table.insert(self.loreTable, name)
+        buildNewLore()
+      end
+    end
+  else
+    local selectedNode = widget.getListSelected("lorelayout.scrollArea.list")
+    if selectedNode and type(selectedNode) == "string" then
+      local name = widget.getData("lorelayout.scrollArea.list." .. selectedNode)
+      if name then
+        table.insert(self.logTable, name)
+        buildNewLog()
+      end
     end
   end
 end
@@ -1636,54 +1726,17 @@ function buildNewLore()
 end
 
 function oneLoreUp()
-  if #self.loreTable > 1 then
-    table.remove(self.loreTable)
+  if self.lastLoreChecked == "lore" then
+    if #self.loreTable > 1 then
+      table.remove(self.loreTable)
+    end
+    buildNewLore()
+  else
+    if #self.logTable > 1 then
+      table.remove(self.logTable)
+    end
+    buildNewLog()
   end
-  buildNewLore()
-end
-
-function changelogTextHelper()
-  local text = self.versionConfig[self.lastLoreChecked]
-  local returnText = ""
-  local colorSwitch = {}
-  local switch = true
-  local maxLength = 70
-  colorSwitch[true] = "^white;"
-  colorSwitch[false] = "^#d1d1d1;"
-  local previousSpace = false
-  for s in text:gmatch("[^\r\n]+") do
-    local space = string.match(s, "[%s%s%s%s]+") or ""
-    if space == previousSpace then
-      switch = not switch
-    else
-      switch = true
-    end
-    previousSpace = space
-    if returnText ~= "" and space == "" or space == " " then
-      returnText = returnText .. "\n"
-    end
-    if string.len(s) > maxLength then
-      local words = {}
-      for word in s:gmatch("%S+") do table.insert(words, word) end
-      --sb.logInfo(sb.printJson(words))
-      local charCount = string.len(space)
-      local line = ""
-      for _,word in ipairs(words) do
-        charCount = charCount + string.len(word) + 1
-        if charCount > maxLength then
-          charCount = string.len(space) + string.len(word)
-          returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
-          line = word .. " "
-        else
-          line = line .. word .. " "
-        end
-      end
-      returnText = returnText .. colorSwitch[switch] .. space .. line .. "\n"
-    else
-      returnText = returnText .. colorSwitch[switch] .. s .. "\n"
-    end
-  end
-  return returnText
 end
 
 function updateSkillTab()
