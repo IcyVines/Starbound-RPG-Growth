@@ -138,7 +138,7 @@
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
-        "/stats/spacemonster_primary.lua"
+        "/monsters/rpgmonsters/spacemonster_primary.lua"
       ],
       "primaryScriptDelta" : 5,
 

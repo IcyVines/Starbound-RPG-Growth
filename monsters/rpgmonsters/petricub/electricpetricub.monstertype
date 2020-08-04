@@ -186,7 +186,7 @@
       "minimumLiquidStatusEffectPercentage" : 0.1,
 
       "primaryScriptSources" : [
-        "/stats/monster_primary.lua"
+        "/monsters/rpgmonsters/monster_primary.lua"
       ],
       "primaryScriptDelta" : 5,
 
