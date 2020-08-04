@@ -37,6 +37,7 @@ function setElement(element)
     self.elementalType = element
     self.weapon.elementalType = element
     activeItem.setInstanceValue("elementalType", element)
+    animator.setAnimationState("elementalType", element)
     animator.setGlobalTag("elementalType", self.elementalType)
     self.primaryAbility.damageConfig.damageSourceKind = (self.elementalType ~= "physical" and self.elementalType or "") .. "broadsword"
     self.primaryAbility:computeDamageAndCooldowns()

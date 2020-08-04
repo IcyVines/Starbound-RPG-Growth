@@ -59,8 +59,9 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
       and not self.weapon.currentAbility
       and self.cooldownTimer == 0
       and not status.resourceLocked("energy") then
-        self.weapon.elementalType = "fire"
-        self.elementalType = "fire"
+        local elements = {"physical", "fire", "ice", "electric", "nova", "poison"}
+        self.weapon.elementalType = elements[math.random(6)]
+        self.elementalType = self.weapon.elementalType
   end
 end
 
@@ -178,7 +179,7 @@ function MeleeCombo:fire()
   self.weapon:setStance(stance)
   self.weapon:updateAim()
 
-  local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
+  local animStateKey = (self.weapon.elementalType == "physical" and "" or self.weapon.elementalType) .. self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
   animator.setAnimationState("swoosh", animStateKey)
   animator.playSound(animStateKey)
 

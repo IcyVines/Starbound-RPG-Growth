@@ -27,14 +27,48 @@
 			"elementalType" : "physical"
 		},
 		"sounds": {
-			"fire": ["/sfx/melee/swing_spear.ogg"],
-			"fire2": ["/sfx/melee/swing_broadsword.ogg"],
+			"fire": ["/sfx/melee/swing_broadsword.ogg"],
+			"fire2": ["/sfx/melee/swing_spear.ogg"],
 			"fire3": ["/sfx/melee/swing_spear.ogg"],
-			"fire4": ["/sfx/melee/swing_broadsword.ogg"],
-			"fire5": ["/sfx/melee/swing_spear.ogg"],
-			"fire6": ["/sfx/melee/swing_spear.ogg"],
-			"fire7": ["/sfx/melee/swing_broadsword.ogg"],
-			"fire8": ["/sfx/melee/swing_broadsword.ogg"],
+			"fire4": ["/sfx/melee/swing_spear.ogg"],
+			"fire5": ["/sfx/melee/swing_broadsword.ogg"],
+			"fire6": ["/sfx/melee/swing_broadsword.ogg"],
+
+			"firefire": ["/sfx/melee/swing_broadsword_fire1.ogg"],
+			"firefire2": ["/sfx/melee/swing_spear_fire1.ogg"],
+			"firefire3": ["/sfx/melee/swing_spear_fire1.ogg"],
+			"firefire4": ["/sfx/melee/swing_spear_fire1.ogg"],
+			"firefire5": ["/sfx/melee/swing_broadsword_fire2.ogg"],
+			"firefire6": ["/sfx/melee/swing_broadsword_fire1.ogg"],
+
+			"icefire": ["/sfx/melee/swing_broadsword_ice1.ogg"],
+			"icefire2": ["/sfx/melee/swing_spear_ice1.ogg"],
+			"icefire3": ["/sfx/melee/swing_spear_ice1.ogg"],
+			"icefire4": ["/sfx/melee/swing_spear_ice1.ogg"],
+			"icefire5": ["/sfx/melee/swing_broadsword_ice2.ogg"],
+			"icefire6": ["/sfx/melee/swing_broadsword_ice1.ogg"],
+
+			"electricfire": ["/sfx/melee/swing_broadsword_electric1.ogg"],
+			"electricfire2": ["/sfx/melee/swing_spear_electric1.ogg"],
+			"electricfire3": ["/sfx/melee/swing_spear_electric1.ogg"],
+			"electricfire4": ["/sfx/melee/swing_spear_electric1.ogg"],
+			"electricfire5": ["/sfx/melee/swing_broadsword_electric2.ogg"],
+			"electricfire6": ["/sfx/melee/swing_broadsword_electric1.ogg"],
+
+			"novafire": ["/sfx/melee/laser_weapon_swing2.ogg"],
+			"novafire2": ["/sfx/melee/laser_weapon_swing1.ogg"],
+			"novafire3": ["/sfx/melee/laser_weapon_swing1.ogg"],
+			"novafire4": ["/sfx/melee/laser_weapon_swing1.ogg"],
+			"novafire5": ["/sfx/melee/laser_weapon_swing3.ogg"],
+			"novafire6": ["/sfx/melee/laser_weapon_swing2.ogg"],
+
+			"poisonfire": ["/sfx/melee/swing_broadsword_poison1.ogg"],
+			"poisonfire2": ["/sfx/melee/swing_spear_poison1.ogg"],
+			"poisonfire3": ["/sfx/melee/swing_spear_poison1.ogg"],
+			"poisonfire4": ["/sfx/melee/swing_spear_poison1.ogg"],
+			"poisonfire5": ["/sfx/melee/swing_broadsword_poison2.ogg"],
+			"poisonfire6": ["/sfx/melee/swing_broadsword_poison1.ogg"],
+
     	"empower" : ["/sfx/melee/energywhip_swing2.ogg"],
     	"slash" : ["/sfx/melee/laser_weapon_swing2.ogg"],
 	  	"slam" : ["/sfx/gun/grenadeblast1.ogg", "/sfx/gun/grenadeblast2.ogg", "/sfx/gun/grenadeblast3.ogg"]
@@ -80,7 +114,193 @@
 							"cycle": 0.1,
 							"mode": "transition",
 							"transition": "idle"
+						},
+
+						"firefire": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"firefire2": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"firefire3": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"firefire4": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"firefire5": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"firefire6": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+
+						"icefire": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"icefire2": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"icefire3": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"icefire4": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"icefire5": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"icefire6": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+
+						"electricfire": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"electricfire2": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"electricfire3": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"electricfire4": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"electricfire5": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"electricfire6": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+
+						"novafire": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"novafire2": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"novafire3": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"novafire4": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"novafire5": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"novafire6": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+
+						"poisonfire": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"poisonfire2": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"poisonfire3": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"poisonfire4": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"poisonfire5": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"poisonfire6": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
 						}
+
 					}
 				},
 				"elementalType" : {
@@ -143,12 +363,12 @@
               },
               "ice" : {
                 "properties" : {
-                  "image" : "electricrapture.png"
+                  "image" : "icerapture.png"
                 }
               },
               "electric" : {
                 "properties" : {
-                  "image" : "icerapture.png"
+                  "image" : "electricrapture.png"
                 }
               },
               "poison" : {
@@ -194,48 +414,265 @@
 									"image": ""
 								}
 							},
+
 							"fire": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>",
+									"image": "/items/active/weapons/melee/broadsword/swoosh/physicalswoosh.png:<frame>",
 									"offset": [1, 2.5],
 									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
 								}
 							},
 							"fire2": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/physicalswoosh.png:<frame>",
 									"offset": [4.0, 0],
 									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
 								}
 							},
 							"fire3": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/physicalswoosh.png:<frame>",
 									"offset": [4.0, 0],
 									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
 								}
 							},
 							"fire4": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/physicalswoosh.png:<frame>",
 									"offset": [4.0, 0],
 									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
 								}
 							},
 							"fire5": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>?flipx?scalenearest=0.75",
+									"image": "/items/active/weapons/melee/broadsword/swoosh/physicalswoosh.png:<frame>?flipx?scalenearest=0.75",
 									"offset": [0, 2],
 									"damageArea": [[-4, -3], [-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -3]]
 								}
 							},
 							"fire6": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>?flipy?flipx",
+									"image": "/items/active/weapons/melee/broadsword/swoosh/physicalswoosh.png:<frame>?flipy?flipx",
+									"offset": [3, -2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+
+							"firefire": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/fireswoosh.png:<frame>",
+									"offset": [1, 2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+							"firefire2": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/fireswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"firefire3": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/fireswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"firefire4": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/fireswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"firefire5": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/fireswoosh.png:<frame>?flipx?scalenearest=0.75",
+									"offset": [0, 2],
+									"damageArea": [[-4, -3], [-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -3]]
+								}
+							},
+							"firefire6": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/fireswoosh.png:<frame>?flipy?flipx",
+									"offset": [3, -2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+
+							"icefire": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/iceswoosh.png:<frame>",
+									"offset": [1, 2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+							"icefire2": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/iceswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"icefire3": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/iceswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"icefire4": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/iceswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"icefire5": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/iceswoosh.png:<frame>?flipx?scalenearest=0.75",
+									"offset": [0, 2],
+									"damageArea": [[-4, -3], [-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -3]]
+								}
+							},
+							"icefire6": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/iceswoosh.png:<frame>?flipy?flipx",
+									"offset": [3, -2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+
+							"electricfire": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/electricswoosh.png:<frame>",
+									"offset": [1, 2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+							"electricfire2": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/electricswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"electricfire3": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/electricswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"electricfire4": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/electricswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"electricfire5": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/electricswoosh.png:<frame>?flipx?scalenearest=0.75",
+									"offset": [0, 2],
+									"damageArea": [[-4, -3], [-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -3]]
+								}
+							},
+							"electricfire6": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/electricswoosh.png:<frame>?flipy?flipx",
+									"offset": [3, -2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+
+							"novafire": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh/novaswoosh.png:<frame>",
+									"offset": [1, 2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+							"novafire2": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh3/novaswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"novafire3": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh3/novaswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"novafire4": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh3/novaswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"novafire5": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh/novaswoosh.png:<frame>?flipx?scalenearest=0.75",
+									"offset": [0, 2],
+									"damageArea": [[-4, -3], [-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -3]]
+								}
+							},
+							"novafire6": {
+								"properties": {
+									"image": "/items/active/specweapons/battlemage/swoosh/novaswoosh.png:<frame>?flipy?flipx",
+									"offset": [3, -2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+
+							"poisonfire": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/poisonswoosh.png:<frame>",
+									"offset": [1, 2.5],
+									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+								}
+							},
+							"poisonfire2": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/poisonswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"poisonfire3": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/poisonswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"poisonfire4": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/poisonswoosh.png:<frame>",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"poisonfire5": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/poisonswoosh.png:<frame>?flipx?scalenearest=0.75",
+									"offset": [0, 2],
+									"damageArea": [[-4, -3], [-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -3]]
+								}
+							},
+							"poisonfire6": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh/poisonswoosh.png:<frame>?flipy?flipx",
 									"offset": [3, -2.5],
 									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
 								}
 							}
+
 						}
 					}
 				}
