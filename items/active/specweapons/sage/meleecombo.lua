@@ -1,4 +1,5 @@
 require "/scripts/ivrpgutil.lua"
+require "/scripts/vec2.lua"
 
 -- Melee primary ability
 MeleeCombo = WeaponAbility:new()
@@ -17,6 +18,11 @@ function MeleeCombo:init()
   self.cooldownTimer = self.cooldowns[1]
 
   self.animKeyPrefix = self.animKeyPrefix or ""
+  self.elements = {"physical", "fire", "ice", "electric", "nova", "poison"}
+  self.elementIndexes = {physical = 1, fire = 2, ice = 3, electric = 4, nova = 5, poison = 6}
+
+  self.elementalType = config.getParameter("elementalType", "physical")
+  self.elementIndex = self.elementIndexes[self.elementalType]
 
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
@@ -26,6 +32,8 @@ end
 -- Ticks on every update regardless if this is the active ability
 function MeleeCombo:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
+
+  self.shiftHeld = shiftHeld
 
   if self.cooldownTimer > 0 then
     self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
@@ -59,9 +67,7 @@ function MeleeCombo:update(dt, fireMode, shiftHeld)
       and not self.weapon.currentAbility
       and self.cooldownTimer == 0
       and not status.resourceLocked("energy") then
-        local elements = {"physical", "fire", "ice", "electric", "nova", "poison"}
-        self.weapon.elementalType = elements[math.random(6)]
-        self.elementalType = self.weapon.elementalType
+        self:setState(self.empower)
   end
 end
 
@@ -69,12 +75,51 @@ end
 function MeleeCombo:empower()
   self.weapon:setStance(self.stances.empower)
 
+  activeItem.setCursor("/cursors/charge2.cursor")
   util.wait(self.stances.empower.durationBefore)
 
-  animator.playSound("empower")
-  self.active = true
+  animator.setAnimationState("elementalType", "holy")
+  --self.active = true
+  while self.fireMode == "alt" do
+    targetValid = self:targetValid(activeItem.ownerAimPosition())
+    activeItem.setCursor(targetValid and "/cursors/chargeready.cursor" or "/cursors/chargeinvalid.cursor")
 
+    mcontroller.controlModifiers({runningSuppressed = true})
+
+    if targetValid and status.overConsumeResource("energy", 20) then
+      self:spawnBeam()
+    end
+
+    coroutine.yield()
+  end
+  
   util.wait(self.stances.empower.durationAfter)
+  activeItem.setCursor("/cursors/pointer.cursor")
+  animator.setAnimationState("elementalType", self.elementalType)
+end
+
+function MeleeCombo:targetValid(aimPos)
+  local focusPos = mcontroller.position()
+  return world.magnitude(focusPos, aimPos) <= (self.maxCastRange or 30)
+      and not world.lineTileCollision(mcontroller.position(), focusPos)
+      and not world.lineTileCollision(focusPos, aimPos)
+end
+
+function MeleeCombo:spawnBeam()
+  self.timer = 0
+  self.spawnPosition = activeItem.ownerAimPosition()
+  self.randomDirection = math.random(-2,2)
+  world.spawnProjectile("ivrpgraptureholygate", self.spawnPosition, activeItem.ownerEntityId(), {0.1 * self.randomDirection, -1}, false, {timeToLive = 0.8, speed = 0})
+  animator.playSound("empower")
+  self.reap = true
+  util.wait(0.5, function()
+    local params = {curveDirection = self.randomDirection, timeToLive = 0.3, speed = 70}
+    if self.reap then
+      params.actionOnReap = {{action = "projectile", type = "ivrpgraptureholygate", config = {timeToLive = 0.5}}}
+      self.reap = false
+    end
+    world.spawnProjectile("ivrpgrapturebeam", self.spawnPosition, activeItem.ownerEntityId(), {0.1 * self.randomDirection, -1}, false, params)
+  end)
 end
 
 function MeleeCombo:empoweredwindupslam()
@@ -117,6 +162,11 @@ end
 -- State: windup
 function MeleeCombo:windup()
   local stance = self.stances["windup"..self.comboStep]
+
+  if self.shiftHeld then
+    self.elementIndex = (self.elementIndex % 6) + 1
+    self.elementalType = self.elements[self.elementIndex]
+  end
 
   self.weapon:setStance(stance)
 

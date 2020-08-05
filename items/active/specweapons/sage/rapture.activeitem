@@ -69,7 +69,7 @@
 			"poisonfire5": ["/sfx/melee/swing_broadsword_poison2.ogg"],
 			"poisonfire6": ["/sfx/melee/swing_broadsword_poison1.ogg"],
 
-    	"empower" : ["/sfx/melee/energywhip_swing2.ogg"],
+    	"empower" : [ "/sfx/melee/giantsword_charge_full.ogg" ],
     	"slash" : ["/sfx/melee/laser_weapon_swing2.ogg"],
 	  	"slam" : ["/sfx/gun/grenadeblast1.ogg", "/sfx/gun/grenadeblast2.ogg", "/sfx/gun/grenadeblast3.ogg"]
 		},
@@ -1003,16 +1003,16 @@
 			},
 
 			"empower" : {
-        "durationBefore" : 0.2,
+        "durationBefore" : 1,
         "durationAfter" : 0.5,
         "armRotation" : 60,
         "weaponRotation" : -60,
         "twoHanded" : true,
 
-        "weaponOffset" : [1, -0.375],
+        "weaponOffset" : [0.25, -0.375],
 
         "allowRotate" : false,
-        "allowFlip" : false
+        "allowFlip" : true
       }
 		}
 	},
