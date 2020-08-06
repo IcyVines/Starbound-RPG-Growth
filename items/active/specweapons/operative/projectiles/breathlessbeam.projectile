@@ -1,0 +1,87 @@
+{
+  "projectileName" : "ivrpgbreathlessbeam",
+  "image" : "beam.png",
+  "physics" : "laser",
+  "animationCycle" : 10,
+  "frameNumber" : 1,
+  "damageKind" : "electricplasmabullet",
+  "pointLight" : false,
+  //"lightColor" : [20,100,200],
+  "flippable" : true,
+  "scripts" : ["curving.lua"],
+  "statusEffects" : [ "ivrpgoverload" ],
+  "timeToLive" : 2,
+  "fullbright" : true,
+  "bounces" : 0,
+  "piercing" : true,
+  "damageRepeatTimeout" : 0.05,
+  "damageRepeatGroup" : "ivrpgbreathlessbeam",
+  "damagePoly" : [[-5, 1.5], [-5, -1.5], [5, -1.5], [5, 1.5]],
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/items/active/specweapons/operative/projectiles/breathlessbeam.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [0.525, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/items/active/specweapons/operative/projectiles/breathlessbeam.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [0.175, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/items/active/specweapons/operative/projectiles/breathlessbeam.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-0.175, 0.0],
+        "fullbright" : true
+      }
+    },
+
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/items/active/specweapons/operative/projectiles/breathlessbeam.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-0.525, 0.0],
+        "fullbright" : true
+      }
+    }
+  ],
+  "curveDirection" : 0,
+  "power" : 5.0,
+  "speed" : 50,
+  "knockback" : 0
+}

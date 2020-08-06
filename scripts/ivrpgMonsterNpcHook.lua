@@ -262,7 +262,9 @@ function rpg_updateDamageTaken(notification)
 
   -- Class + Affinity Effects
   for k,v in ipairs(onHitList) do
-    if v.chance > math.random() then
+    if v.effectType and v.effectType == "sendEntityMessage" then
+      world.sendEntityMessage(sourceId, v.messageName, damage, mcontroller.position(), mcontroller.facingDirection())
+    elseif v.chance > math.random() then
       local lengthModifier = v.basedOnDamagePercent and (1.0*damage/world.entityHealth(self.rpg_Id)[2]) or 1
       lengthModifier = lengthModifier < 0.04 and 0.04 or lengthModifier
       status.addEphemeralEffect(v.effect, v.length * lengthModifier, sourceId)
@@ -272,6 +274,11 @@ function rpg_updateDamageTaken(notification)
   --world.sendEntityMessage(sourceId, "damageDealt", damage, sourceKind)
   if world.entityHealth(self.rpg_Id)[1] and world.entityHealth(self.rpg_Id)[1] <= 0 then
     rpg_enemyDeath(sourceId, damage, sourceKind, onKillList)
+  end
+
+  -- Breathless Energy Rege
+  if status.uniqueStatusEffectActive("electrified") or status.uniqueStatusEffectActive("ivrpgoverload") then
+    world.sendEntityMessage(sourceId, "hitEnemyOperative", damage, sourceKind, self.rpg_Id)
   end
 
   -- Bleed

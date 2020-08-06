@@ -16,7 +16,6 @@ function init()
 
   self.primaryAbility = getPrimaryAbility()
   self.weapon:addAbility(self.primaryAbility)
-  self.primaryAbility.elementalType = config.getParameter("elementalType", "physical")
 
   local secondaryAttack = getAltAbility()
   if secondaryAttack then

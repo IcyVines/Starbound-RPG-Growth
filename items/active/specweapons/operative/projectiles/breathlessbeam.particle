@@ -1,0 +1,13 @@
+{
+  "kind" : "ivrpgbreathlessbeam",
+  "definition" : {
+    "type" : "animated",
+    "animation" : "/items/active/specweapons/operative/projectiles/breathlessbeam.animation",
+    "destructionTime" : 0,
+    "fade" : 1,
+    "size" : 1,
+    "fullbright" : true,
+    "layer" : "front",
+    "timeToLive" : 0.5
+  }
+}

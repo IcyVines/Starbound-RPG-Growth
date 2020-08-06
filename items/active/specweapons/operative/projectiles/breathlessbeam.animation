@@ -1,0 +1,7 @@
+{
+  "frames" : "beam.png",
+  "variants" : 1,
+  "frameNumber" : 1,
+  "animationCycle" : 0.25,
+  "offset" : [0, 0]
+}

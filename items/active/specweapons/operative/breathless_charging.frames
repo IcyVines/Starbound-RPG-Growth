@@ -1,0 +1,25 @@
+{
+  "frameGrid" : {
+    "size" : [60, 16],
+    "dimensions" : [13, 1],
+
+    "names" : [
+      [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" ]
+    ]
+  },
+  "aliases" : {
+  	"discharge.13" : "1",
+  	"discharge.12" : "2",
+  	"discharge.11" : "3",
+  	"discharge.10" : "4",
+  	"discharge.9" : "5",
+  	"discharge.8" : "6",
+  	"discharge.7" : "7",
+  	"discharge.6" : "8",
+  	"discharge.5" : "9",
+  	"discharge.4" : "10",
+  	"discharge.3" : "11",
+  	"discharge.2" : "12",
+  	"discharge.1" : "13"
+  }
+}

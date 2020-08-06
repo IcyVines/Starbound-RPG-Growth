@@ -17,26 +17,95 @@
     "butt" : "",
     "middle" : "breathless.png",
     "barrel" : "",
+    "charge" : "breathless_charging.png",
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg" ]
+      "fire" : [ "/sfx/gun/mech_beamsniper_fire1.ogg" ],
+      "laser" : [ "/sfx/gun/plasma_mp2.ogg" ],
+      "charging" : [ "/sfx/gun/mech_beamsniper_windup1.ogg", "/sfx/gun/mech_beamsniper_windup2.ogg" ],
+      "discharge" : [ "/sfx/gun/mech_beamsniper_winddown1.ogg", "/sfx/gun/mech_beamsniper_winddown2.ogg" ]
+    },
+    "animatedParts" : {
+      "stateTypes" : {
+        "charge" : {
+          "default" : "off",
+          "states" : {
+            "off" : {
+              "frames" : 1,
+              "properties" : {
+                "lightsOff" : [ "glow" ]
+              }
+            },
+            "on" : {
+              "frames" : 13,
+              "cycle" : 0.5,
+              "properties" : {                
+                "lightsOn" : [ "glow" ]
+              }
+            },
+            "discharge" : {
+              "frames" : 13,
+              "cycle" : 0.25,
+              "mode" : "transition",
+              "transition" : "off",
+              "properties" : {                
+                "lightsOn" : [ "glow" ]
+              }
+            }
+          }
+        }
+      },
+      "parts" : {
+        "charge" : {
+          "properties" : {
+            "zLevel" : 10,
+            "offset" : [1.75, 0.25],
+            "transformationGroups" : ["weapon"]
+          },
+          "partStates" : {
+            "charge" : {
+              "off" : {
+                "properties" : {
+                  "image" : "breathless.png"
+                }
+              },
+              "on" : {
+                "properties" : {
+                  "image" : "<partImage>:<frame>"
+                }
+              },
+              "discharge" : {
+                "properties" : {
+                  "image" : "<partImage>:discharge.<frame>"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "lights" : {
+      "glow" : {
+        "color" : [20, 180, 220],
+        "active" : false
+      }
     }
   },
 
   "classreq" : [3, 4],
   "specreq" : 6,
 
-  "baseOffset" : [1.75, 0],
-  "muzzleOffset" : [1.875, 0.125],
+  "baseOffset" : [1.75, 0.25],
+  "muzzleOffset" : [3.5, 0.125],
 
-  "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "scripts" : ["/items/active/specweapons/operative/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/ranged/gunfire.lua"],
+    "scripts" : ["/items/active/specweapons/operative/gunfire.lua"],
     "class" : "GunFire",
 
     "fireTime" : 1.0,
@@ -60,6 +129,23 @@
         "allowRotate" : true,
         "allowFlip" : true
       },
+      "charge" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "chargecooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
       "fire" : {
         "duration" : 0,
         "armRotation" : 5,
@@ -80,8 +166,6 @@
       }
     }
   },
-
-  "altAbilityType" : "piercingshot",
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }
