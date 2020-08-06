@@ -51,7 +51,7 @@ function GunFire:update(dt, fireMode, shiftHeld)
     and not world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {mcontroller.facingDirection() * 7, 0.25}))
     and mcontroller.groundMovement() then
 
-      self:setState(self.burst)
+    self:setState(self.burst)
 
   end
 
@@ -82,8 +82,8 @@ function GunFire:burst()
   local from = self.weapon.aimAngle
   while self.fireMode == "alt" and progress < 1 do
     mcontroller.controlModifiers({movementSuppressed = true, jumpingSuppressed = true})
-    self.weapon.aimAngle = interp.linear(progress, from, 0)
-    self.weapon:updateAim()
+    -- self.weapon.aimAngle = interp.linear(progress, from, 0)
+    -- self.weapon:updateAim()
     progress = math.min(1.0, progress + (self.dt / 0.5))
     coroutine.yield()
   end
@@ -98,8 +98,10 @@ function GunFire:burst()
   params.power = 5
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.speed = 80
-  projectileType = "ivrpgbreathlessbeam"
-  firePosition = self:firePosition(0.15)
+  local projectileType = "ivrpgbreathlessbeam"
+  local firePosition = self:firePosition(0.15)
+  -- local aimDirection = vec2.norm(world.distance(activeItem.ownerAimPosition(),firePosition))
+  local aimDirection = vec2.norm(self:aimVector(0))
   self.timer = 0.1
   self.direction = false
   local directions = {-3, -1.5, -1, 0, 1, 1.5, 3}
@@ -116,10 +118,11 @@ function GunFire:burst()
     end
     self.timer = self.timer - self.dt
     params.timeToLive = 0.5
-    params.curveDirection = self.direction
     if self.direction then
       firePosition = self:firePosition(0.15)
-      world.spawnProjectile(projectileType, firePosition, activeItem.ownerEntityId(), {mcontroller.facingDirection(), 0}, false, params)
+      params.curveDirection = vec2.mul(vec2.rotate(aimDirection,math.pi/2),self.direction)
+      params.aimDirection = aimDirection
+      world.spawnProjectile(projectileType, firePosition, activeItem.ownerEntityId(), aimDirection, false, params)
     end
     coroutine.yield()
   end
