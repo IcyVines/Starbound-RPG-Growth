@@ -9,7 +9,7 @@
   "tooltipKind": "ivrpgweapon",
   "category": "Halberd",
   "twoHanded": true,
-  "itemTags": ["weapon", "melee", "halberd"],
+  "itemTags": ["weapon", "melee", "halberd", "broadsword", "spear", "greataxe"],
   "inventoryIcon": "heartless.png",
   "animation": "/items/active/weapons/melee/broadsword/combobroadsword.animation",
 

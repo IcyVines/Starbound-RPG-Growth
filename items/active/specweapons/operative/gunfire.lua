@@ -102,11 +102,11 @@ function GunFire:burst()
   firePosition = self:firePosition(0.15)
   self.timer = 0.1
   self.direction = false
-  local directions = {-4, -2, 0, 2, 4}
+  local directions = {-3, -1.5, -1, 0, 1, 1.5, 3}
   while self.fireMode == "alt" and mcontroller.groundMovement() and status.resource("energy") >= 30 do
     mcontroller.controlModifiers({movementSuppressed = true, jumpingSuppressed = true})
     if self.timer <= 0 then
-      if #directions == 0 then directions = {-4, -2, 0, 2, 4} end
+      if #directions == 0 then directions = {-3, -1.5, -1, 0, 1, 1.5, 3} end
       self.index = math.random(#directions)
       self.direction = directions[self.index]
       table.remove(directions, self.index)
