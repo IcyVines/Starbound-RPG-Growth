@@ -14,6 +14,7 @@ function init()
   self.headingAngle = nil
   self.justActivatedTimer = 0
   self.magnetizeTimer = 0
+  self.distance = 25
 
   self.normalCollisionSet = {"Block", "Dynamic"}
   if self.ignorePlatforms then
@@ -21,7 +22,7 @@ function init()
   else
     self.platformCollisionSet = {"Block", "Dynamic", "Platform"}
   end
-  
+
 end
 
 function update(args)
@@ -49,16 +50,25 @@ function update(args)
     end
 
     if args.moves["jump"] and self.magnetizeDirection then
-      magnetizeTo()
+      if self.magnetizeTimer == 0 then mcontroller.setVelocity({0,0}) end
+      magnetizeTo(false)
+      animator.setAnimationState("ballState", "magnetic")
       self.magnetizeTimer = math.min(self.magnetizeTimer + args.dt, 3)
     elseif groundDirection then
+      if animator.animationState("ballState") == "magnetic" then
+        animator.setAnimationState("ballState", "on")
+        animator.playSound("latch")
+        turnOffParticles(0)
+        self.magnetizeTimer = 0.5
+      end
+
       if not self.headingAngle then
         self.headingAngle = (math.atan(groundDirection[2], groundDirection[1]) + math.pi / 2) % (math.pi * 2)
       end
 
-      self.magnetizeTimer = 0
+      self.magnetizeTimer = math.max(self.magnetizeTimer - args.dt, 0)
       self.magnetizeDirection = nil
-      if args.moves["jump"] then
+      if args.moves["jump"] and self.magnetizeTimer == 0 then
         findMagnetizePos(groundDirection)
       end
 
@@ -165,27 +175,50 @@ end
 
 function magnetizeTo(reverse)
   local direction = self.magnetizeDirection
+  sb.logInfo(sb.printJson(direction))
+  local collision = world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), direction), {"Block", "Dynamic"})
   local magnetizeSpeed = 100
-  if reverse then
+  if reverse or not collision then
     direction = vec2.mul(direction, -1)
     magnetizeSpeed = 1000
+    collision = world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), direction), {"Block", "Dynamic"})
+    if not collision then
+      self.magnetizeDirection = nil
+    end
+  end
+
+  if math.abs(direction[1]) > math.abs(direction[2]) then
+    turnOffParticles(direction[1] < 0 and 3 or 4)
+  else
+    turnOffParticles(direction[2] < 0 and 1 or 2)
   end
   mcontroller.controlApproachVelocity(direction, magnetizeSpeed * self.magnetizeTimer)
-  if world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), vec2.mul(direction, 1/15)), {"Block", "Dynamic"}) then
+  if world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), vec2.mul(direction, 1/self.distance)), {"Block", "Dynamic"}) then
+    sb.logInfo("wtf")
     self.magnetizeDirection = nil
   end
 end
 
+function turnOffParticles(num)
+  local particles = {"Down", "Up", "Left", "Right"}
+  for i=1,4 do
+    animator.setParticleEmitterOffsetRegion("magnetic" .. particles[i], mcontroller.boundBox())
+    if i == num then
+      animator.setParticleEmitterActive("magnetic" .. particles[i], true)
+    else
+      animator.setParticleEmitterActive("magnetic" .. particles[i], false)
+    end
+  end
+end
+
 function findMagnetizePos(normal)
-  --sb.logInfo(sb.printJson(normal))
   if not normal then
     return
   end
 
-  local direction = vec2.mul(normal, -15)
-  local collision = world.lineCollision(mcontroller.position(), vec2.add(mcontroller.position(), direction), {"Block", "Dynamic"})
+  local direction = vec2.mul(normal, -self.distance)
+  local collision = world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), direction), {"Block", "Dynamic"})
   if collision then
-    sb.logInfo(sb.printJson(direction))
     self.magnetizeDirection = direction
   end
 end

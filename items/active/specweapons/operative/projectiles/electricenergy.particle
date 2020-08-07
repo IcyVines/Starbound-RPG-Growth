@@ -1,0 +1,22 @@
+{
+  "kind" : "ivrpgbreathlessenergy",
+  "definition" : {
+    "type" : "ember",
+    "size" : 0.5,
+    "color" : [50, 200, 255, 255],
+    "fade" : 0.5,
+    "initialVelocity" : [0, 0],
+    "finalVelocity" : [0, 0],
+    "approach" : [40, 40],
+    "light" : [50, 200, 255, 255],
+    "timeToLive" : 0.3,
+    "destructionTime" : 0.3,
+    "layer" : "back",
+    "collidesLiquid" : true,
+    "variance" : {
+      "finalVelocity" : [1.5, 1.5],
+      "position" : [1.5, 0],
+      "size" : 0.3
+    }
+  }
+}

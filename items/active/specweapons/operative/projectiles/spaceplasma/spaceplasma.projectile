@@ -1,0 +1,48 @@
+{
+  "projectileName" : "ivrpgbreathlessconvergence",
+  "physics" : "laser",
+  "image" : "spaceplasma.png",
+  "fullbright" : true,
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "speed" : 0,
+  "timeToLive" : 3,
+  "bounces" : -1,
+  "lightColor" : [50, 200, 255],
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "power" : 0,
+  "knockback" : 0,
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 1,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [50, 200, 255, 255],
+            "light" : [50, 200, 255],
+            "fullbright" : true,
+            "destructionTime" : 0.1,
+            "destructionAction" : "shrink",
+            "fade" : 0.9,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0.0, -50.0],
+            "approach" : [0, 30],
+            "timeToLive" : 0.1,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [0.25, 0.25],
+              "size" : 0.5,
+              "initialVelocity" : [13, 13],
+              "timeToLive" : 0.1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

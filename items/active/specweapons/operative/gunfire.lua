@@ -20,6 +20,8 @@ function GunFire:init()
   self.cooldownTimer = self.fireTime
   self.energyMultiplier = 0
 
+  animator.setSoundVolume("laser", 0.5)
+
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
@@ -34,25 +36,17 @@ function GunFire:update(dt, fireMode, shiftHeld)
     animator.setLightActive("muzzleFlash", false)
   end
 
-  if self.fireMode == (self.activatingFireMode or self.abilitySlot)
+  if (self.fireMode == (self.activatingFireMode or self.abilitySlot) or self.fireMode == "alt")
     and not self.weapon.currentAbility
     and self.cooldownTimer == 0
     and not status.resourceLocked("energy")
     and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
 
-    if status.overConsumeResource("energy", self:energyPerShot()) then
+    if self.fireMode == (self.activatingFireMode or self.abilitySlot) and status.overConsumeResource("energy", self:energyPerShot()) then
       self:setState(self.auto)
+    elseif self.fireMode == "alt" and mcontroller.groundMovement() and not world.lineTileCollision(mcontroller.position(), self:firePosition(-1)) then
+      self:setState(self.burst)
     end
-
-  elseif self.fireMode == "alt"
-    and not self.weapon.currentAbility
-    and self.cooldownTimer == 0
-    and not status.resourceLocked("energy")
-    and not world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), {mcontroller.facingDirection() * 7, 0.25}))
-    and mcontroller.groundMovement() then
-
-    self:setState(self.burst)
-
   end
 
   self.accurateFire = mcontroller.crouching()
@@ -97,29 +91,34 @@ function GunFire:burst()
   local params = {}
   params.power = 5
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
-  params.speed = 80
+  params.speed = 120
   local projectileType = "ivrpgbreathlessbeam"
   local firePosition = self:firePosition(0.15)
   -- local aimDirection = vec2.norm(world.distance(activeItem.ownerAimPosition(),firePosition))
   local aimDirection = vec2.norm(self:aimVector(0))
   self.timer = 0.1
   self.direction = false
-  local directions = {-3, -1.5, -1, 0, 1, 1.5, 3}
-  while self.fireMode == "alt" and mcontroller.groundMovement() and status.resource("energy") >= 30 do
+  local sound = false
+  local directions = {-2, -1.5, -1, 0, 1, 1.5, 2}
+  while self.fireMode == "alt" and mcontroller.groundMovement() and not world.lineTileCollision(mcontroller.position(), self:firePosition(-0.5)) and status.resource("energy") >= 30 do
     mcontroller.controlModifiers({movementSuppressed = true, jumpingSuppressed = true})
     if self.timer <= 0 then
-      if #directions == 0 then directions = {-3, -1.5, -1, 0, 1, 1.5, 3} end
+      if #directions == 0 then directions = {-2, -1.5, -1, 0, 1, 1.5, 2} end
       self.index = math.random(#directions)
       self.direction = directions[self.index]
       table.remove(directions, self.index)
-      animator.playSound("laser")
-      status.overConsumeResource("energy", 20)
-      self.timer = 0.15
+      self.timer = 0.2
+      sound = true
     end
     self.timer = self.timer - self.dt
-    params.timeToLive = 0.5
-    if self.direction then
-      firePosition = self:firePosition(0.15)
+    params.timeToLive = 0.25
+    if self.timer <= 0.15 and self.direction then
+      if sound then
+        animator.playSound("laser")
+        status.overConsumeResource("energy", 20)
+        sound = false
+      end
+      firePosition = self:firePosition(0.225)
       params.curveDirection = vec2.mul(vec2.rotate(aimDirection,math.pi/2),self.direction)
       params.aimDirection = aimDirection
       world.spawnProjectile(projectileType, firePosition, activeItem.ownerEntityId(), aimDirection, false, params)
