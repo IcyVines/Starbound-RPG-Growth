@@ -1,0 +1,19 @@
+{
+  "projectileName" : "ivrpgoperativebeacon",
+  "physics" : "stickygrenade",
+  "bounces" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [0, 120, 150],
+  "image" : "beacon.png",
+  "animationCycle" : 1.48,
+  "orientationLocked" : false,
+  "timeToLive" : 10,
+  "speed" : 10,
+  "frameNumber" : 2,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "onlyHitTerrain" : true,
+  "persistentAudio" : "/sfx/objects/mechbeacon_pulse1.ogg",
+  "scripts" : [ "beacon.lua" ]
+}

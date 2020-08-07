@@ -1,4 +1,5 @@
 require "/tech/distortionsphere/distortionsphere.lua"
+require "/scripts/keybinds.lua"
 require "/scripts/rect.lua"
 require "/scripts/poly.lua"
 require "/scripts/status.lua"
@@ -15,6 +16,8 @@ function init()
   self.justActivatedTimer = 0
   self.magnetizeTimer = 0
   self.distance = 25
+  self.beaconCooldown = 5
+  self.beaconCooldownTimer = self.beaconCooldown
 
   self.normalCollisionSet = {"Block", "Dynamic"}
   if self.ignorePlatforms then
@@ -23,10 +26,14 @@ function init()
     self.platformCollisionSet = {"Block", "Dynamic", "Platform"}
   end
 
+  Bind.create("h", plantBeacon)
+
 end
 
 function update(args)
   restoreStoredPosition()
+
+  self.beaconCooldownTimer = math.max(self.beaconCooldownTimer - args.dt, 0)
 
   if not self.specialLast and args.moves["special1"] then
     attemptActivation()
@@ -168,6 +175,17 @@ function findGroundDirection()
   end
 end
 
+function plantBeacon()
+  if self.beaconCooldownTimer > 0 then
+    return
+  end
+  local direction = findGroundDirection()
+  if direction then
+    world.spawnProjectile("ivrpgoperativebeacon", mcontroller.position(), entity.id(), direction, false, {})
+    self.beaconCooldownTimer = self.beaconCooldown
+  end
+end
+
 function uninit()
   storePosition()
   deactivate()
@@ -175,7 +193,6 @@ end
 
 function magnetizeTo(reverse)
   local direction = self.magnetizeDirection
-  sb.logInfo(sb.printJson(direction))
   local collision = world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), direction), {"Block", "Dynamic"})
   local magnetizeSpeed = 100
   if reverse or not collision then
@@ -194,7 +211,6 @@ function magnetizeTo(reverse)
   end
   mcontroller.controlApproachVelocity(direction, magnetizeSpeed * self.magnetizeTimer)
   if world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), vec2.mul(direction, 1/self.distance)), {"Block", "Dynamic"}) then
-    sb.logInfo("wtf")
     self.magnetizeDirection = nil
   end
 end
