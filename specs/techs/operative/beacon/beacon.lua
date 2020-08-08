@@ -46,13 +46,13 @@ function update(dt)
   if self.stuckDirection then
     local near = friendlyQuery(mcontroller.position(), 10, {}, self.ownerId, true)
     for _,entityId in pairs(near) do
-      world.sendEntityMessage(entityId, "addEphemeralEffect", "energyregen", 0.5, self.ownerId)
+      world.sendEntityMessage(entityId, "addEphemeralEffect", "ivrpgoperativeenergyregen", 0.5, self.ownerId)
     end
 
     self.tickTimer = self.tickTimer - dt
     if self.tickTimer <= 0 then
       self.tickTimer = self.tickTime
-      local projectiles = world.entityQuery(mcontroller.position(), 10, {withoutEntityId = self.id, includedTypes = {"projectile"}})
+      local projectiles = world.entityQuery(mcontroller.position(), 20, {withoutEntityId = self.id, includedTypes = {"projectile"}})
       if projectiles then
         for _,id in ipairs(projectiles) do
           if world.entityName(id) == "ivrpgoperativebeacon" then

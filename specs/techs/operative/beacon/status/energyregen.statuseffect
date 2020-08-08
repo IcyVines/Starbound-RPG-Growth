@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgoperativeenergyregen",
+  "effectConfig" : {
+    "energyRegen" : 3,
+    "emissionRate" : 3
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "energyregen.lua"
+  ],
+  "scriptDelta" : 5,
+
+  "animationConfig" : "energyregen.animation",
+
+  "label" : "Magnetic Beacon",
+  "icon" : "energyregen.png"
+}

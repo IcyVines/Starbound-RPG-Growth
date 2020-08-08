@@ -16,8 +16,9 @@ function init()
   self.justActivatedTimer = 0
   self.magnetizeTimer = 0
   self.distance = 25
-  self.beaconCooldown = 5
+  self.beaconCooldown = 2
   self.beaconCooldownTimer = self.beaconCooldown
+  self.bombTimer = 1
 
   self.normalCollisionSet = {"Block", "Dynamic"}
   if self.ignorePlatforms then
@@ -27,6 +28,7 @@ function init()
   end
 
   Bind.create("h", plantBeacon)
+  Bind.create("primaryFire", shootPulse)
 
 end
 
@@ -47,16 +49,21 @@ function update(args)
   self.damageDisableTimer = math.max(0, self.damageDisableTimer - args.dt)
 
   self.energyRegenBlock = status.resource("energyRegenBlock")
+  self.beaconActive = status.statPositive("ivrpgoperativebeacon")
+  self.bombTimer = math.max(0, self.bombTimer - args.dt)
 
   if self.active then
 
     status.setResourcePercentage("energyRegenBlock", 1.0)
+    if status.resource("energy") > 10 then status.setResourceLocked("energy", false) end
+    if self.beaconActive then status.modifyResource("energy", args.dt * 5) end
+
     local groundDirection
     if self.damageDisableTimer == 0 then
       groundDirection = findGroundDirection()
     end
 
-    if args.moves["jump"] and self.magnetizeDirection then
+    if args.moves["jump"] and self.magnetizeDirection and status.overConsumeResource("energy", args.dt * 10 * (self.beaconActive and 0.5 or 1)) then
       if self.magnetizeTimer == 0 then mcontroller.setVelocity({0,0}) end
       magnetizeTo(false)
       animator.setAnimationState("ballState", "magnetic")
@@ -181,8 +188,21 @@ function plantBeacon()
   end
   local direction = findGroundDirection()
   if direction then
-    world.spawnProjectile("ivrpgoperativebeacon", mcontroller.position(), entity.id(), direction, false, {})
+    world.spawnProjectile("ivrpgoperativebeacon", mcontroller.position(), entity.id(), direction, false, {boltPower = status.statusProperty("ivrpgintelligence", 0)})
     self.beaconCooldownTimer = self.beaconCooldown
+  end
+end
+
+function shootPulse()
+  --Tank Sphere missile effect.
+  if self.active and self.bombTimer == 0 and status.overConsumeResource("energy", 30) then
+    self.bombTimer = 1.5
+    local diff = world.distance(tech.aimPosition(), mcontroller.position())
+    local aimingAngle = vec2.angle(diff)
+    local aimingVector = vec2.rotate({1, 0}, aimingAngle)
+    local missileConfig = {power = (status.statusProperty("ivrpgdexterity", 0) + 14)}
+    local projectileName = "ivrpgoperativepulse"
+    world.spawnProjectile(projectileName, mcontroller.position(), entity.id(), aimingVector, false, missileConfig)
   end
 end
 
@@ -194,7 +214,7 @@ end
 function magnetizeTo(reverse)
   local direction = self.magnetizeDirection
   local collision = world.lineTileCollision(mcontroller.position(), vec2.add(mcontroller.position(), direction), {"Block", "Dynamic"})
-  local magnetizeSpeed = 100
+  local magnetizeSpeed = 100 * (self.beaconActive and 5 or 1)
   if reverse or not collision then
     direction = vec2.mul(direction, -1)
     magnetizeSpeed = 1000

@@ -1,0 +1,26 @@
+{
+  "projectileName" : "ivrpgoperativepulse",
+  "image" : "soldiertankmissile.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 3,
+  "lightColor" : [255, 255, 128],
+  "pointLight" : true,
+  "emitters" : [ "electricplasma" ],
+  "animationLoops" : true,
+  "statusEffects" : [ "ivrpgoverload", "soldierstun" ],
+  "flippable" : true,
+  "power" : 10.0,
+  "speed" : 1.0,
+  "persistentAudio" : "/sfx/projectiles/guidedrocket_loop2.ogg",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/tech/soldiertech/soldiertanksphere/missile/soldiertankmissileexplosion.config"
+    }
+  ],
+  "acceleration" : 150,
+  "physics" : "rocket",
+  "controlForce" : 1000,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}
