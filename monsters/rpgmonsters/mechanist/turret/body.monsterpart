@@ -1,0 +1,11 @@
+{
+  "name" : "ivrpgmechanistturret",
+  "category" : "ivrpgmechanistturret",
+  "type" : "body",
+
+  "frames" : {
+    "body" : "body.png",
+    "turretfullbright" : "turretfullbright.png",
+    "turret" : "turret.png"
+  }
+}

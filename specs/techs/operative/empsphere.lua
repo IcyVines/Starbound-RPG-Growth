@@ -188,7 +188,7 @@ function plantBeacon()
   end
   local direction = findGroundDirection()
   if direction then
-    world.spawnProjectile("ivrpgoperativebeacon", mcontroller.position(), entity.id(), direction, false, {boltPower = status.statusProperty("ivrpgintelligence", 0)})
+    world.spawnProjectile("ivrpgoperativebeacon", mcontroller.position(), entity.id(), direction, false, {boltPower = status.statusProperty("ivrpgintelligence", 0) + 1})
     self.beaconCooldownTimer = self.beaconCooldown
   end
 end
@@ -200,7 +200,7 @@ function shootPulse()
     local diff = world.distance(tech.aimPosition(), mcontroller.position())
     local aimingAngle = vec2.angle(diff)
     local aimingVector = vec2.rotate({1, 0}, aimingAngle)
-    local missileConfig = {power = (status.statusProperty("ivrpgdexterity", 0) + 14)}
+    local missileConfig = {power = 10 * status.stat("powerMultiplier")}
     local projectileName = "ivrpgoperativepulse"
     world.spawnProjectile(projectileName, mcontroller.position(), entity.id(), aimingVector, false, missileConfig)
   end

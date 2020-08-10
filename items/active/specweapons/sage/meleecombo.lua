@@ -76,14 +76,22 @@ function MeleeCombo:empower()
   self.weapon:setStance(self.stances.empower)
 
   activeItem.setCursor("/cursors/charge2.cursor")
-  util.wait(self.stances.empower.durationBefore)
+  local progress = 0
+  while progress < self.stances.empower.durationBefore and self.fireMode == "alt" do
+    progress = progress + self.dt
+    coroutine.yield()
+  end
+
+  if progress < self.stances.empower.durationBefore then
+    self:reset()
+    return
+  end
 
   animator.setAnimationState("elementalType", "holy")
   --self.active = true
   while self.fireMode == "alt" do
     targetValid = self:targetValid(activeItem.ownerAimPosition())
     activeItem.setCursor(targetValid and "/cursors/chargeready.cursor" or "/cursors/chargeinvalid.cursor")
-
     mcontroller.controlModifiers({runningSuppressed = true})
 
     if targetValid and status.overConsumeResource("energy", 20) then
@@ -94,6 +102,10 @@ function MeleeCombo:empower()
   end
   
   util.wait(self.stances.empower.durationAfter)
+  self:reset()
+end
+
+function MeleeCombo:reset()
   activeItem.setCursor("/cursors/pointer.cursor")
   animator.setAnimationState("elementalType", self.elementalType)
 end
@@ -122,35 +134,6 @@ function MeleeCombo:spawnBeam()
   end)
 end
 
-function MeleeCombo:empoweredwindupslam()
-  self.weapon:setStance(self.stances.empoweredwindupslam)
-  self.weapon:updateAim()
-
-  util.wait(self.stances.empoweredwindupslam.duration)
-
-  self:setState(self.empoweredslam)
-end
-
-function MeleeCombo:empoweredslam()
-  self.weapon:setStance(self.stances.empoweredfire)
-  self.weapon:updateAim()
-
-  local position = vec2.add(mcontroller.position(), {self.slamOffset[1] * mcontroller.facingDirection(), self.slamOffset[2]})
-  local params = {
-    powerMultiplier = activeItem.ownerPowerMultiplier(),
-    power = self:damageAmount() * 2
-  }
-  world.spawnProjectile(self.slamType, position, activeItem.ownerEntityId(), self:aimVector(), false, params)
-
-  animator.playSound("slam")
-  status.overConsumeResource("energy", status.resourceMax("energy"))
-  self.active = false
-
-  util.wait(self.stances.empoweredfire.duration)
-
-  self.cooldownTimer = self.cooldownTime
-end
-
 function MeleeCombo:damageAmount()
   return self.baseDamage * config.getParameter("damageLevelMultiplier")
 end
@@ -164,7 +147,7 @@ function MeleeCombo:windup()
   local stance = self.stances["windup"..self.comboStep]
 
   if self.shiftHeld then
-    self.elementIndex = (self.elementIndex % 6) + 1
+    self.elementIndex = (self.elementIndex % 5) + 1
     self.elementalType = self.elements[self.elementIndex]
   end
 
