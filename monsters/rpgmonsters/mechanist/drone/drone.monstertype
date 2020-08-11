@@ -12,7 +12,9 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+      "/monsters/ivrpgmonster.lua",
+      "/monsters/rpgmonsters/mechanist/timer.lua"
     ],
 
     "behavior" : "monster",
@@ -40,19 +42,19 @@
           "name" : "action-fire",
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 10,
+            "maximumRange" : 18,
             "minimumRange" : 2,
-            "windupTime" : 1,
+            "windupTime" : 0.5,
             "windupState" : "",
 
             "projectileCount" : 1,
             "projectileInterval" : 0.05,
-            "projectileType" : "twigunbullet",
+            "projectileType" : "ivrpgmechanistbullet",
             "projectileParameters" : {
-              "speed" : 40,
-              "power" : 10
+              "speed" : 100,
+              "power" : 5
             },
-            "fireOffsets" : [[0.9125, -0.5]],
+            "fireOffsets" : [[0.625, -0.5]],
             "rotationCenter" : [0.0, 0.75],
             "fireSound" : "fire",
             "fireStateType" : "attack",
@@ -77,8 +79,8 @@
         {
           "name" : "approach-fly",
           "parameters" : {
-            "minRange" : 4,
-            "maxRange" : 8,
+            "minRange" : 8,
+            "maxRange" : 16,
             "rotateAim" : true,
             "holdAim" : true,
             "aimAtTarget" : true,
@@ -102,11 +104,11 @@
         {
           "name" : "wander-fly",
           "parameters" : {
-            "wanderTime" : [2,4],
+            "wanderTime" : [0.5, 1],
             "groundDistance" : 8,
-            "ceilingDistance" : 8,
-            "xVelocity" : 4,
-            "yVelocity" : 12
+            "ceilingDistance" : 4,
+            "xVelocity" : 0,
+            "yVelocity" : 1
           }
         }
       ],
@@ -119,23 +121,13 @@
       ]
     },
 
-    "touchDamage" : {
-      "poly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
-      "damage" : 20,
-
-      "teamType" : "enemy",
-      "damageSourceKind" : "slash",
-      "knockback" : 20,
-      "statusEffects" : [ ]
-    },
-
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
     "selfDamagePoly" : [ [1.0, 1.5],  [1.5, 1.0],  [1.5, -1.0],  [1.0, -1.5],  [-1.0, -1.5],  [-1.5, -1.0],  [-1.5, 1.0],  [-1.0, 1.5] ],
 
     "movementSettings" : {
-      "collisionPoly" : [ [0.26, 0.625],  [0.625, 0.26], [0.625, -1.26], [0.26, -1.625], [-0.26, -1.625], [-0.625, -1.26], [-0.625, 0.26], [-0.26, 0.625] ],
+      "collisionPoly" : [ [0.26, 2.625],  [0.625, 2.26], [0.625, 0.74], [0.26, 0.375], [-0.26, 0.375], [-0.625, 0.74], [-0.625, 2.26], [-0.26, 2.625] ],
 
       "mass" : 0.5,
       "walkSpeed" : 4,
@@ -144,7 +136,7 @@
 
       "airFriction" : 4,
       "airForce" : 40,
-      "flySpeed" : 15
+      "flySpeed" : 25
     },
 
     "bodyMaterialKind" : "robotic",

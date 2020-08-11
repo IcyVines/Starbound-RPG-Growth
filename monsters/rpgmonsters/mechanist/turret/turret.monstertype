@@ -12,7 +12,9 @@
 
   "baseParameters" : {
     "scripts" : [
-      "/monsters/monster.lua"
+      "/monsters/monster.lua",
+      "/monsters/ivrpgmonster.lua",
+      "/monsters/rpgmonsters/mechanist/timer.lua"
     ],
 
     "behavior" : "monster",
@@ -49,20 +51,20 @@
           "name" : "action-fire",
           "parameters" : {
             "requireLineOfSight" : true,
-            "maximumRange" : 80,
+            "maximumRange" : 60,
             "minimumRange" : 2,
-            "windupTime" : 3.5,
+            "windupTime" : 0.5,
             "windupState" : "",
 
             "projectileCount" : 1,
             "projectileInterval" : 0.05,
-            "projectileType" : "twigunbullet",
+            "projectileType" : "ivrpgmechanistbullet",
             "projectileParameters" : {
-              "speed" : 40,
+              "speed" : 100,
               "power" : 10
             },
-            "fireOffsets" : [[2, 0.75]],
-            "rotationCenter" : [0.0, 0.75],
+            "fireOffsets" : [[1.75, 0.5]],
+            "rotationCenter" : [0.0, 1.0],
             "fireSound" : "fire",
             "fireStateType" : "attack",
             "fireState" : "fire",
@@ -128,23 +130,13 @@
       ]
     },
 
-    "touchDamage" : {
-      "poly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
-      "damage" : 20,
-
-      "teamType" : "enemy",
-      "damageSourceKind" : "slash",
-      "knockback" : 20,
-      "statusEffects" : [ ]
-    },
-
     "metaBoundBox" : [-4, -4, 4, 4],
     "scale" : 1.0,
 
     "selfDamagePoly" : [ [1.0, 1.5],  [1.5, 1.0],  [1.5, -1.0],  [1.0, -1.5],  [-1.0, -1.5],  [-1.5, -1.0],  [-1.5, 1.0],  [-1.0, 1.5] ],
 
     "movementSettings" : {
-      "collisionPoly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.0],  [-0.41, -1.0],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
+      "collisionPoly" : [ [0.41, 1.0],  [1.0, 0.41],  [1.0, -0.41],  [0.41, -1.25],  [-0.41, -1.25],  [-1.0, -0.41],  [-1.0, 0.41],  [-0.41, 1.0] ],
 
       "mass" : 1.0,
       "walkSpeed" : 4,

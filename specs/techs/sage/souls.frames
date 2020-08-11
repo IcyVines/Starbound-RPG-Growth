@@ -1,0 +1,15 @@
+{
+  "frameGrid" : {
+    "size" : [7, 7],
+    "dimensions" : [4, 7],
+    "names" : [
+      ["empty.1", "empty.2", "empty.3", "empty.4"],
+      ["fire.1", "fire.2", "fire.3", "fire.4"],
+      ["ice.1", "ice.2", "ice.3", "ice.4"],
+      ["electric.1", "electric.2", "electric.3", "electric.4"],
+      ["firebalanced.1", "firebalanced.2", "firebalanced.3", "firebalanced.4"],
+      ["icebalanced.1", "icebalanced.2", "icebalanced.3", "icebalanced.4"],
+      ["electricbalanced.1", "electricbalanced.2", "electricbalanced.3", "electricbalanced.4"]
+    ]
+  }
+}

@@ -10,6 +10,15 @@
   "rarity" : "Legendary",
   "icon" : "/specs/techs/necromancer/reap.png",
 
+  "animationParts" : {
+    "soul1" : "souls.png",
+    "soul2" : "souls.png",
+    "soul3" : "souls.png",
+    "soul4" : "souls.png",
+    "soul5" : "souls.png",
+    "soul6" : "souls.png"
+  },
+
   "chipCost" : 0,
   "healthCost" : 10,
   "cooldown" : 2

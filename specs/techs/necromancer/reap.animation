@@ -7,6 +7,139 @@
           "off" : {},
           "on" : {}
         }
+      },
+      "soul" : {
+        "default" : "off",
+        "states" : {
+          "on" : {
+            "frames" : 4,
+            "cycle" : 1,
+            "mode" : "loop"
+          },
+          "off" : {}
+        }
+      }
+    },
+    "parts" : {
+      "soul1" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<charged1>.<frame>",
+                "offset" : [-2.5,1.5]
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      },
+      "soul2" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<charged2>.<frame>",
+                "offset" : [-1.7,2.5]
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      },
+      "soul3" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<charged3>.<frame>",
+                "offset" : [-0.6,3]
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      },
+      "soul4" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<charged4>.<frame>",
+                "offset" : [0.6,3]
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      },
+      "soul5" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<charged5>.<frame>",
+                "offset" : [1.7,2.5]
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      },
+      "soul6" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<charged6>.<frame>",
+                "offset" : [2.5,1.5]
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -21,6 +154,15 @@
         }
       ]
     }
+  },
+
+  "globalTagDefaults" : {
+    "charged1" : "empty",
+    "charged2" : "empty",
+    "charged3" : "empty",
+    "charged4" : "empty",
+    "charged5" : "empty",
+    "charged6" : "empty"
   },
 
   "sounds" : {

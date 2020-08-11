@@ -365,6 +365,14 @@ function rpg_enemyDeath(sourceId, damage, sourceKind, onKillList)
       sb.logInfo("RPG Growth Error: No 'type' in specified 'onKill' config.")
     end
   end
+
+  if sourceKind == "mechanistwrench" then
+    if self.rpg_isMonster and config.getParameter("bodyMaterialKind", "") == "robotic" then
+      monster.setDamageTeam({type = "friendly", team = 1})
+      status.modifyResourcePercentage("health", 1)
+    end
+  end
+
   rpg_sendDyingMessage(sourceId, damage, sourceKind)
 end
 

@@ -1,0 +1,89 @@
+{
+  "itemName" : "ivrpgwwrench",
+  "fixedLevel" : false,
+  "price" : 1000,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "It's a wrench.",
+  "shortdescription" : "Wrench",
+  "tooltipKind" : "base",
+  "category" : "Wrench",
+  "twoHanded" : false,
+  "level" : 6,
+  "itemTags" : ["weapon","melee","wrench"],
+
+  "specreq" : 1,
+  "classreq" : 4,
+
+  "inventoryIcon" : "wrench.png",
+
+  "animation" : "/items/active/weapons/melee/broadsword/broadsword.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "wrench.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_broadsword.ogg" ]
+    }
+  },
+
+  "scripts" : ["/items/active/specweapons/mechanist/meleeweapon.lua"],
+  "scriptDelta" : 2,
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/mechanist/meleeslash.lua"],
+    "class" : "MeleeSlash",
+
+    "fireTime" : 0.83,
+    "baseDps" : 11,
+    "damageConfig" : {
+      "damageSourceKind" : "mechanistwrench",
+      "statusEffects" : [ ],
+      "knockback" : 25,
+      "knockbackMode" : "facing",
+      "timeoutGroup" : "primary"
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "windup" : {
+        "hold" : true,
+        "duration" : 0.45,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -45,
+        "weaponRotation" : -55,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

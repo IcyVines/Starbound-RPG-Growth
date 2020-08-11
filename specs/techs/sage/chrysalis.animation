@@ -1,0 +1,138 @@
+{
+	"animatedParts" : {
+    "stateTypes" : {
+      "soul" : {
+        "default" : "off",
+        "states" : {
+        	"on" : {
+            "frames" : 4,
+            "cycle" : 1,
+            "mode" : "loop"
+          },
+          "off" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "soul1" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<element1><charged1>.<frame>",
+                "offset" : [-2.5,1.5]
+              }
+            },
+            "off" : {
+            	"properties" : {
+            		"image" : ""
+            	}
+            }
+          }
+        }
+      },
+      "soul2" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<element2><charged2>.<frame>",
+                "offset" : [-1.5,2.5]
+              }
+            },
+            "off" : {
+            	"properties" : {
+            		"image" : ""
+            	}
+            }
+          }
+        }
+      },
+      "soul3" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<element3><charged3>.<frame>",
+                "offset" : [0,3]
+              }
+            },
+            "off" : {
+            	"properties" : {
+            		"image" : ""
+            	}
+            }
+          }
+        }
+      },
+      "soul4" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<element4><charged4>.<frame>",
+                "offset" : [1.5,2.5]
+              }
+            },
+            "off" : {
+            	"properties" : {
+            		"image" : ""
+            	}
+            }
+          }
+        }
+      },
+      "soul5" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "soul" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<element5><charged5>.<frame>",
+                "offset" : [2.5,1.5]
+              }
+            },
+            "off" : {
+            	"properties" : {
+            		"image" : ""
+            	}
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "globalTagDefaults" : {
+    "element1" : "empty",
+    "element2" : "empty",
+    "element3" : "empty",
+    "element4" : "empty",
+    "element5" : "empty",
+    "charged1" : "",
+    "charged2" : "",
+    "charged3" : "",
+    "charged4" : "",
+    "charged5" : ""
+  },
+
+	"sounds" : {
+		"recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+		"fire" : ["/sfx/gun/tank_shot.ogg"]
+	}
+}

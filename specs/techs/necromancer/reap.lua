@@ -17,8 +17,16 @@ function init()
 
 end
 
+function reset()
+  animator.setAnimationState("soul", "off")
+  for i=1,6 do
+    animator.setGlobalTag("charged" .. i, "empty")
+  end
+end
+
 function uninit()
   tech.setParentDirectives()
+  reset()
 end
 
 function reap()
@@ -28,7 +36,7 @@ function reap()
   if self.cooldownTimer == 0 and (not status.statPositive("activeMovementAbilities")) and self.shiftHeld and self.mobCharge > 0 then
     self.cooldownTimer = self.cooldown
     animator.playSound("reap")
-    self.mobCharge = math.floor(math.min(self.mobCharge^(1 + intelligence/100), 6))
+    self.mobCharge = math.floor(math.min(self.mobCharge^(1 + intelligence/100), 5))
     local params = {}
     params.statusSettings = self.bonePteropod.baseParameters.statusSettings
     params.statusSettings.stats.maxHealth.baseValue = status.stat("maxHealth")
@@ -42,6 +50,7 @@ function reap()
       world.spawnMonster("bonepteropod", mcontroller.position(), params)
       self.mobCharge = self.mobCharge - 1
     end
+    reset()
     return
   end
 
@@ -57,6 +66,15 @@ end
 
 function update(args)
   self.shiftHeld = not args.moves["run"]
+
+  local intelligence = status.statusProperty("ivrpgintelligence", 1)
+  local mobCharge = math.floor(math.min(self.mobCharge^(1 + intelligence/100), 6))
+  if mobCharge > 0 then
+    animator.setAnimationState("soul", "on")
+  end
+  for i=1,mobCharge do
+    animator.setGlobalTag("charged" .. i, "full")
+  end
 
   if self.cooldownTimer > 0 then
     self.cooldownTimer = math.max(self.cooldownTimer - args.dt, 0)
