@@ -1,0 +1,35 @@
+{
+  "projectileName" : "ivrpgexmechinarocket",
+  "image" : "electricplasmarocket.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "fallSpeed" : 0,
+  "lightColor" : [30, 102, 110],
+  "pointLight" : true,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/electricexplosionknockback.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "ivrpgmechanistpulse",
+      "config" : {
+        "speed" : 0,
+        "timeToLive" : 3,
+        "persistentAudio" : "/sfx/objects/teslaspike.ogg"
+      }
+    }
+  ],
+  "scripts" : ["explodenear.lua"],
+  "statusEffects" : [ ],
+  "emitters" : [ "electricplasma", "defaultblue", "electricplasma", "defaultblue", "electricplasma", "defaultblue"  ],
+  "flippable" : true,
+  "power" : 10.0,
+  "speed" : 1.0,
+  "acceleration" : 150,
+  "physics" : "rocket",
+  "damageType" : "NoDamage",
+  "damageKind" : "electricplasma"
+}

@@ -5,7 +5,7 @@
 	"maxStack": 1,
 	"rarity": "Essential",
 	"description": "Atop the mountains, you realize a weapon is no substitute for a coat. Amidst battle, however...",
-	"shortdescription" : "^#77acc3;Rapture^white;",
+	"shortdescription" : "^yellow;Rapture^white;",
   "tooltipKind" : "ivrpgweapon",
 	"category": "Glaive",
 	"twoHanded": true,

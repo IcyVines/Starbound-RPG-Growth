@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Essential",
   "description" : "There's a joke here, somewhere.",
-  "shortdescription" : "Ex Mechina",
+  "shortdescription" : "^green;Ex Mechina",
   "level" : 6,
   "tooltipKind" : "base",
   "category" : "rocketLauncher",
@@ -42,12 +42,12 @@
       "muzzleFlash" : {
         "burstCount" : 3,
         "particles" : [
-          { "particle" : "rocketbarrelpuff", "offset" : [0.0, 0.0] }
+          { "particle" : "electricenergy", "offset" : [0.0, 0.0] }
         ]
       }
     },
     "sounds" : {
-      "fire" : [ "/sfx/gun/rocket2.ogg" ]
+      "fire" : [ "/sfx/gun/rocket_electric1.ogg" ]
     }
   },
 
@@ -56,21 +56,21 @@
 
   "scripts" : ["/items/active/specweapons/mechanist/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "electric",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/mechanist/gunfire.lua"],
     "class" : "GunFire",
 
     "fireTime" : 1.5,
-    "baseDps" : 10,
+    "baseDps" : 5,
     "energyUsage" : 40,
     "inaccuracy" : 0.0,
 
     "projectileCount" : 1,
     "fireType" : "auto",
 
-    "projectileType" : "rocketshell",
+    "projectileType" : "ivrpgexmechinarocket",
     "projectileParameters" : {
       "knockback" : 40
     },

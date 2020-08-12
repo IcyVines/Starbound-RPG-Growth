@@ -133,6 +133,7 @@
 
 	"sounds" : {
 		"recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
-		"fire" : ["/sfx/gun/tank_shot.ogg"]
+		"break" : [ "/sfx/objects/ancient_pot_break_small7.ogg", "/sfx/objects/ancient_pot_break_small8.ogg", "/sfx/objects/ancient_pot_break_small9.ogg" ],
+    "soul" : ["/sfx/objects/ancientlightplatform_on.ogg"]
 	}
 }

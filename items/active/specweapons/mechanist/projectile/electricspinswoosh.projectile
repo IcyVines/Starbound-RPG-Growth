@@ -1,0 +1,25 @@
+{
+  "projectileName" : "ivrpgmechanistpulse",
+  "image" : "electricspinswoosh.png",
+  "animationCycle" : 0.15,
+  "timeToLive" : 0.4,
+  "frameNumber" : 4,
+  "damageKindImage" : "/interface/statuses/electric.png",
+  "speed" : 50,
+  "orientationLocked" : true,
+  "damagePoly" : [ [-22.5, 10.5], [-10.5, 22.5], [10.5, 22.5], [22.5, 10.5], [22.5, -10.5], [10.5, -22.5], [-10.5, -22.5], [-22.5, -10.5] ],
+  "animationLoops" : true,
+  "piercing" : true,
+  "bounces" : 0,
+  "flippable" : true,
+  "emitters" : [ "ivrpgmechanistelectricplasma" ],
+  "damageKind" : "electricspear",
+  "statusEffects" : [
+    "electrified"
+  ],
+  "damageRepeatTimeout" : 0.5,
+  "lightColor" : [25, 92, 107],
+  "pointLight" : true,
+  "knockback" : 10,
+  "knockbackDirectional" : true
+}

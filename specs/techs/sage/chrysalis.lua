@@ -1,5 +1,6 @@
 require "/scripts/keybinds.lua"
 require "/scripts/vec2.lua"
+require "/scripts/ivrpgutil.lua"
 
 function init()
 	self.id = entity.id()
@@ -8,6 +9,7 @@ function init()
 	self.elements = {}
 	self.balanced = {}
 	self.elementConfig = {fire = 0, electric = 0, ice = 0}
+	--animator.setSoundVolume("break", 0.5)
 	Bind.create("f", toggle)
 end
 
@@ -15,10 +17,38 @@ function toggle()
 	if not self.active then
 		self.active = true
 		animator.setAnimationState("soul", "on")
+		animator.playSound("soul")
 	else
 		self.active = false
-		reset()
+		soulBurst()
 	end
+end
+
+function soulBurst()
+	local statusConfig = {regeneration4 = 0, energyregen = 0, rage = 0}
+	for _,element in ipairs(self.elements) do
+		if element == "ice" then
+			statusConfig.regeneration4 = statusConfig.regeneration4 + 3
+		elseif element == "electric" then
+			statusConfig.energyregen = statusConfig.energyregen + 6
+		elseif element == "fire" then
+			statusConfig.rage = statusConfig.rage + 12
+		end
+	end
+
+	local targets = friendlyQuery(mcontroller.position(), 30, {}, self.id, true)
+	if targets then
+		for _,id in ipairs(targets) do
+			for effect,v in pairs(statusConfig) do
+				if v > 0 then
+					world.sendEntityMessage(id, "addEphemeralEffect", effect, v, self.id)
+				end
+			end
+		end
+	end
+
+	animator.playSound("break")
+	reset()
 end
 
 function updateDamageGiven()

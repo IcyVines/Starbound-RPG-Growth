@@ -1,0 +1,15 @@
+{
+  "input" : [
+    { "item" : "ivrpgnovacrystal", "count" : 1 },
+    { "item" : "cryonicextract", "count" : 1 },
+    { "item" : "staticcell", "count" : 1 },
+    { "item" : "scorchedcore", "count" : 1 },
+    { "item" : "livingroot", "count" : 1 },
+    { "item" : "diamond", "count" : 1 },
+    { "item" : "fabric", "count" : 1 },
+    { "item" : "goldbar", "count" : 2 },
+    { "item" : "solariumstar", "count" : 6 }
+  ],
+	"output" : { "item" : "ivrpgwrapture", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

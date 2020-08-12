@@ -1,0 +1,25 @@
+{
+  "kind" : "ivrpgmechanistelectricplasma",
+  "location" : "mouth",
+  "definition" : {
+    "duration" : 0.06,
+    "durationVariance" : 0.04,
+    "loops" : true,
+    "start" : {
+      "particles" : [
+        [ "electricswoosh1" ]
+      ],
+      "sounds" : [ [ ] ]
+    },
+    "particles" : [
+      [ "electricswoosh1" ]
+    ],
+    "sounds" : [ [ ] ],
+    "stop" : {
+      "particles" : [
+        [ "electricswoosh1" ]
+      ],
+      "sounds" : [ [ ] ]
+    }
+  }
+}

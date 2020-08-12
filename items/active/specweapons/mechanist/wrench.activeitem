@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Essential",
   "description" : "It's a wrench.",
-  "shortdescription" : "Wrench",
+  "shortdescription" : "^orange;Wrench^reset;",
   "tooltipKind" : "base",
   "category" : "Wrench",
   "twoHanded" : false,

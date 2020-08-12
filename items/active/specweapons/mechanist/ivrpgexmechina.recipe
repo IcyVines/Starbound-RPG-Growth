@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "ivrpgfiringmechanism", "count" : 1 },
+    { "item" : "durasteelbar", "count" : 6 },
+    { "item" : "staticcell", "count" : 5 },
+    { "item" : "battery", "count" : 3 },
+    { "item" : "solariumstar", "count" : 4 }
+  ],
+	"output" : { "item" : "ivrpgwexmechina", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}
