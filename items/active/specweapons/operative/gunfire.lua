@@ -7,14 +7,6 @@ require "/scripts/ivrpgutil.lua"
 GunFire = WeaponAbility:new()
 
 function GunFire:init()
-  message.setHandler("killedEnemyDeadshot", function(_, _, enemyLevel, damageKind, bledToDeath)
-    if bledToDeath and bledToDeath == "lotusbullet" then
-      activeItem.setInstanceValue("powered", true)
-    elseif damageKind == "lotusbullet" then
-      self.energyMultiplier = math.min(self.energyMultiplier + 0.05, 0.5)
-    end
-  end)
-
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
@@ -214,9 +206,7 @@ function GunFire:energyPerShot()
 end
 
 function GunFire:damagePerShot()
-  local powered = config.getParameter("powered", false)
-  activeItem.setInstanceValue("powered", false)
-  return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount * (powered and 1.25 or 1)
+  return (self.baseDamage or (self.baseDps * self.fireTime)) * (self.baseDamageMultiplier or 1.0) * config.getParameter("damageLevelMultiplier") / self.projectileCount
 end
 
 function GunFire:uninit()
