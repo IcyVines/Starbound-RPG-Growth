@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgrooted",
+  "blockingStat" : "stunImmunity",
+  "effectConfig" : {},
+  "defaultDuration" : 1.5,
+
+  "scripts" : [
+    "rooted.lua"
+  ],
+
+  "animationConfig" : "rooted.animation",
+
+  "label" : "Rooted",
+  "icon" : "/interface/statuses/slow.png"
+}

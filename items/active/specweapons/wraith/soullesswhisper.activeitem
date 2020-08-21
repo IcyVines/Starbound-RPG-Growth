@@ -28,7 +28,7 @@
       "fire" : [ "/sfx/melee/swing_dagger.ogg" ]
     }
   },
-  "scripts" : [ "/items/active/specweapons/wraith/fistweapon.lua" ],
+  "scripts" : [ "/items/active/specweapons/wraith/fistweapon.lua", "/items/active/specweapons/fae/fistweapon.lua" ],
 
   "needsEdgeTrigger" : true,
   "edgeTriggerGrace" : 0.1,

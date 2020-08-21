@@ -1,0 +1,19 @@
+{
+  "name" : "ivrpgnymphsblessing",
+  "type" : "legs",
+
+  "scripts" : ["nymphsblessing.lua"],
+  "animator" : "nymphsblessing.animation",
+
+  "description" : "Fae Only",
+  "shortDescription" : "Nymph's Blessing",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/fae/nymphsblessing.png",
+
+  "chipCost" : 0,
+
+  "multiJumpCount" : 4,
+  "dashControlForce" : 1000,
+  "dashSpeed" : 50,
+  "dashDuration" : 0.2
+}

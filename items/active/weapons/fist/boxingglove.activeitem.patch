@@ -1,6 +1,6 @@
 [
 
     { "op": "add", "path" : "/itemTags/-" , "value" : "fist" },
-    { "op": "add", "path" : "/itemTags/-" , "value" : "melee" }
-
-]
+    { "op": "add", "path" : "/itemTags/-" , "value" : "melee" },
+    { "op": "add", "path" : "/scripts/-" , "value" : "/items/active/specweapons/fae/fistweapon.lua" }
+]	

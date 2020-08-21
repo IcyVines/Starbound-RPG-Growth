@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgonewithnature",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "regenTime" : 4
+  },
+
+  "scripts" : [
+    "onewithnature.lua"
+  ],
+
+  "animationConfig" : "onewithnature.animation",
+
+  "label" : "One With Nature",
+  "icon" : "/specs/abilities/fae/onewithnature.png"
+}

@@ -1,0 +1,17 @@
+{
+  "projectileName" : "ivrpgcrysanthaexplosion",
+  "image" : "poisonexplosion.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 6,
+  "speed" : 0,
+  "lightColor" : [30, 160, 30],
+  "pointLight" : true,
+  "damagePoly" : [ [-18.5, 0], [-14, -14], [0, -18.5], [14, -14], [18.5, 0], [14, 14], [0, 18.5], [-14, 14] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "damageKind" : "poisonplasma",
+  "statusEffects" : [{"effect" : "ivrpgrooted", "duration" : 1}],
+  "knockback" : 5
+}

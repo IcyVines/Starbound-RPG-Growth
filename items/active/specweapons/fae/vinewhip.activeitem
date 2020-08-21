@@ -1,0 +1,61 @@
+{
+  "itemName" : "ivrpgwcrysantha",
+  "price" : 2000,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "A stunning array of color to blend with vivid, crimson blood.",
+  "shortdescription" : "^green;Crysantha",
+  "tooltipKind" : "base",
+  "category" : "whip",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","whip"],
+
+  "specreq" : 3,
+  "classreq" : 5,
+
+  "inventoryIcon" : "crysantha.png:idle",
+  "animation" : "whip.animation",
+  "animationParts" : {
+    "weapon" : "crysantha.png",
+    "weaponFullbright" : ""
+  },
+  "animationCustom" : {
+    "particleEmitters" : { "crack" : {
+      "burstCount" : 3,
+      "particles" : [{"particle" : "poisonswoosh1"}]
+    }},
+    "sounds" : {
+      "swing" : [ "/sfx/melee/whip_swing1.ogg", "/sfx/melee/whip_swing2.ogg", "/sfx/melee/whip_swing3.ogg" ],
+      "crack" : [ "/sfx/melee/whip_impact1.ogg", "/sfx/melee/whip_impact2.ogg", "/sfx/melee/whip_impact3.ogg" ]
+    }
+  },
+
+  "chain" : {
+    "startOffset" : [0.625, 0.0625],
+    "length" : [1, 30],
+    "segmentImage" : "/items/active/specweapons/fae/link.png",
+    "endSegmentImage" : "/items/active/specweapons/fae/linkend.png",
+    "segmentSize" : 0.375
+  },
+
+  "scripts" : [ "whip.lua" ],
+
+  "elementalType" : "poison",
+
+  "primaryAbilityType" : "whipcrack",
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/fae/whipcrack.lua"],
+    "fireTime" : 1.0,
+    "chainDps" : 1.5,
+    "crackDps" : 4.5,
+
+    "damageConfig" : {
+      "damageSourceKind" : "poisonlash"
+    },
+
+    "projectileType" : "poisonplasmaexplosion"
+  },
+
+  "builder" : "/items/buildscripts/buildwhip.lua"
+}
