@@ -1,11 +1,11 @@
 {
-  "itemName" : "ivrpgwcrysantha",
+  "itemName" : "ivrpgwchrysantha",
   "price" : 2000,
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "A stunning array of color to blend with vivid, crimson blood.",
-  "shortdescription" : "^green;Crysantha",
+  "description" : "A stunning array of reds and pinks to blend with vivid, crimson blood.",
+  "shortdescription" : "^#FFAACC;Chrysantha",
   "tooltipKind" : "base",
   "category" : "whip",
   "twoHanded" : false,
@@ -14,10 +14,10 @@
   "specreq" : 3,
   "classreq" : 5,
 
-  "inventoryIcon" : "crysantha.png:idle",
+  "inventoryIcon" : "chrysantha.png:idle",
   "animation" : "whip.animation",
   "animationParts" : {
-    "weapon" : "crysantha.png",
+    "weapon" : "chrysantha.png",
     "weaponFullbright" : ""
   },
   "animationCustom" : {

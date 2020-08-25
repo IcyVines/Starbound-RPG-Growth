@@ -4,6 +4,9 @@
 
   "scripts" : ["nymphsblessing.lua"],
   "animator" : "nymphsblessing.animation",
+  "animationParts" : {
+    "wings" : "wings.png"
+  },
 
   "description" : "Fae Only",
   "shortDescription" : "Nymph's Blessing",

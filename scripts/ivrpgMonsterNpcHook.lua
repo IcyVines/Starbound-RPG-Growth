@@ -14,6 +14,10 @@ function rpg_setHandlers()
     mcontroller.setVelocity(velocity)
   end)
 
+  message.setHandler("makeFriendly", function(_,_, time, sourceId)
+    self.rpg_friendlyTimer = time
+  end)
+
   message.setHandler("applySelfDamageRequest", function(_, _, damageType, damageSourceKind, damage, sourceId, bleedKind)
     local healthBeforeDamage = status.resource("health")
     status.applySelfDamageRequest({
@@ -63,6 +67,8 @@ function rpg_loadVariables(enemyType, level)
   self.rpg_baseParameters = mcontroller.baseParameters()
   self.rpg_devourState = false
   self.rpg_devourTimer = 0
+  self.rpg_friendlyTimer = 0
+  self.rpg_originalDamageTeam = entity.damageTeam()
   performStealthFunctionOverrides()
   self.rpg_initPassed = true
 end
@@ -77,6 +83,22 @@ function rpg_updateEffects(dt)
     --status.modifyResourcePercentage("health", 1)
     if self.rpg_isMonster then monster.setDamageTeam({type = "friendly", team = 1})
     else npc.setDamageTeam({type = "friendly", team = 1}) end
+  end
+
+  if self.rpg_friendlyTimer > 0 then
+    if self.rpg_isMonster then
+      monster.setDamageTeam({type = "friendly", team = self.rpg_originalDamageTeam.team})
+    else
+      monster.setDamageTeam({type = "friendly", team = self.rpg_originalDamageTeam.team})
+    end
+    self.rpg_friendlyTimer = math.max(self.rpg_friendlyTimer - dt, 0)
+    if self.rpg_friendlyTimer <= 0 then
+      if self.rpg_isMonster then
+        monster.setDamageTeam(self.rpg_originalDamageTeam)
+      else
+        monster.setDamageTeam(self.rpg_originalDamageTeam)
+      end
+    end
   end
 
   if self.rpg_devourState then

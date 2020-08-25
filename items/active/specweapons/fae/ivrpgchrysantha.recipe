@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "ivrpgsquirmingnervebundle", "count" : 1 },
+    { "item" : "refinedviolium", "count" : 3 },
+    { "item" : "livingroot", "count" : 3 },
+    { "item" : "venomsample", "count" : 2 },
+    { "item" : "plantfibre", "count" : 100 },
+    { "item" : "solariumstar", "count" : 2 }
+  ],
+	"output" : { "item" : "ivrpgwchrysantha", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

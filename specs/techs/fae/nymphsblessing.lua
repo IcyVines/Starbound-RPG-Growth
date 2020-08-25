@@ -1,11 +1,10 @@
 require "/scripts/vec2.lua"
 require "/scripts/poly.lua"
-require "/scripts/util.lua"
 require "/scripts/keybinds.lua"
-require "/tech/ivrpgopenrpgui.lua"
+require "/scripts/util.lua"
+require "/scripts/ivrpgutil.lua"
 
 function init()
-  ivrpg_ttShortcut.initialize()
   self.jumpsLeft = config.getParameter("multiJumpCount")
   self.rechargeEffectTimer = 0
   self.dashTimer = 0
@@ -21,6 +20,14 @@ function init()
 
   self.vDirectionLocked = 0
   self.hDirectionLocked = 0
+  self.previousFace = 1
+
+  self.crouchTimer = 0
+  self.damageUpdate = 1
+  self.position = mcontroller.position()
+
+  animator.setParticleEmitterOffsetRegion("hoverParticles", mcontroller.boundBox())
+  animator.scaleTransformationGroup("wings", {2, 2})
 
   refreshJumps()
   Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doMultiJump)
@@ -28,8 +35,11 @@ end
 
 function uninit()
   status.clearPersistentEffects("movementAbility")
+  status.clearPersistentEffects("ivrpgrooted")
   animator.setAnimationState("dashing", "off")
+  animator.setAnimationState("hover", "off")
   animator.setParticleEmitterActive("dashParticles", false)
+  animator.resetTransformationGroup("wings")
   tech.setParentDirectives()
   tech.setParentState()
 end
@@ -41,6 +51,7 @@ function update(args)
   self.shiftHeld = not args.moves["run"]
   self.dt = args.dt
   self.float = args.moves["up"]
+  self.crouch = args.moves["down"]
 
   --Find Directional Input
   self.hDirection = 0
@@ -70,20 +81,53 @@ function update(args)
       jumpingSuppressed = true,
       gravityEnabled = false
     })
-    animator.setFlipped(mcontroller.facingDirection() == -1)
     self.dashTimer = math.max(0, self.dashTimer - args.dt)
     if self.dashTimer <= 0 or mcontroller.groundMovement() or mcontroller.liquidMovement() then
       endDash()
     end
   end
 
+  animator.setFlipped(mcontroller.facingDirection() == -1)
+
   if self.float and canFloat() then
-    mcontroller.setXVelocity(util.clamp(mcontroller.xVelocity(), self.hDirection == 1 and 0 or -10, self.hDirection == -1 and 0 or 10))
-    mcontroller.controlApproachYVelocity(0, self.dashControlForce / 2)
+    mcontroller.setXVelocity(util.clamp(mcontroller.xVelocity(), self.hDirection == 1 and 0 or -15, self.hDirection == -1 and 0 or 15))
+    mcontroller.controlApproachYVelocity(0, self.dashControlForce * 0.75)
     tech.setParentState("Fly")
+    animator.setAnimationState("hover", "on")
+    local targets = enemyQuery(mcontroller.position(), 10, {includedTypes = {"monster"}}, entity.id(), true)
+    if targets then
+      for _,id in ipairs(targets) do
+        local health = world.entityHealth(id)
+        if world.entityExists(id) and health and (health[1] < status.resourceMax("health") or health[1] < health[2]/3) then
+          world.sendEntityMessage(id, "makeFriendly", 2, entity.id())
+        end
+      end
+    end
   else
     tech.setParentState()
+    animator.setAnimationState("hover", "off")
   end
+
+  if mcontroller.crouching() or (self.rooted and self.crouch) then
+    self.crouchTimer = self.crouchTimer + self.dt
+    if self.crouchTimer >= 3 or self.rooted then
+      if not self.rooted then self.position = mcontroller.position() end
+      self.rooted = true
+      status.setPersistentEffects("ivrpgrooted", {
+        {stat = "grit", amount = 3}
+      })
+      mcontroller.setPosition(self.position)
+      status.addEphemeralEffect("regeneration2", 0.25)
+      tech.setParentState("Duck")
+    end
+  else
+    self.crouchTimer = 0
+    self.rooted = false
+    tech.setParentState()
+    status.clearPersistentEffects("ivrpgrooted")
+  end
+
+  --animator.setGlobalTag("flipped", mcontroller.facingDirection() == -1 and "?flipx" or "")
 
   if mcontroller.groundMovement() or mcontroller.liquidMovement() then
     refreshJumps()
@@ -149,4 +193,16 @@ function spawnSmoke()
   world.spawnProjectile("ivrpgdazinggas", {mcontroller.xPosition()-1, mcontroller.yPosition()+1}, entity.id(), {0,0}, false, {})
   world.spawnProjectile("ivrpgdazinggas", {mcontroller.xPosition()+1, mcontroller.yPosition()-1}, entity.id(), {0,0}, false, {})
   world.spawnProjectile("ivrpgdazinggas", {mcontroller.xPosition()-1, mcontroller.yPosition()-1}, entity.id(), {0,0}, false, {})
+end
+
+function updateDamageTaken()
+  local notifications = nil
+  notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate or 3)
+  if self.crouchTimer > 0 and notifications then
+    for _,notification in pairs(notifications) do
+      if notification.healthLost > 0 then
+        self.crouchTimer = 0
+      end
+    end
+  end
 end

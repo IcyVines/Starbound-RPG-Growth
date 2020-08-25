@@ -7,8 +7,57 @@
           "off" : {},
           "on" : {}
         }
+      },
+      "hover" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "hoverParticles" ],
+              "lightsOff" : [ "hoverGlow" ]
+            }
+          },
+          "on" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              //"persistentSound" : "/sfx/tech/tech_hoverloop.ogg",
+              "particleEmittersOn" : [ "hoverParticles" ],
+              "lightsOn" : [ "hoverGlow" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : ["", "", "", "/sfx/npc/monsters/batong_flap1.ogg"]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "wings" : {
+        "properties" : {
+          "transformationGroups" : ["wings"],
+          "fullbright" : true
+        },
+        "partStates" : {
+          "hover" : {
+            "on" : {
+              "properties" : {
+                "zLevel" : -10,
+                "image" : "<partImage>:<frame>"
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
       }
     }
+
   },
 
   "particleEmitters" : {
@@ -32,6 +81,42 @@
           "flip" : true
         }
       ]
+    },
+    "hoverParticles" : {
+      "emissionRate" : 15.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1,
+            "color" : [235, 180, 205, 255],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [0, 20],
+            "timeToLive" : 0.5,
+            "layer" : "back",
+            "variance" : {
+              "color" : [20, 20, 20, 0],
+              "initialVelocity" : [0, 0],
+              "size" : 1.25
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "wings" : { "interpolated" : true }
+  },
+
+  "lights" : {
+    "hoverGlow" : {
+      "color" : [180, 120, 150],
+      "active" : false
     }
   },
 
