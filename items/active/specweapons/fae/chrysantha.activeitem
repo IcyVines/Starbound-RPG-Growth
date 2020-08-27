@@ -9,7 +9,7 @@
   "tooltipKind" : "base",
   "category" : "whip",
   "twoHanded" : false,
-  "itemTags" : ["weapon","whip"],
+  "itemTags" : ["weapon","melee","whip"],
 
   "specreq" : 3,
   "classreq" : 5,
