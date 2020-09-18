@@ -78,7 +78,7 @@ function GunFire:auto()
   self.weapon:setStance(self.stances.fire)
 
   self:fireProjectile()
-  self:muzzleFlash()
+  --self:muzzleFlash()
 
   if self.stances.fire.duration then
     util.wait(self.stances.fire.duration)
@@ -190,6 +190,8 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
   if type(projectileType) == "table" then
     projectileType = projectileType[math.random(#projectileType)]
   end
+
+  projectileType = "ivrpgbunnybullet"
 
   local projectileId = 0
   for i = 1, (projectileCount or self.projectileCount) do

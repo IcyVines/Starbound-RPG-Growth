@@ -1,0 +1,19 @@
+{
+  "projectileName" : "ivrpgbunnybullet",
+  "physics" : "grenade",
+  "bounces" : 2,
+  "timeToLive" : 10,
+  "damageKindImage" : "icon.png",
+  "image" : "bunnyair.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "scripts" : ["bunny.lua"],
+  "orientationLocked" : false,
+  "flippable" : true,
+  "power" : 10,
+  "damageType" : "damage",
+  "piercing" : true,
+  "damageKind" : "lash"
+  //"persistentAudio" : "/sfx/projectiles/electricstickyspikes_loop.ogg",
+  //"emitters" : [ "electricplasma" ]
+}
