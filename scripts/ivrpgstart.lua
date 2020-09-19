@@ -10,6 +10,7 @@ function init()
   script.setUpdateDelta(14)
   performStealthFunctionOverrides()
   self.rpg_xp = player.currency("experienceorb")
+  self.rpg_level = math.floor(math.sqrt(self.rpg_xp/100))
   self.rpg_money = player.currency("money")
   self.rpg_moneyDifferential = 0
   checkMaxXP()
@@ -21,9 +22,13 @@ function init()
   self.rpg_specList = root.assetJson("/ivrpgSpecList.config")
   self.rpg_loreList = root.assetJson("/ivrpgLoreList.config")
   self.rpg_monsterLoreList = root.assetJson("/ivrpgMonsterLoreUnlocks.config")
+  self.rpg_levelRequirements = root.assetJson("/ivrpgLevelRequirements.config")
   self.rpg_professionTimer = 0
   self.rpg_specsAvailable = {}
   self.rpg_damageUpdate = 5
+
+  self.rpg_specUnlockXp = self.rpg_levelRequirements.specialization ^ 2 * 100
+
   updateSpecsAvailable()
 
   local data = root.assetJson("/ivrpgVersion.config")
@@ -166,6 +171,14 @@ function update(dt)
   else
     self.rpg_xpScaling = status.statusProperty("ivrpgintelligence", 0)
   end
+
+  local newLevel = math.min(math.floor(math.sqrt(self.rpg_xp/100)), 50)
+  if inMech() and self.rpg_level < newLevel then
+    status.setStatusProperty("ivrpgskillpoints", status.statusProperty("ivrpgskillpoints", 0) + (newLevel - self.rpg_level))
+    localAnimator.playAudio("/sfx/cinematics/mission_unlock_event.ogg")
+  end
+  self.rpg_level = newLevel
+
 end
 
 function updateLore()
@@ -453,7 +466,7 @@ function updateUpgrades()
 end
 
 function updateSpecs(dt)
-  if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
+  if player.currency("experienceorb") < self.rpg_specUnlockXp and not status.statPositive("ivrpgmasteryunlocked") then
     return
   end
 
@@ -494,7 +507,7 @@ end
 
 function unlockSpecs()
 
-  if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
+  if player.currency("experienceorb") < self.rpg_specUnlockXp and not status.statPositive("ivrpgmasteryunlocked") then
     return
   end
 
@@ -530,7 +543,7 @@ function unlockMonsterLore(enemyType)
 end
 
 function specChecks(enemyType, level, position, facing, statusEffects, damage, damageType, bledToDeath)
-  if player.currency("experienceorb") < 122500 and not status.statPositive("ivrpgmasteryunlocked") then
+  if player.currency("experienceorb") < self.rpg_specUnlockXp and not status.statPositive("ivrpgmasteryunlocked") then
     return
   end
 

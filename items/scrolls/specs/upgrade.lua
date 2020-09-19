@@ -5,10 +5,12 @@ function init()
   self.class = player.currency("classtype")
   self.gender = config.getParameter("gender", false)
   self.specName = config.getParameter("spec", "")
+  self.rpg_levelRequirements = root.assetJson("/ivrpgLevelRequirements.config")
+  self.rpg_specUnlockXp = self.rpg_levelRequirements.specialization ^ 2 * 100
 end
 
 function activate(fireMode, shiftHeld)
-  if player.currency("experienceorb") < 122500 then return end
+  if player.currency("experienceorb") < self.rpg_specUnlockXp then return end
   if self.requiredClass ~= self.class and self.requiredClass2 ~= self.class then return end
   local specInfo = root.assetJson("/specs/" .. self.specName .. ".config")
   local weaponBP = specInfo.weapon.name

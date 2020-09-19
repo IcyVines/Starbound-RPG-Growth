@@ -59,6 +59,15 @@ function init()
   self.statList = root.assetJson("/ivrpgStats.config")
   self.affinityList = root.assetJson("/ivrpgAffinityList.config")
   self.affinityDescriptions = root.assetJson("/affinities/affinityDescriptions.config")
+
+  -- Level Requirement Shenanigens
+  self.rpg_levelRequirements = root.assetJson("/ivrpgLevelRequirements.config")
+  widget.setText("professionlockedlayout.locked", "Locked until Level " .. tostring(self.rpg_levelRequirements.profession) .. "!")
+  widget.setText("affinitylockedlayout.locked", "Locked until Level " .. tostring(self.rpg_levelRequirements.affinity) .. "!")
+  widget.setText("masterylockedlayout.locked", "Locked until Level " .. tostring(self.rpg_levelRequirements.mastery) .. "!")
+  widget.setText("affinitylayout.effecttext", "Upgrade your Affinity by using their respective Upgrade Scroll! Fight Guardians that control your affinity for a chance to get one! Required Level: " .. tostring(self.rpg_levelRequirements.affinityUpgrade) .. "!")
+  -- Level Requirement Shenanigens End
+
   self.versionConfig = root.assetJson("/ivrpgVersion.config")
   self.lastLoreChecked = "changelog"
   self.loreDepth = 1
@@ -269,13 +278,13 @@ end
 function addStatPoints(newLevel, oldLevel)
   player.addCurrency("currentlevel", newLevel - oldLevel)
   while newLevel > oldLevel do
-    if oldLevel > 48 then
+    if oldLevel >= self.rpg_levelRequirements.statpointUpgrade3 - 1 then
       player.addCurrency("statpoint", 4)
-    elseif oldLevel > 38 then
+    elseif oldLevel >= self.rpg_levelRequirements.statpointUpgrade2 - 1 then
       player.addCurrency("statpoint", 3)
-    elseif oldLevel > 18 then
+    elseif oldLevel >= self.rpg_levelRequirements.statpointUpgrade1 - 1 then
       player.addCurrency("statpoint", 2)
-    elseif oldLevel > 0 then
+    elseif oldLevel >= 1 then
       player.addCurrency("statpoint", 1)
     else
       startingStats()
@@ -454,7 +463,7 @@ function changeToAffinities()
     if player.currency("affinitytype") == 0 then
       widget.setVisible("affinitylayout", false)
       checkAffinityDescription("default")
-      if self.level >= 25 then
+      if self.level >= self.rpg_levelRequirements.affinity then
         widget.setVisible("affinitieslayout", true)
       else
         widget.setVisible("affinitylockedlayout", true)
@@ -495,7 +504,7 @@ end
 
 function changeToProfession()
     widget.setText("tabLabel", "Profession Tab")
-    if self.level < 10 then
+    if self.level < self.rpg_levelRequirements.profession then
       widget.setVisible("professionlayout", false)
       widget.setVisible("professionlockedlayout", true)
     else
@@ -517,7 +526,7 @@ end
 
 function changeToMastery()
     widget.setText("tabLabel", "Mastery Tab")
-    if self.level < 50 and not status.statPositive("ivrpgmasteryunlocked") then
+    if self.level < self.rpg_levelRequirements.mastery and not status.statPositive("ivrpgmasteryunlocked") then
       widget.setVisible("masterylayout", false)
       widget.setVisible("masterylockedlayout", true)
     else
@@ -626,7 +635,7 @@ function updateSpecializationSelect()
   local currentSpec = self.availableSpecs[self.specTo]
 
   local topText = "\nUse the arrows to navigate through Specializations for your current Class."
-  widget.setText("specializationslayout.subtitle", (self.level < 35 and "^red;Specializations can not be progressed or unlocked until level 35.^reset;" or "Specializations can be unlocked by accomplishing each listed task.") .. topText)
+  widget.setText("specializationslayout.subtitle", (self.level < self.rpg_levelRequirements.specialization and "^red;Specializations can not be progressed or unlocked until level " .. tostring(self.rpg_levelRequirements.specialization) .. ".^reset;" or "Specializations can be unlocked by accomplishing each listed task.") .. topText)
 
   widget.setText("specializationslayout.spectitle", currentSpec.title)
   if currentSpec.titleColor then
@@ -661,7 +670,7 @@ function updateSpecializationSelect()
       understanding = true
     end
   end
-  widget.setButtonEnabled("specializationslayout.selectspec", self.level > 34 and (not disabled) and (understanding or not (currentSpec.gender and currentSpec.gender ~= player.gender())))
+  widget.setButtonEnabled("specializationslayout.selectspec", self.level >= self.rpg_levelRequirements.specialization and (not disabled) and (understanding or not (currentSpec.gender and currentSpec.gender ~= player.gender())))
   widget.setVisible("specializationslayout.selectspec",  unlocked)  
 end
 
@@ -1193,9 +1202,9 @@ function updateClassWeapon()
     widget.setVisible("classlayout.weaponreqlvl", false)
     widget.setVisible("classlayout.unlockquestbutton", false)
     widget.setVisible("classlayout.classweapontext", true)
-  elseif self.level < 12 then
+  elseif self.level < self.rpg_levelRequirements.classWeaponQuest then
     widget.setFontColor("classlayout.weaponreqlvl", "red")
-    widget.setText("classlayout.weaponreqlvl", "Required Level: 12")
+    widget.setText("classlayout.weaponreqlvl", "Required Level: " .. tostring(self.rpg_levelRequirements.classWeaponQuest))
     widget.setVisible("classlayout.weaponreqlvl", true)
     widget.setVisible("classlayout.unlockquestbutton", false)
     widget.setVisible("classlayout.classweapontext", false)
