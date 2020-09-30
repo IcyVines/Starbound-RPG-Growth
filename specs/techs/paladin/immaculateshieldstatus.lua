@@ -3,7 +3,7 @@ function init()
   self.id = effect.sourceEntity()
   self.shieldDecay = config.getParameter("shieldDecay", 0.5)
   --self.healthStatus = config.getParameter("healthStatus", "regeneration4")
-  self.healthRange = config.getParameter("healthRange", 8)
+  self.healthRange = config.getParameter("healthRange", 15)
   self.damageUpdate = 5
   self.maxHealthTimer = 0
   effect.addStatModifierGroup({
@@ -47,7 +47,7 @@ function healPulse()
   })
   for i,id in ipairs(targetIds) do
     if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
-      local healthModifier = 0.07 + (status.statusProperty("ivrpgstrength", 0) + status.statusProperty("ivrpgstrength", 0))*0.0005
+      local healthModifier = 0.07 + (status.statusProperty("ivrpgstrength", 0) + status.statusProperty("ivrpgintelligence", 0))*0.0005
       world.sendEntityMessage(id, "modifyResource", "health", status.stat("maxHealth")*healthModifier)
     end
   end

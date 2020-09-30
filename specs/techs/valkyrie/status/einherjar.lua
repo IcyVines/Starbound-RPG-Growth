@@ -41,7 +41,7 @@ function init()
   elseif self.cooldown then
     status.setStatusProperty("ivrpgeinherjarcooldown", true)
   else
-    status.modifyResourcePercentage("health", -0.2)
+    --status.modifyResourcePercentage("health", -0.2)
   end
 end
 

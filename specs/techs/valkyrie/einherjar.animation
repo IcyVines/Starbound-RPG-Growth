@@ -1,6 +1,7 @@
 {
   "sounds" : {
     "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
-    "eat" : [ "/sfx/humanoid/eat3.ogg" ]
+    "recharge2" : [ "/sfx/tech/tech_dash_cooldown1.ogg" ],
+    "heal" : [ "/sfx/statuseffects/powerup.ogg" ]
   }
 }

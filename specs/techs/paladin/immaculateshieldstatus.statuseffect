@@ -3,7 +3,7 @@
   "effectConfig" : {
     "shieldDecay" : 0.5,
     "healthStatus" : "regeneration4",
-    "healthRange" : 15
+    "healthRange" : 30
   },
 
   "defaultDuration" : 10,
