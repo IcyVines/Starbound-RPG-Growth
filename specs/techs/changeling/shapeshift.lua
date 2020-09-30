@@ -1,5 +1,6 @@
 require "/scripts/keybinds.lua"
 require "/scripts/util.lua"
+require "/scripts/ivrpgutil.lua"
 require "/specs/techs/changeling/shapeshiftHelper.lua"
 
 function init()
@@ -79,7 +80,13 @@ function toggleWhistle()
   self.whistling = true
   self.whistlingTimer = math.min(self.whistlingTimer + self.dt, 18)
   mcontroller.controlMove(self.hDirection ~= 0 and self.hDirection or mcontroller.facingDirection())
+  local targetIds = friendlyQuery(mcontroller.position(), 20, {withoutEntityId = self.id}, self.id, true)
   status.addEphemeralEffect("ivrpgpoptoppower", self.dt * (self.whistlingTimer) * (100), self.id)
+  if targetIds then
+    for i,id in ipairs(targetIds) do
+      world.sendEntityMessage(id, "addEphemeralEffect", "ivrpgpoptoppower", self.dt * (self.whistlingTimer) * (100), self.id)
+    end
+  end
 end
 
 function activateRoar()
