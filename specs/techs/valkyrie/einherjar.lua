@@ -14,15 +14,18 @@ function init()
 end
 
 function attemptActivation()
-  if self.shiftHeld and self.healCooldownTimer == 0 and status.resource("health") > status.resourceMax("health")/5 then
-    local friendlyIds = friendlyQuery(mcontroller.position(), 30, {withoutEntityId = self.id}, self.id, true)
-    if friendlyIds and #friendlyIds > 0 then
-      for _,id in ipairs(friendlyIds) do
-        world.sendEntityMessage(id, "modifyResource", "health", status.resourceMax("health")/5, self.id)
+  if self.shiftHeld then
+    if self.healCooldownTimer == 0 and status.resource("health") > status.resourceMax("health")/5 then
+      local friendlyIds = friendlyQuery(mcontroller.position(), 30, {withoutEntityId = self.id}, self.id, true)
+      if friendlyIds and #friendlyIds > 0 then
+        local numOf = #friendlyIds
+        for _,id in ipairs(friendlyIds) do
+          world.sendEntityMessage(id, "modifyResource", "health", status.resourceMax("health") / 5 / numOf, self.id)
+        end
+        self.healCooldownTimer = 5
+        status.modifyResourcePercentage("health", -0.2)
+        animator.playSound("heal")
       end
-      self.healCooldownTimer = 5
-      status.modifyResourcePercentage("health", -0.2)
-      animator.playSound("heal")
     end
     return
   end
