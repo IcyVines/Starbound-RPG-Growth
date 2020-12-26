@@ -159,7 +159,10 @@ function update(dt)
   end
 
   updateProfessionEffects(dt)
-  updateSpecializationEffects(dt)
+
+  local rpg_pStatus, rpg_pMessage = pcall(updateSpecializationEffects, dt)
+  if not rpg_pStatus then sb.logInfo(rpg_pMessage or "RPG Growth: There was an error attempting to generate certain specialization effects!") end
+  
   updateSkillEffects(dt)
 
   updateUpgrades()
@@ -232,6 +235,7 @@ function updateSpecializationEffects(dt)
         count = count + 1
       end
       --for k,v in pairs(coords.location) do sb.logInfo(v) end
+
       if player.worldHasOrbitBookmark(coords) or teleportMarked then
         status.setStatusProperty("ivrpgterranova", "Bookmarked")
       else
