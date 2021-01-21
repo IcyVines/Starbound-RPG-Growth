@@ -103,6 +103,16 @@ function init()
     player.interact(scriptType, script, sourceId)
   end)
 
+  message.setHandler("giveItem", function(_, _, item, amount)
+    player.giveItem({item, amount})
+  end)
+
+  message.setHandler("challengeStatusProperty", function(_, _, statusProperty, challengeNumber, bossNumber)
+    if status.stat(challengeNumber) == bossNumber then
+      status.setStatusProperty(statusProperty, status.statusProperty(statusProperty, 0) + 1)
+    end
+  end)
+
   message.setHandler("giveBlueprint", function(_, _, blueprint)
     if type(blueprint) == "string" then
     	player.giveBlueprint(blueprint)

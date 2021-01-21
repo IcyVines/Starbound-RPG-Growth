@@ -1058,6 +1058,7 @@ function updateChallenges()
         if challenge1 == 3 then
           if updateProgress(notification, "boss", 7, "kluexboss") then
             status.setStatusProperty("ivrpgchallenge1progress", status.statusProperty("ivrpgchallenge1progress", 0) + 1)
+            updateChallengeNearbyPlayers("ivrpgchallenge1progress", "ivrpgchallenge1", challenge1)
           end
         end
       end
@@ -1066,6 +1067,7 @@ function updateChallenges()
         if challenge2 == 2 then
           if updateProgress(notification, "boss", 7, "dragonboss") then
             status.setStatusProperty("ivrpgchallenge2progress", status.statusProperty("ivrpgchallenge2progress", 0) + 1)
+            updateChallengeNearbyPlayers("ivrpgchallenge2progress", "ivrpgchallenge2", challenge2)
           end
         end
       end
@@ -1074,16 +1076,18 @@ function updateChallenges()
         if challenge3 == 2 then
           if updateProgress(notification, "boss", 7, "vault") then
             status.setStatusProperty("ivrpgchallenge3progress", status.statusProperty("ivrpgchallenge3progress", 0) + 1)
+            updateChallengeNearbyPlayers("ivrpgchallenge3progress", "ivrpgchallenge3", challenge3)
           end
         elseif challenge3 == 3 then
           if updateProgress(notification, "boss", 7, "eyeboss") then
             status.setStatusProperty("ivrpgchallenge3progress", status.statusProperty("ivrpgchallenge3progress", 0) + 1)
+            updateChallengeNearbyPlayers("ivrpgchallenge3progress", "ivrpgchallenge3", challenge3)
           end
         end
       end
 
       if updateProgress(notification, "boss", 8, "eyeboss") then
-        world.spawnItem("experienceorb", mcontroller.position(), 2000)
+        giveNearbyPlayers("experienceorb", 2000)
       end
       if status.statPositive("ivrpgucskadisblessing") and (self.affinity-1)%4 == 2 and notification.damageSourceKind == "bow" then
         world.sendEntityMessage(notification.targetEntityId, "applyStatusEffect", "ivrpgembrittle", 3, self.rpgPlayerID)
@@ -1093,6 +1097,20 @@ function updateChallenges()
       end
 
     end
+  end
+end
+
+function giveNearbyPlayers(item, amount)
+  local players = world.playerQuery(mcontroller.position(), 100, {}) or {}
+  for _,id in ipairs(players) do
+    world.sendEntityMessage(id, "giveItem", item, amount)
+  end
+end
+
+function updateChallengeNearbyPlayers(challengeType, challengeNumber, bossNumber)
+  local players = world.playerQuery(mcontroller.position(), 100, {withoutEntityId = self.rpgPlayerID}) or {}
+  for _,id in ipairs(players) do
+    world.sendEntityMessage(id, "challengeStatusProperty", challengeType, challengeNumber, bossNumber)
   end
 end
 
