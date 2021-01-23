@@ -1378,6 +1378,7 @@ end
 function prestige()
   player.consumeCurrency("masterypoint", 3)
   consumeAllRPGCurrency()
+  status.setStatusProperty("ivrpgextrastatpoints", status.statusProperty("ivrpgextrastatpoints", 0) + 3)
   player.addCurrency("statpoint", status.statusProperty("ivrpgextrastatpoints", 0))
 end
 
