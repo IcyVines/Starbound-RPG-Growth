@@ -70,7 +70,7 @@ function updateDamageGiven()
         if self.correctWeapons then self.powerTimer = 2 end
       end
       --Explosions
-      if notification.damageDealt > notification.healthLost and notification.healthLost > 0 then
+      if entityHealth and notification.damageDealt > notification.healthLost and notification.healthLost > 0 then
         if self.powerTimer > 0 then
           world.spawnProjectile("poisonplasmaexplosion", world.entityPosition(notification.targetEntityId), self.id, {0,0}, false, {power = entityHealth[2]*0.125*status.stat("powerMultiplier")})
         end

@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgscrollresetchallenges",
+  "rarity" : "Legendary",
+  "category" : "scroll",
+  "inventoryIcon" : "scroll.png",
+  "description" : "Feeling unmotivated? Maybe a new set of potential challenges can sort that out!",
+  "shortdescription" : "Challenge Reset Scroll",
+  "largeImage" : "scrolllarge.png",
+  "scripts" : ["/items/scrolls/reset.lua"]
+  
+}

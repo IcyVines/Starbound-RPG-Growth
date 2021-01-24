@@ -1,0 +1,27 @@
+{
+  "projectileName" : "ivrpgbunnybomb",
+  "physics" : "grenade",
+
+  "damageKindImage" : "icon.png",
+  "image" : "bunnyair.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "orientationLocked" : false,
+  "flippable" : true,
+
+  "power" : 50,
+  "initialVelocity" : 50,
+  "timeToLive" : 5,
+  "bounces" : 1,
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion/regularexplosionuniversal.config"
+    }
+  ],
+
+  "lightColor" : [180, 180, 180],
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

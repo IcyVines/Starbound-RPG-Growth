@@ -22,6 +22,9 @@ function activate(fireMode, shiftHeld)
     local consume = resetStatPoints(false)
     if consume then resetSkills() end
     item.consume(consume and 1 or 0)
+  elseif item.name() == "ivrpgscrollresetchallenges" then
+    resetChallenges()
+    item.consume(1)
   end
 end
 
@@ -74,4 +77,29 @@ function consumeAffinityStats()
   for k,v in pairs(self.affinityInfo.stats) do
     player.consumeCurrency(k .. "point", v)
   end
+end
+
+function resetChallenges()
+  status.setPersistentEffects("ivrpgchallenge1", {
+  -- 1. Defeat 150 Level 4 or higher enemies.
+  -- 2. Defeat 100 Level 6 or higher enemies.
+  -- 3. Defeat 1 Boss Monster.
+  -- 4. Defeat the Erchius Horror without taking damage.
+    {stat = "ivrpgchallenge1", amount = math.random(1,3)}
+  })
+  -- 1. Defeat 300 Level 6 or higher enemies.
+  -- 2. Defeat 3 Boss Monsters.
+  status.setPersistentEffects("ivrpgchallenge2", {
+    {stat = "ivrpgchallenge2", amount = math.random(1,2)}
+  })
+  -- 1. Defeat 300 Vault enemies.
+  -- 2. Defeat 3 Vault Guardians.
+  -- 3. Defeat 5 Boss Monsters.
+  -- 4. Deafeat the Heart of Ruin without taking damage.
+  status.setPersistentEffects("ivrpgchallenge3", {
+    {stat = "ivrpgchallenge3", amount = math.random(1,3)}
+  })
+  status.setStatusProperty("ivrpgchallenge1progress", 0)
+  status.setStatusProperty("ivrpgchallenge2progress", 0)
+  status.setStatusProperty("ivrpgchallenge3progress", 0)
 end

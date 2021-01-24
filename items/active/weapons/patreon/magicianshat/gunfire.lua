@@ -207,6 +207,7 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
       false,
       params
       )
+    animator.playSound("throw")
   end
   return projectileId
 end

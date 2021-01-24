@@ -103,6 +103,16 @@ function init()
     player.interact(scriptType, script, sourceId)
   end)
 
+  message.setHandler("giveItem", function(_, _, item, amount)
+    player.giveItem({item, amount})
+  end)
+
+  message.setHandler("challengeStatusProperty", function(_, _, statusProperty, challengeNumber, bossNumber)
+    if status.stat(challengeNumber) == bossNumber then
+      status.setStatusProperty(statusProperty, status.statusProperty(statusProperty, 0) + 1)
+    end
+  end)
+
   message.setHandler("giveBlueprint", function(_, _, blueprint)
     if type(blueprint) == "string" then
     	player.giveBlueprint(blueprint)
@@ -159,7 +169,10 @@ function update(dt)
   end
 
   updateProfessionEffects(dt)
-  updateSpecializationEffects(dt)
+
+  local rpg_pStatus, rpg_pMessage = pcall(updateSpecializationEffects, dt)
+  if not rpg_pStatus then sb.logInfo(rpg_pMessage or "RPG Growth: There was an error attempting to generate certain specialization effects!") end
+  
   updateSkillEffects(dt)
 
   updateUpgrades()
@@ -232,6 +245,7 @@ function updateSpecializationEffects(dt)
         count = count + 1
       end
       --for k,v in pairs(coords.location) do sb.logInfo(v) end
+
       if player.worldHasOrbitBookmark(coords) or teleportMarked then
         status.setStatusProperty("ivrpgterranova", "Bookmarked")
       else
