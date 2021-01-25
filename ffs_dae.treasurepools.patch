@@ -1,0 +1,366 @@
+[
+  [
+    {
+      "op": "test",
+      "path": "/ffs_lootbox_prisoner_dae/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_lootbox_prisoner_dae/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_lootbox_prisoner_dae/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_lootbox_prisoner_dae/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_dae/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_dae/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_dae/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_dae/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_sniper_dae/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_sniper_dae/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_sniper_dae/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_sniper_dae/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_trooper_dae/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_trooper_dae/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_trooper_dae/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_pirates_trooper_dae/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_dae_assault/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_assault/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_dae_assault/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_assault/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_dae_shotgun/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_shotgun/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_dae_shotgun/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_shotgun/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_dae_glock/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_glock/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_dae_glock/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_glock/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_dae_rpg/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_rpg/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_dae_rpg/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_rpg/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_miniknog_dae_assaulter/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_miniknog_dae_assaulter/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_miniknog_dae_assaulter/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_miniknog_dae_assaulter/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_miniknog_dae_shot/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_miniknog_dae_shot/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_miniknog_dae_shot/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_miniknog_dae_shot/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_miniknog_dae_sniper/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_miniknog_dae_sniper/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_miniknog_dae_sniper/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_miniknog_dae_sniper/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_miniknog_dae_scientist/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_miniknog_dae_scientist/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_miniknog_dae_scientist/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_miniknog_dae_scientist/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_drone/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_drone/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_drone/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_drone/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ]
+ ]
