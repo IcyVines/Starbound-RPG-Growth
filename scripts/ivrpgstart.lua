@@ -7,7 +7,6 @@ local origUninit = uninit
 
 function init()
   origInit()
-  script.setUpdateDelta(14)
   performStealthFunctionOverrides()
   self.rpg_xp = player.currency("experienceorb")
   self.rpg_level = math.floor(math.sqrt(self.rpg_xp/100))
