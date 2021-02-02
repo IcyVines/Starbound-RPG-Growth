@@ -1,0 +1,9 @@
+{
+  "frameGrid" : {
+    "size" : [33, 14],
+    "dimensions" : [8, 1],
+    "names" : [
+      [ "unloaded", "loading.1", "loading.2", "loading.3", "loading.4", "loading.5", "loading.6", "loaded" ]
+    ]
+  }
+}
