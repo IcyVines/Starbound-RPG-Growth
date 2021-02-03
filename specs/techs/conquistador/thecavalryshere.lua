@@ -205,7 +205,7 @@ function update(args)
         if isInLiquid then
           animator.setAnimationState("mount", math.abs(mcontroller.xVelocity()) < 1 and "idle" or "swim")
         else
-          animator.setAnimationState("mount", "swim")
+          animator.setAnimationState("mount", "run")
         end
       end
     else
