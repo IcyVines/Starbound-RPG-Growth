@@ -1,40 +1,18 @@
 { 
-  "animationParts" : {
-    "darkness" : ""
+  "particleEmitters" : {
+    "swordCharge" : {
+      "active" : false,
+      "emissionRate" : 30,
+      "particles" : [
+        { "particle" : "electricswoosh1"},
+        { "particle" : "electricswoosh2"},
+        { "particle" : "electricswoosh2"}
+      ]
+    }
   },
 
-  "animatedParts" : {
-    "stateTypes" : {
-      "explosion" : {
-        "default" : "off",
-        "states" : {
-          "off" : {},
-          "on" : {
-            "frames" : 8,
-            "cycle" : 0.6,
-            "mode" : "transition",
-            "transition" : "off"
-          }
-        }
-      }
-    },
-    "parts" : {
-      "darkness" : {
-        "properties" : {
-          "fullbright" : true,
-          "zLevel" : -10
-        },
-        "partStates" : {
-          "explosion" : {
-            "off" : {},
-            "on" : {
-              "properties" : {
-                "image" : "darkness.png:<frame>?scalenearest=2"
-              }
-            }
-          }
-        }
-      }
-    }
+  "sounds" : {
+    "trailDashFire" : [ "/sfx/melee/timepierce_swing1.ogg" ]
   }
+
 }

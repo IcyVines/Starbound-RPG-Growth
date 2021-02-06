@@ -13,6 +13,6 @@
 
   "animationConfig" : "swordswill.animation",
 
-  "label" : "Corruption",
+  "label" : "Sword's Will",
   "icon" : "/specs/abilities/samurai/swordswill.png"
 }

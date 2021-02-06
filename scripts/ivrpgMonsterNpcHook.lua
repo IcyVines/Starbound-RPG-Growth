@@ -31,7 +31,8 @@ function rpg_setHandlers()
 
     if healthBeforeDamage ~= 0 and status.resource("health") == 0 then
       local bledToDeath = damageSourceKind == "bleed" and bleedKind
-      rpg_sendDyingMessage(sourceId, damage, bledToDeath and bleedKind or damageSourceKind, bledToDeath)
+      rpg_updateDamageTaken({sourceId = sourceId, damage = math.floor(damage), sourceKind = bledToDeath and bleedKind or damageSourceKind}, bledToDeath)
+      --rpg_sendDyingMessage(sourceId, damage, bledToDeath and bleedKind or damageSourceKind, bledToDeath)
     end
   end)
 
@@ -219,12 +220,12 @@ function rpg_loadInfo(class, affinity, spec)
   self.rpg_specInfo = ((class and class > 0) and (spec and spec > 0)) and root.assetJson("/specs/" .. self.rpg_specList[class][spec].name .. ".config") or nil
 end
 
-function rpg_updateDamageTaken(notification)
+function rpg_updateDamageTaken(notification, bledToDeath)
   local damage = notification.damage
   local sourceKind = notification.sourceKind
   local sourceId = notification.sourceId
 
-  if world.isMonster(sourceId) or world.isNpc(sourceId) then
+  if not bledToDeath and world.isMonster(sourceId) or world.isNpc(sourceId) then
     if world.entityHealth(self.rpg_Id)[1] and world.entityHealth(self.rpg_Id)[1] <= 0 then
       rpg_enemyDeath(sourceId, damage, sourceKind, {})
     end
@@ -295,19 +296,21 @@ function rpg_updateDamageTaken(notification)
 
   --world.sendEntityMessage(sourceId, "damageDealt", damage, sourceKind)
   if world.entityHealth(self.rpg_Id)[1] and world.entityHealth(self.rpg_Id)[1] <= 0 then
-    rpg_enemyDeath(sourceId, damage, sourceKind, onKillList)
+    rpg_enemyDeath(sourceId, damage, sourceKind, onKillList, bledToDeath)
   end
 
-  -- Breathless Energy Rege
+  -- Breathless Energy Regen
   if status.uniqueStatusEffectActive("electrified") or status.uniqueStatusEffectActive("ivrpgoverload") then
     world.sendEntityMessage(sourceId, "hitEnemyOperative", damage, sourceKind, self.rpg_Id)
   end
 
   -- Bleed
-  world.sendEntityMessage(sourceId, "bleedCheck", damage, sourceKind, self.rpg_Id)
+  if not bledToDeath then
+    world.sendEntityMessage(sourceId, "bleedCheck", damage, sourceKind, self.rpg_Id)
+  end
 end
 
-function rpg_enemyDeath(sourceId, damage, sourceKind, onKillList)
+function rpg_enemyDeath(sourceId, damage, sourceKind, onKillList, bledToDeath)
   -- Class + Spec + Affinity Effects
   local ignore = false
   for k,v in ipairs(onKillList) do
@@ -350,7 +353,7 @@ function rpg_enemyDeath(sourceId, damage, sourceKind, onKillList)
             includedTypes = {"creature"},
             withoutEntityId = self.rpg_Id
           })
-          -- Loops through found IDs. If we want to give to friendlies, we make sure we aren't giving to non-friendly PvP players. If we ant to give to enemies, we want to give to non-friendly PvP players.
+          -- Loops through found IDs. If we want to give to friendlies, we make sure we aren't giving to non-friendly PvP players. If we want to give to enemies, we want to give to non-friendly PvP players.
           for _,id in ipairs(targetIds) do
             if ((v.type == "friendly" or v.type == "allyOnly") and (world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(sourceId, id))))
             or (v.type == "enemy" and (world.entityDamageTeam(id).type == "enemy" or (world.entityDamageTeam(id).type == "pvp" and world.entityCanDamage(sourceId, id)))) then
@@ -395,7 +398,7 @@ function rpg_enemyDeath(sourceId, damage, sourceKind, onKillList)
     end
   end
 
-  rpg_sendDyingMessage(sourceId, damage, sourceKind)
+  rpg_sendDyingMessage(sourceId, damage, sourceKind, bledToDeath)
 end
 
 function rpg_sendDyingMessage(sourceId, damage, sourceKind, bledToDeath)

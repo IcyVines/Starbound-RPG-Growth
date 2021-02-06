@@ -1,0 +1,14 @@
+{
+  "input" : [
+    { "item" : "livingroot", "count" : 2 },
+    { "item" : "string", "count" : 20 },
+    { "item" : "silk", "count" : 3 },
+    { "item" : "ivrpgfiringmechanism", "count" : 1 },
+    { "item" : "refinedaegisalt", "count" : 2 },
+    { "item" : "refinedferozium", "count" : 2 },
+    { "item" : "refinedviolium", "count" : 2 },
+    { "item" : "solariumstar", "count" : 4 }
+  ],
+	"output" : { "item" : "ivrpgwarquebus", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

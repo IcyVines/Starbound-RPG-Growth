@@ -1,0 +1,256 @@
+{
+	"globalTagDefaults": {
+		"paletteSwaps": ""
+	},
+
+		"animatedParts": {
+			"stateTypes": {
+				"swoosh": {
+					"default": "idle",
+					"states": {
+						"idle": {},
+						"fire": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fire2": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fire3": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fire4": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fire5": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fire6": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fire7": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fire8": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fire9": {
+							"frames": 3,
+							"cycle": 0.15,
+							"mode": "transition",
+							"transition": "idle"
+						}
+					}
+				}
+			},
+			"parts": {
+				"blade": {
+					"properties": {
+						"zLevel": 0,
+						"centered": true,
+						"image": "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
+						"offset": [0, 1.875],
+						"transformationGroups": ["weapon"],
+						"rotationCenter": [0, 0],
+						"damageArea": [[-0.7, -1.0], [-0.7, 2.5], [0.5, 2.5], [0.5, -1.0]]
+					}
+				},
+				"handle": {
+					"properties": {
+						"zLevel": 1,
+						"centered": true,
+						"image": "<partImage><paletteSwaps>?<directives>",
+						"offset": [0, 1.875],
+						"transformationGroups": ["weapon"],
+						"rotationCenter": [0, 0]
+					}
+				},
+				"swoosh": {
+					"properties": {
+						"zLevel": -1,
+						"centered": true,
+						"transformationGroups": ["swoosh"],
+						"rotationCenter": [0, 0]
+					},
+					"partStates": {
+						"swoosh": {
+							"idle": {
+								"properties": {
+									"image": ""
+								}
+							},
+							"fire": {
+								"properties": {
+									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>?flipy",
+									"offset" : [0, -2.75],
+									"damageArea" : [[-5, -2], [-2.5, -3], [1, -3], [4, -1.75], [5.25, 0.25], [5.25, 2.25], [3.75, 3.25], [0.25, 2.75]]
+								}
+							},
+							"fire2": {
+								"properties": {
+									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>",
+									"offset": [0, 2.75],
+									"damageArea" : [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5.25, -0.25], [5.25, -2.25], [3.75, -3.25], [0.25, -2.75]]
+								}
+							},
+							"fire3": {
+								"properties": {
+									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>?flipy",
+									"offset": [0, -2.75],
+									"damageArea" : [[-5, -2], [-2.5, -3], [1, -3], [4, -1.75], [5.25, 0.25], [5.25, 2.25], [3.75, 3.25], [0.25, 2.75]]
+								}
+							},
+							"fire4": {
+								"properties": {
+									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>",
+									"offset": [0, 2.75],
+									"damageArea" : [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5.25, -0.25], [5.25, -2.25], [3.75, -3.25], [0.25, -2.75]]
+								}
+							},
+							"fire5": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"offset": [3.5, 0],
+									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
+								}
+							},
+							"fire6": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"offset": [3.5, 0],
+									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
+								}
+							},
+							"fire7": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"offset": [3.5, 0],
+									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
+								}
+							},
+							"fire8": {
+								"properties": {
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"offset": [3.5, 0],
+									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
+								}
+							},
+							"fire9": {
+								"properties": {
+									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>spinswoosh.png:<frame>?scalenearest=1.15",
+									"offset": [-1.25, 0.5],
+									"damageArea": [[-7, 2], [5, 2], [8, 0], [6, -2], [4, -2], [2, 0], [-7, 0.5], [-7.4, 1.35]]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		
+	"transformationGroups": {
+		"weapon": {},
+		"swoosh": {}
+	},
+
+	"particleEmitters": {
+		"physicalswoosh": {
+			"active": false,
+			"transformationGroups": ["swoosh"],
+			"emissionRate": 1,
+			"burstCount": 1,
+			"particles": []
+		},
+		"fireswoosh": {
+			"active": false,
+			"transformationGroups": ["swoosh"],
+			"emissionRate": 50,
+			"burstCount": 4,
+			"particles": [{
+					"particle": "fireswoosh1"
+				}, {
+					"particle": "fireswoosh2"
+				}, {
+					"particle": "fireswoosh3"
+				}
+			]
+		},
+		"electricswoosh": {
+			"active": false,
+			"transformationGroups": ["swoosh"],
+			"emissionRate": 50,
+			"burstCount": 3,
+			"particles": [{
+					"particle": "electricswoosh1"
+				}, {
+					"particle": "electricswoosh2"
+				}, {
+					"particle": "electricswoosh2"
+				}
+			]
+		},
+		"poisonswoosh": {
+			"active": false,
+			"transformationGroups": ["swoosh"],
+			"emissionRate": 50,
+			"burstCount": 3,
+			"particles": [{
+					"particle": "poisonswoosh1"
+				}, {
+					"particle": "poisonswoosh2"
+				}, {
+					"particle": "poisonswoosh2"
+				}
+			]
+		},
+		"iceswoosh": {
+			"active": false,
+			"transformationGroups": ["swoosh"],
+			"emissionRate": 50,
+			"burstCount": 3,
+			"particles": [{
+					"particle": "iceswoosh1"
+				}, {
+					"particle": "iceswoosh2"
+				}, {
+					"particle": "iceswoosh3"
+				}
+			]
+		}
+	},
+
+	"sounds": {
+			"fire": ["/sfx/melee/swing_shortsword.ogg"],
+			"fire2": ["/sfx/melee/swing_spear.ogg"],
+			"fire3": ["/sfx/melee/swing_broadsword.ogg"],
+			"fire4": ["/sfx/melee/swing_broadsword.ogg"],
+			"fire5": ["/sfx/melee/swing_spear.ogg"],
+			"fire6": ["/sfx/melee/swing_spear.ogg"],
+			"fire7": ["/sfx/melee/swing_spear.ogg"],
+			"fire8": ["/sfx/melee/swing_spear.ogg"],
+			"fire9": ["/sfx/melee/swing_broadsword.ogg"]
+		}
+ }

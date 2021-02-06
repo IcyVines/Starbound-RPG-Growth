@@ -10,5 +10,13 @@
   "rarity" : "Legendary",
   "icon" : "/specs/techs/samurai/iaijutsu.png",
 
-  "chipCost" : 0
+  "chipCost" : 0,
+
+  "maximumDoubleTapTime" : 0.25,
+  "dashControlForce" : 1000,
+  "dashSpeedModifier" : 160,
+  "stopAfterDash" : true,
+  "groundOnly" : true,
+  "speedTime" : 5,
+  "cooldownTime" : 5
 }
