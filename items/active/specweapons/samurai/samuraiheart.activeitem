@@ -216,6 +216,7 @@
         "weaponRotation": 120,
         "weaponOffset": [0, 0.5],
         "allowRotate": false,
+        "flipx": true,
         "allowFlip": true,
         "twoHanded": false
       },

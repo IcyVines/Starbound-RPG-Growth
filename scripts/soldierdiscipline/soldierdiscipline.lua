@@ -7,6 +7,7 @@ function init()
   self.damageGivenUpdate = 5
   self.damageUpdate = 5
   self.perfectTimer = 0
+  self.id = entity.id()
 
   self.rpg_levelRequirements = root.assetJson("/ivrpgLevelRequirements.config")
   self.rpg_specUnlockXp = self.rpg_levelRequirements.specialization ^ 2 * 100
@@ -47,7 +48,7 @@ function updateDamageGiven(dt)
   local notifications = nil
   notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
   if self.perfectTimer > 0 and notifications then
-    for _,notification in pairs(notifications) do
+    for _,notification in ipairs(notifications) do
       --Titan
       if world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp and (string.find(notification.damageSourceKind, "bullet") or string.find(notification.damageSourceKind, "shotgun")) then
         if notification.healthLost > 0 and world.entityHealth(notification.targetEntityId) then
