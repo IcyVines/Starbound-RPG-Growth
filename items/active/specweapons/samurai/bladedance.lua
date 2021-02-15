@@ -9,7 +9,6 @@ function BladeDance:init()
   self:computeDamageAndCooldowns()
 
   self.weapon:setStance(self.stances.idle)
-  
 
   self.edgeTriggerTimer = 0
   self.flashTimer = 0
@@ -40,6 +39,11 @@ function BladeDance:update(dt, fireMode, shiftHeld)
     if self.flashTimer == 0 then
       animator.setGlobalTag("bladeDirectives", "")
     end
+  end
+
+  if self.weapon.stance.name == "idle" then
+    animator.setPartTag("blade", "directives", "?flipx")
+    animator.setPartTag("handle", "directives", "?flipx")
   end
 
   self.edgeTriggerTimer = math.max(0, self.edgeTriggerTimer - dt)

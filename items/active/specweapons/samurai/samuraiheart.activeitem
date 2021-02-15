@@ -214,9 +214,9 @@
       "idle": {
         "armRotation": -20,
         "weaponRotation": 120,
-        "weaponOffset": [0, 0.5],
+        "weaponOffset": [-0.125, 0.5],
         "allowRotate": false,
-        "flipx": true,
+        "name": "idle",
         "allowFlip": true,
         "twoHanded": false
       },
