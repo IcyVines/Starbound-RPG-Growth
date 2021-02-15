@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/dropPools/0/default",
+    "value": "ivrpgelectriccapricoatTreasure"
+  },
+  {
+    "op": "replace",
+    "path": "/dropPools/0/bow",
+    "value": "ivrpgelectriccapricoatHunting"
+  }
+]

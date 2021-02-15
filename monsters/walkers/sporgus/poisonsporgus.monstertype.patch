@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/dropPools/0/default",
+    "value": "ivrpgpoisonsporgusTreasure"
+  },
+  {
+    "op": "replace",
+    "path": "/dropPools/0/bow",
+    "value": "ivrpgpoisonsporgusHunting"
+  }
+]

@@ -1794,7 +1794,1697 @@
       }]
     }
   ],
-  //
+  [{
+        "op": "add",
+        "path": "/ivrpgfiregleapHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.45,
+                            "item": "livingroot"
+                        }, {
+                            "weight": 0.1,
+                            "item": "gleapaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonnutmidgelingHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.45,
+                            "item": "livingroot"
+                        }, {
+                            "weight": 0.1,
+                            "item": "nutmidgeaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgalbinopoptopHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.4,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.1,
+                            "item": "poptopaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgalbinoadultpoptopHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.4,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.1,
+                            "item": "adultpoptopaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgicecrustoiseHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.45,
+                            "item": "hardenedcarapace"
+                        }, {
+                            "weight": 0.1,
+                            "item": "crustoiseaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectrictinticHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.9,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.1,
+                            "item": "tinticaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonbatongHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "rawpoultry"
+                        }, {
+                            "weight": 0.2,
+                            "item": "leather"
+                        }, {
+                            "weight": 0.2,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "batongaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfirespookitHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.45,
+                            "item": "phasematter"
+                        }, {
+                            "weight": 0.1,
+                            "item": "spookitaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgicepeblitHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.45,
+                            "item": "hardenedcarapace"
+                        }, {
+                            "weight": 0.1,
+                            "item": "peblitaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgiceiguarmorHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "hardenedcarapace"
+                        }, {
+                            "weight": 0.2,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.1,
+                            "item": "iguarmoraf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonscaveranHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "rawpoultry"
+                        }, {
+                            "weight": 0.2,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.2,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "scaveranaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectricvoltipHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.9,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.1,
+                            "item": "voltipaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgicefennixHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.2,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.1,
+                            "item": "fennixaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfirelilodonHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.2,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.1,
+                            "item": "lilodonaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectricpetricubHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.2,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.1,
+                            "item": "petricubaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectricquagmuttHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.4,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.1,
+                            "item": "guagmuttaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonparatailHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "leather"
+                        }, {
+                            "weight": 0.2,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "paratailaf"
+                        }
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfirewisperHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.45,
+                            "item": "phasematter"
+                        }, {
+                            "weight": 0.1,
+                            "item": "wisperaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectricskimbusHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.45,
+                            "item": "phasematter"
+                        }, {
+                            "weight": 0.1,
+                            "item": "skimbusaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonpulpinHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.4,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "pulpinaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectriccapricoatHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "leather"
+                        }, {
+                            "weight": 0.2,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.1,
+                            "item": "capricoataf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgiceringramHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "leather"
+                        }, {
+                            "weight": 0.2,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.1,
+                            "item": "ringramaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgcultistscandroidHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.45,
+                            "item": "stickofram"
+                        }, {
+                            "weight": 0.1,
+                            "item": "scandroidaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfirebobotHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.3,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.3,
+                            "item": "stickofram"
+                        }, {
+                            "weight": 0.3,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.1,
+                            "item": "bobotaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonpipkinHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "stickofram"
+                        }, {
+                            "weight": 0.45,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "pipkinaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfiremonopusHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "hardenedcarapace"
+                        }, {
+                            "weight": 0.2,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.1,
+                            "item": "monopusaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgicesnagglerHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.4,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.1,
+                            "item": "snaggleraf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfireoculobHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.9,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.1,
+                            "item": "oculobaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgiceagrobatHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "rawpoultry"
+                        }, {
+                            "weight": 0.2,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.2,
+                            "item": "leather"
+                        }, {
+                            "weight": 0.1,
+                            "item": "agrobataf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonbobfaeHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "hardenedcarapace"
+                        }, {
+                            "weight": 0.2,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "bobfaeaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfirepteropodHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.4,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.1,
+                            "item": "pteropodaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfiregosmetHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "phasematter"
+                        }, {
+                            "weight": 0.45,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.1,
+                            "item": "gosmetaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectricignomeHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.45,
+                            "item": "phasematter"
+                        }, {
+                            "weight": 0.1,
+                            "item": "ignomeaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfirelumothHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.3,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.3,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.3,
+                            "item": "phasematter"
+                        }, {
+                            "weight": 0.1,
+                            "item": "lumothaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonpyromantleHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.9,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "pyromantleaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfiresqueemHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "phasematter"
+                        }, {
+                            "weight": 0.2,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.1,
+                            "item": "squeemaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectricanglureHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.4,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.1,
+                            "item": "anglureaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonbulbopHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "livingroot"
+                        }, {
+                            "weight": 0.45,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "bulbopaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgicecrabcanoHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.2,
+                            "item": "hardenedcarapace"
+                        }, {
+                            "weight": 0.1,
+                            "item": "crabcanoaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectriccrutterHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.4,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.1,
+                            "item": "crutteraf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectrichemogoblinHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "rawribmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.2,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.1,
+                            "item": "hemogoblinaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgicehypnareHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "livingroot"
+                        }, {
+                            "weight": 0.45,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.1,
+                            "item": "hypnareaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonmandrafloraHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "livingroot"
+                        }, {
+                            "weight": 0.45,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "mandrafloraaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgicemiasmopHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.45,
+                            "item": "livingroot"
+                        }, {
+                            "weight": 0.1,
+                            "item": "miasmopaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgicenarfinHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.45,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.1,
+                            "item": "narfinaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfireooglerHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.402,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.166,
+                            "item": "leather"
+                        }, {
+                            "weight": 0.166,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.166,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.1,
+                            "item": "oogleraf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgiceorbideHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.45,
+                            "item": "cryonicextract"
+                        }, {
+                            "weight": 0.1,
+                            "item": "orbideaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonsmoglinHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.45,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "smoglinaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectricsnauntHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.2,
+                            "item": "hardenedcarapace"
+                        }, {
+                            "weight": 0.1,
+                            "item": "snauntaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonsnuffishHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.45,
+                            "item": "rawfish"
+                        }, {
+                            "weight": 0.45,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "snuffishaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisonsporgusHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.9,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "sporgusaf"
+                        }
+                    ],
+                    "poolRounds": [
+                        [
+                            0.6,
+                            0
+                        ],
+                        [
+                            0.4,
+                            1
+                        ]
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfiretaroniHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "leather"
+                        }, {
+                            "weight": 0.2,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.1,
+                            "item": "taroniaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgfiretoumingoHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "rawpoultry"
+                        }, {
+                            "weight": 0.2,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.2,
+                            "item": "scorchedcore"
+                        }, {
+                            "weight": 0.1,
+                            "item": "toumingoaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgpoisontrictusHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "livingroot"
+                        }, {
+                            "weight": 0.2,
+                            "item": "venomsample"
+                        }, {
+                            "weight": 0.1,
+                            "item": "trictusaf"
+                        }
+                    ]
+                }
+            ]
+        ]
+    }, {
+        "op": "add",
+        "path": "/ivrpgelectricyokatHunting",
+        "value": [
+            [
+                1, {
+                    "fill": [{
+                            "pool": "experienceorbpool"
+                        }
+                    ],
+
+                    "pool": [{
+                            "weight": 0.5,
+                            "item": "alienmeat"
+                        }, {
+                            "weight": 0.2,
+                            "item": "sharpenedclaw"
+                        }, {
+                            "weight": 0.2,
+                            "item": "staticcell"
+                        }, {
+                            "weight": 0.1,
+                            "item": "yokataf"
+                        }
+                    ],
+                    "allowDuplication": false
+                }
+            ]
+        ]
+    }
+],
+
+  //MOD MONSTERS
   [{
       "op": "test",
       "path": "/huntingglow",
