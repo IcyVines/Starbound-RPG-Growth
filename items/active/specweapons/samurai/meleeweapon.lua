@@ -1,6 +1,7 @@
 require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
+require "/scripts/ivrpgutil.lua"
 
 function init()
   animator.setGlobalTag("paletteSwaps", config.getParameter("paletteSwaps", ""))
@@ -25,8 +26,10 @@ end
 
 function update(dt, fireMode, shiftHeld)
   self.weapon:update(dt, fireMode, shiftHeld)
+  incorrectWeapon()
 end
 
 function uninit()
+  incorrectWeapon(true)
   self.weapon:uninit()
 end

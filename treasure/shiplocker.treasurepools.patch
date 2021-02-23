@@ -19,6 +19,11 @@
 			"op": "add",
 			"path": "/starterTreasure/0/1/fill/-",
 			"value": { "item" : "ivrpgwbrokenprotectoratedagger" }
+		},
+		{
+			"op": "add",
+			"path": "/starterTreasure/0/1/fill/-",
+			"value": { "item" : "RPGskillbook" }
 		}
 	],
 	[
@@ -33,7 +38,8 @@
 			"value": [
 				{ "item" : "ivrpgwbrokenprotectoratewand" },
 				{ "item" : "ivrpgwbrokenprotectoratepistol" },
-				{ "item" : "ivrpgwbrokenprotectoratedagger" }
+				{ "item" : "ivrpgwbrokenprotectoratedagger" },
+				{ "item" : "RPGskillbook" }
 			]
 		}
 	]

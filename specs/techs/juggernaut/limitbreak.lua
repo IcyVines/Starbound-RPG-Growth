@@ -4,7 +4,7 @@ require "/scripts/ivrpgutil.lua"
 
 function init()
   self.active = false
-  Bind.create("Up", activate)
+  Bind.create("g", activate)
 end
 
 function activate()

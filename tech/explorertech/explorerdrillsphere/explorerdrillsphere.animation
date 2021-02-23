@@ -247,6 +247,7 @@
   "sounds" : {
     "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
     "activate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
+    "drillStart" : [ "/sfx/tech/tech_rocketboots_thrust1.ogg" ],
     "deactivate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
     "multiJumpSound" : ["/sfx/tech/tech_multijump.ogg"],
     "forceDeactivate" : [ "/sfx/tech/tech_sonicsphere_charge1.ogg" ]

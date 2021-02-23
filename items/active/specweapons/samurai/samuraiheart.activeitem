@@ -175,7 +175,7 @@
     "edgeTriggerGrace": 0.25,
 
     "damageConfig": {
-      "damageSourceKind": "katana",
+      "damageSourceKind": "ivrpgsamuraikatana",
       "statusEffects": [],
       "knockbackMode": "facing",
       "timeout": 0.5
@@ -495,7 +495,7 @@
     "shieldHealth": 25,
 
     "damageConfig": {
-      "damageSourceKind": "<elementalType>katana",
+      "damageSourceKind": "ivrpgsamuraikatana",
       "statusEffects": [],
       "baseDamage": 22.5,
       "knockback": 40,

@@ -20,6 +20,7 @@ function init()
   self.rechargeTimer = 0
   self.vDirection = 0
   self.shift = false
+  animator.setSoundVolume("fire", 0.5)
 end
 
 function launch()

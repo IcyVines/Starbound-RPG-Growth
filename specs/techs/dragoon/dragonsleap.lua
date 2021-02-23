@@ -25,7 +25,7 @@ function update(args)
   origUpdate(args)
 
    if mcontroller.falling() or mcontroller.onGround() or mcontroller.liquidMovement() then
-    if not self.leapActive then
+    if not self.leapActive and self.rechargeEffectTimer == 0 then
       tech.setParentDirectives()
       status.clearPersistentEffects("ivrpgdragonsleap")
     end

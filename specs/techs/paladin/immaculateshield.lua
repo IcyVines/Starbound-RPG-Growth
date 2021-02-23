@@ -2,7 +2,7 @@ require "/scripts/keybinds.lua"
 
 function init()
   self.active = false
-  Bind.create("Up", toggle)
+  Bind.create("g", toggle)
 end
 
 function toggle()

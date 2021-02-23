@@ -14,6 +14,9 @@ function BladeDance:init()
   self.flashTimer = 0
   self.cooldownTimer = self.cooldowns[1]
 
+  self.killTimer = 0
+  self.damageGivenUpdate = 5
+
   self.animKeyPrefix = self.animKeyPrefix or ""
 
   self.weapon.onLeaveAbility = function()
@@ -46,8 +49,12 @@ function BladeDance:update(dt, fireMode, shiftHeld)
     animator.setPartTag("handle", "directives", "?flipx")
   end
 
+  self:updateDamageGiven()
+
+  self.killTimer = math.max(self.killTimer - dt, 0)
+
   self.edgeTriggerTimer = math.max(0, self.edgeTriggerTimer - dt)
-  if self.lastFireMode ~= (self.activatingFireMode or self.abilitySlot) and fireMode == (self.activatingFireMode or self.abilitySlot) then
+  if --[[self.lastFireMode ~= (self.activatingFireMode or self.abilitySlot) and]] fireMode == (self.activatingFireMode or self.abilitySlot) then
     self.edgeTriggerTimer = self.edgeTriggerGrace
   end
   self.lastFireMode = fireMode
@@ -57,25 +64,39 @@ function BladeDance:update(dt, fireMode, shiftHeld)
   end
 end
 
+function BladeDance:updateDamageGiven()
+  local notifications = nil
+  notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if "ivrpgsamuraikatana" == notification.damageSourceKind then
+        if notification.healthLost > 0 and notification.damageDealt > notification.healthLost then
+          self.killTimer = math.min(self.killTimer + 2.5, 10)
+        end
+      end
+    end
+  end
+end
+
 -- State: windup
 function BladeDance:windup()
   local stance = self.stances["windup"..self.comboStep]
 
   self.weapon:setStance(stance)
 
-if stance.flipx and stance.flipy then
- animator.setPartTag("blade", "directives", "?flipxy")
- animator.setPartTag("handle", "directives", "?flipxy")
- elseif stance.flipx and not stance.flipy then
- animator.setPartTag("blade", "directives", "?flipx")
- animator.setPartTag("handle", "directives", "?flipx")
- elseif stance.flipy and not stance.flipx then
-  animator.setPartTag("blade", "directives", "?flipy")
- animator.setPartTag("handle", "directives", "?flipy")
- else
- animator.setPartTag("blade", "directives", "")
- animator.setPartTag("handle","directives", "")
-   end
+  if stance.flipx and stance.flipy then
+    animator.setPartTag("blade", "directives", "?flipxy")
+    animator.setPartTag("handle", "directives", "?flipxy")
+  elseif stance.flipx and not stance.flipy then
+    animator.setPartTag("blade", "directives", "?flipx")
+    animator.setPartTag("handle", "directives", "?flipx")
+  elseif stance.flipy and not stance.flipx then
+    animator.setPartTag("blade", "directives", "?flipy")
+    animator.setPartTag("handle", "directives", "?flipy")
+  else
+    animator.setPartTag("blade", "directives", "")
+    animator.setPartTag("handle","directives", "")
+  end
   self.edgeTriggerTimer = 0
 
   if stance.hold then
@@ -83,7 +104,7 @@ if stance.flipx and stance.flipy then
       coroutine.yield()
     end
   else
-    util.wait(stance.duration)
+    util.wait(math.max(stance.duration - self.killTimer * 0.05, 0))
   end
 
   if self.energyUsage then
@@ -103,19 +124,19 @@ function BladeDance:wait()
   local stance = self.stances["wait"..(self.comboStep - 1)]
 
   self.weapon:setStance(stance)
-if stance.flipx and stance.flipy then
- animator.setPartTag("blade", "directives", "?flipxy")
- animator.setPartTag("handle", "directives", "?flipxy")
- elseif stance.flipx and not stance.flipy then
- animator.setPartTag("blade", "directives", "?flipx")
- animator.setPartTag("handle", "directives", "?flipx")
- elseif stance.flipy and not stance.flipx then
-  animator.setPartTag("blade", "directives", "?flipy")
- animator.setPartTag("handle", "directives", "?flipy")
- else
- animator.setPartTag("blade", "directives", "")
- animator.setPartTag("handle","directives", "")
-   end
+  if stance.flipx and stance.flipy then
+    animator.setPartTag("blade", "directives", "?flipxy")
+    animator.setPartTag("handle", "directives", "?flipxy")
+  elseif stance.flipx and not stance.flipy then
+    animator.setPartTag("blade", "directives", "?flipx")
+    animator.setPartTag("handle", "directives", "?flipx")
+  elseif stance.flipy and not stance.flipx then
+    animator.setPartTag("blade", "directives", "?flipy")
+    animator.setPartTag("handle", "directives", "?flipy")
+  else
+    animator.setPartTag("blade", "directives", "")
+    animator.setPartTag("handle","directives", "")
+  end
   util.wait(stance.duration, function()
     if self:shouldActivate() then
       self:setState(self.windup)
@@ -135,19 +156,19 @@ function BladeDance:preslash()
 
   self.weapon:setStance(stance)
   self.weapon:updateAim()
-if stance.flipx and stance.flipy then
- animator.setPartTag("blade", "directives", "?flipxy")
- animator.setPartTag("handle", "directives", "?flipxy")
- elseif stance.flipx and not stance.flipy then
- animator.setPartTag("blade", "directives", "?flipx")
- animator.setPartTag("handle", "directives", "?flipx")
- elseif stance.flipy and not stance.flipx then
-  animator.setPartTag("blade", "directives", "?flipy")
- animator.setPartTag("handle", "directives", "?flipy")
- else
- animator.setPartTag("blade", "directives", "")
- animator.setPartTag("handle","directives", "")
-   end
+  if stance.flipx and stance.flipy then
+    animator.setPartTag("blade", "directives", "?flipxy")
+    animator.setPartTag("handle", "directives", "?flipxy")
+  elseif stance.flipx and not stance.flipy then
+    animator.setPartTag("blade", "directives", "?flipx")
+    animator.setPartTag("handle", "directives", "?flipx")
+  elseif stance.flipy and not stance.flipx then
+    animator.setPartTag("blade", "directives", "?flipy")
+    animator.setPartTag("handle", "directives", "?flipy")
+  else
+    animator.setPartTag("blade", "directives", "")
+    animator.setPartTag("handle","directives", "")
+  end
   util.wait(stance.duration)
 
   self:setState(self.fire)
@@ -159,19 +180,19 @@ function BladeDance:fire()
 
   self.weapon:setStance(stance)
   self.weapon:updateAim()
-if stance.flipx and stance.flipy then
- animator.setPartTag("blade", "directives", "?flipxy")
- animator.setPartTag("handle", "directives", "?flipxy")
- elseif stance.flipx and not stance.flipy then
- animator.setPartTag("blade", "directives", "?flipx")
- animator.setPartTag("handle", "directives", "?flipx")
- elseif stance.flipy and not stance.flipx then
-  animator.setPartTag("blade", "directives", "?flipy")
- animator.setPartTag("handle", "directives", "?flipy")
- else
- animator.setPartTag("blade", "directives", "")
- animator.setPartTag("handle","directives", "")
-   end
+  if stance.flipx and stance.flipy then
+    animator.setPartTag("blade", "directives", "?flipxy")
+    animator.setPartTag("handle", "directives", "?flipxy")
+  elseif stance.flipx and not stance.flipy then
+    animator.setPartTag("blade", "directives", "?flipx")
+    animator.setPartTag("handle", "directives", "?flipx")
+  elseif stance.flipy and not stance.flipx then
+    animator.setPartTag("blade", "directives", "?flipy")
+    animator.setPartTag("handle", "directives", "?flipy")
+  else
+    animator.setPartTag("blade", "directives", "")
+    animator.setPartTag("handle","directives", "")
+  end
   local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
   animator.setAnimationState("swoosh", animStateKey)
   animator.playSound(animStateKey)

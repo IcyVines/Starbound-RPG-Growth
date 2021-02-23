@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ivrpgiaijutsutrailexplosion",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "physics" : "laser",
+  "pointLight" : false,
+  "bounces" : -1,
+  "piercing" : true,
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "ivrpgiaijutsuslashinvisible",
+      "inheritDamageFactor" : 1
+    }
+  ],
+  "power" : 0.0,
+  "speed" : 0,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

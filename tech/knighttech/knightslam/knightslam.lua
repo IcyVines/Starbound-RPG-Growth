@@ -1,4 +1,5 @@
 require "/scripts/keybinds.lua"
+require "/tech/doubletap.lua"
 require "/tech/ivrpgopenrpgui.lua"
 
 function init()
@@ -21,11 +22,20 @@ function init()
   refreshJumps()
 
   Bind.create({jumping = true, onGround = false, liquidPercentage = 0}, doMultiJump)
-  Bind.create({g = true, onGround = false, liquidPercentage = 0}, doSlam)
+  --Bind.create({g = true, onGround = false, liquidPercentage = 0}, doSlam)
+
+  self.doubleTap = DoubleTap:new({"down"}, config.getParameter("maximumDoubleTapTime"), function(dashKey)
+      if not mcontroller.onGround() and mcontroller.liquidPercentage() == 0 then
+        doSlam()
+      end
+    end)
+
 end
 
 function update(args)
   
+  self.doubleTap:update(args.dt, args.moves)
+
   self.peakPerformance = status.statPositive("ivrpgucpeakperformance")
 
   if self.slamCooldownTimer > 0 then
