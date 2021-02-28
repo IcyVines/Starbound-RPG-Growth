@@ -12,7 +12,7 @@ function init()
 
   self.weapon:addTransformationGroup("weapon", {0,0}, util.toRadians(config.getParameter("baseWeaponRotation", 0)))
   self.weapon:addTransformationGroup("swoosh", {0,0}, math.pi/2)
-  self.weapon:addTransformationGroup("shield", {0,0}, 0)
+  self.weapon:addTransformationGroup("sheath", {0,0}, 0)
 
   local primaryAbility = getPrimaryAbility()
   self.weapon:addAbility(primaryAbility)
@@ -27,7 +27,6 @@ end
 
 function update(dt, fireMode, shiftHeld)
   self.weapon:update(dt, fireMode, shiftHeld)
-  incorrectWeapon()
 end
 
 function uninit()
@@ -36,15 +35,19 @@ function uninit()
 end
 
 function Weapon:updateAim()
+  
   for _,group in pairs(self.transformationGroups) do
     animator.resetTransformationGroup(group.name)
+    if group.name == "weapon" then
+      animator.scaleTransformationGroup(group.name, {0.5, 0.5})
+    end
     animator.rotateTransformationGroup(group.name, group.rotation, group.rotationCenter)
     animator.rotateTransformationGroup(group.name, self.relativeWeaponRotation, self.relativeWeaponRotationCenter)
-    animator.translateTransformationGroup(group.name, group.offset)
-    animator.translateTransformationGroup(group.name, self.weaponOffset)
+    if group.name ~= "sheath" then
+      animator.translateTransformationGroup(group.name, group.offset)
+      animator.translateTransformationGroup(group.name, self.weaponOffset)
+    end
   end
-
-  animator.scaleTransformationGroup("weapon", {0.33, 0.33})
 
   local aimAngle, aimDirection = activeItem.aimAngleAndDirection(self.aimOffset, activeItem.ownerAimPosition())
   if self.stance.allowRotate then

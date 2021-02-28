@@ -45,6 +45,10 @@ function update(args)
       tech.setParentState()
       self.active = true
       animator.playSound("spin", -1)
+      if not mcontroller.onGround() then
+        animator.burstParticleEmitter(mcontroller.facingDirection() == 1 and "jumpLeftParticles" or "jumpRightParticles")
+        animator.playSound("jump")
+      end
     end
   end
 

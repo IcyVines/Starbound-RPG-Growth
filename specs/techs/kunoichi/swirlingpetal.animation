@@ -50,6 +50,7 @@
 
   "sounds" : {
     "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
-    "spin" : [ "/sfx/melee/sword_superspinslash.ogg" ]
+    "spin" : [ "/sfx/melee/sword_superspinslash.ogg" ],
+    "jump" : ["/sfx/tech/tech_doublejump.ogg"]
   }
 }

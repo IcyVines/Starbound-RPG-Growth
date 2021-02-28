@@ -1,144 +1,30 @@
 {
-  "itemName" : "ivrpgwsamuraiheart",
+  "itemName" : "ivrpgwnomadicsoul",
   "price" : 1500,
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "An engraving on the hilt says 'Lake Tōya'.",
-  "shortdescription" : "Samurai Heart",
+  "description" : "The Wanderer sheathes the blade with knowledge that there is nothing left to cut.",
+  "shortdescription" : "^magenta;Nomadic Soul",
   "tooltipKind" : "ivrpgweapon",
   "category" : "Katana",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","katana","broadsword"],
 
-  "classreq" : 1,
-  "specreq" : 3,
+  "classreq" : [3, 6],
+  "specreq" : 7,
 
-  "inventoryIcon" : "samuraiheart3.png?scalebicubic=0.5;0.5",
+  "inventoryIcon" : "nomadic_soul_banny2.png",
 
-  "animation" : "/items/active/specweapons/samurai/katana.animation",
+  "animation" : "/items/active/specweapons/wanderer/katana.animation",
   "animationParts" : {
     "handle" : "",
-    "blade" : "samuraiheart3.png"
+    "blade" : "nomadic_soul_banny2.png",
+    "sheath" : "nomadic_soul_sheath.png"
   },
-  "animationCustom" : {
-    "animatedParts": {
-      "stateTypes": {
-        "parryShield": {
-          "default": "inactive",
-          "states": {
-            "inactive": {},
-            "active": {},
-            "block": {
-              "frames": 1,
-              "cycle": 0.2,
-              "mode": "transition",
-              "transition": "active"
-            }
-          }
-        }
-      },
-      "parts": {
-        "parryShield": {
-          "properties": {
-            "zLevel": -1,
-            "centered": true,
-            "offset": [0.55, 2],
-            "transformationGroups": ["shield"],
-            "rotationCenter": [0, 0],
-            "shieldPoly": [
-              [-1.75, -3],
-              [4.2, -3.5],
-              [4.2, -1.75],
-              [-1.75, -1.65]
-            ]
-          },
-          "partStates": {
-            "parryShield": {
-              "inactive": {
-                "properties": {
-                  "image": ""
-                }
-              },
-              "active": {
-                "properties": {
-                  "image": "/items/active/specweapons/samurai/parrycounter/<elementalType>parryshield.png:active?flipxy"
-                }
-              },
-              "block": {
-                "properties": {
-                  "image": "/items/active/specweapons/samurai/parrycounter/<elementalType>parryshield.png:block?flipxy"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "particleEmitters" : {
-      "physicalCounter" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [0.75, -0.0, 4.25, -5.0],
-        "particles" : []
-      },
-      "fireCounter" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [0.75, -0.0, 4.25, -5.0],
-        "particles" : [
-          { "particle" : "fireswoosh1"},
-          { "particle" : "fireswoosh2"},
-          { "particle" : "fireswoosh3"}
-        ]
-      },
-      "electricCounter" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [0.75, -0.0, 4.25, -5.0],
-        "particles" : [
-          { "particle" : "electricswoosh1"},
-          { "particle" : "electricswoosh2"},
-          { "particle" : "electricswoosh2"}
-        ]
-      },
-      "iceCounter" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [0.75, -0.0, 4.25, -5.0],
-        "particles" : [
-          { "particle" : "iceswoosh1"},
-          { "particle" : "iceswoosh2"},
-          { "particle" : "iceswoosh3"}
-        ]
-      },
-        "poisonCounter" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [0.75, -0.0, 4.25, -5.0],
-        "particles" : [
-          { "particle" : "poisonswoosh1"},
-          { "particle" : "poisonswoosh2"},
-          { "particle" : "fireswoosh2"}
-        ]
-      }
-    },
-    "sounds": {
-      "guard": ["/sfx/melee/sword_guard.ogg"],
-      "parry": ["/sfx/melee/sword_parry.ogg"],
-      "fireCounter" : [ "/sfx/melee/spear_flurry.ogg" ],
-      "poisonCounter" : [ "/sfx/melee/spear_flurry.ogg" ],
-      "iceCounter" : [ "/sfx/melee/spear_flurry.ogg" ],
-      "electricCounter" : [ "/sfx/melee/spear_flurry.ogg" ]
-    }
-  },
+  "animationCustom" : {},
 
-  "scripts" : ["/items/active/specweapons/samurai/meleeweapon.lua"],
+  "scripts" : ["/items/active/specweapons/wanderer/meleeweapon.lua"],
 
   "elementalType" : "physical",
 
@@ -146,10 +32,10 @@
   "primaryAbility" : {
     "name": "Combo Slash",
     "type": "katanacombo",
-    "scripts": ["/items/active/specweapons/samurai/bladedance.lua"],
+    "scripts": ["/items/active/specweapons/wanderer/bladedance.lua"],
     "class": "BladeDance",
 
-    "comboSteps": 9,
+    "comboSteps": 1,
 
     "fireTime" : 1.0,
     "baseDps" : 11.5,
@@ -212,30 +98,28 @@
 
         "stances": {
       "idle": {
-        "armRotation": -20,
+        "armRotation": 0,
         "weaponRotation": 120,
-        "weaponOffset": [0, 0.5],
+        "weaponOffset": [-0.125, 0],
         "allowRotate": false,
-        "name": "idle",
+        "flipx": true,
         "allowFlip": true,
         "twoHanded": false
       },
-      "windup1": {
-        "duration": 0.15,
-        "armRotation": -100,
-        "weaponRotation": -160,
-        "weaponOffset": [0, 0.5],
+      "idleActive": {
+        "armRotation": -40,
+        "weaponRotation": -20,
+        "weaponOffset": [-0.125, 0],
         "twoHanded": true,
-        "flipx": true,
         "allowRotate": false,
-        "allowFlip": false
+        "allowFlip": true
       },
-      "preslash1": {
-        "duration": 0.00,
-        "armRotation": -85,
-        "weaponRotation": -105,
-        "weaponOffset": [0, 0.5],
-        "twoHanded": true,
+      "windup1": {
+        "duration": 0.3,
+        "armRotation": 0,
+        "weaponRotation": 120,
+        "weaponOffset": [-0.125, 0],
+        "twoHanded": false,
         "flipx": true,
         "allowRotate": false,
         "allowFlip": false
@@ -244,21 +128,21 @@
         "duration": 0.2,
         "armRotation": 70,
         "weaponRotation": -150,
-        "weaponOffset": [0, 0.5],
+        "weaponOffset": [-0.125, 0],
         "twoHanded": true,
         "flipx": true,
         "allowRotate": false,
         "allowFlip": false
       },
-      "wait1": {
+      "toIdle": {
         "duration": 0.2,
         "armRotation": 70,
         "weaponRotation": -150,
-        "weaponOffset": [0, 0.5],
+        "weaponOffset": [-0.125, 0],
         "allowRotate": false,
         "allowFlip": true,
-        "twoHanded": true,
-        "flipx": true
+        "twoHanded": true
+        //"weaponAngularVelocity": 1080
       },
       "windup2": {
         "duration": 0.15,
@@ -357,7 +241,7 @@
         "duration": 0.1,
         "armRotation": -10,
         "weaponRotation": -90,
-        "weaponOffset": [-1.5, 0.5],
+        "weaponOffset": [0, 0.5],
         "twoHanded": true,
         "allowRotate": false,
         "allowFlip": true
@@ -366,7 +250,7 @@
         "duration": 0.2,
         "armRotation": -10,
         "weaponRotation": -90,
-        "weaponOffset": [-1.5, 0.5],
+        "weaponOffset": [0, 0.5],
         "twoHanded": true,
         "allowRotate": false,
         "allowFlip": true
@@ -384,7 +268,7 @@
         "duration": 0.1,
         "armRotation": 10,
         "weaponRotation": -90,
-        "weaponOffset": [-1.5, 0.5],
+        "weaponOffset": [0, 0.5],
         "twoHanded": true,
         "allowRotate": false,
         "allowFlip": true
@@ -393,7 +277,7 @@
         "duration": 0.2,
         "armRotation": 10,
         "weaponRotation": -90,
-        "weaponOffset": [-1.5, 0.5],
+        "weaponOffset": [0, 0.5],
         "twoHanded": true,
         "allowRotate": false,
         "allowFlip": true
@@ -411,7 +295,7 @@
         "duration": 0.1,
         "armRotation": -15,
         "weaponRotation": -75,
-        "weaponOffset": [-1.5, 0.5],
+        "weaponOffset": [0, 0.5],
         "twoHanded": true,
         "allowRotate": false,
         "allowFlip": true
@@ -420,7 +304,7 @@
         "duration": 0.2,
         "armRotation": -15,
         "weaponRotation": -75,
-        "weaponOffset": [-1.5, 0.5],
+        "weaponOffset": [0, 0.5],
         "twoHanded": true,
         "allowRotate": false,
         "allowFlip": true
@@ -438,7 +322,7 @@
         "duration": 0.1,
         "armRotation": 0,
         "weaponRotation": -80,
-        "weaponOffset": [-1.5, 0.5],
+        "weaponOffset": [0, 0.5],
         "twoHanded": true,
         "allowRotate": false,
         "allowFlip": true
@@ -447,7 +331,7 @@
         "duration": 0.2,
         "armRotation": 0,
         "weaponRotation": -80,
-        "weaponOffset": [-1.5, 0.5],
+        "weaponOffset": [0, 0.5],
         "twoHanded": true,
         "allowRotate": false,
         "allowFlip": true
@@ -456,7 +340,7 @@
         "duration": 0.15,
         "armRotation": 10,
         "weaponRotation": -90,
-        "weaponOffset": [-1.5, 0.5],
+        "weaponOffset": [0, 0.5],
         "twoHanded": true,
         "allowRotate": false,
         "allowFlip": true
@@ -476,60 +360,6 @@
         "weaponRotation": -150,
         "weaponOffset": [0, 0.5],
         "twoHanded": true,
-        "allowRotate": false,
-        "allowFlip": false
-      }
-    }
-  },
-
-  "altAbilityType" : "parrycounter",
-  "altAbility" : {
-    "name": "Parry Counter",
-    "type": "parrycounter",
-    "scripts": ["/items/active/specweapons/samurai/parrycounter/parrycounter.lua"],
-    "class": "Parry",
-
-    "energyUsage": 5,
-    "parryTime": 0.6,
-    "cooldownTime": 1.2,
-    "shieldHealth": 25,
-
-    "damageConfig": {
-      "damageSourceKind": "ivrpgsamuraikatana",
-      "statusEffects": [],
-      "baseDamage": 22.5,
-      "knockback": 60,
-      "knockbackMode": "facing",
-      "timeoutGroup": "alt",
-      "timeout": 0.5
-    },
-
-    "stances": {
-      "parry": {
-        "armRotation": -45,
-        "weaponRotation": 25,
-        "twoHanded": true,
-        "weaponOffset": [0, 0.5],
-        "allowRotate": false,
-        "allowFlip": true
-      },
-      "parryWindup": {
-        "duration": 0.15,
-        "armRotation": -100,
-        "weaponRotation": -160,
-        "weaponOffset": [0, 0.5],
-        "twoHanded": true,
-        "flipx": true,
-        "allowRotate": false,
-        "allowFlip": false
-      },
-      "counter": {
-        "duration": 0.2,
-        "armRotation": 70,
-        "weaponRotation": -150,
-        "weaponOffset": [0, 0.5],
-        "twoHanded": true,
-        "flipx": true,
         "allowRotate": false,
         "allowFlip": false
       }

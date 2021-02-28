@@ -64,6 +64,25 @@
 							"transition": "idle"
 						}
 					}
+				},
+				"sheath": {
+					"default": "on",
+					"states": {
+						"on": {},
+						"transitionOff" : {
+							"frames": 10,
+							"cycle": 0.3,
+							"mode": "transition",
+							"transition": "off"
+						},
+						"off": {},
+						"transitionOn" : {
+							"frames": 10,
+							"cycle": 0.2,
+							"mode": "transition",
+							"transition": "on"
+						}
+					}
 				}
 			},
 			"parts": {
@@ -72,10 +91,43 @@
 						"zLevel": 0,
 						"centered": true,
 						"image": "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
-						"offset": [0, 7],
+						"offset": [0, 3.25],
 						"transformationGroups": ["weapon"],
 						"rotationCenter": [0, 0],
 						"damageArea": [[-0.7, -1.0], [-0.7, 2.5], [0.5, 2.5], [0.5, -1.0]]
+					}
+				},
+				"sheath": {
+					"properties": {
+						"zLevel": 1,
+						"centered": true,
+						"image": "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
+						"transformationGroups": ["sheath"],
+						"offset": [0, 1.875]
+					},
+					"partStates": {
+						"sheath": {
+							"off": {
+								"properties": {
+									"image": ""
+								}
+							},
+							"transitionOff": {
+								"properties": {
+									"image": "nomadic_soul_sheath_transition.png:<frame>?<directives>?<bladeDirectives>"
+								}
+							},
+							"transitionOn": {
+								"properties": {
+									"image": "nomadic_soul_sheath_transition.png:<frame>?<directives>?<bladeDirectives>"
+								}
+							},
+							"on": {
+								"properties": {
+									"image": "<partImage><paletteSwaps>?<directives>?<bladeDirectives>"
+								}
+							}
+						}
 					}
 				},
 				"handle": {
@@ -105,63 +157,63 @@
 							"fire": {
 								"properties": {
 									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>?flipy",
-									"offset" : [1.75, -2.75],
+									"offset" : [0, -2.75],
 									"damageArea" : [[-5, -2], [-2.5, -3], [1, -3], [4, -1.75], [5.25, 0.25], [5.25, 2.25], [3.75, 3.25], [0.25, 2.75]]
 								}
 							},
 							"fire2": {
 								"properties": {
 									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>",
-									"offset": [1.75, 2.5],
+									"offset": [0, 2.75],
 									"damageArea" : [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5.25, -0.25], [5.25, -2.25], [3.75, -3.25], [0.25, -2.75]]
 								}
 							},
 							"fire3": {
 								"properties": {
 									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>?flipy",
-									"offset": [1.75, -2.75],
+									"offset": [0, -2.75],
 									"damageArea" : [[-5, -2], [-2.5, -3], [1, -3], [4, -1.75], [5.25, 0.25], [5.25, 2.25], [3.75, 3.25], [0.25, 2.75]]
 								}
 							},
 							"fire4": {
 								"properties": {
 									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>",
-									"offset": [1.75, 2.5],
+									"offset": [0, 2.75],
 									"damageArea" : [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5.25, -0.25], [5.25, -2.25], [3.75, -3.25], [0.25, -2.75]]
 								}
 							},
 							"fire5": {
 								"properties": {
 									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
-									"offset": [4.5, -0.375],
+									"offset": [3.5, 0],
 									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
 								}
 							},
 							"fire6": {
 								"properties": {
 									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
-									"offset": [4.5, -0.25],
+									"offset": [3.5, 0],
 									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
 								}
 							},
 							"fire7": {
 								"properties": {
 									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
-									"offset": [4.5, -0.5],
+									"offset": [3.5, 0],
 									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
 								}
 							},
 							"fire8": {
 								"properties": {
 									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
-									"offset": [4.5, -0.5],
+									"offset": [3.5, 0],
 									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
 								}
 							},
 							"fire9": {
 								"properties": {
 									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>spinswoosh.png:<frame>?scalenearest=1.15",
-									"offset": [0, 0.5],
+									"offset": [-1.25, 0.5],
 									"damageArea": [[-7, 2], [5, 2], [8, 0], [6, -2], [4, -2], [2, 0], [-7, 0.5], [-7.4, 1.35]]
 								}
 							}
@@ -174,7 +226,7 @@
 	"transformationGroups": {
 		"weapon": {},
 		"swoosh": {},
-		"shield" : {}
+		"sheath" : {}
 	},
 
 	"particleEmitters": {
@@ -252,6 +304,7 @@
 			"fire6": ["/sfx/melee/swing_spear.ogg"],
 			"fire7": ["/sfx/melee/swing_spear.ogg"],
 			"fire8": ["/sfx/melee/swing_spear.ogg"],
-			"fire9": ["/sfx/melee/swing_broadsword.ogg"]
+			"fire9": ["/sfx/melee/swing_broadsword.ogg"],
+			"unsheathe" : ["/items/active/specweapons/wanderer/charge_2.ogg"]
 		}
  }

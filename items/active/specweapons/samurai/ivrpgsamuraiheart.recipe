@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 14 },
+    { "item" : "refinedferozium", "count" : 2 },
+    { "item" : "refinedaegisalt", "count" : 2 },
+    { "item" : "livingroot", "count" : 1 },
+    { "item" : "solariumstar", "count" : 5 }
+  ],
+	"output" : { "item" : "ivrpgwsamuraiheart", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

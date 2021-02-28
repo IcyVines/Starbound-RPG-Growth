@@ -9,6 +9,7 @@ function init()
 
   self.rpg_levelRequirements = root.assetJson("/ivrpgLevelRequirements.config")
   self.rpg_specUnlockXp = self.rpg_levelRequirements.specialization ^ 2 * 100
+  self.adeptUnlock = root.assetJson("/ivrpgSpecList.config")[3][4].specialRequirements
 end
 
 
@@ -32,7 +33,7 @@ function update(dt)
   end
 
   --Adept Check
-  if world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp and status.statusProperty("ivrpgsuadept") ~= true and world.entityCurrency(self.id, "intelligencepoint") > 40 and world.entityCurrency(self.id, "agilitypoint") > 40 then
+  if world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp and status.statusProperty("ivrpgsuadept") ~= true and world.entityCurrency(self.id, "intelligencepoint") >= self.adeptUnlock.intelligence and world.entityCurrency(self.id, "agilitypoint") >= self.adeptUnlock.agility then
     local targetEntities = world.monsterQuery(mcontroller.position(), 8, {
       withoutEntityId = self.id,
       includedTypes = {"creature"}

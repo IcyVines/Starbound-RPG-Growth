@@ -1,16 +1,8 @@
 {
   "name" : "ivrpgsoliloquystatus",
-  "effectConfig" : {
-    "shieldDecay" : 0.5,
-    "healthStatus" : "regeneration4",
-    "healthRange" : 30
-  },
+  "effectConfig" : {},
 
   "defaultDuration" : 10,
-
-  "scripts" : [
-  	"soliloquy.lua"
-  ],
 
   "label" : "Soliloquy",
   "icon" : "/specs/techs/wanderer/soliloquy.png"

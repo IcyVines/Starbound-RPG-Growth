@@ -22,7 +22,18 @@ function update(dt)
   end
 
   status.setPersistentEffects("wandererthestranger", {
-    {stat = "powerMultiplier", amount = 2 + self.nearbyAggressiveNpcs - self.nearbyAllies}
+    {stat = "powerMultiplier", amount = 2 + self.nearbyAggressiveNpcs - self.nearbyAllies},
+    {stat = "physicalResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "iceResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "electricResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "fireResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "poisonResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "shadowResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "radioactiveResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "demonicResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "holyResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "novaResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "cosmicResistance", amount = 0.2 - (self.nearbyAllies / 5)}
   })
 
   if self.nearbyAggressiveNpcs >= 1 then
