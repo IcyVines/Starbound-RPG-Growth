@@ -38,15 +38,13 @@ function Weapon:updateAim()
   
   for _,group in pairs(self.transformationGroups) do
     animator.resetTransformationGroup(group.name)
-    if group.name == "weapon" then
+    if group.name ~= "swoosh" then
       animator.scaleTransformationGroup(group.name, {0.5, 0.5})
     end
     animator.rotateTransformationGroup(group.name, group.rotation, group.rotationCenter)
     animator.rotateTransformationGroup(group.name, self.relativeWeaponRotation, self.relativeWeaponRotationCenter)
-    if group.name ~= "sheath" then
-      animator.translateTransformationGroup(group.name, group.offset)
-      animator.translateTransformationGroup(group.name, self.weaponOffset)
-    end
+    animator.translateTransformationGroup(group.name, group.offset)
+    animator.translateTransformationGroup(group.name, self.weaponOffset)
   end
 
   local aimAngle, aimDirection = activeItem.aimAngleAndDirection(self.aimOffset, activeItem.ownerAimPosition())

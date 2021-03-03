@@ -39,7 +39,9 @@ function BladeDance:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
   self.movingForward = mcontroller.facingDirection() == mcontroller.movingDirection()
+  self.notMoving = not (mcontroller.running() or mcontroller.walking())
   self.crouched = mcontroller.crouching()
+  self.aerial = not mcontroller.onGround() and not mcontroller.groundMovement()
 
   if self.cooldownTimer > 0 then
     self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
@@ -70,13 +72,13 @@ function BladeDance:update(dt, fireMode, shiftHeld)
   self.killTimer = math.max(self.killTimer - dt, 0)
 
   self.edgeTriggerTimer = math.max(0, self.edgeTriggerTimer - dt)
-  if --[[self.lastFireMode ~= (self.activatingFireMode or self.abilitySlot) and]] fireMode == (self.activatingFireMode or self.abilitySlot) then
+  if self.lastFireMode ~= (self.activatingFireMode or self.abilitySlot) and fireMode == (self.activatingFireMode or self.abilitySlot) then
     self.edgeTriggerTimer = self.edgeTriggerGrace
   end
   self.lastFireMode = fireMode
 
   if not self.weapon.currentAbility then
-    if self.fireMode == "primary" or self.fireMode == "alt" then--self:shouldActivate() then
+    if self:shouldActivate() then
       self.currentFireMode = self.fireMode
       self:setState(self.windup)
     else
@@ -101,12 +103,31 @@ end
 
 -- State: windup
 function BladeDance:windup()
-  local stance = self.stances["windup"..self.comboStep]
+  if not self.weapon.active then
+    self.comboType = "Unsheathe"
+  elseif self.fireMode == "primary" then
+    if not self.movingForward and not self.notMoving then
+      self.comboType = "Backstep"
+    elseif self.aerial then
+      self.comboType = "Dive"
+    else
+      self.comboType = "Primary"
+    end
+  else --alt
+    if self.movingForward and not self.notMoving then
+      self.comboType = "Lunge"
+    elseif self.crouched then
+      self.comboType = "Sheathe"
+    else
+      self.comboType = "Rise"
+    end
+  end
+
+  local stance = self.stances["windup"..self.comboType]
 
   if not self.weapon.active then
     animator.setAnimationState("sheath", "transitionOff")
     animator.playSound("unsheathe")
-    self.weapon.active = true
   end
 
   self.weapon:setStance(stance)
@@ -138,7 +159,7 @@ function BladeDance:windup()
     status.overConsumeResource("energy", self.energyUsage)
   end
 
-  if self.stances["preslash"..self.comboStep] then
+  if self.stances["preslash"..self.comboType] then
     self:setState(self.preslash)
   else
     self:setState(self.fire)
@@ -148,7 +169,7 @@ end
 -- State: wait
 -- waiting for next combo input
 function BladeDance:wait()
-  local stance = self.stances["wait"..(self.comboStep - 1)]
+  local stance = self.stances["wait"..self.comboType]
 
   self.weapon:setStance(stance)
   if stance.flipx and stance.flipy then
@@ -178,7 +199,7 @@ end
 -- State: preslash
 -- brief frame in between windup and fire
 function BladeDance:preslash()
-  local stance = self.stances["preslash"..self.comboStep]
+  local stance = self.stances["preslash"..self.comboType]
 
 
   self.weapon:setStance(stance)
@@ -203,7 +224,7 @@ end
 
 -- State: fire
 function BladeDance:fire()
-  local stance = self.stances["fire"..self.comboStep]
+  local stance = self.stances["fire"..self.comboType]
 
   self.weapon:setStance(stance)
   self.weapon:updateAim()
@@ -220,7 +241,7 @@ function BladeDance:fire()
     animator.setPartTag("blade", "directives", "")
     animator.setPartTag("handle","directives", "")
   end
-  local animStateKey = self.animKeyPrefix .. (self.comboStep > 1 and "fire"..self.comboStep or "fire")
+  local animStateKey = self.animKeyPrefix .. "fire" .. self.comboType
   animator.setAnimationState("swoosh", animStateKey)
   animator.playSound(animStateKey)
 
@@ -228,15 +249,34 @@ function BladeDance:fire()
   animator.setParticleEmitterOffsetRegion(swooshKey, self.swooshOffsetRegions[self.comboStep])
   animator.burstParticleEmitter(swooshKey)
 
+  if self.comboType == "Backstep" then
+    mcontroller.setVelocity({-mcontroller.facingDirection() * 100, 1})
+  elseif self.comboType == "Lunge" then
+    mcontroller.setVelocity({mcontroller.facingDirection() * 100, 1})
+  elseif self.comboType == "Rise" then
+    mcontroller.setVelocity({0, 100})
+  elseif self.comboType == "Dive" then
+    mcontroller.setVelocity({mcontroller.facingDirection() * 20, -100})
+  end
+
   util.wait(stance.duration, function()
     local damageArea = partDamageArea("swoosh")
-    self.weapon:setDamage(self.stepDamageConfig[self.comboStep], damageArea)
+    if self.comboType ~= "Dive" then
+      self.weapon:setDamage(self.stepDamageConfig[self.comboStep], damageArea)
+    end
+    if self.comboType == "Rise" then
+      mcontroller.controlApproachYVelocity(0, 500)
+    elseif self.comboType == "Lunge" or self.comboType == "Backstep" then
+      mcontroller.controlApproachXVelocity(0, 500)
+    elseif self.comboType == "Dive" and mcontroller.onGround() then
+      return true
+    end
   end)
 
   if self.comboStep < self.comboSteps then
     self.comboStep = self.comboStep + 1
     self:setState(self.wait)
-  elseif not self.active then
+  elseif not self.weapon.active then
     self.comboStep = 1
     self:setState(self.cooldown)
   else
@@ -248,6 +288,7 @@ end
 function BladeDance:cooldown()
   self.weapon:setStance(self.stances.toIdle)
   self.weapon:updateAim()
+  self.weapon.active = true
 
   local progress = 0
   util.wait(self.stances.toIdle.duration, function()
@@ -272,7 +313,7 @@ function BladeDance:shouldActivate()
     if self.comboStep > 1 then
       return self.edgeTriggerTimer > 0
     else
-      return self.fireMode == (self.activatingFireMode or self.abilitySlot)
+      return self.fireMode == "primary" or self.fireMode == "alt"
     end
   end
 end
@@ -284,7 +325,8 @@ end
 
 function BladeDance:computeDamageAndCooldowns()
   local attackTimes = {}
-  for i = 1, self.comboSteps do
+  self.comboTypes = {"Unsheathe", "Primary", "Rise", "Dive", "Backstep", "Lunge", "Sheathe"}
+  for _,i in ipairs(self.comboTypes) do
     local attackTime = self.stances["windup"..i].duration + self.stances["fire"..i].duration
     if self.stances["preslash"..i] then
       attackTime = attackTime + self.stances["preslash"..i].duration

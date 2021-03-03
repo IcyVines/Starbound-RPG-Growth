@@ -9,55 +9,43 @@
 					"default": "idle",
 					"states": {
 						"idle": {},
-						"fire": {
+						"fireUnsheathe": {
 							"frames": 3,
 							"cycle": 0.1,
 							"mode": "transition",
 							"transition": "idle"
 						},
-						"fire2": {
+						"firePrimary": {
 							"frames": 3,
 							"cycle": 0.1,
 							"mode": "transition",
 							"transition": "idle"
 						},
-						"fire3": {
+						"fireRise": {
 							"frames": 3,
 							"cycle": 0.1,
 							"mode": "transition",
 							"transition": "idle"
 						},
-						"fire4": {
+						"fireDive": {
 							"frames": 3,
 							"cycle": 0.1,
 							"mode": "transition",
 							"transition": "idle"
 						},
-						"fire5": {
+						"fireBackstep": {
 							"frames": 3,
 							"cycle": 0.1,
 							"mode": "transition",
 							"transition": "idle"
 						},
-						"fire6": {
+						"fireLunge": {
 							"frames": 3,
 							"cycle": 0.1,
 							"mode": "transition",
 							"transition": "idle"
 						},
-						"fire7": {
-							"frames": 3,
-							"cycle": 0.1,
-							"mode": "transition",
-							"transition": "idle"
-						},
-						"fire8": {
-							"frames": 3,
-							"cycle": 0.1,
-							"mode": "transition",
-							"transition": "idle"
-						},
-						"fire9": {
+						"fireSheathe": {
 							"frames": 3,
 							"cycle": 0.15,
 							"mode": "transition",
@@ -70,14 +58,14 @@
 					"states": {
 						"on": {},
 						"transitionOff" : {
-							"frames": 10,
+							"frames": 15,
 							"cycle": 0.3,
 							"mode": "transition",
 							"transition": "off"
 						},
 						"off": {},
 						"transitionOn" : {
-							"frames": 10,
+							"frames": 15,
 							"cycle": 0.2,
 							"mode": "transition",
 							"transition": "on"
@@ -103,7 +91,7 @@
 						"centered": true,
 						"image": "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
 						"transformationGroups": ["sheath"],
-						"offset": [0, 1.875]
+						"offset": [0, 3.25]
 					},
 					"partStates": {
 						"sheath": {
@@ -114,12 +102,12 @@
 							},
 							"transitionOff": {
 								"properties": {
-									"image": "nomadic_soul_sheath_transition.png:<frame>?<directives>?<bladeDirectives>"
+									"image": "nomadic_soul_sheath_transition_updated.png:<frame>?<directives>?<bladeDirectives>"
 								}
 							},
 							"transitionOn": {
 								"properties": {
-									"image": "nomadic_soul_sheath_transition.png:<frame>?<directives>?<bladeDirectives>"
+									"image": "nomadic_soul_sheath_transition_updated.png:<frame>?<directives>?<bladeDirectives>"
 								}
 							},
 							"on": {
@@ -154,63 +142,49 @@
 									"image": ""
 								}
 							},
-							"fire": {
+							"fireUnsheathe": {
 								"properties": {
 									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>?flipy",
 									"offset" : [0, -2.75],
 									"damageArea" : [[-5, -2], [-2.5, -3], [1, -3], [4, -1.75], [5.25, 0.25], [5.25, 2.25], [3.75, 3.25], [0.25, 2.75]]
 								}
 							},
-							"fire2": {
+							"firePrimary": {
 								"properties": {
 									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>",
 									"offset": [0, 2.75],
 									"damageArea" : [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5.25, -0.25], [5.25, -2.25], [3.75, -3.25], [0.25, -2.75]]
 								}
 							},
-							"fire3": {
+							"fireRise": {
 								"properties": {
 									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>?flipy",
 									"offset": [0, -2.75],
 									"damageArea" : [[-5, -2], [-2.5, -3], [1, -3], [4, -1.75], [5.25, 0.25], [5.25, 2.25], [3.75, 3.25], [0.25, 2.75]]
 								}
 							},
-							"fire4": {
+							"fireDive": {
 								"properties": {
 									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>swoosh.png:<frame>",
 									"offset": [0, 2.75],
 									"damageArea" : [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5.25, -0.25], [5.25, -2.25], [3.75, -3.25], [0.25, -2.75]]
 								}
 							},
-							"fire5": {
+							"fireBackstep": {
 								"properties": {
 									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
 									"offset": [3.5, 0],
 									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
 								}
 							},
-							"fire6": {
+							"fireLunge": {
 								"properties": {
 									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
 									"offset": [3.5, 0],
 									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
 								}
 							},
-							"fire7": {
-								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
-									"offset": [3.5, 0],
-									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
-								}
-							},
-							"fire8": {
-								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
-									"offset": [3.5, 0],
-									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
-								}
-							},
-							"fire9": {
+							"fireSheathe": {
 								"properties": {
 									"image": "/items/active/specweapons/samurai/swoosh/<elementalType>spinswoosh.png:<frame>?scalenearest=1.15",
 									"offset": [-1.25, 0.5],
@@ -296,15 +270,15 @@
 	},
 
 	"sounds": {
-			"fire": ["/sfx/melee/swing_shortsword.ogg"],
-			"fire2": ["/sfx/melee/swing_spear.ogg"],
-			"fire3": ["/sfx/melee/swing_broadsword.ogg"],
-			"fire4": ["/sfx/melee/swing_broadsword.ogg"],
-			"fire5": ["/sfx/melee/swing_spear.ogg"],
-			"fire6": ["/sfx/melee/swing_spear.ogg"],
+			"fireUnsheathe": ["/sfx/melee/swing_shortsword.ogg"],
+			"firePrimary": ["/sfx/melee/swing_spear.ogg"],
+			"fireRise": ["/sfx/melee/swing_broadsword.ogg"],
+			"fireDive": ["/sfx/melee/swing_broadsword.ogg"],
+			"fireBackstep": ["/sfx/melee/swing_spear.ogg"],
+			"fireLunge": ["/sfx/melee/swing_spear.ogg"],
 			"fire7": ["/sfx/melee/swing_spear.ogg"],
 			"fire8": ["/sfx/melee/swing_spear.ogg"],
-			"fire9": ["/sfx/melee/swing_broadsword.ogg"],
+			"fireSheathe": ["/sfx/melee/swing_broadsword.ogg"],
 			"unsheathe" : ["/items/active/specweapons/wanderer/charge_2.ogg"]
 		}
  }
