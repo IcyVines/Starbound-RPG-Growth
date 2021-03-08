@@ -12,17 +12,17 @@ function update(dt)
   self.nearbyAllies = 0
   local entityIds = world.entityQuery(mcontroller.position(), 15, {withoutEntityId = self.id}, true)
   for _,id in ipairs(entityIds) do
-    if world.entityDamageTeam(id).type == "friendly" or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(a4, id)) then
+    if (world.entityDamageTeam(id).type == "friendly" and (world.entitySpecies(id) or world.isMonster(id))) or (world.entityDamageTeam(id).type == "pvp" and not world.entityCanDamage(self.id, id)) then
       self.nearbyAllies = 1
     elseif world.entityDamageTeam(id).type == "enemy" and world.isNpc(id) and world.entityAggressive(id) then
       self.nearbyAggressiveNpcs = 1
-    elseif world.entityDamageTeam(id).type == "pvp" and world.entityCanDamage(a4, id) then
+    elseif world.entityDamageTeam(id).type == "pvp" and world.entityCanDamage(self.id, id) then
       self.nearbyAggressiveNpcs = 1
     end
   end
 
   status.setPersistentEffects("wandererthestranger", {
-    {stat = "powerMultiplier", amount = 2 + self.nearbyAggressiveNpcs - self.nearbyAllies},
+    {stat = "powerMultiplier", amount = 1 + self.nearbyAggressiveNpcs - self.nearbyAllies},
     {stat = "physicalResistance", amount = 0.2 - (self.nearbyAllies / 5)},
     {stat = "iceResistance", amount = 0.2 - (self.nearbyAllies / 5)},
     {stat = "electricResistance", amount = 0.2 - (self.nearbyAllies / 5)},

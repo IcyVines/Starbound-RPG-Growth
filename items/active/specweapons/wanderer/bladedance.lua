@@ -15,19 +15,33 @@ function BladeDance:init()
 
   self.edgeTriggerTimer = 0
   self.flashTimer = 0
-  self.cooldownTimer = self.cooldowns[1]
+  self.cooldownTimer = self.cooldowns["Unsheathe"]
 
   self.killTimer = 0
+  self.altKillTimer = 0
   self.damageGivenUpdate = 5
-  self.weapon.active = false
+  self.weapon.active = config.getParameter("unsheathed", false)
+  self.bonusPower = config.getParameter("bonusPower", 1)
+  self.projectileIds = {}
+
+  self.previousComboType = nil
 
   self.animKeyPrefix = self.animKeyPrefix or ""
-
-  self.weapon.onLeaveAbility = function()
+  if self.weapon.active then
+    self.weapon:setStance(self.stances.idleActive)
+    animator.setAnimationState("sheath", "off")
     animator.setPartTag("blade", "directives", "")
     animator.setPartTag("handle", "directives", "")
+  else
+    self.weapon:setStance(self.stances.idle)
+    animator.setAnimationState("sheath", "on")
+  end
+
+  self.weapon.onLeaveAbility = function()
     if self.weapon.active then
       self.weapon:setStance(self.stances.idleActive)
+      animator.setPartTag("blade", "directives", "")
+      animator.setPartTag("handle", "directives", "")
     else
       self.weapon:setStance(self.stances.idle)
     end
@@ -57,6 +71,9 @@ function BladeDance:update(dt, fireMode, shiftHeld)
     end
   end
 
+  activeItem.setInstanceValue("unsheathed", self.weapon.active)
+  activeItem.setInstanceValue("bonusPower", self.bonusPower)
+
   if self.weapon.stance.flipx then
     animator.setPartTag("blade", "directives", "?flipx")
     animator.setPartTag("handle", "directives", "?flipx")
@@ -70,9 +87,10 @@ function BladeDance:update(dt, fireMode, shiftHeld)
   self:updateDamageGiven()
 
   self.killTimer = math.max(self.killTimer - dt, 0)
+  self.altKillTimer = math.max(self.altKillTimer - dt, 0)
 
   self.edgeTriggerTimer = math.max(0, self.edgeTriggerTimer - dt)
-  if self.lastFireMode ~= (self.activatingFireMode or self.abilitySlot) and fireMode == (self.activatingFireMode or self.abilitySlot) then
+  if self.lastFireMode ~= fireMode and (fireMode == "primary" or fireMode == "alt") then
     self.edgeTriggerTimer = self.edgeTriggerGrace
   end
   self.lastFireMode = fireMode
@@ -92,9 +110,13 @@ function BladeDance:updateDamageGiven()
   notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
   if notifications then
     for _,notification in pairs(notifications) do
-      if "ivrpgsamuraikatana" == notification.damageSourceKind then
+      if "ivrpgwandererkatana" == notification.damageSourceKind then
         if notification.healthLost > 0 and notification.damageDealt > notification.healthLost then
-          self.killTimer = math.min(self.killTimer + 2.5, 10)
+          self.killTimer = 3
+        end
+      elseif "ivrpgwandererkatanasheathe" == notification.damageSourceKind then
+        if notification.healthLost > 0 and notification.damageDealt > notification.healthLost then
+          self.altKillTimer = 3
         end
       end
     end
@@ -105,19 +127,24 @@ end
 function BladeDance:windup()
   if not self.weapon.active then
     self.comboType = "Unsheathe"
+    animator.setGlobalTag("hueshift", self.bonusPower ~= 1 and "hueshift=0" or "hueshift=280")
   elseif self.fireMode == "primary" then
-    if not self.movingForward and not self.notMoving then
-      self.comboType = "Backstep"
-    elseif self.aerial then
+    if self.aerial then
       self.comboType = "Dive"
     else
-      self.comboType = "Primary"
+      if self.previousComboType == "Primary" or self.previousComboType == "Dive" then
+        self.comboType = "Primary2"
+      else
+        self.comboType = "Primary"
+      end
     end
   else --alt
-    if self.movingForward and not self.notMoving then
-      self.comboType = "Lunge"
-    elseif self.crouched then
+    if self.shiftHeld then
       self.comboType = "Sheathe"
+    elseif self.movingForward and not self.notMoving and not self.aerial then
+      self.comboType = "Lunge"
+    elseif not self.movingForward and not self.notMoving and not self.aerial then
+      self.comboType = "Backstep"
     else
       self.comboType = "Rise"
     end
@@ -170,6 +197,7 @@ end
 -- waiting for next combo input
 function BladeDance:wait()
   local stance = self.stances["wait"..self.comboType]
+  self.previousComboType = self.comboType
 
   self.weapon:setStance(stance)
   if stance.flipx and stance.flipy then
@@ -191,8 +219,9 @@ function BladeDance:wait()
       return
     end
   end)
-
-  self.cooldownTimer = math.max(0, self.cooldowns[self.comboStep - 1] - stance.duration)
+  
+  self.previousComboType = false
+  self.cooldownTimer = math.max(0, self.cooldowns[self.comboType] - stance.duration)
   self.comboStep = 1
 end
 
@@ -249,7 +278,14 @@ function BladeDance:fire()
   animator.setParticleEmitterOffsetRegion(swooshKey, self.swooshOffsetRegions[self.comboStep])
   animator.burstParticleEmitter(swooshKey)
 
-  if self.comboType == "Backstep" then
+  local unsheatheDamageConfig = false
+  if self.comboType == "Unsheathe" then
+    if self.bonusPower == 3 then
+      world.spawnProjectile("ivrpgwnomadicsoulswoosh", vec2.add(mcontroller.position(), {mcontroller.facingDirection() * 2, 0}), activeItem.ownerEntityId(), {mcontroller.facingDirection(), 0}, false, {power = self.stepDamageConfig["Unsheathe"].baseDamageFactor * self.baseDps * self.fireTime * 2, powerMultiplier = activeItem.ownerPowerMultiplier(), speed = 50})
+    end
+    unsheatheDamageConfig = copy(self.stepDamageConfig[self.comboType])
+    unsheatheDamageConfig.baseDamage = unsheatheDamageConfig.baseDamage * self.bonusPower
+  elseif self.comboType == "Backstep" then
     mcontroller.setVelocity({-mcontroller.facingDirection() * 100, 1})
   elseif self.comboType == "Lunge" then
     mcontroller.setVelocity({mcontroller.facingDirection() * 100, 1})
@@ -257,55 +293,86 @@ function BladeDance:fire()
     mcontroller.setVelocity({0, 100})
   elseif self.comboType == "Dive" then
     mcontroller.setVelocity({mcontroller.facingDirection() * 20, -100})
+    self.projectileIds[1] = world.spawnProjectile("ivrpgnomadicsouldive", mcontroller.position(), activeItem.ownerEntityId(), {mcontroller.facingDirection(),0}, true, {power = self.stepDamageConfig["Dive"].baseDamageFactor * self.baseDps * self.fireTime * 5, powerMultiplier = activeItem.ownerPowerMultiplier()})
+    world.spawnProjectile("ivrpgwnomadicsoulswoosh", vec2.add(mcontroller.position(), {mcontroller.facingDirection() * 2, -2}), activeItem.ownerEntityId(), {mcontroller.facingDirection() * 0.5,-1}, false, {speed = 100, power = self.stepDamageConfig["Dive"].baseDamageFactor * self.baseDps * self.fireTime * 2, powerMultiplier = activeItem.ownerPowerMultiplier(), timeToLive = 1})
   end
 
   util.wait(stance.duration, function()
     local damageArea = partDamageArea("swoosh")
     if self.comboType ~= "Dive" then
-      self.weapon:setDamage(self.stepDamageConfig[self.comboStep], damageArea)
+      self.weapon:setDamage(unsheatheDamageConfig or self.stepDamageConfig[self.comboType], damageArea)
+    else
+      status.setPersistentEffects("ivrpgnomadicsouldive", {{stat = "fallDamageMultiplier", effectiveMultiplier = 0}})
     end
     if self.comboType == "Rise" then
-      mcontroller.controlApproachYVelocity(0, 500)
+      mcontroller.controlApproachYVelocity(0, 450)
     elseif self.comboType == "Lunge" or self.comboType == "Backstep" then
-      mcontroller.controlApproachXVelocity(0, 500)
-    elseif self.comboType == "Dive" and mcontroller.onGround() then
+      mcontroller.controlApproachXVelocity(0, 400)
+    elseif self.comboType == "Dive" and (mcontroller.onGround() or mcontroller.groundMovement()) then
+      for i,id in ipairs(self.projectileIds) do
+        if world.entityExists(id) then
+          world.callScriptedEntity(id, "die")
+        end
+      end
       return true
     end
   end)
-
-  if self.comboStep < self.comboSteps then
-    self.comboStep = self.comboStep + 1
-    self:setState(self.wait)
-  elseif not self.weapon.active then
-    self.comboStep = 1
+  self.projectileIds = {}
+  self.comboStep = 1
+  status.clearPersistentEffects("ivrpgnomadicsouldive")
+  if not self.weapon.active then
     self:setState(self.cooldown)
-  else
+  elseif self.comboType == "Sheathe" then
+    self:setState(self.cooldown)
+  else--if self.comboStep < self.comboSteps then
+    self:setState(self.wait)
+  --[[else
     self.cooldownTimer = self.cooldowns[self.comboStep]
-    self.comboStep = 1
+    self.comboStep = 1]]
   end
 end
 
 function BladeDance:cooldown()
-  self.weapon:setStance(self.stances.toIdle)
+  local stance = "toIdle"
+  local stanceTo = "idleActive"
+  if self.weapon.active then
+    stance = "toSheathed"
+    stanceTo = "idle"
+    animator.setAnimationState("sheath", "transitionOn")
+  end
+  self.weapon:setStance(self.stances[stance])
   self.weapon:updateAim()
-  self.weapon.active = true
+
+  self.bonusPower = 1
+  if self.comboType == "Sheathe" then
+    if self.altKillTimer > 0 then
+      self.bonusPower = 3
+    elseif self.killTimer > 0 then
+      self.bonusPower = 2
+    end
+    self.altKillTimer = 0
+    self.killTimer = 0
+  end
+
+  self.weapon.active = not self.weapon.active
 
   local progress = 0
-  util.wait(self.stances.toIdle.duration, function()
-    local from = self.stances.toIdle.weaponOffset or {0,0}
-    local to = self.stances.idleActive.weaponOffset or {0,0}
+  util.wait(self.stances[stance].duration, function()
+    local from = self.stances[stance].weaponOffset or {0,0}
+    local to = self.stances[stanceTo].weaponOffset or {0,0}
     self.weapon.weaponOffset = {interp.linear(progress, from[1], to[1]), interp.linear(progress, from[2], to[2])}
 
-    self.weapon.relativeWeaponRotation = util.toRadians(interp.linear(progress, self.stances.toIdle.weaponRotation, self.stances.idleActive.weaponRotation))
-    self.weapon.relativeArmRotation = util.toRadians(interp.linear(progress, self.stances.toIdle.armRotation, self.stances.idleActive.armRotation))
-
-    if progress >= 0.5 then
+    self.weapon.relativeWeaponRotation = util.toRadians(interp.linear(progress, self.stances[stance].weaponRotation, self.stances[stanceTo].weaponRotation))
+    self.weapon.relativeArmRotation = util.toRadians(interp.linear(progress, self.stances[stance].armRotation, self.stances[stanceTo].armRotation))
+    
+    if progress >= 0.5 and self.weapon.active then
       animator.setPartTag("blade", "directives", "")
       animator.setPartTag("handle", "directives", "")
     end
 
-    progress = math.min(1.0, progress + (self.dt / self.stances.toIdle.duration))
+    progress = math.min(1.0, progress + (self.dt / self.stances[stance].duration))
   end)
+
 end
 
 function BladeDance:shouldActivate()
@@ -313,7 +380,7 @@ function BladeDance:shouldActivate()
     if self.comboStep > 1 then
       return self.edgeTriggerTimer > 0
     else
-      return self.fireMode == "primary" or self.fireMode == "alt"
+      return (self.fireMode == "primary" or self.fireMode == "alt") and self.edgeTriggerTimer > 0
     end
   end
 end
@@ -325,35 +392,39 @@ end
 
 function BladeDance:computeDamageAndCooldowns()
   local attackTimes = {}
-  self.comboTypes = {"Unsheathe", "Primary", "Rise", "Dive", "Backstep", "Lunge", "Sheathe"}
-  for _,i in ipairs(self.comboTypes) do
-    local attackTime = self.stances["windup"..i].duration + self.stances["fire"..i].duration
-    if self.stances["preslash"..i] then
-      attackTime = attackTime + self.stances["preslash"..i].duration
+  self.comboTypes = {Unsheathe = 0, Primary = 0, Primary2 = 0, Rise = 0, Dive = 0, Backstep = 0, Lunge = 0, Sheathe = 0}
+  for k,v in pairs(self.comboTypes) do
+    local attackTime = self.stances["windup"..k].duration + self.stances["fire"..k].duration
+    if self.stances["preslash"..k] then
+      attackTime = attackTime + self.stances["preslash"..k].duration
     end
+    self.comboTypes[k] = attackTime
     table.insert(attackTimes, attackTime)
   end
 
   self.cooldowns = {}
   local totalAttackTime = 0
   local totalDamageFactor = 0
-  for i, attackTime in ipairs(attackTimes) do
+  for i, attackTime in pairs(self.comboTypes) do
     self.stepDamageConfig[i] = util.mergeTable(copy(self.damageConfig), self.stepDamageConfig[i])
-    self.stepDamageConfig[i].timeoutGroup = "primary"..i
+    self.stepDamageConfig[i].timeoutGroup = i
 
     local damageFactor = self.stepDamageConfig[i].baseDamageFactor
     self.stepDamageConfig[i].baseDamage = damageFactor * self.baseDps * self.fireTime
 
-    totalAttackTime = totalAttackTime + attackTime
-    totalDamageFactor = totalDamageFactor + damageFactor
-
-    local targetTime = totalDamageFactor * self.fireTime
-    local speedFactor = 1.0 * (self.comboSpeedFactor ^ i)
-    table.insert(self.cooldowns, (targetTime - totalAttackTime) * speedFactor)
+    local targetTime = damageFactor * self.fireTime * self.stepDamageConfig[i].baseCooldownFactor
+    local speedFactor = 1.0 * (self.comboSpeedFactor)
+    self.cooldowns[i] = math.max((targetTime - attackTime) * speedFactor, 0.4)
   end
 end
 
  
 function BladeDance:uninit()
   self.weapon:setDamage()
+  for i,id in ipairs(self.projectileIds) do
+    if world.entityExists(id) then
+      world.callScriptedEntity(id, "die")
+    end
+  end
+  status.clearPersistentEffects("ivrpgnomadicsouldive")
 end

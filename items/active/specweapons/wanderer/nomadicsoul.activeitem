@@ -56,45 +56,59 @@
     ],
 
     // cooldown time multiplier for steps after the first, compounded per combo step
-    "comboSpeedFactor": 0.7,
+    "comboSpeedFactor": 1,
 
     "edgeTriggerGrace": 0.25,
 
     "damageConfig": {
-      "damageSourceKind": "ivrpgsamuraikatana",
+      "damageSourceKind": "ivrpgwandererkatana",
       "statusEffects": [],
       "knockbackMode": "facing",
       "timeout": 0.5
     },
-    "stepDamageConfig": [{
+    "stepDamageConfig": {
+      "Sheathe" : {
         "baseDamageFactor": 0.85,
-        "knockback": 8
-      }, {
+        "knockback": 10,
+        "baseCooldownFactor" : 1,
+        "damageSourceKind": "ivrpgwandererkatanasheathe"
+      },
+      "Primary" : {
         "baseDamageFactor": 0.55,
-        "knockback": 8
-      }, {
+        "knockback": 8,
+        "baseCooldownFactor" : 1
+      },
+      "Primary2" : {
         "baseDamageFactor": 0.65,
-        "knockback": 10
-      }, {
+        "knockback": 10,
+        "baseCooldownFactor" : 1
+      },
+      "Unsheathe" : {
         "baseDamageFactor": 1.35,
-        "knockback": 10
-      }, {
+        "knockback": 40,
+        "baseCooldownFactor" : 1
+      },
+      "Lunge" : {
+        "baseDamageFactor": 0.70,
+        "knockback": 30,
+        "baseCooldownFactor" : 1
+      },
+      "Backstep" : {
         "baseDamageFactor": 0.35,
-        "knockback": 4
-      }, {
+        "knockback": 10,
+        "baseCooldownFactor" : 1
+      },
+      "Dive" : {
         "baseDamageFactor": 0.35,
-        "knockback": 3
-      }, {
-        "baseDamageFactor": 0.35,
-        "knockback": 3
-      }, {
-        "baseDamageFactor": 0.35,
-        "knockback": 3
-      }, {
-        "baseDamageFactor": 0.85,
-        "knockback": -5
+        "knockback": 3,
+        "baseCooldownFactor" : 1
+      },
+      "Rise" : {
+        "baseDamageFactor": 1.0,
+        "knockback": 25,
+        "baseCooldownFactor" : 0.5
       }
-    ],
+    },
 
         "stances": {
       "idle": {
@@ -163,10 +177,40 @@
         "allowRotate": false
       },
       "waitPrimary": {
-        "duration": 0.2,
-        "armRotation": -45,
+        "duration": 0.25,
+        "armRotation": -55,
         "weaponRotation": -55,
         "weaponOffset": [-0.125, 0],
+        "allowRotate": false,
+        "allowFlip": true,
+        "twoHanded": true
+      },
+      "windupPrimary2": {
+        "duration": 0.15,
+        "armRotation": -80,
+        "weaponRotation": -170,
+        "weaponOffset": [-0.125, 0],
+        "twoHanded": true,
+        "flipx": true,
+        "allowRotate": false,
+        "allowFlip": true
+      },
+      "firePrimary2": {
+        "duration": 0.2,
+        "armRotation": 80,
+        "weaponRotation": -145,
+        "weaponOffset": [-0.125, 0],
+        "twoHanded": true,
+        "flipx": true,
+        "allowRotate": false,
+        "allowFlip": true
+      },
+      "waitPrimary2": {
+        "duration": 0.25,
+        "armRotation": 80,
+        "weaponRotation": -145,
+        "weaponOffset": [-0.125, 0],
+        "flipx": true,
         "allowRotate": false,
         "allowFlip": true,
         "twoHanded": true
@@ -192,7 +236,7 @@
         "allowFlip": true
       },
       "waitRise": {
-        "duration": 0.2,
+        "duration": 0.0,
         "armRotation": 80,
         "weaponRotation": -145,
         "weaponOffset": [-0.125, 0],
@@ -217,11 +261,11 @@
         "weaponOffset": [-0.125, 0],
         "twoHanded": true,
         "allowRotate": false,
-        "allowFlip": true
+        "allowFlip": false
       },
       "waitDive": {
-        "duration": 0.2,
-        "armRotation": -45,
+        "duration": 0.3,
+        "armRotation": -55,
         "weaponRotation": -55,
         "weaponOffset": [-0.125, 0],
         "twoHanded": true,
@@ -235,7 +279,7 @@
         "weaponOffset": [-0.125, 0],
         "twoHanded": true,
         "allowRotate": false,
-        "allowFlip": true
+        "allowFlip": false
       },
       "fireBackstep": {
         "duration": 0.2,
@@ -244,12 +288,12 @@
         "weaponOffset": [-0.125, 0],
         "twoHanded": true,
         "allowRotate": false,
-        "allowFlip": true
+        "allowFlip": false
       },
       "waitBackstep": {
         "duration": 0.2,
         "armRotation": -10,
-        "weaponRotation": -90,
+        "weaponRotation": -80,
         "weaponOffset": [-0.125, 0],
         "twoHanded": true,
         "allowRotate": false,
@@ -262,7 +306,7 @@
         "weaponOffset": [-0.125, 0],
         "twoHanded": true,
         "allowRotate": false,
-        "allowFlip": true
+        "allowFlip": false
       },
       "fireLunge": {
         "duration": 0.2,
@@ -271,12 +315,12 @@
         "weaponOffset": [-0.125, 0],
         "twoHanded": true,
         "allowRotate": false,
-        "allowFlip": true
+        "allowFlip": false
       },
       "waitLunge": {
         "duration": 0.2,
         "armRotation": -10,
-        "weaponRotation": -90,
+        "weaponRotation": -80,
         "weaponOffset": [-0.125, 0],
         "twoHanded": true,
         "allowRotate": false,
@@ -285,7 +329,7 @@
       "windupSheathe": {
         "duration": 0.15,
         "armRotation": 10,
-        "weaponRotation": -90,
+        "weaponRotation": -65,
         "weaponOffset": [-0.125, 0],
         "twoHanded": true,
         "allowRotate": false,
@@ -307,7 +351,18 @@
         "weaponOffset": [-0.125, 0],
         "twoHanded": true,
         "allowRotate": false,
-        "allowFlip": false
+        "allowFlip": false,
+        "flipx" : true
+      },
+      "toSheathed": {
+        "duration": 0.3,
+        "armRotation": -105,
+        "weaponRotation": 210,
+        "weaponOffset": [-0.125, 0],
+        "twoHanded": false,
+        "allowRotate": false,
+        "allowFlip": false,
+        "flipx" : true
       }
     }
   },

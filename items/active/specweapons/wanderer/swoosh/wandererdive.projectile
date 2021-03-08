@@ -1,0 +1,18 @@
+{
+  "projectileName" : "ivrpgnomadicsouldive",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "animationCycle" : 1,
+  "timeToLive" :1,
+  "frameNumber" : 1,
+  "damageKindImage" : "/interface/statuses/default.png",
+  "speed" : 0,
+  "orientationLocked" : true,
+  "damagePoly" : [[-40, 16], [-20, 24], [8, 24], [32, 14], [42, -2], [42, -14], [30, -26], [2, -22]],
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "damageKind" : "ivrpgwandererkatana",
+  "scripts" : ["deathdeathdeathtothetenno.lua"],
+  "knockback" : 30,
+  "knockbackDirectional" : true
+}

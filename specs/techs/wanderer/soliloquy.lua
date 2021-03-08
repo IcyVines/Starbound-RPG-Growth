@@ -27,7 +27,7 @@ function update(args)
   updateDamageTaken()
 
   if self.active then
-    status.addEphemeralEffect("ivrpgsoliloquystatus", 100)
+    status.addEphemeralEffect("ivrpgsoliloquystatus", 10)
     status.setPersistentEffects("ivrpgsoliloquy", {
       {stat = "powerMultiplier", amount = self.active * 0.1},
       {stat = "ivrpgBleedChance", amount = self.active * 0.01},
@@ -45,6 +45,7 @@ function update(args)
     })
   else
     status.clearPersistentEffects("ivrpgsoliloquy")
+    status.removeEphemeralEffect("ivrpgsoliloquystatus")
   end
 
 end

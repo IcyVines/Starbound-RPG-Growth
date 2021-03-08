@@ -483,29 +483,42 @@ function updateSpecs(dt)
     return
   end
 
-  -- Pioneer
-  if self.rpg_class == 6 and type(status.statusProperty("ivrpgsupioneer", 0)) == "number" then
-    local worldId = player.worldId()
-    if worldId:sub(1, 14) == "CelestialWorld" then
-      local visitedPlanets = status.statusProperty("ivrpgsupioneerplanets", {})
-      if not visitedPlanets[worldId] then
-        visitedPlanets[worldId] = 0
-        status.setStatusProperty("ivrpgsupioneerplanets", visitedPlanets)
-      else
-        if type(visitedPlanets[worldId]) == "number" then
-          local time = visitedPlanets[worldId] + dt
-          if time > 180 then
-            visitedPlanets[worldId] = true
-            status.setStatusProperty("ivrpgsupioneer", status.statusProperty("ivrpgsupioneer", 0) + 1)
-          else
-            visitedPlanets[worldId] = time
-          end
+  -- Pioneer, Scout
+  if self.rpg_class == 6 then
+    local scoutLocked = type(status.statusProperty("ivrpgsuscout", 0)) == "number"
+    local pioneerLocked = type(status.statusProperty("ivrpgsupioneer", 0)) == "number"
+    if scoutLocked or pioneerLocked then
+      local worldId = player.worldId()
+      if worldId:sub(1, 14) == "CelestialWorld" then
+        local visitedPlanets = status.statusProperty("ivrpgsupioneerplanets", {})
+        -- Pioneer
+        if not visitedPlanets[worldId] then
+          visitedPlanets[worldId] = 0
           status.setStatusProperty("ivrpgsupioneerplanets", visitedPlanets)
+          -- Scout
+          if scoutLocked then
+            local count = 0
+            for k,v in pairs(visitedPlanets) do
+              count = count + 1
+            end
+            status.setStatusProperty("ivrpgsuscout", count)
+          end
+        elseif pioneerLocked then
+          if type(visitedPlanets[worldId]) == "number" then
+            local time = visitedPlanets[worldId] + dt
+            if time > 180 then
+              visitedPlanets[worldId] = true
+              status.setStatusProperty("ivrpgsupioneer", status.statusProperty("ivrpgsupioneer", 0) + 1)
+            else
+              visitedPlanets[worldId] = time
+            end
+            status.setStatusProperty("ivrpgsupioneerplanets", visitedPlanets)
+          end
         end
       end
     end
   end
-  -- End Pioneer
+  -- End Pioneer, Scout
 
   -- Captain
   if self.rpg_class == 6 and type(status.statusProperty("ivrpgsucaptain", 0)) == "number" then
