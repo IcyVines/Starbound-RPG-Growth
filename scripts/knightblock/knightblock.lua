@@ -28,10 +28,13 @@ function update(dt)
       --Paladin
       if notification.hitType == "ShieldHit" then
         if status.resourcePositive("perfectBlock") then
-          local uniqueId = world.entityUniqueId(notification.sourceEntityId)
-          if uniqueId and (uniqueId == "tentacleleft" or uniqueId == "tentacleright") and world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp and not status.statusProperty("ivrpgsupaladin") then
-            world.sendEntityMessage(self.id, "sendRadioMessage", "Paladin Unlocked!")
-            status.setStatusProperty("ivrpgsupaladin", true)
+          if (world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp or status.statPositive("ivrpgmasteryunlocked")) and type(status.statusProperty("ivrpgsupaladin", 0)) == "number" then
+            status.setStatusProperty("ivrpgsupaladin", status.statusProperty("ivrpgsupaladin", 0) + 1)
+            local uniqueId = world.entityUniqueId(notification.sourceEntityId)
+            if uniqueId and (uniqueId == "tentacleleft" or uniqueId == "tentacleright") then
+              world.sendEntityMessage(self.id, "sendRadioMessage", "Paladin Unlocked!")
+              status.setStatusProperty("ivrpgsupaladin", true)
+            end
           end
           self.timer = 5
           effect.setStatModifierGroup(self.damageBonusId, {{stat = "powerMultiplier", baseMultiplier = self.powerModifier}})
@@ -41,11 +44,11 @@ function update(dt)
       --Dragoon / Valkyrie
       if notification.damageSourceKind and notification.damageSourceKind == "falling" then
         -- Dragoon
-        if type(status.statusProperty("ivrpgsudragoon", 0)) == "number" and world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp and not status.statPositive("admin") then
+        if type(status.statusProperty("ivrpgsudragoon", 0)) == "number" and (world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp or status.statPositive("ivrpgmasteryunlocked")) and not status.statPositive("admin") then
           status.setStatusProperty("ivrpgsudragoon", status.statusProperty("ivrpgsudragoon", 0) + (notification.healthLost/2 or 0))
         end
         -- Valkyrie
-        if type(status.statusProperty("ivrpgsuvalkyrie", 0)) == "number" and (notification.healthLost or 0) > 0 and status.resource("health") > 0 and self.position and world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp and not status.statPositive("admin") then
+        if type(status.statusProperty("ivrpgsuvalkyrie", 0)) == "number" and (notification.healthLost or 0) > 0 and status.resource("health") > 0 and self.position and (world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp or status.statPositive("ivrpgmasteryunlocked")) and not status.statPositive("admin") then
           local distance = self.position and world.distance(self.position, mcontroller.position())[2] or 0
           if distance > 250 then
             self.position = false

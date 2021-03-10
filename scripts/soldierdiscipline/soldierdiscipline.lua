@@ -50,7 +50,7 @@ function updateDamageGiven(dt)
   if self.perfectTimer > 0 and notifications then
     for _,notification in ipairs(notifications) do
       --Titan
-      if world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp and (string.find(notification.damageSourceKind, "bullet") or string.find(notification.damageSourceKind, "shotgun")) then
+      if (world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp or status.statPositive("ivrpgmasteryunlocked")) and (string.find(notification.damageSourceKind, "bullet") or string.find(notification.damageSourceKind, "shotgun")) then
         if notification.healthLost > 0 and world.entityHealth(notification.targetEntityId) then
           local add = notification.damageDealt
           if notification.healthLost >= world.entityHealth(notification.targetEntityId)[1] then
@@ -75,7 +75,7 @@ function checkPerfectShield(dt)
         end
       end
       --Dragoon
-      if notification.damageSourceKind and notification.damageSourceKind == "falling" and type(status.statusProperty("ivrpgsudragoon", 0)) == "number" and world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp and not status.statPositive("admin") then
+      if notification.damageSourceKind and notification.damageSourceKind == "falling" and type(status.statusProperty("ivrpgsudragoon", 0)) == "number" and (world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp or status.statPositive("ivrpgmasteryunlocked")) and not status.statPositive("admin") then
         status.setStatusProperty("ivrpgsudragoon", status.statusProperty("ivrpgsudragoon", 0) + (notification.healthLost/2 or 0))
       end
     end

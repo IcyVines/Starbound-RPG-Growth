@@ -64,7 +64,7 @@ function rpg_spawnNpc(parameters)
     newParameters.animationCustom.globalTagDefaults.armorType = parameters.ivrpgActions.tank.type or ""
   end
   newParameters.statusControllerSettings = {}
-  newParameters.statusControllerSettings.primaryScriptSources = {"/monsters/rpgmonsters/npc_primary.lua", "/scripts/vec2.lua"}
+  --newParameters.statusControllerSettings.primaryScriptSources = {"/monsters/rpgmonsters/npc_primary.lua", "/scripts/vec2.lua"}
 
   local itemParameters = {}
   if parameters.items then

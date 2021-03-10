@@ -33,7 +33,7 @@ function update(dt)
   end
 
   --Adept Check
-  if world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp and status.statusProperty("ivrpgsuadept") ~= true and world.entityCurrency(self.id, "intelligencepoint") >= self.adeptUnlock.intelligence and world.entityCurrency(self.id, "agilitypoint") >= self.adeptUnlock.agility then
+  if (world.entityCurrency(self.id, "experienceorb") >= self.rpg_specUnlockXp or status.statPositive("ivrpgmasteryunlocked")) and status.statusProperty("ivrpgsuadept") ~= true and world.entityCurrency(self.id, "intelligencepoint") >= self.adeptUnlock.intelligence and world.entityCurrency(self.id, "agilitypoint") >= self.adeptUnlock.agility then
     local targetEntities = world.monsterQuery(mcontroller.position(), 8, {
       withoutEntityId = self.id,
       includedTypes = {"creature"}
