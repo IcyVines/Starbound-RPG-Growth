@@ -30,8 +30,6 @@ function Parry:parry()
 	self.weapon:setStance(stance)
 
   status.setPersistentEffects("broadswordParry", {{stat = "shieldHealth", amount = self.shieldHealth * (1 + status.statusProperty("ivrpgstrength") * 0.02)}})
-  sb.logInfo(self.shieldHealth)
-  sb.logInfo(status.stat("shieldHealth"))
 
   local blockPoly = animator.partPoly("parryShield", "shieldPoly")
   activeItem.setItemShieldPolys({blockPoly})

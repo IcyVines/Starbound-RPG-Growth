@@ -670,7 +670,7 @@ function updateSpecializationSelect()
       understanding = true
     end
   end
-  widget.setButtonEnabled("specializationslayout.selectspec", self.level >= self.rpg_levelRequirements.specialization and (not disabled) and (understanding or not (currentSpec.gender and currentSpec.gender ~= player.gender())))
+  widget.setButtonEnabled("specializationslayout.selectspec", (self.level >= self.rpg_levelRequirements.specialization or status.statPositive("ivrpgmasteryunlocked")) and (not disabled) and (understanding or not (currentSpec.gender and currentSpec.gender ~= player.gender())))
   widget.setVisible("specializationslayout.selectspec",  unlocked)  
 end
 
