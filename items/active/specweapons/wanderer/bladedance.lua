@@ -129,7 +129,7 @@ function BladeDance:windup()
     self.comboType = "Unsheathe"
     animator.setGlobalTag("hueshift", self.bonusPower ~= 1 and "hueshift=0" or "hueshift=280")
   elseif self.fireMode == "primary" then
-    if self.aerial then
+    if self.aerial and not self.shiftHeld then
       self.comboType = "Dive"
     else
       if self.previousComboType == "Primary" or self.previousComboType == "Dive" then

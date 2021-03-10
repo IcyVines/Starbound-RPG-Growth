@@ -487,6 +487,12 @@ function updateSpecs(dt)
   if self.rpg_class == 6 then
     local scoutLocked = type(status.statusProperty("ivrpgsuscout", 0)) == "number"
     local pioneerLocked = type(status.statusProperty("ivrpgsupioneer", 0)) == "number"
+    local pilotLocked = type(status.statusProperty("ivrpgsupilot", 0)) == "number"
+
+    if pilotLocked and inMech() then
+      status.setStatusProperty("ivrpgsupilot", status.statusProperty("ivrpgsupilot", 0) + dt)
+    end
+
     if scoutLocked or pioneerLocked then
       local worldId = player.worldId()
       if worldId:sub(1, 14) == "CelestialWorld" then
@@ -528,6 +534,12 @@ function updateSpecs(dt)
     end
   end
   -- End Captain
+
+  -- Thief
+  if self.rpg_moneyDifferential and self.rpg_moneyDifferential > 0 and (self.rpg_class == 3 or self.rpg_class == 5) and type(status.statusProperty("ivrpgsuthief", 0)) == "number" then
+    status.setStatusProperty("ivrpgsuthief", status.statusProperty("ivrpgsuthief", 0) + self.rpg_moneyDifferential)
+  end
+  -- End Thief
 
 end
 
