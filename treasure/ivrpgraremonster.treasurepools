@@ -1,2195 +1,1915 @@
 {
-  "ivrpgfiregleapTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.1,
-            "item": "livingroot"
-          },
-          {
-            "weight": 0.005,
-            "item": "gleapaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+    "op": "add",
+    "path": "/ivrpgfiregleapTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.100,
+                        "item": "livingroot"
+                    }, {
+                        "weight": 0.005,
+                        "item": "gleapaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonnutmidgelingTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.1,
-            "item": "livingroot"
-          },
-          {
-            "weight": 0.005,
-            "item": "nutmidgeaf"
-          }
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonnutmidgelingTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.100,
+                        "item": "livingroot"
+                    }, {
+                        "weight": 0.005,
+                        "item": "nutmidgeaf"
+                    }
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgalbinopoptopTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.005,
-            "item": "poptopaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgalbinopoptopTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.200,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.005,
+                        "item": "poptopaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgalbinoadultpoptopTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.005,
-            "item": "adultpoptopaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgalbinoadultpoptopTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.200,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.005,
+                        "item": "adultpoptopaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgicecrustoiseTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "hardenedcarapace"
-          },
-          {
-            "weight": 0.1,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.005,
-            "item": "crustoiseaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgicecrustoiseTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "hardenedcarapace"
+                    }, {
+                        "weight": 0.100,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.005,
+                        "item": "crustoiseaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectrictinticTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.005,
-            "item": "tinticaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectrictinticTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.200,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.005,
+                        "item": "tinticaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonbatongTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "flyingMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "leather"
-          },
-          {
-            "weight": 0.1,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "batongaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonbatongTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "flyingMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "leather"
+                    }, {
+                        "weight": 0.100,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "batongaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfirespookitTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "phasematter"
-          },
-          {
-            "weight": 0.1,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "spookitaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfirespookitTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "phasematter"
+                    }, {
+                        "weight": 0.100,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "spookitaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgicepeblitTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "hardenedcarapace"
-          },
-          {
-            "weight": 0.1,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.005,
-            "item": "peblitaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgicepeblitTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "hardenedcarapace"
+                    }, {
+                        "weight": 0.100,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.005,
+                        "item": "peblitaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgiceiguarmorTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "hardenedcarapace"
-          },
-          {
-            "weight": 0.1,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.005,
-            "item": "iguarmoraf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgiceiguarmorTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "hardenedcarapace"
+                    }, {
+                        "weight": 0.100,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.005,
+                        "item": "iguarmoraf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonscaveranTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "flyingMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.1,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "scaveranaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonscaveranTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "flyingMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.100,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "scaveranaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectricvoltipTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.005,
-            "item": "voltipaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectricvoltipTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.200,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.005,
+                        "item": "voltipaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgicefennixTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.1,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.005,
-            "item": "fennixaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgicefennixTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.100,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.005,
+                        "item": "fennixaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfirelilodonTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.1,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "lilodonaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfirelilodonTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.100,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "lilodonaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectricpetricubTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.1,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.001,
-            "item": "petricubaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectricpetricubTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.100,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.001,
+                        "item": "petricubaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectricquagmuttTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.005,
-            "item": "quagmuttaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectricquagmuttTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.200,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.005,
+                        "item": "quagmuttaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonparatailTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "leather"
-          },
-          {
-            "weight": 0.1,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "paratailaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonparatailTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "leather"
+                    }, {
+                        "weight": 0.100,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "paratailaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfirewisperTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.1,
-            "item": "phasematter"
-          },
-          {
-            "weight": 0.005,
-            "item": "wisperaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfirewisperTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.100,
+                        "item": "phasematter"
+                    }, {
+                        "weight": 0.005,
+                        "item": "wisperaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectricskimbusTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.1,
-            "item": "phasematter"
-          },
-          {
-            "weight": 0.005,
-            "item": "skimbusaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectricskimbusTreasure",
+    "value": [
+        [1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.100,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.100,
+                        "item": "phasematter"
+                    }, {
+                        "weight": 0.005,
+                        "item": "skimbusaf"
+                    }
+                ],
+                "poolRounds": [
+                    [0.2, 0],
+                    [0.8, 1]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonpulpinTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "pulpinaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonpulpinTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "pulpinaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectriccapricoatTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "leather"
-          },
-          {
-            "weight": 0.1,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.005,
-            "item": "capricoataf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectriccapricoatTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "leather"
+                    }, {
+                        "weight": 0.1,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.005,
+                        "item": "capricoataf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgiceringramTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "leather"
-          },
-          {
-            "weight": 0.1,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.005,
-            "item": "ringramaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgiceringramTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "leather"
+                    }, {
+                        "weight": 0.1,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.005,
+                        "item": "ringramaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgcultistscandroidTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "robotTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "stickofram"
-          },
-          {
-            "weight": 0.1,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.005,
-            "item": "scandroidaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgcultistscandroidTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "robotTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "stickofram"
+                    }, {
+                        "weight": 0.1,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.005,
+                        "item": "scandroidaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfirebobotTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.797,
-            "pool": "robotTreasure"
-          },
-          {
-            "weight": 0.066,
-            "item": "stickofram"
-          },
-          {
-            "weight": 0.066,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.066,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "bobotaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfirebobotTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.797,
+                        "pool": "robotTreasure"
+                    }, {
+                        "weight": 0.066,
+                        "item": "stickofram"
+                    }, {
+                        "weight": 0.066,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.066,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "bobotaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonpipkinTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "stickofram"
-          },
-          {
-            "weight": 0.1,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "pipkinaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonpipkinTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "stickofram"
+                    }, {
+                        "weight": 0.1,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "pipkinaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfiremonopusTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "hardenedcarapace"
-          },
-          {
-            "weight": 0.1,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "monopusaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfiremonopusTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "hardenedcarapace"
+                    }, {
+                        "weight": 0.1,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "monopusaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgicesnagglerTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.005,
-            "item": "snaggleraf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgicesnagglerTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.005,
+                        "item": "snaggleraf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfireoculobTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "oculobaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfireoculobTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "oculobaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgiceagrobatTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "flyingMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.1,
-            "item": "leather"
-          },
-          {
-            "weight": 0.005,
-            "item": "agrobataf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgiceagrobatTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "flyingMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.1,
+                        "item": "leather"
+                    }, {
+                        "weight": 0.005,
+                        "item": "agrobataf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonbobfaeTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "hardenedcarapace"
-          },
-          {
-            "weight": 0.1,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "bobfaeaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonbobfaeTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "hardenedcarapace"
+                    }, {
+                        "weight": 0.1,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "bobfaeaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfirepteropodTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "pteropodaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfirepteropodTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "pteropodaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfiregosmetTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "phasematter"
-          },
-          {
-            "weight": 0.1,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.001,
-            "item": "gosmetaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfiregosmetTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "phasematter"
+                    }, {
+                        "weight": 0.1,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.001,
+                        "item": "gosmetaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectricignomeTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.1,
-            "item": "phasematter"
-          },
-          {
-            "weight": 0.005,
-            "item": "ignomeaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectricignomeTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.1,
+                        "item": "phasematter"
+                    }, {
+                        "weight": 0.005,
+                        "item": "ignomeaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfirelumothTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.797,
-            "pool": "robotTreasure"
-          },
-          {
-            "weight": 0.066,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.066,
-            "item": "phasematter"
-          },
-          {
-            "weight": 0.066,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "lumothaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfirelumothTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.797,
+                        "pool": "robotTreasure"
+                    }, {
+                        "weight": 0.066,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.066,
+                        "item": "phasematter"
+                    }, {
+                        "weight": 0.066,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "lumothaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonpyromantleTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "pyromantleaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonpyromantleTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "pyromantleaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfiresqueemTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "phasematter"
-          },
-          {
-            "weight": 0.1,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "squeemaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfiresqueemTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "phasematter"
+                    }, {
+                        "weight": 0.1,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "squeemaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectricanglureTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.005,
-            "item": "anglureaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectricanglureTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.005,
+                        "item": "anglureaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonbulbopTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "livingroot"
-          },
-          {
-            "weight": 0.1,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "bulbopaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonbulbopTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "livingroot"
+                    }, {
+                        "weight": 0.1,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "bulbopaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgicecrabcanoTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.1,
-            "item": "hardenedcarapace"
-          },
-          {
-            "weight": 0.005,
-            "item": "crabcanoaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgicecrabcanoTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.1,
+                        "item": "hardenedcarapace"
+                    }, {
+                        "weight": 0.005,
+                        "item": "crabcanoaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectriccrutterTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.005,
-            "item": "crutteraf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectriccrutterTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.005,
+                        "item": "crutteraf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectrichemogoblinTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.1,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.005,
-            "item": "hemogoblinaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectrichemogoblinTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.1,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.005,
+                        "item": "hemogoblinaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgicehypnareTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "livingroot"
-          },
-          {
-            "weight": 0.1,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.005,
-            "item": "hypnareaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgicehypnareTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "livingroot"
+                    }, {
+                        "weight": 0.1,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.005,
+                        "item": "hypnareaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonmandrafloraTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "livingroot"
-          },
-          {
-            "weight": 0.1,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "mandrafloraaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonmandrafloraTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "livingroot"
+                    }, {
+                        "weight": 0.1,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "mandrafloraaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgicemiasmopTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.1,
-            "item": "livingroot"
-          },
-          {
-            "weight": 0.005,
-            "item": "miasmopaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgicemiasmopTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.1,
+                        "item": "livingroot"
+                    }, {
+                        "weight": 0.005,
+                        "item": "miasmopaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgicenarfinTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.005,
-            "item": "narfinaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgicenarfinTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.005,
+                        "item": "narfinaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfireooglerTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.797,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.066,
-            "item": "leather"
-          },
-          {
-            "weight": 0.066,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.066,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "oogleraf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfireooglerTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.797,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.066,
+                        "item": "leather"
+                    }, {
+                        "weight": 0.066,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.066,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "oogleraf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgiceorbideTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.1,
-            "item": "cryonicextract"
-          },
-          {
-            "weight": 0.005,
-            "item": "orbideaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgiceorbideTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.1,
+                        "item": "cryonicextract"
+                    }, {
+                        "weight": 0.005,
+                        "item": "orbideaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonsmoglinTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "smoglinaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonsmoglinTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "smoglinaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectricsnauntTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.1,
-            "item": "hardenedcarapace"
-          },
-          {
-            "weight": 0.005,
-            "item": "snauntaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectricsnauntTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.1,
+                        "item": "hardenedcarapace"
+                    }, {
+                        "weight": 0.005,
+                        "item": "snauntaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonsnuffishTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "largefishtreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "snuffishaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonsnuffishTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "largefishtreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "snuffishaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisonsporgusTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "noMeatMonsterTreasure"
-          },
-          {
-            "weight": 0.2,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "sporgusaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisonsporgusTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "noMeatMonsterTreasure"
+                    }, {
+                        "weight": 0.2,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "sporgusaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfiretaroniTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "leather"
-          },
-          {
-            "weight": 0.1,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "taroniaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfiretaroniTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "leather"
+                    }, {
+                        "weight": 0.1,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "taroniaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgfiretoumingoTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "flyingMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.1,
-            "item": "scorchedcore"
-          },
-          {
-            "weight": 0.005,
-            "item": "toumingoaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgfiretoumingoTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "flyingMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.1,
+                        "item": "scorchedcore"
+                    }, {
+                        "weight": 0.005,
+                        "item": "toumingoaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgpoisontrictusTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "livingroot"
-          },
-          {
-            "weight": 0.1,
-            "item": "venomsample"
-          },
-          {
-            "weight": 0.005,
-            "item": "trictusaf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgpoisontrictusTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "livingroot"
+                    }, {
+                        "weight": 0.1,
+                        "item": "venomsample"
+                    }, {
+                        "weight": 0.005,
+                        "item": "trictusaf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ],
-  "ivrpgelectricyokatTreasure": [
-    [
-      1,
-      {
-        "fill": [
-          {
-            "pool": "experienceorbpool"
-          }
-        ],
-        "pool": [
-          {
-            "weight": 0.795,
-            "pool": "basicMonsterTreasure"
-          },
-          {
-            "weight": 0.1,
-            "item": "sharpenedclaw"
-          },
-          {
-            "weight": 0.1,
-            "item": "staticcell"
-          },
-          {
-            "weight": 0.005,
-            "item": "yokataf"
-          }
-        ],
-        "poolRounds": [
-          [
-            0.2,
-            0
-          ],
-          [
-            0.8,
-            1
-          ]
-        ],
-        "allowDuplication": false
-      }
+}, {
+    "op": "add",
+    "path": "/ivrpgelectricyokatTreasure",
+    "value": [
+        [
+            1, {
+                "fill": [{
+                        "pool": "experienceorbpool"
+                    }
+                ],
+                "pool": [{
+                        "weight": 0.795,
+                        "pool": "basicMonsterTreasure"
+                    }, {
+                        "weight": 0.1,
+                        "item": "sharpenedclaw"
+                    }, {
+                        "weight": 0.1,
+                        "item": "staticcell"
+                    }, {
+                        "weight": 0.005,
+                        "item": "yokataf"
+                    }
+                ],
+                "poolRounds": [
+                    [
+                        0.2,
+                        0
+                    ],
+                    [
+                        0.8,
+                        1
+                    ]
+                ],
+                "allowDuplication": false
+            }
+        ]
     ]
-  ]
 }
