@@ -5,7 +5,7 @@
   "maxStack" : 1,
   "rarity" : "Essential",
   "description" : "An engraving on the hilt says 'Lake Tōya'.",
-  "shortdescription" : "Samurai Heart",
+  "shortdescription" : "^blue;Samurai Heart",
   "tooltipKind" : "ivrpgweapon",
   "category" : "Katana",
   "twoHanded" : true,
