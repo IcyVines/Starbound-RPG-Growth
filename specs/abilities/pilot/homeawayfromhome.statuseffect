@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpghomeawayfromhome",
+
+  "effectConfig" : {
+    
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "homeawayfromhome.lua"
+  ],
+
+  "animationConfig" : "homeawayfromhome.animation",
+
+  "label" : "Home Away From Home",
+  "icon" : "/specs/abilities/pilot/homeawayfromhome.png"
+}

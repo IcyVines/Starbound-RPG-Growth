@@ -337,6 +337,11 @@ function rpg_enemyDeath(sourceId, damage, sourceKind, onKillList, bledToDeath)
       end
     end
 
+    -- Don't cause effect when isNpc is specified but target is not an NPC...
+    if v.npc and not world.isNpc(self.rpg_Id) then
+      ignore = true
+    end
+
     -- Don't cause effect when gender is specified and target is either not an NPC or not gendered correctly...
     if v.gender and not (world.isNpc(self.rpg_Id) and npc.gender() == v.gender) then
       ignore = true
