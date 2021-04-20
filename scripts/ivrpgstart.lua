@@ -637,7 +637,7 @@ function specChecks(enemyType, level, position, facing, statusEffects, damage, d
 
         if requiredCurrency then
           for currency,amount in pairs(requiredCurrency) do
-            if player.currency(currency) < amount then
+            if player.currency(currency) <= amount then
               ignore = true
               break
             end

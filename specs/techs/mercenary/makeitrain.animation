@@ -1,0 +1,44 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+              "properties" : {
+                "persistentSound" : "/sfx/tech/tech_sprint_loop2.ogg",
+                "immediateSound" : "/sfx/tech/tech_dash.ogg"
+              }
+          }
+        }
+      }
+    }
+  },
+  "particleEmitters" : {
+    "jumpParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "doublejump",
+          "offset" : [0.2, -3]
+        }
+      ]
+    },
+    "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : "dash",
+          "flip" : true
+        }
+      ]
+    }
+  },
+  "sounds" : {
+  	"multiJumpSound" : ["/sfx/tech/tech_multijump.ogg"],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "energize" : [ "/sfx/statuseffects/powerup.ogg" ],
+    "startDash" : [ "/sfx/tech/tech_dash.ogg" ]
+  }
+}
