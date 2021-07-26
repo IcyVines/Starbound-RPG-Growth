@@ -1,0 +1,339 @@
+{
+  "itemName" : "ivrpgwtheravager",
+  "price" : 750,
+  "level" : 6,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "When close combat needs duality! But, uh, how do magnets even work?",
+  "shortdescription" : "^magenta;The Ravager",
+  "tooltipKind" : "base",
+  "category" : "Claw",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","rogue","claw","fist","melee"],
+
+  "learnBlueprintsOnPickup": [
+    "ivrpgwtheravager"
+  ],
+
+  "inventoryIcon" : "claw_full_revised.png:front.7",
+  "animation" : "/items/active/weapons/patreon/lorekeepersclaw/fistweapon.animation",
+  "animationParts" : {
+    "weapon" : "claw_full_revised.png",
+    "swoosh" : "/items/active/weapons/fist/swoosh/clawswoosh.png",
+    "orb1" : "orb_full_revised.png",
+    "orb2" : "orb_full_revised.png",
+    "orb3" : "orb_full_revised.png"
+  },
+  "animationCustom" : {
+    "animatedParts" : { 
+      "stateTypes" : {
+        "orb1" : {
+          "default" : "orbF",
+          "states" : {
+            "orbF" : {},
+            "hidden" : {},
+            "orbB" : {},
+            "shield"  : {
+              "cycle" : 0.2,
+              "frames" : 2,
+              "mode" : "end"
+            },
+            "unshield" : {
+              "cycle" : 0.15,
+              "frames" : 1,
+              "mode" : "transition",
+              "transition" : "orbF"
+            }
+          }
+        },
+        "orb2" : {
+          "default" : "orbF",
+          "states" : {
+            "orbF" : {},
+            "hidden" : {},
+            "orbB" : {},
+            "shield"  : {
+              "cycle" : 0.2,
+              "frames" : 2,
+              "mode" : "end"
+            },
+            "unshield" : {
+              "cycle" : 0.15,
+              "frames" : 1,
+              "mode" : "transition",
+              "transition" : "orbF"
+            }
+          }
+        },
+        "orb3" : {
+          "default" : "orbF",
+          "states" : {
+            "orbF" : {},
+            "hidden" : {},
+            "orbB" : {},
+            "shield"  : {
+              "cycle" : 0.2,
+              "frames" : 2,
+              "mode" : "end"
+            },
+            "unshield" : {
+              "cycle" : 0.15,
+              "frames" : 1,
+              "mode" : "transition",
+              "transition" : "orbF"
+            }
+          }
+        }
+      },
+
+      "parts" : { 
+        "swoosh" : { "partStates" : { "attack" : { "fire" : { "properties" : {
+          "damageArea" : [[-1, -1.1], [2.1, -0.6], [2.1, 0.8], [-1, 1.3]]
+        }}}}},
+        "orb1" : {
+          "properties" : {
+            "centered" : true,
+            "offset" : [0.75, 0],
+            "orbPosition" : [0, 0],
+            "transformationGroups" : [ "orb1", "orbs" ]
+          },
+
+          "partStates" : {
+            "orb1" : {
+              "orbF" : {
+                "properties" : {
+                  "image" : "<partImage>:orb",
+                  "zLevel" : 2
+                }
+              },
+              "orbB" : {
+                "properties" : {
+                  "image" : "<partImage>:orb",
+                  "zLevel" : 0
+                }
+              },
+              "shield" : {
+                "properties" : {
+                  "image" : "<partImage>:shield.<frame>"
+                }
+              },
+              "unshield" : {
+                "properties" : {
+                  "image" : "<partImage>:shield.1"
+                }
+              }
+            }
+          }
+        },
+        "orb2" : {
+          "properties" : {
+            "centered" : true,
+            "offset" : [0.75, 0],
+            "orbPosition" : [0, 0],
+            "transformationGroups" : [ "orb2", "orbs" ]
+          },
+
+          "partStates" : {
+            "orb2" : {
+              "orbF" : {
+                "properties" : {
+                  "image" : "<partImage>:orb",
+                  "zLevel" : 2
+                }
+              },
+              "orbB" : {
+                "properties" : {
+                  "image" : "<partImage>:orb",
+                  "zLevel" : 0
+                }
+              },
+              "shield" : {
+                "properties" : {
+                  "image" : "<partImage>:shield.<frame>"
+                }
+              },
+              "unshield" : {
+                "properties" : {
+                  "image" : "<partImage>:shield.1"
+                }
+              }
+            }
+          }
+        },
+        "orb3" : {
+          "properties" : {
+            "centered" : true,
+            "offset" : [0.75, 0],
+            "orbPosition" : [0, 0],
+            "transformationGroups" : [ "orb3", "orbs" ]
+          },
+
+          "partStates" : {
+            "orb3" : {
+              "orbF" : {
+                "properties" : {
+                  "image" : "<partImage>:orb",
+                  "zLevel" : 2
+                }
+              },
+              "orbB" : {
+                "properties" : {
+                  "image" : "<partImage>:orb",
+                  "zLevel" : 0
+                }
+              },
+              "shield" : {
+                "properties" : {
+                  "image" : "<partImage>:shield.<frame>"
+                }
+              },
+              "unshield" : {
+                "properties" : {
+                  "image" : "<partImage>:shield.1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "transformationGroups" : {
+      "orbs" : {
+        "interpolated" : true
+      },
+      "orb1" : {
+        "interpolated" : true
+      },
+      "orb2" : {
+        "interpolated" : true
+      },
+      "orb3" : {
+        "interpolated" : true
+      }
+    },
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_dagger.ogg" ],
+      "launch" : [ "/sfx/gun/magnorbs_fire8.ogg", "/sfx/gun/magnorbs_fire9.ogg", "/sfx/gun/magnorbs_fire10.ogg" ],
+      "shieldOn" : ["/sfx/melee/sword_guard.ogg"],
+      "shieldLoop" : ["/sfx/gun/magnorbs_shield_loop2.ogg"],
+      "shieldOff" : [],
+      "shieldBlock" : ["/sfx/melee/shield_block_metal.ogg"],
+      "shieldBreak" : ["/sfx/melee/shield_break_metal.ogg"]
+    }
+  },
+  "scripts" : [ "/items/active/weapons/patreon/lorekeepersclaw/fistweapon.lua", "/items/active/specweapons/fae/fistweapon.lua" ],
+
+  "needsEdgeTrigger" : true,
+  "edgeTriggerGrace" : 0.1,
+
+  "comboSteps" : 3,
+  "comboTiming" : [0.2, 0.5],
+  "comboCooldown" : 0.2,
+  "comboFinisherSource" : "/items/active/weapons/patreon/lorekeepersclaw/combo/magneticslam.combofinisher",
+
+  "freezeLimit" : 2,
+
+  "orbitRate" : 1,
+
+  "projectileType" : "ivrpglorekeepersmagnorb",
+  "projectileParameters" : {
+    "power" : 1,
+    "knockback" : 2,
+
+    "returnOnHit" : true,
+    "ignoreTerrain" : false,
+    "controlForce" : 140,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 4.0
+  },
+
+  "shieldKnockback" : 10,
+  "shieldEnergyCost" : 80,
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/fist/punch.lua"],
+    "class" : "Punch",
+
+    "freezeTime" : 0.15,
+    "fireTime" : 0.2,
+    "baseDps" : 11.0,
+    "damageConfig" : {
+      "statusEffects" : [ ],
+      "damageSourceKind" : "dagger",
+      "knockback" : [0, 15],
+      "timeoutGroup" : "primary",
+      "timeout" : 0.1
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 45,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.25, -0.575],
+
+        "allowRotate" : true,
+        "allowFlip" : true,
+
+        "frontArmFrame" : "run.2",
+        "backArmFrame" : "jump.3"
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.625, -0.125],
+
+        "allowRotate" : true,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "swimIdle.1",
+        "backArmFrame" : "swim.1"
+      },
+      "windup2" : {
+        "duration" : 0.05,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [-0.75, -0.125],
+
+        "allowRotate" : true,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "swimIdle.1",
+        "backArmFrame" : "swim.1",
+
+        "recoil" : true
+      },
+      "fire" : {
+        "duration" : 0.1,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [0.125, -0.25],
+
+        "allowRotate" : true,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "rotation",
+        "backArmFrame" : "rotation"
+      },
+      "shield" : {
+        "duration" : 3,
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "weaponRotationCenter" : [-1.0, 0.0],
+        "weaponOffset" : [0.125, -0.25],
+
+        "allowRotate" : true,
+        "allowFlip" : false,
+
+        "frontArmFrame" : "rotation",
+        "backArmFrame" : "rotation"
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildfist.lua"
+
+}
