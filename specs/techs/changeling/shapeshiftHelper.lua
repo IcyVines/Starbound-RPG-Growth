@@ -47,7 +47,8 @@ function initCommonParameters()
   self.invulnerable = false
   -- Bone Vars
 
-  self.energyCost = config.getParameter("energyCost")
+  self.energyCost = config.getParameter("energyCost", 40)
+  self.basePower = config.getParameter("basePower", 30)
   self.transformFadeTime = config.getParameter("transformFadeTime", 0.3)
   self.transformedMovementParameters = {}
   self.basePoly = mcontroller.baseParameters().standingPoly
@@ -215,7 +216,7 @@ function updateFrame(dt)
   elseif self.creature == "wisper" then
     self.hueShift = 90
     animator.setLightActive("wisperGlow", true)
-    mcontroller.controlApproachVelocity(vec2.mul({self.hDirection, self.vDirection}, self.transformedMovementParameters.flySpeed * self.speedModifier), 5 * self.speedModifier)
+    mcontroller.controlApproachVelocity(vec2.mul({self.hDirection, self.vDirection}, self.transformedMovementParameters.flySpeed * self.speedModifier), 15 * self.speedModifier)
     if not mcontroller.flying() then
       animator.setAnimationState(self.creature .. "State", "idle")
       self.idleTimer = 0.1
@@ -236,7 +237,7 @@ function updateFrame(dt)
       suppressMovement()
     elseif self.invulnerable then
       animator.setAnimationState(self.creature .. "State", "invulnerable")
-      status.addEphemeralEffect("regeneration2", 0.1, self.id)
+      status.addEphemeralEffect("regeneration3", 0.1, self.id)
       suppressMovement()
     elseif self.getupTimer > 0 then
       animator.setAnimationState(self.creature .. "State", "invulnerablewinddown")

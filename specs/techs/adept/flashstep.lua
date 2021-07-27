@@ -27,7 +27,7 @@ function init()
 end
 
 function prepareFlashStep()
-  if self.cooldownTimer ~= 0 or (self.hDirection == 0 and self.vDirection == 0) or status.resourceLocked("energy") or status.statPositive("activeMovementAbilities") or self.shift then return end
+  if self.cooldownTimer ~= 0 or (self.hDirection == 0 and self.vDirection == 0) or status.resourceLocked("energy") or status.statPositive("activeMovementAbilities") or not self.shift then return end
   local currentPosition = mcontroller.position()
   self.teleportTarget = currentPosition
   local diagonal = math.abs(self.hDirection*self.vDirection) * math.sqrt(2)
@@ -83,7 +83,7 @@ function update(args)
   end
   self.shift = not args.moves["run"]
 
-  mcontroller.controlModifiers({jumpingSuppressed = not self.shift})
+  mcontroller.controlModifiers({jumpingSuppressed = self.shift})
 
   if self.pauseTimer > 0 then
     self.pauseTimer = math.max(self.pauseTimer - args.dt, 0)

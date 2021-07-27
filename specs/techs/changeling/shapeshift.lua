@@ -50,9 +50,9 @@ end
 
 function action1()
   if alreadyActive() then return end
-  if self.creature == "wisper" and status.overConsumeResource("energy", self.dt * 20) then
+  if self.creature == "wisper" and status.overConsumeResource("energy", self.dt * self.energyCost / 2) then
     toggleEthereal()
-  elseif self.creature == "poptop" and mcontroller.onGround() and status.overConsumeResource("energy", self.dt * 10) then
+  elseif self.creature == "poptop" and mcontroller.onGround() then
     toggleWhistle()
   elseif self.creature == "adultpoptop" and self.roaringCooldownTimer == 0 and mcontroller.onGround() and status.overConsumeResource("energy", 2 * self.energyCost) then
     activateRoar()
@@ -107,13 +107,13 @@ end
 
 function action2()
   if alreadyActive() then return end
-  if self.creature == "wisper" and vec2.mag(mcontroller.velocity()) > 0.1 and status.overConsumeResource("energy", self.dt * 10) then
+  if self.creature == "wisper" and vec2.mag(mcontroller.velocity()) > 0.1 and status.overConsumeResource("energy", self.dt * self.energyCost / 4) then
     self.speedModifier = 2
   elseif self.creature == "poptop" and self.bloodlust > 20 then
     self.oldCreature = self.creature
     self.creature = "adultpoptop"
     attemptActivation(false)
-  elseif self.creature == "orbide" and math.abs(mcontroller.xVelocity()) > 0.1 and status.overConsumeResource("energy", self.dt * 10) then
+  elseif self.creature == "orbide" and math.abs(mcontroller.xVelocity()) > 0.1 and status.overConsumeResource("energy", self.dt * self.energyCost / 4) then
     self.speedModifier = 3
     self.grit = 1
     mcontroller.controlModifiers({
@@ -141,7 +141,7 @@ function wisperFire()
   if status.overConsumeResource("energy", self.energyCost) then
     animator.setAnimationState("wisperState", "firewindup")
     self.chargeFire = true
-    self.fireTimer = 0.8
+    self.fireTimer = 0.5
   end
 end
 
@@ -149,7 +149,7 @@ function orbideFire()
   if status.overConsumeResource("energy", self.energyCost) then
     animator.setAnimationState("orbideState", "chargewindup")
     self.chargeFire = true
-    self.fireTimer = 1
+    self.fireTimer = 0.6
   end
 end
 
@@ -157,7 +157,7 @@ function poptopFire()
   if status.overConsumeResource("energy", self.energyCost / 2) then
     animator.setAnimationState("poptopState", "chargewindup")
     self.chargeFire = true
-    self.fireTimer = 0.4
+    self.fireTimer = 0.2
   end
 end
 
@@ -165,7 +165,7 @@ function adultpoptopFire()
   if status.overConsumeResource("energy", self.energyCost / 2) then
     animator.setAnimationState("adultpoptopState", "chargewindup")
     self.chargeFire = true
-    self.fireTimer = 0.5
+    self.fireTimer = 0.3
   end
 end
 
@@ -189,14 +189,14 @@ function wisperAltFire()
     animator.setAnimationState("wisperState", "firewindup")
     self.chargeFire = true
     self.wisperExplosion = true
-    self.fireTimer = 0.8
+    self.fireTimer = 0.5
   end
 end
 
 function poptopAltFire()
   if mcontroller.onGround() and status.overConsumeResource("energy", self.energyCost) then
     animator.setAnimationState(self.creature .. "State", "devour")
-    self.altFrameCooldownTimer = 0.7
+    self.altFrameCooldownTimer = 0.9
     self.fireCooldownTimer = 1.4
   end
 end
@@ -231,7 +231,7 @@ function orbideAltFire()
   if status.overConsumeResource("energy", self.energyCost / 2) then
     animator.setAnimationState("orbideState", "attack")
     world.spawnProjectile("ivrpgorbideattack" .. (self.melty and "melty" or ""), mcontroller.position(), self.id, {mcontroller.facingDirection(),0}, true, {
-      power = 15 * status.stat("powerMultiplier")
+      power = self.basePower * status.stat("powerMultiplier")
     })
     self.altFrameCooldownTimer = 0.2
     self.fireCooldownTimer = 0.5
@@ -278,7 +278,7 @@ function update(args)
     self.forceTimer = nil
   end
 
-  if not args.moves["special2"] or (self.creature == "orbide" and (self.crouchTimer > 0 or self.invulnerable) and not status.overConsumeResource("energy", self.dt * 10)) or status.resourceLocked("energy") then
+  if not args.moves["special2"] or (self.creature == "orbide" and (self.crouchTimer > 0 or self.invulnerable) and not status.overConsumeResource("energy", self.dt * self.energyCost / 4)) or status.resourceLocked("energy") then
     animator.stopAllSounds("ghostly")
     self.whistling = false
     self.soundActive = false
@@ -328,7 +328,7 @@ function update(args)
 
   calculatePassives()
 
-  if self.giantCounter >= 50 and not self.giantAvailable then
+  if self.giantCounter >= 1 and not self.giantAvailable then
     self.giantAvailable = true
     self.flashTimer = 1
   end
@@ -339,7 +339,11 @@ function update(args)
     elseif self.creature == "poptop" or self.creature == "adultpoptop" then
       if self.frameCooldownTimer > 0 or self.altFrameCooldownTimer > 0 then
         suppressMovement()
-        if self.altFrameCooldownTimer > 0.2 and not self.devouring then devour() end
+        if self.altFrameCooldownTimer > 0.45 and not self.devouring then
+          devour()
+        elseif not self.devouring then
+          self.altFrameCooldownTimer = 0
+        end
         if self.altFrameCooldownTimer <= 0.2 and self.devouring then devour() end
       else
         if self.hDirection ~= 0 then mcontroller.controlFace(self.hDirection) end
@@ -389,24 +393,24 @@ function calculateActives(dt)
         if self.wisperExplosion then
           self.wisperExplosion = false
           local healthPercent = status.resource("health") / status.stat("maxHealth")
-          healthPercent = math.min(healthPercent - 0.01, 0.1)
+          healthPercent = math.min(healthPercent - 0.01, 0.05)
           status.modifyResourcePercentage("health", -healthPercent)
           world.spawnProjectile("iceplasmaexplosionstatus", mcontroller.position(), self.id, {0,0}, true, {
-            power = 500 * status.stat("powerMultiplier") * healthPercent
+            power = self.basePower * 17 * status.stat("powerMultiplier") * healthPercent * 2
           })
         else
-          world.spawnProjectile("iceshot", mcontroller.position(), self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {speed = 40, power = 20 * status.stat("powerMultiplier")})
+          world.spawnProjectile("ivrpgchangelingiceshot", mcontroller.position(), self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {speed = 80, power = self.basePower * 1.5 * status.stat("powerMultiplier")})
         end
       elseif self.creature == "poptop" or self.creature == "adultpoptop" then
         animator.setAnimationState(self.creature .. "State", "charge")
         world.spawnProjectile("ivrpg" .. self.creature .. "charge" .. (self.melty and "melty" or ""), {mcontroller.xPosition(), mcontroller.yPosition() + ((self.creature == "poptop" and self.melty) and 0.25 or 0)}, self.id, {mcontroller.facingDirection(),0}, true, {
-          power = 30 * status.stat("powerMultiplier")
+          power = self.basePower * 2 * status.stat("powerMultiplier")
         })
         self.frameCooldownTimer = 0.4
       elseif self.creature == "orbide" then
         animator.setAnimationState(self.creature .. "State", "charge")
         world.spawnProjectile("ivrpgorbidecharge" .. (self.melty and "melty" or ""), mcontroller.position(), self.id, {0,0}, true, {
-          power = 30 * status.stat("powerMultiplier")
+          power = self.basePower * 2 * status.stat("powerMultiplier")
         })
         self.frameCooldownTimer = 0.4
       end
@@ -436,6 +440,7 @@ function calculatePassives()
     table.insert(transformedStatsCopy, {stat = "invulnerable", amount = 1})
   end
   table.insert(transformedStatsCopy, {stat = "grit", amount = (self.crouchTimer > 0 or self.getupTimer > 0) and 1 or self.grit})
+  table.insert(transformedStatsCopy, {stat = "ivrpgstealth", amount = self.invulnerable and 1 or 0})
   table.insert(transformedStatsCopy, {stat = "powerMultiplier", baseMultiplier = 1 + (self.creature and status.statusProperty("ivrpg" .. config.getParameter(self.creature .. "Scaling"), 0) or 0)/50 + (string.find(self.creature or "", "poptop") and self.bloodlust/50 or 0)})
   status.setPersistentEffects("ivrpgshapeshift", self.giant and config.getParameter("giantStats", {}) or transformedStatsCopy)
 
@@ -447,7 +452,7 @@ function calculatePassives()
   if self.giant then
     if not self.giantHitbox then
       self.giantHitbox = world.spawnProjectile("ivrpgmeltygiant", mcontroller.position(), self.id, {0,0}, true, {
-        power = 100 * status.stat("powerMultiplier")
+        power = self.basePower * 3 * status.stat("powerMultiplier")
       })
     end
   else
