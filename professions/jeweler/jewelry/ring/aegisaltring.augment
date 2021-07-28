@@ -17,7 +17,7 @@
 
   "slotType" : "alt",
 
-  "radioMessagesOnPickup" : [ "pickupaugment" ],
+  "radioMessagesOnPickup" : [ "ivrpgpickupjewelry" ],
 
   "scripts" : [ "/professions/jeweler/augment.lua" ]
 }
