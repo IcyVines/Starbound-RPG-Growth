@@ -5,10 +5,13 @@ function apply(input)
   local augmentConfig = config.getParameter("augment")
   local output = Item.new(input)
   local baseLeveledStatEffects = root.assetJson("/professions/jeweler/jewelry/baseLeveledStatusEffects.config")
+  local jewelryDictionary = root.assetJson("/professions/jeweler/jewelry/ivrpgJewelryDictionary.config")
   local prefix = "/professions/jeweler/jewelry/"
   local suffix = config.getParameter("inventoryIcon")
   if augmentConfig then
-    if output:instanceValue("category", "") == augmentConfig.type then
+    local category = output:instanceValue("category", "")
+    if jewelryDictionary[category] and contains(jewelryDictionary[category], config.getParameter("itemName", "ivrpgjewelryplaceholder")) then
+    --if category == augmentConfig.type then
       local currentAugment = output:instanceValue("currentAugment")
       local slotType = config.getParameter("slotType", "main")
       local jewelry = {}
@@ -17,7 +20,7 @@ function apply(input)
         if not jewelry then
           -- Current Augment is real Augment
           jewelry = {}
-          currentAugment = slotType == "main" and augmentConfig or {}
+          currentAugment = {}--slotType == "main" and augmentConfig or {}
         elseif jewelry[slotType] or (slotType == "alt" and jewelry["left"] and jewelry["right"]) then
           -- Current Augment is Jewelry, but has no space
           return nil
@@ -26,9 +29,9 @@ function apply(input)
         end
       else
         -- Current Augment does not exist
-        currentAugment = slotType == "main" and augmentConfig or {}
+        currentAugment = {}--slotType == "main" and augmentConfig or {}
       end
-
+      -- currentAugment = augmentConfig = {New Jewelry Config}
       output:setInstanceValue("tooltipKind", "ivrpgarmoraugment")
 
       prefix = prefix .. (augmentConfig.name and (augmentConfig.name .. "/") or "")
@@ -52,7 +55,7 @@ function apply(input)
         currentAugment.displayIcon = prefix .. suffix
       end
       output:setInstanceValue("tooltipFields", tooltipFields)
-
+      -- currentAugment = augmentConfig = {New Jewelry Config}
       jewelry[slotType] = {
         itemName = config.getParameter("itemName", ""),
         itemStats = config.getParameter("jewelStats", {})
@@ -90,7 +93,7 @@ function newAugmentEffects(slotType, new, old, jewelry)
     table.insert(transfer, {stat = config.getParameter("itemName", "ivrpgjewelryplaceholder"), amount = 1})
     table.insert(transfer, new)
     if jewelry.right then
-      for i=3,4 do
+      for i=#old-1,#old do
         table.insert(transfer, old[i])
       end
     end
