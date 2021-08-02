@@ -6,6 +6,10 @@ function init()
   self.stance = 0
   self.id = entity.id()
   Bind.create("f", switch)
+  --animator.setAnimationState("aura_loop", "on")
+  animator.setAnimationState("blood_aura", "front")
+  --animator.setAnimationState("iron_aura", "on")
+  --animator.setAnimationState("blood_aura", "on")
 end
 
 function switch()

@@ -74,8 +74,131 @@
       ]
     }
   },
+
+  "animatedParts" : {
+
+    "stateTypes" : {
+      "aura_loop" : {
+        "default" : "off",
+        "states" : {
+          "on" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop"
+          },
+          "off" : {}
+        }
+      },
+      "iron_aura" : {
+        "default" : "off",
+        "states" : {
+          "on" : {
+            "frames" : 4,
+            "cycle" : 1,
+            "mode" : "loop"
+          },
+          "off" : {}
+        }
+      },
+      "blood_aura" : {
+        "default" : "off",
+        "states" : {
+          "front" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "back"
+          },
+          "back" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "front"
+          },
+          "off" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "ionic_aura" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "aura_loop" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<ionic>.<frame>",
+                "zLevel" : 0
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      },
+      "iron_aura" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "aura_loop" : {
+            "on" : {
+              "properties" : {
+                "image" : "<partImage>:<iron>.<frame>",
+                "zLevel" : 1
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      },
+      "blood_aura" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "blood_aura" : {
+            "front" : {
+              "properties" : {
+                "image" : "<partImage>:front.<frame>",
+                "zLevel" : 2
+              }
+            },
+            "back" : {
+              "properties" : {
+                "image" : "<partImage>:back.<frame>",
+                "zLevel" : -2
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+
   "sounds" : {
     "activate" : [ "/sfx/interface/energy_full2.ogg" ],
     "deactivate" : ["/sfx/interface/energy_out2.ogg"]
+  },
+
+  "globalTagDefaults" : {
+    "ionic" : "on",
+    "blood" : "on",
+    "iron" : "on"
   }
 }
