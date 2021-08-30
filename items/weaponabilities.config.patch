@@ -1,0 +1,4 @@
+[
+//Grimoires
+{ "op" : "add", "path" : "/ivrpg_elementrain", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/elementrain.weaponability" }
+]

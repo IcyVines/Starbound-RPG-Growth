@@ -13,5 +13,8 @@
 { "op" : "add", "path" : "/phaseshift", "value" : "/items/active/specweapons/adept/phaseshift.weaponability" },
 { "op" : "add", "path" : "/valkyriemark", "value" : "/items/active/specweapons/valkyrie/mark/valkyriemark.weaponability" },
 { "op" : "add", "path" : "/juggernautmeteorcleave", "value" : "/items/active/specweapons/juggernaut/meteorcleave/meteorcleave.weaponability" },
-{ "op" : "add", "path" : "/dragooncharge", "value" : "/items/active/specweapons/dragoon/charge/dragooncharge.weaponability" }
+{ "op" : "add", "path" : "/dragooncharge", "value" : "/items/active/specweapons/dragoon/charge/dragooncharge.weaponability" },
+
+//Grimoires
+{ "op" : "add", "path" : "/ivrpg_elementrain", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/elementrain.weaponability" }
 ]

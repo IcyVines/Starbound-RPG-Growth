@@ -78,13 +78,26 @@
   "animatedParts" : {
 
     "stateTypes" : {
-      "aura_loop" : {
+      "ionic_aura" : {
         "default" : "off",
         "states" : {
-          "on" : {
+          "front1" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "front2"
+          },
+          "front2" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "back"
+          },
+          "back" : {
             "frames" : 4,
-            "cycle" : 0.5,
-            "mode" : "loop"
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "front1"
           },
           "off" : {}
         }
@@ -92,10 +105,17 @@
       "iron_aura" : {
         "default" : "off",
         "states" : {
-          "on" : {
+          "front" : {
             "frames" : 4,
-            "cycle" : 1,
-            "mode" : "loop"
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "back"
+          },
+          "back" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "front"
           },
           "off" : {}
         }
@@ -123,14 +143,29 @@
     "parts" : {
       "ionic_aura" : {
         "properties" : {
-          "fullbright" : true
+          "fullbright" : true,
+          "transformationGroups" : ["aura"],
+          "image" : "ionic_aura.png",
+          "offset" : [0, -0.625]
         },
         "partStates" : {
-          "aura_loop" : {
-            "on" : {
+          "ionic_aura" : {
+            "front1" : {
               "properties" : {
-                "image" : "<partImage>:<ionic>.<frame>",
-                "zLevel" : 0
+                "image" : "<partImage>:front1.<frame>",
+                "zLevel" : 2
+              }
+            },
+            "front2" : {
+              "properties" : {
+                "image" : "<partImage>:front2.<frame>",
+                "zLevel" : 2
+              }
+            },
+            "back" : {
+              "properties" : {
+                "image" : "<partImage>:back.<frame>",
+                "zLevel" : -2
               }
             },
             "off" : {
@@ -143,30 +178,13 @@
       },
       "iron_aura" : {
         "properties" : {
-          "fullbright" : true
+          "fullbright" : true,
+          "transformationGroups" : ["aura"],
+          "image" : "iron_aura.png",
+          "offset" : [0, -0.625]
         },
         "partStates" : {
-          "aura_loop" : {
-            "on" : {
-              "properties" : {
-                "image" : "<partImage>:<iron>.<frame>",
-                "zLevel" : 1
-              }
-            },
-            "off" : {
-              "properties" : {
-                "image" : ""
-              }
-            }
-          }
-        }
-      },
-      "blood_aura" : {
-        "properties" : {
-          "fullbright" : true
-        },
-        "partStates" : {
-          "blood_aura" : {
+          "iron_aura" : {
             "front" : {
               "properties" : {
                 "image" : "<partImage>:front.<frame>",
@@ -186,8 +204,41 @@
             }
           }
         }
+      },
+      "blood_aura" : {
+        "properties" : {
+          "fullbright" : true,
+          "transformationGroups" : ["aura"],
+          "image" : "blood_aura.png",
+          "offset" : [0, -0.625]
+        },
+        "partStates" : {
+          "blood_aura" : {
+            "front" : {
+              "properties" : {
+                "image" : "<partImage>:front.<frame><blood>",
+                "zLevel" : 2
+              }
+            },
+            "back" : {
+              "properties" : {
+                "image" : "<partImage>:back.<frame><blood>",
+                "zLevel" : -2
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
       }
     }
+  },
+
+  "transformationGroups" : {
+    "aura" : { "interpolated" : true }
   },
 
 
@@ -197,8 +248,8 @@
   },
 
   "globalTagDefaults" : {
-    "ionic" : "on",
-    "blood" : "on",
-    "iron" : "on"
+    "ionic" : "",
+    "blood" : "",
+    "iron" : ""
   }
 }

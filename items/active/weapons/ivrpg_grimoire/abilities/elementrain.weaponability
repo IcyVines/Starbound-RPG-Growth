@@ -1,0 +1,17 @@
+{
+  "ability" : {
+    "type" : "ivrpg_elementrain",
+    "name" : "<elementalName> Rain",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 75,
+
+    "maxCastRange" : 25,
+
+    "projectileType" : "<elementalType>elementcloud",
+    "projectileParameters" : {
+      "baseDamage" : 10
+    }
+  }
+}

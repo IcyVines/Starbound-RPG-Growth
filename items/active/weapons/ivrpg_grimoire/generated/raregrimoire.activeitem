@@ -1,0 +1,128 @@
+{
+  "itemName" : "ivrpg_raregrimoire",
+  "price" : 1440,
+  "maxStack" : 1,
+  "rarity" : "Rare",
+  "description" : "An ancient tome containing unique scriptures.",
+  "shortdescription" : "Rare Grimoire",
+  "category" : "Grimoire",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "grimoire", "magic"],
+  "tooltipKind" : "staff",
+  "inventoryIcon" : "icons/<elementalType>.png",
+
+  "animation" : "/items/active/weapons/ivrpg_grimoire/generated/generatedgrimoire.animation",
+
+  "scripts" : ["/items/active/weapons/ivrpg_grimoire/grimoire.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : 0,
+      "weaponRotation" : -30,
+      "twoHanded" : false,
+      "weaponOffset" : [-0.25, 1.25],
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.3,
+      "armRotation" : 0,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [0.0, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 0,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [0.0, 1.50],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : 0,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [0.0, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+      "weaponOffset" : [0.0, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : false
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildweapon.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "grimoirenames.config:nameGen",
+    "elementalType" : [
+      "fire",
+      "ice",
+      "electric",
+      "poison",
+      "nova",
+      "holy",
+      "demonic"
+    ],
+    "elementalConfig" : {
+      "fire" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [140, 40, 20]
+        }}}
+      },
+      "ice" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [20, 80, 140]
+        }}}
+      },
+      "electric" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [80, 20, 140]
+        }}}
+      },
+      "poison" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [20, 140, 20]
+        }}}
+      },
+      "nova" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [120, 40, 120]
+        }}}
+      },
+      "demonic" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [20, 20, 20]
+        }}}
+      },
+      "holy" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [160, 140, 120]
+        }}}
+      }
+    },
+    "animationParts" : {
+      "grimoire" : {
+        "path" : "grimoire/<elementalType>.png"
+      },
+      "chargeState" : {
+        "path" : "charges/charge.png"
+      }
+    },
+    "primaryAbilities" : ["ivrpg_elementrain"],
+    "altAbilities" : ["ivrpg_elementrain"]
+  }]
+}

@@ -10,11 +10,5 @@
   "rarity" : "Uncommon",
   "icon" : "/specs/techs/battlemage/battleaura.png",
 
-  "animationParts" : {
-    "ionic_aura" : "ionic_aura.png",
-    "iron_aura" : "iron_aura.png",
-    "blood_aura" : "blood_aura.png"
-  },
-
   "chipCost" : 0
 }
