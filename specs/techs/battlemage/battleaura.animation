@@ -145,26 +145,25 @@
         "properties" : {
           "fullbright" : true,
           "transformationGroups" : ["aura"],
-          "image" : "ionic_aura.png",
           "offset" : [0, -0.625]
         },
         "partStates" : {
           "ionic_aura" : {
             "front1" : {
               "properties" : {
-                "image" : "<partImage>:front1.<frame>",
+                "image" : "ionic_aura.png:front1.<frame>",
                 "zLevel" : 2
               }
             },
             "front2" : {
               "properties" : {
-                "image" : "<partImage>:front2.<frame>",
+                "image" : "ionic_aura.png:front2.<frame>",
                 "zLevel" : 2
               }
             },
             "back" : {
               "properties" : {
-                "image" : "<partImage>:back.<frame>",
+                "image" : "ionic_aura.png:back.<frame>",
                 "zLevel" : -2
               }
             },
@@ -180,20 +179,19 @@
         "properties" : {
           "fullbright" : true,
           "transformationGroups" : ["aura"],
-          "image" : "iron_aura.png",
           "offset" : [0, -0.625]
         },
         "partStates" : {
           "iron_aura" : {
             "front" : {
               "properties" : {
-                "image" : "<partImage>:front.<frame>",
+                "image" : "iron_aura.png:front.<frame>",
                 "zLevel" : 2
               }
             },
             "back" : {
               "properties" : {
-                "image" : "<partImage>:back.<frame>",
+                "image" : "iron_aura.png:back.<frame>",
                 "zLevel" : -2
               }
             },
@@ -209,20 +207,19 @@
         "properties" : {
           "fullbright" : true,
           "transformationGroups" : ["aura"],
-          "image" : "blood_aura.png",
           "offset" : [0, -0.625]
         },
         "partStates" : {
           "blood_aura" : {
             "front" : {
               "properties" : {
-                "image" : "<partImage>:front.<frame><blood>",
+                "image" : "blood_aura.png:front.<frame><blood>",
                 "zLevel" : 2
               }
             },
             "back" : {
               "properties" : {
-                "image" : "<partImage>:back.<frame><blood>",
+                "image" : "blood_aura.png:back.<frame><blood>",
                 "zLevel" : -2
               }
             },

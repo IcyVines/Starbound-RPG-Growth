@@ -3,7 +3,7 @@ require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
 
 function init()
-  activeItem.setCursor("/cursors/reticle0.cursor")
+  activeItem.setCursor("/cursors/reticle5.cursor")
   animator.setGlobalTag("paletteSwaps", config.getParameter("paletteSwaps", ""))
 
   self.weapon = Weapon:new()

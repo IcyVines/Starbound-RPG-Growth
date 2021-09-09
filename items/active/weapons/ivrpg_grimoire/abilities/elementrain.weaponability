@@ -1,4 +1,6 @@
 {
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
   "ability" : {
     "type" : "ivrpg_elementrain",
     "name" : "<elementalName> Rain",
@@ -12,6 +14,58 @@
     "projectileType" : "<elementalType>elementcloud",
     "projectileParameters" : {
       "baseDamage" : 10
+    },
+    
+    "elementalConfig" : {
+      "fire" : {
+        "color" : [255, 0, 0, 255],
+        "hue" : "EE5555",
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [140, 40, 20]
+        }}}
+      },
+      "ice" : {
+        "color" : [0, 255, 255, 255],
+        "hue" : "55DDFF",
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [20, 80, 140]
+        }}}
+      },
+      "electric" : {
+        "color" : [255, 255, 0, 255],
+        "hue" : "EEFF55",
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [80, 20, 140]
+        }}}
+      },
+      "poison" : {
+        "color" : [0, 255, 0, 255],
+        "hue" : "55FF88",
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [20, 140, 20]
+        }}}
+      },
+      "nova" : {
+        "color" : [255, 0, 255, 255],
+        "hue" : "FF55FF",
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [120, 40, 120]
+        }}}
+      },
+      "demonic" : {
+        "color" : [0, 0, 0, 255],
+        "hue" : "555555",
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [20, 20, 20]
+        }}}
+      },
+      "holy" : {
+        "color" : [255, 255, 205, 255],
+        "hue" : "FFFFBB",
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [160, 140, 120]
+        }}}
+      }
     }
   }
 }

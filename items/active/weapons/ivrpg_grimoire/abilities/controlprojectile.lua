@@ -7,11 +7,15 @@ function ControlProjectile:init()
   storage.projectiles = storage.projectiles or {}
 
   self.elementalType = self.elementalType or self.weapon.elementalType
-
+  self.cooldownTime = 0.4
+  self.cooldownTimer = self.cooldownTime / 2
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
   self.stances = config.getParameter("stances")
+  self.elementalConfig = config.getParameter("primaryAbility.elementalConfig", {})
 
-  activeItem.setCursor("/cursors/reticle0.cursor")
+  animator.setGlobalTag("chargeHue", "?multiply=" .. self.elementalConfig[self.elementalType].hue)
+  activeItem.setCursor("/cursors/reticle5.cursor")
+  activeItem.setScriptedAnimationParameter("rune", false)
   self.weapon:setStance(self.stances.idle)
 
   self.weapon.onLeaveAbility = function()
@@ -30,26 +34,31 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
   local cursorPosition = activeItem.ownerAimPosition()
   local position = mcontroller.position()
   local difference = world.distance(cursorPosition, position)
+  local frontal = {2.75, -1}--world.distance(self:focusPosition(), position)
   difference[1] = difference[1] * mcontroller.facingDirection()
-  animator.translateTransformationGroup("charge", difference)
+  --frontal[1] = frontal[1] * mcontroller.facingDirection()
+  --animator.translateTransformationGroup("charge", difference)
+  animator.translateTransformationGroup("charge", frontal)
 
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
-    and not status.resourceLocked("energy") then
+    and not status.resourceLocked("energy")
+    and not self.abilityActive
+    and not (self.cooldownTimer > 0) then
 
     self:setState(self.charge)
   end
+
+  self.cooldownTimer = math.max(self.cooldownTimer - dt, 0)
+
 end
 
 function ControlProjectile:charge()
   self.weapon:setStance(self.stances.charge)
 
-  -- Use Rune particles instead of element particles.
-  --animator.playSound(self.elementalType.."charge")
-  animator.setAnimationState("bookState", "charging")
-  animator.setAnimationState("charge", "on")
-  animator.setParticleEmitterActive(self.elementalType .. "charge", true)
-  activeItem.setCursor("/cursors/charge2.cursor")
+  animator.playSound("bookopen")
+  animator.setAnimationState("bookState", "open")
+  animator.setAnimationState("charge", "charging")
 
   local chargeTimer = self.stances.charge.duration
   while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
@@ -60,50 +69,88 @@ function ControlProjectile:charge()
     coroutine.yield()
   end
 
-  animator.stopAllSounds(self.elementalType.."charge")
-
   if chargeTimer <= 0 then
     self:setState(self.charged)
   else
-    animator.playSound(self.elementalType.."discharge")
-    self:setState(self.cooldown)
+    self:setState(self.discharge)
   end
 end
 
 function ControlProjectile:charged()
   self.weapon:setStance(self.stances.charged)
 
-  -- Set Book Animation State to Idle Open
-  animator.playSound(self.elementalType.."fullcharge")
-  animator.playSound(self.elementalType.."chargedloop", -1)
-  --animator.setAnimationState("charge", "charged")
-  animator.setParticleEmitterActive(self.elementalType .. "charge", true)
+  animator.setAnimationState("bookState", "charging")
+  math.randomseed(os.time())
+
+  local image = "/items/active/weapons/ivrpg_grimoire/generated/runes/"
+  local color = self.elementalConfig[self.elementalType].color
+
+  local particle = {
+    type = "textured",
+    image = image .. "1.png",
+    size = 1,
+    color = copy(color),
+    fade = 0.9,
+    initialVelocity = {0.0, 1.0},
+    finalVelocity = {0.0, 0.0},
+    rotation = 0,
+    angularVelocity = 0,
+    timeToLive = 0.5,
+    destructionAction = "shrink",
+    destructionTime = 0.5,
+    layer = "front",
+    variance = {
+      initialVelocity = {0.5, 0.5},
+      size = 0.2,
+      rotation = 10,
+      angularVelocity = 10,
+      position = {0.5, 0.75}
+    },
+    position = self:focusPosition()
+  }
 
   local targetValid
+  local spawnTime = 0.4
+  local runeTimer = spawnTime
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     targetValid = self:targetValid(activeItem.ownerAimPosition())
-    activeItem.setCursor(targetValid and "/cursors/chargeready.cursor" or "/cursors/chargeinvalid.cursor")
-
+    --activeItem.setCursor(targetValid and "/cursors/chargeready.cursor" or "/cursors/chargeinvalid.cursor")
+    if runeTimer >= spawnTime then
+      particle.position = self:focusPosition()
+      particle.image = image .. tostring(math.random(1,7)) .. ".png"
+      activeItem.setScriptedAnimationParameter("rune", particle)
+      runeTimer = 0
+    else
+      activeItem.setScriptedAnimationParameter("rune", false)
+      runeTimer = runeTimer + self.dt
+    end
     mcontroller.controlModifiers({runningSuppressed=true})
 
     coroutine.yield()
   end
-
+  self.abilityActive = true
   self:setState(self.discharge)
 end
 
 function ControlProjectile:discharge()
   self.weapon:setStance(self.stances.discharge)
+  activeItem.setScriptedAnimationParameter("rune", false)
 
-  activeItem.setCursor("/cursors/reticle0.cursor")
+  animator.stopAllSounds("bookopen")
+  activeItem.setCursor("/cursors/reticle5.cursor")
   animator.setAnimationState("charge", "off")
+  animator.setAnimationState("bookState", "idle")
 
-  if self:targetValid(activeItem.ownerAimPosition()) and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
+  if self:targetValid(activeItem.ownerAimPosition()) and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) and self.abilityActive then
     animator.playSound(self.elementalType.."activate")
     self:createProjectiles()
   else
-    animator.playSound(self.elementalType.."discharge")
-    self:setState(self.cooldown)
+    animator.playSound("bookclose")
+    util.wait(self.stances.discharge.duration / 2, function(dt)
+      status.setResourcePercentage("energyRegenBlock", 1.0)
+    end)
+    self.abilityActive = false
+    self.cooldownTimer = self.cooldownTime
     return
   end
 
@@ -112,33 +159,15 @@ function ControlProjectile:discharge()
   end)
 
   -- Change this to be dependent on the ability. Some abilities are instant cast. Some are not!
-  while #storage.projectiles > 0 do
-    if self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.lastFireMode ~= self.fireMode then
-      self:killProjectiles()
-    end
-    self.lastFireMode = self.fireMode
-
+  while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     status.setResourcePercentage("energyRegenBlock", 1.0)
     coroutine.yield()
   end
 
-  animator.playSound(self.elementalType.."discharge")
-  animator.stopAllSounds(self.elementalType.."chargedloop")
-
-  self:setState(self.cooldown)
-end
-
-function ControlProjectile:cooldown()
-  self.weapon:setStance(self.stances.cooldown)
-  self.weapon.aimAngle = 0
-
-  animator.setAnimationState("bookState", "idle")
-  animator.setParticleEmitterActive(self.elementalType .. "charge", false)
-  activeItem.setCursor("/cursors/reticle0.cursor")
-
-  util.wait(self.stances.cooldown.duration, function()
-
-  end)
+  self.cooldownTimer = self.cooldownTime
+  self.abilityActive = false
+  --self:killProjectiles()
+  --self:setState(self.cooldown)
 end
 
 function ControlProjectile:targetValid(aimPos)
@@ -215,12 +244,11 @@ end
 
 function ControlProjectile:reset()
   self.weapon:setStance(self.stances.idle)
-  animator.stopAllSounds(self.elementalType.."chargedloop")
-  animator.stopAllSounds(self.elementalType.."fullcharge")
   animator.setAnimationState("bookState", "idle")
   animator.setAnimationState("charge", "off")
-  animator.setParticleEmitterActive(self.elementalType .. "charge", false)
-  activeItem.setCursor("/cursors/reticle0.cursor")
+  activeItem.setScriptedAnimationParameter("rune", false)
+  activeItem.setCursor("/cursors/reticle5.cursor")
+  self.abilityActive = false
 end
 
 function ControlProjectile:uninit(weaponUninit)
