@@ -54,5 +54,19 @@
         "kill" : "bleeddamagenumber"
       }
     }
+  },
+  {
+    "op" : "add",
+    "path" : "/earth",
+    "value" : {
+      "resistanceStat" : "physicalResistance",
+      "damageNumberParticles" : {
+        "hit" : "damagenumber",
+        "stronghit" : "damagenumberstrong",
+        "weakhit" : "damagenumberweak",
+        "shieldhit" : "damagenumber",
+        "kill" : "damagenumber"
+      }
+    }
   }
 ]

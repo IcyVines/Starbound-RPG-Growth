@@ -2,24 +2,26 @@
   "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
 
   "ability" : {
-    "type" : "ivrpg_elementrain",
-    "name" : "<altElementalName> Rain",
+    "type" : "ivrpg_elementsunder",
+    "name" : "<elementalName> Sunder",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 75,
+    "energyCost" : 80,
 
     "maxCastRange" : 25,
 
-    "projectileType" : "<altElementalType>elementcloud",
+    "projectileCount" : 5,
+    "projectileDistance" : 2.5,
+    "projectileType" : "ivrpg_<elementalType>lance",
     "projectileParameters" : {
-      "baseDamage" : 10
+      "baseDamage" : 20
     },
     
     "elementalConfig" : {
       "earth" : {
         "color" : [155, 75, 0, 255],
-        "hue" : "EE5555",
+        "hue" : "964B00",
         "animationCustom" : { "lights" : { "glow" : {
           "color" : [150, 75, 0]
         }}}

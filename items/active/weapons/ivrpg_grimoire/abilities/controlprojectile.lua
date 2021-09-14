@@ -11,7 +11,7 @@ function ControlProjectile:init()
   self.cooldownTimer = self.cooldownTime / 2
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
   self.stances = config.getParameter("stances")
-  self.elementalConfig = config.getParameter("primaryAbility.elementalConfig", {})
+  self.elementalConfig = config.getParameter("elementalConfig", {})
 
   animator.setGlobalTag("chargeHue", "?multiply=" .. self.elementalConfig[self.elementalType].hue)
   activeItem.setCursor("/cursors/reticle5.cursor")

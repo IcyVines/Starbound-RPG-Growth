@@ -55,10 +55,46 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildweapon.lua",
+  "elementalConfig" : {
+    "earth" : {
+      "color" : [150, 75, 0, 255],
+      "hue" : "964B00"
+    },
+    "fire" : {
+      "color" : [255, 0, 0, 255],
+      "hue" : "EE5555"
+    },
+    "ice" : {
+      "color" : [0, 255, 255, 255],
+      "hue" : "55DDFF"
+    },
+    "electric" : {
+      "color" : [255, 255, 0, 255],
+      "hue" : "EEFF55"
+    },
+    "poison" : {
+      "color" : [0, 255, 0, 255],
+      "hue" : "55FF88"
+    },
+    "nova" : {
+      "color" : [255, 0, 255, 255],
+      "hue" : "FF55FF"
+    },
+    "demonic" : {
+      "color" : [0, 0, 0, 255],
+      "hue" : "555555"
+    },
+    "holy" : {
+      "color" : [255, 255, 205, 255],
+      "hue" : "FFFFBB"
+    }
+  },
+
+  "builder" : "/items/active/weapons/ivrpg_grimoire/buildtome.lua",
   "builderConfig" : [{
     "nameGenerator" : "grimoirenames.config:nameGen",
     "elementalType" : [
+      "earth",
       "fire",
       "ice",
       "electric",
@@ -67,7 +103,22 @@
       "holy",
       "demonic"
     ],
+    "altElementalType" : {
+      "demonic" : ["demonic", "poison", "ice", "earth"],
+      "holy" : ["holy", "electric", "fire", "earth"],
+      "nova" : ["nova", "fire", "electric", "ice"],
+      "fire" : ["fire", "electric", "ice"],
+      "electric" : ["electric", "fire", "earth"],
+      "ice" : ["ice", "poison", "fire"],
+      "poison" : ["poison", "ice", "earth"],
+      "earth" : ["earth"]
+    },
     "elementalConfig" : {
+      "earth" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [150, 75, 0]
+        }}}
+      },
       "fire" : {
         "animationCustom" : { "lights" : { "glow" : {
           "color" : [140, 40, 20]
@@ -112,7 +163,7 @@
         "path" : "charges/charge.png"
       }
     },
-    "primaryAbilities" : ["ivrpg_elementrain"],
+    "primaryAbilities" : ["ivrpg_elementsunder"],
     "altAbilities" : ["ivrpg_elementrain"]
   }]
 }

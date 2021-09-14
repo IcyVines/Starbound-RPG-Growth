@@ -2,8 +2,8 @@
   "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
 
   "ability" : {
-    "type" : "ivrpg_elementrain",
-    "name" : "<altElementalName> Rain",
+    "type" : "ivrpg_elementburst",
+    "name" : "<elementalName> Burst",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
@@ -11,19 +11,12 @@
 
     "maxCastRange" : 25,
 
-    "projectileType" : "<altElementalType>elementcloud",
+    "projectileType" : "<elementalType>shockwave",
     "projectileParameters" : {
       "baseDamage" : 10
     },
     
     "elementalConfig" : {
-      "earth" : {
-        "color" : [155, 75, 0, 255],
-        "hue" : "EE5555",
-        "animationCustom" : { "lights" : { "glow" : {
-          "color" : [150, 75, 0]
-        }}}
-      },
       "fire" : {
         "color" : [255, 0, 0, 255],
         "hue" : "EE5555",
