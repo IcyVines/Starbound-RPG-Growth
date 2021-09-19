@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ivrpg_fireburst",
+  "timeToLive" : 2.5,
+  "bounces" : 0,
+  "image" : "fire.png",
+  "animationCycle" : 3.2,
+  "physics" : "laser",
+  "frameNumber" : 16,
+  "pointLight" : true,
+  "speed" : 10,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/fireexplosionknockbackstatus.config"
+    }
+  ],
+  "power" : 8.0,
+  "damageKind" : "fireplasma",
+  "emitters" : [ "fireswoosh" ]
+}
+
+

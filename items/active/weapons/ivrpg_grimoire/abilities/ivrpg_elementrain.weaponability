@@ -1,0 +1,24 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_elementrain",
+    "name" : "<altElementalName> Rain",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 75,
+
+    "spawnLocation" : "atCursor",
+    "travelDirection" : "toCursor",
+    
+    "maxCastRange" : 25,
+
+    "projectileType" : "<altElementalType>elementcloud",
+    "projectileParameters" : {
+      "baseDamage" : 10
+    },
+    
+    "elementalTypes" : ["electric", "fire", "ice", "poison", "nova", "demonic", "holy", "earth"]
+  }
+}

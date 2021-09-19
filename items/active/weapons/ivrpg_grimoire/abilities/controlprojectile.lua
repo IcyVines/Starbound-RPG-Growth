@@ -13,6 +13,9 @@ function ControlProjectile:init()
   self.stances = config.getParameter("stances")
   self.elementalConfig = config.getParameter("elementalConfig", {})
 
+  self.travelDirection = self.abilitySlot == "primary" and config.getParameter("primaryAbility.travelDirection") or config.getParameter("altAbility.travelDirection")
+  self.spawnLocation = self.abilitySlot == "primary" and config.getParameter("primaryAbility.spawnLocation") or config.getParameter("altAbility.spawnLocation")
+
   animator.setGlobalTag("chargeHue", "?multiply=" .. self.elementalConfig[self.elementalType].hue)
   activeItem.setCursor("/cursors/reticle5.cursor")
   activeItem.setScriptedAnimationParameter("rune", false)
@@ -114,7 +117,7 @@ function ControlProjectile:charged()
   local runeTimer = spawnTime
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     targetValid = self:targetValid(activeItem.ownerAimPosition())
-    --activeItem.setCursor(targetValid and "/cursors/chargeready.cursor" or "/cursors/chargeinvalid.cursor")
+    activeItem.setCursor(targetValid and "/items/active/weapons/ivrpg_grimoire/cursor/reticle.cursor" or "/cursors/reticle5.cursor")
     if runeTimer >= spawnTime then
       particle.position = self:focusPosition()
       particle.image = image .. tostring(math.random(1,7)) .. ".png"
@@ -179,9 +182,11 @@ end
 
 function ControlProjectile:createProjectiles()
   local aimPosition = activeItem.ownerAimPosition()
-  local fireDirection = world.distance(aimPosition, self:focusPosition())[1] > 0 and 1 or -1
+  local distanceTo = world.distance(aimPosition, self:focusPosition())
+  local fireDirection = distanceTo[1] > 0 and 1 or -1
   local pOffset = {fireDirection * (self.projectileDistance or 0), 0}
-  local basePos = activeItem.ownerAimPosition()
+  sb.logInfo(sb.printJson(self.spawnLocation))
+  local basePos = self.spawnLocation == "atCursor" and activeItem.ownerAimPosition() or self:focusPosition()
 
   local pCount = self.projectileCount or 1
 
@@ -194,7 +199,7 @@ function ControlProjectile:createProjectiles()
         self.projectileType,
         vec2.add(basePos, pOffset),
         activeItem.ownerEntityId(),
-        pOffset,
+        distanceTo,
         false,
         pParams
       )

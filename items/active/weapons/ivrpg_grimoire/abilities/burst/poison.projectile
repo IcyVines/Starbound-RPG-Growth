@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ivrpg_poisonburst",
+  "timeToLive" : 2.5,
+  "bounces" : 0,
+  "image" : "poison.png",
+  "animationCycle" : 1.6,
+  "physics" : "laser",
+  "frameNumber" : 16,
+  "pointLight" : true,
+  "speed" : 10,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/poisonexplosionknockbackstatus.config"
+    }
+  ],
+  "power" : 8.0,
+  "damageKind" : "poisonplasma",
+  "emitters" : [ "poisonswoosh" ]
+}
+
+

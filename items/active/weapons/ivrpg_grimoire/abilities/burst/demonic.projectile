@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ivrpg_demonicburst",
+  "timeToLive" : 2.5,
+  "bounces" : 0,
+  "image" : "demonic.png",
+  "animationCycle" : 2.4,
+  "physics" : "laser",
+  "frameNumber" : 16,
+  "pointLight" : true,
+  "speed" : 10,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/ivrpgexclusives/explosions/demonic/demonicexplosionlarge.config"
+    }
+  ],
+  "power" : 8.0,
+  "damageKind" : "demonic",
+  "emitters" : [ "tar" ]
+}
+
+

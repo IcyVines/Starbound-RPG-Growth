@@ -1,0 +1,26 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_elementsunder",
+    "name" : "<elementalName> Sunder",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 80,
+
+    "spawnLocation" : "atCursor",
+    "travelDirection" : "toCursor",
+
+    "maxCastRange" : 15,
+
+    "projectileCount" : 5,
+    "projectileDistance" : 2.5,
+    "projectileType" : "ivrpg_<elementalType>lance",
+    "projectileParameters" : {
+      "baseDamage" : 20
+    },
+    
+    "elementalTypes" : ["electric", "fire", "ice", "poison", "nova", "demonic", "holy", "earth"]
+  }
+}

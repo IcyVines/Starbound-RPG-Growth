@@ -4,6 +4,24 @@ require "/scripts/versioningutils.lua"
 require "/scripts/staticrandom.lua"
 require "/items/buildscripts/abilities.lua"
 
+function setupAbility(config, parameters, abilitySlot, builderConfig, seed, element)
+  seed = seed or parameters.seed or config.seed or 0
+
+  local abilitySource = getAbilitySource(config, parameters, abilitySlot)
+  if not abilitySource and builderConfig then
+    local abilitiesKey = abilitySlot .. "Abilities"
+    if builderConfig[abilitiesKey] and builderConfig[abilitiesKey][element] and #builderConfig[abilitiesKey][element] > 0 then
+      local abilityType = randomFromList(builderConfig[abilitiesKey][element], seed, abilitySlot .. "AbilityType")
+      abilitySource = getAbilitySourceFromType(abilityType)
+    end
+  end
+
+  if abilitySource then
+    addAbility(config, parameters, abilitySlot, abilitySource)
+  end
+end
+
+
 function build(directory, config, parameters, level, seed)
   local configParameter = function(keyName, defaultValue)
     if parameters[keyName] ~= nil then
@@ -37,21 +55,25 @@ function build(directory, config, parameters, level, seed)
     builderConfig = randomFromList(config.builderConfig, seed, "builderConfig")
   end
 
+  -- select random element first
+  local elementalType = parameters.elementalType or randomFromList(builderConfig.elementalType, seed, "elementalType")
+  local altElementalType = randomFromList(builderConfig.altElementalType[elementalType], seed, "altElementalType")
+
   -- select, load and merge abilities
-  setupAbility(config, parameters, "alt", builderConfig, seed)
-  setupAbility(config, parameters, "primary", builderConfig, seed)
+  setupAbility(config, parameters, "alt", builderConfig, seed, altElementalType)
+  setupAbility(config, parameters, "primary", builderConfig, seed, elementalType)
 
   -- elemental type
   if not parameters.elementalType and builderConfig.elementalType then
-    parameters.elementalType = randomFromList(builderConfig.elementalType, seed, "elementalType")
+    parameters.elementalType = elementalType
   end
-  local elementalType = configParameter("elementalType", "physical")
+  elementalType = configParameter("elementalType", "earth")
 
   -- alt elemental type
   if not parameters.altElementalType and builderConfig.altElementalType then
-    parameters.altElementalType = randomFromList(builderConfig.altElementalType[elementalType], seed, "altElementalType")
+    parameters.altElementalType = altElementalType
   end
-  local altElementalType = configParameter("altElementalType", "physical")
+  altElementalType = configParameter("altElementalType", "earth")
 
   -- elemental config
   if builderConfig.elementalConfig then
