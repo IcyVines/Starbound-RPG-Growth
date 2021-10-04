@@ -1,0 +1,30 @@
+{
+  "projectileName" : "ivrpglorekeepersmagnorb",
+  "image" : "magnorb.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "actionOnReap" : [ ],
+  "statusEffects" : [ ],
+  "damagePoly" : [[-2, 0], [0, 2], [2, 0], [0, -2]],
+  "power" : 5.0,
+  "speed" : 90,
+  "damageKind" : "hammer",
+  "physics" : "laser",
+  "bounces" : -1,
+  "piercing" : true,
+  "timeToLive" : 3,
+
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/magnorb_impact1.ogg",
+        "/sfx/projectiles/magnorb_impact2.ogg",
+        "/sfx/projectiles/magnorb_impact3.ogg"
+      ]
+    }
+  ],
+
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ]
+}

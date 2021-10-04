@@ -43,8 +43,10 @@
     "devour.2" : "roar.1",
     "devour.3" : "roar.2",
     "devour.4" : "roar.3",
-    "devour.5" : "idle.1",
-    "devour.6" : "idle.1",
-    "devour.7" : "idle.1"
+    "devour.5" : "roar.3",
+    "devour.6" : "roar.3",
+    "devour.7" : "idle.1",
+    "devour.8" : "idle.1",
+    "devour.9" : "idle.1"
   }
 }

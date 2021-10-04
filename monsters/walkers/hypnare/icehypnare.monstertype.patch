@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/dropPools/0/default",
+    "value": "ivrpgicehypnareTreasure"
+  },
+  {
+    "op": "replace",
+    "path": "/dropPools/0/bow",
+    "value": "ivrpgicehypnareHunting"
+  }
+]

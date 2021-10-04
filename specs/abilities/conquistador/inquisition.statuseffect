@@ -1,0 +1,19 @@
+{
+  "name" : "ivrpginquisition",
+
+  "effectConfig" : {
+    "healTime" : 5,
+    "healPercent" : 0.1
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "inquisition.lua"
+  ],
+
+  "animationConfig" : "inquisition.animation",
+
+  "label" : "Inquisition",
+  "icon" : "/specs/abilities/conquistador/inquisition.png"
+}

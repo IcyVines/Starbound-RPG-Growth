@@ -1,0 +1,12 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/0/bow",
+    "value": "ivrpgpoisonnutmidgelingHunting"
+  },
+  {
+    "op": "replace",
+    "path": "/dropPools/0/default",
+    "value": "ivrpgpoisonnutmidgelingTreasure"
+  }
+]

@@ -1,0 +1,88 @@
+{
+  "itemName" : "ivrpgwarquebus",
+  "price" : 1500,
+  "inventoryIcon" : "arquebus.png:unloaded",
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "Heavy bolts of holy light to burn the heathens within sight.",
+  "shortdescription" : "^orange;Arquebus",
+  "level" : 6,
+  "tooltipKind" : "ivrpgweapon",
+  "category" : "Crossbow",
+  "itemTags" : ["weapon","ranged","crossbow","bow"],
+  "twoHanded" : true,
+
+  "specreq" : 6,
+  "classreq" : [1, 6],
+
+  "animation" : "/items/active/specweapons/conquistador/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "arquebus.png",
+    "barrel" : "",
+    "muzzleFlash" : ""
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/sfx/gun/crossbow1.ogg" ],
+      "reload" : [ "/sfx/gun/reload/rocket_reload_clip2.ogg", "/sfx/gun/reload/grenade_reload_clip2.ogg" ]
+    }
+  },
+
+  "baseOffset" : [1.25, 0.0],
+  "muzzleOffset" : [1.625, 1.125],
+
+  "scripts" : ["/items/active/specweapons/conquistador/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/conquistador/gunfire.lua"],
+    "class" : "GunFire",
+
+    "fireTime" : 1.0,
+    "baseDps" : 12,
+    "energyUsage" : 40,
+    "inaccuracy" : 0.002,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "ivrpgarquebusbolt",
+    "projectileParameters" : {
+      "speed" : 180,
+      "knockback" : 20
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.25,
+        "armRotation" : 5,
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}

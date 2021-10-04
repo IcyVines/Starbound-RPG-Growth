@@ -1,0 +1,27 @@
+{
+  "projectileName" : "ivrpgpoisonpulpinpoison",
+  "physics" : "rain",
+  "image" : "ivrpgpoisonpulpinpoison.png",
+  "timeToLive" : 0.2,
+  "animationCycle" : 0.5,
+  "frameNumber" : 2,
+  "damagePoly" : [ [-30, -30], [30, -30], [30, 30], [-30, 30] ],
+  "damageKind" : "hidden",
+  "actionOnReap" : [
+    {
+      "action" : "liquid",
+      "liquid" : "poison",
+      "quantity" : 4
+    },
+    {
+      "action" : "applySurfaceMod",
+      "previousMod" : "tilleddry",
+      "newMod" : "tilled",
+      "radius" : 5
+    }
+  ],
+
+  "onlyHitTerrain" : true,
+  "hydrophobic" : true,
+  "masterOnly" : true
+}

@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "durasteelbar", "count" : 2 },
+    { "item" : "refinedviolium", "count" : 5 },
+    { "item" : "battery", "count" : 2 },
+    { "item" : "solariumstar", "count" : 2 }
+  ],
+	"output" : { "item" : "ivrpgwtheravager", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

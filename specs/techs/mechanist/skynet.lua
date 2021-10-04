@@ -5,7 +5,7 @@ require "/scripts/util.lua"
 function init()
   self.droneJson = root.assetJson("/monsters/rpgmonsters/mechanist/turret/turret.monstertype")
   self.turretJson = root.assetJson("/monsters/rpgmonsters/mechanist/drone/drone.monstertype")
-  self.cooldown = config.getParameter("cooldown", 60)
+  self.cooldown = config.getParameter("cooldown", 10)
   self.droneCooldownTimer = 0
   self.turretCooldownTimer = 0
   self.rechargeTimer = 0
@@ -19,7 +19,7 @@ function placeTurret()
   if status.statPositive("activeMovementAbilities") then return end
 
   local params = {}
-  params.level = util.clamp((intelligence + dexterity) / 25, 1, 4)
+  params.level = util.clamp((intelligence + dexterity) / 15, 1, 6)
   params.damageTeamType = "friendly"
   params.aggressive = true
   params.ownerUuid = entity.uniqueId()
@@ -28,14 +28,14 @@ function placeTurret()
     params.statusSettings = self.turretJson.baseParameters.statusSettings
     params.statusSettings.stats.maxHealth.baseValue = status.stat("maxHealth") / 2
     params.statusSettings.stats.protection.baseValue = status.stat("protection")
-    params.statusSettings.stats.powerMultiplier.baseValue = (intelligence + dexterity) / 50
+    params.statusSettings.stats.powerMultiplier.baseValue = (intelligence + dexterity) / 75
     world.spawnMonster("ivrpgmechanistturret", mcontroller.position(), params)
     self.turretCooldownTimer = self.cooldown
   elseif not mcontroller.crouching() and self.droneCooldownTimer == 0 then
     params.statusSettings = self.droneJson.baseParameters.statusSettings
     params.statusSettings.stats.maxHealth.baseValue = status.stat("maxHealth") / 4
     params.statusSettings.stats.protection.baseValue = status.stat("protection") / 2
-    params.statusSettings.stats.powerMultiplier.baseValue = (intelligence + dexterity) / 100
+    params.statusSettings.stats.powerMultiplier.baseValue = (intelligence + dexterity) / 75
     world.spawnMonster("ivrpgmechanistdrone", mcontroller.position(), params)
     self.droneCooldownTimer = self.cooldown
   end

@@ -12,6 +12,6 @@
 
   "animationConfig" : "battleaura.animation",
 
-  "label" : "No Aura",
+  "label" : "Battle Aura",
   "icon" : "/specs/techs/battlemage/battleaura.png"
 }

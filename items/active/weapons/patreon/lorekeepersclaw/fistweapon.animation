@@ -1,0 +1,102 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "weapon" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : { 
+            "frames" : 12,
+            "mode" : "loop",
+            "cycle" : 1.2
+          },
+          "attack" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      },
+      "attack" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+            "properties" : {
+              "particleEmittersOff" : ["swoosh"]
+            }
+          },
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.095,
+            "mode" : "transition",
+            "transition" : "idle",
+            "properties" : {
+              "particleEmittersOn" : ["swoosh"]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "weapon" : {
+        "properties" : {
+          "transformationGroups" : ["weapon", "forscale"],
+          "rotationCenter" : [-1, 0],
+          "centered" : true,
+          "image" : "<partImage>:<hand>",
+          "shieldPoly" : [ [0.0, -1.75], [0.0, 2.25], [1.875, 1.0], [1.875, -0.5] ]
+        },
+        "partStates" : {
+          "weapon" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:<hand>.<frame>"
+              }
+            },
+            "attack" : {
+              "properties" : {
+                "image" : "<partImage>:<hand>.1"
+              }
+            }
+          }
+        }
+      },
+      "swoosh" : {
+        "properties" : {
+          "transformationGroups" : ["weapon","swoosh"],
+          "centered" : true,
+          "offset" : [0.5, 0.125],
+          "zLevel" : 1
+        },
+
+        "partStates" : {
+          "attack" : {
+            "idle" : { },
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<frame>",
+                "damageArea" : [[-1, -1.1], [1.0, -0.6], [1.0, 0.8], [-1, 1.3]]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "swoosh" : {},
+    "forscale" : {}
+  },
+
+  "particleEmitters" : {
+    "swoosh" : {
+      "particles" : [] 
+    }
+  },
+  "sounds" : {
+    "fire" : [ ]
+  }
+}

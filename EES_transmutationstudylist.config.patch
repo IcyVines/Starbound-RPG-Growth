@@ -5,6 +5,9 @@
     { "op": "add", "path": "/hunt/T2/ivrpggunparts", "value": true},
     { "op": "add", "path": "/hunt/T2/ivrpgparasiticgoo", "value": true},
     { "op": "add", "path": "/hunt/T2/ivrpgspiralenergy", "value": true},
+    
+    //Hunt - T3
+    { "op": "add", "path": "/hunt/T3/ivrpgfeather", "value": true},
 
     // Mine - T2
     { "op": "add", "path": "/mine/T2/ivrpgmeteoricmetal", "value": true}

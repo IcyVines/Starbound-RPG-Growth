@@ -17,12 +17,11 @@ function init()
   self.projectileTimer = 0
   self.rechargeTimer = 0
   self.energyUsage = config.getParameter("energyUsage")
-  Bind.create("Up", attemptActivation)
+  Bind.create("g", attemptActivation)
 end
 
 function attemptActivation()
   if self.cooldownTimer == 0
-     and mcontroller.onGround()
      and not status.statPositive("activeMovementAbilities")
      and status.overConsumeResource("energy", self.energyUsage) then
     self.crouchTimer = self.crouchDuration
@@ -46,6 +45,10 @@ function update(args)
       tech.setParentState()
       self.active = true
       animator.playSound("spin", -1)
+      if not mcontroller.onGround() then
+        animator.burstParticleEmitter(mcontroller.facingDirection() == 1 and "jumpLeftParticles" or "jumpRightParticles")
+        animator.playSound("jump")
+      end
     end
   end
 

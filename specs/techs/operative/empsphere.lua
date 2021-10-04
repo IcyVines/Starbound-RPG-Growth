@@ -27,7 +27,7 @@ function init()
     self.platformCollisionSet = {"Block", "Dynamic", "Platform"}
   end
 
-  Bind.create("h", plantBeacon)
+  Bind.create("f", plantBeacon)
   Bind.create("primaryFire", shootPulse)
 
 end
@@ -35,9 +35,11 @@ end
 function update(args)
   restoreStoredPosition()
 
+  self.shiftHeld = not args.moves["run"]
+
   self.beaconCooldownTimer = math.max(self.beaconCooldownTimer - args.dt, 0)
 
-  if not self.specialLast and args.moves["special1"] then
+  if not self.specialLast and args.moves["special1"] and not self.shiftHeld then
     attemptActivation()
   end
   self.specialLast = args.moves["special1"]
@@ -183,7 +185,7 @@ function findGroundDirection()
 end
 
 function plantBeacon()
-  if self.beaconCooldownTimer > 0 then
+  if self.beaconCooldownTimer > 0 or not self.shiftHeld then
     return
   end
   local direction = findGroundDirection()

@@ -1,0 +1,299 @@
+{
+	"globalTagDefaults": {
+		"paletteSwaps": "",
+		"hueshift" : "hueshift=0"
+	},
+
+		"animatedParts": {
+			"stateTypes": {
+				"swoosh": {
+					"default": "idle",
+					"states": {
+						"idle": {},
+						"fireUnsheathe": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"firePrimary": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"firePrimary2": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fireRise": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fireDive": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fireBackstep": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fireLunge": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "transition",
+							"transition": "idle"
+						},
+						"fireSheathe": {
+							"frames": 3,
+							"cycle": 0.15,
+							"mode": "transition",
+							"transition": "idle"
+						}
+					}
+				},
+				"sheath": {
+					"default": "on",
+					"states": {
+						"on": {},
+						"transitionOff" : {
+							"frames": 15,
+							"cycle": 0.3,
+							"mode": "transition",
+							"transition": "off"
+						},
+						"off": {},
+						"transitionOn" : {
+							"frames": 15,
+							"cycle": 0.2,
+							"mode": "transition",
+							"transition": "on"
+						}
+					}
+				}
+			},
+			"parts": {
+				"blade": {
+					"properties": {
+						"zLevel": 0,
+						"centered": true,
+						"image": "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
+						"offset": [0, 3.25],
+						"transformationGroups": ["weapon"],
+						"rotationCenter": [0, 0],
+						"damageArea": [[-0.7, -1.0], [-0.7, 2.5], [0.5, 2.5], [0.5, -1.0]]
+					}
+				},
+				"sheath": {
+					"properties": {
+						"zLevel": 1,
+						"centered": true,
+						"image": "<partImage><paletteSwaps>?<directives>?<bladeDirectives>",
+						"transformationGroups": ["sheath"],
+						"offset": [0, 3.25]
+					},
+					"partStates": {
+						"sheath": {
+							"off": {
+								"properties": {
+									"image": ""
+								}
+							},
+							"transitionOff": {
+								"properties": {
+									"image": "nomadic_soul_sheath_transition_updated.png:<frame>?<directives>?<bladeDirectives>"
+								}
+							},
+							"transitionOn": {
+								"properties": {
+									"image": "nomadic_soul_sheathing_transition.png:<frame>?<directives>?<bladeDirectives>"
+								}
+							},
+							"on": {
+								"properties": {
+									"image": "<partImage><paletteSwaps>?<directives>?<bladeDirectives>"
+								}
+							}
+						}
+					}
+				},
+				"handle": {
+					"properties": {
+						"zLevel": 1,
+						"centered": true,
+						"image": "<partImage><paletteSwaps>?<directives>",
+						"offset": [0, 1.875],
+						"transformationGroups": ["weapon"],
+						"rotationCenter": [0, 0]
+					}
+				},
+				"swoosh": {
+					"properties": {
+						"zLevel": -1,
+						"centered": true,
+						"transformationGroups": ["swoosh"],
+						"rotationCenter": [0, 0]
+					},
+					"partStates": {
+						"swoosh": {
+							"idle": {
+								"properties": {
+									"image": ""
+								}
+							},
+							"fireUnsheathe": {
+								"properties": {
+									"image": "/items/active/specweapons/wanderer/swoosh/physicalswoosh2.png:<frame>?flipy?<hueshift>",
+									"offset" : [0, -2.75],
+									"damageArea" : [[-5, -2], [-2.5, -3], [1, -3], [4, -1.75], [5.25, 0.25], [5.25, 2.25], [3.75, 3.25], [0.25, 2.75]]
+								}
+							},
+							"firePrimary": {
+								"properties": {
+									"image": "/items/active/specweapons/wanderer/swoosh/physicalswoosh.png:<frame>",
+									"offset": [0, 2.75],
+									"damageArea" : [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5.25, -0.25], [5.25, -2.25], [3.75, -3.25], [0.25, -2.75]]
+								}
+							},
+							"firePrimary2": {
+								"properties": {
+									"image": "/items/active/specweapons/wanderer/swoosh/physicalswoosh.png:<frame>?flipy",
+									"offset": [0, -2.75],
+									"damageArea" : [[-5, -2], [-2.5, -3], [1, -3], [4, -1.75], [5.25, 0.25], [5.25, 2.25], [3.75, 3.25], [0.25, 2.75]]
+								}
+							},
+							"fireRise": {
+								"properties": {
+									"image": "/items/active/specweapons/wanderer/swoosh/physicalswoosh.png:<frame>?flipy",
+									"offset": [0, -2.75],
+									"damageArea" : [[-5, -2], [-2.5, -3], [1, -3], [4, -1.75], [5.25, 0.25], [5.25, 2.25], [3.75, 3.25], [0.25, 2.75]]
+								}
+							},
+							"fireDive": {
+								"properties": {
+									"image": "/items/active/specweapons/wanderer/swoosh/physicalswoosh.png:<frame>",
+									"offset": [0, 2.75],
+									"damageArea" : [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5.25, -0.25], [5.25, -2.25], [3.75, -3.25], [0.25, -2.75]]
+								}
+							},
+							"fireBackstep": {
+								"properties": {
+									"image": "/items/active/specweapons/wanderer/swoosh/physicalswoosh3.png:<frame>",
+									"offset": [3.25, 0.125],
+									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
+								}
+							},
+							"fireLunge": {
+								"properties": {
+									"image": "/items/active/specweapons/wanderer/swoosh/physicalswoosh3.png:<frame>",
+									"offset": [3.25, 0.125],
+									"damageArea": [[-4.75, 1.5], [3, 0.75], [3, -0.75], [-4.75, -1.5]]
+								}
+							},
+							"fireSheathe": {
+								"properties": {
+									"image": "/items/active/specweapons/wanderer/swoosh/physicalspinswoosh.png:<frame>?scalenearest=1.15",
+									"offset": [-1.25, 1],
+									"damageArea": [[-7, 2], [5, 2], [8, 0], [6, -2], [4, -2], [2, -1], [-5, -2], [-7.4, 1.35]]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		
+	"transformationGroups": {
+		"weapon": {},
+		"swoosh": {},
+		"sheath" : {}
+	},
+
+	"particleEmitters": {
+		"physicalswoosh": {
+			"active": false,
+			"transformationGroups": ["swoosh"],
+			"emissionRate": 1,
+			"burstCount": 1,
+			"particles": []
+		},
+		"fireswoosh": {
+			"active": false,
+			"transformationGroups": ["swoosh"],
+			"emissionRate": 50,
+			"burstCount": 4,
+			"particles": [{
+					"particle": "fireswoosh1"
+				}, {
+					"particle": "fireswoosh2"
+				}, {
+					"particle": "fireswoosh3"
+				}
+			]
+		},
+		"electricswoosh": {
+			"active": false,
+			"transformationGroups": ["swoosh"],
+			"emissionRate": 50,
+			"burstCount": 3,
+			"particles": [{
+					"particle": "electricswoosh1"
+				}, {
+					"particle": "electricswoosh2"
+				}, {
+					"particle": "electricswoosh2"
+				}
+			]
+		},
+		"poisonswoosh": {
+			"active": false,
+			"transformationGroups": ["swoosh"],
+			"emissionRate": 50,
+			"burstCount": 3,
+			"particles": [{
+					"particle": "poisonswoosh1"
+				}, {
+					"particle": "poisonswoosh2"
+				}, {
+					"particle": "poisonswoosh2"
+				}
+			]
+		},
+		"iceswoosh": {
+			"active": false,
+			"transformationGroups": ["swoosh"],
+			"emissionRate": 50,
+			"burstCount": 3,
+			"particles": [{
+					"particle": "iceswoosh1"
+				}, {
+					"particle": "iceswoosh2"
+				}, {
+					"particle": "iceswoosh3"
+				}
+			]
+		}
+	},
+
+	"sounds": {
+			"fireUnsheathe": ["/sfx/melee/swing_shortsword.ogg"],
+			"firePrimary": ["/sfx/melee/swing_spear.ogg"],
+			"firePrimary2": ["/sfx/melee/swing_broadsword.ogg"],
+			"fireRise": ["/sfx/melee/swing_broadsword.ogg"],
+			"fireDive": ["/sfx/melee/swing_broadsword.ogg"],
+			"fireBackstep": ["/sfx/melee/swing_spear.ogg"],
+			"fireLunge": ["/sfx/melee/swing_spear.ogg"],
+			"fire7": ["/sfx/melee/swing_spear.ogg"],
+			"fire8": ["/sfx/melee/swing_spear.ogg"],
+			"fireSheathe": ["/sfx/melee/swing_broadsword.ogg"],
+			"unsheathe" : ["/items/active/specweapons/wanderer/charge_2.ogg"]
+		}
+ }

@@ -1,0 +1,47 @@
+[{
+        "op": "add",
+        "path": "/fishingPrize/0/1/pool/-",
+        "value": {
+            "weight": 0.05,
+            "pool": "ivrpgscrollpool"
+        }
+    }, {
+        "op": "add",
+        "path": "/fishingGrandPrize/0/1/pool/-",
+        "value": {
+            "weight": 0.05,
+            "pool": "ivrpgucfossilpool"
+        }
+    }, {
+        "op": "add",
+        "path": "/fishingGrandPrize/0/1/pool/-",
+        "value": {
+            "weight": 0.05,
+            "pool": "ivrpgscrollpool"
+        }
+    }, {
+        "op": "add",
+        "path": "/fishingcommon/0/1/fill/-",
+        "value": {
+            "pool": "experienceorbcommonfishpool"
+        }
+    }, {
+        "op": "add",
+        "path": "/fishinguncommon/0/1/fill/-",
+        "value": {
+            "pool": "experienceorbuncommonfishpool"
+        }
+    }, {
+        "op": "add",
+        "path": "/fishingrare/0/1/fill/-",
+        "value": {
+            "pool": "experienceorbrarefishpool"
+        }
+    }, {
+        "op": "add",
+        "path": "/fishinglegendary/0/1/fill/-",
+        "value": {
+            "pool": "experienceorblegendfishpool"
+        }
+    }
+]

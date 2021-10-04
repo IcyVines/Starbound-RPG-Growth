@@ -57,6 +57,7 @@ function updateDamageGiven()
   local elementIndex = #self.elements
   if self.active and notifications then
     for _,notification in pairs(notifications) do
+    	elementIndex = #self.elements
       if notification.damageDealt > notification.healthLost and notification.healthLost > 0 and #self.balanced < elementIndex and string.find(notification.damageSourceKind, "nova") then
       	animator.setGlobalTag("charged" .. (#self.balanced + 1), "balanced")
       	table.insert(self.balanced, true)

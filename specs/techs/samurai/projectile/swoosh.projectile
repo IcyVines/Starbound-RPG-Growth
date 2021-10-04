@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ivrpgiaijutsuslash",
+  "image" : "swoosh.png",
+  "animationCycle" : 0.3,
+  "timeToLive" : 0.3,
+  "frameNumber" : 3,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "damagePoly" : [ [-25, 0], [-12, 12], [12, 12], [25,0], [12, -12], [-12, -12] ],
+  "animationLoops" : false,
+  "renderLayer" : "ForegroundEntity+1",
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "damageKind" : "ivrpgkatana",
+  "emitters" : [ ],
+  "lightColor" : [120, 120, 120],
+  "fullbright" : false,
+  "statusEffects" : [],
+  "knockback" : 10,
+  "knockbackDirectional" : true
+}

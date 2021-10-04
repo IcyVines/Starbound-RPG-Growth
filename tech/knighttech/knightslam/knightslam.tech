@@ -11,6 +11,7 @@
   "icon" : "/tech/knighttech/knightslam/knightslam.png",
 
   "chipCost" : 0,
+  "maximumDoubleTapTime" : 0.25,
   "cost" : 30,
   "cooldown" : 1.5,
   "multiJumpCount" : 2

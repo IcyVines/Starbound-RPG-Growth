@@ -33,7 +33,7 @@
           },
           "firewindup" : {
             "frames" : 8,
-            "cycle" : 0.8,
+            "cycle" : 0.5,
             "properties" : {
               "immediateSound" : "/sfx/npc/monsters/wisper_windup1.ogg",
               "particleEmittersOn" : [ "flames" ]
@@ -123,7 +123,7 @@
           },
           "chargewindup" : {
             "frames" : 2,
-            "cycle" : 0.4,
+            "cycle" : 0.2,
             "mode" : "loop",
             "properties" : {
               "particleEmittersOff" : [ "music" ]
@@ -145,13 +145,13 @@
             }
           },
           "devour" : {
-            "frames" : 7,
-            "cycle" : 0.7,
+            "frames" : 9,
+            "cycle" : 0.9,
             "properties" : {
               "particleEmittersOff" : [ "music" ]
             },
             "frameProperties" : {
-              "immediateSound" : [ "", "", "", "", "/sfx/npc/monsters/monster_bite2.ogg", "", "" ]
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/monsters/monster_bite2.ogg", "", "" ]
             } 
           },
           "hurt" : {
@@ -206,7 +206,7 @@
           },
           "chargewindup" : {
             "frames" : 3,
-            "cycle" : 0.5,
+            "cycle" : 0.3,
             "properties" : {
               "persistentSound" : "/sfx/npc/quadruped/tiger_pain2.ogg",
               "persistentSoundStopTime" : 1.0,
@@ -249,13 +249,13 @@
             }
           },
           "devour" : {
-            "frames" : 7,
-            "cycle" : 0.7,
+            "frames" : 9,
+            "cycle" : 0.9,
             "properties" : {
               "particleEmittersOff" : [ "spindust" ]
             },
             "frameProperties" : {
-              "immediateSound" : [ "", "", "", "", "/sfx/npc/monsters/monster_bite2.ogg", "", "" ]
+              "immediateSound" : [ "", "", "", "", "", "", "/sfx/npc/monsters/monster_bite2.ogg", "", "" ]
             } 
           },
           "hurt" : {
@@ -330,7 +330,7 @@
           },
           "chargewindup" : {
             "frames" : 11,
-            "cycle" : 1,
+            "cycle" : 0.6,
             "mode" : "loop",
             "properties" : {
               "particleEmittersOff" : [ "dash" ],

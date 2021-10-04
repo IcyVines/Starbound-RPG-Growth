@@ -6,7 +6,7 @@ function init()
   self.active = false
   self.damageGivenUpdate = 5
   self.id = entity.id()
-  Bind.create("Up", toggle)
+  Bind.create("g", toggle)
 end
 
 function toggle()

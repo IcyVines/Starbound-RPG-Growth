@@ -182,3 +182,9 @@ function findGroundDirection()
     end
   end
 end
+
+function uninit()
+  storePosition()
+  deactivateImmunityShields()
+  deactivate()
+end

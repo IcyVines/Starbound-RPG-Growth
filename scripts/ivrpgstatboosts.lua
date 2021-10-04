@@ -182,13 +182,13 @@ end
 
 function updateStats()
   self.stats = {
-    strength = world.entityCurrency(self.rpgPlayerID, "strengthpoint"),
-    agility = world.entityCurrency(self.rpgPlayerID, "agilitypoint"),
-    vitality = world.entityCurrency(self.rpgPlayerID, "vitalitypoint"),
-    vigor = world.entityCurrency(self.rpgPlayerID, "vigorpoint"),
-    intelligence = world.entityCurrency(self.rpgPlayerID, "intelligencepoint"),
-    endurance = world.entityCurrency(self.rpgPlayerID, "endurancepoint"),
-    dexterity = world.entityCurrency(self.rpgPlayerID, "dexteritypoint")
+    strength = world.entityCurrency(self.rpgPlayerID, "strengthpoint") + status.stat("ivrpgstrengthbonus"),
+    agility = world.entityCurrency(self.rpgPlayerID, "agilitypoint") + status.stat("ivrpgagilitybonus"),
+    vitality = world.entityCurrency(self.rpgPlayerID, "vitalitypoint") + status.stat("ivrpgvitalitybonus"),
+    vigor = world.entityCurrency(self.rpgPlayerID, "vigorpoint") + status.stat("ivrpgvigorbonus"),
+    intelligence = world.entityCurrency(self.rpgPlayerID, "intelligencepoint") + status.stat("ivrpgintelligencebonus"),
+    endurance = world.entityCurrency(self.rpgPlayerID, "endurancepoint") + status.stat("ivrpgendurancebonus"),
+    dexterity = world.entityCurrency(self.rpgPlayerID, "dexteritypoint") + status.stat("ivrpgdexteritybonus")
   }
   self.statBonuses = {
     strength = 1 + status.stat("ivrpgstrengthscaling"),

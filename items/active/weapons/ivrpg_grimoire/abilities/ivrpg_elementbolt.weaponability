@@ -1,0 +1,27 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_elementbolt",
+    "name" : "<elementalName> Bolt",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 30,
+
+    "maxCastRange" : 30,
+
+    "spawnLocation" : "atTome",
+    "travelDirection" : "atCursor",
+
+    "projectileCount" : 1,
+    "projectileDistance" : 0,
+    "projectileType" : "ivrpg_<elementalType>bolt",
+    "projectileParameters" : {
+      "baseDamage" : 20,
+      "speed" : 50
+    },
+    
+    "elementalTypes" : ["electric", "ice", "nova", "holy", "earth"]
+  }
+}

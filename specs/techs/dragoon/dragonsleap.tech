@@ -14,5 +14,6 @@
   "cost" : 30,
   "cooldown" : 2.5,
   "rechargeDirectives" : "?fade=ff230f=0.25",
-  "multiJumpCount" : 2
+  "multiJumpCount" : 2,
+  "maximumDoubleTapTime" : 0.25
 }

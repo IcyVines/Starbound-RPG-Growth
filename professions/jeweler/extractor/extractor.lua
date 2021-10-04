@@ -115,7 +115,6 @@ function removeJewelryFromArmor(slot)
   slotType = storage.slotTypes[slot]
   armor = storage.inventory[1]
   if not armor or not armor.parameters or not armor.parameters.currentAugment or not armor.parameters.currentAugment.rpg_jewelry then return end
-
   local effects = armor.parameters.currentAugment.effects
   local index = 1
   local itemStats = false

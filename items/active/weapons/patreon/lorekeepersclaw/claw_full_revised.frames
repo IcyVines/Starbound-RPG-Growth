@@ -1,0 +1,10 @@
+{
+  "frameGrid" : {
+    "size" : [97, 64],
+    "dimensions" : [24, 1],
+
+    "names" : [
+      [ "front.1", "back.1", "front.2", "back.2", "front.3", "back.3", "front.4", "back.4", "front.5", "back.5", "front.6", "back.6", "front.7", "back.7", "front.8", "back.8", "front.9", "back.9", "front.10", "back.10", "front.11", "back.11", "front.12", "back.12" ]
+    ]
+  }
+}

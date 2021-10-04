@@ -11,6 +11,8 @@
     "bonemonster.lua"
   ],
 
+  "animationConfig" : "sacrifice.animation",
+
   "label" : "Undead",
   "icon" : "/specs/abilities/necromancer/raiseundead.png"
 }

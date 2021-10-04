@@ -1,0 +1,24 @@
+{
+  "kind" : "ivrpg_rune6",
+  "definition" : {
+    "type" : "textured",
+    "image" : "/items/active/weapons/ivrpg_grimoire/generated/runes/6.png",
+    "size" : 1,
+    "color" : [255, 255, 255, 255],
+    "fade" : 0.9,
+    "initialVelocity" : [0.0, 0.0],
+    "finalVelocity" : [0.0, 0.0],
+    "rotation" : 0,
+    "angularVelocity" : 0,
+    "timeToLive" : 0.5,
+    "destructionAction" : "shrink",
+    "destructionTime" : 0.5,
+    "layer" : "front",
+    "variance" : {
+      "initialVelocity" : [2, 0.5],
+      "size" : 0.2,
+      "rotation" : 180,
+      "angularVelocity" : 180
+    }
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "projectileName" : "ivrpgsamuraitrail",
+  "image" : "trail.png",
+  "physics" : "laser",
+  "animationCycle" : 10,
+  "frameNumber" : 1,
+  "damageKind" : "default",
+  "damageType" : "NoDamage",
+  "pointLight" : false,
+  "lightColor" : [50,50,50],
+  "flippable" : true,
+  "scripts" : ["curving.lua"],
+  "timeToLive" : 0.2,
+  "fullbright" : true,
+  "bounces" : 0,
+  "piercing" : true,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-2.125, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-2.0, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-1.875, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-1.75, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-1.625, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-1.5, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-1.375, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-1.25, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-1.125, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-1.0, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-0.875, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-0.75, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-0.625, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-0.5, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-0.375, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-0.25, 0.0],
+        "fullbright" : true
+      }
+    },
+    {
+      "time" : 0,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/specs/techs/samurai/projectile/trail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.5,
+        "layer" : "back",
+        "position" : [-0.125, 0.0],
+        "fullbright" : true
+      }
+    }
+  ],
+  "curveDirection" : 0,
+  "power" : 5.0,
+  "speed" : 50,
+  "knockback" : 0
+}

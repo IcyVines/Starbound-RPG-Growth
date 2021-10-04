@@ -635,7 +635,7 @@ function updateSpecializationSelect()
   local currentSpec = self.availableSpecs[self.specTo]
 
   local topText = "\nUse the arrows to navigate through Specializations for your current Class."
-  widget.setText("specializationslayout.subtitle", (self.level < self.rpg_levelRequirements.specialization and "^red;Specializations can not be progressed or unlocked until level " .. tostring(self.rpg_levelRequirements.specialization) .. ".^reset;" or "Specializations can be unlocked by accomplishing each listed task.") .. topText)
+  widget.setText("specializationslayout.subtitle", ((self.level < self.rpg_levelRequirements.specialization and not status.statPositive("ivrpgmasteryunlocked")) and "^red;Specializations can not be progressed or unlocked until level " .. tostring(self.rpg_levelRequirements.specialization) .. ".^reset;" or "Specializations can be unlocked by accomplishing each listed task.") .. topText)
 
   widget.setText("specializationslayout.spectitle", currentSpec.title)
   if currentSpec.titleColor then
@@ -670,7 +670,7 @@ function updateSpecializationSelect()
       understanding = true
     end
   end
-  widget.setButtonEnabled("specializationslayout.selectspec", self.level >= self.rpg_levelRequirements.specialization and (not disabled) and (understanding or not (currentSpec.gender and currentSpec.gender ~= player.gender())))
+  widget.setButtonEnabled("specializationslayout.selectspec", (self.level >= self.rpg_levelRequirements.specialization or status.statPositive("ivrpgmasteryunlocked")) and (not disabled) and (understanding or not (currentSpec.gender and currentSpec.gender ~= player.gender())))
   widget.setVisible("specializationslayout.selectspec",  unlocked)  
 end
 

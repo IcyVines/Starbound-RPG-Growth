@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ivrpgiaijutsuslashinvisible",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "animationCycle" : 1,
+  "timeToLive" : 0.3,
+  "frameNumber" : 1,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "damagePoly" : [ [-12, 0], [-8, 24], [8, 24], [12,0], [8, -24], [-8, -24] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "damageKind" : "ivrpgkatana",
+  "emitters" : [ ],
+  "fullbright" : false,
+  "damageRepeatTimeout" : 1,
+  "damageRepeatGroup" : "ivrpgiaijutsu",
+  "statusEffects" : [],
+  "knockback" : 10,
+  "knockbackDirectional" : true
+}

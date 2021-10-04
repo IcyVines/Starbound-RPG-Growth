@@ -6,7 +6,7 @@
   "categories" : [ "ivrpg_shieldedtrifangle" ],
   "parts" : [ "body" ],
 
-  "animation" : "/monsters/space/trifangle/trifangle.animation",
+  "animation" : "/monsters/rpgmonsters/trifangle/trifangle.animation",
 
   "dropPools" : ["spaceRobot"],
 

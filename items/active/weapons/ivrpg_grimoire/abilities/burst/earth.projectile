@@ -1,0 +1,23 @@
+{
+  "projectileName" : "ivrpg_earthburst",
+  "timeToLive" : 2.5,
+  "bounces" : 0,
+  "image" : "earth.png",
+  "animationCycle" : 0.25,
+  "physics" : "laser",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 0,
+  "damagePoly" : [ [-7, 0], [-5, -5], [0, -7], [5, -5], [7, 0], [5, 5], [0, 7], [-5, 5] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/plasmaexplosion2/plasmaexplosion2.config"
+    }
+  ],
+  "power" : 8.0,
+  "damageKind" : "plasma",
+  "emitters" : [ "defaultbrown" ]
+}
+
+

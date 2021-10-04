@@ -8,6 +8,7 @@ function init()
   self.rechargeTimer = 0
   self.mobCharge = 0
   self.damageGivenUpdate = 5
+  self.currentMobCount = 0
   self.id = entity.id()
   Bind.create("f", reap)
 
@@ -15,6 +16,13 @@ function init()
     self.mobCharge = self.mobCharge + 1
   end)
 
+  message.setHandler("bonePteropodDefeated", function(_, _)
+    self.currentMobCount = math.max(self.currentMobCount - 1, 0)
+  end)
+
+  message.setHandler("bonePteropodTransfer", function(_, _, damage)
+    status.modifyResource("health", damage)
+  end)
 end
 
 function reset()
@@ -36,7 +44,7 @@ function reap()
   if self.cooldownTimer == 0 and (not status.statPositive("activeMovementAbilities")) and self.shiftHeld and self.mobCharge > 0 then
     self.cooldownTimer = self.cooldown
     animator.playSound("reap")
-    self.mobCharge = math.floor(math.min(self.mobCharge^(1 + intelligence/100), 5))
+    self.mobCharge = math.floor(math.min(self.mobCharge^(1 + intelligence/100), 6))
     local params = {}
     params.statusSettings = self.bonePteropod.baseParameters.statusSettings
     params.statusSettings.stats.maxHealth.baseValue = status.stat("maxHealth")
@@ -46,9 +54,11 @@ function reap()
     params.damageTeamType = "friendly"
     params.aggressive = true
     params.ownerUuid = entity.uniqueId()
+    params.ownerId = self.id
     while self.mobCharge > 0 do 
       world.spawnMonster("bonepteropod", mcontroller.position(), params)
       self.mobCharge = self.mobCharge - 1
+      self.currentMobCount = self.currentMobCount + 1
     end
     reset()
     return

@@ -24,7 +24,7 @@ function activateVisualEffects()
     {
       action = "particle",
       specification = {
-        text =  "Level " .. tostring(math.floor(math.sqrt(world.entityCurrency(entity.id(), "experienceorb")/100))),      -- place your text here, mind the quotes. I did some text construction off-board as you can see.
+        text =  "Level " .. tostring(math.min(math.floor(math.sqrt(world.entityCurrency(entity.id(), "experienceorb")/100)), 50)),      -- place your text here, mind the quotes. I did some text construction off-board as you can see.
         color = {90, 190, 20, 255},
         destructionAction = "shrink",
         destructionTime =  0.5,

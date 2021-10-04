@@ -1,0 +1,145 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : "",
+    "chargeHue" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "bookState" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "open" : {
+            "frames" : 1,
+            "cycle" : 0.2,
+            "mode" : "end"
+          },
+          "charging" : {
+            "frames" : 4,
+            "cycle" : 0.8,
+            "mode" : "loop",
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "/sfx/objects/cardboardbox_open.ogg", ""]
+            } 
+          }
+        }
+      },
+      "charge" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "charging" : {
+            "frames" : 10,
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "charged"
+          },
+          "charged" : {
+            "frames" : 6,
+            "cycle" : 0.8,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "grimoire" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0.25, 0.0],
+          "focalPoint" : [0.25, 0.0],
+          "transformationGroups" : ["weapon"]
+        },
+        "partStates" : {
+          "bookState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "icons/<elementalType>.png"
+              }
+            },
+            "open" : {
+              "properties" : {
+                "image" : "<partImage>:default.1"
+              }
+            },
+            "charging" : {
+              "properties" : {
+                "image" : "<partImage>:open.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "chargeState" : {
+        "properties" : {
+          "zLevel" : 2,
+          "centered" : true,
+          "offset" : [-0.9375, 0.0],
+          "transformationGroups" : ["charge"]
+        },
+        "partStates" : {
+          "charge" : {
+            "off" : {
+              "image" : "<partImage>:off"
+            },
+            "charging" : {
+              "properties" : {
+                "image" : "<partImage>:<frame><chargeHue>"
+              }
+            },
+            "charged" : {
+              "properties" : {
+                "image" : "<partImage>:loop_<frame><chargeHue>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 3.0],
+      "color" : [0, 0, 0],
+      "transformationGroups" : ["weapon"]
+    }
+  },
+
+  "particleEmitters" : {},
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "charge" : {}
+  },
+
+  "sounds" : {
+    "physicalactivate" : ["/sfx/projectiles/plasma3.ogg"],
+
+    "earthactivate" : ["/sfx/projectiles/plasma3.ogg"],
+
+    "fireactivate" : ["/sfx/melee/travelingslash_fire2.ogg"],
+
+    "iceactivate" : ["/sfx/melee/travelingslash_ice3.ogg", "/sfx/melee/travelingslash_ice4.ogg"],
+
+    "electricactivate" : ["/sfx/melee/travelingslash_electric4.ogg", "/sfx/melee/travelingslash_electric5.ogg"],
+
+    "poisonactivate" : ["/sfx/melee/travelingslash_poison3.ogg"],
+
+    "novaactivate" : ["/sfx/projectiles/astraltear_stop2.ogg", "/sfx/projectiles/astraltear_stop3.ogg"],
+
+    "holyactivate" : ["/sfx/gun/impact_rainbow.ogg"],
+
+    "demonicactivate" : ["/sfx/melee/elemental_aura_activate.ogg", "/sfx/gun/aegisaltpistol_start.ogg"],
+
+    "bookopen" : ["/sfx/interface/item_holster.ogg"],
+    "bookclose" : ["/sfx/interface/item_equip.ogg"],
+
+    "zoneactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
+  }
+}

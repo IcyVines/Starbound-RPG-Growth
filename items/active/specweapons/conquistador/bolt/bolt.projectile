@@ -1,0 +1,33 @@
+{
+  "projectileName" : "ivrpgarquebusbolt",
+  "physics" : "arrownosticky",
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "inheritDamageFactor" : 1,
+      "type" : "ivrpgarquebusholyexplosion"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/gun/plasma_shotgun1.ogg" ]
+    }
+  ],
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/arrowexplosion/arrowexplosion.config"
+    }
+  ],
+  "image" : "bolt.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "power" : 20,
+  "fullbright" : true,
+  "piercing" : true,
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+  "damageKind" : "bow",
+  "timeToLive" : 10,
+  "damagePoly" : [ [8, -0.2], [8.5, -0.2], [8.5, 0.2], [8, 0.2] ]
+}

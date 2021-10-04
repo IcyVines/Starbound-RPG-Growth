@@ -25,6 +25,32 @@
           }
         }
       ]
+    },
+    "smoke" : {
+      "enable" : true,
+      "emissionRate" : 15,
+      "particles" : [
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" },
+        { "particle" : "firesmoke" }
+      ]
     }
+  },
+
+  "transformationGroups" : {
+    "smoke" : { "interpolated" : true }
   }
 }

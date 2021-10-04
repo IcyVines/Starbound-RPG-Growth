@@ -6,7 +6,7 @@ require "/scripts/ivrpgutil.lua"
 function init()
   self.id = entity.id()
   self.active = false
-  self.elementMod = 1
+  self.elementMod = status.statusProperty("ivrpgAttunement", 1)
   self.elementList = {"fire", "ice", "electric"}
   self.element = self.elementList[self.elementMod]
   self.newMod = {2,3,1}
@@ -44,6 +44,7 @@ function toggle()
   if self.charging or self.active then return end
   self.elementMod = self.newMod[self.elementMod]
   self.element = self.elementList[self.elementMod]
+  status.setStatusProperty("ivrpgAttunement", self.elementMod)
   animator.playSound(self.element .. "Activate")
 end
 
@@ -87,7 +88,7 @@ function update(args)
   self.specialHeld = args.moves["special2"]
   self.hDirection = args.moves["left"] and -1 or (args.moves["right"] and 1 or 0)
   self.vDirection = args.moves["up"] and 1 or (args.moves["down"] and -1 or 0)
-  if self.specialHeld then
+  if self.specialHeld and not (status.statPositive("activeMovementAbilities") and not status.statPositive("activeMovementAbilitiesJolt")) then
     if (self.shiftHeld or self.charging) and self.chargeCooldownTimer == 0 and not status.resourceLocked("energy") and status.overConsumeResource("energy", self.dt * 10 / self.weaveBonus) then
       charge()
     elseif self.cooldownTimer == 0 and not self.shiftHeld then
@@ -195,6 +196,7 @@ Basic Projectile: Fire - Increased Damage | Ice - Lasts Longer | Electric - Decr
 
 function action1(skipCheck)
   if (self.cooldownTimer > 0 or self.active) or ((not skipCheck) and world.entityHandItem(self.id, "primary")) then return end
+  if status.statPositive("activeMovementAbilities") then return end
   if not status.overConsumeResource("energy", 25 / self.weaveBonus) then return end
   local bonusTime = self.weaveElement == "ice" and 0.2 or 0
   local bonusDamage = self.weaveElement == "fire" and 1.5 or 1
@@ -324,7 +326,10 @@ function activate()
   tech.setParentHidden(true)
   tech.setToolUsageSuppressed(true)
   animator.playSound("jolt")
-  status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
+  status.setPersistentEffects("movementAbility", {
+    {stat = "activeMovementAbilities", amount = 1},
+    {stat = "activeMovementAbilitiesJolt", amount = 1}
+  })
 end
 
 function deactivate()

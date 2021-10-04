@@ -53,6 +53,8 @@ end
 
 function update(args)
 
+  self.shiftHeld = not args.moves["run"]
+
   local action = inputToAction(args)
   self.glideSphere = status.statPositive("ivrpgucglidesphere")
   self.lrInput = 0
@@ -66,12 +68,12 @@ function update(args)
 
   updateDrill(args)
 
-  if not self.specialLast and args.moves["special3"] then
+  if not self.specialLast and args.moves["special1"] and not self.shiftHeld then
     attemptActivation()
   end
-  self.specialLast = args.moves["special3"]
+  self.specialLast = args.moves["special1"]
 
-  if not args.moves["special3"] then
+  if not args.moves["special1"] then
     self.forceTimer = nil
   end
 
@@ -220,7 +222,7 @@ function updateDrill(args)
     end
 
     if not self.activeDrill then
-      animator.playSound("activate")
+      animator.playSound("drillStart")
     end
     self.activeDrill = true
   else
@@ -271,7 +273,7 @@ end
 function inputToAction(args)
   if args.moves["up"] then
     return "explorerglide"
-  elseif args.moves["special1"] then
+  elseif self.shiftHeld and args.moves["special1"] then
     return "explorerdrill"
   else
     return nil

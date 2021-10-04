@@ -1,0 +1,190 @@
+{
+    "experienceorbcommonfishpool": [
+        [0, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 5]}
+				]
+            }
+        ],
+        [0.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 10]}
+                ]
+            }
+        ],
+        [1.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 20]}
+                ]
+            }
+        ],
+        [2.9, {
+			"fill": [{ "weight": 1, "item": ["experienceorb", 30]}
+                ]
+            }
+        ],
+        [3.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 40]}
+                ]
+            }
+        ],
+        [4.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 50]}
+                ]
+            }
+        ],
+        [5.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 60]}
+                ]
+            }
+        ],
+        [6.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 70]}
+                ]
+            }
+        ],
+        [7.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 80]}
+                ]
+            }
+        ]
+    ],
+	"experienceorbuncommonfishpool": [
+        [0, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 10]}
+				]
+            }
+        ],
+        [0.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 20]}
+                ]
+            }
+        ],
+        [1.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 40]}
+                ]
+            }
+        ],
+        [2.9, {
+			"fill": [{ "weight": 1, "item": ["experienceorb", 60]}
+                ]
+            }
+        ],
+        [3.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 80]}
+                ]
+            }
+        ],
+        [4.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 100]}
+                ]
+            }
+        ],
+        [5.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 120]}
+                ]
+            }
+        ],
+        [6.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 140]}
+                ]
+            }
+        ],
+        [7.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 160]}
+                ]
+            }
+        ]
+    ],
+	"experienceorbrarefishpool": [
+        [0, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 20]}
+				]
+            }
+        ],
+        [0.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 40]}
+                ]
+            }
+        ],
+        [1.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 80]}
+                ]
+            }
+        ],
+        [2.9, {
+			"fill": [{ "weight": 1, "item": ["experienceorb", 120]}
+                ]
+            }
+        ],
+        [3.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 160]}
+                ]
+            }
+        ],
+        [4.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 200]}
+                ]
+            }
+        ],
+        [5.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 240]}
+                ]
+            }
+        ],
+        [6.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 280]}
+                ]
+            }
+        ],
+        [7.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 320]}
+                ]
+            }
+        ]
+    ],
+	"experienceorblegendfishpool": [
+        [0, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 30]}
+				]
+            }
+        ],
+        [0.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 60]}
+                ]
+            }
+        ],
+        [1.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 120]}
+                ]
+            }
+        ],
+        [2.9, {
+			"fill": [{ "weight": 1, "item": ["experienceorb", 180]}
+                ]
+            }
+        ],
+        [3.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 240]}
+                ]
+            }
+        ],
+        [4.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 300]}
+                ]
+            }
+        ],
+        [5.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 360]}
+                ]
+            }
+        ],
+        [6.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 420]}
+                ]
+            }
+        ],
+        [7.9, {
+            "fill": [{ "weight": 1, "item": ["experienceorb", 480]}
+                ]
+            }
+        ]
+    ]
+}
