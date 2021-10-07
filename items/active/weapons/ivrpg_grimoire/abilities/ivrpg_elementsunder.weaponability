@@ -10,7 +10,8 @@
     "energyCost" : 80,
 
     "spawnLocation" : "atCursor",
-    "travelDirection" : "toCursor",
+    "travelDirection" : "none",
+    "chargeTimeModifier" : 1.2,
 
     "maxCastRange" : 15,
 

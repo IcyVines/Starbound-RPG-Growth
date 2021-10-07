@@ -11,6 +11,7 @@
 
     "spawnLocation" : "atCursor",
     "travelDirection" : "toCursor",
+    "chargeTimeModifier" : 1,
     
     "maxCastRange" : 25,
 

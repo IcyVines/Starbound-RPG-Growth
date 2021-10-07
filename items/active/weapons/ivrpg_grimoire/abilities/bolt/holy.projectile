@@ -1,0 +1,25 @@
+{
+  "projectileName" : "ivrpg_holybolt",
+  "timeToLive" : 2.5,
+  "bounces" : 0,
+  "image" : "holy.png",
+  "animationCycle" : 1.2,
+  "physics" : "laser",
+  "piercing" : true,
+  "frameNumber" : 12,
+  "pointLight" : false,
+  "speed" : 0,
+  "flippable" : true,
+  "damagePoly" : [ [-7, 0], [-5, -5], [0, -7], [5, -5], [7, 0], [5, 5], [0, 7], [-5, 5] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/weapons/ivrpg_grimoire/abilities/bolt/holyimpact.config"
+    }
+  ],
+  "power" : 8.0,
+  "damageKind" : "holy",
+  "emitters" : [ "javelinred" ]
+}
+
+

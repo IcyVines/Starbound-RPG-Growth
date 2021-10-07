@@ -3,9 +3,10 @@
   "timeToLive" : 2.5,
   "bounces" : 0,
   "image" : "poison.png",
-  "animationCycle" : 1.6,
+  "animationCycle" : 0.4,
   "physics" : "laser",
-  "frameNumber" : 16,
+  "frameNumber" : 2,
+  "flippable" : true,
   "pointLight" : true,
   "speed" : 10,
   "actionOnReap" : [

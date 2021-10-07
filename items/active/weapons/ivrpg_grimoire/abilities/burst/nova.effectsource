@@ -1,0 +1,29 @@
+{
+  "kind" : "ivrpgnovaburst",
+  "definition" : {
+    "duration" : 0.125,
+    "loops" : true,
+    "start" : {
+      "particles" : [
+        [ "ivrpgnovaburst" ]
+      ],
+      "sounds" : [
+        [ ]
+      ]
+    },
+    "particles" : [
+      [ "ivrpgnovaburst" ]
+    ],
+    "sounds" : [
+      [ ]
+    ],
+    "stop" : {
+      "particles" : [
+        [  ]
+      ],
+      "sounds" : [
+        [ ]
+      ]
+    }
+  }
+}

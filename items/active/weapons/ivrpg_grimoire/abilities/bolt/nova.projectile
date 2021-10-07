@@ -1,0 +1,33 @@
+{
+  "projectileName" : "ivrpg_novabolt",
+  "timeToLive" : 2.5,
+  "bounces" : 0,
+  "image" : "nova.png",
+  "animationCycle" : 0.5,
+  "physics" : "laser",
+  "piercing" : true,
+  "frameNumber" : 4,
+  "pointLight" : false,
+  "speed" : 0,
+  "flippable" : true,
+  "damagePoly" : [ [-7, 0], [-5, -5], [0, -7], [5, -5], [7, 0], [5, 5], [0, 7], [-5, 5] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/fireimpact.config"
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/electricimpact.config"
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/iceimpact.config"
+    }
+  ],
+  "power" : 8.0,
+  "damageKind" : "nova",
+  "emitters" : [ "sparkles" ]
+}
+
+

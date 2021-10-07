@@ -9,17 +9,18 @@
 
     "energyCost" : 30,
 
-    "maxCastRange" : 30,
+    "maxCastRange" : 25,
 
     "spawnLocation" : "atTome",
     "travelDirection" : "atCursor",
+    "chargeTimeModifier" : 1,
 
     "projectileCount" : 1,
     "projectileDistance" : 0,
     "projectileType" : "ivrpg_<elementalType>burst",
     "projectileParameters" : {
       "baseDamage" : 20,
-      "speed" : 5
+      "speed" : 25
     },
     
     "elementalTypes" : ["fire", "poison", "nova", "demonic", "earth"]
