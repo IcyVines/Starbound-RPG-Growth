@@ -1,0 +1,25 @@
+{
+  "projectileName" : "ivrpg_icebolt",
+  "timeToLive" : 2.5,
+  "bounces" : 0,
+  "image" : "ice.png",
+  "animationCycle" : 0.25,
+  "physics" : "laser",
+  "piercing" : true,
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 0,
+  "flippable" : true,
+  "damagePoly" : [ [-7, 0], [-5, -5], [0, -7], [5, -5], [7, 0], [5, 5], [0, 7], [-5, 5] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/iceimpact.config"
+    }
+  ],
+  "power" : 8.0,
+  "damageKind" : "iceplasma",
+  "emitters" : [ "iceplasma" ]
+}
+
+

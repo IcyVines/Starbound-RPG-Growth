@@ -3,15 +3,16 @@
   "timeToLive" : 2.5,
   "bounces" : 0,
   "image" : "demonic.png",
-  "animationCycle" : 2.4,
+  "animationCycle" : 0.8,
   "physics" : "laser",
-  "frameNumber" : 16,
+  "frameNumber" : 4,
   "pointLight" : true,
   "speed" : 10,
+  "flippable" : true,
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/ivrpgexclusives/explosions/demonic/demonicexplosionlarge.config"
+      "file" : "/projectiles/ivrpgexclusives/explosions/demonic/demonicexplosionstatus.config"
     }
   ],
   "power" : 8.0,

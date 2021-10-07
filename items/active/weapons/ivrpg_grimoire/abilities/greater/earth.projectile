@@ -1,0 +1,26 @@
+{
+  "projectileName" : "ivrpg_earthbarrier",
+  "image" : "earth.png",
+  "physics" : "gas",
+  "frameNumber" : 3,
+  "animationCycle" : 0.25,
+  "power" : 2,
+  "speed" : 0,
+  "timeToLive" : 2.0,
+  "bounces" : -1,
+  "piercing" : true,
+  "knockback" : 25,
+  "knockbackDirectional" : true,
+  "orientationLocked" : true,
+  "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
+  "damageKind" : "bluntforce",
+  "emitters" : [ "defaultbrown" ],
+  "scripts" : ["barrier.lua"],
+  "damageRepeatTimeout" : 0.1
+  //"actionOnReap" : [
+    //{
+      //"action" : "sound",
+      //"options" : [ ]
+    //}
+  //]
+}

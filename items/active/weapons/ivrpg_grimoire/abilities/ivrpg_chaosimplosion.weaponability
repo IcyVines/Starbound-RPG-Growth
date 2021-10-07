@@ -1,0 +1,27 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_chaosimplosion",
+    "name" : "Chaos Implosion: <elementalName>",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 80,
+
+    "spawnLocation" : "atCursor",
+    "travelDirection" : "none",
+    "chargeTimeModifier" : 1.5,
+
+    "maxCastRange" : 15,
+
+    "projectileCount" : 1,
+    "projectileDistance" : 2.5,
+    "projectileType" : "ivrpg_<elementalType>explosion",
+    "projectileParameters" : {
+      "baseDamage" : 30
+    },
+    
+    "elementalTypes" : ["holy", "electric", "poison", "nova"]
+  }
+}

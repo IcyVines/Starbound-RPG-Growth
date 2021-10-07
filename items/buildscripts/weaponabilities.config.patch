@@ -1,9 +1,13 @@
 [
+
+//Class Weapon Abilities
 { "op" : "add", "path" : "/parryshield", "value" : "/items/active/classweapons/knightsword/parryshield.weaponability" },
 { "op" : "add", "path" : "/aegisswordcombo", "value" : "/items/active/classweapons/knightsword/aegisswordcombo.weaponability" },
 { "op" : "add", "path" : "/novastaffexplosion", "value" : "/items/active/classweapons/wizardstaff/novastaffexplosion.weaponability" },
 { "op" : "add", "path" : "/novastaffswitch", "value" : "/items/active/classweapons/wizardstaff/novastaffswitch.weaponability" },
 { "op" : "add", "path" : "/versaarfire", "value" : "/items/active/classweapons/soldiergun/versaarfire.weaponability" },
+
+//Spec and Other Weapon Abilities
 { "op" : "add", "path" : "/demonsword", "value" : "/items/active/weapons/melee/abilities/hammer/demonsword/giantsword.weaponability" },
 { "op" : "add", "path" : "/acidspew", "value" : "/items/active/weapons/melee/abilities/broadsword/acidspew/flamethrowersword.weaponability" },
 { "op" : "add", "path" : "/obsidianShards", "value" : "/items/active/weapons/melee/abilities/broadsword/obsidianShards/obsidianShards.weaponability" },
@@ -15,9 +19,15 @@
 { "op" : "add", "path" : "/juggernautmeteorcleave", "value" : "/items/active/specweapons/juggernaut/meteorcleave/meteorcleave.weaponability" },
 { "op" : "add", "path" : "/dragooncharge", "value" : "/items/active/specweapons/dragoon/charge/dragooncharge.weaponability" },
 
-//Grimoires
-{ "op" : "add", "path" : "/ivrpg_elementrain", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementrain.weaponability" },
+//Grimoire Primaries
 { "op" : "add", "path" : "/ivrpg_elementsunder", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementsunder.weaponability" },
 { "op" : "add", "path" : "/ivrpg_elementburst", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementburst.weaponability" },
-{ "op" : "add", "path" : "/ivrpg_elementbolt", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementbolt.weaponability" }
+{ "op" : "add", "path" : "/ivrpg_elementbolt", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementbolt.weaponability" },
+{ "op" : "add", "path" : "/ivrpg_chaosscythe", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_chaosscythe.weaponability" },
+{ "op" : "add", "path" : "/ivrpg_chaosimplosion", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_chaosimplosion.weaponability" },
+
+//Grimoire Alts
+{ "op" : "add", "path" : "/ivrpg_greaterbarrier", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_greaterbarrier.weaponability" },
+{ "op" : "add", "path" : "/ivrpg_elementrain", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementrain.weaponability" }
+
 ]

@@ -15,6 +15,8 @@ function ControlProjectile:init()
 
   self.travelDirection = self.abilitySlot == "primary" and config.getParameter("primaryAbility.travelDirection") or config.getParameter("altAbility.travelDirection")
   self.spawnLocation = self.abilitySlot == "primary" and config.getParameter("primaryAbility.spawnLocation") or config.getParameter("altAbility.spawnLocation")
+  self.chargeTimeModifier = self.abilitySlot == "primary" and config.getParameter("primaryAbility.chargeTimeModifier") or config.getParameter("altAbility.chargeTimeModifier")
+  self.projectileOffset = self.abilitySlot == "primary" and config.getParameter("primaryAbility.projectileOffset", {0,0}) or config.getParameter("altAbility.projectileOffset", {0,0})
 
   animator.setGlobalTag("chargeHue", "?multiply=" .. self.elementalConfig[self.elementalType].hue)
   activeItem.setCursor("/cursors/reticle5.cursor")
@@ -32,16 +34,8 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
   --self:updateProjectiles()
 
   world.debugPoint(self:focusPosition(), "blue")
-
-  animator.resetTransformationGroup("charge")
-  local cursorPosition = activeItem.ownerAimPosition()
-  local position = mcontroller.position()
-  local difference = world.distance(cursorPosition, position)
-  local frontal = {2.75, -1}--world.distance(self:focusPosition(), position)
-  difference[1] = difference[1] * mcontroller.facingDirection()
-  --frontal[1] = frontal[1] * mcontroller.facingDirection()
-  --animator.translateTransformationGroup("charge", difference)
-  animator.translateTransformationGroup("charge", frontal)
+  --animator.setAnimationRate(1/(self.chargeTimeModifier or 1))
+  --sb.logInfo(sb.printJson(self.chargeTimeModifier))
 
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
@@ -58,16 +52,18 @@ end
 
 function ControlProjectile:charge()
   self.weapon:setStance(self.stances.charge)
-
   animator.playSound("bookopen")
+  animator.setAnimationRate(1/(self.chargeTimeModifier or 1))
   animator.setAnimationState("bookState", "open")
   animator.setAnimationState("charge", "charging")
 
-  local chargeTimer = self.stances.charge.duration
+  local chargeTimer = self.stances.charge.duration * (self.chargeTimeModifier or 1)
   while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     chargeTimer = chargeTimer - self.dt
 
     mcontroller.controlModifiers({runningSuppressed=true})
+
+    self:moveChargePosition()
 
     coroutine.yield()
   end
@@ -79,9 +75,22 @@ function ControlProjectile:charge()
   end
 end
 
+function ControlProjectile:moveChargePosition()
+  animator.resetTransformationGroup("charge")
+  local cursorPosition = activeItem.ownerAimPosition()
+  local position = mcontroller.position()
+  if mcontroller.crouching() then position[2] = position[2] - 1 end
+  local difference = world.distance(cursorPosition, position)
+  local frontal = {3.125, 1.125}--world.distance(self:focusPosition(), position)
+  difference[1] = difference[1] * mcontroller.facingDirection()
+  --frontal[1] = frontal[1] * mcontroller.facingDirection()
+  animator.translateTransformationGroup("charge", self.spawnLocation == "atCursor" and difference or frontal)
+end
+
 function ControlProjectile:charged()
   self.weapon:setStance(self.stances.charged)
 
+  animator.setAnimationRate(1)
   animator.setAnimationState("bookState", "charging")
   math.randomseed(os.time())
 
@@ -118,6 +127,9 @@ function ControlProjectile:charged()
   while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     targetValid = self:targetValid(activeItem.ownerAimPosition())
     activeItem.setCursor(targetValid and "/items/active/weapons/ivrpg_grimoire/cursor/reticle.cursor" or "/cursors/reticle5.cursor")
+
+    self:moveChargePosition()
+
     if runeTimer >= spawnTime then
       particle.position = self:focusPosition()
       particle.image = image .. tostring(math.random(1,7)) .. ".png"
@@ -139,6 +151,7 @@ function ControlProjectile:discharge()
   self.weapon:setStance(self.stances.discharge)
   activeItem.setScriptedAnimationParameter("rune", false)
 
+  animator.setAnimationRate(1)
   animator.stopAllSounds("bookopen")
   activeItem.setCursor("/cursors/reticle5.cursor")
   animator.setAnimationState("charge", "off")
@@ -162,10 +175,10 @@ function ControlProjectile:discharge()
   end)
 
   -- Change this to be dependent on the ability. Some abilities are instant cast. Some are not!
-  while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
+  --[[ while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
     status.setResourcePercentage("energyRegenBlock", 1.0)
     coroutine.yield()
-  end
+  end ]]
 
   self.cooldownTimer = self.cooldownTime
   self.abilityActive = false
@@ -177,7 +190,7 @@ function ControlProjectile:targetValid(aimPos)
   local focusPos = self:focusPosition()
   return world.magnitude(focusPos, aimPos) <= self.maxCastRange
       and not world.lineTileCollision(mcontroller.position(), focusPos)
-      and not world.lineTileCollision(focusPos, aimPos)
+      and not (self.spawnLocation == "atCursor" and world.lineTileCollision(focusPos, aimPos))
 end
 
 function ControlProjectile:createProjectiles()
@@ -185,21 +198,29 @@ function ControlProjectile:createProjectiles()
   local distanceTo = world.distance(aimPosition, self:focusPosition())
   local fireDirection = distanceTo[1] > 0 and 1 or -1
   local pOffset = {fireDirection * (self.projectileDistance or 0), 0}
-  sb.logInfo(sb.printJson(self.spawnLocation))
+  --sb.logInfo(sb.printJson(self.travelDirection))
+  --sb.logInfo(sb.printJson(self.spawnLocation))
   local basePos = self.spawnLocation == "atCursor" and activeItem.ownerAimPosition() or self:focusPosition()
-
+  local basePos = vec2.add(basePos, self.projectileOffset)
   local pCount = self.projectileCount or 1
-
   local pParams = copy(self.projectileParameters)
+
+  if self.travelDirection == "atCursor" then
+    local tTL = vec2.mag(distanceTo) / pParams.speed
+    pParams.timeToLive = tTL
+  end
+
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
+
+  self.weapon:createBarrier({{8,8}, {8,-8}, {-8,-8}, {-8,8}})
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(
         self.projectileType,
         vec2.add(basePos, pOffset),
         activeItem.ownerEntityId(),
-        distanceTo,
+        self.travelDirection == "none" and pOffset or distanceTo,
         false,
         pParams
       )
@@ -254,6 +275,7 @@ function ControlProjectile:reset()
   activeItem.setScriptedAnimationParameter("rune", false)
   activeItem.setCursor("/cursors/reticle5.cursor")
   self.abilityActive = false
+  animator.setAnimationRate(1)
 end
 
 function ControlProjectile:uninit(weaponUninit)
@@ -261,4 +283,10 @@ function ControlProjectile:uninit(weaponUninit)
   if weaponUninit then
     self:killProjectiles()
   end
+  self.weapon:destroyBarrier()
+end
+
+function Weapon:destroyBarrier()
+  activeItem.setShieldPolys()
+  activeItem.setDamageSources()
 end

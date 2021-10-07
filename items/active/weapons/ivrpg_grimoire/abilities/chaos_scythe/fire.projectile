@@ -1,0 +1,21 @@
+{
+  "projectileName" : "ivrpg_firechaosscythe",
+  "timeToLive" : 0.6,
+  "bounces" : -1,
+  "renderLayer" : "Player+2",
+  "damagePoly" : [ [-32, -16], [-28, 30], [24, 30], [28, -16] ],
+  "image" : "fire.png",
+  "animationCycle" : 0.6,
+  "piercing" : true,
+  "physics" : "laser",
+  "frameNumber" : 12,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "pointLight" : true,
+  "speed" : 0,
+  "power" : 8.0,
+  "damageKind" : "ivrpg_firescythe",
+  "emitters" : [ "fireplasma" ]
+}
+
+

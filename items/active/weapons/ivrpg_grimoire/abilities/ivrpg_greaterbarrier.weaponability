@@ -1,0 +1,27 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_greaterbarrier",
+    "name" : "Greater Barrier",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 20,
+
+    "spawnLocation" : "atTome",
+    "travelDirection" : "none",
+    "chargeTimeModifier" : 0.8,
+
+    "maxCastRange" : 100,
+
+    "projectileCount" : 20,
+    "projectileDistance" : 3,
+    "projectileType" : "ivrpg_<elementalType>barrier",
+    "projectileParameters" : {
+      "baseDamage" : 1
+    },
+    
+    "elementalTypes" : [ "earth" ]
+  }
+}

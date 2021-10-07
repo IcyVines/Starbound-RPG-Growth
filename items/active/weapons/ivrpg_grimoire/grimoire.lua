@@ -28,3 +28,24 @@ end
 function uninit()
   self.weapon:uninit()
 end
+
+function Weapon:createBarrier(poly, shieldHealth)
+  status.setPersistentEffects("broadswordParry", {{stat = "shieldHealth", amount = shieldHealth or 100}})
+
+  local blockPoly = poly
+  activeItem.setShieldPolys({blockPoly})
+
+  --if self.knockback > 0 then
+  local knockback = status.resourcePositive("perfectBlock") and 40 or 20
+  local knockbackDamageSource = {
+    poly = blockPoly,
+    damage = 0,
+    damageType = "Knockback",
+    sourceEntity = activeItem.ownerEntityId(),
+    team = activeItem.ownerTeam(),
+    knockback = knockback,
+    rayCheck = true,
+    damageRepeatTimeout = 0.25
+  }
+  activeItem.setDamageSources({ knockbackDamageSource })
+end

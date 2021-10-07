@@ -6,6 +6,7 @@
   "animationCycle" : 3.2,
   "physics" : "laser",
   "frameNumber" : 16,
+  "flippable" : true,
   "pointLight" : true,
   "speed" : 10,
   "actionOnReap" : [

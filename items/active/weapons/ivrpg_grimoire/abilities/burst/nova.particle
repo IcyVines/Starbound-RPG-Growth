@@ -1,0 +1,20 @@
+{
+  "kind" : "ivrpgnovaburst",
+  "definition" : {
+    "type" : "animated",
+    "animation" : "/items/active/weapons/ivrpg_grimoire/abilities/burst/nova.animation",
+    "position" : [0, 0],
+    "finalVelocity" : [0, 0],
+    "approach" : [50, 50],
+    "destructionAction" : "fade",
+    "destructionTime" : 0.85,
+    "fade" : 1,
+    "size" : 1,
+    "layer" : "back",
+    "timeToLive" : 0.3,
+    "variance" : {
+      "initialVelocity" : [2.0, 2.0],
+      "rotation" : 180
+    }
+  }
+}

@@ -9,16 +9,17 @@
 
     "energyCost" : 30,
 
-    "maxCastRange" : 30,
+    "maxCastRange" : 100,
 
     "spawnLocation" : "atTome",
-    "travelDirection" : "atCursor",
+    "travelDirection" : "pastCursor",
+    "chargeTimeModifier" : 0.8,
 
     "projectileCount" : 1,
     "projectileDistance" : 0,
     "projectileType" : "ivrpg_<elementalType>bolt",
     "projectileParameters" : {
-      "baseDamage" : 20,
+      "baseDamage" : 15,
       "speed" : 50
     },
     
