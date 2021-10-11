@@ -1,0 +1,30 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_greatermote",
+    "name" : "Greater <moteMod>",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 20,
+
+    "spawnLocation" : "atCursor",
+    "travelDirection" : "none",
+    "behavior" : "followPlayer",
+    "notDespawned" : true,
+    "chargeTimeModifier" : 0.8,
+
+    "maxCastRange" : 10,
+
+    "projectileCount" : 1,
+    "projectileDistance" : 0,
+    "projectileType" : "ivrpg_<altElementalType>mote",
+    "projectileParameters" : {
+      "baseDamage" : 0,
+      "timeToLive" : 30
+    },
+    
+    "elementalTypes" : [ "fire", "holy", "electric" ]
+  }
+}

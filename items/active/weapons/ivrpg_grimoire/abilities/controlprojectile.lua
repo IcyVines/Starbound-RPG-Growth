@@ -17,8 +17,15 @@ function ControlProjectile:init()
   self.spawnLocation = self.abilitySlot == "primary" and config.getParameter("primaryAbility.spawnLocation") or config.getParameter("altAbility.spawnLocation")
   self.chargeTimeModifier = self.abilitySlot == "primary" and config.getParameter("primaryAbility.chargeTimeModifier") or config.getParameter("altAbility.chargeTimeModifier")
   self.projectileOffset = self.abilitySlot == "primary" and config.getParameter("primaryAbility.projectileOffset", {0,0}) or config.getParameter("altAbility.projectileOffset", {0,0})
+  self.behavior = self.abilitySlot == "primary" and config.getParameter("primaryAbility.behavior", "") or config.getParameter("altAbility.behavior", "")
+  self.notDespawned = self.abilitySlot == "primary" and config.getParameter("primaryAbility.notDespawned") or config.getParameter("altAbility.notDespawned")
+  self.elementalType = self.abilitySlot == "primary" and self.elementalType or config.getParameter("altElementalType")
 
-  animator.setGlobalTag("chargeHue", "?multiply=" .. self.elementalConfig[self.elementalType].hue)
+  self.shieldActive = false
+  self.shieldFrameTimer = 0.2
+  self.shieldFrame = 0
+  self.shieldShattered = false
+
   activeItem.setCursor("/cursors/reticle5.cursor")
   activeItem.setScriptedAnimationParameter("rune", false)
   self.weapon:setStance(self.stances.idle)
@@ -36,22 +43,55 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
   world.debugPoint(self:focusPosition(), "blue")
   --animator.setAnimationRate(1/(self.chargeTimeModifier or 1))
   --sb.logInfo(sb.printJson(self.chargeTimeModifier))
-
   if self.fireMode == (self.activatingFireMode or self.abilitySlot)
     and not self.weapon.currentAbility
     and not status.resourceLocked("energy")
     and not self.abilityActive
-    and not (self.cooldownTimer > 0) then
+    and not (self.cooldownTimer > 0)
+    and not (self.fireMode == "alt" and (self.shieldShattered or self.shieldActive)) then
 
     self:setState(self.charge)
   end
 
   self.cooldownTimer = math.max(self.cooldownTimer - dt, 0)
 
+  if self.shieldActive then
+    local mod = ".png:"
+    if status.resource("shieldStamina") <= 0.5 then
+      mod = "_cracked.png:"
+    end
+    activeItem.setScriptedAnimationParameter("barrier", {frame = self.shieldFrame, position = {mcontroller.xPosition(), mcontroller.yPosition() - 0.75}, modifier = mod})
+    self.shieldFrameTimer = self.shieldFrameTimer - dt
+    if self.shieldFrameTimer <= 0 then
+      self.shieldFrame = (self.shieldFrame + 1) % 8
+      self.shieldFrameTimer = 0.2
+    end
+
+    if not status.resourcePositive("shieldStamina") then
+      self.shieldActive = false
+      self.shieldShattered = 0
+      animator.playSound("earthbarrierbreak")
+      self.shieldFrameTimer = 0.1
+    end
+  elseif self.shieldShattered then
+    local mod = "_shatter.png:"
+    activeItem.setScriptedAnimationParameter("barrier", {frame = self.shieldShattered, position = {mcontroller.xPosition(), mcontroller.yPosition() - 0.75}, modifier = mod})
+    self.shieldFrameTimer = self.shieldFrameTimer - dt
+    if self.shieldFrameTimer <= 0 then
+      self.shieldShattered = (self.shieldShattered + 1) % 7
+      self.shieldFrameTimer = 0.3/7
+      if self.shieldShattered == 0 then
+        self.shieldShattered = false
+        self.weapon:destroyBarrier()
+      end
+    end
+  end
+
 end
 
 function ControlProjectile:charge()
   self.weapon:setStance(self.stances.charge)
+  animator.setGlobalTag("chargeHue", "?multiply=" .. self.elementalConfig[self.elementalType].hue)
   animator.playSound("bookopen")
   animator.setAnimationRate(1/(self.chargeTimeModifier or 1))
   animator.setAnimationState("bookState", "open")
@@ -198,22 +238,32 @@ function ControlProjectile:createProjectiles()
   local distanceTo = world.distance(aimPosition, self:focusPosition())
   local fireDirection = distanceTo[1] > 0 and 1 or -1
   local pOffset = {fireDirection * (self.projectileDistance or 0), 0}
-  --sb.logInfo(sb.printJson(self.travelDirection))
-  --sb.logInfo(sb.printJson(self.spawnLocation))
   local basePos = self.spawnLocation == "atCursor" and activeItem.ownerAimPosition() or self:focusPosition()
   local basePos = vec2.add(basePos, self.projectileOffset)
   local pCount = self.projectileCount or 1
   local pParams = copy(self.projectileParameters)
 
+  if pParams.shieldParameters then
+    pParams.shieldParameters.power = (pParams.shieldParameters.baseDamage or 0) * config.getParameter("damageLevelMultiplier")
+    pParams.shieldParameters.health = (pParams.shieldParameters.health or 10) * config.getParameter("damageLevelMultiplier")
+    self.weapon:createBarrier(pParams.shieldParameters)
+    self.shieldActive = true
+    self.shieldFrame = 0
+    self.shieldFrameTimer = 0.2
+    return
+  end
+
   if self.travelDirection == "atCursor" then
-    local tTL = vec2.mag(distanceTo) / pParams.speed
+    local tTL = vec2.mag(distanceTo) / (pParams.speed or 1)
     pParams.timeToLive = tTL
   end
 
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
-
-  self.weapon:createBarrier({{8,8}, {8,-8}, {-8,-8}, {-8,8}})
+  if pParams.actionOnTimeout then
+    self:fireElementalPillar(pParams)
+    return
+  end
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(
@@ -221,7 +271,7 @@ function ControlProjectile:createProjectiles()
         vec2.add(basePos, pOffset),
         activeItem.ownerEntityId(),
         self.travelDirection == "none" and pOffset or distanceTo,
-        false,
+        false,--(self.behavior == "followPlayer") or false,
         pParams
       )
 
@@ -282,11 +332,60 @@ function ControlProjectile:uninit(weaponUninit)
   self:reset()
   if weaponUninit then
     self:killProjectiles()
+    self.weapon:destroyBarrier()
   end
-  self.weapon:destroyBarrier()
 end
 
 function Weapon:destroyBarrier()
-  activeItem.setShieldPolys()
-  activeItem.setDamageSources()
+  activeItem.setShieldPolys({})
+  activeItem.setDamageSources({})
+  activeItem.setItemShieldPolys({})
+  activeItem.setItemDamageSources({})
+  animator.setAnimationState("barrier", "off")
+  activeItem.setScriptedAnimationParameter("barrier", false)
+  status.clearPersistentEffects("ivrpg_greaterbarrier")
+end
+
+-- Helper functions
+function ControlProjectile:fireElementalPillar(params)
+  local count = 0
+  local impactPositions = 0
+  local pos = activeItem.ownerAimPosition()
+  local dir = mcontroller.facingDirection()
+  while impactPositions < 5 and count < 15 do
+    local impactPosition = self:impactPosition(params, pos, dir, impactPositions > 0 and 2 or 0)
+    if impactPosition then
+      local projectileCount = (impactPositions + 4)
+      animator.setSoundVolume(self.elementalType.."impact", 0.25)
+      animator.playSound(self.elementalType.."impact")
+      local dir = mcontroller.facingDirection()
+      for i = 0, (projectileCount - 1) do
+        params.timeToLive = i * 0.02
+        params.actionOnTimeout[1].config.timeToLive = params.pillarDuration - (2 * params.timeToLive)
+        local position = vec2.add(impactPosition, {0, i})
+        if not world.pointTileCollision(position, {"Null", "Block", "Dynamic", "Slippery"}) then
+          world.spawnProjectile("pillarspawner", position, activeItem.ownerEntityId(), {dir, 0}, false, params)
+        else
+          return
+        end
+      end
+      impactPositions = impactPositions + 1
+      pos = impactPosition
+      util.wait(0.2)
+    end
+    count = count + 1
+  end
+end
+
+function ControlProjectile:impactPosition(params, pos, dir, offset)
+  --local pos = activeItem.ownerAimPosition()
+  --local randX = (math.random() * 2 - 1) * params.pillarDistance[2] + params.pillarDistance[1]
+  local startLine = vec2.add(pos, {dir * offset, params.pillarVerticalTolerance[1]})
+  local endLine = vec2.add(pos, {dir * offset, params.pillarVerticalTolerance[2]})
+
+  local blocks = world.collisionBlocksAlongLine(startLine, endLine, {"Null", "Block", "Dynamic", "Slippery"})
+  if #blocks > 0 then
+    if world.lineCollision(vec2.add(pos, {0, 2}), vec2.add(blocks[#blocks], {0.5, 1.5}), {"Null", "Block", "Dynamic", "Slippery"}) then return end
+    return vec2.add(blocks[#blocks], {0.5, 1.5})
+  end
 end

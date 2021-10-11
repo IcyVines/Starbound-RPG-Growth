@@ -7,19 +7,21 @@
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 20,
+    "energyCost" : 80,
 
-    "spawnLocation" : "atTome",
-    "travelDirection" : "none",
     "chargeTimeModifier" : 0.8,
 
     "maxCastRange" : 100,
 
-    "projectileCount" : 20,
-    "projectileDistance" : 3,
-    "projectileType" : "ivrpg_<elementalType>barrier",
+    "projectileType" : "ivrpg_<altElementalType>barrier",
     "projectileParameters" : {
-      "baseDamage" : 1
+      "shieldParameters" : {
+        "poly" : [[1.5,1], [1.5,-2.25], [-1.5,-2.25], [-1.5,1]],
+        "health" : 10,
+        "baseDamage" : 4,
+        "damageType" : "Knockback",
+        "knockback" : 30
+      }
     },
     
     "elementalTypes" : [ "earth" ]

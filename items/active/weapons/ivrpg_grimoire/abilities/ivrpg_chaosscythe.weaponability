@@ -3,7 +3,7 @@
 
   "ability" : {
     "type" : "ivrpg_chaosscythe",
-    "name" : "Chaos Scythe: <elementalName>",
+    "name" : "Chaos Scythe: <scytheMod>",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
@@ -20,7 +20,7 @@
     "projectileOffset" : [0.5, -1.5],
     "projectileType" : "ivrpg_<elementalType>chaosscythe",
     "projectileParameters" : {
-      "baseDamage" : 50,
+      "baseDamage" : 30,
       "knockback" : 20,
       "speed" : 0
     },

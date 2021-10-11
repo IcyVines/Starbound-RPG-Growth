@@ -1,0 +1,7 @@
+{
+  "frames" : "nova.png",
+  "variants" : 1,
+  "frameNumber" : 8,
+  "animationCycle" : 0.1,
+  "offset" : [0, 0]
+}

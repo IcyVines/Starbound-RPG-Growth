@@ -1,7 +1,8 @@
 {
   "globalTagDefaults" : {
     "paletteSwaps" : "",
-    "chargeHue" : ""
+    "chargeHue" : "",
+    "barrierHue" : ""
   },
 
   "animatedParts" : {
@@ -39,6 +40,28 @@
             "frames" : 6,
             "cycle" : 0.8,
             "mode" : "loop"
+          }
+        }
+      },
+      "barrier" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+            "frames" : 8,
+            "cycle" : 1.6,
+            "mode" : "loop"
+          },
+          "cracked" : {
+            "frames" : 8,
+            "cycle" : 1.6,
+            "mode" : "loop"
+          },
+          "shatter" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "off"
           }
         }
       }
@@ -98,6 +121,67 @@
             }
           }
         }
+      },
+      "barrierFront" : {
+        "properties" : {
+          "zLevel" : 10,
+          "centered" : true,
+          "offset" : [0.0, 0.0]
+        },
+        "partStates" : {
+          "barrier" : {
+            "off" : {
+              "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_front.png:off"
+            },
+            "on" : {
+              "properties" : {
+                "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_front.png:<frame><barrierHue>"
+              }
+            },
+            "cracked" : {
+              "properties" : {
+                "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_front_cracked.png:<frame><barrierHue>"
+              }
+            },
+            "shatter" : {
+              "properties" : {
+                "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_front_shatter.png:<frame><barrierHue>"
+              }
+            }
+          }
+        },
+        "barrierBack" : {
+          "properties" : {
+            "zLevel" : -1,
+            "centered" : true,
+            "offset" : [0.0, 0.0]
+          },
+          "partStates" : {
+            "barrier" : {
+              "off" : {
+                "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_back.png:off"
+              },
+              "on" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_back.png:<frame><barrierHue>",
+                  "zLevel" : -1
+                }
+              },
+              "cracked" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_back_cracked.png:<frame><barrierHue>",
+                  "zLevel" : -1
+                }
+              },
+              "shatter" : {
+                "properties" : {
+                  "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_back_shatter.png:<frame><barrierHue>",
+                  "zLevel" : -1
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -139,6 +223,8 @@
 
     "bookopen" : ["/sfx/interface/item_holster.ogg"],
     "bookclose" : ["/sfx/interface/item_equip.ogg"],
+
+    "earthbarrierbreak" : ["/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg"],
 
     "zoneactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
   }

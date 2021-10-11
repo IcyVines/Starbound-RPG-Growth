@@ -2,26 +2,26 @@
   "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
 
   "ability" : {
-    "type" : "ivrpg_elementrain",
-    "name" : "<altElementalName> Rain",
+    "type" : "ivrpg_elementimplosion",
+    "name" : "<implosionMod> Implosion",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 75,
+    "energyCost" : 80,
 
     "spawnLocation" : "atCursor",
     "travelDirection" : "none",
+    "chargeTimeModifier" : 1.2,
 
-    "chargeTimeModifier" : 2,
-    
     "maxCastRange" : 15,
 
-    "projectileType" : "<altElementalType>elementcloud",
+    "projectileCount" : 12,
+    "projectileDistance" : 1.5,
+    "projectileType" : "ivrpg_<elementalType>implosion",
     "projectileParameters" : {
-      "baseDamage" : 10,
-      "timeToLive" : 5
+      "baseDamage" : 20
     },
     
-    "elementalTypes" : ["electric", "fire", "ice", "poison", "nova", "demonic", "holy", "earth"]
+    "elementalTypes" : [ "holy", "nova", "poison", "electric" ]
   }
 }

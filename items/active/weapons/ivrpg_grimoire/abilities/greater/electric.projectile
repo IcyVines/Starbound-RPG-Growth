@@ -1,0 +1,21 @@
+{
+  "projectileName" : "ivrpg_electricmote",
+  "image" : "electric.png",
+  "physics" : "gas",
+  "frameNumber" : 4,
+  "animationCycle" : 0.5,
+  "power" : 0,
+  "speed" : 0,
+  "timeToLive" : 10.0,
+  "lightColor" : [240, 200, 255], 
+  "bounces" : -1,
+  "piercing" : true,
+  "knockback" : 0,
+  "flippable" : true,
+  "damagePoly" : [ [2, 4],  [2, -4],  [-2, -4],  [-2, 4] ],
+  "damageKind" : "applystatus",
+  "damageType" : "Damage",
+  "scripts" : ["mote.lua"],
+  "statusEffects" : [{"effect" : "electrified", "duration" : 10}],
+  "damageRepeatTimeout" : 0.1
+}

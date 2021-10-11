@@ -1,0 +1,37 @@
+{
+  "projectileName" : "ivrpg_novaimplosion",
+  "physics" : "laser",
+  "image" : "nova.png",
+  "timeToLive" : 0.5,
+  "animationCycle" : 0.12,
+  "frameNumber" : 4,
+  "damagePoly" : [ [-24, 0], [-16, 4], [20, 0], [-16, -4] ],
+  "speed" : 0,
+  "power" : 0,
+  "boundBox" : [-14, -14, 14, 14],
+  "animationLoops" : false,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/grenades/stun/stunexplosion.config"
+    }
+  ], 
+  "physicsForces" : {
+    "pull" : {
+      "type" : "RadialForceRegion",
+      "categoryWhitelist" : ["monster", "npc", "vehicle", "itemdrop"],
+      "outerRadius" : 15,
+      "innerRadius" : 10,
+      "targetRadialVelocity" : -40,
+      "controlForce" : 1000
+    }
+  },
+  "renderLayer" : "Player+1",
+  "orientationLocked" : true,
+  "fullbright" : true,
+  "emitters" : [ ],
+  "piercing" : true,
+  "bounces" : -1,
+  "damageKind" : "nova"
+  
+}

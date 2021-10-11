@@ -1,0 +1,24 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_greatermist",
+    "name" : "Greater <mistMod>",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 20,
+
+    "chargeTimeModifier" : 0.8,
+
+    "maxCastRange" : 100,
+
+    "projectileType" : "ivrpg_<altElementalType>mist",
+    "projectileParameters" : {
+      "power" : 0,
+      "timeToLive" : 60
+    },
+    
+    "elementalTypes" : [ "ice", "demonic", "poison" ]
+  }
+}

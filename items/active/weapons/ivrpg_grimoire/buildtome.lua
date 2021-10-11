@@ -83,15 +83,29 @@ function build(directory, config, parameters, level, seed)
     util.mergeTable(config.altAbility, config.altAbility.elementalConfig[altElementalType])
   end
 
+  local scytheMod = {demonic = "Death", fire = "Flame", ice = "Frost", nova = "Stars"}
+  local moteMod = {holy = "Lux", fire = "Sol", electric = "Arc"}
+  local mistMod = {demonic = "Shroud", ice = "Chill", poison = "Nox"}
+  local waveMod = {demonic = "Cursed", holy = "Blessed", nova = "Cosmic", earth = "Boulder", ice = "Crystal", poison = "Sludge", fire = "Magma", electric = "Thunder"}
+  local implosionMod = {holy = "Divine", nova = "Astral", poison = "Miasma", electric = "Magnetic"}
+  local eruptionMod = {demonic = "Sacrifice", holy = "Judgement", nova = "Rift", earth = "Mountain", ice = "Glacier", poison = "Blight", fire = "Meteor", electric = "Storm"}
+
   -- elemental tag
   replacePatternInData(config, nil, "<elementalType>", elementalType)
   replacePatternInData(config, nil, "<elementalName>", elementalType:gsub("^%l", string.upper))
 
   replacePatternInData(config, nil, "<altElementalType>", altElementalType)
   replacePatternInData(config, nil, "<altElementalName>", altElementalType:gsub("^%l", string.upper))
+
+  replacePatternInData(config, nil, "<scytheMod>", scytheMod[elementalType] or "")
+  replacePatternInData(config, nil, "<moteMod>", moteMod[altElementalType] or "")
+  replacePatternInData(config, nil, "<mistMod>", mistMod[altElementalType] or "")
+  replacePatternInData(config, nil, "<waveMod>", waveMod[altElementalType] or "")
+  replacePatternInData(config, nil, "<implosionMod>", implosionMod[elementalType] or "")
+  replacePatternInData(config, nil, "<eruptionMod>", eruptionMod[elementalType] or "")
   -- name
   if not parameters.shortdescription and builderConfig.nameGenerator then
-    parameters.shortdescription = root.generateName(util.absolutePath(directory, builderConfig.nameGenerator), seed)
+    parameters.shortdescription = root.generateName(util.absolutePath(directory, builderConfig.nameGenerator .. elementalType), seed)
   end
 
   -- merge damage properties

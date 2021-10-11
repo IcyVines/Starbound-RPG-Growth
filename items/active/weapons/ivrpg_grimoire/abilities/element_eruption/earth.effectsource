@@ -1,0 +1,16 @@
+{
+  "kind" : "ivrpg_earthpillar",
+  "definition" : {
+    "duration" : 0.6,
+    "loops" : true,
+    "start" : {},
+    "particles" : [
+      [ "crumbs", "crumbs", "crumbs" ]
+    ],
+    "stop" : {
+      "particles" : [
+        [ "crumbs" ]
+      ]
+    }
+  }
+}

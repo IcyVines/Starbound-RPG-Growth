@@ -3,7 +3,7 @@
 
   "ability" : {
     "type" : "ivrpg_chaosimplosion",
-    "name" : "Chaos Implosion: <elementalName>",
+    "name" : "Chaos Implosion: <implosionMod>",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
@@ -17,7 +17,7 @@
 
     "projectileCount" : 1,
     "projectileDistance" : 2.5,
-    "projectileType" : "ivrpg_<elementalType>explosion",
+    "projectileType" : "ivrpg_<elementalType>lance",
     "projectileParameters" : {
       "baseDamage" : 30
     },
