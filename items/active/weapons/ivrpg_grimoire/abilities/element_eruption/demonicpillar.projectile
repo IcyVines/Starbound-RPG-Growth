@@ -20,7 +20,7 @@
   "actionOnReap" : [
     {
       "action" : "sound",
-      "options" : [ "/sfx/projectiles/poison_barrier_break1.ogg" ]
+      "options" : [ "/sfx/projectiles/astraltear_stop1.ogg" ]
     },
     {
       "action" : "loop",

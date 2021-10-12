@@ -1,0 +1,36 @@
+{
+  "projectileName" : "ivrpg_holynovaheal",
+  "image" : "holy_heal.png",
+  "timeToLive" : 0.5,
+  "animationCycle" : 0.5,
+  "renderLayer" : "ForegroundEntity+1",
+  "frameNumber" : 6,
+  "fullbright" : true,
+  "speed" : 0,
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "lightColor" : [255, 240, 150],
+  "onlyHitTerrain" : true,
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : ["/items/active/weapons/ivrpg_grimoire/abilities/holynova/holy_c.ogg"]
+    },
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : ["/items/active/weapons/ivrpg_grimoire/abilities/holynova/holy_e.ogg"]
+    },
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : ["/items/active/weapons/ivrpg_grimoire/abilities/holynova/holy_g.ogg"]
+    }
+  ]
+}

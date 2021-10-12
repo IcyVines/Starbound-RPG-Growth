@@ -20,7 +20,7 @@
   "actionOnReap" : [
     {
       "action" : "sound",
-      "options" : [ "/sfx/projectiles/electrical_barrier_break3.ogg" ]
+      "options" : [ "/sfx/projectiles/firerain_impact.ogg" ]
     },
     {
       "action" : "loop",

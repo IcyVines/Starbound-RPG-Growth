@@ -1,5 +1,6 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
+require "/scripts/ivrpgutil.lua"
 
 ControlProjectile = WeaponAbility:new()
 
@@ -21,6 +22,8 @@ function ControlProjectile:init()
   self.notDespawned = self.abilitySlot == "primary" and config.getParameter("primaryAbility.notDespawned") or config.getParameter("altAbility.notDespawned")
   self.elementalType = self.abilitySlot == "primary" and self.elementalType or config.getParameter("altElementalType")
 
+  self.weapon.healOnHit = config.getParameter("primaryAbility.healOnHit")
+
   self.shieldActive = false
   self.shieldFrameTimer = 0.2
   self.shieldFrame = 0
@@ -37,7 +40,6 @@ end
 
 function ControlProjectile:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
-
   --self:updateProjectiles()
 
   world.debugPoint(self:focusPosition(), "blue")
@@ -356,7 +358,11 @@ function ControlProjectile:fireElementalPillar(params)
     local impactPosition = self:impactPosition(params, pos, dir, impactPositions > 0 and 2 or 0)
     if impactPosition then
       local projectileCount = (impactPositions + 4)
-      animator.setSoundVolume(self.elementalType.."impact", 0.25)
+      if self.elementalType ~= "holy" and self.elementalType ~= "nova" then
+        animator.setSoundVolume(self.elementalType.."impact", 0.25)
+      else
+        animator.setSoundVolume(self.elementalType.."impact", 0.75)
+      end
       animator.playSound(self.elementalType.."impact")
       local dir = mcontroller.facingDirection()
       for i = 0, (projectileCount - 1) do

@@ -20,7 +20,7 @@
   "actionOnReap" : [
     {
       "action" : "sound",
-      "options" : [ "/sfx/projectiles/fire_out.ogg" ]
+      "options" : [ "/sfx/projectiles/bubble_pop.ogg" ]
     },
     {
       "action" : "loop",

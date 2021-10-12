@@ -103,11 +103,11 @@
 
       "poisonimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ],
 
-      "novaimpact" : [ "/sfx/gun/grenadeblast_electric2.ogg" ],
+      "novaimpact" : [ "/sfx/objects/ancientlightplatform_on.ogg" ],
 
-      "holyimpact" : [ "/sfx/gun/grenadeblast_fire2.ogg" ],
+      "holyimpact" : [ "/sfx/gun/impact_rainbow.ogg" ],
 
-      "demonicimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ],
+      "demonicimpact" : [ "/sfx/gun/aegisaltpistol_start.ogg" ],
 
       "earthimpact" : [ "/sfx/melee/blunt_hit_stone1.ogg" ]
     }

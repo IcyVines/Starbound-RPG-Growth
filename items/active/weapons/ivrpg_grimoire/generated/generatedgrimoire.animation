@@ -217,9 +217,9 @@
 
     "novaactivate" : ["/sfx/projectiles/astraltear_stop2.ogg", "/sfx/projectiles/astraltear_stop3.ogg"],
 
-    "holyactivate" : ["/sfx/gun/impact_rainbow.ogg"],
+    "holyactivate" : ["/items/active/weapons/ivrpg_grimoire/abilities/holynova/holy_fire_C.ogg", "/items/active/weapons/ivrpg_grimoire/abilities/holynova/holy_fire_E.ogg", "/items/active/weapons/ivrpg_grimoire/abilities/holynova/holy_fire_G.ogg"],//["/sfx/gun/impact_rainbow.ogg"],
 
-    "demonicactivate" : ["/sfx/melee/elemental_aura_activate.ogg", "/sfx/gun/aegisaltpistol_start.ogg"],
+    "demonicactivate" : ["/sfx/melee/elemental_aura_activate.ogg"],
 
     "bookopen" : ["/sfx/interface/item_holster.ogg"],
     "bookclose" : ["/sfx/interface/item_equip.ogg"],

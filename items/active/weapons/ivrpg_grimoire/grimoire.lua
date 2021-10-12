@@ -18,11 +18,13 @@ function init()
     self.weapon:addAbility(secondaryAttack)
   end
 
+  _, self.damageGivenUpdate = status.inflictedDamageSince() 
   self.weapon:init()
 end
 
 function update(dt, fireMode, shiftHeld)
   self.weapon:update(dt, fireMode, shiftHeld)
+  updateDamageGiven()
 end
 
 function uninit()
@@ -48,4 +50,32 @@ function Weapon:createBarrier(params)
     damageRepeatTimeout = 0.5
   }
   activeItem.setDamageSources({ knockbackDamageSource })
+end
+
+function updateDamageGiven()
+  if not self.weapon.healOnHit then return end
+  local percentage = 0
+  local siphonIds = {}
+  local notifications = nil
+  notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if notification.damageSourceKind == "ivrpg_holynova" and notification.damageDealt > 0 and notification.healthLost > 0 and not siphonIds[targetEntityId] then
+        local healthReturn = notification.healthLost or 1
+        percentage = percentage + (healthReturn * self.weapon.healOnHit[1] / 100)
+        siphonIds[notification.targetEntityId or ""] = true
+      end
+    end
+  end
+  if percentage > 0 then triggerHealingNova(math.min(percentage, self.weapon.healOnHit[2])) end
+end
+
+function triggerHealingNova(percent)
+  world.spawnProjectile("ivrpg_holynovaheal", mcontroller.position(), activeItem.ownerEntityId(), {0,0}, true, {})
+  local targets = friendlyQuery(mcontroller.position(), 10, {}, activeItem.ownerEntityId(), true)
+  if targets then
+    for _,id in ipairs(targets) do
+      world.sendEntityMessage(id, "modifyResourcePercentage", "health", percent)
+    end
+  end
 end

@@ -1,0 +1,12 @@
+{
+  "projectileName" : "ivrpg_holynova",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "damageKindImage" : "icon.png",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/weapons/ivrpg_grimoire/abilities/holynova/holy.config"
+    }
+  ],
+  "timeToLive" : 0
+}
