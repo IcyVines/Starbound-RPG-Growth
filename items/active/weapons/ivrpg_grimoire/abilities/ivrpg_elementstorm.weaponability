@@ -2,8 +2,8 @@
   "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
 
   "ability" : {
-    "type" : "ivrpg_elementrain",
-    "name" : "<altElementalName> Rain",
+    "type" : "ivrpg_elementstorm",
+    "name" : "<stormMod>",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
@@ -16,12 +16,16 @@
     
     "maxCastRange" : 15,
 
-    "projectileType" : "<altElementalType>elementcloud",
+    "projectileCount" : 3,
+    "projectileDistance" : 0,
+
+    "projectileType" : "ivrpg_<altElementalType>storm",
     "projectileParameters" : {
       "baseDamage" : 10,
-      "timeToLive" : 5
+      "timeToLive" : 5,
+      "spread" : [2.5, -0.25]
     },
     
-    "elementalTypes" : ["electric", "fire", "ice", "poison", "nova", "demonic", "holy", "earth"]
+    "elementalTypes" : ["electric", "fire", "ice", "poison"]
   }
 }

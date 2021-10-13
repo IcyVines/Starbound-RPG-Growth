@@ -89,6 +89,18 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
     end
   end
 
+  if self.customPhysics and self.customPhysics.time > 0 then
+    local targetIds = enemyQuery(activeItem.ownerAimPosition(), self.customPhysics.radius or 5, {}, activeItem.ownerEntityId(), true)
+    if targetIds then
+      for _,id in ipairs(targetIds) do
+        if self.customPhysics.physics == "pull" and world.entityExists(id) then
+          world.sendEntityMessage(id, "setVelocity", vec2.mul(vec2.sub(self.customPhysics.position, world.entityPosition(id)), 5))
+        end
+      end
+    end
+    self.customPhysics.time = self.customPhysics.time - dt
+    if self.customPhysics.time <= 0 then self.customPhysics = false end
+  end
 end
 
 function ControlProjectile:charge()
@@ -282,7 +294,20 @@ function ControlProjectile:createProjectiles()
       world.sendEntityMessage(projectileId, "updateProjectile", aimPosition)
     end
 
-    pOffset = vec2.rotate(pOffset, (2 * math.pi) / pCount)
+    if pParams.spread then
+      pOffset = {0, 0}
+      pParams.spread[1] = pParams.spread[1] * -1
+      pOffset = vec2.add(pOffset, pParams.spread)
+      self.lightning = basePos
+    else
+      pOffset = vec2.rotate(pOffset, (2 * math.pi) / pCount)
+    end
+    
+  end
+
+  if pParams.customPhysics then
+    pParams.customPhysics.position = activeItem.ownerAimPosition()
+    self.customPhysics = pParams.customPhysics
   end
 end
 

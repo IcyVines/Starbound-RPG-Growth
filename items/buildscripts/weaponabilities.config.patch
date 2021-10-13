@@ -26,11 +26,12 @@
 { "op" : "add", "path" : "/ivrpg_chaosscythe", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_chaosscythe.weaponability" },
 { "op" : "add", "path" : "/ivrpg_holynova", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_holynova.weaponability" },
 { "op" : "add", "path" : "/ivrpg_elementimplosion", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementimplosion.weaponability" },
+{ "op" : "add", "path" : "/ivrpg_elementeruption", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementeruption.weaponability" },
 
 //Grimoire Alts
 { "op" : "add", "path" : "/ivrpg_greaterbarrier", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_greaterbarrier.weaponability" },
 { "op" : "add", "path" : "/ivrpg_greatermote", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_greatermote.weaponability" },
-{ "op" : "add", "path" : "/ivrpg_elementeruption", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementeruption.weaponability" },
-{ "op" : "add", "path" : "/ivrpg_elementrain", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementrain.weaponability" }
+{ "op" : "add", "path" : "/ivrpg_elementwave", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementwave.weaponability" },
+{ "op" : "add", "path" : "/ivrpg_elementstorm", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementstorm.weaponability" }
 
 ]

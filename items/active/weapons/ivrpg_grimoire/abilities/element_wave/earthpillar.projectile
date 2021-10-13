@@ -1,10 +1,10 @@
 {
-  "projectileName" : "ivrpg_holypillar",
-  "image" : "holy.png",
+  "projectileName" : "ivrpg_earthpillar",
+  "image" : "earth.png",
   "physics" : "gas",
-  "frameNumber" : 4,
-  "animationCycle" : 0.2,
-  "lightColor" : [255, 255, 170],
+  "frameNumber" : 3,
+  "animationCycle" : 0.3,
+  "lightColor" : [80, 60, 20],
   "power" : 2,
   "speed" : 0,
   "timeToLive" : 2.0,
@@ -15,12 +15,12 @@
   "flippable" : true,
   "damagePoly" : [ [8, 4],  [8, -4],  [-8, -4],  [-8, 4] ],
   "piercing" : true,
-  "damageKind" : "holy",
-  "emitters" : [ "stargazer1", "stargazer2", "stargazer3" ],
+  "damageKind" : "plasma",
+  "emitters" : ["ivrpg_earthpillar"],
   "actionOnReap" : [
     {
       "action" : "sound",
-      "options" : [ "/sfx/projectiles/firerain_impact.ogg" ]
+      "options" : [ "/items/active/weapons/ivrpg_grimoire/abilities/element_wave/sfx/earth1.ogg", "/items/active/weapons/ivrpg_grimoire/abilities/element_wave/sfx/earth2.ogg", "/items/active/weapons/ivrpg_grimoire/abilities/element_wave/sfx/earth3.ogg", "/items/active/weapons/ivrpg_grimoire/abilities/element_wave/sfx/earth4.ogg"   ]
     },
     {
       "action" : "loop",
@@ -31,18 +31,17 @@
           "specification" : {
             "type" : "animated",
             "looping" : true,
-            "animation" : "/animations/sparkles/sparkle1.animation",
+            "animation" : "/animations/dust1/dust1.animation",
             "size" : 0.5,
-            "fade" : 0.9,
-            "light" : [50, 50, 160],
+            "approach" : [30, 30],
             "timeToLive" : 0.5,
             "destructionAction" : "shrink",
             "destructionTime" : 0.425,
             "layer" : "middle",
             "variance" : {
               "position" : [1.5, 1.0],
-              "timeToLive" : 0.3,
-              "fade" : 0.3
+              "finalVelocity" : [1.5, 1.5],
+              "timeToLive" : 0.3
             }
           }
         },
@@ -51,7 +50,26 @@
           "specification" : {
             "type" : "animated",
             "looping" : true,
-            "animation" : "/animations/shards/sandshard.animation",
+            "animation" : "/animations/dust2/dust2.animation",
+            "size" : 0.5,
+            "approach" : [30, 30],
+            "timeToLive" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.425,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [1.5, 1.0],
+              "finalVelocity" : [1.5, 1.5],
+              "timeToLive" : 0.3
+            }
+          }
+        },
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "looping" : true,
+            "animation" : "/animations/shards/clayshard.animation",
             "size" : 1,
             "approach" : [30, 30],
             "timeToLive" : 1,
@@ -70,7 +88,7 @@
           "specification" : {
             "type" : "animated",
             "looping" : true,
-            "animation" : "/animations/shards/sandshard.animation",
+            "animation" : "/animations/shards/ancientshard.animation",
             "size" : 1,
             "approach" : [30, 30],
             "timeToLive" : 1,
@@ -88,7 +106,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/items/active/weapons/ivrpg_grimoire/abilities/element_eruption/auras/holy.animation",
+            "animation" : "/items/active/weapons/ivrpg_grimoire/abilities/element_wave/auras/earth.animation",
             "initialVelocity" : [0, 1],
             "finalVelocity" : [0, 3],
             "approach" : [1, 1],
@@ -107,16 +125,15 @@
           "specification" : {
             "type" : "ember",
             "size" : 1.5,
-            "color" : [255, 255, 170, 255],
+            "color" : [80, 60, 20, 255],
             "fade" : 0.9,
-            "finalVelocity" : [0, -2.0],
-            "approach" : [0, 20],
-            "light" : [50, 50, 160],
+            "approach" : [30, 30],
+            "light" : [50, 140, 160],
             "timeToLive" : 0.5,
             "layer" : "middle",
             "variance" : {
               "position" : [2.0, 1.0],
-              "initialVelocity" : [2, 2],
+              "finalVelocity" : [1.5, 1.5],
               "size" : 0.5,
               "timeToLive" : 0.3,
               "fade" : 0.3

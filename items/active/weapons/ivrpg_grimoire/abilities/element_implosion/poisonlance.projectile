@@ -1,0 +1,19 @@
+{
+  "projectileName" : "ivrpg_poisonimplosion",
+  "image" : "poisonlance.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 4,
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "speed" : 0,
+  "orientationLocked" : true,
+  "damagePoly" : [ [-24, 0], [-16, 4], [20, 0], [-16, -4] ],
+  "animationLoops" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "emitters" : [ "poisonswoosh" ],
+  "damageKind" : "poison",
+  "statusEffects" : [ ],
+  "lightColor" : [60, 140, 60],
+  "pointLight" : false
+}

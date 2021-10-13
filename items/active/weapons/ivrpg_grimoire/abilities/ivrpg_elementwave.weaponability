@@ -103,19 +103,19 @@
 
       "poisonimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ],
 
-      "novaimpact" : [ "/sfx/gun/grenadeblast_electric2.ogg" ],
+      "novaimpact" : [ "/sfx/objects/ancientlightplatform_on.ogg" ],
 
-      "holyimpact" : [ "/sfx/gun/grenadeblast_fire2.ogg" ],
+      "holyimpact" : [ "/sfx/gun/impact_rainbow.ogg" ],
 
-      "demonicimpact" : [ "/sfx/gun/grenadeblast_poison2.ogg" ],
+      "demonicimpact" : [ "/sfx/gun/aegisaltpistol_start.ogg" ],
 
       "earthimpact" : [ "/sfx/melee/blunt_hit_stone1.ogg" ]
     }
   },
 
   "ability" : {
-    "name" : "Chaos Eruption: <eruptionMod>",
-    "type" : "ivrpg_chaoseruption",
+    "name" : "<waveMod> Wave",
+    "type" : "ivrpg_elementwave",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
@@ -129,7 +129,7 @@
 
     "projectileCount" : 5,
     "projectileDistance" : 10,
-    "projectileType" : "ivrpg_<elementalType>pillar",
+    "projectileType" : "ivrpg_<altElementalType>pillar",
 
     "projectileParameters" : {
       "baseDamage" : 2.0,
@@ -138,7 +138,7 @@
         {
           "action" : "projectile",
           "inheritDamageFactor" : 1,
-          "type" : "ivrpg_<elementalType>pillar",
+          "type" : "ivrpg_<altElementalType>pillar",
           "config" : { }
         }
       ],

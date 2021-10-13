@@ -8,7 +8,7 @@
   "category" : "Grimoire",
   "twoHanded" : true,
   "itemTags" : ["weapon", "grimoire", "magic"],
-  "tooltipKind" : "staff",
+  "tooltipKind" : "ivrpg_grimoire",
   "inventoryIcon" : "icons/<elementalType>.png",
 
   "animation" : "/items/active/weapons/ivrpg_grimoire/generated/generatedgrimoire.animation",
@@ -164,24 +164,24 @@
       }
     },
     "primaryAbilities" : {
-      "earth" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementbolt"],
-      "fire" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_chaosscythe"],
-      "ice" : ["ivrpg_elementsunder", "ivrpg_elementbolt", "ivrpg_chaosscythe"],
+      "earth" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementbolt", "ivrpg_elementimplosion"],
+      "fire" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementimplosion", "ivrpg_chaosscythe"],
+      "ice" : ["ivrpg_elementsunder", "ivrpg_elementbolt", "ivrpg_elementimplosion", "ivrpg_chaosscythe"],
       "electric" : ["ivrpg_elementsunder", "ivrpg_elementbolt", "ivrpg_elementimplosion"],
       "poison" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementimplosion"],
       "nova" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementbolt", "ivrpg_chaosscythe", "ivrpg_elementimplosion"],
       "holy" : ["ivrpg_elementsunder", "ivrpg_elementbolt", "ivrpg_holynova", "ivrpg_elementimplosion"],
-      "demonic" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_chaosscythe"]
+      "demonic" : ["ivrpg_elementsunder", "ivrpg_elementburst","ivrpg_elementimplosion", "ivrpg_chaosscythe"]
     },
     "altAbilities" : {
-      "earth" : ["ivrpg_elementrain", "ivrpg_greaterbarrier", "ivrpg_elementeruption"],
-      "fire" : ["ivrpg_elementrain", "ivrpg_greatermote", "ivrpg_elementeruption"],
-      "ice" : ["ivrpg_elementrain", "ivrpg_elementeruption"],
-      "electric" : ["ivrpg_elementrain", "ivrpg_greatermote", "ivrpg_elementeruption"],
-      "poison" : ["ivrpg_elementrain", "ivrpg_elementeruption"],
-      "nova" : ["ivrpg_elementrain", "ivrpg_elementeruption"],
-      "holy" : ["ivrpg_elementrain", "ivrpg_greatermote", "ivrpg_elementeruption"],
-      "demonic" : ["ivrpg_elementrain", "ivrpg_elementeruption"]
+      "earth" : ["ivrpg_greaterbarrier", "ivrpg_elementwave"],
+      "fire" : ["ivrpg_elementstorm", "ivrpg_greatermote", "ivrpg_elementwave"],
+      "ice" : ["ivrpg_elementstorm", "ivrpg_elementwave"],
+      "electric" : ["ivrpg_elementstorm", "ivrpg_greatermote", "ivrpg_elementwave"],
+      "poison" : ["ivrpg_elementstorm", "ivrpg_elementwave"],
+      "nova" : ["ivrpg_elementwave"],
+      "holy" : ["ivrpg_greatermote", "ivrpg_elementwave"],
+      "demonic" : ["ivrpg_elementwave"]
     }
   }]
 }

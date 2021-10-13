@@ -1,0 +1,87 @@
+{
+  "background" : {
+    "type" : "background",
+    "fileHeader" : "/interface/tooltips/ivrpg_grimoire-header.png",
+    "fileBody" : "/interface/tooltips/ivrpg_grimoire-body.png",
+    "fileFooter" : "/interface/tooltips/ivrpg_grimoire-footer.png"
+  },
+  "moneyIcon" : {
+    "type" : "image",
+    "position" : [147, 23],
+    "file" : "/interface/money.png"
+  },
+  "priceLabel" : {
+    "type" : "label",
+    "position" : [160, 23],
+    "hAnchor" : "left",
+    "value" : "tree"
+  },
+  "primaryAbilityTitleLabel" : {
+    "type" : "label",
+    "position" : [9, 52],
+    "hAnchor" : "left",
+    "value" : ""
+  },
+  "primaryAbilityLabel" : {
+    "type" : "label",
+    "position" : [180, 52],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "altAbilityTitleLabel" : {
+    "type" : "label",
+    "position" : [9, 43],
+    "hAnchor" : "left",
+    "value" : ""
+  },
+  "altAbilityLabel" : {
+    "type" : "label",
+    "position" : [180, 43],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "levelTitleLabel" : {
+    "type" : "label",
+    "position" : [9, 61],
+    "hAnchor" : "left",
+    "value" : "Level:"
+  },
+  "levelLabel" : {
+    "type" : "label",
+    "position" : [180, 61],
+    "hAnchor" : "right",
+    "wrapWidth" : 126
+  },
+  "handednessLabel" : {
+    "type" : "label",
+    "position" : [115, 128],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "rarityLabel" : {
+    "type" : "label",
+    "position" : [7, 23],
+    "hAnchor" : "left",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "damageKindImage" : {
+    "type" : "image",
+    "position" : [170, 90],
+    "file" : "",
+    "centered" : true,
+    "maxSize" : [16, 16],
+    "minSize" : [16, 16]
+  },
+  "objectImage" : {
+    "type" : "image",
+    "position" : [95, 99],
+    "file" : "",
+    "centered" : true,
+    "maxSize" : [75, 45],
+    "minSize" : [65, 35]
+  }
+}

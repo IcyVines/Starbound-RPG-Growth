@@ -3,7 +3,7 @@
 
   "ability" : {
     "type" : "ivrpg_elementbolt",
-    "name" : "<elementalName> Bolt",
+    "name" : "<boltMod>",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 

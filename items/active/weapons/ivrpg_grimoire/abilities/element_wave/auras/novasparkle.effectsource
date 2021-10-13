@@ -1,0 +1,29 @@
+{
+  "kind" : "ivrpg_novasparkle",
+  "definition" : {
+    "duration" : 0.3,
+    "loops" : true,
+    "start" : {
+      "particles" : [
+        [ ]
+      ],
+      "sounds" : [
+        [ ]
+      ]
+    },
+    "particles" : [
+      [ "lightpurplephaseparticle", "darkpurplephaseparticle" ]
+    ],
+    "sounds" : [
+      [ ]
+    ],
+    "stop" : {
+      "particles" : [
+        [  ]
+      ],
+      "sounds" : [
+        [ ]
+      ]
+    }
+  }
+}

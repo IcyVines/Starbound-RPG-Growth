@@ -3,7 +3,7 @@
 
   "ability" : {
     "type" : "ivrpg_elementimplosion",
-    "name" : "<implosionMod> Implosion",
+    "name" : "<implosionMod>Implosion",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
@@ -16,10 +16,15 @@
     "maxCastRange" : 15,
 
     "projectileCount" : 12,
-    "projectileDistance" : 1.5,
+    "projectileDistance" : 3,
     "projectileType" : "ivrpg_<elementalType>implosion",
     "projectileParameters" : {
-      "baseDamage" : 20
+      "baseDamage" : 20,
+      "customPhysics" : {
+        "physics" : "pull",
+        "radius" : 12,
+        "time" : 0.4
+      }
     },
     
     "elementalTypes" : [ "holy", "nova", "poison", "electric" ]

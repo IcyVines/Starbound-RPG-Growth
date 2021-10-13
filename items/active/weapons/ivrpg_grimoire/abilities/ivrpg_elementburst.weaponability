@@ -3,7 +3,7 @@
 
   "ability" : {
     "type" : "ivrpg_elementburst",
-    "name" : "<elementalName> Burst",
+    "name" : "<burstMod>",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 

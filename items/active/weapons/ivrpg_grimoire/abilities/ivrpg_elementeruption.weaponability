@@ -114,8 +114,8 @@
   },
 
   "ability" : {
-    "name" : "<waveMod> Wave",
-    "type" : "ivrpg_elementaleruption",
+    "name" : "<eruptionMod>",
+    "type" : "ivrpg_elementeruption",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
@@ -129,7 +129,7 @@
 
     "projectileCount" : 5,
     "projectileDistance" : 10,
-    "projectileType" : "ivrpg_<altElementalType>pillar",
+    "projectileType" : "ivrpg_<elementalType>pillar",
 
     "projectileParameters" : {
       "baseDamage" : 2.0,
@@ -138,7 +138,7 @@
         {
           "action" : "projectile",
           "inheritDamageFactor" : 1,
-          "type" : "ivrpg_<altElementalType>pillar",
+          "type" : "ivrpg_<elementalType>pillar",
           "config" : { }
         }
       ],
