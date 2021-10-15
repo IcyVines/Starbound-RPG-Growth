@@ -1,0 +1,91 @@
+{
+  "projectileName" : "ivrpg_electricchaosgate",
+  "image" : "electricgate.png",
+  "animationCycle" : 0.4,
+  "lightColor" : [150, 0, 150],
+  "frameNumber" : 8,
+  "fullbright" : true,
+  "damageKindImage" : "icon.png",
+  "physics" : "gas",
+  "emitters" : [ ],
+
+  "scripts" : [ "/items/active/weapons/ivrpg_grimoire/abilities/chaos_beam/gate.lua" ],
+  "scriptDelta" : 1,
+
+  "actionOnReap" : [
+    {
+      "action" : "loop",
+      "count" : 10,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "ember",
+            "size" : 1.5,
+            "color" : [200, 150, 200, 255],
+            "fade" : 0.9,
+            "approach" : [30, 30],
+            "light" : [160, 160, 100],
+            "timeToLive" : 0.5,
+            "layer" : "middle",
+            "variance" : {
+              "position" : [2.5, 2.5],
+              "finalVelocity" : [3.0, 3.0],
+              "size" : 0.5,
+              "timeToLive" : 0.3,
+              "fade" : 0.3
+            }
+          }
+        }
+      ]
+    }
+  ],
+
+  "timedActions" : [
+    {
+      "delayTime" : 0.04,
+      "action" : "projectile",
+      "type" : "ivrpg_electricchaosbeam",
+      "config" : {
+        "speed" : 40,
+        "timeToLive" : 0.3,
+        "actionOnReap" : [
+          {
+            "action" : "projectile",
+            "type" : "ivrpg_electricchaosgate",
+            "config" : {
+              "timeToLive" : 1,
+              "timedActions" : []
+            }
+          }
+        ]
+      },
+      "inheritDamageFactor" : 0.025,
+      "direction" : [1, 0],
+      "offsetRange" : [0, 0, 0, 0]
+    },
+    {
+      "delayTime" : 0.05,
+      "loopTime" : 0.01,
+      "loopTimeVariance" : 0,
+      "action" : "projectile",
+      "type" : "ivrpg_electricchaosbeam",
+      "config" : {
+        "speed" : 40,
+        "timeToLive" : 0.3
+      },
+      "inheritDamageFactor" : 0.025,
+      "direction" : [1, 0],
+      "offsetRange" : [0, 0, 0, 0]
+    }
+  ],
+
+  "renderLayer" : "Projectile+2",
+  "onlyHitTerrain" : true,
+  "bounces" : -1,
+  "damagePoly" : [],
+  "damageKind" : "plasma",
+
+  "speed" : 0,
+  "timeToLive" : 0.3
+}

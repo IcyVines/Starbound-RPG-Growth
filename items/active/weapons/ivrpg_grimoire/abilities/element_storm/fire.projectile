@@ -123,7 +123,7 @@
       "loopTime" : 0.3,
       "loopTimeVariance" : 0.05,
       "action" : "projectile",
-      "type" : "firerain",
+      "type" : "ivrpg_firerain",
       "config" : {},
       "inheritDamageFactor" : 0.05,
       "direction" : [0, -1],

@@ -102,7 +102,7 @@
       "loopTime" : 0.3,
       "loopTimeVariance" : 0.05,
       "action" : "projectile",
-      "type" : "poisonrain",
+      "type" : "ivrpg_poisonrain",
       "config" : {},
       "inheritDamageFactor" : 0.05,
       "direction" : [0, -1],

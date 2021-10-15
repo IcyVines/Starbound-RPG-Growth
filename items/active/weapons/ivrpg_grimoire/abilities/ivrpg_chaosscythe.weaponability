@@ -3,7 +3,7 @@
 
   "ability" : {
     "type" : "ivrpg_chaosscythe",
-    "name" : "Chaos Scythe: <scytheMod>",
+    "name" : "Chaos Scythe: <chaosMod>",
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 

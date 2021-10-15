@@ -24,6 +24,7 @@
 { "op" : "add", "path" : "/ivrpg_elementburst", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementburst.weaponability" },
 { "op" : "add", "path" : "/ivrpg_elementbolt", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementbolt.weaponability" },
 { "op" : "add", "path" : "/ivrpg_chaosscythe", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_chaosscythe.weaponability" },
+{ "op" : "add", "path" : "/ivrpg_chaosbeam", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_chaosbeam.weaponability" },
 { "op" : "add", "path" : "/ivrpg_holynova", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_holynova.weaponability" },
 { "op" : "add", "path" : "/ivrpg_elementimplosion", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementimplosion.weaponability" },
 { "op" : "add", "path" : "/ivrpg_elementeruption", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementeruption.weaponability" },

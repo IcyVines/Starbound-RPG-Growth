@@ -1,0 +1,40 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_chaosbeam",
+    "name" : "Chaos Beam: <chaosMod>",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 80,
+    "fireTime" : 0.2,
+    "baseDps" : 10,
+    "energyUsage" : 30,
+
+    "damageConfig" : {
+      "statusEffects" : [ ],
+      "damageSourceKind" : "plasma",
+      "knockback" : 8
+    },
+
+    "maxCastRange" : 100,
+
+    "spawnLocation" : "atTome",
+    "travelDirection" : "none",
+    "chargeTimeModifier" : 1.0,
+
+    "projectileCount" : 1,
+    "projectileDistance" : 0,
+    "projectileType" : "ivrpg_<elementalType>chaosgate",
+    "projectileParameters" : {
+      "baseDamage" : 10,
+      "knockback" : 20,
+      "timeToLive" : 1,
+      "speed" : 0,
+      "facingDirection" : 1
+    },
+    
+    "elementalTypes" : ["electric", "poison", "nova", "holy"]
+  }
+}

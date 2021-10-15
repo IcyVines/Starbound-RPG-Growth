@@ -24,10 +24,16 @@ function ControlProjectile:init()
 
   self.weapon.healOnHit = config.getParameter("primaryAbility.healOnHit")
 
+  -- Greater Barrier
   self.shieldActive = false
   self.shieldFrameTimer = 0.2
   self.shieldFrame = 0
   self.shieldShattered = false
+
+  -- Beam
+  self.impactSoundTimer = 0
+  self.transitionTimer = 0
+  self.baseDamage = self.projectileParameters.baseDamage
 
   activeItem.setCursor("/cursors/reticle5.cursor")
   activeItem.setScriptedAnimationParameter("rune", false)
@@ -51,12 +57,13 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
     and not self.abilityActive
     and not (self.cooldownTimer > 0)
     and not (self.fireMode == "alt" and (self.shieldShattered or self.shieldActive)) then
-
+    self.transitionTimer = 0
     self:setState(self.charge)
   end
 
   self.cooldownTimer = math.max(self.cooldownTimer - dt, 0)
 
+  -- Greater Barrier
   if self.shieldActive then
     local mod = ".png:"
     if status.resource("shieldStamina") <= 0.5 then
@@ -89,6 +96,7 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
     end
   end
 
+  -- Implosion
   if self.customPhysics and self.customPhysics.time > 0 then
     local targetIds = enemyQuery(activeItem.ownerAimPosition(), self.customPhysics.radius or 5, {}, activeItem.ownerEntityId(), true)
     if targetIds then
@@ -228,16 +236,24 @@ function ControlProjectile:discharge()
     status.setResourcePercentage("energyRegenBlock", 1.0)
   end)
 
-  -- Change this to be dependent on the ability. Some abilities are instant cast. Some are not!
-  --[[ while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
-    status.setResourcePercentage("energyRegenBlock", 1.0)
-    coroutine.yield()
-  end ]]
-
   self.cooldownTimer = self.cooldownTime
   self.abilityActive = false
-  --self:killProjectiles()
-  --self:setState(self.cooldown)
+end
+
+function ControlProjectile:spawnBeam()
+  self.timer = 0
+  self.spawnPosition = activeItem.ownerAimPosition()
+  self.randomDirection = math.random(-2,2)
+  world.spawnProjectile("ivrpgraptureholygate", self.spawnPosition, activeItem.ownerEntityId(), {0.1 * self.randomDirection, -1}, false, {timeToLive = 0.8, speed = 0})
+  self.reap = true
+  util.wait(0.5, function()
+    local params = {curveDirection = self.randomDirection, timeToLive = 0.3, speed = 70}
+    if self.reap then
+      params.actionOnReap = {{action = "projectile", type = "ivrpgraptureholygate", config = {timeToLive = 0.5}}}
+      self.reap = false
+    end
+    world.spawnProjectile("ivrpgrapturebeam", self.spawnPosition, activeItem.ownerEntityId(), {0.1 * self.randomDirection, -1}, false, params)
+  end)
 end
 
 function ControlProjectile:targetValid(aimPos)
@@ -272,6 +288,10 @@ function ControlProjectile:createProjectiles()
     pParams.timeToLive = tTL
   end
 
+  if pParams.facingDirection then
+    pParams.facingDirection = mcontroller.facingDirection()
+  end
+
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
   if pParams.actionOnTimeout then
@@ -299,6 +319,8 @@ function ControlProjectile:createProjectiles()
       pParams.spread[1] = pParams.spread[1] * -1
       pOffset = vec2.add(pOffset, pParams.spread)
       self.lightning = basePos
+    elseif pParams.rapid then
+
     else
       pOffset = vec2.rotate(pOffset, (2 * math.pi) / pCount)
     end
@@ -313,6 +335,10 @@ end
 
 function ControlProjectile:focusPosition()
   return vec2.add(mcontroller.position(), activeItem.handPosition(animator.partPoint("grimoire", "focalPoint")))
+end
+
+function ControlProjectile:beamOffset()
+  return animator.partPoint("grimoire", "focalPoint")
 end
 
 -- give all projectiles a new aim position and let those projectiles return one or

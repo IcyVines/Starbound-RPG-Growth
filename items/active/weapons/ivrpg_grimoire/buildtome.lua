@@ -83,17 +83,16 @@ function build(directory, config, parameters, level, seed)
     util.mergeTable(config.altAbility, config.altAbility.elementalConfig[altElementalType])
   end
 
-  local scytheMod = {demonic = "Death", fire = "Flame", ice = "Frost", nova = "Rift"}
-  local beamMod = {holy = "Death", electric = "Flame", poison = "Frost", nova = "Rift"}
-  local moteMod = {holy = "Lux", fire = "Sol", electric = "Arc"}
-  local mistMod = {demonic = "Shroud", ice = "Chill", poison = "Nox"}
+  local chaosMod = {demonic = "Death", fire = "Flame", ice = "Frost", nova = "Rift", holy = "Divine", electric = "Ion", poison = "Blight"}
+  local moteMod = {holy = "Lux", fire = "Sol", electric = "Arc", demonic = "Shroud", ice = "Chill", poison = "Nox"}
   local boltMod = {holy = "Lesser Gungnir", ice = "Icicle Spike", electric = "Thoron", nova = "Starpiercer", earth = "Stone Lance"}
   local burstMod = {demonic = "Reaper's Breath", poison = "Acid Burst", fire = "Fireball", nova = "Shooting Star", earth = "Rock Blast"}
   local waveMod = {demonic = "Cursed", holy = "Blessed", nova = "Cosmic", earth = "Boulder", ice = "Crystal", poison = "Sludge", fire = "Magma", electric = "Charge"}
-  local implosionMod = {holy = "Divine ", nova = "Astral ", poison = "Miasma ", electric = "Magnetic ", demonic = "Terror ", fire = "Thermal ", ice = "Arctic ", earth = ""}
+  local implosionMod = {holy = "Celestial ", nova = "Astral ", poison = "Miasma ", electric = "Magnetic ", demonic = "Terror ", fire = "Thermal ", ice = "Arctic ", earth = ""}
   local eruptionMod = {demonic = "Hell's Gate", holy = "Judgement", nova = "Supernova", earth = "Landslide", ice = "Absolute Zero", poison = "Containment Breach", fire = "Eruption", electric = "Overload"}
-  local sunderMod = {demonic = "Sacrificial ", holy = "Almighty ", nova = "Molecular ", earth = "", ice = "Glacial ", poison = "Blighted ", fire = "Volcanic ", electric = "Thunder "}
+  local sunderMod = {demonic = "Sacrificial ", holy = "Almighty ", nova = "Molecular ", earth = "", ice = "Glacial ", poison = "Corrosive ", fire = "Volcanic ", electric = "Thunder "}
   local stormMod = {fire = "Meteor Shower", electric = "Thunderstorm", ice = "Hailstorm", poison = "Acid Rain"}
+  
   -- elemental tag
   replacePatternInData(config, nil, "<elementalType>", elementalType)
   replacePatternInData(config, nil, "<elementalName>", elementalType:gsub("^%l", string.upper))
@@ -101,8 +100,7 @@ function build(directory, config, parameters, level, seed)
   replacePatternInData(config, nil, "<altElementalType>", altElementalType)
   replacePatternInData(config, nil, "<altElementalName>", altElementalType:gsub("^%l", string.upper))
 
-  replacePatternInData(config, nil, "<scytheMod>", scytheMod[elementalType] or "")
-  replacePatternInData(config, nil, "<beamMod>", beamMod[elementalType] or "")
+  replacePatternInData(config, nil, "<chaosMod>", chaosMod[elementalType] or "")
   replacePatternInData(config, nil, "<implosionMod>", implosionMod[elementalType] or "")
   replacePatternInData(config, nil, "<eruptionMod>", eruptionMod[elementalType] or "")
   replacePatternInData(config, nil, "<sunderMod>", sunderMod[elementalType] or "")
@@ -110,7 +108,6 @@ function build(directory, config, parameters, level, seed)
   replacePatternInData(config, nil, "<burstMod>", burstMod[elementalType] or "")
 
   replacePatternInData(config, nil, "<moteMod>", moteMod[altElementalType] or "")
-  replacePatternInData(config, nil, "<mistMod>", mistMod[altElementalType] or "")
   replacePatternInData(config, nil, "<waveMod>", waveMod[altElementalType] or "")
   replacePatternInData(config, nil, "<stormMod>", stormMod[altElementalType] or "")
   -- name
