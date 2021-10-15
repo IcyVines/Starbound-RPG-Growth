@@ -1,8 +1,8 @@
 {
-  "projectileName" : "ivrpg_electricchaosgate",
-  "image" : "electricgate.png",
+  "projectileName" : "ivrpg_poisonchaosgate",
+  "image" : "poisongate.png",
   "animationCycle" : 0.4,
-  "lightColor" : [80, 90, 150],
+  "lightColor" : [80, 180, 120],
   "frameNumber" : 8,
   "fullbright" : true,
   "damageKindImage" : "icon.png",
@@ -22,7 +22,7 @@
           "specification" : {
             "type" : "ember",
             "size" : 1.5,
-            "color" : [150, 150, 200, 255],
+            "color" : [80, 180, 120, 255],
             "fade" : 0.9,
             "approach" : [30, 30],
             "light" : [160, 160, 100],
@@ -45,21 +45,21 @@
     {
       "delayTime" : 0.04,
       "action" : "projectile",
-      "type" : "ivrpg_electricchaosbeam",
+      "type" : "ivrpg_poisonchaosbeam",
       "config" : {
         "speed" : 40,
         "timeToLive" : 0.25,
         "actionOnReap" : [
           {
             "action" : "projectile",
-            "type" : "ivrpg_electricchaosgate",
+            "type" : "ivrpg_poisonchaosgate",
             "config" : {
               "timeToLive" : 1,
               "timedActions" : [],
               "actionOnReap" : [
                 {
                   "action" : "sound",
-                  "options" : ["/sfx/gun/lightningcoil3.ogg"]
+                  "options" : ["/sfx/projectiles/goocluster_pop.ogg"]
                 }
               ]
             }
@@ -75,7 +75,7 @@
       "loopTime" : 0.01,
       "loopTimeVariance" : 0,
       "action" : "projectile",
-      "type" : "ivrpg_electricchaosbeam",
+      "type" : "ivrpg_poisonchaosbeam",
       "config" : {
         "speed" : 40,
         "timeToLive" : 0.25
@@ -92,7 +92,7 @@
   "damagePoly" : [],
   "damageKind" : "plasma",
 
-  "persistentAudio" : "/sfx/melee/elemental_aura_electric.ogg",
+  "persistentAudio" : "/sfx/projectiles/poisonstickyspikes_loop.ogg",
 
   "speed" : 0,
   "timeToLive" : 0.3

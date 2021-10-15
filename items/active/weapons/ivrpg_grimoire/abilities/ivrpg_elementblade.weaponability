@@ -1,0 +1,32 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_elementblade",
+    "name" : "<bladeMod> Blade",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 20,
+
+    "spawnLocation" : "atTome",
+    "travelDirection" : "atCursor",
+    "behavior" : "followNearestEnemy",
+    "notDespawned" : true,
+
+    "chargeTimeModifier" : 0.8,
+
+    "maxCastRange" : 10,
+
+    "projectileCount" : 1,
+    "projectileDistance" : 0,
+    "projectileType" : "ivrpg_<altElementalType>blade",
+    "projectileParameters" : {
+      "baseDamage" : 5,
+      "timeToLive" : 10,
+      "speed" : 20,
+    },
+    
+    "elementalTypes" : [ "fire", "holy", "nova", "earth" ]
+  }
+}

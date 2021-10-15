@@ -92,6 +92,7 @@ function build(directory, config, parameters, level, seed)
   local eruptionMod = {demonic = "Hell's Gate", holy = "Judgement", nova = "Supernova", earth = "Landslide", ice = "Absolute Zero", poison = "Containment Breach", fire = "Eruption", electric = "Overload"}
   local sunderMod = {demonic = "Sacrificial ", holy = "Almighty ", nova = "Molecular ", earth = "", ice = "Glacial ", poison = "Corrosive ", fire = "Volcanic ", electric = "Thunder "}
   local stormMod = {fire = "Meteor Shower", electric = "Thunderstorm", ice = "Hailstorm", poison = "Acid Rain"}
+  local bladeMod = {fire = "Blazing", nova = "Shearing", ice = "Freezing", demonic = "Corrupting", earth = "Mana", holy = "Smiting"}
   
   -- elemental tag
   replacePatternInData(config, nil, "<elementalType>", elementalType)
@@ -110,6 +111,7 @@ function build(directory, config, parameters, level, seed)
   replacePatternInData(config, nil, "<moteMod>", moteMod[altElementalType] or "")
   replacePatternInData(config, nil, "<waveMod>", waveMod[altElementalType] or "")
   replacePatternInData(config, nil, "<stormMod>", stormMod[altElementalType] or "")
+  replacePatternInData(config, nil, "<bladeMod>", bladeMod[altElementalType] or "")
   -- name
   if not parameters.shortdescription and builderConfig.nameGenerator then
     parameters.shortdescription = root.generateName(util.absolutePath(directory, builderConfig.nameGenerator .. elementalType), seed)

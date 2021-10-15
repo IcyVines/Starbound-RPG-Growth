@@ -285,11 +285,14 @@ function ControlProjectile:createProjectiles()
 
   if self.travelDirection == "atCursor" then
     local tTL = vec2.mag(distanceTo) / (pParams.speed or 1)
-    pParams.timeToLive = tTL
+    pParams.timeToLive = (pParams.timeToLive or 0) + tTL
+    if self.behavior == "followNearestAfterCursor" then
+      self.followTimer = tTL
+    end
   end
 
-  if pParams.facingDirection then
-    pParams.facingDirection = mcontroller.facingDirection()
+  if pParams.aimDirection then
+    pParams.aimDirection = distanceTo
   end
 
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount

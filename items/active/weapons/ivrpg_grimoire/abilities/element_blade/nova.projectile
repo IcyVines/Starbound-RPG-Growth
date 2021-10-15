@@ -1,0 +1,20 @@
+{
+  "projectileName" : "ivrpg_novablade",
+  "timeToLive" : 0.6,
+  "bounces" : -1,
+  "renderLayer" : "Player+2",
+  "damagePoly" : [ [-32, -16], [-28, 30], [24, 30], [28, -16] ],
+  "image" : "nova.png",
+  "animationCycle" : 0.4,
+  "piercing" : true,
+  "physics" : "laser",
+  "frameNumber" : 4,
+  "flippable" : true,
+  "pointLight" : true,
+  "speed" : 0,
+  "power" : 8.0,
+  "damageKind" : "ivrpg_novascythe",
+  "emitters" : [ "sparkles" ]
+}
+
+

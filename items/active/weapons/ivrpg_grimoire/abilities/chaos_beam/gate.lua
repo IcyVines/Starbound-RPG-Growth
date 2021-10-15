@@ -4,7 +4,7 @@ require "/scripts/vec2.lua"
 function init()
   self.controlMovement = config.getParameter("controlMovement")
   self.controlRotation = config.getParameter("controlRotation")
-  self.facingDirection = config.getParameter("facingDirection")
+  self.aimDirection = config.getParameter("aimDirection")
   self.rotationSpeed = 0
   self.timedActions = config.getParameter("timedActions", {})
 
@@ -29,8 +29,8 @@ function update(dt)
 end
 
 function processTimedAction(action, dt)
-  if self.facingDirection then
-    action.direction[1] = self.facingDirection
+  if self.aimDirection then
+    action.direction = self.aimDirection
   end
   if action.complete then
     return
@@ -43,14 +43,28 @@ function processTimedAction(action, dt)
     action.loopTimer = action.loopTimer or 0
     action.loopTimer = math.max(0, action.loopTimer - dt)
     if action.loopTimer == 0 then
-      projectile.processAction(action)
+      processMultipleActions(action)
       action.loopTimer = action.loopTime
       if action.loopTimeVariance then
         action.loopTimer = action.loopTimer + (2 * math.random() - 1) * action.loopTimeVariance
       end
     end
   else
-    projectile.processAction(action)
+    action.config.curveDirection = 0
+    processMultipleActions(action, true)
     action.complete = true
   end
+end
+
+function processMultipleActions(action, once)
+  --local oldConfig = copy(action.config)
+  action.config.curveDirection = 0
+  projectile.processAction(action)
+  if once then
+    action.config.actionOnReap[1].config = { timeToLive = 1, timedActions = {} }
+  end
+  action.config.curveDirection = 2
+  projectile.processAction(action)
+  action.config.curveDirection = -2
+  projectile.processAction(action)
 end

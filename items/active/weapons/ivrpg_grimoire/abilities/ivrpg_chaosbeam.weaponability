@@ -32,7 +32,7 @@
       "knockback" : 20,
       "timeToLive" : 1,
       "speed" : 0,
-      "facingDirection" : 1
+      "aimDirection" : true
     },
     
     "elementalTypes" : ["electric", "poison", "nova", "holy"]

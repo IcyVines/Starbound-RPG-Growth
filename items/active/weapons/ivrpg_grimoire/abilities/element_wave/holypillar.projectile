@@ -16,7 +16,7 @@
   "damagePoly" : [ [8, 4],  [8, -4],  [-8, -4],  [-8, 4] ],
   "piercing" : true,
   "damageKind" : "holy",
-  "emitters" : [ "stargazer1", "stargazer2", "stargazer3" ],
+  "emitters" : [ "stargazer1", "stargazer2", "stargazer3", "lighttrailfast" ],
   "actionOnReap" : [
     {
       "action" : "sound",

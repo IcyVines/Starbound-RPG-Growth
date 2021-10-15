@@ -33,6 +33,8 @@
 { "op" : "add", "path" : "/ivrpg_greaterbarrier", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_greaterbarrier.weaponability" },
 { "op" : "add", "path" : "/ivrpg_greatermote", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_greatermote.weaponability" },
 { "op" : "add", "path" : "/ivrpg_elementwave", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementwave.weaponability" },
+{ "op" : "add", "path" : "/ivrpg_elementblade", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementblade.weaponability" },
+{ "op" : "add", "path" : "/ivrpg_elementscythe", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementscythe.weaponability" },
 { "op" : "add", "path" : "/ivrpg_elementstorm", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementstorm.weaponability" }
 
 ]

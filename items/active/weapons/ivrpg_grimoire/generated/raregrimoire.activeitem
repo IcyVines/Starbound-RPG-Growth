@@ -168,9 +168,9 @@
       "fire" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementimplosion", "ivrpg_chaosscythe"],
       "ice" : ["ivrpg_elementsunder", "ivrpg_elementbolt", "ivrpg_elementimplosion", "ivrpg_chaosscythe"],
       "electric" : ["ivrpg_elementsunder", "ivrpg_elementbolt", "ivrpg_elementimplosion", "ivrpg_chaosbeam"],
-      "poison" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementimplosion"],
-      "nova" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementbolt", "ivrpg_chaosscythe", "ivrpg_elementimplosion"],
-      "holy" : ["ivrpg_elementsunder", "ivrpg_elementbolt", "ivrpg_holynova", "ivrpg_elementimplosion"],
+      "poison" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementimplosion", "ivrpg_chaosbeam"],
+      "nova" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementbolt", "ivrpg_chaosscythe", "ivrpg_elementimplosion", "ivrpg_chaosbeam"],
+      "holy" : ["ivrpg_elementsunder", "ivrpg_elementbolt", "ivrpg_holynova", "ivrpg_elementimplosion", "ivrpg_chaosbeam"],
       "demonic" : ["ivrpg_elementsunder", "ivrpg_elementburst","ivrpg_elementimplosion", "ivrpg_chaosscythe"]
     },
     "altAbilities" : {
@@ -179,7 +179,7 @@
       "ice" : ["ivrpg_elementstorm", "ivrpg_elementwave"],
       "electric" : ["ivrpg_elementstorm", "ivrpg_greatermote", "ivrpg_elementwave"],
       "poison" : ["ivrpg_elementstorm", "ivrpg_elementwave"],
-      "nova" : ["ivrpg_elementwave"],
+      "nova" : ["ivrpg_elementwave", "ivrpg_elementblade"],
       "holy" : ["ivrpg_greatermote", "ivrpg_elementwave"],
       "demonic" : ["ivrpg_elementwave"]
     }

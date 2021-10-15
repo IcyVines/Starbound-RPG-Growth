@@ -1,0 +1,31 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_elementscythe",
+    "name" : "<bladeMod> Scythe",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 20,
+
+    "spawnLocation" : "atTome",
+    "travelDirection" : "atCursor",
+    "behavior" : "followNearestEnemy",
+    "notDespawned" : true,
+
+    "chargeTimeModifier" : 0.8,
+
+    "maxCastRange" : 10,
+
+    "projectileCount" : 1,
+    "projectileDistance" : 0,
+    "projectileType" : "ivrpg_<altElementalType>sword",
+    "projectileParameters" : {
+      "baseDamage" : 5,
+      "timeToLive" : 30
+    },
+    
+    "elementalTypes" : [ "ice", "demonic", "nova", "earth" ]
+  }
+}
