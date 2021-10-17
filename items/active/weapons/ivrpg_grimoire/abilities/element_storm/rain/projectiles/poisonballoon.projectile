@@ -1,0 +1,10 @@
+{
+  "projectileName" : "ivrpg_poisonhail",
+  "physics" : "grenade",
+  "image" : "poisonballoon.png",
+  "animationCycle" : 0.5,
+  "speed" : 25,
+  "frameNumber" : 2,
+  "emitters" : [ "poisonplasmarocket", "poisondrip" ],
+  "damageKind" : "poison"
+}

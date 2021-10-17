@@ -1,6 +1,6 @@
 {
-  "kind" : "novascythe",
-  "elementalType" : "nova",
+  "kind" : "ivrpg_fireblade",
+  "elementalType" : "fire",
   "effects" : {
     "organic" : {
       "hit" : {

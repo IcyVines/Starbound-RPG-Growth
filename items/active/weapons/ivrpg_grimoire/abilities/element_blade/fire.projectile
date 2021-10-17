@@ -3,7 +3,7 @@
   "timeToLive" : 0.6,
   "bounces" : -1,
   "renderLayer" : "Player+2",
-  "damagePoly" : [ [-32, -16], [-28, 30], [24, 30], [28, -16] ],
+  "damagePoly" : [ [-16, -6], [-16, 6], [8, 6], [8, -6] ],
   "image" : "fire.png",
   "animationCycle" : 0.4,
   "piercing" : true,
@@ -13,8 +13,10 @@
   "pointLight" : true,
   "speed" : 0,
   "power" : 8.0,
-  "damageKind" : "ivrpg_firescythe",
-  "emitters" : [ "fireplasma" ]
+  "damageKind" : "ivrpg_fireblade",
+  "emitters" : [ "stargazer1" ],
+
+  "scripts" : [ "/items/active/weapons/ivrpg_grimoire/abilities/element_blade/behavior.lua" ]
 }
 
 

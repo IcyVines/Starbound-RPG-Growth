@@ -1,10 +1,10 @@
 {
-  "projectileName" : "ivrpg_novablade",
+  "projectileName" : "ivrpg_earthblade",
   "timeToLive" : 0.6,
   "bounces" : -1,
   "renderLayer" : "Player+2",
   "damagePoly" : [ [-16, -6], [-16, 6], [8, 6], [8, -6] ],
-  "image" : "nova.png",
+  "image" : "earth.png",
   "animationCycle" : 0.4,
   "piercing" : true,
   "physics" : "laser",
@@ -13,7 +13,7 @@
   "pointLight" : true,
   "speed" : 0,
   "power" : 8.0,
-  "damageKind" : "ivrpg_novablade",
+  "damageKind" : "ivrpg_earthblade",
   "emitters" : [ "stargazer1" ],
 
   "scripts" : [ "/items/active/weapons/ivrpg_grimoire/abilities/element_blade/behavior.lua" ]

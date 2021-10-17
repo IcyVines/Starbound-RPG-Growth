@@ -329,7 +329,7 @@
 		"baseDps": 13.5,
 
 		"damageConfig": {
-			"damageSourceKind": "demonicscythe",
+			"damageSourceKind": "ivrpg_demonicscythe",
 			"statusEffects": [],
 			"knockbackMode": "facing",
 			"timeout": 0.5

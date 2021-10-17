@@ -1,6 +1,5 @@
 {
-  "kind" : "ivrpg_demonicscythe",
-  "elementalType" : "demonic",
+  "kind" : "ivrpg_earthblade",
   "effects" : {
     "organic" : {
       "hit" : {

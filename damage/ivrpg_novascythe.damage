@@ -1,6 +1,6 @@
 {
-  "kind" : "ivrpg_demonicscythe",
-  "elementalType" : "demonic",
+  "kind" : "ivrpg_novascythe",
+  "elementalType" : "nova",
   "effects" : {
     "organic" : {
       "hit" : {

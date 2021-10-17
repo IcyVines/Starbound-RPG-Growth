@@ -174,13 +174,13 @@
       "demonic" : ["ivrpg_elementsunder", "ivrpg_elementburst","ivrpg_elementimplosion", "ivrpg_chaosscythe"]
     },
     "altAbilities" : {
-      "earth" : ["ivrpg_greaterbarrier", "ivrpg_elementwave"],
-      "fire" : ["ivrpg_elementstorm", "ivrpg_greatermote", "ivrpg_elementwave"],
+      "earth" : ["ivrpg_greaterbarrier", "ivrpg_elementwave", "ivrpg_elementblade"],
+      "fire" : ["ivrpg_elementstorm", "ivrpg_greatermote", "ivrpg_elementwave", "ivrpg_elementblade"],
       "ice" : ["ivrpg_elementstorm", "ivrpg_elementwave"],
       "electric" : ["ivrpg_elementstorm", "ivrpg_greatermote", "ivrpg_elementwave"],
       "poison" : ["ivrpg_elementstorm", "ivrpg_elementwave"],
       "nova" : ["ivrpg_elementwave", "ivrpg_elementblade"],
-      "holy" : ["ivrpg_greatermote", "ivrpg_elementwave"],
+      "holy" : ["ivrpg_greatermote", "ivrpg_elementwave", "ivrpg_elementblade"],
       "demonic" : ["ivrpg_elementwave"]
     }
   }]

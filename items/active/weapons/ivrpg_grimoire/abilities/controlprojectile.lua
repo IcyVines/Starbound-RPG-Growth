@@ -35,6 +35,9 @@ function ControlProjectile:init()
   self.transitionTimer = 0
   self.baseDamage = self.projectileParameters.baseDamage
 
+  -- Mana Blade/Scythe
+  self.followTimer = 0
+
   activeItem.setCursor("/cursors/reticle5.cursor")
   activeItem.setScriptedAnimationParameter("rune", false)
   self.weapon:setStance(self.stances.idle)
@@ -46,8 +49,17 @@ end
 
 function ControlProjectile:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
-  --self:updateProjectiles()
 
+  -- Mana Blade/Scythe
+  if self.behavior == "followNearestAfterCursor" and self.projectileId and self.followTimer > 0 then
+    self.followTimer = math.max(self.followTimer - dt, 0)
+    if self.followTimer == 0 and world.entityExists(self.projectileId) then
+      sb.logInfo("trigger")
+      world.sendEntityMessage(self.projectileId, "trigger", "follow")
+    end
+  end
+
+  -- Normal Fire Transition
   world.debugPoint(self:focusPosition(), "blue")
   --animator.setAnimationRate(1/(self.chargeTimeModifier or 1))
   --sb.logInfo(sb.printJson(self.chargeTimeModifier))
@@ -326,6 +338,10 @@ function ControlProjectile:createProjectiles()
 
     else
       pOffset = vec2.rotate(pOffset, (2 * math.pi) / pCount)
+    end
+
+    if self.behavior == "followNearestAfterCursor" then
+      self.projectileId = projectileId
     end
     
   end

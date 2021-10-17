@@ -11,20 +11,20 @@
 
     "spawnLocation" : "atTome",
     "travelDirection" : "atCursor",
-    "behavior" : "followNearestEnemy",
+    "behavior" : "followNearestAfterCursor",
     "notDespawned" : true,
 
     "chargeTimeModifier" : 0.8,
 
-    "maxCastRange" : 10,
+    "maxCastRange" : 20,
 
     "projectileCount" : 1,
     "projectileDistance" : 0,
     "projectileType" : "ivrpg_<altElementalType>blade",
     "projectileParameters" : {
       "baseDamage" : 5,
-      "timeToLive" : 10,
-      "speed" : 20,
+      "timeToLive" : 8,
+      "speed" : 20
     },
     
     "elementalTypes" : [ "fire", "holy", "nova", "earth" ]

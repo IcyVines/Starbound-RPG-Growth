@@ -14,7 +14,7 @@
   "pointLight" : true,
   "speed" : 0,
   "power" : 8.0,
-  "damageKind" : "novascythe",
+  "damageKind" : "ivrpg_novascythe",
   "emitters" : [ "sparkles" ]
 }
 
