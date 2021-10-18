@@ -11,19 +11,20 @@
 
     "spawnLocation" : "atTome",
     "travelDirection" : "atCursor",
-    "behavior" : "followNearestEnemy",
+    "behavior" : "releaseRadialAfterCursor",
     "notDespawned" : true,
 
     "chargeTimeModifier" : 0.8,
 
-    "maxCastRange" : 10,
+    "maxCastRange" : 20,
 
     "projectileCount" : 1,
     "projectileDistance" : 0,
-    "projectileType" : "ivrpg_<altElementalType>sword",
+    "projectileType" : "ivrpg_<altElementalType>scythe",
     "projectileParameters" : {
       "baseDamage" : 5,
-      "timeToLive" : 30
+      "timeToLive" : 8,
+      "speed" : 30
     },
     
     "elementalTypes" : [ "ice", "demonic", "nova", "earth" ]

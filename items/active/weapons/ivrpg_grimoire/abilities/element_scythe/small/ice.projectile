@@ -1,0 +1,24 @@
+{
+  "projectileName" : "ivrpg_icescythesmall",
+  "timeToLive" : 2,
+  "renderLayer" : "Player+2",
+  "damagePoly" : [ [-6, -6], [-6, 6], [6, 6], [6, -6] ],
+  "image" : "ice.png",
+  "animationCycle" : 0.25,
+  "piercing" : true,
+  "physics" : "laser",
+  "frameNumber" : 4,
+  "flippable" : true,
+  "pointLight" : true,
+  "speed" : 30,
+  "power" : 8.0,
+  "curve" : true,
+  "damageKind" : "ivrpg_icescythe",
+  "emitters" : [ "stargazer1" ],
+  
+  "persistentAudio" : "/sfx/projectiles/boomerang1.ogg",
+
+  "scripts" : [ "/items/active/weapons/ivrpg_grimoire/abilities/element_scythe/behavior.lua" ]
+}
+
+

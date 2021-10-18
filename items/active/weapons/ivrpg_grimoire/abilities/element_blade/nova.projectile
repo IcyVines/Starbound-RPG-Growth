@@ -16,6 +16,8 @@
   "damageKind" : "ivrpg_novablade",
   "emitters" : [ "stargazer1" ],
 
+  "persistentAudio" : "/sfx/projectiles/zone_pull_loop.ogg",
+
   "scripts" : [ "/items/active/weapons/ivrpg_grimoire/abilities/element_blade/behavior.lua" ]
 }
 

@@ -1,0 +1,24 @@
+{
+  "projectileName" : "ivrpg_novascythe",
+  "timeToLive" : 0.6,
+  "bounces" : -1,
+  "renderLayer" : "Player+2",
+  "damagePoly" : [ [-12, -12], [-12, 12], [12, 12], [12, -12] ],
+  "image" : "nova.png",
+  "animationCycle" : 0.25,
+  "piercing" : true,
+  "physics" : "laser",
+  "frameNumber" : 4,
+  "flippable" : true,
+  "pointLight" : true,
+  "speed" : 0,
+  "power" : 8.0,
+  "damageKind" : "ivrpg_novascythe",
+  "emitters" : [ "stargazer1" ],
+
+  "persistentAudio" : "/sfx/projectiles/boomerang3.ogg",
+
+  "scripts" : [ "/items/active/weapons/ivrpg_grimoire/abilities/element_scythe/behavior.lua" ]
+}
+
+

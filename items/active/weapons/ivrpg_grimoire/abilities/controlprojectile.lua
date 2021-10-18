@@ -9,7 +9,7 @@ function ControlProjectile:init()
 
   self.elementalType = self.elementalType or self.weapon.elementalType
   self.cooldownTime = 0.4
-  self.cooldownTimer = self.cooldownTime / 2
+  self.cooldownTimer = self.cooldownTime
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
   self.stances = config.getParameter("stances")
   self.elementalConfig = config.getParameter("elementalConfig", {})
@@ -50,12 +50,14 @@ end
 function ControlProjectile:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
+  local stopsAtCursor = self.behavior and string.find(self.behavior, "AfterCursor")
+
   -- Mana Blade/Scythe
-  if self.behavior == "followNearestAfterCursor" and self.projectileId and self.followTimer > 0 then
+  if stopsAtCursor and self.projectileId and self.followTimer > 0 then
     self.followTimer = math.max(self.followTimer - dt, 0)
     if self.followTimer == 0 and world.entityExists(self.projectileId) then
-      sb.logInfo("trigger")
-      world.sendEntityMessage(self.projectileId, "trigger", "follow")
+      if self.behavior == "followNearestAfterCursor" then world.sendEntityMessage(self.projectileId, "trigger", "follow") end
+      if self.behavior == "releaseRadialAfterCursor" then world.sendEntityMessage(self.projectileId, "trigger", "release") end
     end
   end
 
@@ -295,10 +297,12 @@ function ControlProjectile:createProjectiles()
     return
   end
 
+  local stopsAtCursor = self.behavior and string.find(self.behavior, "AfterCursor")
+
   if self.travelDirection == "atCursor" then
     local tTL = vec2.mag(distanceTo) / (pParams.speed or 1)
     pParams.timeToLive = (pParams.timeToLive or 0) + tTL
-    if self.behavior == "followNearestAfterCursor" then
+    if stopsAtCursor then
       self.followTimer = tTL
     end
   end
@@ -340,7 +344,7 @@ function ControlProjectile:createProjectiles()
       pOffset = vec2.rotate(pOffset, (2 * math.pi) / pCount)
     end
 
-    if self.behavior == "followNearestAfterCursor" then
+    if stopsAtCursor then
       self.projectileId = projectileId
     end
     
@@ -403,7 +407,7 @@ end
 function ControlProjectile:uninit(weaponUninit)
   self:reset()
   if weaponUninit then
-    self:killProjectiles()
+    --self:killProjectiles()
     self.weapon:destroyBarrier()
   end
 end
