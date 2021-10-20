@@ -1,0 +1,28 @@
+{
+  "animationScripts" : ["/items/active/effects/ivrpg_runes.lua"],
+
+  "ability" : {
+    "type" : "ivrpg_nosferatu",
+    "name" : "Nosferatu",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+
+    "energyCost" : 80,
+
+    "spawnLocation" : "atCursor",
+    "travelDirection" : "none",
+    "chargeTimeModifier" : 1.2,
+    "healOnHit" : [0.1, 0.5],
+
+    "maxCastRange" : 15,
+
+    "projectileCount" : 1,
+    "projectileDistance" : 0,
+    "projectileType" : "ivrpg_nosferatu",
+    "projectileParameters" : {
+      "baseDamage" : 5
+    },
+    
+    "elementalTypes" : [ "demonic" ]
+  }
+}

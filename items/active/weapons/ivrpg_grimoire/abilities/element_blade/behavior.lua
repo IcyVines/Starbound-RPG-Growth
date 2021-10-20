@@ -11,6 +11,7 @@ function init()
   self.aimPosition = mcontroller.position()
   self.wiggleTimer = 0
   self.direction = 0
+  self.hitTimer = 0
   self.originPosition = mcontroller.position()
   self.originVelocity = mcontroller.velocity()
   self.perpendicularVelocity = {0,0}
@@ -65,9 +66,17 @@ function update(dt)
     end
   end
 
+  self.hitTimer = math.max(self.hitTimer - dt, 0)
+
   if self.target and world.entityExists(self.target) then
-    self.originVelocity = vec2.lerp(dt*10, self.originVelocity, world.distance(world.entityPosition(self.target), mcontroller.position()))
-    mcontroller.approachVelocity(vec2.mul(vec2.norm(self.originVelocity), 20), 100)
+    local distanceFrom = world.distance(world.entityPosition(self.target), mcontroller.position())
+    local distanceMax = vec2.mag(distanceFrom)
+    if distanceMax > 0 and distanceMax <= 1.5 then
+      self.hitTimer = 0.35
+    end
+    self.originVelocity = vec2.lerp(dt*10, self.originVelocity, distanceFrom)
+    local controlForce = (self.hitTimer > 0) and 0 or 200
+    mcontroller.approachVelocity(vec2.mul(vec2.norm(self.originVelocity), 40), controlForce)
   elseif not self.delay then
     self.target = false
     self.originVelocity = mcontroller.velocity()
