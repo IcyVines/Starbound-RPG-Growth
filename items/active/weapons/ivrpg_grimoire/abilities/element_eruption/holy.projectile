@@ -1,0 +1,44 @@
+{
+  "projectileName" : "ivrpg_holyeruption",
+  "timeToLive" : 0.5,
+  "bounces" : -1,
+  "renderLayer" : "Player-1",
+  "damagePoly" : [ [-16, -8], [-16, 8], [16, 8], [16, -8] ],
+  "image" : "holy.png",
+  "animationCycle" : 0.3,
+  "piercing" : true,
+  "physics" : "laser",
+  "frameNumber" : 12,
+  "windupFrames" : 6,
+  "flippable" : true,
+  "pointLight" : true,
+  "speed" : 0,
+  "power" : 8.0,
+  "damageKind" : "ivrpg_demonicscythe",
+  "actionOnReap" : [
+    {
+      "action" : "particle",
+      "specification" : {
+        "type" : "ember",
+        "size" : 1.0,
+        "color" : [220, 200, 120, 255],
+        "position" : [0, 0],
+        "fade" : 0.9,
+        "initialVelocity" : [0, 0],
+        "finalVelocity" : [0, 0],
+        "approach" : [20, 20],
+        "light" : [191, 173, 2],
+        "destructionTime" : 0.8,
+        "layer" : "back",
+        "variance" : {
+          "finalVelocity" : [5, 5],
+          "position" : [1, 1],
+          "size" : 0.5
+        }
+      }
+    }
+  ],
+  "emitters" : [ "stargazer1", "stargazer1" ]
+}
+
+

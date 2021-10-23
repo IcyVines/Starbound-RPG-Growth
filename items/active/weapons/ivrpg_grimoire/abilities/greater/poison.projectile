@@ -1,5 +1,5 @@
 {
-  "projectileName" : "ivrpg_poisonmist",
+  "projectileName" : "ivrpg_poisonmist2",
   "physics" : "gas",
   "bounces" : -1,
   "timeToLive" : 5,
@@ -10,14 +10,18 @@
   "frameNumber" : 4,
   "periodicActions" : [
     {
-      "time" : 0.3,
+      "time" : 0.05,
       "repeat" : true,
       "action" : "loop",
-      "count" : 5,
+      "count" : 1,
       "body" : [
         {
           "action" : "particle",
-          "specification" : "poisongas"
+          "specification" : "poisongas",
+          "config" : {
+            "initialVelocity" : [0,0],
+            "finalVelocity" : [0,0]
+          }
         }
       ]
     }

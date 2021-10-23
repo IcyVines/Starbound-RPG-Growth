@@ -9,21 +9,21 @@
 
     "energyCost" : 20,
 
-    "spawnLocation" : "atTome",
-    "travelDirection" : "atCursor",
+    "spawnLocation" : "atCursor",
+    "travelDirection" : "none",
     "behavior" : "followPlayer",
     "notDespawned" : true,
     "chargeTimeModifier" : 0.8,
 
     "maxCastRange" : 20,
 
-    "projectileCount" : 1,
-    "projectileDistance" : 0,
+    "projectileCount" : 3,
+    "projectileDistance" : 1.5,
     "projectileType" : "ivrpg_<altElementalType>mist",
     "projectileParameters" : {
       "baseDamage" : 0,
       "timeToLive" : 5,
-      "speed" : 5
+      "speed" : 0
     },
     
     "elementalTypes" : [ "ice", "demonic", "poison" ]

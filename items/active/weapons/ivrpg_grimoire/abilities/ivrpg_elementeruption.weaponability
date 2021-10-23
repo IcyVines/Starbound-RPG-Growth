@@ -1,99 +1,6 @@
 {
   "animationParts" : { },
   "animationCustom" : {
-    "particleEmitters" : {
-      "fireCharge" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
-        "particles" : [
-          { "particle" : "fireswoosh1"},
-          { "particle" : "fireswoosh2"},
-          { "particle" : "fireswoosh3"}
-        ]
-      },
-      "electricCharge" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
-        "particles" : [
-          { "particle" : "electricswoosh1"},
-          { "particle" : "electricswoosh2"},
-          { "particle" : "electricswoosh2"}
-        ]
-      },
-      "iceCharge" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
-        "particles" : [
-          { "particle" : "iceswoosh1"},
-          { "particle" : "iceswoosh2"},
-          { "particle" : "iceswoosh3"},
-          { "particle" : "iceaura"}
-        ]
-      },
-      "poisonCharge" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
-        "particles" : [
-          { "particle" : "poisonswoosh1"},
-          { "particle" : "poisonswoosh2"},
-          { "particle" : "fireswoosh2"}
-        ]
-      },
-
-      "novaCharge" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
-        "particles" : [
-          { "particle" : "bluecartoonstar"},
-          { "particle" : "redcartoonstar"},
-          { "particle" : "pinkgas"}
-        ]
-      },
-      "holyCharge" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
-        "particles" : [
-          { "particle" : "sparkle1"},
-          { "particle" : "sparkle2"},
-          { "particle" : "yellowgas"}
-        ]
-      },
-      "earthCharge" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
-        "particles" : [
-          { "particle" : "dust2"},
-          { "particle" : "dust4"},
-          { "particle" : "dirtspray"},
-          { "particle" : "growflower1"}
-        ]
-      },
-      "demonicCharge" : {
-        "active" : false,
-        "transformationGroups" : ["weapon"],
-        "emissionRate" : 30,
-        "offsetRegion" : [-1.0, 0.5, 1.0, 2.5],
-        "particles" : [
-          { "particle" : "tar1"},
-          { "particle" : "tar2"},
-          { "particle" : "shadowsmoke"}
-        ]
-      }
-    },
     "sounds" : {
       "fireimpact" : [ "/sfx/gun/grenadeblast_fire2.ogg" ],
 
@@ -119,34 +26,28 @@
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 30,
+    "energyCost" : 80,
 
-    "maxCastRange" : 15,
+    "maxCastRange" : 100,
 
-    "spawnLocation" : "atCursor",
+    "spawnLocation" : "atTome",
     "travelDirection" : "none",
     "chargeTimeModifier" : 1.5,
 
-    "projectileCount" : 5,
-    "projectileDistance" : 10,
-    "projectileType" : "ivrpg_<elementalType>pillar",
+    "projectileCount" : 1,
+    "projectileDistance" : 0,
+    "projectileType" : "ivrpg_<elementalType>eruption",
 
     "projectileParameters" : {
-      "baseDamage" : 2.0,
+      "baseDamage" : 20.0,
       "knockback" : 5,
-      "actionOnTimeout" : [
-        {
-          "action" : "projectile",
-          "inheritDamageFactor" : 1,
-          "type" : "ivrpg_<elementalType>pillar",
-          "config" : { }
-        }
-      ],
-      "pillarMaxHeight" : 8,
-      "pillarMinHeight" : 4,
-      "pillarDuration" : 2.0,
-      "pillarDistance" : [0, 3],
-      "pillarVerticalTolerance" : [-20, 2] // vertical offset from *player* position
+      "portal" : "ivrpg_<elementalType>portal",
+      "portalOffsets" : {
+        "holy" : [[0, 3.75], [0, 3.75], [0, 3.75]]
+      },
+      "offsets" : {
+        "holy" : [[2.5, 0],[-2.5, 0],[0, 0]]
+      }
     },
 
     

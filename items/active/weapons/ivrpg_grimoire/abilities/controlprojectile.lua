@@ -316,6 +316,9 @@ function ControlProjectile:createProjectiles()
   if pParams.actionOnTimeout then
     self:fireElementalPillar(pParams)
     return
+  elseif pParams.portal then
+    self:fireEruption(pParams)
+    return
   end
 
   for i = 1, pCount do
@@ -420,6 +423,21 @@ function Weapon:destroyBarrier()
   animator.setAnimationState("barrier", "off")
   activeItem.setScriptedAnimationParameter("barrier", false)
   status.clearPersistentEffects("ivrpg_greaterbarrier")
+end
+
+function ControlProjectile:fireEruption(params)
+  local offsets = params.offsets[self.elementalType]
+  local portal = params.portal
+  local portalOffsets = params.portalOffsets[self.elementalType]
+  local position = mcontroller.position()
+
+  for index,offset in ipairs(offsets) do
+    local newOffset = vec2.add(position, offset)
+    if portalOffsets then
+      world.spawnProjectile(portal, vec2.add(newOffset, portalOffsets[index]), activeItem.ownerEntityId(), {0,0}, false, {})
+    end
+    world.spawnProjectile(self.projectileType, newOffset, activeItem.ownerEntityId(), {0,-1}, false, params)
+  end
 end
 
 -- Helper functions
