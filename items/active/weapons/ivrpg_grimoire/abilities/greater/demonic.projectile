@@ -1,8 +1,8 @@
 {
-  "projectileName" : "ivrpg_poisonmist",
+  "projectileName" : "ivrpg_demonicmist",
   "physics" : "hover",
   "timeToLive" : 6,
-  "image" : "poison_loop.png",
+  "image" : "demonic.png",
   "animationCycle" : 0.4,
   "lightColor" : [80, 110, 50],
   "frameNumber" : 4,
@@ -16,7 +16,7 @@
           "action" : "particle",
           "specification" : {
             "type" : "animated",
-            "animation" : "/animations/statuseffects/poison2/poison2.animation",
+            "animation" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/particle/demonic.animation",
             "position" : [0, 0],
             "finalVelocity" : [0, 0],
             "approach" : [1.0, 1.0],
@@ -28,7 +28,8 @@
             "timeToLive" : 0.35,
             "variance" : {
               "position" : [2.0, 2.0],
-              "initialVelocity" : [2.5, 2.5]
+              "initialVelocity" : [2.5, 2.5],
+              "rotation" : 45
             }
           }
         }
@@ -37,9 +38,13 @@
   ],
   
   "speed" : 0,
-  "power" : 30,
-  "damageKind" : "default",
-  "damagePoly" : [ ],
+  "power" : 0,
+  "damageKind" : "applystatus",
+  "damageType" : "Damage",
+  "damageRepeatTimeout" : 0.1,
+  "scripts" : ["mist.lua"],
+  "statusEffects" : [{"effect" : "ivrpgsacrifice", "duration" : 10}],
+  "damagePoly" : [ [-16, 16], [-16, -16], [16, -16], [16, 16]],
   "emitters" : [ ],
 
   "renderLayer" : "Projectile+1",
@@ -48,6 +53,5 @@
   "bounces" : -1,
   "piercing" : true
 
-  //"scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
-  //"scriptDelta" : 1
+  
 }

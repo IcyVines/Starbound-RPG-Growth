@@ -77,6 +77,16 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
 
   self.cooldownTimer = math.max(self.cooldownTimer - dt, 0)
 
+  -- Nosferatu
+  if self.nosferatuActive then
+    activeItem.setScriptedAnimationParameter("nosferatu", {frame = self.nosferatuFrame, position = {mcontroller.xPosition(), mcontroller.yPosition() - 0.75}})
+    self.nosferatuFrameTimer = self.nosferatuFrameTimer - dt
+    if self.nosferatuFrameTimer <= 0 then
+      self.nosferatuFrame = (self.nosferatuFrame + 1) % 11
+      self.nosferatuFrameTimer = 0.05
+    end
+  end
+
   -- Greater Barrier
   if self.shieldActive then
     local mod = ".png:"
@@ -297,6 +307,13 @@ function ControlProjectile:createProjectiles()
     return
   end
 
+  if pParams.nosferatu then
+    self.nosferatuActive = true
+    self.nosferatuFrame = 0
+    self.nosferatuFrameTimer = 0.05
+    return
+  end
+
   local stopsAtCursor = self.behavior and string.find(self.behavior, "AfterCursor")
 
   if self.travelDirection == "atCursor" then
@@ -412,6 +429,7 @@ function ControlProjectile:uninit(weaponUninit)
   if weaponUninit then
     --self:killProjectiles()
     self.weapon:destroyBarrier()
+    activeItem.setScriptedAnimationParameter("nosferatu", false)
   end
 end
 
@@ -430,13 +448,14 @@ function ControlProjectile:fireEruption(params)
   local portal = params.portal
   local portalOffsets = params.portalOffsets[self.elementalType]
   local position = mcontroller.position()
+  local direction = params.directions[self.elementalType]
 
   for index,offset in ipairs(offsets) do
     local newOffset = vec2.add(position, offset)
     if portalOffsets then
       world.spawnProjectile(portal, vec2.add(newOffset, portalOffsets[index]), activeItem.ownerEntityId(), {0,0}, false, {})
     end
-    world.spawnProjectile(self.projectileType, newOffset, activeItem.ownerEntityId(), {0,-1}, false, params)
+    world.spawnProjectile(self.projectileType, newOffset, activeItem.ownerEntityId(), direction[index], false, params)
   end
 end
 

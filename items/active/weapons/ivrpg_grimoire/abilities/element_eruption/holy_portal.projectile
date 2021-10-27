@@ -23,6 +23,7 @@
       "file" : "/items/active/weapons/ivrpg_grimoire/abilities/element_eruption/portal_vanish.config"
     }
   ],
+  "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/element_eruption/portal.lua"],
   "emitters" : [ "stargazer1", "stargazer1" ]
 }
 

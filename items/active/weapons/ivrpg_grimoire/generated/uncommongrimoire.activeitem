@@ -1,0 +1,179 @@
+{
+  "itemName" : "ivrpg_uncommongrimoire",
+  "price" : 720,
+  "maxStack" : 1,
+  "rarity" : "Uncommon",
+  "description" : "An ancient tome containing uncommon scriptures.",
+  "shortdescription" : "Uncommon Grimoire",
+  "category" : "Grimoire",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "grimoire", "magic"],
+  "tooltipKind" : "ivrpg_grimoire",
+  "inventoryIcon" : "icons/<elementalType>.png",
+
+  "animation" : "/items/active/weapons/ivrpg_grimoire/generated/generatedgrimoire.animation",
+
+  "scripts" : ["/items/active/weapons/ivrpg_grimoire/grimoire.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "weaponRotation" : -30,
+      "twoHanded" : false,
+      "weaponOffset" : [-0.25, 1.25],
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 0.6,
+      "armRotation" : 0,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [0.0, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 0,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [0.0, 1.50],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.2,
+      "armRotation" : -10,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [-0.25, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalConfig" : {
+    "earth" : {
+      "color" : [150, 75, 0, 255],
+      "hue" : "964B00"
+    },
+    "fire" : {
+      "color" : [255, 0, 0, 255],
+      "hue" : "EE5555"
+    },
+    "ice" : {
+      "color" : [0, 255, 255, 255],
+      "hue" : "55DDFF"
+    },
+    "electric" : {
+      "color" : [255, 255, 0, 255],
+      "hue" : "EEFF55"
+    },
+    "poison" : {
+      "color" : [0, 255, 0, 255],
+      "hue" : "55FF88"
+    },
+    "nova" : {
+      "color" : [255, 0, 255, 255],
+      "hue" : "FF55FF"
+    },
+    "demonic" : {
+      "color" : [0, 0, 0, 255],
+      "hue" : "555555"
+    },
+    "holy" : {
+      "color" : [255, 255, 205, 255],
+      "hue" : "FFFFBB"
+    }
+  },
+
+  "builder" : "/items/active/weapons/ivrpg_grimoire/buildtome.lua",
+  "builderConfig" : [{
+    "nameGenerator" : "grimoirenames.config:",
+    "elementalType" : [
+      "earth",
+      "fire",
+      "ice",
+      "electric",
+      "poison",
+      "nova"
+    ],
+    "altElementalType" : {
+      "nova" : ["fire", "electric", "ice"],
+      "fire" : ["fire", "electric"],
+      "electric" : ["electric", "fire"],
+      "ice" : ["ice", "poison"],
+      "poison" : ["poison", "ice"],
+      "earth" : ["earth"]
+    },
+    "elementalConfig" : {
+      "earth" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [150, 75, 0]
+        }}}
+      },
+      "fire" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [140, 40, 20]
+        }}}
+      },
+      "ice" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [20, 80, 140]
+        }}}
+      },
+      "electric" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [80, 20, 140]
+        }}}
+      },
+      "poison" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [20, 140, 20]
+        }}}
+      },
+      "nova" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [120, 40, 120]
+        }}}
+      },
+      "demonic" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [20, 20, 20]
+        }}}
+      },
+      "holy" : {
+        "animationCustom" : { "lights" : { "glow" : {
+          "color" : [160, 140, 120]
+        }}}
+      }
+    },
+    "animationParts" : {
+      "grimoire" : {
+        "path" : "grimoire/<elementalType>.png"
+      },
+      "chargeState" : {
+        "path" : "charges/charge.png"
+      }
+    },
+    "primaryAbilities" : {
+      "earth" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementbolt", "ivrpg_elementeruption"],
+      "fire" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_chaosscythe", "ivrpg_elementeruption"],
+      "ice" : ["ivrpg_elementsunder", "ivrpg_elementbolt", "ivrpg_chaosscythe", "ivrpg_elementeruption"],
+      "electric" : ["ivrpg_elementsunder", "ivrpg_elementbolt", "ivrpg_chaosbeam", "ivrpg_elementeruption"],
+      "poison" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_chaosbeam", "ivrpg_elementeruption"],
+      "nova" : ["ivrpg_elementsunder", "ivrpg_elementburst", "ivrpg_elementbolt", "ivrpg_chaosscythe", "ivrpg_chaosbeam", "ivrpg_elementeruption"]
+    },
+    "altAbilities" : {
+      "earth" : ["ivrpg_greaterbarrier", "ivrpg_elementwave"],
+      "fire" : ["ivrpg_elementstorm", "ivrpg_greatermote", "ivrpg_elementwave"],
+      "ice" : ["ivrpg_elementstorm", "ivrpg_elementwave", "ivrpg_greatermist"],
+      "electric" : ["ivrpg_elementstorm", "ivrpg_greatermote", "ivrpg_elementwave"],
+      "poison" : ["ivrpg_elementstorm", "ivrpg_elementwave", "ivrpg_greatermist"],
+      "nova" : ["ivrpg_elementwave", "ivrpg_elementblade"]
+    }
+  }]
+}

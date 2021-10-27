@@ -1,0 +1,30 @@
+{
+  "projectileName" : "ivrpg_fireportal",
+  "timeToLive" : 0.7,
+  "bounces" : -1,
+  "renderLayer" : "Player-2",
+  "image" : "fire_portal.png",
+  "animationCycle" : 0.05,
+  "piercing" : true,
+  "physics" : "laser",
+  "frameNumber" : 1,
+  "windupFrames" : 5,
+  "winddownFrames" : 5,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "pointLight" : true,
+  "speed" : 0,
+  "power" : 0,
+  "damageKind" : "default",
+  "damageType" : "NoDamage",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/weapons/ivrpg_grimoire/abilities/element_eruption/portal_vanish.config"
+    }
+  ],
+  "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/element_eruption/portal.lua"],
+  "emitters" : [ "stargazer1", "stargazer1" ]
+}
+
+

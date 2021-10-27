@@ -108,6 +108,28 @@
       "inheritDamageFactor" : 0.05,
       "direction" : [0, -1],
       "offsetRange" : [-1.75, -0.5, 1.75, -0.5]
+    },
+    {
+      "delayTime" : 0.55,
+      "loopTime" : 0.5,
+      "loopTimeVariance" : 0.1,
+      "action" : "projectile",
+      "type" : "electro",
+      "config" : {},
+      "inheritDamageFactor" : 0.3,
+      "direction" : [0, -1],
+      "offsetRange" : [-1.75, -0.5, 1.75, -0.5]
+    },
+    {
+      "delayTime" : 0.65,
+      "loopTime" : 0.5,
+      "loopTimeVariance" : 0.1,
+      "action" : "projectile",
+      "type" : "lightning2",
+      "config" : {},
+      "inheritDamageFactor" : 0.2,
+      "direction" : [0, -1],
+      "offsetRange" : [-1.75, -0.5, 1.75, -0.5]
     }
   ],
 

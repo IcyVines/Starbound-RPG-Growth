@@ -20,7 +20,8 @@
     "projectileDistance" : 0,
     "projectileType" : "ivrpg_nosferatu",
     "projectileParameters" : {
-      "baseDamage" : 5
+      "baseDamage" : 5,
+      "nosferatu" : true
     },
     
     "elementalTypes" : [ "demonic" ]

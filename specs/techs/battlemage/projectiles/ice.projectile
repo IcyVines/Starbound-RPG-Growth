@@ -1,0 +1,15 @@
+{
+  "projectileName" : "ivrpg_battlemageice",
+  "image" : "ice.png",
+  "animationCycle" : 0.5,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 4,
+  "power" : 50,
+  "speed" : 70,
+  "lightColor" : [152, 152, 252],
+  "timeToLive" : 0.2,
+  "bounces" : 1,
+  "piercing" : false,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "damageKind" : "ice"
+}

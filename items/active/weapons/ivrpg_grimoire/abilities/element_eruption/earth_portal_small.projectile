@@ -1,0 +1,24 @@
+{
+  "projectileName" : "ivrpg_earthsmallportal",
+  "timeToLive" : 0.9,
+  "bounces" : -1,
+  "renderLayer" : "Player+1",
+  "image" : "earth_portal_small.png",
+  "animationCycle" : 0.05,
+  "piercing" : true,
+  "physics" : "laser",
+  "frameNumber" : 1,
+  "windupFrames" : 5,
+  "winddownFrames" : 5,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "pointLight" : true,
+  "speed" : 0,
+  "power" : 0,
+  "damageKind" : "default",
+  "damageType" : "NoDamage",
+  "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/element_eruption/portal.lua"],
+  "emitters" : [ ]
+}
+
+

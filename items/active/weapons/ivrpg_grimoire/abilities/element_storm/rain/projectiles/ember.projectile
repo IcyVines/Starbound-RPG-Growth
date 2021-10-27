@@ -1,0 +1,20 @@
+{
+  "projectileName" : "ivrpg_firehail",
+  "image" : "ember.png",
+  "animationCycle" : 0.4,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "speed" : 8,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/fireimpactmute.config"
+    }
+  ],
+  "power" : 0.0,
+  "damageKind" : "fire",
+  "damageType" : "ignoresdef",
+  "bounces" : 0,
+  "hydrophobic" : true
+}

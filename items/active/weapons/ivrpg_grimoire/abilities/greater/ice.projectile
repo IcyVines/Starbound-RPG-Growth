@@ -1,0 +1,57 @@
+{
+  "projectileName" : "ivrpg_icemist",
+  "physics" : "hover",
+  "timeToLive" : 6,
+  "image" : "ice.png",
+  "animationCycle" : 0.4,
+  "lightColor" : [50, 80, 110],
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+      "time" : 0.2,
+      "action" : "loop",
+      "count" : 1,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/statuseffects/frozen/frozen.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1.0, 1.0],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.35,
+            "fade" : 1,
+            "size" : 0.6,
+            "layer" : "back",
+            "timeToLive" : 0.35,
+            "variance" : {
+              "position" : [2.0, 2.0],
+              "initialVelocity" : [2.5, 2.5]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  
+  "speed" : 0,
+  "power" : 0,
+  "damageKind" : "applystatus",
+  "damageType" : "Damage",
+  "damageRepeatTimeout" : 0.1,
+  "scripts" : ["mist.lua"],
+  "statusEffects" : [{"effect" : "ivrpgsacrifice", "duration" : 10}],
+  "damagePoly" : [ [-16, 16], [-16, -16], [16, -16], [16, 16]],
+  "emitters" : [ ],
+
+  "renderLayer" : "Projectile+1",
+  "orientationLocked" : true,
+
+  "bounces" : -1,
+  "piercing" : true
+
+  //"scripts" : [ "/projectiles/activeitems/staff/staffprojectile.lua" ],
+  //"scriptDelta" : 1
+}

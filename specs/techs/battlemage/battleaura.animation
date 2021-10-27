@@ -151,19 +151,19 @@
           "ionic_aura" : {
             "front1" : {
               "properties" : {
-                "image" : "ionic_aura.png:front1.<frame>",
+                "image" : "ionic_aura.png:front1.<frame><ionic>",
                 "zLevel" : 2
               }
             },
             "front2" : {
               "properties" : {
-                "image" : "ionic_aura.png:front2.<frame>",
+                "image" : "ionic_aura.png:front2.<frame><ionic>",
                 "zLevel" : 2
               }
             },
             "back" : {
               "properties" : {
-                "image" : "ionic_aura.png:back.<frame>",
+                "image" : "ionic_aura.png:back.<frame><ionic>",
                 "zLevel" : -2
               }
             },
@@ -185,13 +185,13 @@
           "iron_aura" : {
             "front" : {
               "properties" : {
-                "image" : "iron_aura.png:front.<frame>",
+                "image" : "iron_aura.png:front.<frame><iron>",
                 "zLevel" : 2
               }
             },
             "back" : {
               "properties" : {
-                "image" : "iron_aura.png:back.<frame>",
+                "image" : "iron_aura.png:back.<frame><iron>",
                 "zLevel" : -2
               }
             },

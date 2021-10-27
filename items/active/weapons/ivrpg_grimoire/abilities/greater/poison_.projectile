@@ -1,0 +1,38 @@
+{
+  "projectileName" : "ivrpg_poisonmist2",
+  "physics" : "gas",
+  "bounces" : -1,
+  "timeToLive" : 5,
+  "speed" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "status.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+      "time" : 0.05,
+      "repeat" : true,
+      "action" : "loop",
+      "count" : 1,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "poisongas",
+          "config" : {
+            "initialVelocity" : [0,0],
+            "finalVelocity" : [0,0]
+          }
+        }
+      ]
+    }
+  ],
+  "power" : 0,
+  "piercing" : true,
+  "damageKind" : "hidden",
+  "damageType" : "ignoresdef",
+  "damagePoly" : [ [-80, -80], [-80, 80], [80, 80], [80, -80]  ],
+  "flippable" : true,
+  "statusEffects" : [
+    {"effect" : "weakpoison", "duration" : 20 }
+  ]
+}
