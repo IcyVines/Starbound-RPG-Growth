@@ -7,28 +7,28 @@
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 80,
+    "energyCost" : 50,
     "fireTime" : 0.2,
-    "baseDps" : 10,
+    "baseDps" : 20,
     "energyUsage" : 30,
 
     "damageConfig" : {
       "statusEffects" : [ ],
       "damageSourceKind" : "plasma",
-      "knockback" : 8
+      "knockback" : 15
     },
 
     "maxCastRange" : 100,
 
     "spawnLocation" : "atTome",
     "travelDirection" : "none",
-    "chargeTimeModifier" : 1.0,
+    "chargeTimeModifier" : 0.8,
 
     "projectileCount" : 1,
     "projectileDistance" : 0,
     "projectileType" : "ivrpg_<elementalType>chaosgate",
     "projectileParameters" : {
-      "baseDamage" : 10,
+      "baseDamage" : 20,
       "knockback" : 20,
       "timeToLive" : 1,
       "speed" : 0,

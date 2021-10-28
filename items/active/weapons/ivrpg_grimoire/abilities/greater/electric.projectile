@@ -16,6 +16,6 @@
   "damageKind" : "applystatus",
   "damageType" : "Damage",
   "scripts" : ["mote.lua"],
-  "statusEffects" : [{"effect" : "electrified", "duration" : 10}],
+  "statusEffects" : [{"effect" : "ivrpgoverload", "duration" : 10}],
   "damageRepeatTimeout" : 0.1
 }

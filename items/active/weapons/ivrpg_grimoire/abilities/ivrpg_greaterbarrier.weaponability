@@ -16,11 +16,11 @@
     "projectileType" : "ivrpg_<altElementalType>barrier",
     "projectileParameters" : {
       "shieldParameters" : {
-        "poly" : [[1.5,1], [1.5,-2.25], [-1.5,-2.25], [-1.5,1]],
-        "health" : 10,
+        "poly" : [[1.25,1], [1.25,-2.25], [-1.25,-2.25], [-1.25,1]],
+        "health" : 30,
         "baseDamage" : 4,
         "damageType" : "Knockback",
-        "knockback" : 30
+        "knockback" : 50
       }
     },
     

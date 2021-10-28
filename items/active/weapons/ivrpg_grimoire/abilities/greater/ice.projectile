@@ -42,7 +42,7 @@
   "damageType" : "Damage",
   "damageRepeatTimeout" : 0.1,
   "scripts" : ["mist.lua"],
-  "statusEffects" : [{"effect" : "ivrpgsacrifice", "duration" : 10}],
+  "statusEffects" : [{"effect" : "ivrpgembrittle", "duration" : 10}, {"effect" : "frostslow", "duration" : 10}],
   "damagePoly" : [ [-16, 16], [-16, -16], [16, -16], [16, 16]],
   "emitters" : [ ],
 

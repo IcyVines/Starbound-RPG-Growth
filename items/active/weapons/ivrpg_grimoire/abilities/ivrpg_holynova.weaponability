@@ -7,7 +7,7 @@
     "scripts" : ["/items/active/weapons/ivrpg_grimoire/abilities/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
-    "energyCost" : 80,
+    "energyCost" : 50,
 
     "spawnLocation" : "atCursor",
     "travelDirection" : "none",

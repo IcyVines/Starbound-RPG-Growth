@@ -13,7 +13,7 @@
     "travelDirection" : "none",
     "behavior" : "followPlayer",
     "notDespawned" : true,
-    "chargeTimeModifier" : 0.8,
+    "chargeTimeModifier" : 2.5,
 
     "maxCastRange" : 10,
 
