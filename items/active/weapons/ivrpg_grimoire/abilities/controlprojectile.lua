@@ -78,8 +78,8 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
   self.cooldownTimer = math.max(self.cooldownTimer - dt, 0)
 
   -- Nosferatu
-  if self.nosferatuActive and world.entityExists(self.nosferatuActive) then
-    world.sendEntityMessage(self.nosferatuActive, "addEphemeralEffect", "ivrpg_nosferatu", 0.5)
+  if self.nosferatuActive and world.entityExists(self.nosferatuActive) and status.overConsumeResource("energy", dt * 10) then
+    world.sendEntityMessage(self.nosferatuActive, "addEphemeralEffect", "ivrpg_nosferatu", 0.5, activeItem.ownerEntityId())
     activeItem.setScriptedAnimationParameter("nosferatu", {frame = self.nosferatuFrame, position = {mcontroller.xPosition(), mcontroller.yPosition()}, monsterPos = world.entityPosition(self.nosferatuActive)})
     self.nosferatuFrameTimer = self.nosferatuFrameTimer - dt
     if self.nosferatuFrameTimer <= 0 then
