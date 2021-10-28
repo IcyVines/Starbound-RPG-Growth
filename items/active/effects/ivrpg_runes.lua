@@ -16,5 +16,8 @@ function update()
   if nosferatu then
     localAnimator.addDrawable({image = "/items/active/weapons/ivrpg_grimoire/abilities/nosferatu/front.png:"..tostring(nosferatu.frame), position = nosferatu.position}, "Player+1")
     localAnimator.addDrawable({image = "/items/active/weapons/ivrpg_grimoire/abilities/nosferatu/back.png:"..tostring(nosferatu.frame), position = nosferatu.position}, "Player-1")
+
+    localAnimator.addDrawable({image = "/items/active/weapons/ivrpg_grimoire/abilities/nosferatu/monster/front.png:"..tostring(nosferatu.frame), position = nosferatu.monsterPos}, "Monster+1")
+    localAnimator.addDrawable({image = "/items/active/weapons/ivrpg_grimoire/abilities/nosferatu/monster/back.png:"..tostring(nosferatu.frame), position = nosferatu.monsterPos}, "Monster-1")
   end
 end

@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpg_nosferatu",
+  "blockingStat" : "demonicImmunity",
+  "effectConfig" : {},
+  "defaultDuration" : 1.5,
+
+  "scripts" : [
+    "ivrpg_nosferatu.lua"
+  ],
+
+  "animationConfig" : "ivrpg_nosferatu.animation",
+
+  "label" : "Nosferatu",
+  "icon" : "/interface/statuses/slow.png"
+}

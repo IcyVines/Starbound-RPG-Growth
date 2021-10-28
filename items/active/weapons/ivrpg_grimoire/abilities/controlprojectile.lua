@@ -78,13 +78,17 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
   self.cooldownTimer = math.max(self.cooldownTimer - dt, 0)
 
   -- Nosferatu
-  if self.nosferatuActive then
-    activeItem.setScriptedAnimationParameter("nosferatu", {frame = self.nosferatuFrame, position = {mcontroller.xPosition(), mcontroller.yPosition() - 0.75}})
+  if self.nosferatuActive and world.entityExists(self.nosferatuActive) then
+    world.sendEntityMessage(self.nosferatuActive, "addEphemeralEffect", "ivrpg_nosferatu", 0.5)
+    activeItem.setScriptedAnimationParameter("nosferatu", {frame = self.nosferatuFrame, position = {mcontroller.xPosition(), mcontroller.yPosition()}, monsterPos = world.entityPosition(self.nosferatuActive)})
     self.nosferatuFrameTimer = self.nosferatuFrameTimer - dt
     if self.nosferatuFrameTimer <= 0 then
-      self.nosferatuFrame = (self.nosferatuFrame + 1) % 11
+      self.nosferatuFrame = (self.nosferatuFrame + 1) % 20
       self.nosferatuFrameTimer = 0.05
     end
+  else
+    activeItem.setScriptedAnimationParameter("nosferatu", false)
+    self.nosferatuActive = false
   end
 
   -- Greater Barrier
@@ -308,7 +312,7 @@ function ControlProjectile:createProjectiles()
   end
 
   if pParams.nosferatu then
-    self.nosferatuActive = true
+    self:findNosferatuTarget()
     self.nosferatuFrame = 0
     self.nosferatuFrameTimer = 0.05
     return
@@ -373,6 +377,17 @@ function ControlProjectile:createProjectiles()
   if pParams.customPhysics then
     pParams.customPhysics.position = activeItem.ownerAimPosition()
     self.customPhysics = pParams.customPhysics
+  end
+end
+
+function ControlProjectile:findNosferatuTarget()
+  local targets = enemyQuery(activeItem.ownerAimPosition(), 3, {}, activeItem.ownerEntityId(), false)
+  if targets then
+    for _,id in ipairs(targets) do
+      if world.entityExists(id) then
+        self.nosferatuActive = id
+      end
+    end
   end
 end
 
