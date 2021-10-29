@@ -730,7 +730,7 @@
   "inactiveElementalType" : "physical",
   "activeElementalType" : "nova",
   "inactiveDamageType": "bluntstaff",
-  "activeDamageType" : "novastaff",
+  "activeDamageType" : "novastaff_solstice",
   "inactiveEnergyUsage": 0,
 
 	"builder": "/items/buildscripts/buildunrandweapon.lua"

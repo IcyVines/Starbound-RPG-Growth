@@ -47,10 +47,6 @@ function uninit()
 end
 
 function update(args)
-  --self.shiftHeld = not args.moves["run"]
-  --status.addEphemeralEffect("ivrpgbattleaura" .. self.stance, 2)
-  --status.removeEphemeralEffect("ivrpgbattleaura" .. self.oldStance)
-  --nearbyAllies()
   incrementIonic()
   incrementIron(args.dt)
   incrementBlood()
@@ -158,6 +154,9 @@ function incrementBlood()
         self.bloodCount = math.min(1, self.bloodCount + notification.healthLost / 1000)
         if self.bloodCount == 1 then
           self.bloodFlash = true
+          self.waitTimer = self.waitTime
+        end
+        if notification.damageSourceKind == "novastaff_solstice" then
           self.waitTimer = self.waitTime
         end
       end

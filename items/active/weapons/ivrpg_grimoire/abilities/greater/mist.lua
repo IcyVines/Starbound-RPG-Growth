@@ -2,7 +2,7 @@ require "/scripts/vec2.lua"
 require "/scripts/ivrpgutil.lua"
 
 function init()
-  script.setUpdateDelta(30)
+  script.setUpdateDelta(10)
   --message.setHandler("kill", projectile.die)
   math.randomseed(os.time())
   self.owner = projectile.sourceEntity()
@@ -46,7 +46,7 @@ function update()
   if self.home then
     local distanceFrom = world.distance(self.home, mcontroller.position())
     if vec2.mag(distanceFrom) > 1 then
-      mcontroller.setVelocity(distanceFrom)
+      mcontroller.approachVelocity(vec2.mul(vec2.norm(distanceFrom), 30), 500)
     end
   end
 end

@@ -482,6 +482,11 @@ function killedEnemy()
       if notification.damageDealt > notification.healthLost and notification.healthLost > 0 then
         if string.find(self.creature or "", "poptop") then self.bloodlust = self.bloodlust + 3 end
         self.giantCounter = self.giantCounter + (self.giant and 0 or 1)
+        if notification.damageSourceKind == "ivrpg_poptopslash" then
+          status.modifyResource("health", notification.damageDealt * 0.15)
+        elseif notification.damageSourceKind == "ivrpg_orbideslash" then
+          status.modifyResource("health", notification.damageDealt * 0.1)
+        end
       end
     end
   end

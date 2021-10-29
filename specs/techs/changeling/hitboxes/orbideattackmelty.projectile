@@ -5,7 +5,7 @@
   "timeToLive" : 0.2,
   "speed" : 0,
   "power" : 30,
-  "damageKind" : "slash",
+  "damageKind" : "ivrpg_orbideslash",
   "damagePoly" : [ [0.8, 8.5], [8, 12], [11, 8], [12, -1], [2.4, -9.2], [0.8, -11], [-1.6, -11], [-3.4, -9.2], [-3.4, 6.4], [-1.6, 8.5] ],
   "damageRepeatTimeout" : 0.25,
 

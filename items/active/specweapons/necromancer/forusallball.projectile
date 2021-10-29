@@ -88,7 +88,7 @@
   ],
   "speed" : 50,
   "power" : 30,
-  "damageKind" : "demonic",
+  "damageKind" : "ivrpg_demonicscythe_forusall",
   "damagePoly" : [ [-10, 0], [-7, -7], [0, -10], [7, -7], [10, 0], [7, 7], [0, 10], [-7, 7] ],
   "statusEffects" : [ "ivrpgsacrifice" ],
   "damageRepeatTimeout" : 0.25,
