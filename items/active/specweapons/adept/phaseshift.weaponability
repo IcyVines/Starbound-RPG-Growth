@@ -1,18 +1,35 @@
 {
+  "animationCustom" : {
+    "sounds" : {
+      "addGuide1" : [ "/items/active/specweapons/adept/sfx/1.ogg" ],
+      "addGuide2" : [ "/items/active/specweapons/adept/sfx/2.ogg" ],
+      "addGuide3" : [ "/items/active/specweapons/adept/sfx/3.ogg" ],
+      "addGuide4" : [ "/items/active/specweapons/adept/sfx/4.ogg" ],
+      "addGuide5" : [ "/items/active/specweapons/adept/sfx/5.ogg" ],
+      "addGuide6" : [ "/sfx/interface/sniper_mark_pitch6.ogg" ],
+      "addGuide7" : [ "/sfx/interface/sniper_mark_pitch7.ogg" ],
+      "addGuide8" : [ "/sfx/interface/sniper_mark_pitch8.ogg" ],
+      "addGuide9" : [ "/sfx/interface/sniper_mark_pitch9.ogg" ],
+      "addGuide10" : [ "/sfx/interface/sniper_mark_pitch10.ogg" ],
+      "discharge" : [ ]
+    }
+  },
+
   "ability" : {
     "type" : "phaseshift",
     "name" : "Phase Shift",
-    "scripts" : ["/items/active/specweapons/adept/controlprojectile.lua"],
+    "scripts" : ["/items/active/specweapons/adept/phaseshift.lua"],
     "class" : "ControlProjectile",
-
-    "immediateEnergyCost" : 50,
-    "energyCost" : 100,
-
     "maxCastRange" : 25,
 
-    "projectileType" : "phaseshift",
-    "projectileParameters" : {
-      "baseDamage" : 6
-    }
+    "chargeTime" : 1.6,
+    "energyCost" : 15,
+
+    "projectileType" : "ivrpg_phaseshift",
+    "maxGuides" : 5,
+    "guideDistance" : 8,
+    "guideTime" : 0.1,
+
+    "guideRefreshRate" : 2.0
   }
 }

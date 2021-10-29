@@ -1,5 +1,5 @@
 {
-  "itemName" : "ivrpgwphaseshift",
+  "itemName" : "ivrpgwphaseshift_old",
   "price" : 1200,
   "maxStack" : 1,
   "rarity" : "Essential",
@@ -78,7 +78,7 @@
       "weaponRotation" : -50,
       "twoHanded" : false,
 
-      "allowRotate" : false,
+      "allowRotate" : true,
       "allowFlip" : true
     },
     "cooldown" : {

@@ -1,9 +1,11 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
+require "/scripts/ivrpgutil.lua"
 
 function init()
   self.id = effect.sourceEntity()
   self.burstReady = false
+  self.pushReady = false
   self.speedStatus = config.getParameter("speedStatus")
   self.speedRange = config.getParameter("speedRange")
   self.statusLength = config.getParameter("statusLength")
@@ -18,14 +20,21 @@ function update(dt)
   local maxEnergy = status.stat("maxEnergy")
   local energyRatio = energy/maxEnergy
   local fullEnergy = energy == maxEnergy
-  status.setPersistentEffects("ivrpgfluctuation", {
+  --[[status.setPersistentEffects("ivrpgfluctuation", {
     {stat = "protection", effectiveMultiplier = 0.5 + energyRatio^4}
-  })
+  })]]
 
   animator.setParticleEmitterActive("embers", fullEnergy)
 
   if energy < maxEnergy then
     self.burstReady = true
+  elseif energy > 0 then
+    self.pushReady = true
+  end
+
+  if self.pushReady and energy <= 0 then
+    self.pushReady = false
+    push()
   end
 
   if self.burstReady and fullEnergy then
@@ -65,6 +74,18 @@ function speedPulse()
       world.sendEntityMessage(id, "addEphemeralEffect", self.speedStatus, self.statusLength, self.id)
     end
     end
+end
+
+function push()
+  --world.spawnProjectile("ivrpg_adeptburst", mcontroller.position(), self.id, {0,0}, true, {})
+  local targets = enemyQuery(mcontroller.position(), 12, {}, self.id, true)
+  if targets then
+    for _,id in ipairs(targets) do
+      if world.entityExists(id) then
+        world.sendEntityMessage(id, "setVelocity", vec2.mul(vec2.norm(world.distance(world.entityPosition(id), mcontroller.position())), 50))
+      end
+    end
+  end
 end
 
 function uninit()

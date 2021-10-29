@@ -13,5 +13,6 @@
   "flippable" : true,
   "damageKind" : "demonic",
   "statusEffects" : ["ivrpgsacrifice"],
-  "knockback" : 30
+  "knockback" : 30,
+  "scripts" : ["implode.lua"]
 }
