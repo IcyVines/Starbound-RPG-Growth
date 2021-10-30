@@ -6,11 +6,11 @@
       "addGuide3" : [ "/items/active/specweapons/adept/sfx/3.ogg" ],
       "addGuide4" : [ "/items/active/specweapons/adept/sfx/4.ogg" ],
       "addGuide5" : [ "/items/active/specweapons/adept/sfx/5.ogg" ],
-      "addGuide6" : [ "/sfx/interface/sniper_mark_pitch6.ogg" ],
-      "addGuide7" : [ "/sfx/interface/sniper_mark_pitch7.ogg" ],
-      "addGuide8" : [ "/sfx/interface/sniper_mark_pitch8.ogg" ],
-      "addGuide9" : [ "/sfx/interface/sniper_mark_pitch9.ogg" ],
-      "addGuide10" : [ "/sfx/interface/sniper_mark_pitch10.ogg" ],
+      "addGuide6" : [ "/items/active/specweapons/adept/sfx/6.ogg" ],
+      "addGuide7" : [ "/items/active/specweapons/adept/sfx/7.ogg" ],
+      "addGuide8" : [ "/items/active/specweapons/adept/sfx/8.ogg" ],
+      "addGuide9" : [ "/items/active/specweapons/adept/sfx/9.ogg" ],
+      "addGuide10" : [ "/items/active/specweapons/adept/sfx/1.ogg" ],
       "discharge" : [ ]
     }
   },

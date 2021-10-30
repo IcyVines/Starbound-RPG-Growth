@@ -14,7 +14,7 @@
   "pointLight" : true,
   "speed" : 0,
   "power" : 8.0,
-  "damageKind" : "ivrpg_demonicscythe",
+  "damageKind" : "holy",
   "actionOnReap" : [
     {
       "action" : "particle",
