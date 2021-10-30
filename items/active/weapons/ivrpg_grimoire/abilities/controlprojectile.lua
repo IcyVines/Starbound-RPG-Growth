@@ -247,7 +247,7 @@ function ControlProjectile:discharge()
   animator.setAnimationState("charge", "off")
   animator.setAnimationState("bookState", "idle")
 
-  if self:targetValid(activeItem.ownerAimPosition()) and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) and self.abilityActive then
+  if self:targetValid(activeItem.ownerAimPosition()) and self.abilityActive and status.overConsumeResource("energy", self.energyCost * self.baseDamageFactor) then
     animator.playSound(self.elementalType.."activate")
     self:createProjectiles()
   else

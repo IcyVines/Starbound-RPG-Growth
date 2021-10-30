@@ -757,7 +757,7 @@ function updateClassicMode()
         if root.itemHasTag(self.heldItem, "melee") then
           classicType = "strength"
           multiplier = 0.5
-        elseif root.itemHasTag(self.heldItem, "staff") then
+        elseif root.itemHasTag(self.heldItem, "staff") or root.itemHasTag(self.heldItem, "grimoire") then
           classicType = "intelligence"
           multiplier = 0.5
         elseif root.itemHasTag(self.heldItem, "ranged") then
@@ -771,7 +771,7 @@ function updateClassicMode()
             multiplier = 0.5
           end
         else
-          if root.itemHasTag(self.heldItem, "wand") then
+          if root.itemHasTag(self.heldItem, "wand") or root.itemHasTag(self.heldItem, "orb") then
             classicType = "intelligence"
             multiplier = 0.75
           elseif root.itemHasTag(self.heldItem, "ranged") then
