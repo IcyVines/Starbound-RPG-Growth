@@ -692,9 +692,15 @@ function updateSpecializationTab()
   widget.setText("specializationlayout.specweapontitle", specInfo.weapon.title)
   widget.setText("specializationlayout.specweapontext", concatTableValues(specInfo.weapon.text, "\n"))
   
-  widget.setText("specializationlayout.techname", specInfo.tech.title)
+  if status.statusProperty("ivrpgAttunementElement", false) then
+    local element = status.statusProperty("ivrpgAttunementElement", "fire")
+    widget.setText("specializationlayout.techname", specInfo.tech.attuneTitles[element])
+    widget.setText("specializationlayout.techtext", specInfo.tech.attuneText[element])
+  else
+    widget.setText("specializationlayout.techname", specInfo.tech.title)
+    widget.setText("specializationlayout.techtext", specInfo.tech.text)
+  end
   widget.setText("specializationlayout.techtype", specInfo.tech.type .. " Tech")
-  widget.setText("specializationlayout.techtext", specInfo.tech.text)
   
   local scalingText = concatTableValues(specInfo.effects, "\n", "scaling-up") .. concatTableValues(specInfo.effects, "\n", "scaling-down")
   widget.setText("specializationlayout.statscalingtext", scalingText == "" and "-" or scalingText )

@@ -1,6 +1,6 @@
 {
   "projectileName" : "elementressicebarrier",
-  "image" : "icebarrier.png",
+  "image" : "BARRIER.png",
   "physics" : "gas",
   "frameNumber" : 3,
   "animationCycle" : 0.25,

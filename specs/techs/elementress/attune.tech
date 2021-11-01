@@ -18,7 +18,9 @@
     "statuses" : ["ivrpgsear", "ivrpgembrittle", "ivrpgoverload"],
     "fades" : ["bb552233", "2288cc22", "88882233"],
     "primaryProjectiles" : ["ivrpg_elementressfire", "ivrpg_elementressice", "ivrpg_elementresselectric"],
-    "secondaryProjectiles" : ["molotovflame", "icetrail", "electrictrail"]
+    "primaryPowerTiers" : [[20, 25, 35, 50], [1, 1, 1, 1], [1, 1, 1, 1]],
+    "secondaryProjectiles" : ["flamethrower", "elementressicebarrier", "electricplasmaexplosion"],
+    "secondaryPowerTiers" : [[1, 2, 3, 4], [1, 1, 1, 1], [1, 1, 1, 1]]
   },
 
   "twoHandedCategories" : {

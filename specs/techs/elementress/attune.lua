@@ -27,7 +27,13 @@ function init()
   animator.setAnimationState("gauge", self.element)
   animator.playSound(self.element .. "Activate")
   _, self.damageGivenUpdate = status.inflictedDamageSince()
-  
+  --[[
+  Basic = 1
+  Decent = 2-3
+  Great = 4-5
+  Chaos = 6-7
+  ]]
+
   -- Jolt specific variables
   self.joltTimer = 0
   self.transformFadeTimer = 0
@@ -58,6 +64,7 @@ function toggle()
   status.setStatusProperty("ivrpgAttunement", self.elementMod)
   status.setStatusProperty("ivrpgAttunementLevels", self.levelList)
   animator.playSound(self.element .. "Activate")
+  cooldown(0.2)
 end
 
 function uninit()
@@ -67,7 +74,39 @@ function uninit()
   storePosition()
   deactivate()
   status.clearPersistentEffects("ivrpgattune")
+  status.setStatusProperty("ivrpgAttunementElement", false)
 end
+
+--[[
+Basic Fire+: Flame Burst
+Shoot flame towards your cursor that lingers when it hits an enemy.
+
+Chaos Fire: Conflagrate
+The lingering flame now lingers on contact with walls and creates additional smaller flames that shoot outwards and stick to the ground.
+
+Special Fire: Explosion
+Create a magma zone centered around your cursor. Within the magma zone, enemies take constant damage. While the zone exists, bursts of flame build within and are ejected when finished: these bursts explode on contact.
+
+
+Basic Electric+: Arc Flash
+Chain electricity outwards in all directions with a fixed ranged. If any part of the chain contacts with an enemy, that enemy starts a new chain.
+
+Chaos Electric: Pulsate
+Bolts chaining from enemies chain to you, granting additional energy, and overcharging Electric Potential. While overcharged, all your Attunement Attacks deal an additional chunk of Electric damage.
+
+Special Electric: Thunder
+Call down a quick torrent of massive thunderbolts. Enemies hit by these bolts instantly die if they have less than 50% remaining health.
+
+
+Basic Ice+: Icicle Rush
+Slide forwards, protecting yourself with a heavy icicle which is launched after the slide finishes. If the icicle contacts an enemy during the slide, it impales itself into that enemy, freezing them for one second, and you hop backwards.
+
+Chaos Ice: Shatter
+Upon embedding into a wall or enemy, press Primary Fire again to shatter the icicle. Doing so does massive damage in a small space around it, and also scatters ice shards that do minor damage.
+
+Special Ice: Glacier
+Summon large spikes of ice underneath three nearby enemies. These freeze enemies they hit, preventing them from moving at all.
+]]
 
 function update(args)
   --self.directives = "?fade=" .. self.borderList[self.elementMod] .. "=0.25"
@@ -77,6 +116,18 @@ function update(args)
     {stat = "lavaImmunity", amount = self.element == "fire" and 1 or 0},
     {stat = "invulnerable", amount = self.active and 1 or 0}
   })
+
+  if self.levelList[self.elementMod] <= 1 then
+    self.level = "Lesser"
+  elseif self.levelList[self.elementMod] <= 3 then
+    self.levelName = "Standard"
+  elseif self.levelList[self.elementMod] <= 5 then
+    self.level = "Greater"
+  else
+    self.level = "Chaos"
+  end
+
+  status.setStatusProperty("ivrpgAttunementElement", self.element)
 
   animator.setGlobalTag(self.element.."Mod", tostring(self.levelList[self.elementMod]))
 
@@ -180,7 +231,7 @@ function updateFireStream()
   end
   self.fireActive = true
   if self.fireTimer <= 0 and status.overConsumeResource("energy", self.dt * 10 / self.weaveBonus) then
-    world.spawnProjectile("flamethrower", vec2.add(mcontroller.position(), {mcontroller.facingDirection() / 2, -0.25}), self.id, aimDirection(0.05), false, {
+    world.spawnProjectile(self.projectileList2[1], vec2.add(mcontroller.position(), {mcontroller.facingDirection() / 2, -0.25}), self.id, aimDirection(0.05), false, {
       power = 0.1, powerMultiplier = status.stat("powerMultiplier")
     })
     self.fireTimer = self.fireTime
@@ -193,9 +244,9 @@ function updateIceBarrier()
   local position = mcontroller.position()  
   if self.element == "ice" and #self.barrierProjectiles == 0 then 
     for i=-2,2 do
-      local projectileId = world.spawnProjectile("elementressicebarrier", vec2.add(position, {facingDirection * 3, i}), self.id, {facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
+      local projectileId = world.spawnProjectile(self.projectileList2[2], vec2.add(position, {facingDirection * 3, i}), self.id, {facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
       if projectileId then table.insert(self.barrierProjectiles, projectileId) end
-      projectileId = world.spawnProjectile("elementressicebarrier", vec2.add(position, {-facingDirection * 3, i}), self.id, {-facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
+      projectileId = world.spawnProjectile(self.projectileList2[2], vec2.add(position, {-facingDirection * 3, i}), self.id, {-facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
       if projectileId then table.insert(self.barrierProjectiles, projectileId) end
     end
   elseif self.element ~= "ice" or not status.overConsumeResource("energy", self.dt * 10 / self.weaveBonus) then

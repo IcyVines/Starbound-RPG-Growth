@@ -1,3 +1,5 @@
+require "/scripts/ivrpgutil.lua"
+
 function init()
   script.setUpdateDelta(0)
   message.setHandler("kill", projectile.die)
