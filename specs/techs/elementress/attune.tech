@@ -12,6 +12,15 @@
 
   "chipCost" : 0,
   "joltCollisionPoly" : [ [0.25, 0.75], [0.625, 0.375], [0.625, -0.375], [0.25, -0.75], [-0.25, -0.75], [-0.625, -0.375], [-0.625, 0.375], [-0.25, 0.75] ],
+
+  "elementConfig" : {
+    "elements" : ["fire", "ice", "electric"],
+    "statuses" : ["ivrpgsear", "ivrpgembrittle", "ivrpgoverload"],
+    "fades" : ["bb552233", "2288cc22", "88882233"],
+    "primaryProjectiles" : ["ivrpg_elementressfire", "ivrpg_elementressice", "ivrpg_elementresselectric"],
+    "secondaryProjectiles" : ["molotovflame", "icetrail", "electrictrail"]
+  },
+
   "twoHandedCategories" : {
 
     // BLOCKS

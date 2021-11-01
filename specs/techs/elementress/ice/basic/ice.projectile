@@ -1,6 +1,6 @@
 {
-  "projectileName" : "elementressicespike",
-  "image" : "icespike.png",
+  "projectileName" : "ivrpg_elementressice",
+  "image" : "ice.png",
   "animationCycle" : 0.25,
   "animationLoops" : false,
   "timeToLive" : 0.25,

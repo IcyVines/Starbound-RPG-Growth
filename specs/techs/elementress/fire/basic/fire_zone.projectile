@@ -1,0 +1,26 @@
+{
+  "projectileName" : "ivrpg_firezone",
+  "physics" : "gas",
+  "image" : "fire_zone.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "movementSettings" : {
+    "collisionPoly" : [ [-1, -1], [1, -1], [1, 1], [-1, 1] ]
+  },
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [235, 126, 2],
+  "power" : 42,
+  "knockback" : 40,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "piercing" : true,
+  "bounces" : 0,
+  "damageKind" : "fire",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "statusEffects" : [
+    "burning"
+  ],
+  "hydrophobic" : true,
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
+  "emitters" : [ "fireplasma", "smoke", "flames" ]
+}

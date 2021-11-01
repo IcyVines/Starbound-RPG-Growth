@@ -1,10 +1,14 @@
 {
   "globalTagDefaults" : {
-    "joltDirectives" : ""
+    "joltDirectives" : "",
+    "fireMod" : "1",
+    "iceMod" : "1",
+    "electricMod" : "1"
   },
 
   "animationParts" : {
-    "jolting" : ""
+    "jolting" : "",
+    "gauge" : ""
   },
 
   "animatedParts" : {
@@ -28,6 +32,23 @@
             }
           }
         }
+      },
+      "gauge" : {
+        "default" : "fire",
+        "states" : {
+          "fire" : { 
+            "frames" : 11,
+            "cycle" : 0
+          },
+          "ice" : {
+            "frames" : 11,
+            "cycle" : 0
+          },
+          "electric" : {
+            "frames" : 11,
+            "cycle" : 0
+          }
+        }
       }
     },
     "parts" : {
@@ -41,6 +62,32 @@
             "on" : {
               "properties" : {
                 "image" : "jolt/balllightning.png:<frame><joltDirectives>"
+              }
+            }
+          }
+        }
+      },
+      "gauge" : {
+        "properties" : {
+          "fullbright" : true,
+          "offset" : [0, 4],
+          "zLevel" : 10
+        },
+        "partStates" : {
+          "gauge" : {
+            "fire" : {
+              "properties" : {
+                "image" : "fire/fire_<fireMod>.png"
+              }
+            },
+            "ice" : {
+              "properties" : {
+                "image" : "ice/ice_<iceMod>.png"
+              }
+            },
+            "electric" : {
+              "properties" : {
+                "image" : "electric/electric_<electricMod>.png"
               }
             }
           }
@@ -169,6 +216,10 @@
     "electricCharge" : ["/specs/techs/elementress/charge/charge_electric3.ogg"],
     "fireChargeActivate" : ["/sfx/melee/travelingslash_fire1.ogg","/sfx/melee/travelingslash_fire2.ogg","/sfx/melee/travelingslash_fire3.ogg"],
     "iceChargeActivate" : ["/sfx/melee/travelingslash_ice1.ogg","/sfx/melee/travelingslash_ice2.ogg","/sfx/melee/travelingslash_ice3.ogg","/sfx/melee/travelingslash_ice4.ogg"],
-    "electricChargeActivate" : ["/sfx/melee/travelingslash_electric3.ogg","/sfx/melee/travelingslash_electric4.ogg","/sfx/melee/travelingslash_electric5.ogg"]
+    "electricChargeActivate" : ["/sfx/melee/travelingslash_electric3.ogg","/sfx/melee/travelingslash_electric4.ogg","/sfx/melee/travelingslash_electric5.ogg"],
+
+    "flamethrowerStart" : [ "/sfx/gun/flamethrower_start.ogg" ],
+    "flamethrowerLoop" : [ "/sfx/gun/flamethrower_loop.ogg" ],
+    "flamethrowerEnd" : [ "/sfx/gun/flamethrower_stop.ogg" ]
   }
 }
