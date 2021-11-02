@@ -4,26 +4,26 @@ require "/scripts/util.lua"
 require "/scripts/ivrpgutil.lua"
 
 function init()
-  local elementConfig = config.getParameter("elementConfig", {})
+  self.elementConfig = config.getParameter("elementConfig", {})
 
   -- General variables
   self.id = entity.id()
   self.elementMod = status.statusProperty("ivrpgAttunement", 1)
-  self.elementList = elementConfig.elements
+  self.elementList = self.elementConfig.elements
   self.element = self.elementList[self.elementMod]
-  self.statusList = elementConfig.statuses
-  self.borderList = elementConfig.fades
-  self.projectileList = elementConfig.primaryProjectiles
-  self.projectileList2 = elementConfig.secondaryProjectiles
+  self.statusList = self.elementConfig.statuses
+  self.borderList = self.elementConfig.fades
   self.primaryList = {flameBurst, icicleRush, arcFlash}
   self.action2List = {updateFireStream, updateIceBarrier, activateJolt}
   self.newMod = {2,3,1}
   self.directives = ""
   self.twoHandedCategories = config.getParameter("twoHandedCategories", {})
   self.cooldownTimer = 0
+  self.shiftHeld = false
 
   -- For increasing Attunement
   self.levelList = status.statusProperty("ivrpgAttunementLevels", {1,1,1})
+  self.level = 1
   animator.setAnimationState("gauge", self.element)
   animator.playSound(self.element .. "Activate")
   _, self.damageGivenUpdate = status.inflictedDamageSince()
@@ -118,13 +118,13 @@ function update(args)
   })
 
   if self.levelList[self.elementMod] <= 1 then
-    self.level = "Lesser"
+    self.level = 1
   elseif self.levelList[self.elementMod] <= 3 then
-    self.levelName = "Standard"
+    self.levelName = 2
   elseif self.levelList[self.elementMod] <= 5 then
-    self.level = "Greater"
+    self.level = 3
   else
-    self.level = "Chaos"
+    self.level = 4
   end
 
   status.setStatusProperty("ivrpgAttunementElement", self.element)
@@ -132,8 +132,7 @@ function update(args)
   animator.setGlobalTag(self.element.."Mod", tostring(self.levelList[self.elementMod]))
 
   self.weaveMod = status.stat("ivrpgelementalweave")
-  self.weaveBonus = self.weaveMod == self.elementMod and 2 or 1
-  self.weaveElement = self.elementList[self.weaveMod]
+  self.weaveBonus = (self.weaveMod == self.elementMod) and 1.5 or 1
 
   self.dt = args.dt
   self.shiftHeld = not args.moves["run"]
@@ -193,10 +192,16 @@ end
 function action1(skipCheck)
   if (self.cooldownTimer > 0 or self.active) or ((not skipCheck)
     and world.entityHandItem(self.id, "primary"))
-    or status.statPositive("activeMovementAbilities")
-    or not status.overConsumeResource("energy", 25 / self.weaveBonus) then return end
-  self.primaryList[self.elementMod]()
-  cooldown(1)
+    or status.statPositive("activeMovementAbilities") then return end
+    if self.shiftHeld and status.overConsumeResource("energy", self.elementConfig.ultimateCosts[self.elementMod] / self.weaveBonus) then
+      self.primaryList[self.elementMod]()
+      cooldown(3)
+    elseif not self.shiftHeld and status.overConsumeResource("energy", self.elementConfig.primaryCosts[self.elementMod][self.level] / self.weaveBonus) then
+      self.primaryList[self.elementMod](true)
+      cooldown(1)
+    else
+      return
+    end
 end
 
 -- Check if Alt Hand is empty when Alt Fire is pressed.
@@ -207,10 +212,16 @@ function action1alt()
 end
 
 -- Primary Fire
-function flameBurst()
-  world.spawnProjectile(self.projectileList[self.elementMod], {mcontroller.xPosition(), mcontroller.yPosition() - 0.5}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {
-    power = 4, powerMultiplier = status.stat("powerMultiplier"), speed = 20, timeToLive = 1
-  })
+function flameBurst(standard)
+  if standard then
+    world.spawnProjectile(self.elementConfig.primaryProjectiles[1], {mcontroller.xPosition(), mcontroller.yPosition() - 0.5}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {
+      power = 4, powerMultiplier = status.stat("powerMultiplier"), speed = 20, timeToLive = 1
+    })
+  else
+    world.spawnProjectile(self.elementConfig.ultimateProjectiles[1], tech.aimPosition(), self.id, {0,0}, false, {
+      power = 4, powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 5
+    })
+  end
 end
 
 -- Primary Ice
@@ -230,9 +241,9 @@ function updateFireStream()
     animator.playSound("flamethrowerLoop", -1)
   end
   self.fireActive = true
-  if self.fireTimer <= 0 and status.overConsumeResource("energy", self.dt * 10 / self.weaveBonus) then
-    world.spawnProjectile(self.projectileList2[1], vec2.add(mcontroller.position(), {mcontroller.facingDirection() / 2, -0.25}), self.id, aimDirection(0.05), false, {
-      power = 0.1, powerMultiplier = status.stat("powerMultiplier")
+  if self.fireTimer <= 0 and status.overConsumeResource("energy", self.dt * 30 / self.weaveBonus) then
+    world.spawnProjectile(self.elementConfig.secondaryProjectiles[1], vec2.add(mcontroller.position(), {mcontroller.facingDirection() / 2, -0.25}), self.id, aimDirection(0.05), false, {
+      power = 0.5, powerMultiplier = status.stat("powerMultiplier")
     })
     self.fireTimer = self.fireTime
   end
@@ -244,9 +255,9 @@ function updateIceBarrier()
   local position = mcontroller.position()  
   if self.element == "ice" and #self.barrierProjectiles == 0 then 
     for i=-2,2 do
-      local projectileId = world.spawnProjectile(self.projectileList2[2], vec2.add(position, {facingDirection * 3, i}), self.id, {facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
+      local projectileId = world.spawnProjectile(self.elementConfig.secondaryProjectiles[2], vec2.add(position, {facingDirection * 3, i}), self.id, {facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
       if projectileId then table.insert(self.barrierProjectiles, projectileId) end
-      projectileId = world.spawnProjectile(self.projectileList2[2], vec2.add(position, {-facingDirection * 3, i}), self.id, {-facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
+      projectileId = world.spawnProjectile(self.elementConfig.secondaryProjectiles[2], vec2.add(position, {-facingDirection * 3, i}), self.id, {-facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
       if projectileId then table.insert(self.barrierProjectiles, projectileId) end
     end
   elseif self.element ~= "ice" or not status.overConsumeResource("energy", self.dt * 10 / self.weaveBonus) then

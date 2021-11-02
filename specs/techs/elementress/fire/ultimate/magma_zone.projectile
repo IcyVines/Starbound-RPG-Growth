@@ -1,0 +1,23 @@
+{
+  "projectileName" : "ivrpg_magmazone",
+  "physics" : "gas",
+  "image" : "magma_zone.png",
+  "animationCycle" : 0.75,
+  "frameNumber" : 9,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [235, 126, 2],
+  "power" : 0,
+  "knockback" : 0,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "piercing" : true,
+  "bounces" : -1,
+  "damageKind" : "fire",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "statusEffects" : [
+    "ivrpgsear"
+  ],
+  "hydrophobic" : true,
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
+  "emitters" : [ "fireplasma", "smoke", "flames" ]
+}

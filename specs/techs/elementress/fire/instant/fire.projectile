@@ -9,13 +9,13 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/specs/techs/elementress/fire/basic/fire_explosion.config"
+      "file" : "/specs/techs/elementress/fire/instant/fire_explosion.config"
     }
   ],
   "actionOnHit" : [
     {
       "action" : "config",
-      "file" : "/specs/techs/elementress/fire/basic/fire_zone.config",
+      "file" : "/specs/techs/elementress/fire/instant/fire_zone.config",
       "rotation" : 0,
       "config" : {
         "rotation" : 0

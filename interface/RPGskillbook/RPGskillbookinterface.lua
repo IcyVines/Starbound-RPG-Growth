@@ -1716,18 +1716,22 @@ function buildNewLore()
     loreData = loreData[v].children
   end
   if type(loreData) == "table" then
-    local added = false
-    for k,v in pairsByKeys(loreData) do
-      local newListItem = widget.addListItem("lorelayout.scrollArea.list")
-      widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".title", v.title)
-      widget.setData("lorelayout.scrollArea.list." .. newListItem, k)
-      widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".subtext", (unlocks[k] or mechanicsCheck()) and "" or "^red;Data Obscured")
-      added = true
-    end
-    if not added then
-      widget.setText("lorelayout.scrollArea.text", "^red;Looks like there's nothing here yet!")
-    else
-      widget.setText("lorelayout.scrollArea.text", "")
+    if loreData[1] then -- Table is an array
+      widget.setText("lorelayout.scrollArea.text", concatTableValues(loreData, "\n\n"))
+    else -- Table is a dictionary
+      local added = false
+      for k,v in pairsByKeys(loreData) do
+        local newListItem = widget.addListItem("lorelayout.scrollArea.list")
+        widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".title", v.title)
+        widget.setData("lorelayout.scrollArea.list." .. newListItem, k)
+        widget.setText("lorelayout.scrollArea.list." .. newListItem .. ".subtext", (unlocks[k] or mechanicsCheck()) and "" or "^red;Data Obscured")
+        added = true
+      end
+      if not added then
+        widget.setText("lorelayout.scrollArea.text", "^red;Looks like there's nothing here yet!")
+      else
+        widget.setText("lorelayout.scrollArea.text", "")
+      end
     end
   else
     if #self.loreTable == 4 and self.loreTable[4] == "enemyintelligence" then

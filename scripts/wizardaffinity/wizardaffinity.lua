@@ -10,12 +10,12 @@ function update(dt)
   self.heldItem = world.entityHandItem(self.id, "primary")
   self.heldItem2 = world.entityHandItem(self.id, "alt")
   if self.heldItem then
-    if root.itemHasTag(self.heldItem, "staff") or root.itemHasTag(self.heldItem, "wand") then
+    if root.itemHasTag(self.heldItem, "magic") or root.itemHasTag(self.heldItem, "staff") or root.itemHasTag(self.heldItem, "wand") or root.itemHasTag(self.heldItem, "grimoire") or root.itemHasTag(self.heldItem, "magicorb") then
       pamount = 0.1
     end
   end
   if self.heldItem2 then
-    if root.itemHasTag(self.heldItem2, "wand") then
+    if root.itemHasTag(self.heldItem2, "magic") or root.itemHasTag(self.heldItem2, "wand") or root.itemHasTag(self.heldItem2, "magicorb") then
       pamount = 0.1
     end
   end
