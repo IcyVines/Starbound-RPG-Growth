@@ -19,5 +19,5 @@
   ],
   "hydrophobic" : true,
   "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
-  "emitters" : [ "fireplasma", "smoke", "flames" ]
+  "emitters" : [ ]
 }

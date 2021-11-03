@@ -225,13 +225,26 @@ function flameBurst(standard)
 end
 
 -- Primary Ice
-function icicleRush()
+function icicleRush(standard)
     -- To do
 end
 
 -- Primary Electric
-function arcFlash()
-    -- To do
+function arcFlash(standard)
+  if standard then
+    for i=1,3 do
+      world.spawnProjectile(self.elementConfig.primaryProjectiles[3], {mcontroller.xPosition(), mcontroller.yPosition()}, self.id, {i/3,(i-2)}, false, {
+        power = 0, powerMultiplier = status.stat("powerMultiplier"), speed = 100, timeToLive = 2, chainLimit = 3
+      })
+      world.spawnProjectile(self.elementConfig.primaryProjectiles[3], {mcontroller.xPosition(), mcontroller.yPosition()}, self.id, {-i/3,(i-2)}, false, {
+        power = 0, powerMultiplier = status.stat("powerMultiplier"), speed = 100, timeToLive = 2, chainLimit = 3
+      })
+    end
+  else
+    world.spawnProjectile(self.elementConfig.ultimateProjectiles[3], mcontroller.position(), self.id, {0,-1}, false, {
+      power = 4, powerMultiplier = status.stat("powerMultiplier"), speed = 10, timeToLive = 5
+    })
+  end
 end
 
 -- Flame Thrower
