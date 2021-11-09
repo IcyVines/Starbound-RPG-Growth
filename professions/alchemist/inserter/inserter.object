@@ -1,0 +1,46 @@
+{
+	"objectName" : "ivrpgainserter",
+	"colonyTags" : [],
+	"rarity" : "Legendary",
+	"printable" : false,
+	"description" : "Gotta keep the juice flowing.",
+	"shortdescription" : "^magenta;Alchemic Inserter^white;",
+	"race" : "generic",
+	"category" : "storage",
+	"price" : 0,
+	"health" : 1.5,
+	"slotCount" : 4,
+	"subtitle" : "For the Alchemic Pistol",
+
+	"scripts" : [ "inserter.lua"],
+	"scriptDelta" : 0,
+
+	"apexDescription" : "Sometimes, when looking into the tubes, it feels as though someone is looking back.",
+	"avianDescription" : "I wonder if this technology is heresy.",
+	"floranDescription" : "Fill gunsss with juice.",
+	"glitchDescription" : "Excited. This contraption can store to and siphon from the Alchemic Pistol.",
+	"humanDescription" : "Now this is what I call alchemy, baby!",
+	"hylotlDescription" : "The technology used for this is foreign when compared to ours.",
+	"novakidDescription" : "If this ain't the darndest thing for that alchemy stuff, I dunno what is!",
+	
+	"lightColor" : [180, 40, 160],
+	"lightPosition" : [0, 1],
+
+	"flickerPeriod" : 1.2,
+	"flickerMinIntensity" : 0.95,
+	"flickerMaxIntensity" : 1.00,
+	"flickerPeriodVariance" : 0.0,
+	"flickerIntensityVariance" : 0.0,
+
+	"inventoryIcon" : "inserter.png",
+	"orientations" : [
+    {
+      "image" : "inserter.png",
+      "imagePosition" : [-16, -8],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "background" ]
+    }
+  ]
+
+}

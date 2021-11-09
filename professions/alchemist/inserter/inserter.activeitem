@@ -1,0 +1,18 @@
+{
+  "itemName" : "ivrpgaportableinserter",
+  "printable" : false,
+  "rarity" : "Essential",
+  "description" : "A portable version of the Alchemic Inserter. How the heck does this even work?",
+  "shortdescription" : "Alchemic Inserter",
+  "race" : "generic",
+  "twoHanded" : false,
+  "price" : 0,
+  "maxStack" : 1,
+  "itemTags" : [],
+
+  "inventoryIcon" : "portable_inserter.png",
+  "scripts" : ["portable.lua"],
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/professions/alchemist/inserter/portable.config"
+}

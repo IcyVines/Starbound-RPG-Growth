@@ -131,6 +131,11 @@ function init()
     })
   end)
 
+  message.setHandler("ivrpgExtractRemoval", function(_ ,_ , id, configSrc)
+    local configSrc = root.assetJson(configSrc)
+    player.interact("ScriptPane", configSrc, id)
+  end)
+
 end
 
 function update(dt)

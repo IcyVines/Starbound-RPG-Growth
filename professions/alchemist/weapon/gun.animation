@@ -1,0 +1,219 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : "",
+    "charge0Mod" : "",
+    "charge1Mod" : "",
+    "charge2Mod" : "",
+    "charge3Mod" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.07,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      },
+      "charge0" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+            "frames" : 1,
+            "cycle" : 1
+          }
+        }
+      },
+      "charge1" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+            "frames" : 1,
+            "cycle" : 1
+          }
+        }
+      },
+      "charge2" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+            "frames" : 1,
+            "cycle" : 1
+          }
+        }
+      },
+      "charge3" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+            "frames" : 1,
+            "cycle" : 1
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "butt" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"]
+        }
+      },
+      "middle" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"]
+        }
+      },
+      "barrel" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0, 0], // x offset is set dynamically
+          "transformationGroups" : ["weapon"]
+        }
+      },
+      "charge0" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0.7, 0.25],
+          "transformationGroups" : ["weapon"],
+          "zLevel" : 3,
+          "fullbright" : true
+        },
+        "partStates" : {
+          "charge0" : {
+            "on" : {
+              "properties" : {
+                "image" : "alchemist_charge0.png<charge0Mod>"
+              }
+            }
+          }
+        }
+      },
+      "charge1" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0.7, 0.25],
+          "transformationGroups" : ["weapon"],
+          "zLevel" : 3,
+          "fullbright" : true
+        },
+        "partStates" : {
+          "charge1" : {
+            "on" : {
+              "properties" : {
+                "image" : "alchemist_charge1.png<charge1Mod>"
+              }
+            }
+          }
+        }
+      },
+      "charge2" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0.7, 0.25],
+          "transformationGroups" : ["weapon"],
+          "zLevel" : 3,
+          "fullbright" : true
+        },
+        "partStates" : {
+          "charge2" : {
+            "on" : {
+              "properties" : {
+                "image" : "alchemist_charge2.png<charge2Mod>"
+              }
+            }
+          }
+        }
+      },
+      "charge3" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0.7, 0.25],
+          "transformationGroups" : ["weapon"],
+          "zLevel" : 3,
+          "fullbright" : true
+        },
+        "partStates" : {
+          "charge3" : {
+            "on" : {
+              "properties" : {
+                "image" : "alchemist_charge3.png<charge3Mod>"
+              }
+            }
+          }
+        }
+      },
+      "muzzleFlash" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0.75, 0],
+          "fullbright" : true,
+          "transformationGroups" : ["muzzle"]
+        },
+
+        "partStates" : {
+          "firing" : {
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<variant>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "rotationGroups" : {
+    "weapon" : {
+      "angularVelocity" : 0
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "muzzle" : {}
+  },
+
+  "particleEmitters" : {
+    "muzzleFlash" : {
+      "transformationGroups" : ["muzzle"],
+      "offsetRegion" : [0, 0, 0, 0],
+      "particles" : [ ]
+    }
+  },
+
+  "lights" : {
+    "muzzleFlash" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [90, 90, 0]
+    }
+  },
+
+  "sounds" : {
+    "fire" : [ ]
+  }
+}
