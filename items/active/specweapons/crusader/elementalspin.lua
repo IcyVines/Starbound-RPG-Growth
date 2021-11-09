@@ -64,7 +64,7 @@ function ElementalSpin:windup()
     coroutine.yield()
   end
 
-  animator.stopAllSounds(self.weapon.elementalType.."Spin")
+  animator.stopAllSounds("electricSpin")
   animator.stopAllSounds("fire11")
   if status.overConsumeResource("energy", self.projectileEnergyCost) then
     self:setState(self.fire)
@@ -79,7 +79,7 @@ function ElementalSpin:fire()
 
   animator.setParticleEmitterActive(self.weapon.elementalType.."Spin", false)
   animator.setAnimationState("spinSwoosh", "idle")
-  animator.playSound(self.weapon.elementalType.."SpinFire")
+  animator.playSound("electricSpinFire")
 
   local position = vec2.add(mcontroller.position(), activeItem.handPosition())
   local params = copy(self.projectileParameters)
@@ -94,7 +94,7 @@ function ElementalSpin:reset()
   animator.setAnimationState("spinSwoosh", "idle")
   animator.setParticleEmitterActive(self.weapon.elementalType.."Spin", false)
   activeItem.setOutsideOfHand(false)
-  animator.stopAllSounds(self.weapon.elementalType.."Spin")
+  animator.stopAllSounds("electricSpin")
 end
 
 function ElementalSpin:uninit()

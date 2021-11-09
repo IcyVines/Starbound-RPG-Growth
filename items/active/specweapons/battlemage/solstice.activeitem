@@ -6,7 +6,7 @@
 	"rarity": "Essential",
 	"description": "The highest point you'll ever get.",
 	"shortdescription": "^magenta;Solstice",
-	"tooltipKind": "base",
+	"tooltipKind": "ivrpg_weapon",
 	"category": "staff",
 	"twoHanded": true,
 	"itemTags": ["weapon", "melee", "staff"],
@@ -191,56 +191,56 @@
 							},
 							"fire": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>",
+									"image": "/items/active/weapons/melee/broadsword/swoosh/physicalswoosh.png:<frame>",
 									"offset": [1, 2.5],
 									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
 								}
 							},
 							"fire2": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/physicalswoosh.png:<frame>",
 									"offset": [4.0, 0],
 									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
 								}
 							},
 							"fire3": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>?flipx?scalenearest=0.75",
+									"image": "/items/active/weapons/melee/broadsword/swoosh/physicalswoosh.png:<frame>?flipx?scalenearest=0.75",
 									"offset": [0, 2],
 									"damageArea": [[-4, -3], [-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -3]]
 								}
 							},
 							"fire4": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>",
+									"image": "/items/active/weapons/melee/broadsword/swoosh/physicalswoosh.png:<frame>",
 									"offset": [1, 2],
 									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
 								}
 							},
 							"fire5": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/physicalswoosh.png:<frame>",
 									"offset": [4.0, 0],
 									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
 								}
 							},
 							"fire6": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh3/<elementalType>swoosh.png:<frame>",
+									"image": "/items/active/weapons/melee/broadsword/swoosh3/physicalswoosh.png:<frame>",
 									"offset": [4.0, 0],
 									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
 								}
 							},
 							"fire7": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>?flipy",
+									"image": "/items/active/weapons/melee/broadsword/swoosh/physicalswoosh.png:<frame>?flipy",
 									"offset": [1, -1.5],
 									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
 								}
 							},
 							"fire8": {
 								"properties": {
-									"image": "/items/active/weapons/melee/broadsword/swoosh/<elementalType>swoosh.png:<frame>?flipy?flipx",
+									"image": "/items/active/weapons/melee/broadsword/swoosh/physicalswoosh.png:<frame>?flipy?flipx",
 									"offset": [3, -2.5],
 									"damageArea": [[-5, 2], [-2.5, 3], [1, 3], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
 								}
@@ -322,7 +322,7 @@
 	  },
 
 		"particleEmitters": {
-			"<elementalType>swoosh": {
+			"physicalswoosh": {
 				"active": false,
 				"transformationGroups": ["swoosh"],
 				"emissionRate": 1,
@@ -402,11 +402,11 @@
 
 	"scripts": ["/items/active/specweapons/battlemage/meleeweapon.lua"],
 
-	"elementalType": "physical",
+	"elementalType": "nova",
 
 	"primaryAbilityType": "broadswordcombo",
 	"primaryAbility": {
-		"name": "Combo Slash",
+		"name": "Mage's Vengeance",
 		"type": "broadswordcombo",
 		"scripts": ["/items/active/specweapons/battlemage/meleecombo.lua"],
 		"class": "MeleeCombo",

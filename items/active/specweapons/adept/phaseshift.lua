@@ -101,7 +101,7 @@ function ControlProjectile:discharge()
   self.weapon:setStance(self.stances.discharge)
 
   animator.setAnimationState("charge", "discharge")
-  animator.playSound("physicalactivate")
+  animator.playSound("demonicactivate")
   activeItem.setCursor("/cursors/reticle0.cursor")
   animator.setParticleEmitterActive(self.elementalType .. "charge", false)
 

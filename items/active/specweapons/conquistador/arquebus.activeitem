@@ -7,7 +7,7 @@
   "description" : "Heavy bolts of holy light to burn the heathens within sight.",
   "shortdescription" : "^orange;Arquebus",
   "level" : 6,
-  "tooltipKind" : "ivrpgweapon",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "Crossbow",
   "itemTags" : ["weapon","ranged","crossbow","bow"],
   "twoHanded" : true,
@@ -34,11 +34,12 @@
 
   "scripts" : ["/items/active/specweapons/conquistador/gun.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "holy",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/conquistador/gunfire.lua"],
     "class" : "GunFire",
+    "name" : "Load and Let Loose",
 
     "fireTime" : 1.0,
     "baseDps" : 12,

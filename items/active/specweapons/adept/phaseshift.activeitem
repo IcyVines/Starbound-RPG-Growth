@@ -8,7 +8,7 @@
   "category" : "wand",
   "twoHanded" : false,
   "itemTags" : ["weapon","wand"],
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
 
   "inventoryIcon" : "phaseshift.png",
   "animation" : "/items/active/specweapons/adept/phaseshift.animation",
@@ -27,14 +27,14 @@
       }
     },
     "sounds" : {
-      "physicalactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
+      "demonicactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
     }
   },
 
   "scripts" : ["/items/active/specweapons/adept/staff.lua"],
 
   "baseDamageFactor" : 0.5,
-  "elementalType" : "physical",
+  "elementalType" : "demonic",
   "classreq" : 3,
   "specreq" : 4,
 

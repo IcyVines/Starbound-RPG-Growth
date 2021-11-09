@@ -6,13 +6,13 @@
 	"rarity": "Essential",
 	"description": "Purity of the Chosen\n^blue;Forged by the first Crusader, Ribs",
 	"shortdescription": "^blue;Oathkeeper",
-	"tooltipKind": "base",
+	"tooltipKind": "ivrpg_weapon",
 	"category": "^orange;Holy Broadsword^reset;",
 	"twoHanded": true,
 	"itemTags": ["weapon", "melee", "broadsword"],
 
 	"classreq" : [1, 2],
-  "specreq" : 5,
+  	"specreq" : 5,
 
 	"inventoryIcon": [{
 			"image": "blade.png:active.1",
@@ -53,7 +53,8 @@
 			"fireLoop": [],
 			"fireEnd": [],
 			"altWindup1": ["/sfx/melee/sword_guard.ogg"],
-			"altWindup2": ["/sfx/melee/sword_parry.ogg"]
+			"altWindup2": ["/sfx/melee/sword_parry.ogg"],
+			"holySpin" : []
 		},
 		"animatedParts": {
 			"stateTypes": {
@@ -410,7 +411,7 @@
 							},
 							"fire9": {
 								"properties": {
-									"image": "/stats/effects/cultistshield/cultistshield.png:hit.<frame>?saturation=-100",
+									"image": "/items/active/specweapons/crusader/cultistshield.png:hit.<frame>?saturation=-100",
 									"offset": [-1, 0.2],
 									"damageArea": [[-3, 0], [-2.8, -2.8],  [0, -3], [3.2, -3.2], [5, 0], [3.2, 3.2], [0, 3], [-2.8, 2.8] ],
 									"zLevel": 10
@@ -512,7 +513,7 @@
 			"swoosh": {}
 		},
 		"particleEmitters": {
-			"electricSpin": {
+			"holySpin": {
 				"active": false,
 				"emissionRate": 8,
 				"offsetRegion": [-1, -1, 1, 1],
@@ -523,7 +524,7 @@
 					}
 				]
 			},
-			"electricswoosh": {
+			"holyswoosh": {
 				"active": false,
 				"transformationGroups": ["swoosh"],
 				"burstCount": 4,
@@ -563,7 +564,7 @@
 
 	"scripts": ["/items/active/specweapons/crusader/energymeleeweapon.lua"],
 	"activeTime": 3.0,
-	"elementalType": "electric",
+	"elementalType": "holy",
 	"primaryAbilityType": "broadswordcombo",
 	"primaryAbility": {
 		"name": "Combo Slash",
@@ -1197,7 +1198,7 @@
 			"damageSourceKind": "holy"
 		},
 		"elementalConfig": {
-			"electric": {
+			"holy": {
 				"projectileType": "holytravelingswoosh",
 				"damageConfig": {
 					"statusEffects": ["electrified", "ivrpgjudgement"]

@@ -6,7 +6,7 @@
   "rarity" : "Essential",
   "description" : "Waves crash violently and winds blow endlessly as the storm howls.",
   "shortdescription" : "^#bff4ff;Stormhowl",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "shortsword",
   "twoHanded" : false,
   "itemTags" : ["weapon", "melee", "shortsword", "cutlass"],

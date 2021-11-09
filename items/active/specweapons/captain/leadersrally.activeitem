@@ -5,7 +5,7 @@
   "rarity" : "Essential",
   "description" : "A beautiful silken flag attached to a shining metal pole.",
   "shortdescription" : "^yellow;Leader's Rally",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "Flag",
   "twoHanded" : false,
   "inventoryIcon" : "leadersrallyicon.png",
@@ -38,6 +38,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/captain/fire.lua"],
     "class" : "GunFire",
+    "name" : "Rally!",
 
     "fireTime" : 0.5,
     "baseDps" : 8,
@@ -76,6 +77,6 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandshield.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
   
 }

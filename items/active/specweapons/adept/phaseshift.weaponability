@@ -17,7 +17,7 @@
 
   "ability" : {
     "type" : "phaseshift",
-    "name" : "Phase Shift",
+    "name" : "Insidious Collapse",
     "scripts" : ["/items/active/specweapons/adept/phaseshift.lua"],
     "class" : "ControlProjectile",
     "maxCastRange" : 25,

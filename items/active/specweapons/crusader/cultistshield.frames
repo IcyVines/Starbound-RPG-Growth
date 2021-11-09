@@ -1,0 +1,9 @@
+{
+  "frameGrid" : {
+    "size" : [45, 45],
+    "dimensions" : [6, 1],
+    "names" : [
+      [ "hit.1", "hit.2", "hit.3", "hit.4", "hit.5", "hit.6" ]
+    ]
+  }
+}

@@ -7,8 +7,10 @@ function init()
 end
 
 function uninit()
-  for i=1,4 do
-    player.giveItem(widget.itemSlotItem("itemSlot" .. tostring(i)))
+  local weapon = widget.itemSlotItem("itemSlot1")
+  if weapon then
+    weapon = setWeaponACI(weapon)
+    player.giveItem(weapon)
   end
 end
 
@@ -40,6 +42,12 @@ end
 function rightClick(widgetName)
   local previous = widget.itemSlotItem(widgetName)
   if previous then
+    if widgetName == "itemSlot1" then
+      previous = setWeaponACI(previous)
+      for i=2,4 do
+        widget.setItemSlotItem("itemSlot" .. tostring(i), nil)
+      end
+    end
     player.giveItem(previous)
     widget.setItemSlotItem(widgetName, nil)
   end

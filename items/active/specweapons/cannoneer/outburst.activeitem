@@ -5,7 +5,7 @@
   "rarity" : "Essential",
   "description" : "^red;NOW THAT'S A LOT OF DAMAGE!",
   "shortdescription" : "^#32ffb4;Outburst",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "grenadeLauncher",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","grenadelauncher"],
@@ -67,6 +67,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/cannoneer/gunfire.lua"],
     "class" : "GunFire",
+    "name" : "Elemental Mines",
 
     "fireTime" : 0.9,
     "baseDps" : 10,

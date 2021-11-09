@@ -10,14 +10,8 @@
 	"price" : 0,
 	"health" : 1.5,
 
-	"objectType" : "container",
-	"slotCount" : 4,
-	"uiConfig" : "/professions/jeweler/extractor/extractor.config",
-	"subtitle" : "For Jewelry",
-	"frameCooldown" : 5,
-	"autoCloseCooldown" : 3600,
 	"scripts" : [ "extractor.lua"],
-	"containerCallback" : "containerCallback",
+	"scriptDelta" : 0,
 
 	"apexDescription" : "A board you can use if you don't want to accidentally drop anything.",
 	"avianDescription" : "I won't lose any pretty jewelry using this.",

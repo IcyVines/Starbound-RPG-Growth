@@ -2,11 +2,18 @@ require "/scripts/util.lua"
 
 -- Written with help from Alberto-Rota's Weapon Assembly Station and Mighty Annihilator's Augment Extractor
 
+oldInteraction = onInteraction
+
+function onInteraction(args)
+  world.sendEntityMessage(args.sourceId, "ivrpgExtractRemoval", entity.id(), "/professions/jeweler/extractor/extractor_real.config")
+end
+
 function init()
-  storage.item = storage.item or false
+  --[[storage.item = storage.item or false
   if storage.inventory == nil then storage.inventory = {} end
   if storage.lastInventory == nil then storage.lastInventory = {} end
-  storage.slotTypes = {"main", "left", "right"}
+  storage.slotTypes = {"main", "left", "right"}]]
+  object.setInteractive(true)
 end
 
 function die()

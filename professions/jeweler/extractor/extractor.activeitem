@@ -1,0 +1,18 @@
+{
+  "itemName" : "ivrpgjportableextractor",
+  "printable" : false,
+  "rarity" : "Essential",
+  "description" : "A portable Jewelry Extractor... For a jewelry related item, it sure is ugly.",
+  "shortdescription" : "Jewelry Extractor",
+  "race" : "generic",
+  "twoHanded" : false,
+  "price" : 0,
+  "maxStack" : 1,
+  "itemTags" : [],
+
+  "inventoryIcon" : "portable_extractor.png",
+  "scripts" : ["portable.lua"],
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/professions/jeweler/extractor/extractor_real.config"
+}
