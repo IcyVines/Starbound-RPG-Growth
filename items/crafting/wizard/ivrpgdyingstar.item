@@ -3,6 +3,7 @@
   "price" : 50,
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "dyingstar.png",
   "description" : "A dying star... Can this even be used for crafting?",
   "shortdescription" : "Dying Star",

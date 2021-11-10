@@ -2,6 +2,7 @@
   "itemName" : "RPGskillbook",
   "printable" : false,
   "rarity" : "Essential",
+  "tooltipKind" : "ivrpg_base",
   "description" : "A mystical book that seems to emanate power. Perhaps it can be used somehow.",
   "shortdescription" : "Mysterious Book",
   "race" : "generic",

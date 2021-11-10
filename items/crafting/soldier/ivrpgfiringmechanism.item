@@ -3,6 +3,7 @@
   "price" : 500,
   "rarity" : "Rare",
   "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "firingmechanism.png",
   "description" : "A firing mechanism that allows guns to fire different kinds of bullets.",
   "shortdescription" : "Firing Mechanism",

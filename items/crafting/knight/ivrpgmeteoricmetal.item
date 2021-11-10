@@ -3,6 +3,7 @@
   "price" : 50,
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "meteoricmetal.png",
   "description" : "A hard metallic meteor fragment.",
   "shortdescription" : "Meteoric Metal",

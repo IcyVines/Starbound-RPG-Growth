@@ -81,7 +81,8 @@
 
   "primaryAbilityType" : "bowshot",
   "primaryAbility" : {
-    "name" : "Elemental Bowshot",
+    "name" : "Bow Shot",
+    "class" : "BowShot",
     "scripts" : ["/items/active/specweapons/hunter/bowshot.lua"],
     "fireOffset" : [1.75, 0.125],
     "drawFrameSelector" : "poisonBowImageSelector",
@@ -95,5 +96,10 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Elemental Swap (With Multitool)"
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

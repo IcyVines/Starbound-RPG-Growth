@@ -3,8 +3,9 @@
   "price" : 10,
   "rarity" : "Rare",
   "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "feather.png",
-  "description" : "A soft feather. Used by RPG Growth.",
+  "description" : "A soft feather. With enough of these, you could make a pillow!",
   "shortdescription" : "Feather",
   "itemTags" : [ "reagent" ]
 }

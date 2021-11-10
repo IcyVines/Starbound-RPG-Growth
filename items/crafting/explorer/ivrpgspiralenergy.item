@@ -3,6 +3,7 @@
   "price" : 50,
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "spiralenergy.png",
   "description" : "What is this strange, manly energy?",
   "shortdescription" : "Spiral Energy",

@@ -1,9 +1,9 @@
 {
   "background" : {
     "type" : "background",
-    "fileHeader" : "/interface/tooltips/ivrpg_grimoire-header.png",
-    "fileBody" : "/interface/tooltips/ivrpg_grimoire-body.png",
-    "fileFooter" : "/interface/tooltips/ivrpg_grimoire-footer.png"
+    "fileHeader" : "/interface/tooltips/ivrpg_weapon-header.png",
+    "fileBody" : "/interface/tooltips/ivrpg_weapon-body.png",
+    "fileFooter" : "/interface/tooltips/ivrpg_weapon-footer.png"
   },
   "moneyIcon" : {
     "type" : "image",
@@ -16,9 +16,47 @@
     "hAnchor" : "left",
     "value" : "tree"
   },
+  "primaryAbilityTitleLabel" : {
+    "type" : "label",
+    "position" : [9, 122],
+    "hAnchor" : "left",
+    "value" : ""
+  },
+  "primaryAbilityLabel" : {
+    "type" : "label",
+    "position" : [180, 122],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "altAbilityTitleLabel" : {
+    "type" : "label",
+    "position" : [9, 113],
+    "hAnchor" : "left",
+    "value" : ""
+  },
+  "altAbilityLabel" : {
+    "type" : "label",
+    "position" : [180, 113],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "levelTitleLabel" : {
+    "type" : "label",
+    "position" : [9, 131],
+    "hAnchor" : "left",
+    "value" : "Level:"
+  },
+  "levelLabel" : {
+    "type" : "label",
+    "position" : [180, 131],
+    "hAnchor" : "right",
+    "wrapWidth" : 126
+  },
   "descriptionLabel" : {
     "type" : "label",
-    "position" : [9, 70],
+    "position" : [9, 104],
     "hAnchor" : "left",
     "vAnchor" : "top",
     "wrapWidth" : 174,
@@ -26,7 +64,7 @@
   },
   "handednessLabel" : {
     "type" : "label",
-    "position" : [115, 128],
+    "position" : [115, 198],
     "hAnchor" : "right",
     "centered" : true,
     "wrapWidth" : 126
@@ -40,7 +78,7 @@
   },
   "damageKindImage" : {
     "type" : "image",
-    "position" : [170, 90],
+    "position" : [170, 160],
     "file" : "",
     "centered" : true,
     "maxSize" : [16, 16],
@@ -48,7 +86,7 @@
   },
   "objectImage" : {
     "type" : "image",
-    "position" : [95, 99],
+    "position" : [95, 169],
     "file" : "",
     "centered" : true,
     "maxSize" : [75, 45],

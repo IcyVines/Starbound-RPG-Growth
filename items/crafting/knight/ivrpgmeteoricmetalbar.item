@@ -3,6 +3,7 @@
   "price" : 500,
   "rarity" : "Rare",
   "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "meteoricmetalbar.png",
   "description" : "A bar of metal so tough, it makes you feel weak just looking at it.",
   "shortdescription" : "Meteoric Metal Bar",

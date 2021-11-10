@@ -1,0 +1,7 @@
+{
+  "ability" : {
+    "type" : "ivrpg_dummy",
+    "scripts" : ["/items/buildscripts/ivrpg_dummy/dummy.lua"],
+    "class" : "Dummy"
+  }
+}

@@ -3,6 +3,7 @@
   "price" : 50,
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "ether.png",
   "description" : "A substance that appears to be almost intangible... Though, still corporeal?",
   "shortdescription" : "Ether",

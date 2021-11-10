@@ -1,0 +1,30 @@
+{
+  "itemName" : "ivrpg_alchemicpotion_bleed1",
+  "rarity" : "Common",
+  "category" : "throwableItem",
+  "inventoryIcon" : "ivrpg_alchemicpotionpurple.png",
+  "image" : "ivrpg_alchemicpotionpurple.png",
+  "shortdescription" : "Potion: Dragon's Breath I",
+  "description" : "I would say be careful not to drop it, but that would be dumb.",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "snowball",
+  "projectileConfig" : {
+    "speed" : 40,
+    "power" : 0.75,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+
+}

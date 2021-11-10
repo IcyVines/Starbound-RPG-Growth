@@ -2,6 +2,7 @@
   "itemName" : "caltrops",
   "rarity" : "uncommon",
   "category" : "throwableItem",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "caltropicon.png",
   "image" : "caltrop.png",
   "shortdescription" : "Caltrops",

@@ -39,7 +39,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/conquistador/gunfire.lua"],
     "class" : "GunFire",
-    "name" : "Load and Let Loose",
+    "name" : "Holy Bolt",
 
     "fireTime" : 1.0,
     "baseDps" : 12,
@@ -82,6 +82,11 @@
         "allowFlip" : false
       }
     }
+  },
+
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Cock and Load"
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

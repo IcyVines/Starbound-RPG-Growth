@@ -2,6 +2,7 @@
   "itemName" : "cryoshuriken",
   "rarity" : "rare",
   "category" : "shuriken",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "cryoshuriken.png",
   "image" : "cryoshuriken.png",
   "shortdescription" : "Cryo Shuriken",

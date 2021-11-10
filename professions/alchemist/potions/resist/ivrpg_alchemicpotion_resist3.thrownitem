@@ -1,0 +1,30 @@
+{
+  "itemName" : "ivrpg_alchemicpotion_resist3",
+  "rarity" : "Legendary",
+  "category" : "throwableItem",
+  "inventoryIcon" : "ivrpg_alchemicpotionblue.png",
+  "image" : "ivrpg_alchemicpotionblue.png",
+  "shortdescription" : "Potion: Status Resist III",
+  "description" : "I would say be careful not to drop it, but that would be dumb.",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "snowball",
+  "projectileConfig" : {
+    "speed" : 40,
+    "power" : 0.75,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+
+}

@@ -3,6 +3,7 @@
   "price" : 50,
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "parasiticgoo.png",
   "description" : "A disgusting, sticky pile of goo that feels like it's climbing up your arm when you hold it.",
   "shortdescription" : "Parasitic Goo",

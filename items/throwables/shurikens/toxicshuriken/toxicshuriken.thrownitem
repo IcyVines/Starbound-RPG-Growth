@@ -2,6 +2,7 @@
   "itemName" : "toxicshuriken",
   "rarity" : "rare",
   "category" : "shuriken",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "toxicshuriken.png",
   "image" : "toxicshuriken.png",
   "shortdescription" : "Toxic Shuriken",

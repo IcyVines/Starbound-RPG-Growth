@@ -3,9 +3,9 @@
   "price" : 1500,
   "rarity" : "Rare",
   "category" : "Jewelry",
-  "tooltipKind" : "ivrpgjewelry",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "aegisaltanklet.png",
-  "description" : "Fashionable Aegisalt Anklet that slightly your Max Energy. ^green;Provides +5 Max Energy. ^blue;",
+  "description" : "Fashionable Aegisalt Anklet that slightly boosts your Max Energy. ^green;Provides +5 Max Energy. ^blue;",
   "shortdescription" : "Aegisalt Anklet",
 
   "augment" : {

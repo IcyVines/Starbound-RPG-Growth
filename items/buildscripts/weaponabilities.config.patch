@@ -37,6 +37,8 @@
 { "op" : "add", "path" : "/ivrpg_elementblade", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementblade.weaponability" },
 { "op" : "add", "path" : "/ivrpg_elementscythe", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementscythe.weaponability" },
 { "op" : "add", "path" : "/ivrpg_elementstorm", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_elementstorm.weaponability" },
-{ "op" : "add", "path" : "/ivrpg_nosferatu", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_nosferatu.weaponability" }
+{ "op" : "add", "path" : "/ivrpg_nosferatu", "value" : "/items/active/weapons/ivrpg_grimoire/abilities/ivrpg_nosferatu.weaponability" },
+
+{ "op" : "add", "path" : "/ivrpg_dummy", "value" : "/items/buildscripts/ivrpg_dummy/ivrpg_dummy.weaponability" }
 
 ]

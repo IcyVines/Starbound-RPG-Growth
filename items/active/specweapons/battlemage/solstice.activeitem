@@ -4,7 +4,7 @@
 	"level": 6,
 	"maxStack": 1,
 	"rarity": "Essential",
-	"description": "The highest point you'll ever get.",
+	"description": "Within the dark, a ^magenta;violet glow^reset;, humming in the night, so still and steady, charged and ready, waiting for a fight. And then a strike, the ^magenta;glow^reset; ignites, a blast of ^magenta;flashing, purple lights^reset;, and just like that, a vicious sight: a strengthened Mage with brain ^magenta;and^reset; might.",
 	"shortdescription": "^magenta;Solstice",
 	"tooltipKind": "ivrpg_weapon",
 	"category": "staff",
@@ -721,10 +721,15 @@
         "allowRotate" : false,
         "allowFlip" : false
       }
-		}
-	},
+	}
+  },
 
-	"inactiveBaseDps" : 10,
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+  	"name" : "Empower and Explode"
+  },
+
+  "inactiveBaseDps" : 10,
   "activeBaseDps" : 13,
   "activeEnergyUsage": 15,
   "inactiveElementalType" : "physical",

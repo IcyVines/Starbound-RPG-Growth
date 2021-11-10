@@ -3,6 +3,7 @@
   "price" : 500,
   "rarity" : "Rare",
   "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "novacrystal.png",
   "description" : "A crystal that emanates a mysterious power.",
   "shortdescription" : "Nova Crystal",

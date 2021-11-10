@@ -2,6 +2,7 @@
   "itemName" : "durasteelshuriken",
   "rarity" : "legendary",
   "category" : "shuriken",
+  "tooltipKind" : "ivrpg_base",
   "inventoryIcon" : "durasteelshuriken.png",
   "image" : "durasteelshuriken.png",
   "shortdescription" : "Durasteel Shuriken",

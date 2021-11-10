@@ -1,0 +1,30 @@
+{
+  "itemName" : "ivrpg_alchemicpotion_heal1",
+  "rarity" : "Common",
+  "category" : "throwableItem",
+  "inventoryIcon" : "ivrpg_alchemicpotionred.png",
+  "image" : "ivrpg_alchemicpotionred.png",
+  "shortdescription" : "Potion: Auto Heal I",
+  "description" : "Why does this smell like vodka and tears?",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "snowball",
+  "projectileConfig" : {
+    "speed" : 40,
+    "power" : 0.75,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+
+}

@@ -4,6 +4,7 @@
   "rarity" : "Rare",
   "category" : "craftingMaterial",
   "inventoryIcon" : "etherealblade.png",
+  "tooltipKind" : "ivrpg_base",
   "description" : "Don't let this blade fool you. Despite it's transparency, it's sharper than a squeaky clarinet.",
   "shortdescription" : "Ethereal Blade",
   "learnBlueprintsOnPickup" : [

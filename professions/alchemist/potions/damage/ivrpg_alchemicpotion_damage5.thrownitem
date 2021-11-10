@@ -1,0 +1,30 @@
+{
+  "itemName" : "ivrpg_alchemicpotion_damage5",
+  "rarity" : "Essential",
+  "category" : "throwableItem",
+  "inventoryIcon" : "ivrpg_alchemicpotionorange.png",
+  "image" : "ivrpg_alchemicpotionorange.png",
+  "shortdescription" : "Potion: Dragon's Blood V",
+  "description" : "I would say be careful not to drop it, but that would be dumb.",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "snowball",
+  "projectileConfig" : {
+    "speed" : 40,
+    "power" : 0.75,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+
+}

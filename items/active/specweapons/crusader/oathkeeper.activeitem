@@ -567,7 +567,7 @@
 	"elementalType": "holy",
 	"primaryAbilityType": "broadswordcombo",
 	"primaryAbility": {
-		"name": "Combo Slash",
+		"name": "Crusader's Combo",
 		"type": "broadswordcombo",
 		"scripts": ["/items/active/weapons/melee/meleecombo.lua"],
 		"class": "MeleeCombo",
@@ -1190,6 +1190,7 @@
 		"scripts" : ["/items/active/specweapons/crusader/elementalspin.lua"],
 		"energyUsage": 200,
 		"projectileEnergyCost": 40,
+		"name" : "Cleansing Light",
 		"spinRate": 0,
 		"damageConfig": {
 			"knockback": 10,

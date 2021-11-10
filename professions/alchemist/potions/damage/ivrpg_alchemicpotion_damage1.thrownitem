@@ -1,10 +1,10 @@
 {
-  "itemName" : "ivrpg_alchemicpotion_heal1",
+  "itemName" : "ivrpg_alchemicpotion_damage1",
   "rarity" : "Common",
   "category" : "throwableItem",
-  "inventoryIcon" : "snowball.png",
-  "image" : "snowball.png",
-  "shortdescription" : "Potion: Healing I",
+  "inventoryIcon" : "ivrpg_alchemicpotionorange.png",
+  "image" : "ivrpg_alchemicpotionorange.png",
+  "shortdescription" : "Potion: Dragon's Blood I",
   "description" : "I would say be careful not to drop it, but that would be dumb.",
 
   "ammoUsage" : 1,

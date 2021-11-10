@@ -3,7 +3,7 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "A beautiful silken flag attached to a shining metal pole.",
+  "description" : "A beautiful silken flag attached to a shining metal pole. And strangely, despite essentially being just cloth and steel, as it flaps calmly in the wind, the sound and sight fill you and all who follow with ^yellow;determination^reset;.",
   "shortdescription" : "^yellow;Leader's Rally",
   "tooltipKind" : "ivrpg_weapon",
   "category" : "Flag",

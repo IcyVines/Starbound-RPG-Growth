@@ -88,6 +88,7 @@
   "primaryAbility" : {
     "fireTime" : 0.625,
     "baseDps" : 7.5,
+    "name" : "Pirate's Combo",
     "damageConfig" : {
       "statusEffects" : [ "ivrpgembrittle" ],
       "damageSourceKind" : "iceshortsword"
