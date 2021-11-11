@@ -4,6 +4,7 @@ require "/scripts/util.lua"
 
 function init()
   self.potions = root.assetJson("/professions/alchemist/potionList.config")
+  self.potionConfig = root.assetJson("/professions/alchemist/ivrpg_potion.config")
 end
 
 function uninit()
@@ -24,7 +25,7 @@ function leftClick(widgetName)
     widget.setItemSlotItem(widgetName, new)
     clearPotionSlots(new)
     insertPotionSlots(new)
-  elseif widgetName ~= "itemSlot1" and ((new and new.name and self.potions[new.name]) or not new) then
+  elseif widgetName ~= "itemSlot1" and ((new and new.name and self.potionConfig[new.name]) or not new) then
     -- Add Potions
     local oldCount = 0
     if new then
@@ -37,6 +38,7 @@ function leftClick(widgetName)
     end
     widget.setItemSlotItem(widgetName, new)
   end
+  updateWeaponTooltips(widget.itemSlotItem("itemSlot1"))
 end
 
 function rightClick(widgetName)
@@ -51,6 +53,7 @@ function rightClick(widgetName)
     player.giveItem(previous)
     widget.setItemSlotItem(widgetName, nil)
   end
+  updateWeaponTooltips(widget.itemSlotItem("itemSlot1"))
 end
 
 function clearPotionSlots(giveItems)
@@ -68,6 +71,17 @@ function insertPotionSlots(item)
       if ACIs["itemSlot" .. tostring(i)] then containerPutItem(ACIs["itemSlot" .. tostring(i)], i) end
     end
   end
+end
+
+function updateWeaponTooltips(weapon)
+  if not weapon or not weapon.parameters then return end
+  if not weapon.parameters.tooltipFields then weapon.parameters.tooltipFields = {} end
+  for i=1,3 do
+    local ACI = widget.itemSlotItem("itemSlot" .. tostring(i + 1))
+    local slot = "charge" .. tostring(i) .. "Label"
+    weapon.parameters.tooltipFields[slot] = ACI and ACI.name and self.potionConfig[ACI.name] and self.potionConfig[ACI.name].name or "Empty"
+  end
+  widget.setItemSlotItem("itemSlot1", weapon)
 end
 
 function containerPutItem(item, slot)

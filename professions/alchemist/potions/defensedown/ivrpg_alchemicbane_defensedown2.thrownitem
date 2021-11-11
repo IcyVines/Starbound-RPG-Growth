@@ -1,0 +1,30 @@
+{
+  "itemName" : "ivrpg_alchemicbane_defensedown2",
+  "rarity" : "Rare",
+  "category" : "throwableItem",
+  "inventoryIcon" : "ivrpg_alchemicbanegrey.png",
+  "image" : "ivrpg_alchemicbanegrey.png",
+  "shortdescription" : "Bane: Defense Down II",
+  "description" : "I would say be careful not to drop it, but that would be dumb.",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "snowball",
+  "projectileConfig" : {
+    "speed" : 40,
+    "power" : 0.75,
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+
+}

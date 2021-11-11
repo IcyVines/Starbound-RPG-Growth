@@ -5,11 +5,11 @@
   "rarity" : "Essential",
   "description" : "Throwing around glass bottles is so last century.",
   "shortdescription" : "^magenta;Alchemic Pistol",
-  "tooltipKind" : "ivrpg_grimoire",
+  "tooltipKind" : "ivrpg_alchemicpistol",
   "category" : "pistol",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","pistol","alchemist"],
-  "level" : 6,
+  "level" : 4,
   "inventoryIcon" : [
     { "image" : "icon.png" }
   ],
@@ -50,13 +50,6 @@
   "gunScale" : [0.8, 0.8],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
-
-  "chargeToColor" : {
-    "heal" : "FF6666FF",
-    "damage" : "FFAA66FF",
-    "resist" : "888888FF",
-    "misc" : "66FF66FF"
-  },
 
   "primaryAbility" : {
     "scripts" : ["/professions/alchemist/weapon/gunfire.lua"],

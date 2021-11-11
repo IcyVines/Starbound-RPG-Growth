@@ -1,0 +1,22 @@
+{
+  "projectileName" : "ivrpg_potionexplosion",
+  "image" : "potionexplosion.png",
+  "animationCycle" : 0.1,
+  "frameNumber" : 2,
+  "speed" : 0,
+  "power" : 0,
+  "animationLoops" : false,
+  "piercing" : true,
+  "flippable" : true,
+  "damageKind" : "hidden",
+  "damageType" : "IgnoresDef",
+  "damagePoly" : [ [-14, 0], [-9.2, -9.2], [0, -14], [9.2, -9.2], [14, 0], [9.2, 9.2], [0, 14], [-9.2, 9.2] ],
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/professions/alchemist/potions/glass_shatter.ogg" ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "itemName" : "ivrpg_alchemictincture_instantheal1",
+  "rarity" : "Uncommon",
+  "category" : "throwableItem",
+  "inventoryIcon" : "ivrpg_alchemicinstantred.png",
+  "image" : "ivrpg_alchemicinstantred.png",
+  "shortdescription" : "Tincture: Instant Heal I",
+  "description" : "I would say be careful not to drop it, but that would be dumb.",
+
+  "ammoUsage" : 1,
+
+  "edgeTrigger" : true,
+  "windupTime" : 0.0,
+  "cooldown" : 0.4,
+
+  "projectileType" : "ivrpg_alchemictincture_instantheal",
+  "projectileConfig" : {
+    "speed" : 40,
+    "power" : 0,
+    "parameters" : {
+      "damageTeam" : { "type" : "environment" },
+      "statusEffects" : [ "regeneration2" ]
+    },
+    "periodicActions" : [
+      {
+        "time" : 0,
+        "repeat" : false,
+        "action" : "sound",
+        "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ]
+  }
+
+}

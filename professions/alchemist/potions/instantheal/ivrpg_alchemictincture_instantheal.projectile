@@ -1,0 +1,13 @@
+{
+  "projectileName" : "ivrpg_alchemictincture_instantheal",
+  "speed" : 180,
+  "power" : 0,
+  "physics" : "grenade",
+  "image" : "ivrpg_alchemicinstantred.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "damageKind" : "hidden",
+  "damagePoly" : [ [-7, 0], [-4.6, -4.6], [0, -7], [4.6, -4.6], [7, 0], [4.6, 4.6], [0, 7], [-4.6, 4.6] ],
+  "emitters" : [ ],
+  "scripts" : ["/professions/alchemist/potions/potion.lua"]
+}

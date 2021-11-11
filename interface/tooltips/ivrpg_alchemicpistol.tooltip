@@ -1,0 +1,121 @@
+{
+  "background" : {
+    "type" : "background",
+    "fileHeader" : "/interface/tooltips/ivrpg_weapon-header.png",
+    "fileBody" : "/interface/tooltips/ivrpg_weapon-body.png",
+    "fileFooter" : "/interface/tooltips/ivrpg_weapon-footer.png"
+  },
+  "moneyIcon" : {
+    "type" : "image",
+    "position" : [147, 23],
+    "file" : "/interface/money.png"
+  },
+  "priceLabel" : {
+    "type" : "label",
+    "position" : [160, 23],
+    "hAnchor" : "left",
+    "value" : "tree"
+  },
+  "primaryAbilityTitleLabel" : {
+    "type" : "label",
+    "position" : [9, 122],
+    "hAnchor" : "left",
+    "value" : ""
+  },
+  "primaryAbilityLabel" : {
+    "type" : "label",
+    "position" : [180, 122],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "charge1TitleLabel" : {
+    "value" : "Charge 1:",
+    "type" : "label",
+    "position" : [9, 104],
+    "hAnchor" : "left"
+  },
+  "charge1Label" : {
+    "type" : "label",
+    "position" : [180, 104],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "charge2TitleLabel" : {
+    "value" : "Charge 2:",
+    "type" : "label",
+    "position" : [9, 95],
+    "hAnchor" : "left"
+  },
+  "charge2Label" : {
+    "type" : "label",
+    "position" : [180, 95],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "charge3TitleLabel" : {
+    "value" : "Charge 3:",
+    "type" : "label",
+    "position" : [9, 86],
+    "hAnchor" : "left"
+  },
+  "charge3Label" : {
+    "type" : "label",
+    "position" : [180, 86],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "levelTitleLabel" : {
+    "type" : "label",
+    "position" : [9, 131],
+    "hAnchor" : "left",
+    "value" : "Level:"
+  },
+  "levelLabel" : {
+    "type" : "label",
+    "position" : [180, 131],
+    "hAnchor" : "right",
+    "wrapWidth" : 126
+  },
+  "descriptionLabel" : {
+    "type" : "label",
+    "position" : [9, 68],
+    "hAnchor" : "left",
+    "vAnchor" : "top",
+    "wrapWidth" : 170,
+    "lineSpacing" : 1
+  },
+  "handednessLabel" : {
+    "type" : "label",
+    "position" : [115, 23],
+    "hAnchor" : "right",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "rarityLabel" : {
+    "type" : "label",
+    "position" : [7, 23],
+    "hAnchor" : "left",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "damageKindImage" : {
+    "type" : "image",
+    "position" : [170, 160],
+    "file" : "",
+    "centered" : true,
+    "maxSize" : [16, 16],
+    "minSize" : [16, 16]
+  },
+  "objectImage" : {
+    "type" : "image",
+    "position" : [95, 169],
+    "file" : "",
+    "centered" : true,
+    "maxSize" : [75, 45],
+    "minSize" : [65, 35]
+  }
+}

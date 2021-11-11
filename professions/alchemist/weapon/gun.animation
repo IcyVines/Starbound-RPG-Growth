@@ -214,6 +214,7 @@
   },
 
   "sounds" : {
-    "fire" : [ ]
+    "fire" : [ ],
+    "fill" : [ "/sfx/blocks/water_swim.ogg" ]
   }
 }

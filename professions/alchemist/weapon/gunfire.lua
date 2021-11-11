@@ -9,27 +9,43 @@ function GunFire:init()
 
   self.cooldownTimer = self.fireTime
 
-  
-  self.charge1 = config.getParameter("charge1", "heal")
-  self.charge2 = config.getParameter("charge2", "misc")
-  self.charge3 = config.getParameter("charge3", "damage")
-  self.chargeToColor = config.getParameter("chargeToColor", {})
-  self.currentCharge = config.getParameter("currentCharge") or self.charge1 or self.charge2 or self.charge3
-  --animator.setGlobalTag("charge0Mod", "?multiply=FF9999FF")
+  self.ACI = config.getParameter("rpg_ACI")
+  self.charges = {}
+  self.chargeToColor = root.assetJson("/professions/alchemist/potionHues.config")
+  self.potionConfig = root.assetJson("/professions/alchemist/ivrpg_potion.config")
 
-  if self.currentCharge then
+  local count = 1
+  local tooltipFields = {}
+  for i=2,4 do
+    local ACI = self.ACI["itemSlot" .. tostring(i)]
+    local animation = "charge" .. tostring(count)
+    local potion = self.potionConfig[ACI and ACI.name or nil]
+    if ACI then
+      self.charges[count] = ACI.name
+      if self.charges[count] then
+        animator.setAnimationState(animation, "on")
+        animator.setGlobalTag(animation .. "Mod", "?multiply=" .. (potion and potion.hue or "000000") .. "FF")
+      else
+        animator.setAnimationState(animation, "off")
+      end
+    end
+    tooltipFields[animation .. "Label"] = potion and potion.name or "Empty"
+    count = count + 1
+  end
+   
+  activeItem.setInstanceValue("tooltipFields", tooltipFields)
+  self.currentCharge = config.getParameter("currentCharge", 3)
+  if not self.charges[self.currentCharge] then
+    self:increment(1)
+  end
+  self.potion = self.charges[self.currentCharge] and self.potionConfig[self.charges[self.currentCharge]] or nil
+
+  if self.potion then
     animator.setAnimationState("charge0", "on")
-    animator.setGlobalTag("charge0Mod", "?multiply=" .. self.chargeToColor[self.currentCharge])
+    animator.setGlobalTag("charge0Mod", "?multiply=" .. self.potion.hue)
   else
     animator.setAnimationState("charge0", "off")
   end
-
-  animator.setAnimationState("charge1", "on")
-  animator.setAnimationState("charge2", "on")
-  animator.setAnimationState("charge3", "on")
-  animator.setGlobalTag("charge1Mod", "?multiply=" .. self.chargeToColor[self.charge1])
-  animator.setGlobalTag("charge2Mod", "?multiply=" .. self.chargeToColor[self.charge2])
-  animator.setGlobalTag("charge3Mod", "?multiply=" .. self.chargeToColor[self.charge3])
 
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
@@ -41,6 +57,8 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
   self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
 
+  self.potion = self.potionConfig[self.charges[self.currentCharge]]
+
   if animator.animationState("firing") ~= "fire" then
     animator.setLightActive("muzzleFlash", false)
   end
@@ -48,17 +66,8 @@ function GunFire:update(dt, fireMode, shiftHeld)
   if self.shiftHeld and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.fireMode ~= self.lastActiveFireMode
     and not self.weapon.currentAbility
     and self.cooldownTimer == 0
-    and (self.charge1 or self.charge2 or self.charge3) and self.currentCharge then
-      if self.currentCharge == self.charge1 then
-        self.currentCharge = self.charge2
-      elseif self.currentCharge == self.charge2 then
-        self.currentCharge = self.charge3
-      else
-        self.currentCharge = self.charge1
-      end
-      self.cooldownTimer = 0.1
-      animator.setGlobalTag("charge0Mod", "?multiply=" .. self.chargeToColor[self.currentCharge])
-      -- To do, switch between juice types
+    and self.currentCharge then
+      self:increment(1)
   end
 
   if self.fireMode == (self.activatingFireMode or self.abilitySlot) and not self.shiftHeld
@@ -75,6 +84,22 @@ function GunFire:update(dt, fireMode, shiftHeld)
   end
 
   self.lastActiveFireMode = self.fireMode
+end
+
+function GunFire:increment(count)
+  if count >= 4 then
+    return
+  end
+  self.currentCharge = (self.currentCharge % 3) + 1
+  self.cooldownTimer = 0.1
+  activeItem.setInstanceValue("currentCharge", self.currentCharge)
+  if self.charges[self.currentCharge] then
+    animator.playSound("fill")
+    animator.setAnimationState("charge0", "on")
+    animator.setGlobalTag("charge0Mod", "?multiply=" .. self.chargeToColor[self.charges[self.currentCharge]] .. "FF")
+  else
+    self:increment(count + 1)
+  end
 end
 
 function GunFire:auto()
