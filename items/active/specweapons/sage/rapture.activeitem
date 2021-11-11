@@ -4,9 +4,9 @@
 	"level": 6,
 	"maxStack": 1,
 	"rarity": "Essential",
-	"description": "Atop the mountains, you realize a weapon is no substitute for a coat. Amidst battle, however...",
+	"description": "Atop the mountains, you realize a weapon is no substitute for a coat. ^yellow;Amidst battle, however...^reset;\n\nHolding Shift before using Sage's Combo causes Rapture to swap elements between Physical, Fire, Ice, Electric, and Nova in that order.",
 	"shortdescription" : "^yellow;Rapture^white;",
-  "tooltipKind" : "ivrpgweapon",
+  "tooltipKind" : "ivrpg_weapon",
 	"category": "Glaive",
 	"twoHanded": true,
 	"itemTags": ["weapon", "melee", "glaive"],
@@ -778,7 +778,7 @@
 
 	"primaryAbilityType": "broadswordcombo",
 	"primaryAbility": {
-		"name": "Combo Slash",
+		"name": "Sage's Combo",
 		"type": "broadswordcombo",
 		"scripts": ["/items/active/specweapons/sage/meleecombo.lua"],
 		"class": "MeleeCombo",
@@ -1016,6 +1016,11 @@
       }
 		}
 	},
+
+	"altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Pillars of Heaven"
+  },
 
 	"builder": "/items/buildscripts/buildunrandweapon.lua"
 }

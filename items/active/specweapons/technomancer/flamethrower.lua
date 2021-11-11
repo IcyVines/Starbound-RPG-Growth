@@ -6,9 +6,12 @@ FlamethrowerAttack = GunFire:new()
 function FlamethrowerAttack:init()
   GunFire.init(self)
   self.projectileNames = config.getParameter("primaryAbility.projectileNames", {})
+  self.elementalTypes = config.getParameter("elementalTypes", {})
   self.active = false
   self.ammoIndex = config.getParameter("ammoIndex", 1)
   self.lastIndex = config.getParameter("lastIndex", 1)
+  self.elementalType = self.elementalTypes[ammoIndex]
+  animator.setAnimationState("elementalType", self.ammoIndex)
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end
@@ -89,11 +92,15 @@ function FlamethrowerAttack:switch()
     self.ammoIndex = (self.ammoIndex % #self.projectileNames) + 1
     self.lastIndex = 1
   end
+
   activeItem.setInstanceValue("lastIndex", self.lastIndex)
   activeItem.setInstanceValue("ammoIndex", self.ammoIndex)
+  self.elementalType = self.elementalTypes[self.ammoIndex]
+  activeItem.setInstanceValue("elementalType", self.elementalTypes[self.ammoIndex])
   animator.setAnimationState("elementalType", self.ammoIndex)
-
-  --self:adaptAbility()
+  local tooltipFields = {damageKindImage = "/interface/elements/"..self.elementalType..".png"}
+  activeItem.setInventoryIcon("/items/active/specweapons/technomancer/omniathrower_" .. self.elementalType .. ".png")
+  activeItem.setInstanceValue("tooltipFields", tooltipFields)
   animator.playSound("switchElement")
 
   self.weapon:setStance(self.stances.switch)

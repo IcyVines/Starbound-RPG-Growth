@@ -3,9 +3,9 @@
   "price" : 720,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Never thought such a rowdy woman could get me right through the heart.",
+  "description" : "Never thought such a rowdy woman could get me right through the heart.\n\nRevolver Fire always consumes 16.7% of your Max Energy, ^red;unless Marie is also equipped^reset;, in which case it causes Burning Status and consumes 12.5% of your Max Energy instead.",
   "shortdescription" : "^red;Anne",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "pistol",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","pistol"],
@@ -48,12 +48,14 @@
   "baseOffset" : [0.7, 0.25],
   "muzzleOffset" : [0.5, 0.75],
   "gunScale" : [1, 1],
+  "elementalType" : "fire",
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/vigilante/gunfire.lua"],
     "class" : "GunFire",
+    "name" : "Revolver Fire",
 
     "fireTime" : 0.9,
     "baseDps" : 9,

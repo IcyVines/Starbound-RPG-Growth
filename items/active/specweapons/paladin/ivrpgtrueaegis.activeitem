@@ -5,9 +5,9 @@
   "maxStack" : 1,
   "rarity" : "Essential",
   "category" : "^orange;Holy Shield",
-  "description" : "The Protectorate has fallen. But us? We will never fall.",
+  "description" : "The Protectorate has fallen.\nBut us?\n^blue;We will never fall.^reset;\n\nSuccessive Perfect Shields increase Purifying Light's Damage and Length.",
   "shortdescription" : "^blue;True Aegis",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "twoHanded" : true,
   "itemTags" : ["shield","paladin"],
 
@@ -50,7 +50,7 @@
       "parts" : { 
         "shield" : { 
           "properties" : {
-            "shieldPoly" : [ [-0.5, -1.75], [-0.5, 2.0], [0.75, 1.25], [0.75, -1.0] ]
+            "shieldPoly" : [ [-0.5, -2.75], [-0.5, 2.75], [0.75, 1.75], [0.75, -1.75] ]
           }
         },
         "aura": {
@@ -129,6 +129,7 @@
 
   "minActiveTime" : 0.2,
 
+  "elementalType" : "holy",
   "forceWalk" : true,
   "baseShieldHealth" : 120,
   "cooldownTime" : 0.65,
@@ -184,5 +185,15 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandshield.lua"
+  "primaryAbilityType" : "ivrpg_dummy",
+  "primaryAbility" : {
+    "name" : "Purifying Light"
+  },
+
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Guardian's Shield"
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

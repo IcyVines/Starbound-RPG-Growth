@@ -4,10 +4,10 @@
   "inventoryIcon" : "lotus.png",
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "It's not polite to stare, so do it quick.",
+  "description" : "It's not polite to stare, so do it quick.\n\nCurving Bullet attempts to continue in the direction of your initial cursor position, ^orange;regardless of walls in the way.",
   "shortdescription" : "^#ff9999;Lotus",
   "level" : 6,
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "sniperRifle",
   "itemTags" : ["weapon","ranged","sniperrifle","rifle"],
   "twoHanded" : true,
@@ -67,6 +67,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/deadshot/gunfire.lua"],
     "class" : "GunFire",
+    "name" : "Accurate Shot",
 
     "fireTime" : 1.0,
     "baseDps" : 8,
@@ -108,6 +109,11 @@
         "allowFlip" : false
       }
     }
+  },
+
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Curving Bullet"
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

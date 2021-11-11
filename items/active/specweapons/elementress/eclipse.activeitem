@@ -3,12 +3,13 @@
   "price" : 1200,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Sweltering heat and cool serenity overtake one another.",
+  "description" : "Sweltering heat and cool serenity overtake one another.\n\nDuring the day, Seeking Shards additionally deal ^red;Fire Damage^reset;; during the night, Seeking Shards additionally deal ^blue;Ice Damage^reset;.",
   "shortdescription" : "^magenta;Eclipse",
+  "level" : 6,
   "category" : "wand",
   "twoHanded" : false,
   "itemTags" : ["weapon","wand"],
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
 
   "inventoryIcon" : "eclipse.png",
   "animation" : "/items/active/specweapons/elementress/eclipse.animation",
@@ -88,7 +89,7 @@
   "primaryAbilityType" : "eclipse",
   "primaryAbility" : {
     "type" : "eclipse",
-    "name" : "Eclipse",
+    "name" : "Seeking Shards",
     "scripts" : ["/items/active/specweapons/elementress/controlprojectile.lua"],
     "class" : "ControlProjectile",
 
@@ -99,7 +100,7 @@
 
     "projectileType" : "ivrpgeclipsecrystal",
     "projectileParameters" : {
-      "baseDamage" : 18
+      "baseDamage" : 5
     }
   },
 

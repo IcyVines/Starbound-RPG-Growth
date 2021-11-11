@@ -7,7 +7,7 @@
   "description" : "There's a joke here, somewhere.",
   "shortdescription" : "^green;Ex Mechina",
   "level" : 6,
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "rocketLauncher",
   "itemTags" : ["weapon","ranged","rocketlauncher"],
   "twoHanded" : false,
@@ -61,6 +61,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/mechanist/gunfire.lua"],
     "class" : "GunFire",
+    "name" : "Static Discharge",
 
     "fireTime" : 1.5,
     "baseDps" : 5,

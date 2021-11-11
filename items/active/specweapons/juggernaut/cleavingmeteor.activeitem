@@ -3,9 +3,9 @@
   "price" : 5000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Layer upon layer of molten meteoric metal gives this brutal cleaver a demonic red tint. Its weight crushes moreso than it cleaves, though.",
+  "description" : "Layer upon layer of molten meteoric metal gives this brutal cleaver a demonic red tint. Its weight crushes moreso than it cleaves, though.\n\n^red;Releasing Brutal Slash early decreases Damage dealt.^reset; Enemies killed by True Charged Slash ^red;explode^reset;.",
   "shortdescription" : "^red;Cleaving Meteor^white;",
-  "tooltipKind" : "ivrpgweapon",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "Cleaver",
   "level" : 6,
   "twoHanded" : true,
@@ -42,6 +42,7 @@
   "primaryAbilityType" : "hammersmash",
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/juggernaut/hammersmash.lua"],
+    "name" : "Brutal Slash",
     "fireTime" : 1.0,
     "baseDps" : 16.66,
     "damageConfig" : {
@@ -88,7 +89,9 @@
   },
 
   "altAbilityType" : "juggernautmeteorcleave",
-  "altAbility" : { },
+  "altAbility" : {
+    "name" : "True Charged Slash"
+  },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

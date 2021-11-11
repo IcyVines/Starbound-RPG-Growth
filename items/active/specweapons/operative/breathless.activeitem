@@ -4,10 +4,10 @@
   "inventoryIcon" : "breathless.png",
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Quiet. The only sound a pulsing hum as light begins to glow. Loud. A thunderous clap; a bright array of electronic flow.\n^red;Quiet.",
+  "description" : "Quiet. The only sound a pulsing hum as light begins to glow. Loud. A thunderous clap; a bright array of electronic flow.\n^red;Quiet.\n\n^blue;Breathless passively regenerates Energy, and prevents it from locking.^green; Hitting Electrified foes refunds Energy.",
   "shortdescription" : "^blue;Breathless",
   "level" : 6,
-  "tooltipKind" : "ivrpgweapon",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "sniperRifle",
   "itemTags" : ["weapon","ranged","rifle","sniperrifle"],
   "twoHanded" : true,
@@ -107,6 +107,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/operative/gunfire.lua"],
     "class" : "GunFire",
+    "name" : "Gauss Shot",
 
     "fireTime" : 1.0,
     "baseDps" : 8,
@@ -165,6 +166,11 @@
         "allowFlip" : false
       }
     }
+  },
+
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Laser Volley"
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

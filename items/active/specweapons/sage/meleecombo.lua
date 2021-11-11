@@ -108,6 +108,9 @@ end
 function MeleeCombo:reset()
   activeItem.setCursor("/cursors/pointer.cursor")
   animator.setAnimationState("elementalType", self.elementalType)
+  local tooltipFields = {damageKindImage = "/interface/elements/"..self.elementalType..".png"}
+  activeItem.setInventoryIcon("/items/active/specweapons/sage/" .. self.elementalType .. "rapture.png")
+  activeItem.setInstanceValue("tooltipFields", tooltipFields)
 end
 
 function MeleeCombo:targetValid(aimPos)
@@ -142,13 +145,19 @@ function MeleeCombo:aimVector()
   return {mcontroller.facingDirection(), 0}
 end
 
+function MeleeCombo:changeElement()
+  self.elementIndex = (self.elementIndex % 5) + 1
+  self.elementalType = self.elements[self.elementIndex]
+  local tooltipFields = {damageKindImage = "/interface/elements/"..self.elementalType..".png"}
+  activeItem.setInventoryIcon("/items/active/specweapons/sage/" .. self.elementalType .. "rapture.png")
+  activeItem.setInstanceValue("tooltipFields", tooltipFields)
+end
 -- State: windup
 function MeleeCombo:windup()
   local stance = self.stances["windup"..self.comboStep]
 
   if self.shiftHeld then
-    self.elementIndex = (self.elementIndex % 5) + 1
-    self.elementalType = self.elements[self.elementIndex]
+    self:changeElement()
   end
 
   self.weapon:setStance(stance)

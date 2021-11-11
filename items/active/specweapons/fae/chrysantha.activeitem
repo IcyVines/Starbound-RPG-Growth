@@ -4,9 +4,9 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "A stunning array of reds and pinks to blend with vivid, crimson blood.",
+  "description" : "A stunning array of reds and pinks to blend with vivid, crimson blood.\n\nHolding Thorned Lash when connecting with a wall or enemy allows you to move towards that point and ^green;instantly follow up with an equipped Claw's Finisher^reset;.",
   "shortdescription" : "^#FFAACC;Chrysantha",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "whip",
   "twoHanded" : false,
   "itemTags" : ["weapon","melee","whip"],
@@ -46,6 +46,7 @@
   "primaryAbilityType" : "whipcrack",
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/fae/whipcrack.lua"],
+    "name" : "Thorned Lash",
     "fireTime" : 1.0,
     "chainDps" : 1.5,
     "crackDps" : 4.5,
@@ -57,5 +58,5 @@
     "projectileType" : "poisonplasmaexplosion"
   },
 
-  "builder" : "/items/buildscripts/buildwhip.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

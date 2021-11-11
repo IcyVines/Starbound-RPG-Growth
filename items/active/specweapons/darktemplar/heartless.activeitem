@@ -4,9 +4,9 @@
   "maxStack": 1,
   "level" : 6,
   "rarity": "Essential",
-  "description": "I forgot what I was supposed to feel: now it's always hunger.",
+  "description": "It seems I've forgotten what I was supposed to feel: ^red;now it's always hunger^reset;.\n\n^red;Lunging Stab^reset; can replace the second step in Demon's Combo! Defeating multiple enemies with Heartless makes Demon's Combo cause ^red;explosions^reset; for a few seconds.",
   "shortdescription": "^#77acc3;Heartless^white;",
-  "tooltipKind": "ivrpgweapon",
+  "tooltipKind": "ivrpg_weapon",
   "category": "Halberd",
   "twoHanded": true,
   "itemTags": ["weapon", "melee", "halberd", "broadsword", "spear", "greataxe"],
@@ -105,7 +105,7 @@
                 },
                 "firestab" : {
                   "properties" : {
-                    "image" : "/items/active/weapons/melee/spear/swoosh/<elementalType>swoosh.png:<frame>",
+                    "image" : "/items/active/weapons/melee/spear/swoosh/physicalswoosh.png:<frame>",
                     "offset": [5, 0.2],
                     "damageArea": [[-3, 2], [3.5, 1], [3.5, -1], [-3, -2]]
                   }
@@ -166,10 +166,11 @@
       }
     },
     "scripts": ["/items/active/specweapons/darktemplar/meleeweapon.lua"],
-    "elementalType": "physical",
+    "elementalType": "demonic",
     "primaryAbilityType": "broadswordcombo",
     "primaryAbility": {
       "scripts" : ["/items/active/specweapons/darktemplar/meleecombo.lua"],
+      "name" : "Demon's Combo",
       "stances": {
         "idle": {
             "armRotation": 0,
@@ -371,6 +372,11 @@
             "knockback": 30
         }
       ]
+  },
+
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Lunging Stab"
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

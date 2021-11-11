@@ -185,7 +185,7 @@ function MeleeCombo:fire()
   animator.setAnimationState("swoosh", animStateKey)
   animator.playSound(animStateKey)
 
-  local swooshKey = self.animKeyPrefix .. (self.elementalType or self.weapon.elementalType) .. "swoosh"
+  local swooshKey = self.animKeyPrefix .. "physicalswoosh"
   animator.setParticleEmitterOffsetRegion(swooshKey, self.swooshOffsetRegions[self.comboStep == 6 and 1 or self.comboStep])
   animator.burstParticleEmitter(swooshKey)
 
@@ -243,7 +243,7 @@ function MeleeCombo:firestab()
 
   animator.setAnimationState("swoosh", "firestab")
   animator.playSound(self.fireSound or "fire")
-  animator.burstParticleEmitter((self.elementalType or self.weapon.elementalType) .. "swoosh")
+  animator.burstParticleEmitter("physicalswoosh")
 
   local stepDamageConfig = copy(self.stepDamageConfig[4])
   stepDamageConfig.knockback = 70
@@ -279,6 +279,8 @@ function MeleeCombo:firestab()
       status.clearPersistentEffects("ivrpgheartlessarmor")
       self:setState(self.windup)
       return
+    else
+      self.comboStep = 1
     end
   end)
   

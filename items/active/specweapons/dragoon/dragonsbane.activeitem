@@ -3,9 +3,9 @@
   "price" : 2000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Ever see a Dragon flee?\nWant to?",
+  "description" : "Ever see a Dragon flee?\n^red;Want to?^reset;\n\nHold Dragoon's Thrust to emit a torrent of flames.",
   "shortdescription" : "^#950010;Dragon's Bane^white;",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "spear",
   "twoHanded" : true,
   "level" : 6,
@@ -40,6 +40,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/dragoon/spearstab.lua"],
     "class" : "SpearStab",
+    "name" : "Dragoon's Thrust",
 
     "fireTime" : 0.9,
     "baseDps" : 12.0,
@@ -85,6 +86,7 @@
   },
   "altAbilityType" : "dragooncharge",
   "altAbility" : {
+    "name" : "Charged Lunge",
     "baseDps" : 5.5
   },
   

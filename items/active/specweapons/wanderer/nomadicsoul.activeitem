@@ -4,9 +4,9 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "The Wanderer sheathes the blade with knowledge that there is nothing left to cut.",
+  "description" : "The Wanderer sheathes the blade with knowledge there is ^red;nothing left to cut^reset;.\n\nWanderer's Combo is a downwards slash when aerial. ^red;Hold Shift to use Sheathe^reset;: Sheathe directly after a kill or defeat a foe with Unsheathe to raise the Power of the next Unsheathe.",
   "shortdescription" : "^magenta;Nomadic Soul",
-  "tooltipKind" : "ivrpgweapon",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "Katana",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","katana","broadsword"],
@@ -30,7 +30,7 @@
 
   "primaryAbilityType" : "katanacombo",
   "primaryAbility" : {
-    "name": "Combo Slash",
+    "name": "Unsheathe/Wanderer's Combo",
     "type": "katanacombo",
     "scripts": ["/items/active/specweapons/wanderer/bladedance.lua"],
     "class": "BladeDance",
@@ -365,6 +365,11 @@
         "flipx" : true
       }
     }
+  },
+
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Sheathe/Step/Rising Slash"
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

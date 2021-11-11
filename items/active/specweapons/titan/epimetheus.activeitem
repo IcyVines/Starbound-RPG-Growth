@@ -3,9 +3,9 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Don't leave even one enemy alive.",
+  "description" : "Don't leave even one enemy alive.\n\n^red;Defeating foes with Epimetheus increases Max Health. ^orange;Perfect Shields while Epimetheus is equipped increase Max Energy.",
   "shortdescription" : "^orange;Epimetheus",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "machinePistol",
   "twoHanded" : false,
   "inventoryIcon" : "epimetheus.png",
@@ -51,13 +51,14 @@
   },
   "baseOffset" : [0.825, 0.125],
   "muzzleOffset" : [0.0, 0.5],
-  "elementalType" : "physical",
+  "elementalType" : "earth",
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/titan/gunfire.lua"],
     "class" : "GunFire",
+    "name" : "Vital Shot",
 
     "fireTime" : 0.15,
     "baseDps" : 8,

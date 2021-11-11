@@ -4,9 +4,9 @@
   "price" : 1500,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Caution: Hazardous Materials. Recommended Course of Action: Torch Enemies.",
+  "description" : "Caution: ^green;Hazardous Materials^reset;. Recommended Course of Action: ^orange;Torch Enemies^reset;.\n\nUsing Element Switch while holding Shift swaps between ^magenta;Nova^reset; and the last used element.",
   "shortdescription" : "^magenta;Omnia-Thrower",
-  "tooltipKind" : "ivrpgweapon",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "Flamethrower",
   "twoHanded" : true,
   "itemTags" : ["weapon","ranged","flamethrower"],
@@ -143,11 +143,13 @@
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 
   "elementalType" : "nova",
+  "elementalTypes" : ["nova", "fire", "electric", "ice", "poison"],
 
   "primaryAbilityType" : "flamethrower",
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/technomancer/flamethrower.lua"],
     "baseDps" : 10,
+    "name" : "Element Thrower",
     "energyUsage" : 50,
     "fireTime" : 0.065,
     "inaccuracy" : 0.05,
@@ -199,6 +201,11 @@
         "allowFlip" : true
       }
     }
+  },
+
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Element Switch"
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

@@ -3,9 +3,9 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Within the spiral lies a dormant power: the questions is, whose?",
+  "description" : "Within the spiral lies a dormant power: the question is, ^yellow;whose^reset;?\n\nWhile active, Bubble Barrier prevents all Status Damage and provides Fall Damage Immunity.",
   "shortdescription" : "^yellow;Nautilus",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "Warhorn",
   "twoHanded" : false,
   "inventoryIcon" : "nautilus.png",
@@ -78,7 +78,7 @@
     }
   },
   "baseOffset" : [-0.15, -0.15],
-  "elementalType" : "physical",
+  "elementalType" : "water",
   "shieldPoly" : [[-4, 0], [-3, 3], [0, 4], [3, 3], [4, 0], [3, -3], [0, -4], [-3, -3]],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
@@ -86,6 +86,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/pioneer/fire.lua"],
     "class" : "GunFire",
+    "name" : "Bubble Barrier",
 
     "fireTime" : 2,
     "baseDps" : 8,
@@ -123,6 +124,6 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildunrandshield.lua"
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
   
 }

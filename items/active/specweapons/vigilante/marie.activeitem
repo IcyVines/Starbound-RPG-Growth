@@ -3,9 +3,9 @@
   "price" : 720,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "She wasn't very loud, sure, but it don't matter much when your shootin' does the talkin'.",
+  "description" : "She wasn't very loud, sure, but it don't matter much when your shootin' does the talkin'.\n\n^blue;When paired with Anne^reset;, Marie passively provides +20% Physical and Knockback Resistance.",
   "shortdescription" : "^blue;Marie",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "pistol",
   "twoHanded" : false,
   "itemTags" : ["weapon","ranged","pistol"],
@@ -49,10 +49,12 @@
   "gunScale" : [0.8, 0.8],
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
+  "elementalType" : "bleed",
 
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/vigilante/gunfire.lua"],
     "class" : "GunFire",
+    "name" : "Piercing Shot",
 
     "fireTime" : 0.3,
     "baseDps" : 5,

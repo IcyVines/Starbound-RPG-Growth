@@ -4,9 +4,9 @@
   "inventoryIcon" : "fear_icon.png",
   "maxStack" : 1,
   "rarity" : "Essential",
-  "tooltipKind" : "ivrpgweapon",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "bow",
-  "description" : "Rattling: the sound of bones creaking as the string is pulled. And from out of sight, an arrow is loosed. Crunch: the sounds of bones ^red;breaking^reset;.",
+  "description" : "Rattling: the sound of bones creaking as the string is pulled. And from out of sight, an arrow is loosed. Crunch: the sounds of bones ^red;breaking^reset;.\n\nPerfect Release makes both Arrows and Blackout Gas cause the Sacrifice Status.",
   "shortdescription" : "^gray;FEAR",
   "twoHanded" : true,
   "itemTags" : ["weapon", "ranged", "bow"],
@@ -36,10 +36,12 @@
   "scripts" : ["/items/active/specweapons/shade/bow.lua"],
 
   "drawTimeMultiplier" : 0.75,
+  "elementalType" : "demonic",
 
   "primaryAbilityType" : "bowshot",
   "primaryAbility" : {
   	"scripts" : ["/items/active/specweapons/shade/bowshot.lua"],
+    "name" : "Vicious Arrow",
   	"inaccuracy" : 0,
     "projectileType" : "ivrpgfeararrow",
     "powerProjectileType" : "ivrpgchargedfeararrow",
@@ -51,5 +53,10 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildbow.lua"
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Blackout Mine"
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
 }

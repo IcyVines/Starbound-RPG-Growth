@@ -3,7 +3,7 @@
   "price" : 1200,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "To you, the Universe is nothing; and slowly, yet surely, you'll overtake it...",
+  "description" : "^red;To you, the Universe is nothing.^reset;\n\nInsidious Collapse rises in Power each time a rift is reached.",
   "shortdescription" : "^red;Phase Shift",
   "category" : "wand",
   "twoHanded" : false,

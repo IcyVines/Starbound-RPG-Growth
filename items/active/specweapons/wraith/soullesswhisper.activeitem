@@ -4,9 +4,9 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Do you hear that?",
+  "description" : "Do you hear that?\n\nApply Curse when Cursed Dash connects. ^green;Curse debilitates foes via random debuffs.",
   "shortdescription" : "^gray;Soulless Whisper",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "Claw",
   "twoHanded" : false,
   "itemTags" : ["weapon","rogue","claw","fist","melee"],
@@ -43,6 +43,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/weapons/fist/punch.lua"],
     "class" : "Punch",
+    "name" : "Demonic Slice",
 
     "freezeTime" : 0.15,
     "fireTime" : 0.2,
@@ -111,6 +112,6 @@
     }
   },
 
-  "builder" : "/items/buildscripts/buildfist.lua"
+  "builder" : "/items/buildscripts/ivrpg_buildfist.lua"
 
 }

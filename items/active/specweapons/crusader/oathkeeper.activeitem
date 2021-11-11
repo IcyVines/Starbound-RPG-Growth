@@ -4,7 +4,7 @@
 	"level": 6,
 	"maxStack": 1,
 	"rarity": "Essential",
-	"description": "Purity of the Chosen\n^blue;Forged by the first Crusader, Ribs",
+	"description": "Purity of the Chosen!\n^blue;Forged by the first Crusader, Ribs^reset;, this Broadsword overflows with power. Though it looks to be made of plasma, its sharp strikes are imbued with Holy Energy, overshadowing the Electric nature of most Energy Weapons.",
 	"shortdescription": "^blue;Oathkeeper",
 	"tooltipKind": "ivrpg_weapon",
 	"category": "^orange;Holy Broadsword^reset;",

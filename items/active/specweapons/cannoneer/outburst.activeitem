@@ -3,7 +3,7 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "^red;NOW THAT'S A LOT OF DAMAGE!",
+  "description" : "^red;NOW THAT'S A LOT OF DAMAGE!\n\n^green;As Energy Ratio decreases, Power decreases.",
   "shortdescription" : "^#32ffb4;Outburst",
   "tooltipKind" : "ivrpg_weapon",
   "category" : "grenadeLauncher",

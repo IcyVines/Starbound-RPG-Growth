@@ -72,13 +72,13 @@
             },
             "fire" : {
               "properties" : {
-                "image" : "/items/active/weapons/melee/spear/swoosh/<elementalType>swoosh.png:<frame>",
+                "image" : "/items/active/weapons/melee/spear/swoosh/physicalswoosh.png:<frame>",
                 "damageArea" : [[-3.5, 0], [-1, 1], [1, 1], [4, 0], [1, -1], [-1, -1]]
               }
             },
             "fire2" : {
               "properties" : {
-                "image" : "/items/active/weapons/melee/spear/swoosh/<elementalType>swoosh.png:<frame>",
+                "image" : "/items/active/weapons/melee/spear/swoosh/physicalswoosh.png:<frame>",
                 "damageArea" : [[-3.5, 0], [-1, 1], [1, 1], [4, 0], [1, -1], [-1, -1]]
               }
             },
@@ -162,6 +162,20 @@
         { "particle" : "poisonswoosh1"},
         { "particle" : "poisonswoosh2"},
         { "particle" : "fireswoosh2"}
+      ]
+    },
+    "holyswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 60,
+      "offsetRegion" : [3.5, -1.0, 7.5, 1.0],
+      "particles" : [
+        { "particle" : "fireswoosh1"},
+        { "particle" : "fireswoosh2"},
+        { "particle" : "stargazer"},
+        { "particle" : "stargazer"},
+        { "particle" : "stargazer"},
+        { "particle" : "stargazer"}
       ]
     }
   },

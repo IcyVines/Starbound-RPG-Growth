@@ -7,7 +7,7 @@
   "rarity" : "Essential",
   "tooltipKind" : "ivrpg_weapon",
   "category" : "bow",
-  "description" : "Do note that while this weapon has many functionalities, creating ziplines is strictly prohibited under Protectorate Law.",
+  "description" : "Do note that while this weapon has many functionalities, creating ziplines is strictly prohibited under Protectorate Law. ^green;But since when has that stopped you.\n\n^red;Elemental Swap can only be used with Hunter's Multitool!",
   "shortdescription" : "^green;Mida",
   "twoHanded" : true,
   "itemTags" : ["weapon", "ranged", "bow"],
@@ -98,7 +98,7 @@
 
   "altAbilityType" : "ivrpg_dummy",
   "altAbility" : {
-    "name" : "Elemental Swap (With Multitool)"
+    "name" : "Elemental Swap"
   },
 
   "builder" : "/items/buildscripts/buildunrandweapon.lua"

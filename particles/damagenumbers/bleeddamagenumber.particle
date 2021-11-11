@@ -3,20 +3,20 @@
   "definition" : {
     "type" : "text",
     "text" : "^shadow;$dmg$",
-    "color" : [140, 0, 0, 255],
-    "light" : [80, 0, 0],
+    "color" : [160, 40, 90, 255],
+    "light" : [100, 20, 50],
     "fullbright" : true,
-    "initialVelocity" : [0.0, 15.0],
-    "finalVelocity" : [0.0, -15],
+    "initialVelocity" : [0.0, 2.0],
+    "finalVelocity" : [0.0, 0.0],
     "size" : 1,
-    "approach" : [3, 40],
+    "approach" : [40, 5],
     "angularVelocity" : 20,
     "timeToLive" : 0.7,
     "layer" : "front",
     "destructionAction" : "shrink",
     "destructionTime" : 0.5,
     "variance" : {
-      "initialVelocity" : [12.0, 3.0]
+      "initialVelocity" : [15.0, 3.0]
     },
     "flippable" : false
   }

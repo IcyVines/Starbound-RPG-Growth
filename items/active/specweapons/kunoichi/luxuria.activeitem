@@ -4,9 +4,9 @@
   "maxStack": 1,
   "rarity": "Essential",
   "level": 6,
-  "description": "Beautiful painted petals bely this razor-sharp War-Fan.",
+  "description": "Beautiful painted petals belie this razor-sharp War-Fan.\n\n^red;Kunoichi's Combo varies depending on input direction.",
   "shortdescription": "^#ffaafa;Luxuria^white;",
-  "tooltipKind": "base",
+  "tooltipKind": "ivrpg_weapon",
   "category": "War-Fan",
   "twoHanded": false,
   "itemTags": [
@@ -37,6 +37,7 @@
       "/items/active/specweapons/kunoichi/petaldance.lua"
     ],
     "class": "MeleeSlash",
+    "name" : "Kunoichi's Combo",
     "fireTime": 0.2,
     "baseDps": 14,
     "damageModifier": 0.7,

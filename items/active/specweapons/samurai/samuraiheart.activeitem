@@ -4,9 +4,9 @@
   "level" : 6,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "An engraving on the hilt says 'Lake Tōya'.",
+  "description" : "An engraving on the hilt says 'Lake Tōya'.\n\n^blue;Defeating foes increases Attack Speed.",
   "shortdescription" : "^blue;Samurai Heart",
-  "tooltipKind" : "ivrpgweapon",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "Katana",
   "twoHanded" : true,
   "itemTags" : ["weapon","melee","katana","broadsword"],
@@ -144,7 +144,7 @@
 
   "primaryAbilityType" : "katanacombo",
   "primaryAbility" : {
-    "name": "Combo Slash",
+    "name": "Samurai's Combo",
     "type": "katanacombo",
     "scripts": ["/items/active/specweapons/samurai/bladedance.lua"],
     "class": "BladeDance",

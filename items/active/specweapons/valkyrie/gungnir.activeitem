@@ -3,9 +3,9 @@
   "price" : 2000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Odin's gift to you.",
+  "description" : "Odin's gift to you.\n\nTo Valhalla marks enemies for death on contact: marked enemies burst with Holy light when they die, ^blue;granting nearby allies Health Regeneration and Power with Magic Weapons^reset;.",
   "shortdescription" : "^#34dbdb;Gungnir^white;",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "^orange;Holy Spear",
   "twoHanded" : true,
   "level" : 6,
@@ -31,13 +31,14 @@
 
   "scripts" : ["/items/active/specweapons/valkyrie/meleeweapon.lua"],
 
-  "elementalType" : "physical",
+  "elementalType" : "holy",
 
   "aimOffset" : -1.0,
   "primaryAbilityType" : "spearstab",
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/valkyrie/spearstab.lua"],
     "class" : "SpearStab",
+    "name" : "Valkyrie's Combo",
 
     "fireTime" : 0.9,
     "baseDps" : 10.0,
@@ -162,6 +163,7 @@
   },
   "altAbilityType" : "valkyriemark",
   "altAbility" : {
+    "name" : "To Valhalla",
     "baseDps" : 5.5
   },
   

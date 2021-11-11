@@ -4,9 +4,9 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "It's a wrench.",
+  "description" : "It's a wrench.\n\nDefeating robotic enemies with Wrench turns them into allies.",
   "shortdescription" : "^orange;Wrench^reset;",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "Wrench",
   "twoHanded" : false,
   "level" : 6,
@@ -36,6 +36,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/mechanist/meleeslash.lua"],
     "class" : "MeleeSlash",
+    "name" : "Percussive Maintenance",
 
     "fireTime" : 0.83,
     "baseDps" : 5,

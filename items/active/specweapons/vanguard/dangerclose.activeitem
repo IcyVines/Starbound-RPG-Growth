@@ -3,9 +3,9 @@
   "price" : 1000,
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "It's thrilling getting so close. After all, it lets you hear when their heart stops beating.",
+  "description" : "It's thrilling getting so close. ^yellow;After all, it lets you hear when their heart stops beating.^reset;\n\nWhen nearing foes, Rapid Shot increases its rate of fire. ^red;Defeating foes with Rapid Shot grants slight Health and Energy Regeneration.",
   "shortdescription" : "^red;Danger Close",
-  "tooltipKind" : "base",
+  "tooltipKind" : "ivrpg_weapon",
   "category" : "machinePistol",
   "twoHanded" : false,
   "inventoryIcon" : "dangercloseyellow.png",
@@ -95,6 +95,7 @@
   "primaryAbility" : {
     "scripts" : ["/items/active/specweapons/vanguard/gunfire.lua"],
     "class" : "GunFire",
+    "name" : "Rapid Shot",
 
     "fireTime" : 0.15,
     "baseDps" : 8,
