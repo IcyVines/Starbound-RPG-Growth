@@ -1,0 +1,20 @@
+{
+  "name" : "ivrpgbombsaway",
+  "type" : "legs",
+
+  "scripts" : ["bombsaway.lua"],
+  "animator" : "bombsaway.animation",
+
+  "description" : "Cannoneer Only",
+  "shortDescription" : "Bombs Away",
+  "rarity" : "Uncommon",
+  "icon" : "/ivrpg_specs/techs/cannoneer/bombsaway.png",
+
+  "chipCost" : 0,
+  "multijumps" : 2,
+  "controlForce" : 5000,
+  "dashSpeed" : 100,
+  "cooldown" : 2.5,
+  "power" : 20,
+  "aerialCooldown" : 0.5
+}

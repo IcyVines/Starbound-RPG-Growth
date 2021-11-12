@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgraiseundead",
+
+  "effectConfig" : {
+    
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "raiseundead.lua"
+  ],
+
+  "animationConfig" : "raiseundead.animation",
+
+  "label" : "Raise Undead",
+  "icon" : "/ivrpg_specs/abilities/necromancer/raiseundead.png"
+}

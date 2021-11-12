@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgflightofthevalkyrie",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "gravityTime" : 1,
+    "regenTime" : 4
+  },
+
+  "scripts" : [
+    "flightofthevalkyrie.lua"
+  ],
+
+  "animationConfig" : "flightofthevalkyrie.animation",
+
+  "label" : "Flight of the Valkryie",
+  "icon" : "/ivrpg_specs/abilities/valkyrie/flightofthevalkyrie.png"
+}

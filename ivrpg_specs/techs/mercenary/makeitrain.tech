@@ -1,0 +1,23 @@
+{
+  "name" : "ivrpgmakeitrain",
+  "type" : "legs",
+
+  "scripts" : ["makeitrain.lua"],
+  "animator" : "/tech/soldiertech/soldierenergypack/soldierenergypack.animation",
+
+  "description" : "Mercenary Only",
+  "shortDescription" : "Make it Rain!",
+  "rarity" : "Uncommon",
+  "icon" : "/ivrpg_specs/techs/mercenary/makeitrain.png",
+
+  "chipCost" : 0, 
+  "cooldown" : 30.0,
+  "duration" : 20.0,
+
+  "multiJumpCount" : 3,
+  "dashControlForce" : 2000,
+  "dashSpeed" : 50,
+  "dashDuration" : 0.20,
+  "dropsPerDash" : 3,
+  "drops" : ["molotov", "ivrpgskittergrenade", "ivrpgstungrenade", "ivrpgshockcharge"]
+}

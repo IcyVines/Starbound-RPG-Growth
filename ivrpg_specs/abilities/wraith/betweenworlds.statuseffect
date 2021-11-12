@@ -1,0 +1,20 @@
+{
+  "name" : "ivrpgbetweenworlds",
+
+  "effectConfig" : {
+    "speedRange" : 16,
+    "speedStatus" : "ivrpgagilemagicspeedboost",
+    "statusLength" : 3
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "betweenworlds.lua"
+  ],
+
+  "animationConfig" : "betweenworlds.animation",
+
+  "label" : "Between Worlds",
+  "icon" : "/ivrpg_specs/abilities/wraith/betweenworlds.png"
+}

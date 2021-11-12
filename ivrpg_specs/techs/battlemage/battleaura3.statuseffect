@@ -1,0 +1,17 @@
+ {
+  "name" : "ivrpgbattleaura3",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "effect" : "speed"
+  },
+
+  "scripts" : [
+    "battleaurastatus.lua"
+  ],
+
+  "animationConfig" : "battleaura.animation",
+
+  "label" : "Ionic Aura",
+  "icon" : "/ivrpg_specs/techs/battlemage/battleaura_ionic.png"
+}

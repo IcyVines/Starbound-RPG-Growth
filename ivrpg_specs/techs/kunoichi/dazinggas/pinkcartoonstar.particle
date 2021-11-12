@@ -1,0 +1,24 @@
+{
+  "kind" : "ivrpgpinkcartoonstar",
+  "definition" : {
+    "type" : "textured",
+    "image" : "/ivrpg_specs/techs/kunoichi/dazinggas/pinkcartoonstar.png",
+    "position" : [0, 0],
+    "initialVelocity" : [0, 0],
+    "finalVelocity" : [0, 0],
+    "approach" : [6, 6],
+    "fade" : 0.5,
+    "destructionAction" : "shrink",
+    "destructionTime" : 0.5,
+    "size" : 0.15,
+    "timeToLive" : 0.3,
+    "fullbright" : true,
+    "collidesForeground" : false,
+    "angularVelocity" : 60,
+    "variance" : {
+      "position" : [1, 0],
+      "initialVelocity" : [3.0, 3.0],
+      "rotation" : 180
+    }
+  }
+}

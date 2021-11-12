@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgelementalweavefire",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+  	"mod" : 1
+  },
+
+  "scripts" : [
+    "elementalweaveeffect.lua"
+  ],
+
+  "label" : "Elemental Weave: Fire",
+  "icon" : "/ivrpg_specs/abilities/elementress/elementalweavefire.png"
+}

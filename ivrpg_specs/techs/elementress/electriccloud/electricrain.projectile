@@ -1,0 +1,26 @@
+{
+  "projectileName" : "elementresselectricrain",
+  "physics" : "rain",
+  "timeToLive" : 0.75,
+  "image" : "/projectiles/activeitems/staff/elementrain/electricrain.png",
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "fullbright" : true,
+  "lightColor" : [114, 0, 154],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/electricrain_impact.ogg" ]
+    },
+    {
+      "action" : "config",
+      "file" : "/ivrpg_specs/techs/elementress/electriccloud/electricexplosionknockback.config"
+    }
+  ],
+  "speed" : 25,
+  "power" : 30,
+  "damageKind" : "electric",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "electrified" ],
+  "emitters" : [ "electricplasmapurple" ]
+}

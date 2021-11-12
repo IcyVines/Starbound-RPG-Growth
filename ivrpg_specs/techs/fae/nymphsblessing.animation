@@ -1,0 +1,130 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {}
+        }
+      },
+      "hover" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "hoverParticles" ],
+              "lightsOff" : [ "hoverGlow" ]
+            }
+          },
+          "on" : {
+            "frames" : 4,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              //"persistentSound" : "/sfx/tech/tech_hoverloop.ogg",
+              "particleEmittersOn" : [ "hoverParticles" ],
+              "lightsOn" : [ "hoverGlow" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : ["", "", "", "/sfx/npc/monsters/batong_flap1.ogg"]
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "wings" : {
+        "properties" : {
+          "transformationGroups" : ["wings"],
+          "fullbright" : true
+        },
+        "partStates" : {
+          "hover" : {
+            "on" : {
+              "properties" : {
+                "zLevel" : -10,
+                "image" : "<partImage>:<frame>"
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          }
+        }
+      }
+    }
+
+  },
+
+  "particleEmitters" : {
+    "dashParticles" : {
+      "emissionRate" : 40.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/ivrpg_specs/techs/fae/dash.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [0, 0],
+            "fade" : 1,
+            "size" : 1,
+            "layer" : "back",
+            "timeToLive" : 0.85,
+            "variance" : {
+            }
+          },
+          "flip" : true
+        }
+      ]
+    },
+    "hoverParticles" : {
+      "emissionRate" : 15.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1,
+            "color" : [235, 180, 205, 255],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 1,
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [0, 20],
+            "timeToLive" : 0.5,
+            "layer" : "back",
+            "variance" : {
+              "color" : [20, 20, 20, 0],
+              "initialVelocity" : [0, 0],
+              "size" : 1.25
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "wings" : { "interpolated" : true }
+  },
+
+  "lights" : {
+    "hoverGlow" : {
+      "color" : [180, 120, 150],
+      "active" : false
+    }
+  },
+
+  "sounds" : {
+    "startDash" : [ "/sfx/tech/tech_dash.ogg" ],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "wallJumpSound" : ["/sfx/tech/tech_walljump.ogg"],
+    "wallGrab" : [ "/sfx/blocks/footstep_stone.ogg" ],
+    "wallSlideLoop" : [ "/sfx/tech/tech_wallslide.ogg" ]
+  }
+}

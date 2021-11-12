@@ -1,0 +1,32 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {}
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "dashParticles" : {
+      "emissionRate" : 200.0,
+      "particles" : [
+        {
+          "particle" : "ivrpgrush",
+          "flip" : true
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "activate" : [ "/ivrpg_specs/techs/vanguard/rush.ogg" ],
+    "explode" : [ "/ivrpg_specs/techs/vanguard/explosion.ogg" ],
+    "startDash" : [ "/sfx/tech/tech_dash.ogg" ]
+  }
+}
