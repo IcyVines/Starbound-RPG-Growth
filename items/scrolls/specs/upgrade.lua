@@ -12,7 +12,7 @@ end
 function activate(fireMode, shiftHeld)
   if player.currency("experienceorb") < self.rpg_specUnlockXp then return end
   if self.requiredClass ~= self.class and self.requiredClass2 ~= self.class then return end
-  local specInfo = root.assetJson("/specs/" .. self.specName .. ".config")
+  local specInfo = root.assetJson("/ivrpg_specs/" .. self.specName .. ".config")
   local weaponBP = specInfo.weapon.name
   if not player.blueprintKnown(weaponBP) then player.giveBlueprint(weaponBP) end
   player.consumeCurrency("spectype", player.currency("spectype"))

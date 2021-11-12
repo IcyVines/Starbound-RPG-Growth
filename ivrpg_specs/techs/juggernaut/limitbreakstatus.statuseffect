@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpglimitbreakstatus",
+  "effectConfig" : {
+    "shieldDecay" : 0.5,
+    "healthStatus" : "regeneration4",
+    "healthRange" : 15
+  },
+
+  "defaultDuration" : 10,
+
+  "scripts" : [
+  	"limitbreakstatus.lua"
+  ],
+
+  "label" : "Limit Break",
+  "icon" : "/ivrpg_specs/techs/juggernaut/limitbreak.png"
+}

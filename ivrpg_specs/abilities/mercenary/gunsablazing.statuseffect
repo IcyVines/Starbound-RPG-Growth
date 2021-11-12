@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpggunsablazing",
+
+  "effectConfig" : {
+    
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "gunsablazing.lua"
+  ],
+
+  "animationConfig" : "gunsablazing.animation",
+
+  "label" : "Guns a' Blazing",
+  "icon" : "/ivrpg_specs/abilities/mercenary/gunsablazing.png"
+}

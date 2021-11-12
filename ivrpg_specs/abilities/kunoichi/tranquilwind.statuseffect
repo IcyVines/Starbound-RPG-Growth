@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgtranquilwind",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+  },
+
+  "scripts" : [
+    "tranquilwind.lua"
+  ],
+
+  "animationConfig" : "tranquilwind.animation",
+
+  "label" : "Tranquil Wind",
+  "icon" : "/ivrpg_specs/abilities/kunoichi/tranquilwind.png"
+}

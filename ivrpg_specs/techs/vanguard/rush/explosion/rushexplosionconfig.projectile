@@ -1,0 +1,13 @@
+{
+  "projectileName" : "ivrpgrushexplosionconfig",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "damageKindImage" : "icon.png",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/ivrpg_specs/techs/vanguard/rush/explosion/rushexplosion.config"
+    }
+  ],
+  "damageKind" : "rushelectricplasma",
+  "timeToLive" : 0
+}

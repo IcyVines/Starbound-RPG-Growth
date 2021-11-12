@@ -1,0 +1,21 @@
+{
+  "name" : "ivrpgswordswillstatus",
+
+  "effectConfig" : {
+    "speedModifier" : 1.2,
+    "jumpModifier" : 1.2,
+    "energyRegenPercent" : 0.1,
+    "blossoming" : true
+  },
+
+  "defaultDuration" : 2,
+
+  "scripts" : [
+    "swordswill.lua"
+  ],
+
+  "animationConfig" : "swordswill.animation",
+
+  "label" : "Sword's Will: Blossoming",
+  "icon" : "/ivrpg_specs/abilities/samurai/swordswillstatus.png"
+}

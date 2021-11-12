@@ -12,5 +12,5 @@
   "animationConfig" : "holymark.animation",
 
   "label" : "Holy Mark",
-  "icon" : "/specs/abilities/necromancer/raiseundead.png"
+  "icon" : "/ivrpg_specs/abilities/necromancer/raiseundead.png"
 }

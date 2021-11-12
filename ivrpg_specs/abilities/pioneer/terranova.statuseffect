@@ -1,0 +1,22 @@
+{
+  "name" : "ivrpgterranova",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "modifiers" : {
+      "speed" : 1.2,
+      "power" : 1.25,
+      "resistance" : 0.1,
+      "energy" : 1.25
+    }
+  },
+
+  "scripts" : [
+    "terranova.lua"
+  ],
+
+  "animationConfig" : "terranova.animation",
+
+  "label" : "Terra Nova",
+  "icon" : "/ivrpg_specs/abilities/pioneer/terranova.png"
+}

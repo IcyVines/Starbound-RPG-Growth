@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgreaped",
+  "effectConfig" : {
+    "cooldown" : 1
+  },
+
+  "blockingStat" : "demonicStatusImmunity",
+  
+  "defaultDuration" : 2,
+
+  "scripts" : [
+    "/ivrpg_specs/techs/necromancer/reaped/reaped.lua"
+  ],
+
+  "label" : "Reaped!",
+  "icon" : "/ivrpg_specs/techs/necromancer/reap.png"
+}
