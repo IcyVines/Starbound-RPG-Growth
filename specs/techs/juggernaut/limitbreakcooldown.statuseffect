@@ -1,9 +1,0 @@
-{
-  "name" : "ivrpglimitbreakcooldown",
-  "effectConfig" : {},
-
-  "defaultDuration" : 60,
-
-  "label" : "Limit Break Cooldown",
-  "icon" : "/specs/techs/juggernaut/limitbreakcooldown.png"
-}

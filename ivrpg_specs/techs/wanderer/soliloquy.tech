@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgsoliloquy",
+  "type" : "head",
+
+  "scripts" : ["soliloquy.lua"],
+  "animator" : "soliloquy.animation",
+
+  "description" : "Wanderer Only",
+  "shortDescription" : "Soliloquy",
+  "rarity" : "Uncommon",
+  "icon" : "/ivrpg_specs/techs/wanderer/soliloquy.png",
+
+  "chipCost" : 0
+}

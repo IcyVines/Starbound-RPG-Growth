@@ -158,7 +158,7 @@ function rescrollSpecialization(class, spec)
   if class == 0 or spec == 0 then
     return
   else
-    specInfo = root.assetJson("/specs/" .. specList[class][spec].name .. ".config")
+    specInfo = root.assetJson("/ivrpg_specs/" .. specList[class][spec].name .. ".config")
   end
   player.makeTechUnavailable(specInfo.tech.name)
   player.consumeCurrency("spectype", spec)

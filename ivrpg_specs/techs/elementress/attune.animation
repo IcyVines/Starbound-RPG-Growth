@@ -1,0 +1,225 @@
+{
+  "globalTagDefaults" : {
+    "joltDirectives" : "",
+    "fireMod" : "1",
+    "iceMod" : "1",
+    "electricMod" : "1"
+  },
+
+  "animationParts" : {
+    "jolting" : "",
+    "gauge" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "jolt" : {
+        "default" : "off",
+        "states" : {
+          "off" : { 
+            "properties" : {
+              "particleEmittersOff" : [ "jolts" ],
+              "lightsOff" : [ "joltGlow" ]
+            }
+          },
+          "on" : {
+            "frames" : 8,
+            "cycle" : 0.6,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "jolts" ],
+              "lightsOn" : [ "joltGlow" ]
+            }
+          }
+        }
+      },
+      "gauge" : {
+        "default" : "fire",
+        "states" : {
+          "fire" : { 
+            "frames" : 11,
+            "cycle" : 0
+          },
+          "ice" : {
+            "frames" : 11,
+            "cycle" : 0
+          },
+          "electric" : {
+            "frames" : 11,
+            "cycle" : 0
+          }
+        }
+      }
+    },
+    "parts" : {
+      "jolting" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {
+          "jolt" : {
+            "off" : {},
+            "on" : {
+              "properties" : {
+                "image" : "jolt/balllightning.png:<frame><joltDirectives>"
+              }
+            }
+          }
+        }
+      },
+      "gauge" : {
+        "properties" : {
+          "fullbright" : true,
+          "offset" : [0, 4],
+          "zLevel" : 10
+        },
+        "partStates" : {
+          "gauge" : {
+            "fire" : {
+              "properties" : {
+                "image" : "fire/fire_<fireMod>.png"
+              }
+            },
+            "ice" : {
+              "properties" : {
+                "image" : "ice/ice_<iceMod>.png"
+              }
+            },
+            "electric" : {
+              "properties" : {
+                "image" : "electric/electric_<electricMod>.png"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "embers" : {
+      "enabled" : false,
+      "emissionRate" : 5.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 2.0,
+            "color" : [200, 50, 160, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 2],
+            "approach" : [0, 10],
+            "timeToLive" : 0.3,
+            "variance" : {
+                "initialVelocity" : [0, 1]
+            }
+          }
+        }
+      ]
+    },
+    "jolts" : {
+      "active" : false,
+      "emissionRate" : 20.0,
+      "offsetRegion" : [-0.5, -0.5, 0.5, 0.5],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/lightningsparks/lightningsparks.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1.5, 1.5],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.85,
+            "fade" : 1,
+            "size" : 0.3,
+            "layer" : "middle",
+            "timeToLive" : 0.35,
+            "variance" : {
+              "size" : 0.2,
+              "position" : [1.2, 1.0],
+              "initialVelocity" : [2.0, 2.0]
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/sparkles/sparkle6.animation",
+            "initialVelocity" : [0.0, 7.0],
+            "finalVelocity" : [0.0, 4.0],
+            "approach" : [0.3, 60],
+            "timeToLive" : 0.8,
+            "layer" : "back",
+            "size" : 0.3,
+            "collidesForeground" : true,
+            "variance" : {
+              "position" : [0.5, 0.5],
+              "size" : 0.2,
+              "initialVelocity" : [5, 3],
+              "finalVelocity" : [0, 0],
+              "rotation" : 170,
+              "angularVelocity" : 180
+            }
+          }
+        },
+        {
+          "particle" : {
+            "type" : "animated",
+            "animation" : "/animations/sparkles/sparkle6.animation",
+            "position" : [0, 0],
+            "initialVelocity" : [0.2, -10],
+            "finalVelocity" : [0.1, -50],
+            "approach" : [0, 10],
+            "fade" : 0.5,
+            "destructionAction" : "shrink",
+            "destructionTime" : 2,
+            "layer" : "middle",
+            "size" : 0.3,
+            "timeToLive" : 1,
+            "variance" : {
+              "position" : [1, 1],
+              "size" : 0.2,
+              "initialVelocity" : [0, 4]
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "lights" : {
+    "joltGlow" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [120, 40, 120],
+      "pointLight" : false,
+      "anchorPart" : "jolting"
+    }
+  },
+
+
+  "sounds" : {
+    "fireActivate" : ["/sfx/melee/travelingslash_fire1.ogg","/sfx/melee/travelingslash_fire2.ogg","/sfx/melee/travelingslash_fire3.ogg"],
+    "iceActivate" : ["/sfx/melee/travelingslash_ice1.ogg","/sfx/melee/travelingslash_ice2.ogg","/sfx/melee/travelingslash_ice3.ogg","/sfx/melee/travelingslash_ice4.ogg"],
+    "electricActivate" : ["/sfx/melee/travelingslash_electric1.ogg","/sfx/melee/travelingslash_electric2.ogg","/sfx/melee/travelingslash_electric7.ogg"],
+    "jolt" : ["/sfx/projectiles/electrical_barrier_break1.ogg","/sfx/projectiles/electrical_barrier_break2.ogg","/sfx/projectiles/electrical_barrier_break5.ogg","/sfx/projectiles/electrical_barrier_break6.ogg"],
+    "fireLoop" : ["/sfx/melee/elemental_spin_fire.ogg"],
+    "iceLoop" : ["/sfx/melee/elemental_spin_ice.ogg"],
+    "electricLoop" : ["/sfx/melee/elemental_spin_electric.ogg"],
+    "fireCharge" : ["/ivrpg_specs/techs/elementress/charge/charge_fire3.ogg"],
+    "iceCharge" : ["/ivrpg_specs/techs/elementress/charge/charge_ice3.ogg"],
+    "electricCharge" : ["/ivrpg_specs/techs/elementress/charge/charge_electric3.ogg"],
+    "fireChargeActivate" : ["/sfx/melee/travelingslash_fire1.ogg","/sfx/melee/travelingslash_fire2.ogg","/sfx/melee/travelingslash_fire3.ogg"],
+    "iceChargeActivate" : ["/sfx/melee/travelingslash_ice1.ogg","/sfx/melee/travelingslash_ice2.ogg","/sfx/melee/travelingslash_ice3.ogg","/sfx/melee/travelingslash_ice4.ogg"],
+    "electricChargeActivate" : ["/sfx/melee/travelingslash_electric3.ogg","/sfx/melee/travelingslash_electric4.ogg","/sfx/melee/travelingslash_electric5.ogg"],
+
+    "flamethrowerStart" : [ "/sfx/gun/flamethrower_start.ogg" ],
+    "flamethrowerLoop" : [ "/sfx/gun/flamethrower_loop.ogg" ],
+    "flamethrowerEnd" : [ "/sfx/gun/flamethrower_stop.ogg" ]
+  }
+}

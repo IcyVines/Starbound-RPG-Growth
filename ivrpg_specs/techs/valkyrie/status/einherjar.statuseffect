@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgeinherjar",
+  "blockingStat" : "healingStatusImmunity",
+
+  "effectConfig" : {
+    "power" : 150
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "einherjar.lua"
+  ],
+
+  "animationConfig" : "einherjar.animation",
+
+  "label" : "Einherjar",
+  "icon" : "/ivrpg_specs/techs/valkyrie/einherjar.png"
+}

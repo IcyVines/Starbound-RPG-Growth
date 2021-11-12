@@ -1,0 +1,19 @@
+{
+  "name" : "ivrpgguerrillatactics",
+
+  "effectConfig" : {
+    "speedTime" : 5,
+    "powerTime" : 5
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "guerrillatactics.lua"
+  ],
+
+  "animationConfig" : "guerrillatactics.animation",
+
+  "label" : "Guerilla Tactics",
+  "icon" : "/ivrpg_specs/abilities/operative/guerrillatactics.png"
+}

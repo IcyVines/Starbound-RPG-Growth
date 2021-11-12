@@ -1,0 +1,17 @@
+ {
+  "name" : "ivrpgallystance1",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "effect" : "power"
+  },
+
+  "scripts" : [
+    "allystancestatus.lua"
+  ],
+
+  "animationConfig" : "allystance.animation",
+
+  "label" : "Power Stance",
+  "icon" : "/ivrpg_specs/techs/captain/allystance_power.png"
+}

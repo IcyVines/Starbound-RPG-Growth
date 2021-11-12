@@ -223,7 +223,7 @@ end
 
 function updateSpecInfo()
   if self.spec > 0 and self.class > 0 then
-    self.specInfo = root.assetJson("/specs/" .. self.specList[self.class][self.spec].name .. ".config")
+    self.specInfo = root.assetJson("/ivrpg_specs/" .. self.specList[self.class][self.spec].name .. ".config")
   else
     self.specInfo = nil
   end

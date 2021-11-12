@@ -1,0 +1,38 @@
+{
+  "name" : "ivrpgfortify",
+
+  "effectConfig" : {
+    "includedMonsters" : {
+      "ivrpgmechanistturret" : true,
+      "ivrpgmechanistdrone" : true,
+      "bobot" : true,
+      "scandroid" : true,
+      "firebobot" : true,
+      "cultistscandroid" : true,
+      "lumoth" : true,
+      "firelumoth" : true,
+      "triplod" : true,
+      "omnicannon" : true,
+      "spinemine" : true,
+      "chiropterror" : true,
+      "cosmostache" : true,
+      "heavydrone" : true,
+      "rustick" : true,
+      "trifangle" : true,
+      "twigun" : true,
+      "minidrone" : true,
+      "peacekeeperdrone" : true
+    }
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "fortify.lua"
+  ],
+
+  "animationConfig" : "fortify.animation",
+
+  "label" : "Fortify",
+  "icon" : "/ivrpg_specs/abilities/mechanist/fortify.png"
+}

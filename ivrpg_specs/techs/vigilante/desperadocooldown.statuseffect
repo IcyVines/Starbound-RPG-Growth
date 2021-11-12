@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgdesperadocooldown",
+  "effectConfig" : {
+
+  },
+
+  "defaultDuration" : 10,
+
+  "scripts" : [
+  	"desperadocooldown.lua"
+  ],
+
+  "label" : "Desperado Cooldown",
+  "icon" : "/ivrpg_specs/techs/vigilante/desperadocooldown.png"
+}

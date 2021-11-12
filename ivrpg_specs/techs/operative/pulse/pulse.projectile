@@ -1,0 +1,33 @@
+{
+  "projectileName" : "ivrpgoperativepulse",
+  "image" : "pulse.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 3,
+  "lightColor" : [185, 185, 225],
+  "pointLight" : true,
+  "emitters" : [ "electricplasma" ],
+  "animationLoops" : true,
+  "statusEffects" : [ "ivrpgoverload", "soldierstun" ],
+  "flippable" : true,
+  "power" : 10.0,
+  "speed" : 100.0,
+  "persistentAudio" : "/sfx/projectiles/electricstickyspikes_loop.ogg",
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : ["/sfx/gun/mech_teslastream_fire1.ogg", "/sfx/gun/mech_teslastream_fire2.ogg", "/sfx/gun/mech_teslastream_fire3.ogg"]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/ivrpg_specs/techs/operative/pulse/pulsecannonexplosion.config"
+    }
+  ],
+  "damagePoly" : [ [-3, 3], [-3, -3], [3, -3], [3, 3] ],
+  "physics" : "laser",
+  "damageType" : "IgnoresDef",
+  "damageKind" : "electricplasma"
+}

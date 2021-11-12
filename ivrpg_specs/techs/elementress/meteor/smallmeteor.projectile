@@ -1,0 +1,20 @@
+{
+  "projectileName" : "elementresssmallmeteor",
+  "physics" : "grenadezbomb",
+  "bounces" : 0,
+  "image" : "smallmeteor.png",
+  "animationCycle" : 1,
+  "lightColor" : [253, 160, 57],
+  "frameNumber" : 1,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/ivrpg_specs/techs/elementress/meteor/bombblockexplosion.config"
+    }
+  ],
+  "power" : 60,
+  "damageType" : "NoDamage",
+  "damageKind" : "fire",
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "emitters" : [ "sparks" ]
+}

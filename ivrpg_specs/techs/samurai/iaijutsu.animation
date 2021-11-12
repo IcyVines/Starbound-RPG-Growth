@@ -1,0 +1,26 @@
+{ 
+  "particleEmitters" : {
+    "swordCharge" : {
+      "active" : false,
+      "emissionRate" : 30,
+      "particles" : [
+        { "particle" : "electricswoosh1"},
+        { "particle" : "electricswoosh2"},
+        { "particle" : "electricswoosh2"}
+      ]
+    },
+    "trail" : {
+      "active" : false,
+      "emissionRate" : 200,
+      "particles" : [
+        { "particle" : "ivrpgbreathlessbeam" }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "trailDashFire" : [ "/sfx/melee/timepierce_swing1.ogg" ],
+    "unsheathe" : [ "/ivrpg_specs/techs/samurai/unsheathe_3.ogg" ]
+  }
+
+}

@@ -1,0 +1,14 @@
+{
+  "projectileName" : "ivrpgquasarcollapse",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "damageKindImage" : "icon.png",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/ivrpg_specs/techs/shade/explosion/quasarexplosion.config"
+    }
+  ],
+  "damageKind" : "NoDamage",
+  "onlyHitTerrain" : true,
+  "timeToLive" : 0
+}

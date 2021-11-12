@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgelementalweaveelectric",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+  	"mod" : 3
+  },
+
+  "scripts" : [
+    "elementalweaveeffect.lua"
+  ],
+
+  "label" : "Elemental Weave: Electric",
+  "icon" : "/ivrpg_specs/abilities/elementress/elementalweaveelectric.png"
+}

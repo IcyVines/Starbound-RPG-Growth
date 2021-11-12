@@ -1,0 +1,23 @@
+{
+  "name" : "ivrpgatlasburden",
+  "effectConfig" : {
+    "shieldDecay" : 0.5,
+    "jumpModifier" : 0.5,
+    "enemyStatus" : "soldierstun",
+    "enemyStatusRange" : 15,
+    "enemyStatusLength" : 1,
+    "allyStatus" : "ivrpgatlasrelief",
+    "allyStatusRange" : 15,
+    "allyStatusLength" : 10,
+    "randomStun" : 0.25
+  },
+
+  "defaultDuration" : 10,
+
+  "scripts" : [
+  	"atlasburdenstatus.lua"
+  ],
+
+  "label" : "Atlas' Burden",
+  "icon" : "/ivrpg_specs/techs/titan/atlasburden.png"
+}

@@ -12,5 +12,5 @@
   "animationConfig" : "cursed.animation",
 
   "label" : "Cursed",
-  "icon" : "/specs/abilities/necromancer/raiseundead.png"
+  "icon" : "/ivrpg_specs/abilities/necromancer/raiseundead.png"
 }

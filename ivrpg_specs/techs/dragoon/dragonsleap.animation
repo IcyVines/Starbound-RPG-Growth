@@ -1,0 +1,30 @@
+{
+  "particleEmitters" : {
+    "jumpParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "doublejump",
+          "offset" : [0.2, -3]
+        }
+      ]
+    },
+    "downParticles" : {
+      "burstCount" : 8,
+      "particles" : [
+        {
+          "particle" : "dragoonslamdown",
+          "offset" : [0, 3]
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "multiJumpSound" : ["/sfx/tech/tech_multijump.ogg"],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "slamSound" : [ "/sfx/gun/grenadeblast_fire2.ogg" ],
+    "charge" : ["/ivrpg_specs/techs/dragoon/leap_charge2.ogg"],
+    "leap" : ["/sfx/tech/tech_rocketjump_release.ogg"]
+  }
+}

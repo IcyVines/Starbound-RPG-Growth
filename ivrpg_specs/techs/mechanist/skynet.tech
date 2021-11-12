@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgskynet",
+  "type" : "head",
+
+  "scripts" : ["skynet.lua"],
+  "animator" : "skynet.animation",
+
+  "description" : "Mechanist Only",
+  "shortDescription" : "Skynet",
+  "rarity" : "Uncommon",
+  "icon" : "/ivrpg_specs/techs/mechanist/skynet.png",
+
+  "chipCost" : 0
+}

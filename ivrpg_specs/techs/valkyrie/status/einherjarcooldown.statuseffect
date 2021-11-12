@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgeinherjarcooldown",
+
+  "effectConfig" : {
+    "cooldown" : true
+  },
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "einherjar.lua"
+  ],
+
+  "animationConfig" : "einherjar.animation",
+
+  "label" : "Einherjar Cooldown",
+  "icon" : "/ivrpg_specs/techs/valkyrie/einherjarcooldown.png"
+}

@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgimmaculateshield",
+  "type" : "body",
+
+  "scripts" : ["immaculateshield.lua"],
+  "animator" : "immaculateshield.animation",
+
+  "description" : "Paladin Only",
+  "shortDescription" : "Immaculate Shield",
+  "rarity" : "Uncommon",
+  "icon" : "/ivrpg_specs/techs/paladin/immaculateshield.png",
+
+  "chipCost" : 0
+}

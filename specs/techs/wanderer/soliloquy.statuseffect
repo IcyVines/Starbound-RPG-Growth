@@ -1,9 +1,0 @@
-{
-  "name" : "ivrpgsoliloquystatus",
-  "effectConfig" : {},
-
-  "defaultDuration" : 10,
-
-  "label" : "Soliloquy",
-  "icon" : "/specs/techs/wanderer/soliloquy.png"
-}

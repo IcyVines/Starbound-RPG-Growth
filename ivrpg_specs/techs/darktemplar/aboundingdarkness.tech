@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgaboundingdarkness",
+  "type" : "body",
+
+  "scripts" : ["aboundingdarkness.lua"],
+  "animator" : "aboundingdarkness.animation",
+
+  "description" : "Dark Templar Only",
+  "shortDescription" : "Abounding Darkness",
+  "rarity" : "Legendary",
+  "icon" : "/ivrpg_specs/techs/darktemplar/aboundingdarkness.png",
+
+  "chipCost" : 0
+}

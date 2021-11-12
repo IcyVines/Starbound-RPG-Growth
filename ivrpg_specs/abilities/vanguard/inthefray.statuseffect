@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpginthefray",
+
+  "effectConfig" : {
+    
+  },
+
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "inthefray.lua"
+  ],
+
+  "animationConfig" : "inthefray.animation",
+
+  "label" : "In the Fray",
+  "icon" : "/ivrpg_specs/abilities/vanguard/inthefray.png"
+}

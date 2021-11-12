@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgelementalweaveice",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+  	"mod" : 2
+  },
+
+  "scripts" : [
+    "elementalweaveeffect.lua"
+  ],
+
+  "label" : "Elemental Weave: Ice",
+  "icon" : "/ivrpg_specs/abilities/elementress/elementalweaveice.png"
+}

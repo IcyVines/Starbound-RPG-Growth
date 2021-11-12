@@ -411,7 +411,7 @@ end
 
 -- Specialization Effects
 function updateSpecInfo()
-  self.specInfo = root.assetJson("/specs/" .. self.specList[self.class][self.spec].name .. ".config")
+  self.specInfo = root.assetJson("/ivrpg_specs/" .. self.specList[self.class][self.spec].name .. ".config")
 end
 
 function updateSpecialization()
