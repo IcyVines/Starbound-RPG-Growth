@@ -1,0 +1,19 @@
+{
+  "name" : "ivrpgfightinglion",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "powerTime" : 2,
+    "energy" : 0.1,
+    "power" : 1.5
+  },
+
+  "scripts" : [
+    "fightinglion.lua"
+  ],
+
+  "animationConfig" : "fightinglion.animation",
+
+  "label" : "Fighting Lion",
+  "icon" : "/ivrpg_specs/abilities/cannoneer/fightinglion.png"
+}

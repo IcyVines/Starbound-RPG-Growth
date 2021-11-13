@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpglimitbreak",
+  "type" : "body",
+
+  "scripts" : ["limitbreak.lua"],
+  "animator" : "limitbreak.animation",
+
+  "description" : "Juggernaut Only",
+  "shortDescription" : "Limit Break",
+  "rarity" : "Uncommon",
+  "icon" : "/ivrpg_specs/techs/juggernaut/limitbreak.png",
+
+  "chipCost" : 0
+}

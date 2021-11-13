@@ -217,7 +217,7 @@ end
 function rpg_loadInfo(class, affinity, spec)
   self.rpg_classInfo = (class and class > 0) and root.assetJson("/classes/" .. self.rpg_classList[class] .. ".config") or nil
   self.rpg_affinityInfo = (affinity and affinity > 0) and root.assetJson("/affinities/" .. self.rpg_affinityList[affinity] .. ".config") or nil
-  self.rpg_specInfo = ((class and class > 0) and (spec and spec > 0)) and root.assetJson("/specs/" .. self.rpg_specList[class][spec].name .. ".config") or nil
+  self.rpg_specInfo = ((class and class > 0) and (spec and spec > 0)) and root.assetJson("/ivrpg_specs/" .. self.rpg_specList[class][spec].name .. ".config") or nil
 end
 
 function rpg_updateDamageTaken(notification, bledToDeath)

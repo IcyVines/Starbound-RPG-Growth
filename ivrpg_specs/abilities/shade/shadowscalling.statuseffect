@@ -1,0 +1,18 @@
+{
+  "name" : "ivrpgshadowscalling",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "regenTime" : 4
+  },
+
+  "scripts" : [
+    "shadowscalling.lua"
+  ],
+
+  "animationConfig" : "shadowscalling.animation",
+  "updateDelta" : 5,
+
+  "label" : "Shadow's Calling",
+  "icon" : "/ivrpg_specs/abilities/shade/shadowscalling.png"
+}

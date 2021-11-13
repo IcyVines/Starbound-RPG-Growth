@@ -1,0 +1,12 @@
+{
+  "projectileName" : "ivrpgresurgenceexplosion",
+  "image" : "/projectiles/invisibleprojectile/invisibleprojectile.png",
+  "damageKindImage" : "icon.png",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/ivrpg_specs/techs/crusader/explosion/resurgenceexplosion.config"
+    }
+  ],
+  "timeToLive" : 0
+}

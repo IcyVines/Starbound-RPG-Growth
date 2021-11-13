@@ -1,0 +1,17 @@
+ {
+  "name" : "ivrpgallystance0",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "effect" : "none"
+  },
+
+  "scripts" : [
+    "allystancestatus.lua"
+  ],
+
+  "animationConfig" : "allystance.animation",
+
+  "label" : "No Stance",
+  "icon" : "/ivrpg_specs/techs/captain/allystance.png"
+}

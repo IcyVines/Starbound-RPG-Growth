@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgquasarcamouflage",
+  "effectConfig" : {
+    "shieldDecay" : 0.5,
+    "healthStatus" : "regeneration4",
+    "healthRange" : 15
+  },
+
+  "defaultDuration" : 10,
+
+  "scripts" : [
+  	"quasarcamouflage.lua"
+  ],
+
+  "label" : "Quasar",
+  "icon" : "/ivrpg_specs/techs/shade/quasar.png"
+}

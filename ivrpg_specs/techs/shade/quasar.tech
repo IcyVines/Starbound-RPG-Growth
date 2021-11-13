@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgquasar",
+  "type" : "body",
+
+  "scripts" : ["quasar.lua"],
+  "animator" : "quasar.animation",
+
+  "description" : "Shade Only",
+  "shortDescription" : "Quasar",
+  "rarity" : "Uncommon",
+  "icon" : "/ivrpg_specs/techs/shade/quasar.png",
+
+  "chipCost" : 0
+}

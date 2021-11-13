@@ -1,0 +1,34 @@
+{
+  "name" : "ivrpgmeltyblood",
+
+  "defaultDuration" : 5,
+  "effectConfig" : {
+    "healthPercent" : 0.15,
+    "movementParameters" : {
+      "standingPoly" : [ [-0.375, -1.0], [-0.175, -1.25], [0.175, -1.25], [0.375, -1.0], [0.375, 0.325], [0.175, 0.61], [-0.175, 0.61], [-0.375, 0.325] ],
+      "collisionPoly" : [ [-0.375, -1.0], [-0.175, -1.25], [0.175, -1.25], [0.375, -1.0], [0.375, 0.325], [0.175, 0.61], [-0.175, 0.61], [-0.375, 0.325] ],
+      "crouchingPoly" : [ [-0.375, -1.0], [-0.175, -1.25], [0.175, -1.25], [0.375, -1.0], [0.375, -0.5], [0.175, -0.25], [-0.175, -0.25], [-0.375, -0.5] ],
+      "mass" : 1.6,
+
+      // should keep the player from teleporting through walls
+      "maximumCorrection" : 3,
+      "maxMovementPerStep" : 0.2,
+
+      "liquidFriction" : 9.0,
+      "normalGroundFriction" : 35.0,
+
+      "groundForce" : 250.0,
+      "airForce" : 50.0,
+      "liquidForce" : 80.0
+    }
+  },
+
+  "scripts" : [
+    "meltyblood.lua"
+  ],
+
+  "animationConfig" : "meltyblood.animation",
+
+  "label" : "Melty Blood",
+  "icon" : "/ivrpg_specs/abilities/changeling/meltyblood.png"
+}

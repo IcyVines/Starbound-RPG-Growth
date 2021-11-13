@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpgsacrifice",
+  "blockingStat" : "demonicStatusImmunity",
+
+  "effectConfig" : {},
+  "defaultDuration" : 5,
+
+  "scripts" : [
+    "sacrifice.lua"
+  ],
+
+  "animationConfig" : "sacrifice.animation",
+
+  "label" : "Cursed",
+  "icon" : "/ivrpg_specs/abilities/necromancer/raiseundead.png"
+}

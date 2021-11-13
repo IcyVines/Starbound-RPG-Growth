@@ -1,0 +1,23 @@
+{
+  "name" : "ivrpgresurgence",
+  "type" : "body",
+
+  "scripts" : ["resurgence.lua"],
+  "animator" : "resurgence.animation",
+
+  "description" : "Crusader Only",
+  "shortDescription" : "Resurgence",
+  "rarity" : "Legendary",
+  "icon" : "/ivrpg_specs/techs/crusader/resurgence.png",
+
+  "chipCost" : 0,
+
+  "energyCostPerSecond" : 75,
+  "maximumDoubleTapTime" : 0.25,
+  "dashControlForce" : 1000,
+  "dashSpeedModifier" : 5.0,
+  "stopAfterDash" : true,
+  "groundOnly" : true,
+  "speedTime" : 5,
+  "cooldownTime" : 180
+}
