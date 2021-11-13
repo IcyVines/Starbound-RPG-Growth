@@ -89,9 +89,9 @@
     "class" : "GunFire",
     "name" : "Targeted Shot",
 
-    "fireTime" : 1.0,
-    "baseDps" : 8,
-    "energyUsage" : 24,
+    "fireTime" : 1.2,
+    "baseDps" : 12,
+    "energyUsage" : 40,
     "inaccuracy" : 0,
 
     "projectileCount" : 1,

@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgdeadoralive",
+  "type" : "head",
+
+  "scripts" : ["deadoralive.lua"],
+  "animator" : "deadoralive.animation",
+
+  "description" : "Trapper Only",
+  "shortDescription" : "Dead or Alive",
+  "rarity" : "Uncommon",
+  "icon" : "/specs/techs/trapper/deadoralive.png",
+
+  "chipCost" : 0
+}
