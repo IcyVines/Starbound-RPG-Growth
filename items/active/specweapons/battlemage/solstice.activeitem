@@ -4,7 +4,7 @@
 	"level": 6,
 	"maxStack": 1,
 	"rarity": "Essential",
-	"description": "Within the dark, a ^magenta;violet glow^reset;, humming in the night, so still and steady, charged and ready, waiting for a fight. And then a strike, the ^magenta;glow^reset; ignites, a blast of ^magenta;flashing, purple lights^reset;, and just like that, a vicious sight: a strengthened Mage with brain ^magenta;and^reset; might.",
+	"description": "Within the dark, a ^magenta;violet glow^reset;, humming in the night, so still and steady, charged and ready, waiting for a fight. And then a strike, the ^magenta;glow^reset; ignites, a blast of ^magenta;flashing, purple lights^reset;, and just like that, a vicious sight: a strengthened staff of ^magenta;magic might^reset;.",
 	"shortdescription": "^magenta;Solstice",
 	"tooltipKind": "ivrpg_weapon",
 	"category": "staff",

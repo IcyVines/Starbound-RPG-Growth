@@ -13,7 +13,7 @@
   "windupTime" : 0.0,
   "cooldown" : 0.4,
 
-  "projectileType" : "ivrpg_alchemictincture_instantheal",
+  "projectileType" : "ivrpg_alchemictincture_red",
   "projectileConfig" : {
     "speed" : 40,
     "power" : 0,

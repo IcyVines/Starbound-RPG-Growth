@@ -1,0 +1,157 @@
+{
+  "itemName" : "ivrpgwheadhunter",
+  "price" : 5000,
+  "inventoryIcon" : "headhunter_icon.png",
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "An animal's no good dead: it's when you tame one that it truly shines. And, in the case it don't wanna be tamed?\n^yellow;Well...\n^red;That's where the gun comes in.^reset;\n\nHold Shift before using Tracking Shot to auto-aim towards the nearest enemy.",
+  "shortdescription" : "^yellow;Headhunter",
+  "level" : 6,
+  "tooltipKind" : "ivrpg_weapon",
+  "category" : "Lever-Action Rifle",
+  "itemTags" : ["weapon","ranged","rifle"],
+  "twoHanded" : true,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "headhunter.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : [ "/items/active/specweapons/trapper/fire.ogg" ],
+      "reload" : [ "/items/active/specweapons/trapper/cocking.ogg" ]
+    },
+
+    "animatedParts" : {
+
+      "stateTypes" : {
+        "reload" : {
+          "default" : "off",
+          "states" : {
+            "off" : {
+              "frames" : 1
+            },
+            "on" : {
+              "frames" : 8,
+              "cycle" : 0.8,
+              "mode" : "transition",
+              "transition" : "off"
+            }
+          }
+        }
+      },
+
+      "parts" : {
+        "middle" : {
+          "properties" : {
+            "centered" : true,
+            "image" : "<partImage><paletteSwaps>",
+            "transformationGroups" : ["weapon"]
+          },
+          
+          "partStates" : {
+            "reload" : {
+              "off" : {
+                "properties" : {
+                  "image" : "<partImage>:<frame>"
+                }
+              },
+              "on" : {
+                "properties" : {
+                  "image" : "<partImage>:<frame>"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "classreq" : [5, 6],
+  "specreq" : 8,
+
+  "baseOffset" : [1.25, -0.625],
+  "muzzleOffset" : [3.75, 1.25],
+  "gunScale" : [0.7, 0.7],
+
+  "scripts" : ["/items/active/specweapons/trapper/gun.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/trapper/gunfire.lua"],
+    "class" : "GunFire",
+    "name" : "Targeted Shot",
+
+    "fireTime" : 1.0,
+    "baseDps" : 8,
+    "energyUsage" : 24,
+    "inaccuracy" : 0,
+
+    "projectileCount" : 1,
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockback" : 20
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "frontArmFrame": "rotation",
+
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "prefire" : {
+        "duration" : 0,
+        "armRotation" : 0,
+        "frontArmFrame": "rotation",
+
+        "weaponRotation" : 0,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : 5,
+        "frontArmFrame": "rotation",
+
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.7,
+        "armRotation" : 5,
+        "frontArmFrame": "walk.1",
+
+        "weaponRotation" : 5,
+        "twoHanded" : true,
+
+        "allowRotate" : true,
+        "allowFlip" : false
+      }
+    }
+  },
+
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Tranquilizer"
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
