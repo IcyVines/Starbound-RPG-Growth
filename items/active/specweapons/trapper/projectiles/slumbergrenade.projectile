@@ -1,0 +1,17 @@
+{
+  "projectileName" : "ivrpg_slumbergrenade",
+  "physics" : "stickygrenade",
+  "bounces" : -1,
+  "timeToLive" : 10,
+  "speed" : 30,
+  "damageKindImage" : "icon.png",
+  "image" : "slumbergrenade.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "scripts" : ["grenade.lua"],
+  "power" : 0,
+  "damageType" : "NoDamage",
+  "piercing" : true,
+  "persistentAudio" : "/sfx/objects/gasbooster_loop.ogg",
+  "damageKind" : "default"
+}

@@ -8,6 +8,7 @@ GunFire = WeaponAbility:new()
 
 function GunFire:init()
   self.weapon:setStance(self.stances.idle)
+  self.altProjectile = config.getParameter("altAbility.projectileType", "ivrpg_slumbergrenade")
 
   self.cooldownTimer = self.fireTime
   self.energyMultiplier = 0
@@ -37,14 +38,14 @@ function GunFire:update(dt, fireMode, shiftHeld)
     if self.fireMode == (self.activatingFireMode or self.abilitySlot) and status.overConsumeResource("energy", self:energyPerShot()) then
       self:setState(self.auto)
     elseif self.fireMode == "alt" and status.overConsumeResource("energy", self:energyPerShot()) then
-      
+      self:setState(self.auto, true)
     end
   end
 
   self.accurateFire = mcontroller.crouching()
 end
 
-function GunFire:auto()
+function GunFire:auto(alt)
   
   self.weapon:setStance(self.stances.prefire)
   while self.shiftHeld and self.fireMode == "primary" do
@@ -68,18 +69,22 @@ function GunFire:auto()
   end
 
   self.weapon:setStance(self.stances.fire)
-  self:fireProjectile()
-  self:muzzleFlash()
+  self:fireProjectile(alt and self.altProjectile or nil, alt and {timeToLive = 3} or nil)
+  if not alt then
+    self:muzzleFlash()
+  else
+    animator.playSound("fireGrenade")
+  end
 
   if self.stances.fire.duration then
     util.wait(self.stances.fire.duration)
   end
 
   self.cooldownTimer = self.fireTime
-  self:setState(self.cooldown)
+  self:setState(self.cooldown, alt)
 end
 
-function GunFire:cooldown()
+function GunFire:cooldown(alt)
 
   self.weapon:setStance(self.stances.cooldown)
   self.weapon:updateAim()
@@ -106,10 +111,6 @@ function GunFire:muzzleFlash()
   animator.playSound("fire")
 
   animator.setLightActive("muzzleFlash", true)
-end
-
-function GunFire:fireBeam(projectileType, projectileParams, inaccuracy, firePosition, projectileCount)
-
 end
 
 function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, firePosition, projectileCount)

@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpg_slumber",
+  "blockingStat" : "stunImmunity",
+  "effectConfig" : {},
+  "defaultDuration" : 1.5,
+
+  "scripts" : [
+    "slumber.lua"
+  ],
+
+  "animationConfig" : "slumber.animation",
+
+  "label" : "Slumber",
+  "icon" : "/interface/statuses/slow.png"
+}

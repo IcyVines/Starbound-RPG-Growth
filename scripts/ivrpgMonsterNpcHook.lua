@@ -306,7 +306,7 @@ function rpg_updateDamageTaken(notification, bledToDeath)
 
   -- Bleed
   if not bledToDeath then
-    world.sendEntityMessage(sourceId, "bleedCheck", damage, sourceKind, self.rpg_Id)
+    world.sendEntityMessage(sourceId, "bleedCheck", damage, sourceKind, self.rpg_Id, status.stat("ivrpg_extraBleedChance"))
   end
 end
 

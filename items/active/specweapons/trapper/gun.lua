@@ -25,8 +25,6 @@ end
 
 function update(dt, fireMode, shiftHeld)
   incorrectWeapon()
-  status.setResourceLocked("energy", false)
-
   self.weapon:update(dt, fireMode, shiftHeld)
 end
 

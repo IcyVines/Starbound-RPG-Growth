@@ -6,6 +6,8 @@ function init()
   self.id = effect.sourceEntity()
   self.energyToDamageRatio = 0
   self.previousWeaponry = false
+  self.fireTime = 0.5
+  self.fireTimer = self.fireTime
   self.maxEnergy = status.resourceMax("energy")
   animator.setParticleEmitterOffsetRegion("rageEmbers", mcontroller.boundBox())
   animator.setParticleEmitterOffsetRegion("unrageEmbers", mcontroller.boundBox())
@@ -20,11 +22,24 @@ function update(dt)
   if self.previousWeaponry and correctWeaponry then
     if currentEnergy < self.previousEnergy then
       self.energyToDamageRatio = self.energyToDamageRatio + dt * (1 + self.energyToDamageRatio)
+      self.fireTimer = self.fireTimer - dt
+      if currentEnergy < status.resourceMax("energy") * 0.75 and self.fireTimer <= 0 then
+        status.applySelfDamageRequest({
+          damageSourceKind = "fire",
+          damageType = "IgnoresDef",
+          sourceEntityId = self.id,
+          damage = currentEnergy < status.resourceMax("energy") * 0.25 and 3 or (currentEnergy < status.resourceMax("energy") * 0.5 and 2 or 1)
+        })
+        self.fireTimer = self.fireTime
+      end
     elseif currentEnergy > self.previousEnergy then
       self.energyToDamageRatio = math.max(self.energyToDamageRatio - dt * (1 + self.energyToDamageRatio), 0)
+    else
+      self.fireTimer = self.fireTimer - dt
     end
   else
     self.energyToDamageRatio = 0
+    self.fireTimer = self.fireTime
   end
 
   status.setPersistentEffects("ivrpg_gunsablazing", {

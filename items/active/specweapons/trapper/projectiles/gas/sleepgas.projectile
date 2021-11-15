@@ -1,0 +1,32 @@
+{
+  "projectileName" : "ivrpg_sleepgas",
+  "physics" : "statuspod",
+  "bounces" : -1,
+  "timeToLive" : 1.6,
+  "speed" : 0,
+  "image" : "sleepgas_invis.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+      "time" : 0.0,
+      "repeat" : false,
+      "action" : "loop",
+      "count" : 50,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "ivrpg_sleepgas"
+        }
+      ]
+    }
+   ],
+  "power" : 0,
+  "piercing" : true,
+  "damageKind" : "applystatus",
+  "damagePoly" : [ [-30, -30], [-30, 30], [30, 30], [30, -30]  ],
+  "flippable" : true,
+  "statusEffects" : [
+    {"effect" : "ivrpg_slumber", "duration" : 1 }
+  ]
+}

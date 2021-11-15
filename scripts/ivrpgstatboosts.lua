@@ -20,8 +20,8 @@ function init()
   self.class = 0
   self.profession = 0
 
-  message.setHandler("bleedCheck", function(_, _, damage, sourceKind, sourceId)
-    local bleedChance = status.stat("ivrpgBleedChance")
+  message.setHandler("bleedCheck", function(_, _, damage, sourceKind, sourceId, susceptible)
+    local bleedChance = status.stat("ivrpgBleedChance") + (susceptible and susceptible or 0)
     local bleedLength = status.stat("ivrpgBleedLength")
     local guaranteed = string.find(sourceKind, "bleed") or string.find(sourceKind, "scythe")
     local noBleed = string.find(sourceKind, "bluntforce") or string.find(sourceKind, "hammer")
