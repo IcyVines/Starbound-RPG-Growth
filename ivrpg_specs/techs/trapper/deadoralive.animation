@@ -1,0 +1,45 @@
+{
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "captureStatus" : {
+        "default" : "off",
+        "states" : {
+          "on" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "mode" : "loop"
+          },
+          "off" : {}
+        }
+      }
+    },
+    "parts" : {
+      "captureStatus" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {      
+          "captureStatus" : {
+            "on" : {
+              "properties" : {
+                "image" : "/ivrpg_specs/techs/trapper/paw_icon.png",
+                "offset" : [0, 3.5]
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          } 
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "spawnMonster" : [ "/sfx/npc/monsters/pod_capture2.ogg" ],
+    "spawnTrap" : [ "/sfx/npc/monsters/peblit_drop1.ogg" ]
+  }
+}

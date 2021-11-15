@@ -19,5 +19,6 @@
   "dashSpeed" : 50,
   "dashDuration" : 0.20,
   "dropsPerDash" : 3,
-  "drops" : ["molotov", "ivrpgskittergrenade", "ivrpgstungrenade", "ivrpgshockcharge"]
+  "drops" : ["ivrpg_shrapnelgrenade"],
+  "energyCost" : 30
 }

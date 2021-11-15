@@ -2,7 +2,7 @@
   "kind" : "ivrpgcloakingsmoke",
   "definition" : {
     "type" : "animated",
-    "animation" : "specs/techs/hunter/smokebombs/cloakingsmoke/cloakingsmoke.animation",
+    "animation" : "/ivrpg_specs/techs/hunter/smokebombs/cloakingsmoke/cloakingsmoke.animation",
     "initialVelocity" : [0, 0],
     "finalVelocity" : [0, 0],
     "approach" : [1, 1],

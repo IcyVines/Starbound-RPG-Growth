@@ -2,7 +2,7 @@
   "kind" : "ivrpgdazinggas",
   "definition" : {
     "type" : "animated",
-    "animation" : "specs/techs/kunoichi/dazinggas/dazinggas.animation",
+    "animation" : "/ivrpg_specs/techs/kunoichi/dazinggas/dazinggas.animation",
     "initialVelocity" : [0, 0],
     "finalVelocity" : [0, 0],
     "approach" : [1, 1],

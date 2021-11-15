@@ -18,7 +18,7 @@ function update(args)
     projectile.die()
   end
 
-  local targets = enemyQuery(mcontroller.position(), 30, {includedTypes = {"creature"}}, self.id, true)
+  --[[local targets = enemyQuery(mcontroller.position(), 30, {includedTypes = {"creature"}}, self.id, true)
   if targets and not self.newTarget then
     for _,id in ipairs(targets) do
       if world.entityExists(id) then
@@ -35,15 +35,37 @@ function update(args)
 
   if self.startSeeking and #self.nearbyEntities > 0 and not self.newTarget then
     startSeeking()
-  end
+  end]]
 
   if self.newTarget and world.entityExists(self.newTarget) then
-    self.nearbyEntities = {}
+    --self.nearbyEntities = {}
     local distance = world.distance(world.entityPosition(self.newTarget), mcontroller.position())
     mcontroller.setVelocity(vec2.mul(vec2.norm(distance), projectile.getParameter("speed", 1)))
-    if vec2.mag(distance) <= 2.5 then
-      self.newTarget = nil
+    --if vec2.mag(distance) <= 2.5 then
+      --self.newTarget = nil
+    --end
+  else
+    self.newTarget = nil
+  end
+end
+
+function hit(entityId)
+  local nearbyEntities = {}
+  local targets = enemyQuery(mcontroller.position(), 30, {includedTypes = {"creature"}, withoutEntityId = entityId}, self.id, true)
+  if targets then
+    for _,id in ipairs(targets) do
+      if world.entityExists(id) then
+        local pos = world.entityPosition(id)
+        local distance = vec2.mag(world.distance(mcontroller.position(), pos))
+        if not world.lineTileCollision(mcontroller.position(), pos, {"Block", "Slippery", "Null", "Dynamic"}) then
+          table.insert(nearbyEntities, id)
+        end
+      end
     end
+  end
+  if nearbyEntities and #nearbyEntities > 0 then
+    self.newTarget = nearbyEntities[math.random(#nearbyEntities)]
+    self.currentChain = self.currentChain + 1
   else
     self.newTarget = nil
   end

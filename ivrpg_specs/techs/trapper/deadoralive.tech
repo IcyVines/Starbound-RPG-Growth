@@ -10,5 +10,9 @@
   "rarity" : "Uncommon",
   "icon" : "/ivrpg_specs/techs/trapper/deadoralive.png",
 
-  "chipCost" : 0
+  "chipCost" : 0,
+
+  "damageModifier" : 0.33,
+  "explodeEnergyCost" : 20,
+  "trapEnergyCost" : 80
 }

@@ -1,0 +1,19 @@
+{
+  "projectileName" : "ivrpg_beartrap",
+  "image" : "beartrap.png",
+  "physics" : "stickygrenade",
+  "frameNumber" : 1,
+  "winddownFrames" : 2,
+  "animationCycle" : 0.3,
+
+  "orientationLocked" : true,
+  "pointLight" : false,
+  "speed" : 40,
+  "power" : 10.0,
+  "damageKind" : "ivrpg_beartrap_bleed",
+  "emitters" : [ ],
+  "piercing" : true,
+  "bounces" : -1,
+
+  "scripts" : [ "beartrap.lua" ]
+}

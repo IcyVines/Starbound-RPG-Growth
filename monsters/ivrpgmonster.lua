@@ -21,6 +21,11 @@ function init()
   self.versionConfig = root.assetJson("/ivrpgVersion.config")
   if self.versionConfig.RPGAI_version and self.versionConfig.RPGAI_refactorVersion == self.versionConfig.refactorVersion then rpg_initAI() end
   if config.getParameter("ivrpgSpawnNpc", false) then rpg_spawnNpc(config.getParameter("ivrpgNpcParameters", {})) end
+
+  message.setHandler("monster.setDropPool", function(_, _, pool)
+    monster.setDropPool(pool)
+  end)
+
 end
 
 function rpg_secondInit()

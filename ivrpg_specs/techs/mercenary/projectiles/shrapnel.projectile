@@ -1,0 +1,11 @@
+{
+  "projectileName" : "ivrpg_shrapnel",
+  "image" : "shrapnel.png",
+  "physics" : "vhighgravgrenade",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "power" : 5.0,
+  "speed" : 80,
+  "damageKind" : "alwaysbleed"
+}
