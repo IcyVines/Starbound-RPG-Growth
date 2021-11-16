@@ -1,10 +1,11 @@
 {
   "input" : [
+    { "item" : "ivrpgmeteoricmetalbar", "count" : 4 },
     { "item" : "ivrpgsquirmingnervebundle", "count" : 1 },
     { "item" : "refinedviolium", "count" : 6 },
-    { "item" : "goldbar", "count" : 8 },
+    { "item" : "bonematerial", "count" : 8 },
     { "item" : "solariumstar", "count" : 4 }
   ],
-	"output" : { "item" : "ivrpgwheadhunter", "count" : 1 },
+	"output" : { "item" : "ivrpgwmurderstick", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]
 }

@@ -28,7 +28,7 @@
       "color" : [105, 22, 18]
     }},
     "animatedParts" : { "parts" : { "swoosh" : { "properties" : {
-      "offset" : [-1.0, 1.0]
+      "offset" : [0, 1.75]
     }}}},
     "sounds" : {
       "fire" : [ "/sfx/melee/swing_hammer.ogg" ]

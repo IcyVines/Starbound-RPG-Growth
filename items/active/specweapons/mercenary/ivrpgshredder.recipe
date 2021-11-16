@@ -2,10 +2,8 @@
   "input" : [
     { "item" : "ivrpgfiringmechanism", "count" : 1 },
     { "item" : "durasteelbar", "count" : 6 },
-    { "item" : "staticcell", "count" : 5 },
-    { "item" : "livingroot", "count" : 5 },
-    { "item" : "solariumstar", "count" : 4 },
-    { "item" : "diamond", "count" : 1 }
+    { "item" : "staticcell", "count" : 3 },
+    { "item" : "solariumstar", "count" : 5 }
   ],
 	"output" : { "item" : "ivrpgwshredder", "count" : 1 },
 	"groups" : [ "craftinganvil3", "weapons", "all" ]

@@ -1,0 +1,183 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : "",
+    "bloodMod" : "0"
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "swoosh" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {
+          },
+          "fire" : {
+            "frames" : 3,
+            "cycle" : 0.07,
+            "mode" : "transition",
+            "transition" : "idle"
+          }
+        }
+      },
+      "blood" : {
+        "default" : "bloody",
+        "states" : {
+          "bloody" : {
+            "frames" : 1
+          }
+        }
+      },
+      "firing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "fire" : {
+            "frames" : 2,
+            "cycle" : 0.07,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "blade" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 1,
+          "image" : "<partImage><paletteSwaps><directives>",
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0],
+          "damageArea" : [[-1, 0.25], [-1, 1.5], [1.5, 1.75], [1.5, 0.0]],
+          "groundImpactPoly" : [ [1, 1.75],  [1, 0.0],  [2, 0.0],  [2, 1.75] ]
+        },
+        "partStates" : {
+          "blood" : {
+            "bloody" : {
+              "properties" : {
+                "image" : "murderstick.png:<bloodMod>"
+              }
+            }
+          }
+        }
+      },
+      "handle" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps><directives>",
+          "offset" : [0, 0],
+          "transformationGroups" : ["weapon"],
+          "rotationCenter" : [0, 0]
+        }
+      },
+      "swoosh" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [-2.0, 1.5],
+          "transformationGroups" : ["swoosh"],
+          "rotationCenter" : [0, 0]
+        },
+
+        "partStates" : {
+          "swoosh" : {
+            "idle" : {
+              "properties" : {
+                "image" : ""
+              }
+            },
+            "fire" : {
+              "properties" : {
+                "image" : "/items/active/weapons/melee/hammer/swoosh/<elementalType>swoosh.png:<frame>",
+                "damageArea" : [[-5, 2], [-2.5, 4], [1.6, 5], [4, 1.75], [5, -0.25], [5, -2.25], [4, -3.25], [0, -2.5]]
+              }
+            }
+          }
+        }
+      },
+      "muzzleFlash" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0.75, 0],
+          "fullbright" : true,
+          "transformationGroups" : ["muzzle"]
+        },
+
+        "partStates" : {
+          "firing" : {
+            "fire" : {
+              "properties" : {
+                "image" : "<partImage>:<variant>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "swoosh" : {},
+    "muzzle" : {}
+  },
+
+  "rotationGroups" : {
+    "weapon" : {
+      "angularVelocity" : 0
+    }
+  },
+
+  "particleEmitters" : {
+    "physicalswoosh" : {
+      "active" : false,
+      "transformationGroups" : ["swoosh"],
+      "emissionRate" : 50,
+      "offsetRegion" : [-2.0, 0.0, 1.5, 5.0],
+      "particles" : [
+      ]
+    },
+    "muzzleFlash" : {
+      "transformationGroups" : ["muzzle"],
+      "offsetRegion" : [0, 0, 0, 0],
+      "particles" : [ ]
+    },
+    "groundImpact" : {
+      "transformationGroups" : ["weapon"],
+      "particles" : [
+        {
+          "count" : 1,
+          "particle" : {
+            "type" : "animated",
+            "mode" : "LoopForever",
+            "animation" : "/animations/jumpsmoke/jumpsmoke.animation",
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.4,
+            "position" : [1.0, 0.75],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [5, 5],
+            "timeToLive" : 0.4
+          }
+        }
+      ]
+    }
+  },
+
+  "lights" : {
+    "muzzleFlash" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [90, 90, 0]
+    }
+  },
+
+  "sounds" : {
+    "fire" : [ ],
+    "groundImpact" : [ "/sfx/melee/hammer_hit_ground3.ogg", "/sfx/melee/hammer_hit_ground4.ogg" ]
+  }
+}

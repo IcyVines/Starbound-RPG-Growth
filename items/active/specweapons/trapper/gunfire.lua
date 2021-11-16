@@ -41,8 +41,6 @@ function GunFire:update(dt, fireMode, shiftHeld)
       self:setState(self.auto, true)
     end
   end
-
-  self.accurateFire = mcontroller.crouching()
 end
 
 function GunFire:auto(alt)
@@ -136,7 +134,7 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
       projectileType,
       firePosition or self:firePosition(),
       activeItem.ownerEntityId(),
-      self:aimVector(self.accurateFire and 0 or (innacuracy or self.inaccuracy)),
+      self:aimVector(innacuracy or self.inaccuracy),
       false,
       params
       )
@@ -144,11 +142,8 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
   return projectileId
 end
 
-function GunFire:firePosition(xOffset)
-  local offset = copy(self.weapon.muzzleOffset)
-  offset[2] = 0.5
-  offset[1] = offset[1] - 0.5 - (xOffset or 0)
-  return vec2.add(mcontroller.position(), activeItem.handPosition(offset))
+function GunFire:firePosition()
+  return vec2.add(mcontroller.position(), activeItem.handPosition(self.weapon.muzzleOffset))
 end
 
 function GunFire:aimVector(inaccuracy)

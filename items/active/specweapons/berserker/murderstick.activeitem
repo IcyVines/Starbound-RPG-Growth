@@ -1,0 +1,154 @@
+{
+  "itemName" : "ivrpgwmurderstick",
+  "price" : 5000,
+  "inventoryIcon" : "murderstick_bloodless.png",
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "Blood! Blood everywhere! This is what I want! This is what I need! ^red;Glorious, visceral, scarlet blood!^reset;\n\nCRUSH THE ENEMY to SHOOT THE ENEMY ^red;MORE^reset;!!!",
+  "shortdescription" : "^red;Murderstick",
+  "level" : 6,
+  "tooltipKind" : "ivrpg_weapon",
+  "category" : "Shotgun Hammer",
+  "itemTags" : ["weapon","ranged","melee","shotgun","hammer"],
+  "twoHanded" : true,
+
+  "animation" : "TWhammer.animation",
+
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "murderstick_melee.png",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+
+  "animationCustom" : {
+
+    "lights" : { "glow" : {
+      "active" : true,
+      "position" : [0.0, 4.0],
+      "color" : [105, 22, 18]
+    }},
+
+    "animatedParts" : { 
+      "parts" : { 
+        "swoosh" : { 
+          "properties" : {
+            "offset" : [0.5, 1.75]
+          }
+        }
+      }
+    },
+    
+    "sounds" : {
+      "fire" : [ "/sfx/melee/swing_hammer.ogg" ],
+      "fireGun" : [ "/items/active/specweapons/trapper/fire.ogg" ]
+    }
+  },
+
+  "classreq" : [1, 5],
+  "specreq" : 7,
+
+  "baseOffset" : [1.75, 0],
+  "muzzleOffset" : [2.25, 0.5],
+  "gunScale" : [0.7, 0.7],
+
+  "scripts" : ["/items/active/specweapons/berserker/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "ivrpg_dummy",
+  "primaryAbility" : {
+    "name" : "SHOOT THE ENEMY"
+  },
+
+  "altAbilityType" : "hammersmash",
+  "altAbility" : {
+    "scripts" : ["/items/active/specweapons/berserker/hammersmash.lua"],
+    "name" : "CRUSH THE ENEMY",
+    "fireTime" : 0.9,
+    "baseDps" : 10,
+
+    "energyUsage" : 60,
+    "inaccuracy" : 0.15,
+
+    "projectileCount" : 6,
+    "fireType" : "auto",
+
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockback" : 20
+    },
+
+    "damageConfig" : {
+      "damageSourceKind" : "ivrpg_berserkershammer",
+      "knockback" : 30,
+      "knockbackMode" : "facing"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : -90,
+        "weaponOffset" : [0.5, 2.0],
+        "twoHanded" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.8,
+        "armRotation" : 90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [0.4, 1.75],
+
+        // Windup animation
+        "idleHammerAngle" : -10,
+        "windupHammerAngle" : 0,
+        "dropHammerAngle" : 60,
+        "bounceHammerAngle" : 55,
+
+        "minWindup" : 0.7,
+        "windupBaseAngle" : -10,
+        "windupAngleRange" : 70
+      },
+      "preslash" : {
+        "duration" : 0.025,
+        "armRotation" : 55,
+        "weaponRotation" : -45,
+        "weaponOffset" : [0.4, 2.0]
+      },
+      "fire" : {
+        "duration" : 0.4,
+        "armRotation" : -35,
+        "weaponRotation" : -55,
+        "smashTimer" : 1.5,
+        "weaponOffset" : [0.6, 2.0]
+      },
+
+      "fireGun" : {
+        "duration" : 0.2,
+        "armRotation" : 5,
+        "frontArmFrame": "rotation",
+
+        "weaponRotation" : -85,
+        "twoHanded" : true,
+
+        "weaponOffset" : [0.5, 2.0],
+
+        "allowRotate" : false,
+        "allowFlip" : false
+      },
+      "cooldown" : {
+        "duration" : 0.5,
+        "armRotation" : 5,
+
+        "weaponRotation" : -85,
+        "twoHanded" : true,
+
+        "weaponOffset" : [0.5, 2.0],
+
+        "allowRotate" : true,
+        "allowFlip" : false
+      }
+
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
