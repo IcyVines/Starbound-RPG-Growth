@@ -1,0 +1,121 @@
+{
+  "itemName" : "ivrpgworbital",
+  "price" : 1750,
+  "maxStack" : 1,
+  "level" : 6,
+  "rarity" : "Essential",
+  "description" : "Let the energy flow through to your fingertips: channel it; shape it; mold it; but stay wary... when energy shatters, so too does its conduit.",
+  "shortdescription" : "^magenta;Orbital",
+  "tooltipKind" : "ivrpg_weapon",
+  "category" : "staff",
+  "twoHanded" : true,
+  "itemTags" : ["weapon","staff","magnorbs"],
+
+  "animation" : "/items/active/specweapons/warlock/staff.animation",
+  "animationParts" : {
+    "staff" : "orbital.png",
+    "stone" : "orbital.png",
+    "chargeEffect" : "orbital.png",
+    "orb1" : "orb.png",
+    "orb2" : "orb.png",
+    "orb3" : "orb.png"
+  },
+
+  "animationCustom" : {
+    "lights" : {
+      "novaGlow" : {
+        "color" : [160, 24, 185],
+        "active" : false
+      }
+    },
+    "sounds" : {
+      "novaactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
+    }
+  },
+
+  "inventoryIcon" : "orbital.png",
+
+  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -90,
+      "weaponRotation" : 0,
+      "twoHanded" : false,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 1.1,
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 20,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.5,
+      "armRotation" : -10,
+      "weaponRotation" : -50,
+      "twoHanded" : true,
+
+      "allowRotate" : true,
+      "allowFlip" : true
+    },
+    "cooldown" : {
+      "duration" : 0.5,
+      "armRotation" : -45,
+      "weaponRotation" : 0,
+      "twoHanded" : true,
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalType" : "nova",
+
+  "orbitRate" : 0.25,
+
+  "projectileType" : "magnorb",
+  "projectileParameters" : {
+    "power" : 2.25,
+    "knockback" : 5,
+
+    "returnOnHit" : true,
+    "ignoreTerrain" : false,
+    "controlForce" : 140,
+    "pickupDistance" : 1.5,
+    "snapDistance" : 4.0
+  },
+
+  "primaryAbilityType" : "controlprojectile",
+  "primaryAbility" : {
+    "name" : "Escape Velocity",
+    "scripts" : ["/items/active/specweapons/warlock/controlprojectile.lua"],
+    "class" : "ControlProjectile",
+    "maxCastRange" : 40,
+    "energyCost" : 40,
+    "projectileParameters" : {
+      "baseDamage" : 20
+    }
+  },
+
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Satellite"
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+
+}
