@@ -5,7 +5,7 @@ function init()
   self.id = entity.id()
   self.active = false
   self.timer = 0
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   Bind.create("specialThree", toggle)
   message.setHandler("damageDealtDarkTemplar", function(_, _, damage, damageKind, bleedKind)
     if self.active and bleedKind then status.giveResource("health", damage / 3) end

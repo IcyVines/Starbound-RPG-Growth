@@ -28,8 +28,8 @@ function init()
 
   self.directives = ""
 
-  self.damageUpdate = 5
-  self.damageGivenUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
 
   self.maxMountHealth = status.resourceMax("health") * 3
   self.mountHealth = self.maxMountHealth

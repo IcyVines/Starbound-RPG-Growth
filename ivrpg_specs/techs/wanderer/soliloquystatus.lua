@@ -4,7 +4,7 @@ function init()
   self.shieldDecay = config.getParameter("shieldDecay", 0.5)
   --self.healthStatus = config.getParameter("healthStatus", "regeneration4")
   self.healthRange = config.getParameter("healthRange", 15)
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   self.maxHealthTimer = 0
   effect.addStatModifierGroup({
     {stat = "shieldHealth", effectiveMultiplier = self.shieldDecay}

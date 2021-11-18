@@ -7,7 +7,7 @@ function init()
   self.powerTime = config.getParameter("powerTime", 5)
   self.power = config.getParameter("power", 1.0)
   self.energy = config.getParameter("energy", 0.1)
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.correctWeapons = false
   self.movementParams = mcontroller.baseParameters()
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())

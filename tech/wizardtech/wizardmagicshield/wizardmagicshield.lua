@@ -5,7 +5,7 @@ require "/tech/ivrpgopenrpgui.lua"
 function init()
   ivrpg_ttShortcut.initialize()
   self.active = status.statusProperty("ivrpgmagicshieldactive", false)
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   self.regenSpeed = config.getParameter("regenSpeed", 0.1)
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=80FC9FFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)

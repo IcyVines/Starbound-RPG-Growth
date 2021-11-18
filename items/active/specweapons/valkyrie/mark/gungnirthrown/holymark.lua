@@ -1,6 +1,6 @@
 function init()
   effect.setParentDirectives("?border=1;fdffa5;fdffa5")
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   self.sourceId = effect.sourceEntity()
   self.id = entity.id()
 end

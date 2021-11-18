@@ -4,7 +4,7 @@ require "/scripts/util.lua"
 function init()
   self.id = effect.sourceEntity()
   self.effect = config.getParameter("effect", "none")
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.timer = 0
   self.protectionStack = 0
   local bounds = mcontroller.boundBox()

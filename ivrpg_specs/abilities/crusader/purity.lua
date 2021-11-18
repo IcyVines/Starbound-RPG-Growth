@@ -3,8 +3,8 @@ require "/scripts/util.lua"
 
 function init()
   self.id = effect.sourceEntity()
-  self.damageUpdate = 5
-  self.damageGivenUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.speedTimer = 0
   self.powerTimer = 0
   self.speedDrop = 1

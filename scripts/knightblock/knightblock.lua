@@ -1,7 +1,7 @@
 function init()
   --Power
   self.powerModifier = config.getParameter("powerModifier", 0)
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   self.timer = 0
   self.beganFall = false
   self.position = false

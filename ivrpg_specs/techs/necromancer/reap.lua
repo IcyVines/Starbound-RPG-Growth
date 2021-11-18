@@ -7,7 +7,7 @@ function init()
   self.cooldownTimer = 0
   self.rechargeTimer = 0
   self.mobCharge = 0
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.currentMobCount = 0
   self.id = entity.id()
   Bind.create("f", reap)

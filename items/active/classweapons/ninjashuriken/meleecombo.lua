@@ -6,7 +6,7 @@ function MeleeCombo:init()
   self.comboStep = 1
 
   self.energyUsage = self.energyUsage or 0
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.hitTimer = 0
   self.aetherPowerMultiplier = config.getParameter("aetherPowerMultiplier", false)
 

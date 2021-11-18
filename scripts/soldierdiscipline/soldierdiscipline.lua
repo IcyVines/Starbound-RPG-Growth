@@ -4,8 +4,8 @@ function init()
   self.damageBonusId = effect.addStatModifierGroup({})
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
   self.active = false
-  self.damageGivenUpdate = 5
-  self.damageUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
+  _,self.damageUpdate = status.damageTakenSince()
   self.perfectTimer = 0
   self.id = entity.id()
 

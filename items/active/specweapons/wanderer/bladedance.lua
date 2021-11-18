@@ -19,7 +19,7 @@ function BladeDance:init()
 
   self.killTimer = 0
   self.altKillTimer = 0
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.weapon.active = config.getParameter("unsheathed", false)
   self.bonusPower = config.getParameter("bonusPower", 1)
   self.projectileIds = {}

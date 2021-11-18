@@ -10,7 +10,7 @@ function init()
   self.enemyStatusRange = config.getParameter("enemyStatusRange", 10)
   self.enemyStatusLength = config.getParameter("enemyStatusLength", 2)
   self.random = config.getParameter("randomStun", 0.25)
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   effect.addStatModifierGroup({
     {stat = "shieldHealth", effectiveMultiplier = self.shieldDecay}
   })

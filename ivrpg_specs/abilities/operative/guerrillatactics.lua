@@ -3,7 +3,7 @@ require "/scripts/util.lua"
 
 function init()
   self.id = effect.sourceEntity()
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.powerTimer = 0
   self.powerTime = config.getParameter("powerTime")
   self.health = status.resource("health")

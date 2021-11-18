@@ -5,7 +5,7 @@ function init()
   self.id = effect.sourceEntity()
   self.movementParams = mcontroller.baseParameters()
   self.elementMod = math.random(3)
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.elementList = {"fire", "ice", "electric"}
   self.statusList = {"ivrpgsear", "ivrpgembrittle", "ivrpgoverload"}
   self.borderList = {"bb552233", "2288cc22", "88882233"}

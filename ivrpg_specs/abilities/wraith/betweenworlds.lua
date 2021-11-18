@@ -4,7 +4,7 @@ require "/scripts/util.lua"
 function init()
   self.id = effect.sourceEntity()
   self.timer = 0
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   self.movementParams = mcontroller.baseParameters()
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
 end

@@ -5,7 +5,7 @@ require "/scripts/ivrpgutil.lua"
 function init()
 	self.id = entity.id()
 	self.active = false
-	self.damageGivenUpdate = 5
+	_,self.damageGivenUpdate = status.inflictedDamageSince()
 	self.elements = {}
 	self.balanced = {}
 	self.elementConfig = {fire = 0, electric = 0, ice = 0}

@@ -15,7 +15,7 @@ function BladeDance:init()
   self.cooldownTimer = self.cooldowns[1]
 
   self.killTimer = 0
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
 
   self.animKeyPrefix = self.animKeyPrefix or ""
 

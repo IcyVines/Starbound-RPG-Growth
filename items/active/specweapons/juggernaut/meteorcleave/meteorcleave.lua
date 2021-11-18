@@ -5,7 +5,7 @@ MeteorCleave = WeaponAbility:new()
 
 function MeteorCleave:init()
   self.cooldownTimer = self.cooldownTime
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self:reset()
 end
 

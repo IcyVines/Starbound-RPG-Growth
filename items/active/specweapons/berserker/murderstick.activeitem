@@ -4,7 +4,7 @@
   "inventoryIcon" : "murderstick_bloodless.png",
   "maxStack" : 1,
   "rarity" : "Essential",
-  "description" : "Blood! Blood everywhere! This is what I want! This is what I need! ^red;Glorious, visceral, scarlet blood!^reset;\n\nCRUSH THE ENEMY to SHOOT THE ENEMY ^red;MORE^reset;!!!",
+  "description" : "Blood! Blood everywhere! This is what I want! This is what I need! ^red;Glorious, visceral, scarlet blood!^reset;\n\nCRUSH THE ENEMY to SHOOT THE ENEMY ^red;MORE^reset;!!!\n\n^green;Does not scale with Dexterity.",
   "shortdescription" : "^red;Murderstick",
   "level" : 6,
   "tooltipKind" : "ivrpg_weapon",

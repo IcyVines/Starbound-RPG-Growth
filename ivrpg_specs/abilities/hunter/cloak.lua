@@ -5,7 +5,7 @@ function init()
   self.id = effect.sourceEntity()
   self.cloakTimer = 0
   self.crouchTimer = 0
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.energy = status.resource("energy")
   self.cloakTime = config.getParameter("cloakTime", 5)
   self.crouchTime = config.getParameter("crouchTime", 2)

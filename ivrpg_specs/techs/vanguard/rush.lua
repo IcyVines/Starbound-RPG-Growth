@@ -8,14 +8,14 @@ function init()
   self.cooldownTime = config.getParameter("cooldownTime")
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=b79d5bFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   self.cooldownTimer = 0
   self.rechargeEffectTimer = 0
   self.timer = 0
   self.endTimer = 0
   self.dashTimer = 0
   self.travelPoint = nil
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.id = entity.id()
   Bind.create("g", rush)
 end

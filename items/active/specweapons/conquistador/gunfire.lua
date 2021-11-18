@@ -8,7 +8,7 @@ GunFire = WeaponAbility:new()
 function GunFire:init()
   self.weapon:setStance(self.stances.idle)
 
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
 
   self.cooldownTimer = self.fireTime
   self.reloaded = config.getParameter("reloaded", false)

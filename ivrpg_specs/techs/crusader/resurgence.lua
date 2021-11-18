@@ -10,7 +10,7 @@ function init()
   self.speedTime = config.getParameter("speedTime")
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=a8a323FF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   self.cooldownTimer = 0
   self.rechargeEffectTimer = 0
   self.id = entity.id()

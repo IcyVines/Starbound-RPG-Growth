@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpgberserk",
+  "type" : "head",
+
+  "scripts" : ["berserk.lua"],
+  "animator" : "berserk.animation",
+
+  "description" : "Berserker Only",
+  "shortDescription" : "Berserk",
+  "rarity" : "Uncommon",
+  "icon" : "/ivrpg_specs/techs/berserker/berserk.png",
+
+  "chipCost" : 0
+}

@@ -1,0 +1,17 @@
+{
+  "name" : "ivrpgberserkstatus",
+  "effectConfig" : {
+    "shieldDecay" : 0.5,
+    "healthStatus" : "regeneration4",
+    "healthRange" : 15
+  },
+
+  "defaultDuration" : 10,
+
+  "scripts" : [
+  	"berserkstatus.lua"
+  ],
+
+  "label" : "Limit Break",
+  "icon" : "/ivrpg_specs/techs/berserker/berserk.png"
+}

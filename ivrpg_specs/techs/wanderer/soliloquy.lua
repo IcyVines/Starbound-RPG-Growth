@@ -2,8 +2,8 @@ require "/scripts/keybinds.lua"
 
 function init()
   self.active = status.statusProperty("ivrpgsoliloquy", false)
-  self.damageUpdate = 5
-  self.damageGivenUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   Bind.create("f", toggle)
 end
 

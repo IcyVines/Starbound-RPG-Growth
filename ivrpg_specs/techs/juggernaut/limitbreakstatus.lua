@@ -1,6 +1,6 @@
 
 function init()
-	self.damageGivenUpdate = 5
+	_,self.damageGivenUpdate = status.inflictedDamageSince()
 	self.cooldownBonus = 0
   self.cooldownTime = 60
   effect.addStatModifierGroup({

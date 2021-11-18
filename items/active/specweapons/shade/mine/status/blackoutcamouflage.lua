@@ -1,6 +1,6 @@
 function init()
   self.id = effect.sourceEntity()
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   local alpha = math.floor(config.getParameter("alpha", 0.25) * 255)
   effect.setParentDirectives(string.format("?multiply=ffffff%02x", alpha))
   effect.addStatModifierGroup({

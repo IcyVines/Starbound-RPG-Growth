@@ -9,8 +9,8 @@ function GunFire:init()
   self.weapon:setStance(self.stances.idle)
 
   self.cooldownTimer = self.fireTime
-  self.damageGivenUpdate = 5
-  self.damageUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
+  _,self.damageUpdate = status.damageTakenSince()
   self.killTimer = 0
   self.perfectTimer = 0
   self.killCount = 0

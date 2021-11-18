@@ -11,7 +11,7 @@ function PowerPunch:init()
   self.abilityTimer = 0
   self.name = item.name()
   self.id = activeItem.ownerEntityId()
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
   end

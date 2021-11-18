@@ -3,8 +3,8 @@ require "/scripts/util.lua"
 
 function init()
   self.id = effect.sourceEntity()
-  self.damageUpdate = 5
-  self.damageGivenUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.timer = 0
   self.healTime = config.getParameter("healTime", 5)
   self.healPercent = config.getParameter("healPercent", 0.1)

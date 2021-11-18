@@ -7,7 +7,7 @@ function init()
   script.setUpdateDelta(15)
 
   -- General Variables
-  self.damageUpdate = 1
+  _,self.damageUpdate = status.damageTakenSince()
   self.damageGivenUpdate = 1
   self.hitsInflictedUpdate = 5
   self.challengeDamageGivenUpdate = 1

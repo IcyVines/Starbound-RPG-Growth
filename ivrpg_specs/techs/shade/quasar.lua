@@ -4,7 +4,7 @@ require "/scripts/ivrpgutil.lua"
 
 function init()
   self.active = false
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   self.id = entity.id()
   Bind.create("g", toggle)
 end

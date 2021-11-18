@@ -2,7 +2,7 @@ require "/scripts/vec2.lua"
 require "/scripts/util.lua"
 
 function init()
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   self.colors = config.getParameter("colors", {})
   self.elements = config.getParameter("elements", {})
   self.id = entity.id()

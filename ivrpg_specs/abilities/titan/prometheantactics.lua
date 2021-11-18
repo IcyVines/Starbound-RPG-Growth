@@ -7,7 +7,7 @@ function init()
   self.allyRange = config.getParameter("allyRange", 10)
   self.allyStatus = config.getParameter("allyStatus", "ivrpgprometheantacticsarmorboost")
   self.statusLength = config.getParameter("statusLength", 5)
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   self.timer = 0
   animator.setParticleEmitterOffsetRegion("embers", mcontroller.boundBox())
 end

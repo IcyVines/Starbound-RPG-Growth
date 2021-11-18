@@ -23,7 +23,7 @@ function init()
   self.previousFace = 1
 
   self.crouchTimer = 0
-  self.damageUpdate = 1
+  _,self.damageUpdate = status.damageTakenSince()
   self.position = mcontroller.position()
 
   animator.setParticleEmitterOffsetRegion("hoverParticles", mcontroller.boundBox())

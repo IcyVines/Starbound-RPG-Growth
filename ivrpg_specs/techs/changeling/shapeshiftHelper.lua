@@ -6,7 +6,7 @@ function initCommonParameters()
   self.creature = false
   self.oldCreature = false
   self.oldPoly = false
-  self.damageUpdate = 5
+  _,self.damageUpdate = status.damageTakenSince()
   self.melty = false
 
   -- Shared Vars
@@ -20,7 +20,7 @@ function initCommonParameters()
   self.speedModifier = 1
   self.hurtTimer = 0
   self.transformedStats = {}
-  self.damageGivenUpdate = 5
+  _,self.damageGivenUpdate = status.inflictedDamageSince()
   --Giant Vars
   self.giantCounter = 0
   self.flashTimer = 0
