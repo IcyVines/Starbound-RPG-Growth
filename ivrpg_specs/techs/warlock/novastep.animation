@@ -1,0 +1,64 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "hover" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "hoverParticles" ]
+            }
+          },
+          "on" : {
+            "properties" : {
+              "persistentSound" : "/sfx/tech/tech_hoverloop.ogg",
+              "particleEmittersOn" : [ "hoverParticles" ]
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "hoverParticles" : {
+      "emissionRate" : 14.0,
+      "particles" : [
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -2]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.2, -2]
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "multiJumpSound" : ["/sfx/tech/tech_doublejump.ogg"],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+    "activate" : []
+  }
+}

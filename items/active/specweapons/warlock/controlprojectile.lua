@@ -57,10 +57,13 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
 
   if self.fireMode == "alt" and self.lastFireMode ~= "alt"
     and not self.weapon.currentAbility
-    and not status.resourceLocked("energy") 
-    and self:availableAdditionalOrbs() < 4 then
+    and not status.resourceLocked("energy") then
 
-    self:setState(self.charge)
+    if self.shiftHeld then
+      self:setState(self.fire, 0)
+    elseif self:availableAdditionalOrbs() < 4 then
+      self:setState(self.charge)
+    end
   end
 
   self.lastFireMode = fireMode
@@ -205,19 +208,19 @@ function ControlProjectile:nextOrb(start)
   end
 end
 
-function ControlProjectile:fire()
+function ControlProjectile:fire(timer)
   self.weapon:setStance(self.stances.fire)
   local params = copy(self.projectileParameters)
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.ownerAimPosition = activeItem.ownerAimPosition()
 
-  local magnorbTimer = self.stances.fire.duration
+  local magnorbTimer = timer or self.stances.fire.duration
 
-  while self.fireMode == "primary" or magnorbTimer > 0 do
+  while self.fireMode == "primary" or (self.fireMode == "alt" and self.shiftHeld) or magnorbTimer > 0 do
     local orbIndex = self:nextOrb((self.shiftHeld and self:availableAdditionalOrbs() > 0) and 5 or 1)
     if orbIndex then
       local firePos = self:orbFirePosition(orbIndex)
-      if magnorbTimer == 0 and orbIndex and not world.lineCollision(mcontroller.position(), firePos) then
+      if magnorbTimer == 0 and orbIndex and not world.lineCollision(mcontroller.position(), firePos) and status.overConsumeResource("energy", (self.fireMode == "alt" and self.shiftHeld) and 10 or 5) then
         local projectileId = world.spawnProjectile(
             orbIndex < 5 and self.projectileType or "ivrpg_primednovacrystal",
             self:orbFirePosition(orbIndex),
@@ -228,7 +231,7 @@ function ControlProjectile:fire()
           )
         if projectileId then
           storage.projectileIds[orbIndex] = projectileId
-          magnorbTimer = self.stances.fire.duration
+          magnorbTimer = timer or self.stances.fire.duration
           animator.playSound("fire")
           if orbIndex > 4 then
             storage.projectilesAvailable[orbIndex] = false

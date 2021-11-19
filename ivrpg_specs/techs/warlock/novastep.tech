@@ -1,0 +1,19 @@
+{
+  "name" : "ivrpgnovastep",
+  "type" : "legs",
+
+  "scripts" : ["novastep.lua"],
+  "animator" : "novastep.animation",
+
+  "description" : "Warlock Only",
+  "shortDescription" : "Nova Step",
+  "rarity" : "Uncommon",
+  "icon" : "/ivrpg_specs/techs/warlock/novastep.png",
+
+  "chipCost" : 0,
+  "cooldown": 2.5,
+  "cost" : 30,
+
+  "hoverControlForce" : 400.0,
+  "energyUsagePerSecond" : 50.0
+}

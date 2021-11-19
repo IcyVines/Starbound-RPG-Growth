@@ -1,0 +1,71 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "rail" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "platform" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [0, -0.25],
+          "zLevel" : 0
+        },
+
+        "partStates" : {
+          "rail" : {
+            "off" : {
+              "properties" : {
+                "image" : "<partImage>:offRail"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "cloudParticles" : {
+      "emissionRate" : 0.5,
+      "particles" : [
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [-1.2, -0.5]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [-0.8, -0.5]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [-0.4, -0.5]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0, -0.5]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.4, -0.5]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [0.8, -0.5]
+        },
+        {
+          "particle" : "defaultmagenta",
+          "offset" : [1.2, -0.5]
+        }
+      ]
+    }
+  }
+}
