@@ -287,6 +287,13 @@ function rpg_updateDamageTaken(notification, bledToDeath)
   for k,v in ipairs(onHitList) do
     if v.effectType and v.effectType == "sendEntityMessage" then
       world.sendEntityMessage(sourceId, v.messageName, damage, mcontroller.position(), mcontroller.facingDirection())
+    elseif v.effectType and v.effectType == "applySelfDamageRequest" then
+      status.applySelfDamageRequest({
+        sourceEntityId = sourceId,
+        damage = v.damagePercent / 100 * damage,
+        damageType = v.damageType or "default",
+        damageSourceKind = v.damageKind
+      })
     elseif v.chance > math.random() then
       local lengthModifier = v.basedOnDamagePercent and (1.0*damage/world.entityHealth(self.rpg_Id)[2]) or 1
       lengthModifier = lengthModifier < 0.04 and 0.04 or lengthModifier

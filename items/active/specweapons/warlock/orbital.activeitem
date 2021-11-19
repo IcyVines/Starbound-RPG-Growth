@@ -14,11 +14,16 @@
   "animation" : "/items/active/specweapons/warlock/staff.animation",
   "animationParts" : {
     "staff" : "orbital.png",
-    "stone" : "orbital.png",
+    "stone" : "",
     "chargeEffect" : "orbital.png",
     "orb1" : "orb.png",
     "orb2" : "orb.png",
-    "orb3" : "orb.png"
+    "orb3" : "orb.png",
+    "orb4" : "orb.png",
+    "orb5" : "primed_novacrystal.png",
+    "orb6" : "primed_novacrystal.png",
+    "orb7" : "primed_novacrystal.png",
+    "orb8" : "primed_novacrystal.png"
   },
 
   "animationCustom" : {
@@ -48,16 +53,16 @@
     },
     "charge" : {
       "duration" : 1.1,
-      "armRotation" : 20,
-      "weaponRotation" : -20,
+      "armRotation" : 0,
+      "weaponRotation" : 0,
       "twoHanded" : true,
 
       "allowRotate" : false,
       "allowFlip" : true
     },
     "charged" : {
-      "armRotation" : 20,
-      "weaponRotation" : -20,
+      "armRotation" : 0,
+      "weaponRotation" : 0,
       "twoHanded" : true,
 
       "allowRotate" : false,
@@ -65,11 +70,21 @@
     },
     "discharge" : {
       "duration" : 0.5,
-      "armRotation" : -10,
-      "weaponRotation" : -50,
+      "armRotation" : -20,
+      "weaponRotation" : 0,
       "twoHanded" : true,
 
-      "allowRotate" : true,
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "fire" : {
+      "duration" : 0.25,
+      "armRotation" : -30,
+      "weaponRotation" : 0,
+      "weaponOffset" : [0, 0.25],
+      "twoHanded" : true,
+
+      "allowRotate" : false,
       "allowFlip" : true
     },
     "cooldown" : {
@@ -87,7 +102,7 @@
 
   "orbitRate" : 0.25,
 
-  "projectileType" : "magnorb",
+  "projectileType" : "ivrpg_novacrystal",
   "projectileParameters" : {
     "power" : 2.25,
     "knockback" : 5,

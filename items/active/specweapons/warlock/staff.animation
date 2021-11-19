@@ -50,13 +50,48 @@
           "orb" : {},
           "hidden" : {}
         }
+      },
+      "orb4" : {
+        "default" : "orb",
+        "states" : {
+          "orb" : {},
+          "hidden" : {}
+        }
+      },
+      "orb5" : {
+        "default" : "orb",
+        "states" : {
+          "orb" : {},
+          "hidden" : {}
+        }
+      },
+      "orb6" : {
+        "default" : "orb",
+        "states" : {
+          "orb" : {},
+          "hidden" : {}
+        }
+      },
+      "orb7" : {
+        "default" : "orb",
+        "states" : {
+          "orb" : {},
+          "hidden" : {}
+        }
+      },
+      "orb8" : {
+        "default" : "orb",
+        "states" : {
+          "orb" : {},
+          "hidden" : {}
+        }
       }
     },
 
     "parts" : {
       "staff" : {
         "properties" : {
-          "zLevel" : -3,
+          "zLevel" : 0,
           "centered" : true,
           "image" : "<partImage>",
           "offset" : [0.0, 0.0],
@@ -76,7 +111,7 @@
       },
       "chargeEffect" : {
         "properties" : {
-          "zLevel" : -1,
+          "zLevel" : 0,
           "fullbright" : true,
           "centered" : true,
           "offset" : [-0.125, 1.875],
@@ -111,6 +146,7 @@
       "orb1" : {
         "properties" : {
           "centered" : true,
+          "zLevel" : 1,
           "offset" : [1.5, 0],
           "orbPosition" : [0, 0],
           "transformationGroups" : [ "weapon", "orb1", "orbs" ]
@@ -130,6 +166,7 @@
         "properties" : {
           "centered" : true,
           "offset" : [1.5, 0],
+          "zLevel" : 1,
           "orbPosition" : [0, 0],
           "transformationGroups" : [ "weapon", "orb2", "orbs" ]
         },
@@ -148,12 +185,108 @@
         "properties" : {
           "centered" : true,
           "offset" : [1.5, 0],
+          "zLevel" : 1,
           "orbPosition" : [0, 0],
           "transformationGroups" : [ "weapon", "orb3", "orbs" ]
         },
 
         "partStates" : {
           "orb3" : {
+            "orb" : {
+              "properties" : {
+                "image" : "<partImage>:orb"
+              }
+            }
+          }
+        }
+      },
+      "orb4" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [1.5, 0],
+          "zLevel" : 1,
+          "orbPosition" : [0, 0],
+          "transformationGroups" : [ "weapon", "orb4", "orbs" ]
+        },
+
+        "partStates" : {
+          "orb4" : {
+            "orb" : {
+              "properties" : {
+                "image" : "<partImage>:orb"
+              }
+            }
+          }
+        }
+      },
+      "orb5" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [1.5, 0],
+          "zLevel" : -1,
+          "orbPosition" : [0, 0],
+          "transformationGroups" : [ "weapon", "orb5", "orbs" ]
+        },
+
+        "partStates" : {
+          "orb5" : {
+            "orb" : {
+              "properties" : {
+                "image" : "<partImage>:orb"
+              }
+            }
+          }
+        }
+      },
+      "orb6" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [1.5, 0],
+          "zLevel" : -1,
+          "orbPosition" : [0, 0],
+          "transformationGroups" : [ "weapon", "orb6", "orbs" ]
+        },
+
+        "partStates" : {
+          "orb6" : {
+            "orb" : {
+              "properties" : {
+                "image" : "<partImage>:orb"
+              }
+            }
+          }
+        }
+      },
+      "orb7" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [1.5, 0],
+          "zLevel" : -1,
+          "orbPosition" : [0, 0],
+          "transformationGroups" : [ "weapon", "orb7", "orbs" ]
+        },
+
+        "partStates" : {
+          "orb7" : {
+            "orb" : {
+              "properties" : {
+                "image" : "<partImage>:orb"
+              }
+            }
+          }
+        }
+      },
+      "orb8" : {
+        "properties" : {
+          "centered" : true,
+          "offset" : [1.5, 0],
+          "zLevel" : -1,
+          "orbPosition" : [0, 0],
+          "transformationGroups" : [ "weapon", "orb8", "orbs" ]
+        },
+
+        "partStates" : {
+          "orb8" : {
             "orb" : {
               "properties" : {
                 "image" : "<partImage>:orb"
@@ -177,6 +310,21 @@
       "interpolated" : true
     },
     "orb3" : {
+      "interpolated" : true
+    },
+    "orb4" : {
+      "interpolated" : true
+    },
+    "orb5" : {
+      "interpolated" : true
+    },
+    "orb6" : {
+      "interpolated" : true
+    },
+    "orb7" : {
+      "interpolated" : true
+    },
+    "orb8" : {
       "interpolated" : true
     }
   },
@@ -211,7 +359,7 @@
     "novadischarge" : ["/sfx/melee/elemental_aura_deactivate1.ogg"],
     "novaactivate" : ["/sfx/projectiles/plasma3.ogg"],
 
-    "fire" : ["/sfx/projectiles/plasma3.ogg"],
+    "fire" : ["/sfx/gun/magnorbs_fire5.ogg", "/sfx/gun/magnorbs_fire6.ogg", "/sfx/gun/magnorbs_fire7.ogg"],
 
     "zoneactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
   }
