@@ -1,0 +1,16 @@
+{
+  "projectileName" : "ivrpg_novasteprain",
+  "physics" : "rain",
+  "timeToLive" : 0.75,
+  "image" : "novarain.png",
+  "animationCycle" : 1,
+  "lightColor" : [160, 70, 160],
+  "frameNumber" : 1,
+  "fullbright" : true,
+  "speed" : 25,
+  "power" : 0,
+  "damageKind" : "applystatus",
+  "damagePoly" : [ [-6, 0], [-4, -4], [0, -6], [4, -4], [6, 0], [4, 4], [0, 6], [-4, 4] ],
+  "statusEffects" : [ "ivrpgstarfall" ],
+  "emitters" : [ "stargazer1" ]
+}

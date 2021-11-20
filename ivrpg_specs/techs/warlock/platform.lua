@@ -1,3 +1,5 @@
+require "/scripts/util.lua"
+require "/scripts/vec2.lua"
 require "/scripts/rails.lua"
 
 function init()
@@ -5,8 +7,8 @@ function init()
   vehicle.setInteractive(false)
   self.timer = config.getParameter("liveTime", 5)
   --animator.setParticleEmitterOffsetRegion("cloudParticles", mcontroller.localBoundBox())
-  animator.setParticleEmitterEmissionRate("cloudParticles", self.timer/3)
-  animator.setParticleEmitterActive("cloudParticles", true)
+  --animator.setParticleEmitterEmissionRate("cloudParticles", self.timer/3)
+  --animator.setParticleEmitterActive("cloudParticles", true)
 end
 
 function update(dt)

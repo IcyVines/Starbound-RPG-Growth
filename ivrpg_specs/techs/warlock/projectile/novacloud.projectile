@@ -1,0 +1,93 @@
+{
+  "projectileName" : "ivrpg_novastepstorm",
+  "physics" : "hover",
+  "timeToLive" : 6,
+  "image" : "nova.png",
+  "animationCycle" : 0.4,
+  "lightColor" : [160, 70, 160],
+  "frameNumber" : 5,
+  "windupFrames" : 7,
+  "periodicActions" : [
+    {
+      "time" : 0.2,
+      "action" : "loop",
+      "count" : 5,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : {
+            "type" : "animated",
+            "animation" : "/animations/sparkles/sparkle2.animation",
+            "position" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "approach" : [1.0, 1.0],
+            "destructionAction" : "fade",
+            "destructionTime" : 0.35,
+            "fade" : 1,
+            "size" : 0.3,
+            "layer" : "front",
+            "timeToLive" : 0.35,
+            "variance" : {
+              "position" : [3.0, 1.0],
+              "initialVelocity" : [2.5, 2.5]
+            }
+          }
+        }
+      ]
+    }
+  ],
+
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/objects/ancientconsole_off.ogg" ]
+    }
+  ],
+
+  "speed" : 0,
+  "power" : 0,
+  "damageKind" : "default",
+  "damagePoly" : [ ],
+  "emitters" : [ ],
+
+  "renderLayer" : "Projectile+1",
+  "orientationLocked" : true,
+
+  "bounces" : -1,
+  "onlyHitTerrain" : true,
+
+  "scripts" : [ "/ivrpg_specs/techs/warlock/projectile/cloud.lua" ],
+  "scriptDelta" : 1,
+
+  "controlMovement" : {
+    "maxSpeed" : 40,
+    "controlForce" : 30
+  },
+
+  "timedActions" : [
+    {
+      "delayTime" : 0.5,
+      "loopTime" : 0.1,
+      "loopTimeVariance" : 0.025,
+      "action" : "projectile",
+      "type" : "ivrpg_novasteprain",
+      "config" : {},
+      "inheritDamageFactor" : 0.025,
+      "direction" : [0, -1],
+      "offsetRange" : [-1.75, -0.5, 1.75, -0.5]
+    },
+    {
+      "delayTime" : 0.6,
+      "loopTime" : 0.3,
+      "loopTimeVariance" : 0.05,
+      "action" : "projectile",
+      "type" : "ivrpg_novasteprain",
+      "config" : {},
+      "inheritDamageFactor" : 0.05,
+      "direction" : [0, -1],
+      "offsetRange" : [-1.75, -0.5, 1.75, -0.5]
+    }
+  ],
+
+  "persistentAudio" : "/sfx/objects/terraformer_idle_loop.ogg"
+}

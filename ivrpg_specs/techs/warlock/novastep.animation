@@ -10,9 +10,29 @@
             }
           },
           "on" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "mode" : "loop",
             "properties" : {
               "persistentSound" : "/sfx/tech/tech_hoverloop.ogg",
               "particleEmittersOn" : [ "hoverParticles" ]
+            }
+          }
+        }
+      }
+    },
+    "parts": {
+      "hover": {
+        "properties": {
+          "centered": true,
+          "offset": [0, 0]
+        },
+        "partStates": {
+          "hover": {
+            "on": {
+              "properties": {
+                "image": "/ivrpg_specs/techs/warlock/bubble.png"
+              }
             }
           }
         }
@@ -22,34 +42,18 @@
 
   "particleEmitters" : {
     "hoverParticles" : {
-      "emissionRate" : 14.0,
+      "emissionRate" : 7.0,
       "particles" : [
         {
-          "particle" : "defaultmagenta",
+          "particle" : "astraltearsparkle1",
           "offset" : [0.2, -2]
         },
         {
-          "particle" : "defaultmagenta",
+          "particle" : "astraltearsparkle2",
           "offset" : [0.2, -2]
         },
         {
-          "particle" : "defaultmagenta",
-          "offset" : [0.2, -2]
-        },
-        {
-          "particle" : "defaultmagenta",
-          "offset" : [0.2, -2]
-        },
-        {
-          "particle" : "defaultmagenta",
-          "offset" : [0.2, -2]
-        },
-        {
-          "particle" : "defaultmagenta",
-          "offset" : [0.2, -2]
-        },
-        {
-          "particle" : "defaultmagenta",
+          "particle" : "astraltearsparkle3",
           "offset" : [0.2, -2]
         }
       ]
@@ -59,6 +63,7 @@
   "sounds" : {
     "multiJumpSound" : ["/sfx/tech/tech_doublejump.ogg"],
     "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
-    "activate" : []
+    "activate" : [],
+    "activateStep" : ["/sfx/objects/ancientlightplatform_on.ogg"]
   }
 }

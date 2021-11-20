@@ -10,18 +10,30 @@ function init()
 
   self.cooldownTimer = 0
   self.rechargeEffectTimer = 0
+  _,self.damageUpdate = status.damageTakenSince()
   self.cooldown = config.getParameter("cooldown", 2)
   self.rechargeDirectives = config.getParameter("rechargeDirectives", "?fade=CC33CCFF=0.25")
   self.rechargeEffectTime = config.getParameter("rechargeEffectTime", 0.1)
   self.cost = config.getParameter("cost", 30)
 
-  Bind.create("Up", platform)
+  Bind.create("specialThree", platform)
 end
 
 function update(args)
   oldUpdate(args)
 
   self.shiftHeld = not args.moves["run"]
+
+  if self.active then
+    status.setPersistentEffects("ivrpg_novastep", {
+      {stat = "physicalResistance", amount = 0.2},
+      {stat = "iceStatusImmunity", amount = 1},
+      {stat = "fireStatusImmunity", amount = 1},
+      {stat = "electricStatusImmunity", amount = 1}
+    })
+  else
+    status.clearPersistentEffects("ivrpg_novastep")
+  end
 
   if self.cooldownTimer > 0 then
     self.cooldownTimer = math.max(0, self.cooldownTimer - args.dt)
@@ -38,16 +50,36 @@ function update(args)
       tech.setParentDirectives()
     end
   end
+
+  updateDamageTaken()
 end
 
 function platform()
-  if self.shiftHeld and self.cooldownTimer == 0 and not mcontroller.groundMovement() and not mcontroller.liquidMovement() and not status.statPositive("activeMovementAbilities") and status.overConsumeResource("energy", self.cost) then
+  if self.cooldownTimer == 0 and not mcontroller.groundMovement() and not mcontroller.liquidMovement() and not status.statPositive("activeMovementAbilities") and status.overConsumeResource("energy", self.cost) then
     mcontroller.setYVelocity(0)
-    world.spawnVehicle("ivrpg_novastep", vec2.sub(mcontroller.position(),{0,3}))
+    animator.playSound("activateStep")
+    world.spawnVehicle("ivrpg_novastep", vec2.sub(mcontroller.position(),{0,3.5}))
+    world.spawnProjectile("ivrpg_novastepstorm", vec2.sub(mcontroller.position(),{0,3.5}), entity.id(), {0, 0}, false, {timeToLive = 5})
     self.cooldownTimer = self.cooldown
   end
 end
 
 function uninit()
+  status.clearPersistentEffects("ivrpg_novastep")
+end
 
+function updateDamageTaken()
+  local notifications = nil
+  notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
+  if self.active and notifications then
+    for _,notification in pairs(notifications) do
+      if notification.healthLost > 0 then
+        if notification.sourceEntityId and world.entityExists(notification.sourceEntityId) then
+          local targetPos = world.entityPosition(notification.sourceEntityId)
+          local direction = world.distance(targetPos, mcontroller.position())
+          world.spawnProjectile("electro", mcontroller.position(), entity.id(), direction, false, {power = 1, powerMultiplier = status.stat("powerMultiplier"), damageKind = "nova"})
+        end
+      end
+    end
+  end
 end
