@@ -55,12 +55,12 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
       self:setState(self.fire)
   end
 
-  if self.fireMode == "alt" and self.lastFireMode ~= "alt"
+  if self.fireMode == "alt"
     and not self.weapon.currentAbility
     and not status.resourceLocked("energy") then
 
     if self.shiftHeld then
-      self:setState(self.fire, 0)
+      self:setState(self.fire, 0.1)
     elseif self:availableAdditionalOrbs() < 4 then
       self:setState(self.charge)
     end
@@ -71,7 +71,7 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
 
   animator.resetTransformationGroup("orbs")
   animator.rotateTransformationGroup("orbs", -self.weapon.aimAngle or 0)
-  animator.translateTransformationGroup("orbs", {0, 2.5})
+  animator.translateTransformationGroup("orbs", {-0.18625, 3.125})
 
   for i = 1,4 do
     animator.rotateTransformationGroup("orb"..i, self.orbitRate * dt)
@@ -129,7 +129,7 @@ function ControlProjectile:charged()
     coroutine.yield()
     if storage.projectilesAvailable[orbIndex] then
       orbIndex = orbIndex + 1
-    elseif self.magnorbTimer == 0 then
+    elseif self.magnorbTimer == 0 and status.overConsumeResource("energy", 20) then
       storage.projectilesAvailable[orbIndex] = true
       self.magnorbTimer = 1
       animator.playSound(self.elementalType.."activate")
@@ -161,7 +161,21 @@ function ControlProjectile:cooldown()
   activeItem.setCursor("/cursors/reticle0.cursor")
 
   util.wait(self.stances.cooldown.duration, function()
+    if (self.fireMode == (self.activatingFireMode or self.abilitySlot))
+      and not status.resourceLocked("energy")
+      and not (self.shiftHeld and self:availableAdditionalOrbs() == 0) then
+        self:setState(self.fire)
+    end
 
+    if self.fireMode == "alt"
+      and not status.resourceLocked("energy") then
+
+      if self.shiftHeld then
+        self:setState(self.fire, 0.1)
+      elseif self:availableAdditionalOrbs() < 4 then
+        self:setState(self.charge)
+      end
+    end
   end)
 end
 
@@ -270,7 +284,7 @@ function ControlProjectile:setOrbPosition(spaceFactor, distance)
   -- Base Four Orbs
   for i = 1, 4 do
     animator.resetTransformationGroup("orb"..i)
-    animator.translateTransformationGroup("orb"..i, {-0.5, 0})
+    animator.translateTransformationGroup("orb"..i, {-0.25, 0})
     animator.rotateTransformationGroup("orb"..i, 2 * math.pi * spaceFactor * ((i - 2) / 3))
   end
 
@@ -278,7 +292,7 @@ function ControlProjectile:setOrbPosition(spaceFactor, distance)
   for i = 1, 4 do
     local x = i + 4
     animator.resetTransformationGroup("orb"..x)
-    animator.translateTransformationGroup("orb"..x, {0.5, 0})
+    animator.translateTransformationGroup("orb"..x, {0.75, 0})
     animator.rotateTransformationGroup("orb"..x, 2 * math.pi * spaceFactor * ((i - 2) / 3) + math.pi / 4)
   end
 end

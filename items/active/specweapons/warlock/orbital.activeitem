@@ -4,16 +4,19 @@
   "maxStack" : 1,
   "level" : 6,
   "rarity" : "Essential",
-  "description" : "Let the energy flow through to your fingertips: channel it; shape it; mold it; but stay wary... when energy shatters, so too does its conduit.",
+  "description" : "Let the energy flow through to your fingertips: channel it; shape it; mold it; but stay wary... when energy shatters, so too does its conduit.\n\nHold [Shift] before using ^magenta;Escape Velocity^reset; to fire Primed Nova Crystals, or before ^magenta;Satellite^reset; to rapid fire for more Energy.",
   "shortdescription" : "^magenta;Orbital",
   "tooltipKind" : "ivrpg_weapon",
   "category" : "staff",
   "twoHanded" : true,
-  "itemTags" : ["weapon","staff","magnorbs"],
+  "itemTags" : ["weapon","staff"],
+
+  "classreq" : 2,
+  "specreq" : 3,
 
   "animation" : "/items/active/specweapons/warlock/staff.animation",
   "animationParts" : {
-    "staff" : "orbital.png",
+    "staff" : "orbital_nostone.png",
     "stone" : "",
     "chargeEffect" : "orbital.png",
     "orb1" : "orb.png",
@@ -38,9 +41,9 @@
     }
   },
 
-  "inventoryIcon" : "orbital.png",
+  "inventoryIcon" : "orbital.png:1",
 
-  "scripts" : ["/items/active/weapons/staff/staff.lua"],
+  "scripts" : ["/items/active/specweapons/warlock/staff.lua"],
 
   "stances" : {
     "idle" : {
@@ -78,7 +81,7 @@
       "allowFlip" : true
     },
     "fire" : {
-      "duration" : 0.25,
+      "duration" : 0.35,
       "armRotation" : -30,
       "weaponRotation" : 0,
       "weaponOffset" : [0, 0.25],
