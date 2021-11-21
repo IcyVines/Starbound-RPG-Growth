@@ -27,7 +27,7 @@ function update(dt)
       {stat = "ivrpgstealth", amount = 1},
       {stat = "invulnerable", amount = 1}
     })
-    effect.setParentDirectives("?multiply=555555BB")
+    effect.setParentDirectives("?multiply=999999BB")
   else
     if self.entityDamaged and not world.entityExists(self.entityDamaged) then
       self.entityDamaged = nil

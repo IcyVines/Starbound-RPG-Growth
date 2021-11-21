@@ -1,0 +1,39 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "status" : {
+        "default" : "on",
+        "states" : {
+          "on" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "mode" : "loop"
+          },
+          "off" : {}
+        }
+      }
+    },
+    "parts" : {
+      "status" : {
+        "properties" : {
+          "fullbright" : true
+        },
+        "partStates" : {      
+          "status" : {
+            "on" : {
+              "properties" : {
+                "image" : "/items/active/specweapons/assassin/status/heart_icon.png",
+                "offset" : [0, 3.5]
+              }
+            },
+            "off" : {
+              "properties" : {
+                "image" : ""
+              }
+            }
+          } 
+        }
+      }
+    }
+  }
+}

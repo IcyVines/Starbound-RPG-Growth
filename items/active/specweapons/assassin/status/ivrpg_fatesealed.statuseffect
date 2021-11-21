@@ -1,0 +1,14 @@
+{
+  "name" : "ivrpg_fatesealed",
+  "blockingStat" : "demonicStatusImmunity",
+  "defaultDuration" : 30,
+
+  "scripts" : [
+    "ivrpg_fatesealed.lua"
+  ],
+
+  "animationConfig" : "ivrpg_fatesealed.animation",
+
+  "label" : "Fate Sealed",
+  "icon" : "/interface/statuses/doomed.png"
+}

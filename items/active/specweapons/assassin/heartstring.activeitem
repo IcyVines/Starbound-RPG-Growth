@@ -17,7 +17,8 @@
 
   "animation" : "dagger.animation",
   "animationParts" : {
-    "blade" : "heartstring_2.png"
+    "blade" : "heartstring_2.png",
+    "handle" : ""
   },
   "animationCustom" : {
     // slow down swoosh a bit for elemental
@@ -39,7 +40,7 @@
 
   "aimOffset" : 0.0,
   "primaryAbility" : {
-    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+    "scripts" : ["/items/active/specweapons/assassin/meleeslash.lua"],
     "class" : "MeleeSlash",
     "name" : "Fatal Slash",
 
@@ -47,7 +48,7 @@
     "baseDps" : 12.0,
     "damageConfig" : {
       "damageSourceKind" : "ivrpg_demonicdagger",
-      "statusEffects" : [ ],
+      "statusEffects" : [ {"effect" : "ivrpg_fatesealed", "duration" : 30} ],
       "knockbackMode" : "aim",
       "knockback" : 15,
       "timeoutGroup" : "primary"
