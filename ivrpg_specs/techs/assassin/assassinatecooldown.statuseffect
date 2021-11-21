@@ -1,0 +1,10 @@
+{
+  "name" : "ivrpg_assassinatecooldown",
+
+  "defaultDuration" : 10,
+
+  "scripts" : ["/tech/ninjatech/ninjaassassinate/ninjaassassinatecooldown.lua"],
+
+  "label" : "Assassinate Cooldown",
+  "icon" : "/ivrpg_specs/techs/assassin/cooldown.png"
+}

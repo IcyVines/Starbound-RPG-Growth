@@ -59,6 +59,18 @@ function rpg_setHandlers()
   message.setHandler("hitByBloodAether", function(_, _)
     self.hitByBloodAether = true
   end)
+
+  message.setHandler("ivrpg_assassinated", function(_, _, xMagnitude, sourceId)
+    local facingDirection = mcontroller.facingDirection()
+    if (xMagnitude > 0 and facingDirection == 1) or (xMagnitude < 0 and facingDirection == -1) then
+      status.applySelfDamageRequest({
+        damageType = "IgnoresDef",
+        damageSourceKind = "ivrpg_assassinate_bleed",
+        damage = status.resource("health"),
+        sourceEntityId = sourceId
+    })
+    end
+  end)
 end
 
 function rpg_loadVariables(enemyType, level)

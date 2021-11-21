@@ -4,7 +4,12 @@ require "/scripts/ivrpgutil.lua"
 function init()
   self.sourceId = effect.sourceEntity()
   message.setHandler("ivrpgFateSealed", function(_, _)
-    status.modifyResourcePercentage("health", -1)
+    status.applySelfDamageRequest({
+      damageType = "IgnoresDef",
+      damageSourceKind = "ivrpg_demonicdagger",
+      damage = status.resource("health"),
+      sourceEntityId = self.sourceId
+    })
   end)
   animator.setAnimationState("status", "on")
   script.setUpdateDelta(0)

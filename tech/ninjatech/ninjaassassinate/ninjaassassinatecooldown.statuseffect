@@ -5,6 +5,6 @@
 
   "scripts" : ["ninjaassassinatecooldown.lua"],
 
-  "label" : "Assassinate Cooldown",
+  "label" : "Shadow Step Cooldown",
   "icon" : "/tech/ninjatech/ninjaassassinate/cooldown.png"
 }
