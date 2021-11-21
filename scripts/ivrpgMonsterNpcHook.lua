@@ -286,7 +286,7 @@ function rpg_updateDamageTaken(notification, bledToDeath)
   -- Class + Affinity Effects
   for k,v in ipairs(onHitList) do
     if v.effectType and v.effectType == "sendEntityMessage" then
-      world.sendEntityMessage(sourceId, v.messageName, damage, mcontroller.position(), mcontroller.facingDirection())
+      world.sendEntityMessage(sourceId, v.messageName, damage, mcontroller.position(), mcontroller.facingDirection(), entity.id())
     elseif v.effectType and v.effectType == "applySelfDamageRequest" then
       status.applySelfDamageRequest({
         sourceEntityId = sourceId,

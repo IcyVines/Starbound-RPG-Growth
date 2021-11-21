@@ -1,0 +1,86 @@
+{
+  "itemName" : "ivrpgwheartstring",
+  "price" : 750,
+  "maxStack" : 1,
+  "level" : 6,
+  "rarity" : "Essential",
+  "description" : "You remember every target's face. But it doesn't matter in the end, does it?\n\n^red;Deals increased Damage when no other weapon is equipped. ^reset;Damage a foe to cause the Sealed Fate Status: ^red;defeating a foe with Sealed Fate causes nearby foes with Sealed Fate to perish^reset;.",
+  "shortdescription" : "Dagger",
+  "tooltipKind" : "ivrpg_weapon",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","melee","dagger"],
+  "inventoryIcon" : "heartstring_2.png",
+
+  "specreq" : 1,
+  "classreq" : 3,
+
+  "animation" : "dagger.animation",
+  "animationParts" : {
+    "blade" : "heartstring_2.png"
+  },
+  "animationCustom" : {
+    // slow down swoosh a bit for elemental
+    "animatedParts" : {
+      "stateTypes" : {
+        "swoosh" : { 
+          "states" : { 
+            "slash" : { 
+              "cycle" : 0.15 
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "elementalType" : "demonic",
+  "scripts" : ["/items/active/specweapons/assassin/meleeweapon.lua"],
+
+  "aimOffset" : 0.0,
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+    "class" : "MeleeSlash",
+    "name" : "Fatal Slash",
+
+    "fireTime" : 0.8,
+    "baseDps" : 12.0,
+    "damageConfig" : {
+      "damageSourceKind" : "ivrpg_demonicdagger",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 15,
+      "timeoutGroup" : "primary"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -180,
+        "weaponOffset" : [0.25, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : -30,
+        "weaponRotation" : -220,
+        "weaponOffset" : [0.25, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : 50,
+        "weaponRotation" : -180,
+        "weaponOffset" : [0.25, 2.5],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

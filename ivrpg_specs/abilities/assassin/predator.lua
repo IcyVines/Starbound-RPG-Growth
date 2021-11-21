@@ -4,21 +4,40 @@ require "/scripts/ivrpgutil.lua"
 
 function init()
   self.id = effect.sourceEntity()
-  animator.setParticleEmitterOffsetRegion("rageEmbers", mcontroller.boundBox())
-  animator.setParticleEmitterOffsetRegion("unrageEmbers", mcontroller.boundBox())
+  _,self.damageUpdate = status.damageTakenSince()
+  self.uninvisTime = 10
+  self.uninvisTimer = 0
+  self.entityDamaged = nil
+
+  message.setHandler("ivrpgPredator", function(_, _, damage, position, facingDirection, entityId)
+    if self.uninvisTimer == 0 and damage > 0 then
+      self.uninvisTimer = self.uninvisTime
+      self.entityDamaged = entityId
+    end
+  end)
 end
 
 
 function update(dt)
-  self.nearbyAggressive = 0
-  local targetIds = enemyQuery(mcontroller.position(), 15, {}, self.id)
-  self.nearbyAggressive = #targetIds / 2
-  status.setPersistentEffects("battlemagebattletendency", {
-    {stat = "powerMultiplier", baseMultiplier = math.min(0.5 + self.nearbyAggressive, 3)}
-  })
 
-  animator.setParticleEmitterActive("rageEmbers", self.nearbyAggressive > 0)
-  animator.setParticleEmitterActive("unrageEmbers", self.nearbyAggressive == 0)
+  updateDamageTaken()
+
+  if self.uninvisTimer == 0 then
+    status.setPersistentEffects("ivrpg_predator", {
+      {stat = "ivrpgstealth", amount = 1},
+      {stat = "invulnerable", amount = 1}
+    })
+    effect.setParentDirectives("?multiply=555555BB")
+  else
+    if self.entityDamaged and not world.entityExists(self.entityDamaged) then
+      self.entityDamaged = nil
+      self.uninvisTimer = 0
+    end
+    status.clearPersistentEffects("ivrpg_predator")
+    effect.setParentDirectives()
+  end
+
+  self.uninvisTimer = math.max(self.uninvisTimer - dt, 0)
 
   --Effect Expires if Specialization is no longer correct.
   --Must keep this for every Ability, but change the specttype and classtype!!!
@@ -28,6 +47,19 @@ function update(dt)
 
 end
 
+function updateDamageTaken()
+  local notifications = nil
+  notifications, self.damageUpdate = status.damageTakenSince(self.damageUpdate)
+  if notifications then
+    for _,notification in pairs(notifications) do
+      if notification.healthLost > 0 then
+        self.uninvisTimer = self.uninvisTime
+      end
+    end
+  end
+end
+
 function uninit()
-  status.clearPersistentEffects("battlemagebattletendency")
+  status.clearPersistentEffects("ivrpg_predator")
+  effect.setParentDirectives()
 end
