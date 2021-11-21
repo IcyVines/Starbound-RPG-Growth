@@ -10,9 +10,25 @@
             }
           },
           "on" : {
-            "frames" : 1,
-            "cycle" : 1,
-            "mode" : "loop",
+            "properties" : {
+              "persistentSound" : "/sfx/tech/tech_hoverloop.ogg",
+              "particleEmittersOn" : [ "hoverParticles" ]
+            }
+          },
+          "toggleOff" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "off",
+            "properties" : {
+              "particleEmittersOff" : [ "hoverParticles" ]
+            }
+          },
+          "toggleOn" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "transition",
+            "transition" : "on",
             "properties" : {
               "persistentSound" : "/sfx/tech/tech_hoverloop.ogg",
               "particleEmittersOn" : [ "hoverParticles" ]
@@ -31,7 +47,17 @@
           "hover": {
             "on": {
               "properties": {
-                "image": "/ivrpg_specs/techs/warlock/bubble.png"
+                "image": "/ivrpg_specs/techs/warlock/bubble.png:4"
+              }
+            },
+            "toggleOn": {
+              "properties": {
+                "image": "/ivrpg_specs/techs/warlock/bubble.png:<frame>"
+              }
+            },
+            "toggleOff": {
+              "properties": {
+                "image": "/ivrpg_specs/techs/warlock/bubble.png:off.<frame>"
               }
             }
           }

@@ -3,7 +3,6 @@ require "/scripts/keybinds.lua"
 require "/tech/wizardtech/wizardhover/wizardhover.lua"
 
 oldInit = init
-oldUpdate = update
 
 function init()
   oldInit()
@@ -20,7 +19,33 @@ function init()
 end
 
 function update(args)
-  oldUpdate(args)
+  local action = input(args)
+  local energyUsagePerSecond = config.getParameter("energyUsagePerSecond")
+  local hDirection = args.moves["left"] and -1 or (args.moves["right"] and 1 or 0)
+  local vDirection = args.moves["down"] and -1 or (args.moves["up"] and 1 or 0)
+  local energyOff = (vDirection == -1 and hDirection == 0) and 4 or (vDirection == -1 and 3 or ((hDirection == 0 and vDirection == 0) and 1.5 or (vDirection == 1 and 0.5 or 1)))
+
+  if action == "wizardhover" and (not status.statPositive("activeMovementAbilities")) and status.overConsumeResource("energy", energyUsagePerSecond * args.dt / energyOff)  then
+    local agility = status.statusProperty("ivrpgagility", 0)
+    local intelligence = status.statusProperty("ivrpgintelligence", 0)
+    local maxSpeed = math.min(agility^0.7 + intelligence^0.9 + 10, 50)
+    local angle = (hDirection ~= 0 or vDirection ~= 0) and vec2.angle({hDirection, vDirection}) or false
+    local velocity = angle and vec2.withAngle(angle, maxSpeed) or {0,0}
+    mcontroller.controlApproachVelocity(velocity, self.hoverControlForce)
+    if vDirection == 0 then mcontroller.controlApproachYVelocity(0, self.hoverControlForce) end
+
+    if not self.active then
+      animator.playSound("activate")
+      animator.setAnimationState("hover", "toggleOn")
+    end
+    self.active = true
+  else
+    if self.active then
+      mcontroller.controlApproachVelocity({0,0}, self.hoverControlForce * 10)
+      animator.setAnimationState("hover", "toggleOff")
+    end
+    self.active = false
+  end
 
   self.shiftHeld = not args.moves["run"]
 
@@ -77,7 +102,7 @@ function updateDamageTaken()
         if notification.sourceEntityId and world.entityExists(notification.sourceEntityId) then
           local targetPos = world.entityPosition(notification.sourceEntityId)
           local direction = world.distance(targetPos, mcontroller.position())
-          world.spawnProjectile("electro", mcontroller.position(), entity.id(), direction, false, {power = 1, powerMultiplier = status.stat("powerMultiplier"), damageKind = "nova"})
+          world.spawnProjectile("ivrpg_novawave", mcontroller.position(), entity.id(), direction, false, {power = status.statusProperty("ivrpgintelligence") / 25})
         end
       end
     end
