@@ -264,6 +264,7 @@ function flameBurst(standard)
     local params = getParams()
     world.spawnProjectile(self.elementConfig.primaryProjectiles[1], {mcontroller.xPosition(), mcontroller.yPosition() - 0.5}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, params)
   else
+    animator.playSound("fireChargeActivate")
     world.spawnProjectile(self.elementConfig.ultimateProjectiles[1], tech.aimPosition(), self.id, {0,0}, false, {
       power = 1, powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 5
     })
