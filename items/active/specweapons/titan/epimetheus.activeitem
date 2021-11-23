@@ -51,7 +51,7 @@
   },
   "baseOffset" : [0.825, 0.125],
   "muzzleOffset" : [0.0, 0.5],
-  "elementalType" : "earth",
+  "elementalType" : "electric",
 
   "scripts" : ["/items/active/weapons/ranged/gun.lua"],
 

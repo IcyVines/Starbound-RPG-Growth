@@ -1,9 +1,9 @@
 {
   "projectileName" : "ivrpg_magmazone",
   "physics" : "gas",
-  "image" : "magma_zone.png",
+  "image" : "fire_zone.png",
   "animationCycle" : 0.75,
-  "frameNumber" : 9,
+  "frameNumber" : 4,
   "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
   "lightColor" : [235, 126, 2],
   "power" : 0,

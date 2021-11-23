@@ -1,0 +1,63 @@
+{
+  "projectileName" : "elementresslargemeteor",
+  "physics" : "grenadezbomb",
+  "bounces" : 0,
+  "image" : "largemeteor.png",
+  "animationCycle" : 1,
+  "lightColor" : [253, 160, 57],
+  "frameNumber" : 1,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/ivrpg_specs/techs/elementress/old/meteor/meteorexplosion.config"
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 10,
+      "angleAdjust" : 0,
+      "config" : {"timeToLive" : 2, "damageTeam" : {"type" : "friendly"}}
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 10,
+      "angleAdjust" : -60,
+      "config" : {"timeToLive" : 2, "damageTeam" : {"type" : "friendly"}}
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 10,
+      "angleAdjust" : 60,
+      "config" : {"timeToLive" : 2, "damageTeam" : {"type" : "friendly"}}
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 10,
+      "angleAdjust" : -120,
+      "config" : {"timeToLive" : 2, "damageTeam" : {"type" : "friendly"}}
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 10,
+      "angleAdjust" : 120,
+      "config" : {"timeToLive" : 2, "damageTeam" : {"type" : "friendly"}}
+    },
+    {
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 10,
+      "angleAdjust" : -180,
+      "config" : {"timeToLive" : 2, "damageTeam" : {"type" : "friendly"}}
+    }
+  ],
+  "power" : 60,
+  "damageType" : "IgnoresDef",
+  "damageKind" : "fire",
+  "piercing" : true,
+  "damagePoly" : [ [-75, -75], [75, -75], [75, 75], [-75, 75] ],
+  "emitters" : [ "sparks" ]
+}

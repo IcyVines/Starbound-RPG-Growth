@@ -23,6 +23,7 @@ function init()
 
   -- For increasing Attunement
   self.levelList = status.statusProperty("ivrpgAttunementLevels", {1,1,1})
+  self.percentList = status.statusProperty("ivrpgAttunementPercent", {0,0,0})
   self.level = 1
   animator.setAnimationState("gauge", self.element)
   animator.playSound(self.element .. "Activate")
@@ -34,6 +35,17 @@ function init()
   Chaos = 6-7
   ]]
 
+  -- Icicle Rush specific variables
+  self.icicleRushDirection = nil
+  self.icicleRushTimer = 0
+  self.icicleRushTime = 0.35
+  self.icicleRushMovement = 0.25
+  self.icicleRushSpeed = 40
+  self.icicleRushHop = false
+  message.setHandler("ivrpgElementressIcicleRush", function()
+    self.icicleRushHop = true
+  end)
+
   -- Jolt specific variables
   self.joltTimer = 0
   self.transformFadeTimer = 0
@@ -42,6 +54,14 @@ function init()
   self.joltPoly = config.getParameter("joltCollisionPoly", {})
   self.collisionSet = {"Null", "Block", "Dynamic", "Slippery"}
   self.active = false
+
+  -- Arc Flash specific variables
+  self.overchargeTimer = 0
+  self.overchargeTime = 15
+  message.setHandler("ivrpgElementressOvercharge", function(_, _)
+    animator.playSound("recharge")
+    self.overchargeTimer = self.overchargeTime
+  end)
 
   -- Ice Barrier specific variables
   self.barrierProjectiles = {}
@@ -61,8 +81,6 @@ function toggle()
   self.elementMod = self.newMod[self.elementMod]
   self.element = self.elementList[self.elementMod]
   animator.setAnimationState("gauge", self.element)
-  status.setStatusProperty("ivrpgAttunement", self.elementMod)
-  status.setStatusProperty("ivrpgAttunementLevels", self.levelList)
   animator.playSound(self.element .. "Activate")
   cooldown(0.2)
 end
@@ -75,41 +93,22 @@ function uninit()
   deactivate()
   status.clearPersistentEffects("ivrpgattune")
   status.setStatusProperty("ivrpgAttunementElement", false)
+  status.clearPersistentEffects("ivrpg_elementressIcicleRush")
 end
 
 --[[
-Basic Fire+: Flame Burst
-Shoot flame towards your cursor that lingers when it hits an enemy.
-
-Chaos Fire: Conflagrate
-The lingering flame now lingers on contact with walls and creates additional smaller flames that shoot outwards and stick to the ground.
 
 Special Fire: Explosion
 Create a magma zone centered around your cursor. Within the magma zone, enemies take constant damage. While the zone exists, bursts of flame build within and are ejected when finished: these bursts explode on contact.
 
-
-Basic Electric+: Arc Flash
-Chain electricity outwards in all directions with a fixed ranged. If any part of the chain contacts with an enemy, that enemy starts a new chain.
-
-Chaos Electric: Pulsate
-Bolts chaining from enemies chain to you, granting additional energy, and overcharging Electric Potential. While overcharged, all your Attunement Attacks deal an additional chunk of Electric damage.
-
 Special Electric: Thunder
 Call down a quick torrent of massive thunderbolts. Enemies hit by these bolts instantly die if they have less than 50% remaining health.
 
-
-Basic Ice+: Icicle Rush
-Slide forwards, protecting yourself with a heavy icicle which is launched after the slide finishes. If the icicle contacts an enemy during the slide, it impales itself into that enemy, freezing them for one second, and you hop backwards.
-
-Chaos Ice: Shatter
-Upon embedding into a wall or enemy, press Primary Fire again to shatter the icicle. Doing so does massive damage in a small space around it, and also scatters ice shards that do minor damage.
-
-Special Ice: Glacier
-Summon large spikes of ice underneath three nearby enemies. These freeze enemies they hit, preventing them from moving at all.
 ]]
 
+--15,30, 55,80, 90,100
+
 function update(args)
-  --self.directives = "?fade=" .. self.borderList[self.elementMod] .. "=0.25"
   status.setPersistentEffects("ivrpgattune", {
     {stat = self.element .. "StatusImmunity", amount = 1},
     {stat = self.element .. "Resistance", amount = 3},
@@ -117,17 +116,33 @@ function update(args)
     {stat = "invulnerable", amount = self.active and 1 or 0}
   })
 
-  if self.levelList[self.elementMod] <= 1 then
+  if self.percentList[self.elementMod] < 15 then
     self.level = 1
-  elseif self.levelList[self.elementMod] <= 3 then
-    self.levelName = 2
-  elseif self.levelList[self.elementMod] <= 5 then
+    self.levelList[self.elementMod] = 1
+  elseif self.percentList[self.elementMod] < 30 then
+    self.level = 2
+    self.levelList[self.elementMod] = 2
+  elseif self.percentList[self.elementMod] < 55 then
+    self.level = 2
+    self.levelList[self.elementMod] = 3
+  elseif self.percentList[self.elementMod] < 80 then
     self.level = 3
-  else
+    self.levelList[self.elementMod] = 4
+  elseif self.percentList[self.elementMod] < 90 then
+    self.level = 3
+    self.levelList[self.elementMod] = 5
+  elseif self.percentList[self.elementMod] < 100 then
     self.level = 4
+    self.levelList[self.elementMod] = 6
+  elseif self.percentList[self.elementMod] >= 100 then
+    self.level = 4
+    self.levelList[self.elementMod] = 7
   end
 
   status.setStatusProperty("ivrpgAttunementElement", self.element)
+  status.setStatusProperty("ivrpgAttunement", self.elementMod)
+  status.setStatusProperty("ivrpgAttunementLevels", self.levelList)
+  status.setStatusProperty("ivrpgAttunementPercent", self.percentList)
 
   animator.setGlobalTag(self.element.."Mod", tostring(self.levelList[self.elementMod]))
 
@@ -163,6 +178,34 @@ function update(args)
     end
   end
 
+  animator.setGlobalTag("elementMod", self.element)
+  animator.setAnimationState("overcharge", self.overchargeTimer > 0 and "on" or "off")
+  self.overchargeTimer = math.max(0, self.overchargeTimer - args.dt)
+
+  if self.icicleRushTimer > 0 then
+    if self.icicleRushHop then
+      mcontroller.setYVelocity(20)
+      mcontroller.setXVelocity(-self.icicleRushDirection * self.icicleRushSpeed / 2)
+      animator.playSound("icicleRushHop")
+      tech.setParentState()
+      self.icicleRushHop = false
+      self.icicleRushTimer = 0
+    elseif self.icicleRushTimer < self.icicleRushMovement then
+      mcontroller.setVelocity({self.icicleRushDirection * self.icicleRushSpeed, 0})
+      tech.setParentState("duck")
+      status.setPersistentEffects("ivrpg_elementressIcicleRush", {
+        {stat = "activeMovementAbilities", amount = 1},
+        {stat = "physicalResistance", amount = 3},
+        {stat = "grit", amount = 1}
+      })
+    end
+    self.icicleRushTimer = math.max(0, self.icicleRushTimer - args.dt)
+  else
+    status.clearPersistentEffects("ivrpg_elementressIcicleRush")
+    self.icicleRushHop = false
+    tech.setParentState()
+  end
+
   self.fireTimer = self.fireTimer - self.dt
 
   updateJolt()
@@ -177,8 +220,11 @@ function updateDamageGiven()
   notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
   if notifications then
     for _,notification in pairs(notifications) do
-      if notification.damageDealt > notification.healthLost and notification.healthLost > 0 and notification.damageSourceKind == ("ivrpg_elementress" .. self.element) then
-        self.levelList[self.elementMod] = math.min(self.levelList[self.elementMod] + 1, 7)
+      if notification.damageDealt > notification.healthLost and notification.healthLost > 0 and (notification.damageSourceKind == ("ivrpg_elementress" .. self.element)
+        or (self.overchargeTimer > 0 and notification.damageDealt == "ivrpg_elementresselectric")) then
+        self.percentList[self.elementMod] = math.min(self.percentList[self.elementMod] + 4, 100)
+      elseif self.overchargeTimer > 0 and notification.damageSourceKind == ("ivrpg_elementress" .. self.element) then
+        world.sendEntityMessage(notification.targetEntityId, "applySelfDamageRequest", "IgnoresDef", "ivrpg_elementresselectric", 2 * status.stat("powerMultiplier"), entity.id())
       end
     end
   end
@@ -193,8 +239,9 @@ function action1(skipCheck)
   if (self.cooldownTimer > 0 or self.active) or ((not skipCheck)
     and world.entityHandItem(self.id, "primary"))
     or status.statPositive("activeMovementAbilities") then return end
-    if self.shiftHeld and status.overConsumeResource("energy", self.elementConfig.ultimateCosts[self.elementMod] / self.weaveBonus) then
+    if self.shiftHeld and self.percentList[self.elementMod] >= 15 and status.overConsumeResource("energy", self.elementConfig.ultimateCosts[self.elementMod] / self.weaveBonus) then
       self.primaryList[self.elementMod]()
+      self.percentList[self.elementMod] = math.max(self.percentList[self.elementMod] - 15, 0)
       cooldown(3)
     elseif not self.shiftHeld and status.overConsumeResource("energy", self.elementConfig.primaryCosts[self.elementMod][self.level] / self.weaveBonus) then
       self.primaryList[self.elementMod](true)
@@ -214,37 +261,94 @@ end
 -- Primary Fire
 function flameBurst(standard)
   if standard then
-    world.spawnProjectile(self.elementConfig.primaryProjectiles[1], {mcontroller.xPosition(), mcontroller.yPosition() - 0.5}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, {
-      power = 4, powerMultiplier = status.stat("powerMultiplier"), speed = 20, timeToLive = 1
-    })
+    local params = getParams()
+    world.spawnProjectile(self.elementConfig.primaryProjectiles[1], {mcontroller.xPosition(), mcontroller.yPosition() - 0.5}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, params)
   else
     world.spawnProjectile(self.elementConfig.ultimateProjectiles[1], tech.aimPosition(), self.id, {0,0}, false, {
-      power = 4, powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 5
+      power = 1, powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 5
     })
   end
 end
 
 -- Primary Ice
 function icicleRush(standard)
-    -- To do
+    if standard then
+      self.icicleRushDirection = mcontroller.facingDirection()
+      self.icicleRushTimer = self.icicleRushTime
+      local params = getParams()
+      world.spawnProjectile(self.elementConfig.primaryProjectiles[2], {mcontroller.xPosition(), mcontroller.yPosition()}, self.id, {self.icicleRushDirection, 0}, false, params)
+    else
+      animator.playSound("iceChargeActivate")
+      glacialSpike()
+    end
+end
+
+function glacialSpike()
+  local nearbyEntities = {}
+  local targets = enemyQuery(mcontroller.position(), 30, {includedTypes = {"creature"}}, self.id, false)
+  if targets then
+    for _,id in ipairs(targets) do
+      if world.entityExists(id) then
+        local pos = world.entityPosition(id)
+        local distance = vec2.mag(world.distance(mcontroller.position(), pos))
+        if not world.lineTileCollision(mcontroller.position(), pos, {"Block", "Slippery", "Null", "Dynamic"}) then
+          table.insert(nearbyEntities, id)
+        end
+      end
+    end
+  end
+
+  local count = 0
+  local params = {power = self.elementConfig.ultimatePower[2], powerMultiplier = status.stat("powerMultiplier"), statusEffects = { "ivrpgfreeze" }}
+  if nearbyEntities and #nearbyEntities > 0 then
+    for _,id in ipairs(nearbyEntities) do
+      if count < 3 then
+        local position = world.entityPosition(id)
+        local groundPos = world.lineCollision(position, vec2.sub(position, {0, 4}), {"Block", "Slippery", "Null", "Dynamic"})
+        if groundPos then
+          spawnGlacialSpike(groundPos, params)
+          count = count + 1
+        end
+      end
+    end
+  end
+
+  if count < 3 then
+    local position = mcontroller.position()
+    local groundPos = world.lineCollision(position, vec2.sub(position, {0, 4}), {"Block", "Slippery", "Null", "Dynamic"})
+    if groundPos then
+      spawnGlacialSpike(groundPos, params)
+    end
+  end
+end
+
+function spawnGlacialSpike(groundPos, params)
+  world.spawnProjectile(self.elementConfig.ultimateProjectiles[2], vec2.add(groundPos, {0, 3.5}), self.id, {0, 0}, false, params)
 end
 
 -- Primary Electric
 function arcFlash(standard)
+  animator.playSound("electricChargeActivate")
   if standard then
-    for i=1,3 do
-      world.spawnProjectile(self.elementConfig.primaryProjectiles[3], {mcontroller.xPosition(), mcontroller.yPosition()}, self.id, {i/3,(i-2)}, false, {
-        power = 0, powerMultiplier = status.stat("powerMultiplier"), speed = 100, timeToLive = 2, chainLimit = 3
-      })
-      world.spawnProjectile(self.elementConfig.primaryProjectiles[3], {mcontroller.xPosition(), mcontroller.yPosition()}, self.id, {-i/3,(i-2)}, false, {
-        power = 0, powerMultiplier = status.stat("powerMultiplier"), speed = 100, timeToLive = 2, chainLimit = 3
-      })
+    local params = getParams()
+    local count = self.elementConfig.primaryParameters[3][self.level].amount
+    local direction = {1,0}
+    for i=1,count do
+      world.spawnProjectile(self.elementConfig.primaryProjectiles[3], {mcontroller.xPosition(), mcontroller.yPosition()}, self.id, direction, false, params)
+      direction = vec2.rotate(direction, 2 * math.pi / count)
     end
   else
     world.spawnProjectile(self.elementConfig.ultimateProjectiles[3], mcontroller.position(), self.id, {0,-1}, false, {
       power = 4, powerMultiplier = status.stat("powerMultiplier"), speed = 10, timeToLive = 5
     })
   end
+end
+
+function getParams()
+  local params = self.elementConfig.primaryParameters[self.elementMod][self.level]
+  params.power = self.elementConfig.primaryPower[self.elementMod][self.level]
+  params.powerMultiplier = status.stat("powerMultiplier")
+  return params
 end
 
 -- Flame Thrower

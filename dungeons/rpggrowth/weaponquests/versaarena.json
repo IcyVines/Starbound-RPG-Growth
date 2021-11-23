@@ -2135,7 +2135,7 @@
                  "name":"",
                  "properties":
                     {
-                     "parameters":"{ \"spawner\" : { \"monsterTypes\" : [\"ivrpg_monstertonpc\"], \"monsterLevel\" : [3, 3], \"monsterParams\" : {\"ivrpgNpcParameters\":{\"species\":[\"floran\",\"novakid\",\"glitch\",\"human\",\"avian\",\"hylotl\",\"apex\"], \"type\":\"bandit\"}}, \"position\" : [0, 34], \"positionVariance\" : [0, 0], \"frequency\" : [30,30], \"stock\" : 3, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
+                     "parameters":"{ \"spawner\" : { \"monsterTypes\" : [\"ivrpg_monstertonpc\"], \"monsterLevel\" : [3, 3], \"monsterParams\" : {\"ivrpgNpcParameters\":{\"species\":[\"floran\",\"novakid\",\"glitch\",\"human\",\"avian\",\"hylotl\",\"apex\"], \"type\":\"ivrpg_bandit\"}}, \"position\" : [0, 34], \"positionVariance\" : [0, 0], \"frequency\" : [30,30], \"stock\" : 3, \"trigger\" : \"wire\", \"outOfSight\" : false } }"
                     },
                  "rotation":0,
                  "type":"",

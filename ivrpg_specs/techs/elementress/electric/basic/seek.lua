@@ -6,6 +6,7 @@ require "/scripts/ivrpgutil.lua"
 function init()
   self.id = projectile.sourceEntity()
   self.chainLimit = config.getParameter("chainLimit", 2)
+  self.chaos = config.getParameter("chaos", false)
   self.currentChain = 0
   self.startSeeking = false
   self.nearbyEntities = {}
@@ -18,32 +19,14 @@ function update(args)
     projectile.die()
   end
 
-  --[[local targets = enemyQuery(mcontroller.position(), 30, {includedTypes = {"creature"}}, self.id, true)
-  if targets and not self.newTarget then
-    for _,id in ipairs(targets) do
-      if world.entityExists(id) then
-        local pos = world.entityPosition(id)
-        local distance = vec2.mag(world.distance(mcontroller.position(), pos))
-        if distance <= 2.5 then
-          self.startSeeking = id
-        elseif not world.lineTileCollision(mcontroller.position(), pos, {"Block", "Slippery", "Null", "Dynamic"}) then
-          table.insert(self.nearbyEntities, id)
-        end
-      end
-    end
-  end
-
-  if self.startSeeking and #self.nearbyEntities > 0 and not self.newTarget then
-    startSeeking()
-  end]]
-
   if self.newTarget and world.entityExists(self.newTarget) then
-    --self.nearbyEntities = {}
     local distance = world.distance(world.entityPosition(self.newTarget), mcontroller.position())
     mcontroller.setVelocity(vec2.mul(vec2.norm(distance), projectile.getParameter("speed", 1)))
-    --if vec2.mag(distance) <= 2.5 then
-      --self.newTarget = nil
-    --end
+    if self.chaos and self.newTarget == self.id and vec2.mag(distance) <= 2 then
+      world.sendEntityMessage(self.newTarget, "modifyResource", "energy", 4)
+      world.sendEntityMessage(self.newTarget, "ivrpgElementressOvercharge")
+      hit(self.newTarget)
+    end
   else
     self.newTarget = nil
   end
@@ -63,6 +46,16 @@ function hit(entityId)
       end
     end
   end
+
+  -- Chaos Variant
+  if entityId ~= self.id and self.chaos then
+    local playerPos = world.entityPosition(self.id)
+    local distance = world.distance(mcontroller.position(), playerPos)
+    if vec2.mag(distance) <= 30 and not world.lineTileCollision(mcontroller.position(), playerPos, {"Block", "Slippery", "Null", "Dynamic"}) then
+      table.insert(nearbyEntities, self.id)
+    end
+  end
+
   if nearbyEntities and #nearbyEntities > 0 then
     self.newTarget = nearbyEntities[math.random(#nearbyEntities)]
     self.currentChain = self.currentChain + 1

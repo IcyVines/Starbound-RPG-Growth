@@ -3,7 +3,8 @@
     "joltDirectives" : "",
     "fireMod" : "1",
     "iceMod" : "1",
-    "electricMod" : "1"
+    "electricMod" : "1",
+    "elementMod" : "fire"
   },
 
   "animationParts" : {
@@ -49,6 +50,13 @@
             "cycle" : 0
           }
         }
+      },
+      "overcharge" : {
+        "default" : "off",
+        "states" : {
+          "on" : {},
+          "off" : {}
+        }
       }
     },
     "parts" : {
@@ -61,7 +69,7 @@
             "off" : {},
             "on" : {
               "properties" : {
-                "image" : "jolt/balllightning.png:<frame><joltDirectives>"
+                "image" : "electric/jolt/balllightning.png:<frame><joltDirectives>"
               }
             }
           }
@@ -88,6 +96,22 @@
             "electric" : {
               "properties" : {
                 "image" : "electric/electric_<electricMod>.png"
+              }
+            }
+          }
+        }
+      },
+      "overcharge" : {
+        "properties" : {
+          "fullbright" : true,
+          "offset" : [0, 4],
+          "zLevel" : 11
+        },
+        "partStates" : {
+          "overcharge" : {
+            "on" : {
+              "properties" : {
+                "image" : "<elementMod>/<elementMod>_overcharge.png"
               }
             }
           }
@@ -220,6 +244,10 @@
 
     "flamethrowerStart" : [ "/sfx/gun/flamethrower_start.ogg" ],
     "flamethrowerLoop" : [ "/sfx/gun/flamethrower_loop.ogg" ],
-    "flamethrowerEnd" : [ "/sfx/gun/flamethrower_stop.ogg" ]
+    "flamethrowerEnd" : [ "/sfx/gun/flamethrower_stop.ogg" ],
+
+    "recharge" : ["/sfx/statuseffects/stimuse.ogg"],
+
+    "icicleRushHop" : [ "/sfx/npc/monsters/monster_hop.ogg" ]
   }
 }

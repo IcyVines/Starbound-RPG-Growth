@@ -1,0 +1,29 @@
+{
+  "projectileName" : "ivrpg_elementressfire",
+  "physics" : "default",
+  "image" : "fire.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [235, 126, 2],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/ivrpg_specs/techs/elementress/fire/basic/fire_explosion.config"
+    }
+  ],
+  "actionOnHit" : [
+    {
+      "action" : "config",
+      "file" : "/ivrpg_specs/techs/elementress/fire/basic/fire_zone.config"
+    }
+  ],
+  "power" : 42,
+  "knockback" : 40,
+  "speed" : 80,
+  "damageKind" : "ivrpg_elementressfire",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "hydrophobic" : true,
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
+  "emitters" : [ "fireplasma", "smoke", "flames" ]
+}

@@ -1,18 +1,23 @@
 {
   "projectileName" : "ivrpg_elementressice",
-  "image" : "ice.png",
-  "animationCycle" : 0.25,
+  "image" : "icicle.png",
+  "physics" : "sticky",
+  "animationCycle" : 0.3,
   "animationLoops" : false,
-  "timeToLive" : 0.25,
-  "frameNumber" : 5,
-  "power" : 50,
-  "speed" : 0,
+  "timeToLive" : 0.3,
+  "frameNumber" : 11,
+  "power" : 0,
+  "speed" : 40,
+  "movementSettings" : {
+    "collisionPoly" : [ [-1, -1], [4, -1], [4, 1], [-1, 1] ]
+  },
   "orientationLocked" : true,
   "piercing" : true,
+  "bounces" : -1,
   "flippable" : true,
   "knockback" : 20,
   "knockbackDirectional" : true,
-  "damagePoly" : [ [-11, 4], [11, 4], [11, -4], [-11, -4] ],
+  "damagePoly" : [ [-30, 16], [32, 16], [32, -16], [-30, -16] ],
   "lightColor" : [200, 200, 255],
   "damageKind" : "ivrpg_elementressice",
   "periodicActions" : [
@@ -23,8 +28,6 @@
       "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
     }
   ],
-  "statusEffects" : [
-    "frostslow"
-  ],
+  "scripts" : ["stick.lua"],
   "emitters" : ["iceshockwave"]
 }

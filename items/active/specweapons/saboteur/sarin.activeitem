@@ -1,0 +1,73 @@
+{
+  "itemName" : "ivrpgwsarin",
+  "price" : 1000,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "\n\n^green;Attack foes to infect them with Spores. Spored enemies that get hit infect nearby enemies with Spores.",
+  "shortdescription" : "^green;Sarin",
+  "tooltipKind" : "ivrpg_weapon",
+  "category" : "dagger",
+  "twoHanded" : false,
+  "inventoryIcon" : "sarin.png",
+  "itemTags" : ["weapon","melee","dagger"],
+  "level" : 6,
+
+  "classreq" : 5,
+  "specreq" : 2,
+
+  "animation" : "dagger.animation",
+  "animationParts" : {
+    "handle" : "",
+    "blade" : "sarin.png"
+  },
+  
+  "elementalType" : "poison",
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/weapons/melee/meleeslash.lua"],
+    "class" : "MeleeSlash",
+
+    "fireTime" : 0.3,
+    "baseDps" : 6.0,
+    "damageConfig" : {
+      "damageSourceKind" : "<elementalType>dagger",
+      "statusEffects" : [ ],
+      "knockbackMode" : "aim",
+      "knockback" : 10,
+      "timeoutGroup" : "primary"
+    },
+    "stances" : {
+      "idle" : {
+        "armRotation" : -90,
+        "weaponRotation" : -10,
+        "weaponOffset" : [-0.25, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : true
+      },
+      "windup" : {
+        "duration" : 0.05,
+        "armRotation" : -20,
+        "weaponRotation" : -20,
+        "weaponOffset" : [-0.25, 2.25],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      },
+      "fire" : {
+        "duration" : 0.2,
+        "armRotation" : -135,
+        "weaponRotation" : 40,
+        "weaponOffset" : [-0.25, 2.5],
+
+        "allowFlip" : true,
+        "allowRotate" : false
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+  
+}

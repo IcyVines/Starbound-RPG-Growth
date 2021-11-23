@@ -1,0 +1,51 @@
+{
+  "projectileName" : "ivrpgelementressshardelectric",
+  "image" : "crystal.png",
+  "physics" : "laser",
+  "bounces" : 0,
+  "flippable" : false,
+  "timeToLive" : 10,
+  "animationCycle" : 0.2,
+  "frameNumber" : 4,
+  "fullbright" : true,
+  "pointLight" : false,
+  "lightColor" : [60, 0, 120],
+  "power" : 0,
+  "damageKind" : "ice",
+  "scripts" : ["seeking.lua"],
+  "attackTime" : 0.9,
+  "trackingRange" : 20,
+  "projectileParameters" : {
+    "speed" : 50
+  },
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/iceexplosionknockback.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0.066,
+      "repeat" : true,
+      "action" : "particle",
+      "rotate" : true,
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/ivrpg_specs/techs/elementress/old/seekingshards/crystaltrail.animation",
+        "initialVelocity" : [0.0, 0.0],
+        "timeToLive" : 0.2,
+        "layer" : "back",
+        "position" : [0.0, 0.0]
+      }
+    },
+    {
+      "time" : 0.5,
+      "repeat" : true,
+      "action" : "particle",
+      "specification" : "ivrpgsearingmist"
+    }
+  ],
+  "damagePoly" : [ [-4, 0], [2, 3], [8, 0], [2, -3] ],
+  "scriptDelta" : 1
+}

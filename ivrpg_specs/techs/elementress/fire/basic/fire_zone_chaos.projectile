@@ -1,0 +1,38 @@
+{
+  "projectileName" : "ivrpg_firezone_chaos",
+  "physics" : "gas",
+  "image" : "fire_zone.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "movementSettings" : {
+    "collisionPoly" : [ [-0, -0], [0, -0], [0, 0], [-0, 0] ]
+  },
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [235, 126, 2],
+  "power" : 42,
+  "knockback" : 40,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "piercing" : true,
+  "bounces" : 0,
+  "damageKind" : "fire",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "statusEffects" : [
+    "burning"
+  ],
+  "hydrophobic" : true,
+  "periodicActions" : [
+    {
+      "time" : 0.5,
+      "repeat" : true,
+      "action" : "projectile",
+      "type" : "molotovflame",
+      "fuzzAngle" : 360,
+      "inheritDamageFactor" : 0.5,
+      "angleAdjust" : 0,
+      "config" : {"timeToLive" : 1.5, "damageTeam" : {"type" : "friendly"}}
+    }
+  ],
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
+  "emitters" : [ "fireplasma", "smoke", "flames" ]
+}

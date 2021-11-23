@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpgfreeze",
+  "blockingStat" : "stunImmunity",
+  "effectConfig" : {},
+  "defaultDuration" : 1.5,
+
+  "scripts" : [
+    "freeze.lua"
+  ],
+
+  "animationConfig" : "freeze.animation",
+
+  "label" : "Frozen",
+  "icon" : "frozen.png"
+}

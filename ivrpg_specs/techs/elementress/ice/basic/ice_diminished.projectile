@@ -1,0 +1,30 @@
+{
+  "projectileName" : "ivrpg_elementressice_diminished",
+  "image" : "ice.png",
+  "physics" : "sticky",
+  "animationCycle" : 0.25,
+  "animationLoops" : false,
+  "timeToLive" : 1,
+  "frameNumber" : 4,
+  "power" : 0,
+  "speed" : 40,
+  "movementSettings" : {
+    "collisionPoly" : [ [-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5] ]
+  },
+  "orientationLocked" : true,
+  "piercing" : true,
+  "bounces" : -1,
+  "flippable" : true,
+  "knockback" : 20,
+  "knockbackDirectional" : true,
+  "damagePoly" : [ [-10, 6], [-10, -6], [8, 0] ],
+  "lightColor" : [200, 200, 255],
+  "damageKind" : "ivrpg_elementressice",
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
+    }
+  ],
+  "emitters" : ["iceshockwave"]
+}

@@ -10,7 +10,7 @@ function update(dt)
   if targets then
     for _,id in ipairs(targets) do
       if world.entityExists(id) then
-        world.sendEntityMessage(id, "setVelocity", vec2.mul(world.distance(mcontroller.position(), world.entityPosition(id)), 5))
+        world.sendEntityMessage(id, "setVelocity", vec2.mul(vec2.norm(world.distance(mcontroller.position(), world.entityPosition(id))), 25))
       end
     end
   end

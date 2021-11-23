@@ -68,9 +68,6 @@ function MeleeSlash:fire()
   self.weapon:setStance(self.stances.fire)
   self.weapon:updateAim()
 
-  sb.logInfo(sb.printJson(self.weaponOne))
-  sb.logInfo(sb.printJson(self.weaponTwo))
-
   if self.weaponOne and self.weaponTwo and root.itemHasTag(self.weaponOne, "weapon") and root.itemHasTag(self.weaponTwo, "weapon") then
     self.damageConfig.baseDamage = (self.baseDps) * self.fireTime
   else

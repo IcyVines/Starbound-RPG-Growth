@@ -1,0 +1,18 @@
+{
+  "kind" : "ivrpgsearingmist",
+  "definition" : {
+    "type" : "animated",
+    "animation" : "/ivrpg_specs/techs/elementress/old/searingmist/searingmist.animation",
+    "initialVelocity" : [0, 0],
+    "finalVelocity" : [0, 0],
+    "approach" : [1, 1],
+    "timeToLive" : 2,
+    "size" : 1.0,
+    "layer" : "middle",
+    "variance" : {
+      "initialVelocity" : [3, 3],
+      "rotation" : 360,
+      "angularVelocity" : 0
+    }
+  }
+}
