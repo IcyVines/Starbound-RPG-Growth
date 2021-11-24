@@ -1,0 +1,325 @@
+{
+  "globalTagDefaults" : {
+    "directives" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+
+      "jetState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 1
+          }
+        }
+      },
+
+      "jetFState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "idle" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "flames" ]
+            }
+          },
+          "fly" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "flames" ]
+            }
+          }
+        }
+      },
+
+      "subState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "bubbles" ]
+            }
+          },
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "bubbles" ]
+            }
+          },
+         "move" : {
+            "frames" : 8,
+            "cycle" : 0.8,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "bubbles" ]
+            }
+          }
+        }
+      },
+
+      "exoState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ]
+            }
+          },
+          "idle" : {
+            "frames" : 1,
+            "cycle" : 1,
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ]
+            }
+          },
+          "walk" : {
+            "frames" : 8,
+            "cycle" : 1.25,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOn" : [ "dash" ]
+            },
+            "frameProperties" : {
+              "immediateSound" : [ "", "", "", "/sfx/npc/monsters/orbide_step1.ogg", "", "", "", "/sfx/npc/monsters/orbide_step2.ogg" ]
+            } 
+          },
+          "crouch" : {
+            "frames" : 1,
+            "cycle" : 0.5,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ]
+            }
+          },
+          "jump" : {
+            "frames" : 1,
+            "properties" : {
+              "immediateSound" : "/sfx/npc/monsters/oogler_hop.ogg",
+              "particleEmittersOff" : [ "dash" ]
+            }
+          },
+          "fall" : {
+            "frames" : 2,
+            "cycle" : 0.18,
+            "mode" : "loop",
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ]
+            }
+          },
+          "attack" : {
+            "frames" : 3,
+            "cycle" : 0.2,
+            "properties" : {
+              "particleEmittersOff" : [ "dash" ],
+              "immediateSound" : "/sfx/npc/monsters/monster_slash1.ogg"
+            }
+          }
+        }
+      }
+    },
+
+    "parts" : {
+
+      "jetState" : {
+        "properties" : {
+          "transformationGroups" : [ "transform" ],
+          "offset" : [0.0, 0.0]
+        },
+        "partStates" : {
+          "jetState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage><directives>"
+              }
+            }
+          }
+        }
+      },
+
+      "jetFState" : {
+        "properties" : {
+          "transformationGroups" : [ "transform" ],
+          "fullbright" : true,
+          "offset" : [0.0, 0.0]
+        },
+        "partStates" : {
+          "jetFState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame><directives>"
+              }
+            },
+            "fly" : {
+              "properties" : {
+                "image" : "<partImage>:fly.<frame><directives>"
+              }
+            }
+          }
+        }
+      },
+
+      "subState" : {
+        "properties" : {
+          "transformationGroups" : [ "transform" ],
+          "offset" : [0.0, 0.0]
+        },
+        "partStates" : {
+          "subState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame><directives>"
+              }
+            },
+            "move" : {
+              "properties" : {
+                "image" : "<partImage>:move.<frame><directives>"
+              }
+            }
+          }
+        }
+      },
+
+      "exoState" : {
+        "properties" : {
+          "transformationGroups" : [ "transform" ],
+          "offset" : [0.0, 0.125]
+        },
+        "partStates" : {
+          "exoState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.<frame><directives>"
+              }
+            },
+            "walk" : {
+              "properties" : {
+                "image" : "<partImage>:walk.<frame><directives>"
+              }
+            },
+            "jump" : {
+              "properties" : {
+                "image" : "<partImage>:jump.<frame><directives>"
+              }
+            },
+            "fall" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame><directives>"
+              }
+            },
+            "crouch" : {
+              "properties" : {
+                "image" : "<partImage>:crouch.<frame><directives>"
+              }
+            },
+            "attack" : {
+              "properties" : {
+                "image" : "<partImage>:attack.<frame><directives>"
+              }
+            }
+          }
+        }
+      }
+
+    }
+  },
+
+  "transformationGroups" : {
+    "transform" : { "interpolated" : true }
+  },
+
+  "particleEmitters" : {
+    "activateParticles" : {
+      "particles" : [ ]
+    },
+    "deactivateParticles" : {
+      "particles" : [ ]
+    },
+    "dash" : {
+      "emissionRate" : 30,
+      "offsetRegion" : [ -0.625, -1.25, 0.625, 1.25 ],
+      "particles" : [
+        { "particle" : "darkgreyphaseparticle" },
+        { "particle" : "lightgreyphaseparticle" },
+        { "particle" : "darkgreyphaseparticle" },
+        { "particle" : "lightgreyphaseparticle" },
+        { "particle" : "darkgreyphaseparticle" },
+        { "particle" : "lightgreyphaseparticle" },
+        { "particle" : "darkgreyphaseparticle" },
+        { "particle" : "lightgreyphaseparticle" },
+        { "particle" : "darkgreyphaseparticle" },
+        { "particle" : "lightgreyphaseparticle" },
+        { "particle" : "darkgreyphaseparticle" }
+      ]
+    },
+    "flames" : {
+      "active" : false,
+      "emissionRate" : 2.0,
+      "offsetRegion" : [-0.5, -0.5, 0.5, 0.5],
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "size" : 1.0,
+            "color" : [121, 254, 181, 230],
+            "fade" : 0.9,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.8,
+            "position" : [0.0, 0.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, -5.0],
+            "finalVelocity" : [0, -10],
+            "approach" : [0, 10],
+            "timeToLive" : 0.6,
+            "variance" : {
+              "initialVelocity" : [0.2, 0],
+              "size" : 0.5
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "lights" : {
+    "jetGlow" : {
+      "active" : false,
+      "position" : [0, 0],
+      "color" : [120, 120, 40],
+      "pointLight" : false,
+      "anchorPart" : "jetFState"
+    },
+    "subGlow" : {
+      "active" : false,
+      "position" : [0.625, 0.625],
+      "color" : [60, 120, 40],
+      "pointLight" : true,
+      "anchorPart" : "subState"
+    },
+    "exo" : {
+      "active" : false,
+      "position" : [0.625, 0.625],
+      "color" : [60, 120, 40],
+      "pointLight" : true,
+      "anchorPart" : "exoState"
+    }
+  },
+
+  "sounds" : {
+    "activate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
+    "deactivate" : [ "/sfx/tech/tech_sphere_transform.ogg" ],
+    "forceDeactivate" : [ "/sfx/tech/tech_sonicsphere_charge1.ogg" ],
+    //Exosuit
+    "aggroHop" : [ "/sfx/npc/monsters/monster_surprise.ogg" ],
+    "deathPuff" : [ "/sfx/npc/enemydeathpuff.ogg" ],
+    "fire" : [ "/sfx/projectiles/spit1.ogg", "/sfx/projectiles/spit2.ogg" ],
+  }
+}

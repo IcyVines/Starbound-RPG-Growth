@@ -19,9 +19,9 @@
     "fades" : ["bb552233", "2288cc22", "88882233"],
     "primaryProjectiles" : ["ivrpg_elementressfire", "ivrpg_elementressice", "ivrpg_elementresselectric"],
     "primaryPower" : [
-      [4, 6, 10, 15],
-      [6, 8, 12, 20],
-      [1, 1, 2, 4]
+      [6, 8, 10, 15],
+      [10, 12, 15, 20],
+      [4, 6, 8, 12]
     ],
     "primaryParameters" : [
       [
@@ -35,31 +35,31 @@
       ],
       [
         {"timeToLive" : 1},
-        {"timeToLive" : 1.5},
-        {"timeToLive" : 2, "statusEffects" : ["frostslow"]},
-        {"timeToLive" : 2.5, "statusEffects" : ["ivrpgembrittle"], "actionOnReap" : [{
+        {"timeToLive" : 1.25},
+        {"timeToLive" : 1.5, "statusEffects" : ["frostslow"]},
+        {"timeToLive" : 2, "statusEffects" : ["ivrpgembrittle"], "actionOnReap" : [{
           "action" : "config",
           "file" : "/ivrpg_specs/techs/elementress/ice/basic/ice_explosion.config"
         }]}
       ],
       [
-        {"timeToLive" : 1, "speed" : 100, "chainLimit" : 2, "amount" : 8},
-        {"timeToLive" : 1.5, "speed" : 100, "chainLimit" : 3, "amount" : 8},
-        {"timeToLive" : 2, "speed" : 110, "chainLimit" : 4, "statusEffects" : ["electrified"], "amount" : 10},
-        {"timeToLive" : 3, "speed" : 125, "chainLimit" : 5, "statusEffects" : ["ivrpgoverload"], "amount" : 12, "chaos" : true}
+        {"timeToLive" : 1, "speed" : 100, "chainLimit" : 3, "amount" : 8},
+        {"timeToLive" : 1.5, "speed" : 100, "chainLimit" : 4, "amount" : 8},
+        {"timeToLive" : 2, "speed" : 110, "chainLimit" : 5, "statusEffects" : ["electrified"], "amount" : 10},
+        {"timeToLive" : 3, "speed" : 125, "chainLimit" : 6, "statusEffects" : ["ivrpgoverload"], "amount" : 12, "chaos" : true}
       ]
     ],
     "primaryCosts" : [
-      [30, 30, 40, 60],
-      [25, 25, 35, 55],
-      [20, 20, 30, 50]
+      [60, 60, 80, 120],
+      [50, 50, 60, 75],
+      [40, 40, 50, 70]
     ],
     "secondaryProjectiles" : ["flamethrower", "elementressicebarrier", "electricplasmaexplosion"],
-    "secondaryPower" : [0.5, 0, 0],
-    "secondaryCosts" : [30, 5, 20],
-    "ultimateProjectiles" : ["ivrpg_magmazone", "ivrpg_iceeruption", ""],
+    "secondaryPower" : [1, 1, 0],
+    "secondaryCosts" : [60, 30, 20],
+    "ultimateProjectiles" : ["ivrpg_magmazone", "ivrpg_iceeruption", "electro"],
     "ultimateCosts" : [15, 15, 15],
-    "ultimatePower" : [10, 50, 10]
+    "ultimatePower" : [15, 50, 10]
   },
 
   "twoHandedCategories" : {

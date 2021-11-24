@@ -1,0 +1,20 @@
+{
+  "projectileName" : "ivrpg_lavabubble",
+  "physics" : "grenade",
+  "image" : "lavabubble.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 2,
+  "timeToLive" : 10,
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/elementimpact/fireimpactmute.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/acid_hit.ogg" ]
+    }
+  ],
+  "damageKind" : "fireplasma"
+}

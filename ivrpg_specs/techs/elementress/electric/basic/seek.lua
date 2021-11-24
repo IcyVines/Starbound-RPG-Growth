@@ -58,6 +58,7 @@ function hit(entityId)
 
   if nearbyEntities and #nearbyEntities > 0 then
     self.newTarget = nearbyEntities[math.random(#nearbyEntities)]
+    projectile.setPower(projectile.power() / 2)
     self.currentChain = self.currentChain + 1
   else
     self.newTarget = nil

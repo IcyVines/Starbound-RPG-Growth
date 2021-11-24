@@ -17,9 +17,6 @@
   "bounces" : 0,
   "damageKind" : "fire",
   "damageKindImage" : "/interface/statuses/fire.png",
-  "statusEffects" : [
-    "burning"
-  ],
   "hydrophobic" : true,
   "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
   "emitters" : [ "fireplasma", "smoke", "flames" ]

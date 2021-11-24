@@ -19,6 +19,8 @@ function init()
   self.directives = ""
   self.twoHandedCategories = config.getParameter("twoHandedCategories", {})
   self.cooldownTimer = 0
+  self.cooldownTimerS = 0
+  self.cooldownTimerU = 0
   self.shiftHeld = false
 
   -- For increasing Attunement
@@ -28,6 +30,7 @@ function init()
   animator.setAnimationState("gauge", self.element)
   animator.playSound(self.element .. "Activate")
   _, self.damageGivenUpdate = status.inflictedDamageSince()
+  self.killTimer = 0
   --[[
   Basic = 1
   Decent = 2-3
@@ -66,14 +69,16 @@ function init()
   -- Ice Barrier specific variables
   self.barrierProjectiles = {}
   self.barrierFacing = 1
+  self.iceActive = false
 
   -- Flamethrower specific variables
   self.fireTime = 0.065
   self.fireTimer = 0
+  self.fireActive = false
 
   Bind.create("specialTwo", toggle)
-  Bind.create("primaryFire", action1)
-  Bind.create("altFire", action1alt)
+  Bind.create("primaryFire", action1, true)
+  Bind.create("altFire", action1alt, true)
 end
 
 function toggle()
@@ -82,7 +87,7 @@ function toggle()
   self.element = self.elementList[self.elementMod]
   animator.setAnimationState("gauge", self.element)
   animator.playSound(self.element .. "Activate")
-  cooldown(0.2)
+  cooldowns(0.2)
 end
 
 function uninit()
@@ -99,7 +104,7 @@ end
 --[[
 
 Special Fire: Explosion
-Create a magma zone centered around your cursor. Within the magma zone, enemies take constant damage. While the zone exists, bursts of flame build within and are ejected when finished: these bursts explode on contact.
+Within the magma zone, enemies take constant damage. While the zone exists, bursts of flame build within and are ejected when finished: these bursts explode on contact.
 
 Special Electric: Thunder
 Call down a quick torrent of massive thunderbolts. Enemies hit by these bolts instantly die if they have less than 50% remaining health.
@@ -155,7 +160,7 @@ function update(args)
   self.hDirection = args.moves["left"] and -1 or (args.moves["right"] and 1 or 0)
   self.vDirection = args.moves["up"] and 1 or (args.moves["down"] and -1 or 0)
 
-  if self.specialHeld and not (status.statPositive("activeMovementAbilities") and not status.statPositive("activeMovementAbilitiesJolt")) and self.cooldownTimer == 0 and not self.shiftHeld then
+  if self.specialHeld and not (status.statPositive("activeMovementAbilities") and not status.statPositive("activeMovementAbilitiesJolt")) and self.cooldownTimerS == 0 and not self.shiftHeld and not status.resourceLocked("energy") then
     self.action2List[self.elementMod]()
   else
     if self.fireActive then
@@ -165,11 +170,11 @@ function update(args)
     killIceBarrier()
   end
   
-  if self.element ~= "ice" then
+  if self.element ~= "ice" or (status.resourceLocked("energy") and self.iceActive) then
     killIceBarrier()
   end
 
-  if self.element ~= "fire" or not self.fireActive then
+  if self.element ~= "fire" or not self.fireActive or (status.resourceLocked("energy") and self.fireActive) then
     animator.stopAllSounds("flamethrowerStart")
     animator.stopAllSounds("flamethrowerLoop")
     if self.fireActive then
@@ -207,11 +212,29 @@ function update(args)
   end
 
   self.fireTimer = self.fireTimer - self.dt
+  self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
+  self.cooldownTimerS = math.max(0, self.cooldownTimerS - self.dt)
+  self.cooldownTimerU = math.max(0, self.cooldownTimerU - self.dt)
 
   updateJolt()
   updateTransformFade(self.dt)
 
   updateDamageGiven()
+
+  if self.killTimer <= 0 then
+    lowerGauges()
+  else
+    self.killTimer = self.killTimer - self.dt
+  end
+end
+
+function lowerGauges()
+  for i=1,3 do
+    local timeDecay = 6
+    if self.weaveMod == i then timeDecay = timeDecay + 0.6 end
+    if self.elementMod == i then timeDecay = timeDecay + 1.5 end
+    self.percentList[i] = math.max(0, self.percentList[i] - self.dt / timeDecay)
+  end
 end
 
 -- Required to update Attunement Level
@@ -220,9 +243,11 @@ function updateDamageGiven()
   notifications, self.damageGivenUpdate = status.inflictedDamageSince(self.damageGivenUpdate)
   if notifications then
     for _,notification in pairs(notifications) do
-      if notification.damageDealt > notification.healthLost and notification.healthLost > 0 and (notification.damageSourceKind == ("ivrpg_elementress" .. self.element)
-        or (self.overchargeTimer > 0 and notification.damageDealt == "ivrpg_elementresselectric")) then
-        self.percentList[self.elementMod] = math.min(self.percentList[self.elementMod] + 4, 100)
+      if notification.damageDealt > 0 and (notification.damageSourceKind == "ivrpg_elementress" .. self.element) then
+        if notification.targetEntityId and world.entityDamageTeam(notification.targetEntityId) and (world.entityDamageTeam(notification.targetEntityId).type == "enemy" or world.entityDamageTeam(notification.targetEntityId).type == "pvp") then
+          self.percentList[self.elementMod] = math.min(self.percentList[self.elementMod] + notification.damageDealt / 20, 100)
+          self.killTimer = 5
+        end
       elseif self.overchargeTimer > 0 and notification.damageSourceKind == ("ivrpg_elementress" .. self.element) then
         world.sendEntityMessage(notification.targetEntityId, "applySelfDamageRequest", "IgnoresDef", "ivrpg_elementresselectric", 2 * status.stat("powerMultiplier"), entity.id())
       end
@@ -239,13 +264,21 @@ function action1(skipCheck)
   if (self.cooldownTimer > 0 or self.active) or ((not skipCheck)
     and world.entityHandItem(self.id, "primary"))
     or status.statPositive("activeMovementAbilities") then return end
-    if self.shiftHeld and self.percentList[self.elementMod] >= 15 and status.overConsumeResource("energy", self.elementConfig.ultimateCosts[self.elementMod] / self.weaveBonus) then
-      self.primaryList[self.elementMod]()
-      self.percentList[self.elementMod] = math.max(self.percentList[self.elementMod] - 15, 0)
-      cooldown(3)
-    elseif not self.shiftHeld and status.overConsumeResource("energy", self.elementConfig.primaryCosts[self.elementMod][self.level] / self.weaveBonus) then
-      self.primaryList[self.elementMod](true)
-      cooldown(1)
+    if self.shiftHeld and self.cooldownTimerU == 0 and self.percentList[self.elementMod] >= 15 then
+      -- If statement to check if element is Fire and Ultimate is used. Don't want to go through walls.
+      if self.elementMod == 1 and world.lineTileCollision(tech.aimPosition(), mcontroller.position(), {"Block", "Slippery", "Null", "Dynamic"}) then return end
+        if status.overConsumeResource("energy", self.elementConfig.ultimateCosts[self.elementMod] / self.weaveBonus) then
+          self.primaryList[self.elementMod]()
+          self.percentList[self.elementMod] = math.max(self.percentList[self.elementMod] - 15, 0)
+          cooldowns(1)
+          self.cooldownTimerU = 5
+        end
+    elseif not self.shiftHeld then
+      if world.lineTileCollision(vec2.add(mcontroller.position(), {mcontroller.facingDirection()*4,0}), mcontroller.position(), {"Block", "Slippery", "Null", "Dynamic"}) then return end
+        if status.overConsumeResource("energy", self.elementConfig.primaryCosts[self.elementMod][self.level] / self.weaveBonus) then
+          self.primaryList[self.elementMod](true)
+          cooldowns(1)
+        end
     else
       return
     end
@@ -253,6 +286,7 @@ end
 
 -- Check if Alt Hand is empty when Alt Fire is pressed.
 function action1alt()
+  if self.cooldownTimer > 0 or self.active or status.statPositive("activeMovementAbilities") then return end
   local itemConfig = ivrpgBuildItemConfig(self.id, "primary")
   if itemConfig and itemConfig.config and (itemConfig.config.twoHanded or self.twoHandedCategories[itemConfig.config.category]) then return end
   if not world.entityHandItem(self.id, "alt") then action1(true) end
@@ -266,7 +300,7 @@ function flameBurst(standard)
   else
     animator.playSound("fireChargeActivate")
     world.spawnProjectile(self.elementConfig.ultimateProjectiles[1], tech.aimPosition(), self.id, {0,0}, false, {
-      power = 1, powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 5
+      power = self.elementConfig.ultimatePower[1], powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 10
     })
   end
 end
@@ -339,10 +373,46 @@ function arcFlash(standard)
       direction = vec2.rotate(direction, 2 * math.pi / count)
     end
   else
-    world.spawnProjectile(self.elementConfig.ultimateProjectiles[3], mcontroller.position(), self.id, {0,-1}, false, {
-      power = 4, powerMultiplier = status.stat("powerMultiplier"), speed = 10, timeToLive = 5
-    })
+    ionicThunder()
   end
+end
+
+function ionicThunder()
+  local nearbyEntities = {}
+  local targets = enemyQuery(mcontroller.position(), 30, {includedTypes = {"creature"}}, self.id, false)
+  if targets then
+    for _,id in ipairs(targets) do
+      if world.entityExists(id) then
+        local pos = world.entityPosition(id)
+        local distance = vec2.mag(world.distance(mcontroller.position(), pos))
+        if not world.lineTileCollision(mcontroller.position(), pos, {"Block", "Slippery", "Null", "Dynamic"}) then
+          table.insert(nearbyEntities, id)
+        end
+      end
+    end
+  end
+
+  local count = 0
+  local vecAdd = {0, 8}
+  local params = {speed = 100, power = self.elementConfig.ultimatePower[2], powerMultiplier = status.stat("powerMultiplier"), statusEffects = { "ivrpgoverload" }}
+  if nearbyEntities and #nearbyEntities > 0 then
+    for _,id in ipairs(nearbyEntities) do
+      local position = world.entityPosition(id)
+      local pos = world.lineCollision(position, vec2.add(position, vecAdd), {"Block", "Slippery", "Null", "Dynamic"})
+      spawnIonicThunder(pos or vec2.add(position, vecAdd), params)
+      count = count + 1
+    end
+  end
+
+  if count == 0 then
+    local position = mcontroller.position()
+    local pos = world.lineCollision(position, vec2.add(position, vecAdd), {"Block", "Slippery", "Null", "Dynamic"})
+    spawnIonicThunder(pos or vec2.add(position, vecAdd), params)
+  end
+end
+
+function spawnIonicThunder(pos, params)
+  world.spawnProjectile(self.elementConfig.ultimateProjectiles[3], pos, self.id, {0, -1}, false, params)
 end
 
 function getParams()
@@ -359,9 +429,9 @@ function updateFireStream()
     animator.playSound("flamethrowerLoop", -1)
   end
   self.fireActive = true
-  if self.fireTimer <= 0 and status.overConsumeResource("energy", self.dt * 30 / self.weaveBonus) then
+  if status.overConsumeResource("energy", self.dt * self.elementConfig.secondaryCosts[1] / self.weaveBonus) and self.fireTimer <= 0 then
     world.spawnProjectile(self.elementConfig.secondaryProjectiles[1], vec2.add(mcontroller.position(), {mcontroller.facingDirection() / 2, -0.25}), self.id, aimDirection(0.05), false, {
-      power = 0.5, powerMultiplier = status.stat("powerMultiplier")
+      power = self.elementConfig.secondaryPower[1], powerMultiplier = status.stat("powerMultiplier")
     })
     self.fireTimer = self.fireTime
   end
@@ -370,15 +440,17 @@ end
 -- Spawn Ice Barrier
 function updateIceBarrier()
   local facingDirection = mcontroller.facingDirection()
-  local position = mcontroller.position()  
+  local position = mcontroller.position()
+  local params = {powerMultiplier = status.stat("powerMultiplier"), power = self.elementConfig.secondaryPower[2] / 5, timeToLive = math.huge}
   if self.element == "ice" and #self.barrierProjectiles == 0 then 
+    self.iceActive = true
     for i=-2,2 do
-      local projectileId = world.spawnProjectile(self.elementConfig.secondaryProjectiles[2], vec2.add(position, {facingDirection * 3, i}), self.id, {facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
+      local projectileId = world.spawnProjectile(self.elementConfig.secondaryProjectiles[2], vec2.add(position, {facingDirection * 3, i}), self.id, {facingDirection, 0}, true, params)
       if projectileId then table.insert(self.barrierProjectiles, projectileId) end
-      projectileId = world.spawnProjectile(self.elementConfig.secondaryProjectiles[2], vec2.add(position, {-facingDirection * 3, i}), self.id, {-facingDirection, 0}, true, {power = 0, timeToLive = math.huge})
+      projectileId = world.spawnProjectile(self.elementConfig.secondaryProjectiles[2], vec2.add(position, {-facingDirection * 3, i}), self.id, {-facingDirection, 0}, true, params)
       if projectileId then table.insert(self.barrierProjectiles, projectileId) end
     end
-  elseif self.element ~= "ice" or not status.overConsumeResource("energy", self.dt * 10 / self.weaveBonus) then
+  elseif self.element ~= "ice" or not status.overConsumeResource("energy", self.dt * self.elementConfig.secondaryCosts[2] / self.weaveBonus) then
     killIceBarrier()
   end
 
@@ -390,6 +462,7 @@ function killIceBarrier()
     world.sendEntityMessage(id, "kill")
   end
   self.barrierProjectiles = {}
+  self.iceActive = false
 end
 
 -- Returns the aim vector perpendicular to the distance between the passed in vectors
@@ -422,10 +495,9 @@ function updateJolt()
     animator.setAnimationState("jolt", "off")
   end
 
-  self.cooldownTimer = math.max(0, self.cooldownTimer - self.dt)
   self.joltTimer = math.max(0, self.joltTimer - self.dt)
   
-  if self.cooldownTimer == 0 then
+  if self.cooldownTimerS == 0 then
     if self.active then
       mcontroller.setVelocity({0,0})
       if self.joltTimer == 0 then attemptActivation() end
@@ -436,7 +508,7 @@ end
 -- Calls attemptActivation if a movement key is held and there is energy left to Jolt.
 function activateJolt()
   self.joltDirection = {self.hDirection, self.vDirection}
-  if (self.hDirection ~= 0 or self.vDirection ~= 0) and status.overConsumeResource("energy", 10 / self.weaveBonus) then
+  if (self.hDirection ~= 0 or self.vDirection ~= 0) and status.overConsumeResource("energy", self.elementConfig.secondaryCosts[3] / self.weaveBonus) then
     attemptActivation()
   end
 end
@@ -466,7 +538,7 @@ end
 function activate()
   if self.joltTimer == 0 then self.transformFadeTimer = self.transformFadeTime - 0.25 end
   self.active = true
-  cooldown(0.2)
+  self.cooldownTimerS = 0.2
   self.joltTimer = 0.21
   tech.setParentOffset({0, positionOffset()})
   tech.setParentHidden(true)
@@ -492,8 +564,10 @@ function deactivate()
   self.active = false
 end
 
-function cooldown(time)
+function cooldowns(time)
   self.cooldownTimer = time
+  self.cooldownTimerS = time
+  self.cooldownTimerU = time
 end
 
 -- The remaining functions are for the Jolt transformation alone!

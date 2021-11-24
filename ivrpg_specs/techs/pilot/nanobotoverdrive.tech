@@ -1,0 +1,50 @@
+{
+  "name" : "ivrpgnanobotoverdrive",
+  "type" : "head",
+
+  "scripts" : ["nanobotoverdrive.lua"],
+  "animator" : "nanobotoverdrive.animation",
+
+  "description" : "Pilot Only",
+  "shortDescription" : "Nanobot Overdrive",
+  "rarity" : "Uncommon",
+  "icon" : "/ivrpg_specs/techs/pilot/nanobotoverdrive.png",
+
+  "chipCost" : 0,
+
+  "energyCost" : 40,
+  "basePower" : 30,
+
+  "animationParts" : {
+    "jet" : "jet/jet.png",
+    "jet_fullbright" : "jet/jet_fullbright.png",
+    "sub" : "sub/sub.png",
+    "exo" : "exo/exo.png"
+  },
+
+  "poptopCollisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, 0.10], [0.8125, -0.40],  [-0.8125, -0.40], [-1.3125, 0.10],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+
+  "poptopMovementParameters" : {
+  	"mass" : 1,
+  	"walkSpeed" : 3,
+  	"runSpeed" : 8,
+
+  	"airFriction" : 0,
+
+  	"airJumpProfile" : {
+  		"jumpSpeed" : 20.0,
+  		"jumpInitialPercentage" : 1.0,
+  		"jumpHoldTime" : 0.1
+  	}
+  },
+
+  "poptopStats" : [
+  	{ "stat" : "protection", "amount" : 5 },
+  	{ "stat" : "ivrpgstrengthscaling", "amount" : 0.1 },
+  	{ "stat" : "ivrpgvitalityscaling", "amount" : 0.1 },
+  	{ "stat" : "ivrpgendurancescaling", "amount" : 0.05 },
+    {"stat" : "physicalResistance", "amount" : 0.2},
+    {"stat" : "ivrpgendurancebonus", "amount" : 15},
+    {"stat" : "ivrpgagilitybonus", "amount" : 15}
+  ]
+}

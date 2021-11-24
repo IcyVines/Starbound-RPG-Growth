@@ -18,7 +18,7 @@
   "damageKind" : "fire",
   "damageKindImage" : "/interface/statuses/fire.png",
   "statusEffects" : [
-    "burning"
+    "ivrpgsear"
   ],
   "hydrophobic" : true,
   "periodicActions" : [
