@@ -20,10 +20,8 @@
   "damagePoly" : [ [-30, 16], [32, 16], [32, -16], [-30, -16] ],
   "lightColor" : [200, 200, 255],
   "damageKind" : "ivrpg_elementressice",
-  "periodicActions" : [
+  "actionOnReap" : [
     {
-      "time" : 0.05,
-      "repeat" : false,
       "action" : "sound",
       "options" : [ "/sfx/projectiles/ice_barrier_break1.ogg", "/sfx/projectiles/ice_barrier_break2.ogg", "/sfx/projectiles/ice_barrier_break3.ogg", "/sfx/projectiles/ice_barrier_break4.ogg", "/sfx/projectiles/ice_barrier_break5.ogg", "/sfx/projectiles/ice_barrier_break6.ogg", "/sfx/projectiles/ice_barrier_break7.ogg", "/sfx/projectiles/ice_barrier_break8.ogg", "/sfx/projectiles/ice_barrier_break9.ogg", "/sfx/projectiles/ice_barrier_break10.ogg" ]
     }

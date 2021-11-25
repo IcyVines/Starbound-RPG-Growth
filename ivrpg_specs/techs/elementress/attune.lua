@@ -248,8 +248,9 @@ function updateDamageGiven()
           self.percentList[self.elementMod] = math.min(self.percentList[self.elementMod] + notification.damageDealt / 20, 100)
           self.killTimer = 5
         end
-      elseif self.overchargeTimer > 0 and notification.damageSourceKind == ("ivrpg_elementress" .. self.element) then
-        world.sendEntityMessage(notification.targetEntityId, "applySelfDamageRequest", "IgnoresDef", "ivrpg_elementresselectric", 2 * status.stat("powerMultiplier"), entity.id())
+        if self.overchargeTimer > 0 then
+          world.sendEntityMessage(notification.targetEntityId, "applySelfDamageRequest", "IgnoresDef", "ivrpg_elementresselectric", 2 * status.stat("powerMultiplier"), entity.id())
+        end
       end
     end
   end
@@ -266,13 +267,7 @@ function action1(skipCheck)
     or status.statPositive("activeMovementAbilities") then return end
     if self.shiftHeld and self.cooldownTimerU == 0 and self.percentList[self.elementMod] >= 15 then
       -- If statement to check if element is Fire and Ultimate is used. Don't want to go through walls.
-      if self.elementMod == 1 and world.lineTileCollision(tech.aimPosition(), mcontroller.position(), {"Block", "Slippery", "Null", "Dynamic"}) then return end
-        if status.overConsumeResource("energy", self.elementConfig.ultimateCosts[self.elementMod] / self.weaveBonus) then
-          self.primaryList[self.elementMod]()
-          self.percentList[self.elementMod] = math.max(self.percentList[self.elementMod] - 15, 0)
-          cooldowns(1)
-          self.cooldownTimerU = 5
-        end
+      self.primaryList[self.elementMod]()
     elseif not self.shiftHeld then
       if world.lineTileCollision(vec2.add(mcontroller.position(), {mcontroller.facingDirection()*4,0}), mcontroller.position(), {"Block", "Slippery", "Null", "Dynamic"}) then return end
         if status.overConsumeResource("energy", self.elementConfig.primaryCosts[self.elementMod][self.level] / self.weaveBonus) then
@@ -282,6 +277,12 @@ function action1(skipCheck)
     else
       return
     end
+end
+
+function ultimateCost()
+  self.percentList[self.elementMod] = math.max(self.percentList[self.elementMod] - 15, 0)
+  cooldowns(1)
+  self.cooldownTimerU = 5
 end
 
 -- Check if Alt Hand is empty when Alt Fire is pressed.
@@ -297,11 +298,12 @@ function flameBurst(standard)
   if standard then
     local params = getParams()
     world.spawnProjectile(self.elementConfig.primaryProjectiles[1], {mcontroller.xPosition(), mcontroller.yPosition() - 0.5}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, params)
-  else
+  elseif vec2.mag(world.distance(tech.aimPosition(), mcontroller.position())) <= 30 and not world.lineTileCollision(tech.aimPosition(), mcontroller.position(), {"Block", "Slippery", "Null", "Dynamic"}) and status.overConsumeResource("energy", self.elementConfig.ultimateCosts[self.elementMod] / self.weaveBonus) then
     animator.playSound("fireChargeActivate")
     world.spawnProjectile(self.elementConfig.ultimateProjectiles[1], tech.aimPosition(), self.id, {0,0}, false, {
       power = self.elementConfig.ultimatePower[1], powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 10
     })
+    ultimateCost()
   end
 end
 
@@ -311,16 +313,16 @@ function icicleRush(standard)
       self.icicleRushDirection = mcontroller.facingDirection()
       self.icicleRushTimer = self.icicleRushTime
       local params = getParams()
+      animator.playSound("iceChargeActivate")
       world.spawnProjectile(self.elementConfig.primaryProjectiles[2], {mcontroller.xPosition(), mcontroller.yPosition()}, self.id, {self.icicleRushDirection, 0}, false, params)
     else
-      animator.playSound("iceChargeActivate")
       glacialSpike()
     end
 end
 
 function glacialSpike()
   local nearbyEntities = {}
-  local targets = enemyQuery(mcontroller.position(), 30, {includedTypes = {"creature"}}, self.id, false)
+  local targets = enemyQuery(mcontroller.position(), 15, {includedTypes = {"creature"}}, self.id, false)
   if targets then
     for _,id in ipairs(targets) do
       if world.entityExists(id) then
@@ -333,41 +335,40 @@ function glacialSpike()
     end
   end
 
-  local count = 0
+  local positions = {}
   local params = {power = self.elementConfig.ultimatePower[2], powerMultiplier = status.stat("powerMultiplier"), statusEffects = { "ivrpgfreeze" }}
   if nearbyEntities and #nearbyEntities > 0 then
     for _,id in ipairs(nearbyEntities) do
-      if count < 3 then
+      if #positions < 3 then
         local position = world.entityPosition(id)
         local groundPos = world.lineCollision(position, vec2.sub(position, {0, 4}), {"Block", "Slippery", "Null", "Dynamic"})
         if groundPos then
-          spawnGlacialSpike(groundPos, params)
-          count = count + 1
+          table.insert(positions, groundPos)
         end
       end
     end
   end
 
-  if count < 3 then
-    local position = mcontroller.position()
-    local groundPos = world.lineCollision(position, vec2.sub(position, {0, 4}), {"Block", "Slippery", "Null", "Dynamic"})
-    if groundPos then
-      spawnGlacialSpike(groundPos, params)
-    end
+  if #positions > 0 and status.overConsumeResource("energy", self.elementConfig.ultimateCosts[self.elementMod] / self.weaveBonus) then
+    spawnGlacialSpike(positions, params)
   end
 end
 
-function spawnGlacialSpike(groundPos, params)
-  world.spawnProjectile(self.elementConfig.ultimateProjectiles[2], vec2.add(groundPos, {0, 3.5}), self.id, {0, 0}, false, params)
+function spawnGlacialSpike(positions, params)
+  animator.playSound("iceChargeActivate")
+  for _,pos in ipairs(positions) do
+    world.spawnProjectile(self.elementConfig.ultimateProjectiles[2], vec2.add(pos, {0, 3.5}), self.id, {0, 0}, false, params)
+  end
+  ultimateCost()
 end
 
 -- Primary Electric
 function arcFlash(standard)
-  animator.playSound("electricChargeActivate")
   if standard then
     local params = getParams()
     local count = self.elementConfig.primaryParameters[3][self.level].amount
     local direction = {1,0}
+    animator.playSound("electricChargeActivate")
     for i=1,count do
       world.spawnProjectile(self.elementConfig.primaryProjectiles[3], {mcontroller.xPosition(), mcontroller.yPosition()}, self.id, direction, false, params)
       direction = vec2.rotate(direction, 2 * math.pi / count)
@@ -379,7 +380,7 @@ end
 
 function ionicThunder()
   local nearbyEntities = {}
-  local targets = enemyQuery(mcontroller.position(), 30, {includedTypes = {"creature"}}, self.id, false)
+  local targets = enemyQuery(mcontroller.position(), 15, {includedTypes = {"creature"}}, self.id, false)
   if targets then
     for _,id in ipairs(targets) do
       if world.entityExists(id) then
@@ -392,27 +393,28 @@ function ionicThunder()
     end
   end
 
-  local count = 0
-  local vecAdd = {0, 8}
-  local params = {speed = 100, power = self.elementConfig.ultimatePower[2], powerMultiplier = status.stat("powerMultiplier"), statusEffects = { "ivrpgoverload" }}
+  local positions = {}
+  local params = {speed = 0, power = self.elementConfig.ultimatePower[3], powerMultiplier = status.stat("powerMultiplier"), statusEffects = { "ivrpgoverload" }}
   if nearbyEntities and #nearbyEntities > 0 then
     for _,id in ipairs(nearbyEntities) do
       local position = world.entityPosition(id)
-      local pos = world.lineCollision(position, vec2.add(position, vecAdd), {"Block", "Slippery", "Null", "Dynamic"})
-      spawnIonicThunder(pos or vec2.add(position, vecAdd), params)
-      count = count + 1
+      if #positions < 8 and not world.lineTileCollision(position, vec2.add(position, {0, 10}), {"Block", "Slippery", "Null", "Dynamic"}) then
+        table.insert(positions, vec2.add(position, {0, 4}))
+      end
     end
   end
 
-  if count == 0 then
-    local position = mcontroller.position()
-    local pos = world.lineCollision(position, vec2.add(position, vecAdd), {"Block", "Slippery", "Null", "Dynamic"})
-    spawnIonicThunder(pos or vec2.add(position, vecAdd), params)
+  if #positions > 0 and status.overConsumeResource("energy", self.elementConfig.ultimateCosts[self.elementMod] / self.weaveBonus) then
+    spawnIonicThunder(positions, params)
   end
 end
 
-function spawnIonicThunder(pos, params)
-  world.spawnProjectile(self.elementConfig.ultimateProjectiles[3], pos, self.id, {0, -1}, false, params)
+function spawnIonicThunder(positions, params)
+  animator.playSound("electricChargeActivate")
+  for _,pos in ipairs(positions) do
+    world.spawnProjectile(self.elementConfig.ultimateProjectiles[3], pos, self.id, {0, 0}, false, params)
+  end
+  ultimateCost()
 end
 
 function getParams()
@@ -431,7 +433,7 @@ function updateFireStream()
   self.fireActive = true
   if status.overConsumeResource("energy", self.dt * self.elementConfig.secondaryCosts[1] / self.weaveBonus) and self.fireTimer <= 0 then
     world.spawnProjectile(self.elementConfig.secondaryProjectiles[1], vec2.add(mcontroller.position(), {mcontroller.facingDirection() / 2, -0.25}), self.id, aimDirection(0.05), false, {
-      power = self.elementConfig.secondaryPower[1], powerMultiplier = status.stat("powerMultiplier")
+      power = self.elementConfig.secondaryPower[1], powerMultiplier = status.stat("powerMultiplier"), knockback = 5
     })
     self.fireTimer = self.fireTime
   end

@@ -6,7 +6,7 @@
   "frameNumber" : 11,
   "damagePoly" : [ [-48, 0], [-42, -42], [0, -48], [42, -42], [48, 0], [42, 42], [0, 48], [-42, 42] ],
   "movementSettings" : {
-    "collisionPoly" : [ [-4, 0], [-3, -3], [0, -4], [3, -3], [4, 0], [3, 3], [0, 4], [-3, 3] ]
+    //"collisionPoly" : [ [-4, 0], [-3, -3], [0, -4], [3, -3], [4, 0], [3, 3], [0, 4], [-3, 3] ]
   },
   "lightColor" : [235, 126, 2],
   "power" : 0,
@@ -15,7 +15,7 @@
   "orientationLocked" : true,
   "piercing" : true,
   "bounces" : 0,
-  "damageKind" : "fire",
+  "damageKind" : "fireplasma",
   "damageKindImage" : "/interface/statuses/fire.png",
   "statusEffects" : [
     "ivrpgsear"

@@ -57,7 +57,7 @@
     "secondaryProjectiles" : ["flamethrower", "elementressicebarrier", "electricplasmaexplosion"],
     "secondaryPower" : [1, 1, 0],
     "secondaryCosts" : [60, 30, 20],
-    "ultimateProjectiles" : ["ivrpg_magmazone", "ivrpg_iceeruption", "electro"],
+    "ultimateProjectiles" : ["ivrpg_magmazone", "ivrpg_iceeruption", "ivrpg_elementresslightning"],
     "ultimateCosts" : [15, 15, 15],
     "ultimatePower" : [15, 50, 10]
   },

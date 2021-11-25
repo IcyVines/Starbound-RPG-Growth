@@ -1,0 +1,47 @@
+{
+  "particleEmitters" : {
+    "sparks" : {
+      "enabled" : true,
+      "emissionRate" : 5.0,
+      "particles" : [
+        {
+          "particle" : "electricenergy"
+        },
+        {
+          "particle" : "electricenergy"
+        }
+      ]
+    },
+    "statustext" : {
+      "enabled" : true,
+      "emissionRate" : 1.0,
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "text",
+            "text" : "Electrocuted!",
+            "size" : 0.4,
+            "color" : [190, 120, 190, 255],
+            "fade" : 0.4,
+            "destructionAction" : "shrink",
+            "destructionTime" : 0.5,
+            "position" : [0.0, 1.0],
+            "offsetRegion" : [0, 0, 0, 0],
+            "initialVelocity" : [0, 6],
+            "finalVelocity" : [0, 3],
+            "approach" : [0, 10],
+            "timeToLive" : 0.5,
+            "variance" : {}
+          }
+        }
+      ]
+    }
+  },
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 0],
+      "color" : [150, 100, 170]
+    }
+  }
+}

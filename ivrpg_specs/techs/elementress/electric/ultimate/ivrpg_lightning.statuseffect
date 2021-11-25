@@ -1,0 +1,15 @@
+{
+  "name" : "ivrpg_elementresslightning",
+  "blockingStat" : "electricStatusImmunity",
+  "effectConfig" : {},
+  "defaultDuration" : 1.5,
+
+  "scripts" : [
+    "lightning.lua"
+  ],
+
+  "animationConfig" : "lightning.animation",
+
+  "label" : "Electrocution",
+  "icon" : "lightning.png"
+}
