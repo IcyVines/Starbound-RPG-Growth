@@ -2,8 +2,9 @@ require "/scripts/vec2.lua"
 
 function hit(entityId)
   if entityId then
-    self.hit = true
     local health = world.entityHealth(entityId)
+    if not health then return end
+    self.hit = true
     local healthRatio = health[1] / health[2]
     local bonusChance = math.floor((1 - healthRatio) * 10) / 10
     if math.random() < (0.1 + bonusChance) then
