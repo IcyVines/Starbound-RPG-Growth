@@ -5,7 +5,7 @@
   "level" : 6,
   "rarity" : "Essential",
   "description" : "You remember every target's face. But it doesn't matter in the end, does it?\n\n^red;Deals increased Damage when no other weapon is equipped. ^reset;Damage a foe to cause the Sealed Fate Status: ^red;defeating a foe with Sealed Fate causes nearby foes with Sealed Fate to perish^reset;.",
-  "shortdescription" : "Dagger",
+  "shortdescription" : "^gray;Heartstring",
   "tooltipKind" : "ivrpg_weapon",
   "category" : "dagger",
   "twoHanded" : false,
