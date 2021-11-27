@@ -1,7 +1,14 @@
 require "/scripts/vec2.lua"
+require "/scripts/keybinds.lua"
+require "/tech/explorertech/explorerenhancedjump/explorerenhancedjump.lua"
+
+oldInit = init
+oldUpdate = update
+oldUninit = uninit
 
 function init()
   initCommonParameters()
+  oldInit()
 end
 
 function initCommonParameters()
@@ -14,17 +21,27 @@ function initCommonParameters()
   self.ballFrames = config.getParameter("ballFrames")
   self.ballSpeed = config.getParameter("ballSpeed")
   self.transformFadeTime = config.getParameter("transformFadeTime", 0.3)
-  self.transformedMovementParameters = config.getParameter("transformedMovementParameters")
+  self.transformedMovementParameters = config.getParameter("jetMovementParameters", {})
+  self.transformedMovementParameters.collisionPoly = config.getParameter("jetCollisionPoly")
   self.transformedMovementParameters.runSpeed = self.ballSpeed
   self.transformedMovementParameters.walkSpeed = self.ballSpeed
   self.basePoly = mcontroller.baseParameters().standingPoly
   self.collisionSet = {"Null", "Block", "Dynamic", "Slippery"}
 
+  self.facingDirection = mcontroller.facingDirection()
+
   self.forceDeactivateTime = config.getParameter("forceDeactivateTime", 3.0)
   self.forceShakeMagnitude = config.getParameter("forceShakeMagnitude", 0.125)
+
+  self.cooldownTimer = 0
+  self.altCooldownTimer = 0
+
+  Bind.create("primaryFire", primaryFire, true)
+  Bind.create("altFire", altFire, true)
 end
 
 function uninit()
+  oldUninit()
   storePosition()
   deactivate()
 end
@@ -32,32 +49,128 @@ end
 function update(args)
   restoreStoredPosition()
 
-  if not self.specialLast and args.moves["special1"] then
+  oldUpdate(args)
+
+  self.dt = args.dt
+  self.shiftHeld = not args.moves["run"]
+  self.downHeld = args.moves["down"]
+  self.hDirection = (args.moves["left"] == args.moves["right"]) and 0 or (args.moves["right"] and 1 or -1)
+  self.vDirection = (args.moves["up"] == self.downHeld) and 0 or (self.downHeld and -1 or 1)
+
+  if not self.specialLast and args.moves["special3"] then
     attemptActivation()
   end
-  self.specialLast = args.moves["special1"]
+  self.specialLast = args.moves["special3"]
 
-  if not args.moves["special1"] then
+  if not args.moves["special3"] then
     self.forceTimer = nil
   end
 
-  if self.active then
+  if self.transformActive then
     mcontroller.controlParameters(self.transformedMovementParameters)
-    status.setResourcePercentage("energyRegenBlock", 1.0)
+    --status.setResourcePercentage("energyRegenBlock", 1.0)
 
-    updateAngularVelocity(args.dt)
-    updateRotationFrame(args.dt)
+    updateFrame(args.dt)
 
     checkForceDeactivate(args.dt)
+
+    if self.altCooldownTimer > 0.8 then
+      mcontroller.setXVelocity(self.dashActive * 150)
+    elseif self.dashActive then
+      mcontroller.setXVelocity(self.dashActive * 30)
+      self.dashActive = false
+    end
   end
+
+  local facingDirection = world.distance(tech.aimPosition(), mcontroller.position())[1] > 0 and 1 or -1
+  if facingDirection == 1 then
+    animator.setFlipped(false)
+    self.facingDirection = 1
+  elseif facingDirection == -1 then
+    animator.setFlipped(true)
+    self.facingDirection = -1
+  end
+  --self.facingDirection = facingDirection
+
+  self.cooldownTimer = math.max(self.cooldownTimer - self.dt, 0)
+  self.altCooldownTimer = math.max(self.altCooldownTimer - self.dt, 0)
 
   updateTransformFade(args.dt)
 
   self.lastPosition = mcontroller.position()
 end
 
+function updateFrame(dt)
+
+  if self.transformActive then
+    animator.setLightActive("jetGlow", true)
+    self.speedModifier = 1
+    mcontroller.controlApproachVelocity(vec2.mul({self.hDirection, self.vDirection}, self.transformedMovementParameters.flySpeed * self.speedModifier), 150 * self.speedModifier)
+    
+    if self.hDirection ~= 0 then
+      animator.setAnimationState("jetFHState", "activated")
+      self.wasMoving = true
+    elseif self.wasMoving then
+      animator.setAnimationState("jetFHState", "deactivating")
+      self.wasMoving = false
+    end
+
+    if self.vDirection == 1 then
+      animator.setAnimationState("jetFVState", "activated")
+      self.wasActive = true
+    elseif self.wasActive then
+      animator.setAnimationState("jetFVState", "deactivating")
+      self.wasActive = false
+    --elseif mcontroller.running() and mcontroller.onGround()  then
+      --animator.setAnimationState("jetFState", "run")
+    --elseif mcontroller.crouching() and mcontroller.onGround()  then
+      --animator.setAnimationState("jetFState", "crouch")
+    --elseif not self.whistling and mcontroller.onGround() then
+      --animator.setAnimationState("jetFState", "idle")
+    end
+  end
+end
+
+function primaryFire()
+  if self.transformActive and self.cooldownTimer == 0 and status.overConsumeResource("energy", 10) then
+    local position = mcontroller.position()
+    position[1] = position[1] + self.facingDirection * 2
+    position[2] = position[2] - 2.75
+    local aimDirection = world.distance(tech.aimPosition(), position)
+    local aimAngle = vec2.angle(aimDirection)
+    if self.facingDirection == 1 then
+      if aimAngle > math.pi * 0.25 and aimAngle < math.pi then
+        aimDirection = vec2.rotate({1,0}, math.pi / 4)
+      elseif aimAngle < math.pi * 1.5 and aimAngle >= math.pi then
+        aimDirection = vec2.rotate({1,0}, math.pi * 1.5)
+      end
+    elseif self.facingDirection == -1 then
+      if aimAngle < math.pi * 0.75 and aimAngle >= 0 then
+        aimDirection = vec2.rotate({-1,0}, -math.pi / 4)
+      elseif aimAngle > math.pi * 1.5 and aimAngle <= 2 * math.pi then
+        aimDirection = vec2.rotate({-1,0}, math.pi / 2)
+      end
+    end
+    animator.playSound("fire")
+    world.spawnProjectile("ivrpg_pilotjetbullet", position, entity.id(), aimDirection, false, {speed = 200, powerMultiplier = status.stat("powerMultiplier"), power = status.statusProperty("ivrpgvigor")})
+    self.cooldownTimer = 0.2
+  end
+end
+
+function altFire()
+  if self.transformActive and self.altCooldownTimer == 0 and status.overConsumeResource("energy", 30) then
+    self.altCooldownTimer = 1
+    animator.setAnimationState("jetFHState", "dash")
+    animator.playSound("thrust")
+    self.dashActive = self.facingDirection
+  end
+end
+
+
+-- Transformation Functions
+
 function attemptActivation()
-  if not self.active
+  if not self.transformActive
       and not tech.parentLounging()
       and not status.statPositive("activeMovementAbilities")
       and status.overConsumeResource("energy", self.energyCost) then
@@ -67,7 +180,7 @@ function attemptActivation()
       mcontroller.setPosition(pos)
       activate()
     end
-  elseif self.active then
+  elseif self.transformActive then
     local pos = restorePosition()
     if pos then
       mcontroller.setPosition(pos)
@@ -80,7 +193,7 @@ function attemptActivation()
 end
 
 function checkForceDeactivate(dt)
-  animator.resetTransformationGroup("ball")
+  animator.resetTransformationGroup("transform")
 
   if self.forceTimer then
     self.forceTimer = self.forceTimer + dt
@@ -89,7 +202,7 @@ function checkForceDeactivate(dt)
     })
 
     local shake = vec2.mul(vec2.withAngle((math.random() * math.pi * 2), self.forceShakeMagnitude), self.forceTimer / self.forceDeactivateTime)
-    animator.translateTransformationGroup("ball", shake)
+    animator.translateTransformationGroup("transform", shake)
     if self.forceTimer >= self.forceDeactivateTime then
       deactivate()
       self.forceTimer = nil
@@ -104,7 +217,7 @@ function checkForceDeactivate(dt)
 end
 
 function storePosition()
-  if self.active then
+  if self.transformActive then
     storage.restorePosition = restorePosition()
 
     -- try to restore position. if techs are being switched, this will work and the storage will
@@ -126,28 +239,6 @@ function restoreStoredPosition()
     storage.lastActivePosition = nil
     storage.restorePosition = nil
   end
-end
-
-function updateAngularVelocity(dt)
-  if mcontroller.groundMovement() then
-    -- If we are on the ground, assume we are rolling without slipping to
-    -- determine the angular velocity
-    local positionDiff = world.distance(self.lastPosition or mcontroller.position(), mcontroller.position())
-    self.angularVelocity = -vec2.mag(positionDiff) / dt / self.ballRadius
-
-    if positionDiff[1] > 0 then
-      self.angularVelocity = -self.angularVelocity
-    end
-  end
-end
-
-function updateRotationFrame(dt)
-  self.angle = math.fmod(math.pi * 2 + self.angle + self.angularVelocity * dt, math.pi * 2)
-
-  -- Rotation frames for the ball are given as one *half* rotation so two
-  -- full cycles of each of the ball frames completes a total rotation.
-  local rotationFrame = math.floor(self.angle / math.pi * self.ballFrames) % self.ballFrames
-  animator.setGlobalTag("rotationFrame", rotationFrame)
 end
 
 function updateTransformFade(dt)
@@ -188,10 +279,12 @@ function restorePosition(pos)
 end
 
 function activate()
-  if not self.active then
+  if not self.transformActive then
     animator.burstParticleEmitter("activateParticles")
-    animator.playSound("activate")
-    animator.setAnimationState("ballState", "activate")
+    animator.playSound("transformActivate")
+    animator.setAnimationState("jetState", "idle")
+    animator.setAnimationState("jetFVState", "deactivated")
+    animator.setAnimationState("jetFHState", "deactivated")
     self.angularVelocity = 0
     self.angle = 0
     self.transformFadeTimer = self.transformFadeTime
@@ -200,17 +293,21 @@ function activate()
   tech.setParentOffset({0, positionOffset()})
   tech.setToolUsageSuppressed(true)
   status.setPersistentEffects("movementAbility", {{stat = "activeMovementAbilities", amount = 1}})
-  self.active = true
+  self.transformActive = true
 end
 
 function deactivate()
-  if self.active then
+  if self.transformActive then
     animator.burstParticleEmitter("deactivateParticles")
     animator.playSound("deactivate")
-    animator.setAnimationState("ballState", "deactivate")
+    animator.setAnimationState("jetState", "off")
+    animator.setAnimationState("jetFVState", "off")
+    animator.setAnimationState("jetFHState", "off")
     self.transformFadeTimer = -self.transformFadeTime
   else
-    animator.setAnimationState("ballState", "off")
+    animator.setAnimationState("jetState", "off")
+    animator.setAnimationState("jetFHState", "off")
+    animator.setAnimationState("jetFVState", "off")
   end
   animator.stopAllSounds("forceDeactivate")
   animator.setGlobalTag("ballDirectives", "")
@@ -219,7 +316,7 @@ function deactivate()
   tech.setToolUsageSuppressed(false)
   status.clearPersistentEffects("movementAbility")
   self.angle = 0
-  self.active = false
+  self.transformActive = false
 end
 
 function minY(poly)

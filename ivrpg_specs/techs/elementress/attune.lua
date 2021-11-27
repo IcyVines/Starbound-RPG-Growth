@@ -22,6 +22,7 @@ function init()
   self.cooldownTimerS = 0
   self.cooldownTimerU = 0
   self.shiftHeld = false
+  self.weaveBonus = 1
 
   -- For increasing Attunement
   self.levelList = status.statusProperty("ivrpgAttunementLevels", {1,1,1})
@@ -300,7 +301,9 @@ function flameBurst(standard)
     world.spawnProjectile(self.elementConfig.primaryProjectiles[1], {mcontroller.xPosition(), mcontroller.yPosition() - 0.5}, self.id, world.distance(tech.aimPosition(), mcontroller.position()), false, params)
   elseif vec2.mag(world.distance(tech.aimPosition(), mcontroller.position())) <= 30 and not world.lineTileCollision(tech.aimPosition(), mcontroller.position(), {"Block", "Slippery", "Null", "Dynamic"}) and status.overConsumeResource("energy", self.elementConfig.ultimateCosts[self.elementMod] / self.weaveBonus) then
     animator.playSound("fireChargeActivate")
-    world.spawnProjectile(self.elementConfig.ultimateProjectiles[1], tech.aimPosition(), self.id, {0,0}, false, {
+    local projectile = self.elementConfig.ultimateProjectiles[1]
+    if math.random() <= 0.5 then projectile = projectile .. "_2" end
+    world.spawnProjectile(projectile, tech.aimPosition(), self.id, {0,0}, false, {
       power = self.elementConfig.ultimatePower[1], powerMultiplier = status.stat("powerMultiplier"), speed = 0, timeToLive = 10
     })
     ultimateCost()

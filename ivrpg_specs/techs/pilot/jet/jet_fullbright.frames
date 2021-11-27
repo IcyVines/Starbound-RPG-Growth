@@ -1,0 +1,23 @@
+{
+  "frameGrid" : {
+    "size" : [182, 60],
+    "dimensions" : [11, 1],
+    "names" : [ ["deactivated.1", "deactivated.2", "up.3", "up.2", "up.1", "move.4", "move.5", "move.6", "move.1", "move.2", "move.3"] ]
+  },
+  "aliases" : {
+    "down.1" : "up.2",
+    "down.2" : "up.1",
+    "idle.1" : "up.1",
+    "idle.2" : "up.2",
+    "deactivating.1" : "move.4",
+    "deactivating.2" : "move.3",
+    "deactivating.3" : "move.2",
+    "deactivating.4" : "move.1",
+    "dash.1" : "move.6",
+    "dash.2" : "move.5",
+    "dash.3" : "move.4",
+    "dash.4" : "move.3",
+    "dash.5" : "move.2",
+    "dash.6" : "move.1"
+  }
+}

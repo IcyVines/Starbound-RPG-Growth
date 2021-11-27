@@ -1,0 +1,35 @@
+{
+  "projectileName" : "ivrpg_magmazone_2",
+  "physics" : "gas",
+  "image" : "magma_zone_2.png",
+  "animationCycle" : 1.1,
+  "frameNumber" : 11,
+  "damagePoly" : [ [-48, 0], [-42, -42], [0, -48], [42, -42], [48, 0], [42, 42], [0, 48], [-42, 42] ],
+  "movementSettings" : {
+    //"collisionPoly" : [ [-4, 0], [-3, -3], [0, -4], [3, -3], [4, 0], [3, 3], [0, 4], [-3, 3] ]
+  },
+  "lightColor" : [235, 126, 2],
+  "power" : 0,
+  "knockback" : 0,
+  "speed" : 0,
+  "orientationLocked" : true,
+  "piercing" : true,
+  "bounces" : 0,
+  "damageKind" : "fireplasma",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "statusEffects" : [
+    "ivrpgsear"
+  ],
+  "hydrophobic" : true,
+  "persistentAudio" : "/sfx/projectiles/dragonprojectile_loop.ogg",
+  "emitters" : [ ],
+  "scripts" : [ "explosion.lua" ],
+  "spawnRate" : 0.55,
+  "spawnCount" : 4,
+  "projectileType" : "ivrpg_elementressfire",
+  "projectileParameters" : {
+    "power" : 4,
+    "speed" : 15,
+    "timeToLive" : 10
+  }
+}

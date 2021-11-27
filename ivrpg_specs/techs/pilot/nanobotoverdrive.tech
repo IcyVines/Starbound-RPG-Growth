@@ -1,9 +1,10 @@
 {
   "name" : "ivrpgnanobotoverdrive",
-  "type" : "head",
+  "type" : "legs",
 
   "scripts" : ["nanobotoverdrive.lua"],
   "animator" : "nanobotoverdrive.animation",
+  "actions" : [ "explorerenhancedjump" ],
 
   "description" : "Pilot Only",
   "shortDescription" : "Nanobot Overdrive",
@@ -12,30 +13,47 @@
 
   "chipCost" : 0,
 
+  "hoverControlForce" : 600.0,
+  "energyUsagePerSecond" : 20.0,
+  "multiJumpCount" : 4,
+  "multiJumpModifier" : 0.85,
+  "wallSensors" : [0.5, 0.875, 1.25],
+  "wallDetectThreshold" : 1,
+
+  "wallReleaseTime" : 0.15,
+
+  "wallGrabFreezeTime" : 0.30,
+  "wallJumpXVelocity" : 15,
+  "wallSlideParameters" : {
+    "airJumpProfile" : {
+      "jumpInitialPercentage" : 1.0
+    },
+    "airForce" : 0,
+    "airFriction" : 15.0
+  },
+
   "energyCost" : 40,
   "basePower" : 30,
 
   "animationParts" : {
-    "jet" : "jet/jet.png",
-    "jet_fullbright" : "jet/jet_fullbright.png",
-    "sub" : "sub/sub.png",
-    "exo" : "exo/exo.png"
+    "jetState" : "jet/jet.png",
+    "jetFVState" : "jet/jet_fullbright.png",
+    "jetFHState" : "jet/jet_fullbright.png",
+    "subState" : "sub/sub.png",
+    "exoState" : "exo/exo.png"
   },
 
-  "poptopCollisionPoly" : [ [0.8125, 1.25], [1.3125, 0.75],  [1.3125, 0.10], [0.8125, -0.40],  [-0.8125, -0.40], [-1.3125, 0.10],  [-1.3125, 0.75], [-0.8125, 1.25] ],
+  "jetCollisionPoly" : [ [2.8125, 3.75], [3.3125, 0.75],  [3.3125, 0.10], [2.8125, -3.40],  [-2.8125, -3.40], [-3.3125, 0.10],  [-3.3125, 0.75], [-2.8125, 3.75] ],
 
-  "poptopMovementParameters" : {
-  	"mass" : 1,
-  	"walkSpeed" : 3,
-  	"runSpeed" : 8,
+  "jetMovementParameters" : {
+    "mass" : 5,
+    "walkSpeed" : 4,
+    "runSpeed" : 12,
+    "gravityEnabled" : false,
 
-  	"airFriction" : 0,
-
-  	"airJumpProfile" : {
-  		"jumpSpeed" : 20.0,
-  		"jumpInitialPercentage" : 1.0,
-  		"jumpHoldTime" : 0.1
-  	}
+    "airFriction" : 20.0,
+    "airForce" : 100,
+    "flySpeed" : 30
   },
 
   "poptopStats" : [
