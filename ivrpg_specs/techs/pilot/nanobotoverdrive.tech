@@ -37,6 +37,8 @@
 
   "animationParts" : {
     "jetState" : "jet/jet.png",
+    "jetFBState" : "jet/jet_fullbright.png",
+    "jetFUState" : "jet/jet_fullbright.png",
     "jetFVState" : "jet/jet_fullbright.png",
     "jetFHState" : "jet/jet_fullbright.png",
     "subState" : "sub/sub.png",

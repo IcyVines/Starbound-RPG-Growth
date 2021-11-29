@@ -105,9 +105,8 @@ function updateFrame(dt)
   if self.transformActive then
     animator.setLightActive("jetGlow", true)
     self.speedModifier = 1
-    mcontroller.controlApproachVelocity(vec2.mul({self.hDirection, self.vDirection}, self.transformedMovementParameters.flySpeed * self.speedModifier), 150 * self.speedModifier)
-    
-    if self.hDirection ~= 0 then
+
+    if self.hDirection == self.facingDirection and self.hDirection ~= 0 then
       animator.setAnimationState("jetFHState", "activated")
       self.wasMoving = true
     elseif self.wasMoving then
@@ -115,19 +114,32 @@ function updateFrame(dt)
       self.wasMoving = false
     end
 
+    if self.hDirection ~= self.facingDirection and self.hDirection ~= 0 then
+      animator.setAnimationState("jetFBState", "activated")
+      self.speedModifier = 0.75
+      self.wasMovingBack = true
+    elseif self.wasMovingBack then
+      animator.setAnimationState("jetFBState", "deactivating")
+      self.wasMovingBack = false
+    end
+
     if self.vDirection == 1 then
       animator.setAnimationState("jetFVState", "activated")
-      self.wasActive = true
-    elseif self.wasActive then
+      self.wasRising = true
+    elseif self.wasRising then
       animator.setAnimationState("jetFVState", "deactivating")
-      self.wasActive = false
-    --elseif mcontroller.running() and mcontroller.onGround()  then
-      --animator.setAnimationState("jetFState", "run")
-    --elseif mcontroller.crouching() and mcontroller.onGround()  then
-      --animator.setAnimationState("jetFState", "crouch")
-    --elseif not self.whistling and mcontroller.onGround() then
-      --animator.setAnimationState("jetFState", "idle")
+      self.wasRising = false
     end
+
+    if self.vDirection == -1 then
+      animator.setAnimationState("jetFUState", "activated")
+      self.wasFalling = true
+    elseif self.wasFalling then
+      animator.setAnimationState("jetFUState", "deactivating")
+      self.wasFalling = false
+    end
+
+    mcontroller.controlApproachVelocity(vec2.mul({self.hDirection, self.vDirection}, self.transformedMovementParameters.flySpeed * self.speedModifier), 150 * self.speedModifier)
   end
 end
 
@@ -152,7 +164,11 @@ function primaryFire()
       end
     end
     animator.playSound("fire")
-    world.spawnProjectile("ivrpg_pilotjetbullet", position, entity.id(), aimDirection, false, {speed = 200, powerMultiplier = status.stat("powerMultiplier"), power = status.statusProperty("ivrpgvigor")})
+    world.spawnProjectile("ivrpg_pilotjetbullet", position, entity.id(), aimDirection, false, {
+      speed = 200,
+      powerMultiplier = status.stat("powerMultiplier"),
+      power = 10 + (status.statusProperty("ivrpgvigor") * 0.8)
+    })
     self.cooldownTimer = 0.2
   end
 end
@@ -283,6 +299,8 @@ function activate()
     animator.burstParticleEmitter("activateParticles")
     animator.playSound("transformActivate")
     animator.setAnimationState("jetState", "idle")
+    animator.setAnimationState("jetFBState", "deactivated")
+    animator.setAnimationState("jetFUState", "deactivated")
     animator.setAnimationState("jetFVState", "deactivated")
     animator.setAnimationState("jetFHState", "deactivated")
     self.angularVelocity = 0
@@ -301,11 +319,15 @@ function deactivate()
     animator.burstParticleEmitter("deactivateParticles")
     animator.playSound("deactivate")
     animator.setAnimationState("jetState", "off")
+    animator.setAnimationState("jetFBState", "off")
+    animator.setAnimationState("jetFUState", "off")
     animator.setAnimationState("jetFVState", "off")
     animator.setAnimationState("jetFHState", "off")
     self.transformFadeTimer = -self.transformFadeTime
   else
     animator.setAnimationState("jetState", "off")
+    animator.setAnimationState("jetFBState", "off")
+    animator.setAnimationState("jetFUState", "off")
     animator.setAnimationState("jetFHState", "off")
     animator.setAnimationState("jetFVState", "off")
   end

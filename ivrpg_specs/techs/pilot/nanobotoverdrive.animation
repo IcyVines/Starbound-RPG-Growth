@@ -64,6 +64,58 @@
         }
       },
 
+      "jetFBState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "deactivated" : {
+            "frames" : 1,
+            "cycle" : 0.2
+          },
+          "activated" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "end",
+            "properties" : {
+              "persistentSound" : "/sfx/tech/mech_jetpack_loop3.ogg",
+              "persistentSoundStopTime" : 0.2
+            }
+          },
+          "deactivating" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "deactivated"
+          }
+        }
+      },
+
+      "jetFUState" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "deactivated" : {
+            "frames" : 1,
+            "cycle" : 0.2
+          },
+          "activated" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "end",
+            "properties" : {
+              "persistentSound" : "/sfx/tech/mech_jetpack_loop3.ogg",
+              "persistentSoundStopTime" : 0.2
+            }
+          },
+          "deactivating" : {
+            "frames" : 2,
+            "cycle" : 0.2,
+            "mode" : "transition",
+            "transition" : "deactivated"
+          }
+        }
+      },
+
       "jetFHState" : {
         "default" : "off",
         "states" : {
@@ -256,6 +308,62 @@
             "deactivating" : {
               "properties" : {
                 "image" : "<partImage>:down.<frame><directives>"
+              }
+            }
+          }
+        }
+      },
+
+      "jetFUState" : {
+        "properties" : {
+          "transformationGroups" : [ "transform" ],
+          "fullbright" : true,
+          "offset" : [0.0, 0.0],
+          "zLevel" : 1
+        },
+        "partStates" : {
+          "jetFUState" : {
+            "deactivated" : {
+              "properties" : {
+                "image" : "<partImage>:idleUp.<frame><directives>"
+              }
+            },
+            "activated" : {
+              "properties" : {
+                "image" : "<partImage>:fall.<frame><directives>"
+              }
+            },
+            "deactivating" : {
+              "properties" : {
+                "image" : "<partImage>:rise.<frame><directives>"
+              }
+            }
+          }
+        }
+      },
+
+      "jetFBState" : {
+        "properties" : {
+          "transformationGroups" : [ "transform" ],
+          "fullbright" : true,
+          "offset" : [0.0, 0.0],
+          "zLevel" : 2
+        },
+        "partStates" : {
+          "jetFBState" : {
+            "deactivated" : {
+              "properties" : {
+                "image" : "<partImage>:idleBack.<frame><directives>"
+              }
+            },
+            "activated" : {
+              "properties" : {
+                "image" : "<partImage>:back.<frame><directives>"
+              }
+            },
+            "deactivating" : {
+              "properties" : {
+                "image" : "<partImage>:backStop.<frame><directives>"
               }
             }
           }

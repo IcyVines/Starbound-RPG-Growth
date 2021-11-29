@@ -1,6 +1,6 @@
 {
   "type" : "ivrpg_bandit",
-  "baseType" : "hostile",
+  "baseType" : "ivrpg_hostile",
 
   "dropPools" : [ "banditTreasure" ],
 
