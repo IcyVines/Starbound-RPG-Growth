@@ -1,0 +1,62 @@
+{
+  "objectName" : "ivrpg_grimoireinscriber",
+  "colonyTags" : ["commerce", "crafting"],
+  "rarity" : "Legendary",
+  "category" : "crafting",
+  "description" : "Be careful what you write.",
+  "shortdescription" : "Grimoire Inscriber",
+  "printable" : false,
+  "tooltipKind" : "ivrpg_base",
+
+  "slotCount" : 6,
+  "subtitle" : "Words are Power.",
+  "frameCooldown" : 5,
+  "autoCloseCooldown" : 3600,
+
+  "apexDescription" : "An anvil perfect for upgrading weapons and armor.",
+  "avianDescription" : "This anvil is advanced enough to even upgrade magic weapons.",
+  "floranDescription" : "Floran makesss sharp sstickssss sharper.",
+  "glitchDescription" : "Delighted. This anvil will let me upgrade my weapons. I wonder if I can upgrade myself.",
+  "humanDescription" : "This sure is an anvil. Does that logo say 'ACME'?",
+  "hylotlDescription" : "A beautifully crafted anvil for metal-working. Very sleek.",
+  "novakidDescription" : "With this thing right here, I can strengthen most of my equipment.",
+
+  "inventoryIcon" : "table_icon.png",
+  "orientations" : [
+    {
+      "dualImage" : "table.png:<color>",
+      "imagePosition" : [-20, 0],
+      "frames" : 1,
+      "animationCycle" : 0.5,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ],
+
+  "craftParameters" : {
+    "barLevels" : {
+      "ironbar" : 1,
+      "tungstenbar" : 2,
+      "titaniumbar" : 3,
+      "durasteelbar" : 4,
+      "refinedviolium" : 5,
+      "refinedferozium" : 5,
+      "refinedaegisalt" : 5,
+      "solariumstar" : 6,
+      "paper" : 0
+    },
+    "elements" : {
+      "scorchedcore" : "fire",
+      "venomsample" : "poison",
+      "cryonicextract" : "ice",
+      "staticcell" : "electric",
+      "livingroot" : "holy",
+      "ivrpg_dyingstar" : "nova",
+      "phasematter" : "demonic"
+    }
+  },
+
+  "scripts" : [ "open.lua"],
+  "scriptDelta" : 0
+}

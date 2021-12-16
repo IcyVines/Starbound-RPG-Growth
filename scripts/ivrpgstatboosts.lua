@@ -120,7 +120,7 @@ function update(dt)
       if tagInfo then
         local statAmount = -1
         local amount = 0
-        for x,y in pairs(self.twoHanded and tagInfo.twoHanded or tagInfo.oneHanded) do
+        for x,y in pairs(self.twoHanded and tagInfo.twoHanded or tagInfo.oneHanded or {}) do
           if self.stats[x] > statAmount then
             statAmount = self.stats[x]
             amount = y
@@ -147,7 +147,7 @@ function update(dt)
       if tagInfo then
         local statAmount = -1
         local amount = 0
-        for x,y in pairs(tagInfo.oneHanded) do
+        for x,y in pairs(tagInfo.oneHanded or {}) do
           if self.stats[x] > statAmount then
             statAmount = self.stats[x]
             amount = y

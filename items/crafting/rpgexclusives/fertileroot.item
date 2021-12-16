@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpg_fertileroot",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
+  "inventoryIcon" : "fertileroot.png",
+  "description" : "Pulses with light that can breathe life into anything.",
+  "shortdescription" : "Fertile Root",
+  "itemTags" : [ "reagent" ]
+}

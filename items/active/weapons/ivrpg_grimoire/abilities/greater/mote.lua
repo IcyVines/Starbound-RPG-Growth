@@ -8,6 +8,9 @@ function init()
   self.owner = projectile.sourceEntity()
   if not self.owner then projectile.die() end 
   self.home = world.entityPosition(self.owner)
+  mcontroller.applyParameters({
+    collisionEnabled = false
+  })
 end
 
 function update()

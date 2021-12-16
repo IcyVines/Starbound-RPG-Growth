@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "phasematter", "count" : 1 },
+    { "item" : "violiumore", "count" : 1 }
+  ],
+	"output" : { "item" : "ivrpg_vitriolicmatter", "count" : 1 },
+	"groups" : [ "craftingfurnace", "ingredients", "all" ]
+}

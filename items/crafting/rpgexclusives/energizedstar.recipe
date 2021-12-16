@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "ivrpgdyingstar", "count" : 1 },
+    { "item" : "aegisaltore", "count" : 1 }
+  ],
+	"output" : { "item" : "ivrpg_energizedstar", "count" : 1 },
+	"groups" : [ "craftingfurnace", "ingredients", "all" ]
+}

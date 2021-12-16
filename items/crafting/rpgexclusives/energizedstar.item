@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpg_energizedstar",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
+  "inventoryIcon" : "energizedstar.png",
+  "description" : "A star, now full of energy... Hums with the power of Nova.",
+  "shortdescription" : "Energized Star",
+  "itemTags" : [ "reagent" ]
+}

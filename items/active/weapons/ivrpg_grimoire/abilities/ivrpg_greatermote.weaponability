@@ -22,7 +22,7 @@
     "projectileType" : "ivrpg_<altElementalType>mote",
     "projectileParameters" : {
       "baseDamage" : 0,
-      "timeToLive" : 30
+      "timeToLive" : 60
     },
     
     "elementalTypes" : [ "fire", "holy", "electric" ]

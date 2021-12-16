@@ -1,0 +1,110 @@
+{
+  "itemName" : "ivrpgwv-transform",
+  "price" : 720,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "A good Pilot is accurate and steady at the helm. And, well, with their pistol, too.\n\n^green;V-Transform scales with Vigor instead of Dexterity.",
+  "shortdescription" : "^gray;V-Transform",
+  "tooltipKind" : "ivrpg_weapon",
+  "category" : "pistol",
+  "twoHanded" : false,
+  "itemTags" : ["weapon","ranged","pistol","vigor_scaling"],
+  "level" : 6,
+  "inventoryIcon" : [
+    { "image" : "v-transform.png" }
+  ],
+
+  "classreq" : 6,
+  "specreq" : 4,
+
+  "animation" : "/items/active/weapons/ranged/gun.animation",
+  "animationParts" : {
+    "butt" : "",
+    "middle" : "v-transform.png",
+    "barrel" : "",
+    "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
+  },
+  "animationCustom" : {
+    "sounds" : {
+      "fire" : ["/sfx/gun/plasma_shotgun1.ogg", "/sfx/gun/plasma_shotgun3.ogg", "/sfx/gun/plasma_shotgun4.ogg"]
+    },
+    "lights" : {
+      "muzzleFlash" : {
+        "color" : [130, 80, 130]
+      }
+    },
+    "animatedParts" : {
+      "parts" : {
+        "muzzleFlash" : {
+          "properties" : {
+            "offset" : [-0.75, -0.25]
+          }
+        }
+      }
+    }
+  },
+
+  "baseOffset" : [3.5, 0.5],
+  "muzzleOffset" : [0.5, 0.25],
+  "gunScale" : [0.25, 0.25],
+  "elementalType" : "electric",
+
+  "scripts" : ["/items/active/specweapons/pilot/gun.lua"],
+
+  "primaryAbility" : {
+    "scripts" : ["/items/active/specweapons/pilot/gunfire.lua"],
+    "class" : "GunFire",
+    "name" : "Armor Piercing Shot",
+
+    "fireTime" : 1,
+    "baseDps" : 12,
+    "energyUsage" : 30,
+    "inaccuracy" : 0,
+    "fireType" : "auto",
+    "projectileCount" : 1,
+    "projectileType" : "standardbullet",
+    "projectileParameters" : {
+      "knockback" : 25,
+      "knockbackRange" : 25
+    },
+
+    "stances" : {
+      "idle" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "prefire" : {
+        "armRotation" : 0,
+        "weaponRotation" : 0,
+        "twoHanded" : false,
+        "duration" : 0.05,
+        "allowRotate" : true,
+        "allowFlip" : true
+      },
+      "fire" : {
+        "duration" : 0,
+        "armRotation" : 10,
+        "weaponRotation" : 10,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      },
+      "cooldown" : {
+        "duration" : 0.15,
+        "armRotation" : 10,
+        "weaponRotation" : 10,
+        "twoHanded" : false,
+
+        "allowRotate" : false,
+        "allowFlip" : true
+      }
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}

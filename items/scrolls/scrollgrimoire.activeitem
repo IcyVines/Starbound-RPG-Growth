@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpg_grimoirepage",
+  "rarity" : "Legendary",
+  "category" : "Grimoire Page",
+  "inventoryIcon" : "scroll.png",
+  "tooltipKind" : "ivrpg_base",
+  "description" : "Looks like this page contains information on a specific spell.",
+  "shortdescription" : "",
+  "largeImage" : "scrolllarge.png",
+  "scripts" : []
+}

@@ -1,0 +1,8 @@
+{
+  "input" : [
+    { "item" : "livingroot", "count" : 1 },
+    { "item" : "feroziumore", "count" : 1 }
+  ],
+	"output" : { "item" : "ivrpg_fertileroot", "count" : 1 },
+	"groups" : [ "craftingfurnace", "ingredients", "all" ]
+}

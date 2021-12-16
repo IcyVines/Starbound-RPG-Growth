@@ -1,0 +1,48 @@
+{
+  "background" : {
+    "type" : "background",
+    "fileHeader" : "/interface/tooltips/ivrpg_base-header.png",
+    "fileBody" : "/interface/tooltips/ivrpg_base-body.png",
+    "fileFooter" : "/interface/tooltips/ivrpg_base-footer.png"
+  },
+  "moneyIcon" : {
+    "type" : "image",
+    "position" : [110, 23],
+    "file" : "/interface/money.png"
+  },
+  "priceLabel" : {
+    "type" : "label",
+    "position" : [123, 23],
+    "hAnchor" : "left",
+    "value" : "0"
+  },
+  "descriptionLabel" : {
+    "type" : "label",
+    "position" : [11, 77],
+    "hAnchor" : "left",
+    "vAnchor" : "top",
+    "wrapWidth" : 130
+  },
+  "newTitleLabel" : {
+    "type" : "label",
+    "position" : [11, 77],
+    "hAnchor" : "left",
+    "vAnchor" : "top",
+    "wrapWidth" : 130
+  },
+  "rarityLabel" : {
+    "type" : "label",
+    "position" : [7, 23],
+    "hAnchor" : "left",
+    "centered" : true,
+    "wrapWidth" : 126
+  },
+  "objectImage" : {
+    "type" : "image",
+    "position" : [77, 112],
+    "file" : "",
+    "centered" : true,
+    "maxSize" : [70, 45],
+    "minSize" : [70, 40]
+  }
+}

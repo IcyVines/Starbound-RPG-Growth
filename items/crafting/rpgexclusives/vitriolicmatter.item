@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpg_vitriolicmatter",
+  "price" : 100,
+  "rarity" : "Rare",
+  "category" : "craftingMaterial",
+  "tooltipKind" : "ivrpg_base",
+  "inventoryIcon" : "vitriolicmatter.png",
+  "description" : "A terrifying substance that appears to radiate demonic energy.",
+  "shortdescription" : "Vitriolic Matter",
+  "itemTags" : [ "reagent" ]
+}
