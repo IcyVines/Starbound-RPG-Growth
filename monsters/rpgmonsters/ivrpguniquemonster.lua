@@ -297,6 +297,7 @@ function rpg_rapidSpark()
             speed = 100,
             power = boltPower,
             damageTeam = {type = "friendly"},
+            damageKind = "electric",
             timeToLive = 10
           }
         )

@@ -8,6 +8,12 @@
   "printable" : false,
   "tooltipKind" : "ivrpg_base",
 
+  "learnBlueprintsOnPickup" : [
+    "ivrpg_fertileroot",
+    "ivrpg_vitriolicmatter",
+    "ivrpg_energizedstar"
+  ],
+
   "slotCount" : 6,
   "subtitle" : "Words are Power.",
   "frameCooldown" : 5,

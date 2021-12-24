@@ -6,14 +6,29 @@ function init()
   self.abilities = root.assetJson("/objects/ivrpg_crafting/abilityList.config")
   self.elementConversion = root.assetJson("/objects/ivrpg_crafting/elementList.config")
   self.abilityElements = root.assetJson("/objects/ivrpg_crafting/abilityElements.config")
+  self.oreLevels = root.assetJson("/objects/ivrpg_crafting/oreLevels.config")
 end
 
 function uninit()
-  local weapon = widget.itemSlotItem("itemSlot1")
-  if weapon then
-    weapon = setWeaponParameters(weapon)
-    player.giveItem(weapon)
+  if self.ogWeapon then
+    player.giveItem(self.ogWeapon)
+    for i=4,6 do
+      if widget.itemSlotItem("itemSlot" .. tostring(i)) then
+        player.giveItem(widget.itemSlotItem("itemSlot" .. tostring(i)))
+      end
+    end
+  else
+    for i=2,6 do
+      if widget.itemSlotItem("itemSlot" .. tostring(i)) then
+        player.giveItem(widget.itemSlotItem("itemSlot" .. tostring(i)))
+      end
+    end
   end
+  --[[if weapon then
+    weapon = updateWeaponTooltips(weapon)
+    player.giveItem(weapon)
+    clearSlots()
+  end]]
 end
 
 function leftClick(widgetName)
@@ -21,17 +36,22 @@ function leftClick(widgetName)
   local new = player.swapSlotItem()
   local previous = widget.itemSlotItem(widgetName)
   if widgetName == "itemSlot1" and ((new and new.name and (new.name == "ivrpg_commongrimoire" or new.name == "ivrpg_uncommongrimoire" or new.name == "ivrpg_raregrimoire")) or not new) and (not previous or not new) then
-    previous = setWeaponParameters(previous)
+    previous = updateWeaponTooltips(previous)
     player.setSwapSlotItem(previous)
     widget.setItemSlotItem(widgetName, new)
     clearSlots(new)
     insertSlots(new)
+    self.ogWeapon = new
   elseif (widgetName == "itemSlot2" or widgetName == "itemSlot3") and ((new and new.name and new.name == "ivrpg_grimoirepage") or not new) then
     -- Add Pages
-    swapItems(widgetName, new, previous)
+    swapItems(widgetName, new, previous, 1)
+    self.ogWeapon = nil
+  elseif widgetName == "itemSlot4" and ((new and new.name and self.oreLevels[new.name] and new.count and new.count >= 5) or not new) then
+    -- Add Element
+    swapItems(widgetName, new, previous, 5)
   elseif (widgetName == "itemSlot5" or widgetName == "itemSlot6") and ((new and new.name and self.elementConversion[new.name]) or not new) then
     -- Add Element
-    swapItems(widgetName, new, previous)
+    swapItems(widgetName, new, previous, 1)
   end
   updateWeaponTooltips(widget.itemSlotItem("itemSlot1"))
 end
@@ -40,7 +60,7 @@ function rightClick(widgetName)
   local previous = widget.itemSlotItem(widgetName)
   if previous then
     if widgetName == "itemSlot1" then
-      previous = setWeaponParameters(previous)
+      previous = updateWeaponTooltips(previous)
       clearSlots()
     end
     player.giveItem(previous)
@@ -49,12 +69,12 @@ function rightClick(widgetName)
   updateWeaponTooltips(widget.itemSlotItem("itemSlot1"))
 end
 
-function swapItems(widgetName, new, previous)
+function swapItems(widgetName, new, previous, count)
   local oldCount = 0
   if new then
-    new.count = math.max(new.count - 1, 0)
+    new.count = math.max(new.count - count, 0)
     player.setSwapSlotItem(new)
-    new.count = 1
+    new.count = count
     player.giveItem(previous)
   else
     player.setSwapSlotItem(previous)
@@ -73,7 +93,6 @@ end
 
 function insertSlots(item)
   if not item then return end
-  sb.logInfo(sb.printJson(item))
   if item and item.parameters then
     local params = item.parameters
     containerPutItem({name = "ivrpg_grimoirepage", count = 1, parameters = {
@@ -118,8 +137,12 @@ function updateWeaponTooltips(weapon)
 
   -- Average the level between both pages
   local level = (primaryPage.parameters.level + altPage.parameters.level) / 2
+  if levelSlot and levelSlot.name and self.oreLevels[levelSlot.name] then
+    level = self.oreLevels[levelSlot.name] or level
+  end
 
-  weapon = weapon or {name = "ivrpg_" .. (level < 3 and "common" or (level < 5 and "uncommon" or "rare")) .. "grimoire", count = 1}
+  weapon = weapon or {count = 1}
+  weapon.name = "ivrpg_" .. (level < 3 and "common" or (level < 5 and "uncommon" or "rare")) .. "grimoire"
   if not weapon.parameters then weapon.parameters = {} end
   if not weapon.parameters.tooltipFields then weapon.parameters.tooltipFields = {} end
 
@@ -138,6 +161,7 @@ function updateWeaponTooltips(weapon)
   weapon.parameters.altElementalType = self.removeElement2 and elementType2 or altPage.parameters.elementalType
 
   widget.setItemSlotItem("itemSlot1", weapon)
+  return weapon
 end
 
 function containerPutItem(item, slot)
