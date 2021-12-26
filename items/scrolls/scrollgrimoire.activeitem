@@ -4,8 +4,8 @@
   "category" : "Grimoire Page",
   "inventoryIcon" : "scroll.png",
   "tooltipKind" : "ivrpg_base",
-  "description" : "Looks like this page contains information on a specific spell.",
-  "shortdescription" : "",
+  "description" : "Put this into one of the Grimoire Page slots in the Grimoire Inscriber to generate a random ability.",
+  "shortdescription" : "Magic Page",
   "largeImage" : "scrolllarge.png",
   "scripts" : []
 }

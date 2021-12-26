@@ -1,0 +1,9 @@
+{
+  "input" : [
+    {"item" : "blackdye", "count" : 1},
+    {"item" : "ivrpgdyingstar", "count" : 1},
+    {"item" : "paper", "count" : 1}
+  ],
+  "output" : { "item" : "ivrpg_grimoirepage", "count" : 1 },
+  "groups" : [ "craftinganvil", "weapons", "all" ]
+}

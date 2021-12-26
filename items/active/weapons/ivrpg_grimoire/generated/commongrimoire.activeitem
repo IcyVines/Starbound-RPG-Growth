@@ -11,6 +11,11 @@
   "tooltipKind" : "ivrpg_grimoire",
   "inventoryIcon" : "icons/<elementalType>.png",
 
+  "learnBlueprintsOnPickup" : [
+    "ivrpg_grimoirepage"
+  ],
+
+
   "animation" : "/items/active/weapons/ivrpg_grimoire/generated/generatedgrimoire.animation",
 
   "scripts" : ["/items/active/weapons/ivrpg_grimoire/grimoire.lua"],

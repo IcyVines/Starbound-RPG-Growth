@@ -1,0 +1,12 @@
+{
+  "input" : [
+    {"item" : "diamond", "count" : 1},
+    {"item" : "titaniumbar", "count" : 5},
+    {"item" : "logblock", "count" : 4},
+    {"item" : "darkwoodmaterial", "count" : 20},
+    {"item" : "paper", "count" : 100}
+  ],
+  "output" : { "item" : "ivrpg_grimoireinscriber", "count" : 1},
+  "duration" : 2,
+  "groups" : [ "inventorstable", "craftingstations", "all" ]
+}

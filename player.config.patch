@@ -21,6 +21,8 @@
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "caltrops" } },
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "gravitrops" } },
 
+{ "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpg_grimoireinscriber" } },
+
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgwtungstenwandfire" } },
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgwtungstenwandice" } },
 { "op" : "add", "path" : "/defaultBlueprints/tier1/-", "value" : {"item" : "ivrpgwtungstenwandelectric" } },

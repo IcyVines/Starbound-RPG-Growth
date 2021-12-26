@@ -4,6 +4,7 @@ require "/scripts/util.lua"
 
 function init()
   self.abilities = root.assetJson("/objects/ivrpg_crafting/abilityList.config")
+  self.abilitySlots = root.assetJson("/objects/ivrpg_crafting/abilitySlots.config")
   self.elementConversion = root.assetJson("/objects/ivrpg_crafting/elementList.config")
   self.abilityElements = root.assetJson("/objects/ivrpg_crafting/abilityElements.config")
   self.oreLevels = root.assetJson("/objects/ivrpg_crafting/oreLevels.config")
@@ -24,11 +25,6 @@ function uninit()
       end
     end
   end
-  --[[if weapon then
-    weapon = updateWeaponTooltips(weapon)
-    player.giveItem(weapon)
-    clearSlots()
-  end]]
 end
 
 function leftClick(widgetName)
@@ -129,6 +125,56 @@ function updateWeaponTooltips(weapon)
   local levelSlot = widget.itemSlotItem("itemSlot4")
   local primaryElement = widget.itemSlotItem("itemSlot5")
   local altElement = widget.itemSlotItem("itemSlot6")
+  
+  -- Create Random Ability if no parameters are found
+  if not primaryPage.parameters or not primaryPage.parameters.slotType then
+    primaryPage.parameters = {
+      abilityType = self.abilitySlots.primary[math.random(#self.abilitySlots.primary)],
+      level = 1.0,
+      slotType = "primary"
+    }
+
+    local elementList = {}
+    if not self.abilityElements[primaryPage.parameters.abilityType] then
+      elementList = {"earth", "fire", "ice", "poison", "electric", "nova", "demonic", "holy"}
+      primaryPage.parameters.elementalType = elementList[math.random(#elementList)]
+    else
+      elementList = self.abilityElements[primaryPage.parameters.abilityType]
+      local newList = {}
+      for element,value in pairs(elementList) do
+        table.insert(newList, element)
+      end
+      primaryPage.parameters.elementalType = newList[math.random(#newList)]
+    end
+    primaryPage.parameters.shortdescription = self.abilities[primaryPage.parameters.abilityType] or "Something went horribly wrong."
+    primaryPage.parameters.description = "A level 1.0, " .. primaryPage.parameters.elementalType .. " Grimoire page."
+    containerPutItem(primaryPage, 2)
+  end
+
+  if not altPage.parameters or not altPage.parameters.slotType then
+    altPage.parameters = {
+      abilityType = self.abilitySlots.alt[math.random(#self.abilitySlots.alt)],
+      level = 1.0,
+      slotType = "alt"
+    }
+
+    local elementList = {}
+    if not self.abilityElements[altPage.parameters.abilityType] then
+      elementList = {"earth", "fire", "ice", "poison", "electric", "nova", "demonic", "holy"}
+      altPage.parameters.elementalType = elementList[math.random(#elementList)]
+    else
+      elementList = self.abilityElements[altPage.parameters.abilityType]
+      local newList = {}
+      for element,value in pairs(elementList) do
+        table.insert(newList, element)
+      end
+      altPage.parameters.elementalType = newList[math.random(#newList)]
+    end
+    altPage.parameters.shortdescription = self.abilities[altPage.parameters.abilityType] or "Something went horribly wrong."
+    altPage.parameters.description = "A level 1.0, " .. altPage.parameters.elementalType .. " Grimoire page."
+    containerPutItem(altPage, 3)
+  end
+
   -- If pages don't match their slot, return
   if primaryPage.parameters.slotType ~= "primary" or altPage.parameters.slotType ~= "alt" then
     widget.setItemSlotItem("itemSlot1", nil)
