@@ -2,10 +2,10 @@
   "itemName" : "ivrpg_grimoirepage",
   "rarity" : "Legendary",
   "category" : "Grimoire Page",
-  "inventoryIcon" : "scroll.png",
+  "inventoryIcon" : "blank_page.png",
   "tooltipKind" : "ivrpg_base",
   "description" : "Put this into one of the Grimoire Page slots in the Grimoire Inscriber to generate a random ability.",
   "shortdescription" : "Magic Page",
-  "largeImage" : "scrolllarge.png",
+  "largeImage" : "blank_page.png",
   "scripts" : []
 }

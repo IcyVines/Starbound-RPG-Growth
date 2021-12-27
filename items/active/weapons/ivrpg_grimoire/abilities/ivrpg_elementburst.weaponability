@@ -19,7 +19,7 @@
     "projectileDistance" : 0,
     "projectileType" : "ivrpg_<elementalType>burst",
     "projectileParameters" : {
-      "baseDamage" : 4,
+      "baseDamage" : 6,
       "speed" : 25
     },
     

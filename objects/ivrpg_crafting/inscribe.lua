@@ -97,6 +97,7 @@ function insertSlots(item)
       description = "A level " .. tostring(params.level or 1.0) .. ", " .. params.elementalType .. " Grimoire page.",
       level = params.level or 1.0,
       elementalType = params.elementalType or "earth",
+      inventoryIcon = "blank_page_" .. params.elementalType .. ".png",
       slotType = "primary"
     }}, 2)
     containerPutItem({name = "ivrpg_grimoirepage", count = 1, parameters = {
@@ -105,6 +106,7 @@ function insertSlots(item)
       description = "A level " .. tostring(params.level or 1.0) .. ", " .. params.altElementalType .. " Grimoire page.",
       level = params.level or 1.0,
       elementalType = params.altElementalType or "earth",
+      inventoryIcon = "blank_page_" .. params.altElementalType .. ".png",
       slotType = "alt"
     }}, 3)
   end
@@ -148,6 +150,7 @@ function updateWeaponTooltips(weapon)
     end
     primaryPage.parameters.shortdescription = self.abilities[primaryPage.parameters.abilityType] or "Something went horribly wrong."
     primaryPage.parameters.description = "A level 1.0, " .. primaryPage.parameters.elementalType .. " Grimoire page."
+    primaryPage.parameters.inventoryIcon = "blank_page_" .. primaryPage.parameters.elementalType .. ".png"
     containerPutItem(primaryPage, 2)
   end
 
@@ -172,6 +175,7 @@ function updateWeaponTooltips(weapon)
     end
     altPage.parameters.shortdescription = self.abilities[altPage.parameters.abilityType] or "Something went horribly wrong."
     altPage.parameters.description = "A level 1.0, " .. altPage.parameters.elementalType .. " Grimoire page."
+    altPage.parameters.inventoryIcon = "blank_page_" .. altPage.parameters.elementalType .. ".png"
     containerPutItem(altPage, 3)
   end
 

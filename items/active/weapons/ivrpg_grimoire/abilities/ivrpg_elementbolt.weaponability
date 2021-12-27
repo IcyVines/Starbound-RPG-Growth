@@ -19,7 +19,7 @@
     "projectileDistance" : 0,
     "projectileType" : "ivrpg_<elementalType>bolt",
     "projectileParameters" : {
-      "baseDamage" : 3,
+      "baseDamage" : 5,
       "speed" : 50
     },
     

@@ -31,7 +31,7 @@
   "orientations" : [
     {
       "dualImage" : "table.png:<color>",
-      "imagePosition" : [-20, 0],
+      "imagePosition" : [-32, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
 
