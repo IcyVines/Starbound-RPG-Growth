@@ -149,7 +149,7 @@ function updateWeaponTooltips(weapon)
       primaryPage.parameters.elementalType = newList[math.random(#newList)]
     end
     primaryPage.parameters.shortdescription = self.abilities[primaryPage.parameters.abilityType] or "Something went horribly wrong."
-    primaryPage.parameters.description = "A level 1.0, " .. primaryPage.parameters.elementalType .. " Grimoire page."
+    primaryPage.parameters.description = "A level 1.0, " .. primaryPage.parameters.elementalType .. " " .. primaryPage.parameters.slotType .. " Grimoire page."
     primaryPage.parameters.inventoryIcon = "blank_page_" .. primaryPage.parameters.elementalType .. ".png"
     containerPutItem(primaryPage, 2)
   end
@@ -174,7 +174,7 @@ function updateWeaponTooltips(weapon)
       altPage.parameters.elementalType = newList[math.random(#newList)]
     end
     altPage.parameters.shortdescription = self.abilities[altPage.parameters.abilityType] or "Something went horribly wrong."
-    altPage.parameters.description = "A level 1.0, " .. altPage.parameters.elementalType .. " Grimoire page."
+    altPage.parameters.description = "A level 1.0, " .. altPage.parameters.elementalType .. " " .. altPage.parameters.slotType .. " Grimoire page."
     altPage.parameters.inventoryIcon = "blank_page_" .. altPage.parameters.elementalType .. ".png"
     containerPutItem(altPage, 3)
   end
