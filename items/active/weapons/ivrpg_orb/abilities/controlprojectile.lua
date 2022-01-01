@@ -174,10 +174,6 @@ function ControlProjectile:moveChargePosition()
   local frontal = {3.125, 1.125}--world.distance(self:focusPosition(), position)
   difference[1] = difference[1] * mcontroller.facingDirection()
   --frontal[1] = frontal[1] * mcontroller.facingDirection()
-  sb.logInfo(sb.printJson(difference))
-  if not config.getParameter("twoHanded") and mcontroller.facingDirection() == 1 then
-    difference[1] = difference[1] - 0.375
-  end
   animator.translateTransformationGroup("charge", self.spawnLocation == "atCursor" and difference or frontal)
 end
 

@@ -1,0 +1,231 @@
+{
+  "globalTagDefaults" : {
+    "paletteSwaps" : "",
+    "chargeHue" : "",
+    "barrierHue" : ""
+  },
+
+  "animatedParts" : {
+    "stateTypes" : {
+      "bookState" : {
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "open" : {
+            "frames" : 3,
+            "cycle" : 0.3,
+            "mode" : "end"
+          },
+          "charging" : {
+            "frames" : 4,
+            "cycle" : 0.4,
+            "mode" : "loop"
+          }
+        }
+      },
+      "charge" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "charging" : {
+            "frames" : 10,
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "charged"
+          },
+          "charged" : {
+            "frames" : 6,
+            "cycle" : 0.8,
+            "mode" : "loop"
+          }
+        }
+      },
+      "barrier" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {
+            "frames" : 8,
+            "cycle" : 1.6,
+            "mode" : "loop"
+          },
+          "cracked" : {
+            "frames" : 8,
+            "cycle" : 1.6,
+            "mode" : "loop"
+          },
+          "shatter" : {
+            "frames" : 6,
+            "cycle" : 0.6,
+            "mode" : "transition",
+            "transition" : "off"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "grimoire" : {
+        "properties" : {
+          "zLevel" : 0,
+          "centered" : true,
+          "image" : "<partImage><paletteSwaps>",
+          "offset" : [0.25, 0.0],
+          "focalPoint" : [0.25, 0.0],
+          "transformationGroups" : ["weapon"]
+        },
+        "partStates" : {
+          "bookState" : {
+            "idle" : {
+              "properties" : {
+                "image" : "<partImage>:idle.1"
+              }
+            },
+            "open" : {
+              "properties" : {
+                "image" : "<partImage>:charging.<frame>"
+              }
+            },
+            "charging" : {
+              "properties" : {
+                "image" : "<partImage>:charged.<frame>"
+              }
+            }
+          }
+        }
+      },
+      "chargeState" : {
+        "properties" : {
+          "zLevel" : 2,
+          "centered" : true,
+          "offset" : [-0.9375, 0.0],
+          "transformationGroups" : ["charge"],
+          "fullbright" : true
+        },
+        "partStates" : {
+          "charge" : {
+            "off" : {
+              "image" : "<partImage>:off"
+            },
+            "charging" : {
+              "properties" : {
+                "image" : "<partImage>:<frame><chargeHue>"
+              }
+            },
+            "charged" : {
+              "properties" : {
+                "image" : "<partImage>:loop_<frame><chargeHue>"
+              }
+            }
+          }
+        }
+      },
+      "barrierFront" : {
+        "properties" : {
+          "zLevel" : 10,
+          "centered" : true,
+          "offset" : [0.0, 0.0],
+          "fullbright" : true
+        },
+        "partStates" : {
+          "barrier" : {
+            "off" : {
+              "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_front.png:off"
+            },
+            "on" : {
+              "properties" : {
+                "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_front.png:<frame><barrierHue>"
+              }
+            },
+            "cracked" : {
+              "properties" : {
+                "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_front_cracked.png:<frame><barrierHue>"
+              }
+            },
+            "shatter" : {
+              "properties" : {
+                "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_front_shatter.png:<frame><barrierHue>"
+              }
+            }
+          }
+        }
+      },
+      "barrierBack" : {
+        "properties" : {
+          "zLevel" : -1,
+          "centered" : true,
+          "offset" : [0.0, 0.0],
+          "fullbright" : true
+        },
+        "partStates" : {
+          "barrier" : {
+            "off" : {
+              "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_back.png:off"
+            },
+            "on" : {
+              "properties" : {
+                "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_back.png:<frame><barrierHue>",
+                "zLevel" : -1
+              }
+            },
+            "cracked" : {
+              "properties" : {
+                "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_back_cracked.png:<frame><barrierHue>",
+                "zLevel" : -1
+              }
+            },
+            "shatter" : {
+              "properties" : {
+                "image" : "/items/active/weapons/ivrpg_grimoire/abilities/greater/barrier_back_shatter.png:<frame><barrierHue>",
+                "zLevel" : -1
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "lights" : {
+    "glow" : {
+      "active" : true,
+      "position" : [0, 3.0],
+      "color" : [0, 0, 0],
+      "transformationGroups" : ["weapon"]
+    }
+  },
+
+  "particleEmitters" : {},
+
+  "transformationGroups" : {
+    "weapon" : {},
+    "charge" : {}
+  },
+
+  "sounds" : {
+    "physicalactivate" : ["/sfx/projectiles/plasma3.ogg"],
+
+    "earthactivate" : ["/sfx/melee/blunt_kill_stone1.ogg", "/sfx/melee/blunt_kill_stone2.ogg", "/sfx/melee/blunt_kill_stone3.ogg"],
+
+    "fireactivate" : ["/sfx/melee/travelingslash_fire1.ogg", "/sfx/melee/travelingslash_fire2.ogg", "/sfx/melee/travelingslash_fire3.ogg"],
+
+    "iceactivate" : ["/sfx/melee/travelingslash_ice3.ogg", "/sfx/melee/travelingslash_ice4.ogg"],
+
+    "electricactivate" : ["/sfx/melee/travelingslash_electric4.ogg", "/sfx/melee/travelingslash_electric5.ogg"],
+
+    "poisonactivate" : ["/sfx/melee/travelingslash_poison1.ogg", "/sfx/melee/travelingslash_poison2.ogg", "/sfx/melee/travelingslash_poison3.ogg"],
+
+    "novaactivate" : ["/sfx/projectiles/astraltear_stop2.ogg", "/sfx/projectiles/astraltear_stop3.ogg"],
+
+    "holyactivate" : ["/items/active/weapons/ivrpg_grimoire/abilities/holynova/holy_fire_C.ogg", "/items/active/weapons/ivrpg_grimoire/abilities/holynova/holy_fire_E.ogg", "/items/active/weapons/ivrpg_grimoire/abilities/holynova/holy_fire_G.ogg"],//["/sfx/gun/impact_rainbow.ogg"],
+
+    "demonicactivate" : ["/items/active/weapons/ivrpg_grimoire/generated/sfx/demonic_fire_c.ogg", "/items/active/weapons/ivrpg_grimoire/generated/sfx/demonic_fire_d#.ogg", "/items/active/weapons/ivrpg_grimoire/generated/sfx/demonic_fire_f#.ogg"],
+
+    "bookopen" : ["/sfx/tech/tech_blink_cooldown1.ogg"],
+    "bookclose" : ["/sfx/tech/tech_blink2.ogg"],
+
+    "earthbarrierbreak" : ["/sfx/objects/rock_crumble1.ogg", "/sfx/objects/rock_crumble2.ogg", "/sfx/objects/rock_crumble3.ogg", "/sfx/objects/rock_crumble4.ogg", "/sfx/objects/rock_crumble5.ogg"],
+
+    "zoneactivate" : ["/sfx/melee/staff_aura_activate.ogg"]
+  }
+}
