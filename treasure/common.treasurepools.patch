@@ -57,5 +57,65 @@
         "op": "add",
         "path": "/goodWeapon/2/1/pool/-",
         "value": {"weight": 0.1, "item": "ivrpg_raregrimoire"}
+    },
+	{
+        "op": "add",
+        "path": "/weapon/0/1/pool/-",
+        "value": {"weight": 0.05, "item": "ivrpg_commonorb"}
+    },
+	{
+        "op": "add",
+        "path": "/weapon/0/1/pool/-",
+        "value": {"weight": 0.03, "item": "ivrpg_uncommonorb"}
+    },
+	{
+        "op": "add",
+        "path": "/weapon/1/1/pool/-",
+        "value": {"weight": 0.1, "item": "ivrpg_commonorb"}
+    },
+	{
+        "op": "add",
+        "path": "/weapon/1/1/pool/-",
+        "value": {"weight": 0.05, "item": "ivrpg_uncommonorb"}
+    },
+	{
+        "op": "add",
+        "path": "/weapon/2/1/pool/-",
+        "value": {"weight": 0.1, "item": "ivrpg_commonorb"}
+    },
+	{
+        "op": "add",
+        "path": "/weapon/2/1/pool/-",
+        "value": {"weight": 0.15, "item": "ivrpg_uncommonorb"}
+    },
+	{
+        "op": "add",
+        "path": "/goodWeapon/0/1/pool/-",
+        "value": {"weight": 0.05, "item": "ivrpg_uncommonorb"}
+    },
+	{
+        "op": "add",
+        "path": "/goodWeapon/0/1/pool/-",
+        "value": {"weight": 0.02, "item": "ivrpg_rareorb"}
+    },
+	{
+        "op": "add",
+        "path": "/goodWeapon/1/1/pool/-",
+        "value": {"weight": 0.1, "item": "ivrpg_uncommonorb"}
+    },
+	{
+        "op": "add",
+        "path": "/goodWeapon/1/1/pool/-",
+        "value": {"weight": 0.05, "item": "ivrpg_rareorb"}
+    },
+	{
+        "op": "add",
+        "path": "/goodWeapon/2/1/pool/-",
+        "value": {"weight": 0.15, "item": "ivrpg_uncommonorb"}
+    },
+	{
+        "op": "add",
+        "path": "/goodWeapon/2/1/pool/-",
+        "value": {"weight": 0.1, "item": "ivrpg_rareorb"}
     }
 ]
