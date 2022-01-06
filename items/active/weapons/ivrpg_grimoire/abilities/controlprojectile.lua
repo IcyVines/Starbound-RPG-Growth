@@ -175,7 +175,9 @@ function ControlProjectile:moveChargePosition()
   difference[1] = difference[1] * mcontroller.facingDirection()
   --frontal[1] = frontal[1] * mcontroller.facingDirection()
   sb.logInfo(sb.printJson(difference))
-  if not config.getParameter("twoHanded") and mcontroller.facingDirection() == 1 then
+  if not config.getParameter("twoHanded") and mcontroller.facingDirection() == 1 and activeItem.hand() == "primary" then
+    difference[1] = difference[1] - 0.375
+  elseif not config.getParameter("twoHanded") and mcontroller.facingDirection() == -1 and activeItem.hand() == "alt" then
     difference[1] = difference[1] - 0.375
   end
   animator.translateTransformationGroup("charge", self.spawnLocation == "atCursor" and difference or frontal)
@@ -336,7 +338,7 @@ function ControlProjectile:createProjectiles()
     pParams.aimDirection = distanceTo
   end
 
-  pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") / pCount
+  pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") * config.getParameter("orbDamageMitigation", 1) / pCount
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
   if pParams.actionOnTimeout then
     self:fireElementalPillar(pParams)

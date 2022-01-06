@@ -1,5 +1,5 @@
 {
-  "itemName" : "ivrpg_raregorb",
+  "itemName" : "ivrpg_rareorb",
   "price" : 720,
   "maxStack" : 1,
   "rarity" : "Rare",
@@ -11,6 +11,8 @@
   "tooltipKind" : "ivrpg_grimoire",
   "inventoryIcon" : "orb/<elementalType>.png:idle.1",
 
+  "orbDamageMitigation" : 0.75,
+
   "animation" : "/items/active/weapons/ivrpg_orb/generated/generatedorb.animation",
 
   "scripts" : ["/items/active/weapons/ivrpg_orb/orb.lua"],
@@ -20,7 +22,7 @@
       "armRotation" : -20,
       "weaponRotation" : -30,
       "twoHanded" : false,
-      "weaponOffset" : [-0.25, 1.25],
+      "weaponOffset" : [-0.25, 0.25],
       "allowRotate" : false,
       "allowFlip" : true
     },
@@ -28,8 +30,8 @@
       "duration" : 0.6,
       "armRotation" : 0,
       "weaponRotation" : -20,
-      "twoHanded" : true,
-      "weaponOffset" : [0.0, 1.5],
+      "twoHanded" : false,
+      "weaponOffset" : [0, 0.5],
 
       "allowRotate" : false,
       "allowFlip" : true
@@ -37,8 +39,8 @@
     "charged" : {
       "armRotation" : 0,
       "weaponRotation" : -20,
-      "twoHanded" : true,
-      "weaponOffset" : [0.0, 1.50],
+      "twoHanded" : false,
+      "weaponOffset" : [0, 0.5],
 
       "allowRotate" : false,
       "allowFlip" : true
@@ -47,8 +49,8 @@
       "duration" : 0.2,
       "armRotation" : -10,
       "weaponRotation" : -20,
-      "twoHanded" : true,
-      "weaponOffset" : [-0.25, 1.5],
+      "twoHanded" : false,
+      "weaponOffset" : [-0.25, 0.5],
 
       "allowRotate" : false,
       "allowFlip" : true
@@ -150,7 +152,7 @@
         "path" : "orb/<elementalType>.png"
       },
       "chargeState" : {
-        "path" : "orb/<elementalType>.png"
+        "path" : "charges/charge.png"
       }
     },
     "primaryAbilities" : {

@@ -11,6 +11,8 @@
   "tooltipKind" : "ivrpg_grimoire",
   "inventoryIcon" : "orb/<elementalType>.png:idle.1",
 
+  "orbDamageMitigation" : 0.5,
+
   "animation" : "/items/active/weapons/ivrpg_orb/generated/generatedorb.animation",
 
   "scripts" : ["/items/active/weapons/ivrpg_orb/orb.lua"],
