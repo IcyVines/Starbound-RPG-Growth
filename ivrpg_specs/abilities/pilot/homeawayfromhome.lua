@@ -4,6 +4,9 @@ require "/scripts/ivrpgutil.lua"
 
 function init()
   self.id = effect.sourceEntity()
+  effect.addStatModifierGroup({
+    {stat = "ivrpg_homeawayfromhome", amount = 1}
+  })
 end
 
 

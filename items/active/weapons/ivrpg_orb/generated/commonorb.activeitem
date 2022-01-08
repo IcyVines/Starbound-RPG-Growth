@@ -9,7 +9,7 @@
   "twoHanded" : false,
   "itemTags" : ["weapon", "magicorb", "magic"],
   "tooltipKind" : "ivrpg_grimoire",
-  "inventoryIcon" : "orb/<elementalType>.png:idle.1",
+  "inventoryIcon" : "orb/<elementalType>.png:charging.4",
 
   "orbDamageMitigation" : 0.5,
 

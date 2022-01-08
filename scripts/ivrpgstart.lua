@@ -260,6 +260,16 @@ function updateSpecializationEffects(dt)
     end
   end
   -- End Pioneer Effect
+
+  -- Pilot Effect
+  if status.statPositive("ivrpg_homeawayfromhome") then
+    if string.find(player.worldId(), "ClientShipWorld") then
+      status.modifyResourcePercentage("food", 0.01 * dt)
+      status.modifyResourcePercentage("health", 0.01 * dt)
+    end
+    sb.logInfo(sb.printJson(player.worldId()))
+  end
+  -- End Pilot Effect
 end
 
 function updateProfessionEffects(dt)
