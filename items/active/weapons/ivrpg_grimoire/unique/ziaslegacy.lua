@@ -10,6 +10,7 @@ function ControlProjectile:init()
   self.elementalType = self.elementalType or self.weapon.elementalType
   self.cooldownTime = 0.4
   self.cooldownTimer = self.cooldownTime
+  self.colorChangeTimer = 0
   self.baseDamageFactor = config.getParameter("baseDamageFactor", 1.0)
   self.stances = config.getParameter("stances")
   self.elementalConfig = config.getParameter("elementalConfig", {})
@@ -22,21 +23,12 @@ function ControlProjectile:init()
   self.notDespawned = self.abilitySlot == "primary" and config.getParameter("primaryAbility.notDespawned") or config.getParameter("altAbility.notDespawned")
   self.elementalType = self.abilitySlot == "primary" and self.elementalType or config.getParameter("altElementalType")
 
+  self.elements = {"fire", "ice", "electric"}
+  self.elementIndexes = {fire = 1, ice = 2, electric = 3}
+  self.elementIndex = self.elementIndexes[self.elementalType]
+  self.count = 1
+
   self.weapon.healOnHit = config.getParameter("primaryAbility.healOnHit")
-
-  -- Greater Barrier
-  self.shieldActive = false
-  self.shieldFrameTimer = 0.2
-  self.shieldFrame = 0
-  self.shieldShattered = false
-
-  -- Beam
-  self.impactSoundTimer = 0
-  self.transitionTimer = 0
-  self.baseDamage = self.projectileParameters.baseDamage
-
-  -- Mana Blade/Scythe
-  self.followTimer = 0
 
   activeItem.setCursor("/cursors/reticle5.cursor")
   activeItem.setScriptedAnimationParameter("rune", false)
@@ -52,91 +44,84 @@ function ControlProjectile:update(dt, fireMode, shiftHeld)
 
   local stopsAtCursor = self.behavior and string.find(self.behavior, "AfterCursor")
 
-  -- Mana Blade/Scythe
-  if stopsAtCursor and self.projectileId and self.followTimer > 0 then
-    self.followTimer = math.max(self.followTimer - dt, 0)
-    if self.followTimer == 0 and world.entityExists(self.projectileId) then
-      if self.behavior == "followNearestAfterCursor" then world.sendEntityMessage(self.projectileId, "trigger", "follow") end
-      if self.behavior == "releaseRadialAfterCursor" then world.sendEntityMessage(self.projectileId, "trigger", "release") end
-    end
-  end
-
   -- Normal Fire Transition
   world.debugPoint(self:focusPosition(), "blue")
   --animator.setAnimationRate(1/(self.chargeTimeModifier or 1))
   --sb.logInfo(sb.printJson(self.chargeTimeModifier))
-  if self.fireMode == (self.activatingFireMode or self.abilitySlot)
+  if self.fireMode == "primary"
     and not self.weapon.currentAbility
     and not status.resourceLocked("energy")
     and not self.abilityActive
-    and not (self.cooldownTimer > 0)
-    and not (self.fireMode == "alt" and (self.shieldShattered or self.shieldActive)) then
+    and not (self.cooldownTimer > 0) then
     self.transitionTimer = 0
+    self.altFiring = false
     self:setState(self.charge)
+  elseif self.fireMode == "alt"
+    and not self.weapon.currentAbility
+    and not status.resourceLocked("energy")
+    and not self.abilityActive
+    and not (self.cooldownTimer > 0) then
+    self.transitionTimer = 0
+    if not shiftHeld then
+      self.altFiring = true
+      self:setState(self.charge)
+    else
+      self.altFiring = false
+      self:setState(self.changeElement)
+    end
   end
 
   self.cooldownTimer = math.max(self.cooldownTimer - dt, 0)
+  self.colorChangeTimer = math.max(self.colorChangeTimer - dt, 0)
 
-  -- Nosferatu
-  if self.nosferatuActive and world.entityExists(self.nosferatuActive) and status.overConsumeResource("energy", dt * 10) then
-    world.sendEntityMessage(self.nosferatuActive, "addEphemeralEffect", "ivrpg_nosferatu", 0.5, activeItem.ownerEntityId())
-    activeItem.setScriptedAnimationParameter("nosferatu", {frame = self.nosferatuFrame, position = {mcontroller.xPosition(), mcontroller.yPosition()}, monsterPos = world.entityPosition(self.nosferatuActive)})
-    self.nosferatuFrameTimer = self.nosferatuFrameTimer - dt
-    if self.nosferatuFrameTimer <= 0 then
-      self.nosferatuFrame = (self.nosferatuFrame + 1) % 20
-      self.nosferatuFrameTimer = 0.05
+  if self.altFiring then
+    self.spawnLocation = "atCursor"
+    self.travelDirection = "none"
+    if self.colorChangeTimer == 0 then
+      self.count = (self.count % 3) + 1
+      self.colorChangeTimer = 0.33
+      animator.setGlobalTag("chargeHue", "?multiply=" .. self.elementalConfig[self.elements[self.count]].hue)
     end
   else
-    activeItem.setScriptedAnimationParameter("nosferatu", false)
-    self.nosferatuActive = false
+    self.spawnLocation = "atTome"
+    self.travelDirection = "atCursor"
   end
 
-  -- Greater Barrier
-  if self.shieldActive then
-    local mod = ".png:"
-    if status.resource("shieldStamina") <= 0.5 then
-      mod = "_cracked.png:"
-    end
-    activeItem.setScriptedAnimationParameter("barrier", {frame = self.shieldFrame, position = {mcontroller.xPosition(), mcontroller.yPosition() - 0.75}, modifier = mod})
-    self.shieldFrameTimer = self.shieldFrameTimer - dt
-    if self.shieldFrameTimer <= 0 then
-      self.shieldFrame = (self.shieldFrame + 1) % 8
-      self.shieldFrameTimer = 0.2
-    end
+end
 
-    if not status.resourcePositive("shieldStamina") then
-      self.shieldActive = false
-      self.shieldShattered = 0
-      animator.playSound("earthbarrierbreak")
-      self.shieldFrameTimer = 0.1
-    end
-  elseif self.shieldShattered then
-    local mod = "_shatter.png:"
-    activeItem.setScriptedAnimationParameter("barrier", {frame = self.shieldShattered, position = {mcontroller.xPosition(), mcontroller.yPosition() - 0.75}, modifier = mod})
-    self.shieldFrameTimer = self.shieldFrameTimer - dt
-    if self.shieldFrameTimer <= 0 then
-      self.shieldShattered = (self.shieldShattered + 1) % 7
-      self.shieldFrameTimer = 0.3/7
-      if self.shieldShattered == 0 then
-        self.shieldShattered = false
-        self.weapon:destroyBarrier()
-      end
-    end
+function ControlProjectile:changeElement()
+
+  elementIndex = (self.elementIndex % 3) + 1
+  elementalType = self.elements[elementIndex]
+
+  self.weapon:setStance(self.stances.charge)
+  animator.setGlobalTag("chargeHue", "?multiply=" .. self.elementalConfig[elementalType].hue)
+  animator.playSound("bookopen")
+  animator.setAnimationRate(1/(self.chargeTimeModifier or 1))
+  animator.setAnimationState("bookState", "open")
+  animator.setAnimationState("charge", "charging")
+
+  local chargeTimer = self.stances.charge.duration * (self.chargeTimeModifier or 1)
+  while chargeTimer > 0 and self.fireMode == "alt" do
+    chargeTimer = chargeTimer - self.dt
+
+    mcontroller.controlModifiers({runningSuppressed=true})
+
+    self:moveChargePosition()
+
+    coroutine.yield()
   end
 
-  -- Implosion
-  if self.customPhysics and self.customPhysics.time > 0 then
-    local targetIds = enemyQuery(activeItem.ownerAimPosition(), self.customPhysics.radius or 5, {}, activeItem.ownerEntityId(), true)
-    if targetIds then
-      for _,id in ipairs(targetIds) do
-        if self.customPhysics.physics == "pull" and world.entityExists(id) then
-          world.sendEntityMessage(id, "setVelocity", vec2.mul(vec2.sub(self.customPhysics.position, world.entityPosition(id)), 5))
-        end
-      end
-    end
-    self.customPhysics.time = self.customPhysics.time - dt
-    if self.customPhysics.time <= 0 then self.customPhysics = false end
+  if chargeTimer <= 0 then
+    self.elementIndex = elementIndex
+    self.elementalType = elementalType
+    animator.playSound(self.elementalType.."activate")
+    local tooltipFields = {damageKindImage = "/interface/elements/"..self.elementalType..".png"}
+    activeItem.setInstanceValue("elementalType", self.elementalType)
+    activeItem.setInstanceValue("tooltipFields", tooltipFields)
   end
+  self:setState(self.discharge)
+  
 end
 
 function ControlProjectile:charge()
@@ -148,7 +133,7 @@ function ControlProjectile:charge()
   animator.setAnimationState("charge", "charging")
 
   local chargeTimer = self.stances.charge.duration * (self.chargeTimeModifier or 1)
-  while chargeTimer > 0 and self.fireMode == (self.activatingFireMode or self.abilitySlot) do
+  while chargeTimer > 0 and (self.fireMode == "primary" or self.fireMode == "alt") do
     chargeTimer = chargeTimer - self.dt
 
     mcontroller.controlModifiers({runningSuppressed=true})
@@ -219,7 +204,7 @@ function ControlProjectile:charged()
   local targetValid
   local spawnTime = 0.4
   local runeTimer = spawnTime
-  while self.fireMode == (self.activatingFireMode or self.abilitySlot) do
+  while self.fireMode == "primary" or self.fireMode == "alt" do
     targetValid = self:targetValid(activeItem.ownerAimPosition())
     activeItem.setCursor(targetValid and "/items/active/weapons/ivrpg_grimoire/cursor/reticle.cursor" or "/cursors/reticle5.cursor")
 
@@ -227,6 +212,7 @@ function ControlProjectile:charged()
 
     if runeTimer >= spawnTime then
       particle.position = self:focusPosition()
+      if self.altFiring then particle.color = self.elementalConfig[self.elements[math.random(3)]].color end
       particle.image = image .. tostring(math.random(1,7)) .. ".png"
       activeItem.setScriptedAnimationParameter("rune", particle)
       runeTimer = 0
@@ -273,22 +259,6 @@ function ControlProjectile:discharge()
   self.abilityActive = false
 end
 
-function ControlProjectile:spawnBeam()
-  self.timer = 0
-  self.spawnPosition = activeItem.ownerAimPosition()
-  self.randomDirection = math.random(-2,2)
-  world.spawnProjectile("ivrpgraptureholygate", self.spawnPosition, activeItem.ownerEntityId(), {0.1 * self.randomDirection, -1}, false, {timeToLive = 0.8, speed = 0})
-  self.reap = true
-  util.wait(0.5, function()
-    local params = {curveDirection = self.randomDirection, timeToLive = 0.3, speed = 70}
-    if self.reap then
-      params.actionOnReap = {{action = "projectile", type = "ivrpgraptureholygate", config = {timeToLive = 0.5}}}
-      self.reap = false
-    end
-    world.spawnProjectile("ivrpgrapturebeam", self.spawnPosition, activeItem.ownerEntityId(), {0.1 * self.randomDirection, -1}, false, params)
-  end)
-end
-
 function ControlProjectile:targetValid(aimPos)
   local focusPos = self:focusPosition()
   return world.magnitude(focusPos, aimPos) <= self.maxCastRange
@@ -300,30 +270,16 @@ function ControlProjectile:createProjectiles()
   local aimPosition = activeItem.ownerAimPosition()
   local distanceTo = world.distance(aimPosition, self:focusPosition())
   local fireDirection = distanceTo[1] > 0 and 1 or -1
-  local pOffset = {fireDirection * (self.projectileDistance or 0), 0}
+
+  local pOffset = {fireDirection * (self.altFiring and 2.5 or 0), 0}
   local basePos = self.spawnLocation == "atCursor" and activeItem.ownerAimPosition() or self:focusPosition()
   local basePos = vec2.add(basePos, self.projectileOffset)
-  local pCount = self.projectileCount or 1
-  local pParams = copy(self.projectileParameters)
-
-  if pParams.shieldParameters then
-    pParams.shieldParameters.power = (pParams.shieldParameters.baseDamage or 0) * config.getParameter("damageLevelMultiplier")
-    pParams.shieldParameters.health = (pParams.shieldParameters.health or 10) * config.getParameter("damageLevelMultiplier")
-    self.weapon:createBarrier(pParams.shieldParameters)
-    self.shieldActive = true
-    self.shieldFrame = 0
-    self.shieldFrameTimer = 0.2
-    return
-  end
-
-  if pParams.nosferatu then
-    self:findNosferatuTarget()
-    self.nosferatuFrame = 0
-    self.nosferatuFrameTimer = 0.05
-    return
-  end
+  local pCount = self.altFiring and 6 or (self.projectileCount or 1)
+  local pParams = copy(self.altFiring and config.getParameter("altAbilityPParams", {}) or self.projectileParameters)
 
   local stopsAtCursor = self.behavior and string.find(self.behavior, "AfterCursor")
+
+  self.projectileType = "ivrpg_" .. self.elementalType .. "burst"
 
   if self.travelDirection == "atCursor" then
     local tTL = vec2.mag(distanceTo) / (pParams.speed or 1)
@@ -339,20 +295,13 @@ function ControlProjectile:createProjectiles()
 
   pParams.power = self.baseDamageFactor * pParams.baseDamage * config.getParameter("damageLevelMultiplier") * config.getParameter("orbDamageMitigation", 1) / pCount
   pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
-  if pParams.actionOnTimeout then
-    self:fireElementalPillar(pParams)
-    return
-  elseif pParams.portal then
-    self:fireEruption(pParams)
-    return
-  end
 
   for i = 1, pCount do
     local projectileId = world.spawnProjectile(
-        self.projectileType,
+        self.altFiring and ("ivrpg_" .. self.elements[i % 3 + 1] .. "lance") or self.projectileType,
         vec2.add(basePos, pOffset),
         activeItem.ownerEntityId(),
-        self.travelDirection == "none" and pOffset or distanceTo,
+        self.travelDirection == "none" and pOffset or vec2.rotate(distanceTo, sb.nrand(math.pi / 36, 0)),
         false,--(self.behavior == "followPlayer") or false,
         pParams
       )
@@ -362,21 +311,9 @@ function ControlProjectile:createProjectiles()
       world.sendEntityMessage(projectileId, "updateProjectile", aimPosition)
     end
 
-    if pParams.spread then
-      pOffset = {0, 0}
-      pParams.spread[1] = pParams.spread[1] * -1
-      pOffset = vec2.add(pOffset, pParams.spread)
-      self.lightning = basePos
-    elseif pParams.rapid then
+    pOffset = vec2.rotate(pOffset, (2 * math.pi) / pCount)
 
-    else
-      pOffset = vec2.rotate(pOffset, (2 * math.pi) / pCount)
-    end
-
-    if stopsAtCursor then
-      self.projectileId = projectileId
-    end
-    
+    if not self.altFiring then util.wait(0.1) end
   end
 
   if pParams.customPhysics then

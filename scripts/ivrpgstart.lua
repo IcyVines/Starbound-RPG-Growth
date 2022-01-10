@@ -267,7 +267,6 @@ function updateSpecializationEffects(dt)
       status.modifyResourcePercentage("food", 0.01 * dt)
       status.modifyResourcePercentage("health", 0.01 * dt)
     end
-    sb.logInfo(sb.printJson(player.worldId()))
   end
   -- End Pilot Effect
 end

@@ -1,0 +1,24 @@
+{
+  "projectileName" : "ivrpg_electricburst",
+  "timeToLive" : 2.5,
+  "bounces" : 0,
+  "image" : "electric.png",
+  "animationCycle" : 0.25,
+  "physics" : "laser",
+  "frameNumber" : 4,
+  "pointLight" : true,
+  "flippable" : true,
+  "speed" : 10,
+  "damagePoly" : [ [-7, 0], [-5, -5], [0, -7], [5, -5], [7, 0], [5, 5], [0, 7], [-5, 5] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/electricexplosionknockbackstatus.config"
+    }
+  ],
+  "power" : 8.0,
+  "damageKind" : "electricplasma",
+  "emitters" : [ "electricplasma" ]
+}
+
+

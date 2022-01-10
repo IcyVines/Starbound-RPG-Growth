@@ -1,0 +1,133 @@
+{
+  "itemName" : "ivrpg_ziaslegacy",
+  "price" : 1840,
+  "maxStack" : 1,
+  "rarity" : "Legendary",
+  "description" : "An ancient tome containing unique scriptures.",
+  "shortdescription" : "Zia's Legacy",
+  "category" : "Grimoire",
+  "twoHanded" : true,
+  "itemTags" : ["weapon", "grimoire", "magic"],
+  "tooltipKind" : "ivrpg_grimoire",
+  "inventoryIcon" : "ziaslegacy_icon.png",
+
+  "learnBlueprintsOnPickup" : [
+    "ivrpg_grimoirepage"
+  ],
+
+  "animation" : "/items/active/weapons/ivrpg_grimoire/unique/ziaslegacy.animation",
+  "animationParts" : {
+    "grimoire" : "ziaslegacy.png",
+    "chargeState" : "/items/active/weapons/ivrpg_grimoire/generated/charges/charge.png"
+  },
+  "animationCustom" : {
+    
+  },
+
+  "scripts" : ["/items/active/weapons/ivrpg_grimoire/grimoire.lua"],
+
+  "stances" : {
+    "idle" : {
+      "armRotation" : -20,
+      "weaponRotation" : -30,
+      "twoHanded" : false,
+      "weaponOffset" : [-0.25, 1.25],
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charge" : {
+      "duration" : 0.6,
+      "armRotation" : 0,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [0.0, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "charged" : {
+      "armRotation" : 0,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [0.0, 1.50],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    },
+    "discharge" : {
+      "duration" : 0.2,
+      "armRotation" : -10,
+      "weaponRotation" : -20,
+      "twoHanded" : true,
+      "weaponOffset" : [-0.25, 1.5],
+
+      "allowRotate" : false,
+      "allowFlip" : true
+    }
+  },
+
+  "elementalConfig" : {
+    "earth" : {
+      "color" : [150, 75, 0, 255],
+      "hue" : "964B00"
+    },
+    "fire" : {
+      "color" : [255, 0, 0, 255],
+      "hue" : "EE5555",
+      "animationCustom" : { "lights" : { "glow" : {
+        "color" : [140, 40, 20]
+      }}}
+    },
+    "ice" : {
+      "color" : [0, 255, 255, 255],
+      "hue" : "55DDFF",
+      "animationCustom" : { "lights" : { "glow" : {
+        "color" : [20, 80, 140]
+      }}}
+    },
+    "electric" : {
+      "color" : [255, 255, 0, 255],
+      "hue" : "EEFF55",
+      "animationCustom" : { "lights" : { "glow" : {
+        "color" : [80, 20, 140]
+      }}}
+    },
+    "poison" : {
+      "color" : [0, 255, 0, 255],
+      "hue" : "55FF88"
+    },
+    "nova" : {
+      "color" : [255, 0, 255, 255],
+      "hue" : "FF55FF"
+    },
+    "demonic" : {
+      "color" : [0, 0, 0, 255],
+      "hue" : "555555"
+    },
+    "holy" : {
+      "color" : [255, 255, 205, 255],
+      "hue" : "FFFFBB"
+    }
+  },
+
+  "elementalType" : "fire",
+  "altElementalType" : "electric",
+
+  "primaryAbilityType" : "ivrpg_elementburst",
+  "primaryAbility" : {
+    "name" : "Elemental Flurry",
+    "scripts" : ["/items/active/weapons/ivrpg_grimoire/unique/ziaslegacy.lua"],
+    "projectileCount" : 3
+  },
+
+  "altAbilityPParams" : {
+    "baseDamage" : 20
+  },
+
+  "altAbilityType" : "ivrpg_dummy",
+  "altAbility" : {
+    "name" : "Triple Sunder"
+  },
+
+  "builder" : "/items/active/weapons/ivrpg_grimoire/buildunrandtome.lua"
+}

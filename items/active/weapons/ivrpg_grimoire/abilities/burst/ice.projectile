@@ -1,0 +1,24 @@
+{
+  "projectileName" : "ivrpg_iceburst",
+  "timeToLive" : 2.5,
+  "bounces" : 0,
+  "image" : "ice.png",
+  "animationCycle" : 0.25,
+  "physics" : "laser",
+  "frameNumber" : 1,
+  "pointLight" : true,
+  "speed" : 10,
+  "flippable" : true,
+  "damagePoly" : [ [-7, 0], [-5, -5], [0, -7], [5, -5], [7, 0], [5, 5], [0, 7], [-5, 5] ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/iceexplosionknockbackstatus.config"
+    }
+  ],
+  "power" : 8.0,
+  "damageKind" : "iceplasma",
+  "emitters" : [ "iceplasma" ]
+}
+
+
