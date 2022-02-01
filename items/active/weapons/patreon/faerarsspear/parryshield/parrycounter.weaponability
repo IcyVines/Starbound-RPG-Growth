@@ -1,0 +1,172 @@
+{
+	"animationParts": {},
+	"animationCustom": {
+		"animatedParts": {
+			"stateTypes": {
+				"parryShield": {
+					"default": "inactive",
+					"states": {
+						"inactive": {},
+						"active": {},
+						"block": {
+							"frames": 1,
+							"cycle": 0.2,
+							"mode": "transition",
+							"transition": "active"
+						}
+					}
+				}
+			},
+			"parts": {
+				"parryShield": {
+					"properties": {
+						"zLevel": -1,
+						"centered": true,
+						"offset": [0.55, 2],
+						"transformationGroups": ["weapon"],
+						"rotationCenter": [0, 0],
+						"shieldPoly": [
+							[-1.75, -3],
+							[4.2, -3.5],
+							[4.2, -1.75],
+							[-1.75, -1.65]
+						]
+					},
+					"partStates": {
+						"parryShield": {
+							"inactive": {
+								"properties": {
+									"image": ""
+								}
+							},
+							"active": {
+								"properties": {
+									"image": "/items/active/specweapons/samurai/parrycounter/<elementalType>parryshield.png:active?flipxy"
+								}
+							},
+							"block": {
+								"properties": {
+									"image": "/items/active/specweapons/samurai/parrycounter/<elementalType>parryshield.png:block?flipxy"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"particleEmitters" : {
+		  "physicalCounter" : {
+			"active" : false,
+			"transformationGroups" : ["weapon"],
+			"emissionRate" : 30,
+			"offsetRegion" : [0.75, -0.0, 4.25, -5.0],
+			"particles" : []
+		  },
+		  "fireCounter" : {
+			"active" : false,
+			"transformationGroups" : ["weapon"],
+			"emissionRate" : 30,
+			"offsetRegion" : [0.75, -0.0, 4.25, -5.0],
+			"particles" : [
+			  { "particle" : "fireswoosh1"},
+			  { "particle" : "fireswoosh2"},
+			  { "particle" : "fireswoosh3"}
+			]
+		  },
+		  "electricCounter" : {
+			"active" : false,
+			"transformationGroups" : ["weapon"],
+			"emissionRate" : 30,
+			"offsetRegion" : [0.75, -0.0, 4.25, -5.0],
+			"particles" : [
+			  { "particle" : "electricswoosh1"},
+			  { "particle" : "electricswoosh2"},
+			  { "particle" : "electricswoosh2"}
+			]
+		  },
+		  "iceCounter" : {
+			"active" : false,
+			"transformationGroups" : ["weapon"],
+			"emissionRate" : 30,
+			"offsetRegion" : [0.75, -0.0, 4.25, -5.0],
+			"particles" : [
+			  { "particle" : "iceswoosh1"},
+			  { "particle" : "iceswoosh2"},
+			  { "particle" : "iceswoosh3"}
+			]
+		  },
+		  "poisonCounter" : {
+			"active" : false,
+			"transformationGroups" : ["weapon"],
+			"emissionRate" : 30,
+			"offsetRegion" : [0.75, -0.0, 4.25, -5.0],
+			"particles" : [
+			  { "particle" : "poisonswoosh1"},
+			  { "particle" : "poisonswoosh2"},
+			  { "particle" : "fireswoosh2"}
+			]
+		  }
+		},
+		"sounds": {
+		  "guard": ["/sfx/melee/sword_guard.ogg"],
+		  "parry": ["/sfx/melee/sword_parry.ogg"],
+		  "fireCounter" : [ "/sfx/melee/spear_flurry.ogg" ],
+		  "poisonCounter" : [ "/sfx/melee/spear_flurry.ogg" ],
+		  "iceCounter" : [ "/sfx/melee/spear_flurry.ogg" ],
+		  "electricCounter" : [ "/sfx/melee/spear_flurry.ogg" ]
+		}
+	},
+
+	"ability": {
+		"name": "Parry Counter",
+		"type": "parrycounter",
+		"scripts": ["/items/active/weapons/melee/abilities/katana/parrycounter/parrycounter.lua"],
+		"class": "Parry",
+
+		"energyUsage": 5,
+		"parryTime": 0.6,
+		"cooldownTime": 1.2,
+		"shieldHealth": 25,
+
+		"damageConfig": {
+			"damageSourceKind": "<elementalType>katana",
+			"statusEffects": [],
+			"baseDamage": 22.5,
+			"knockback": 40,
+			"knockbackMode": "facing",
+			"timeoutGroup": "alt",
+			"timeout": 0.5
+		},
+
+		"stances": {
+			"parry": {
+				"armRotation": -45,
+				"weaponRotation": 25,
+				"twoHanded": true,
+
+				"allowRotate": false,
+				"allowFlip": true
+			},
+			"parryWindup": {
+				"duration": 0.15,
+				"armRotation": -100,
+				"weaponRotation": -160,
+				"weaponOffset": [0, 0],
+				"twoHanded": true,
+				"flipx": true,
+				"allowRotate": false,
+				"allowFlip": false
+			},
+			"counter": {
+				"duration": 0.2,
+				"armRotation": 70,
+				"weaponRotation": -150,
+				"weaponOffset": [0, 0],
+				"twoHanded": true,
+				"flipx": true,
+				"allowRotate": false,
+				"allowFlip": false
+			}
+		}
+	}
+}
