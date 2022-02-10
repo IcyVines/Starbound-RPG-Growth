@@ -1,0 +1,11 @@
+{
+    "name": "ivrpg_alchemic_vile",
+    "effectConfig": {},
+    "defaultDuration": 5,
+    "scripts": [
+        "ivrpgalchemiststatus.lua"
+    ],
+    "animationConfig": "ivrpgalchemiststatus.animation",
+    "label": "Vile Vial",
+    "icon": "/professions/alchemist/status/alchemy.png"
+}

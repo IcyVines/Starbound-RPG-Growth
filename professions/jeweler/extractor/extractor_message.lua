@@ -74,7 +74,7 @@ function removeJewelryFromArmor(widgetName)
   local index = 1
   local itemStats = false
 
-  sb.logInfo(sb.printJson(armor))
+  --sb.logInfo(sb.printJson(armor))
 
   if slotType == "main" and armor.parameters.currentAugment.rpg_jewelry.main then
     itemStats = armor.parameters.currentAugment.rpg_jewelry.main.itemStats

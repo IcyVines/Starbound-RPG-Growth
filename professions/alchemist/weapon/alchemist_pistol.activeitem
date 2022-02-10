@@ -59,15 +59,58 @@
     "fireType" : "auto",
 
     "fireTime" : 1,
-    "baseDps" : 1,
+    "baseDps" : 0,
     "energyUsage" : 17.5,
     "inaccuracy" : 0.01,
 
     "projectileCount" : 1,
-    "projectileType" : "mariebullet",
+    "projectileType" : "ivrpg_alchemiccapsule",
     "projectileParameters" : {
       "knockback" : 0,
-      "knockbackRange" : 0
+      "knockbackRange" : 0,
+      "actionOnReap" : [
+        {
+          "action" : "projectile",
+          "type" : "ivrpg_alchemic_explosion",
+          "config" : {}
+        },
+        {
+          "action" : "config",
+          "file" : "/professions/alchemist/weapon/projectile/alchemic_explosion.config"
+        },
+        {
+          "action" : "projectile",
+          "inheritDamageFactor" : 0,
+          "type" : "ivrpg_alchemic_cloud",
+          "fuzzAngle" : 30,
+          "angleAdjust" : 0,
+          "config" : {}
+        },
+        {
+          "action" : "projectile",
+          "inheritDamageFactor" : 0,
+          "type" : "ivrpg_alchemic_cloud",
+          "fuzzAngle" : 30,
+          "angleAdjust" : 90,
+          "config" : {}
+        },
+        {
+          "action" : "projectile",
+          "inheritDamageFactor" : 0,
+          "type" : "ivrpg_alchemic_cloud",
+          "fuzzAngle" : 30,
+          "angleAdjust" : 180,
+          "config" : {}
+        },
+        {
+          "action" : "projectile",
+          "inheritDamageFactor" : 0,
+          "type" : "ivrpg_alchemic_cloud",
+          "fuzzAngle" : 30,
+          "angleAdjust" : 270,
+          "config" : {}
+        }
+      ]
     },
 
     "stances" : {

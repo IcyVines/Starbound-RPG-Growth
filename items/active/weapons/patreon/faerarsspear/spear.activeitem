@@ -54,6 +54,16 @@
 							"mode": "transition",
 							"transition": "idle"
 						},
+						"hold": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "end"
+						},
+						"spin": {
+							"frames": 3,
+							"cycle": 0.1,
+							"mode": "end"
+						},
 						"fireCounter": {
 							"frames": 3,
 							"cycle": 0.1,
@@ -135,6 +145,20 @@
 									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
 								}
 							},
+							"hold": {
+								"properties": {
+									"image": "",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
+							"spin": {
+								"properties": {
+									"image": "",
+									"offset": [4.0, 0],
+									"damageArea": [[-4.75, 1.5], [3, 1], [3, -1], [-4.75, -1.5]]
+								}
+							},
 							"fireCounter": {
 								"properties": {
 									"image": "/items/active/weapons/melee/broadsword/swoosh2/<elementalType>swoosh.png:<frame>?flipy",
@@ -153,10 +177,10 @@
 						"transformationGroups": ["shield"],
 						"rotationCenter": [0, 0],
 						"shieldPoly": [
-						  [-1.75, -3],
-						  [4.2, -3.5],
-						  [4.2, -1.75],
-						  [-1.75, -1.65]
+						  [-1, -5],
+						  [1, -5],
+						  [1, 5],
+						  [-1, 5]
 						]
 					},
 					"partStates": {
@@ -307,15 +331,15 @@
 		}
 	},
 
-	"scripts": ["/items/active/weapons/melee/meleeweapon.lua"],
+	"scripts": ["/items/active/weapons/patreon/faerarsspear/meleeweapon.lua"],
 
-	"elementalType": "physical",
+	"elementalType": "electric",
 
 	"primaryAbilityType": "broadswordcombo",
 	"primaryAbility": {
 		"name": "Combo Slash",
 		"type": "broadswordcombo",
-		"scripts": ["/items/active/weapons/melee/meleecombo.lua"],
+		"scripts": ["/items/active/weapons/patreon/faerarsspear/meleecombo.lua"],
 		"class": "MeleeCombo",
 
 		"comboSteps": 3,
@@ -331,11 +355,12 @@
 		"edgeTriggerGrace": 0.25,
 
 		"fireTime": 0.8,
-		"baseDps": 11,
+		"baseDps": 8,
 
 		"damageConfig": {
-			"damageSourceKind": "broadsword",
+			"damageSourceKind": "electricspear",
 			"statusEffects": [],
+			"knockback" : 20,
 			"knockbackMode": "facing",
 			"timeout": 0.5
 		},
@@ -353,10 +378,10 @@
 
 		"stances": {
 			"idle": {
-				"armRotation": 30,
+				"armRotation": 0,
 				"weaponRotation": 50,
 				"allowRotate": false,
-				"weaponOffset": [0, 0.6],
+				"weaponOffset": [-0.5, 8],
 				"allowFlip": true
 			},
 			"windup1": {
@@ -423,13 +448,13 @@
 				"allowRotate": false,
 				"allowFlip": false
 			},
-			"wait3": {
-				"duration": 0.2,
+			"hold": {
+				"duration": 0,
 				"armRotation": 0,
 				"weaponRotation": -90,
 				"twoHanded": true,
-				"allowRotate": false,
-				"allowFlip": false
+				"allowRotate": true,
+				"allowFlip": true
 			}
 		}
 	},
@@ -444,22 +469,23 @@
 		"energyUsage": 5,
 		"parryTime": 0.4,
 		"cooldownTime": 1.2,
-		"shieldHealth": 25,
+		"shieldHealth": 100,
 
 		"damageConfig": {
-		  "damageSourceKind": "ivrpgsamuraikatana",
+		  "damageSourceKind": "electricspear",
 		  "statusEffects": [],
-		  "baseDamage": 22.5,
+		  "baseDamage": 8,
 		  "knockback": 60,
 		  "knockbackMode": "facing",
 		  "timeoutGroup": "alt",
-		  "timeout": 0.5
+		  "timeout": 0.2
 		},
 
 		"stances": {
 		  "parry": {
 		    "armRotation": -45,
 		    "weaponRotation": 25,
+		    "backArmFrame" : "fall.1",
 		    "twoHanded": true,
 		    "allowRotate": false,
 		    "allowFlip": true

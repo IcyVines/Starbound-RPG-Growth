@@ -29,10 +29,13 @@ function Parry:parry()
 	self.weapon:updateAim()
 	self.weapon:setStance(stance)
 
+  sb.logInfo(sb.printJson(self.shieldHealth))
   status.setPersistentEffects("broadswordParry", {{stat = "shieldHealth", amount = self.shieldHealth * (1 + status.statusProperty("ivrpgstrength") * 0.02)}})
 
+  -- Needed to get the shield poly to line up proper. Don't ask why.
   animator.resetTransformationGroup("shield")
-  animator.rotateTransformationGroup("shield", math.pi / 1.6)
+  animator.rotateTransformationGroup("shield", math.pi / 7)
+  --
   local blockPoly = animator.partPoly("parryShield", "shieldPoly")
   activeItem.setItemShieldPolys({blockPoly})
 
@@ -58,7 +61,7 @@ function Parry:parry()
       if notification.sourceEntityId ~= -65536 and notification.healthLost == 0 then
         animator.playSound("parry")
         animator.setAnimationState("parryShield", "block")
-		self:setState(self.parrywindup)
+		    self:setState(self.parrywindup)
         return
       end
     end
@@ -70,7 +73,6 @@ function Parry:parry()
 
     damageListener:update()
   end)
-  self:setState(self.parrywindup)
   self.cooldownTimer = self.cooldownTime
   activeItem.setItemShieldPolys({})
 end
@@ -156,7 +158,12 @@ function Parry:followUp()
    end 
   
   animator.playSound("fireCounter")
+  animator.setAnimationState("swoosh", "spin")
 
+  world.spawnProjectile("ivrpg_faerarsspear", mcontroller.position(), activeItem.ownerEntityId(), {mcontroller.facingDirection(), 0}, false, {
+    direction = mcontroller.facingDirection(),
+    powerMultiplier = activeItem.ownerPowerMultiplier()
+  })
   util.wait(stance.duration, function()
     local damageArea = partDamageArea("swoosh")
     self.weapon:setDamage(self.damageConfig, damageArea)

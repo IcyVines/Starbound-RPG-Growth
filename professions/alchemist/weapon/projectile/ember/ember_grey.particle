@@ -1,0 +1,21 @@
+{
+  "kind" : "ivrpg_alchemic_ember_grey",
+  "definition" : {
+    "type" : "ember",
+    "size" : 1.0,
+    "color" : [216, 216, 216, 255],
+    "fade" : 0.9,
+    "initialVelocity" : [0, 0],
+    "finalVelocity" : [0, 0],
+    "approach" : [20, 20],
+    "position" : [0, 0],
+    "destructionTime" : 0.8,
+    "layer" : "back",
+    "variance" : {
+      "finalVelocity" : [1.5, 1.5],
+      "position" : [2, 2],
+      "size" : 0.5
+    },
+    "collidesForeground" : false
+  }
+}

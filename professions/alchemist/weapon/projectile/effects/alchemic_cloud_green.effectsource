@@ -1,0 +1,29 @@
+{
+  "kind" : "ivrpg_alchemic_cloud_green",
+  "definition" : {
+    "duration" : 0.04,
+    "loops" : true,
+    "start" : {
+      "particles" : [
+        [ "ivrpg_alchemic_sparkle_green", "ivrpg_alchemic_ember_green", "ivrpg_alchemic_smoke", "ivrpg_alchemic_sparkle_green", "ivrpg_alchemic_ember_green", "ivrpg_alchemic_smoke", "ivrpg_alchemic_sparkle_green", "ivrpg_alchemic_ember_green", "ivrpg_alchemic_smoke" ]
+      ],
+      "sounds" : [
+        [ ]
+      ]
+    },
+    "particles" : [
+      [ "ivrpg_alchemic_sparkle_green", "ivrpg_alchemic_ember_green", "ivrpg_alchemic_smoke" ]
+    ],
+    "sounds" : [
+      [ ]
+    ],
+    "stop" : {
+      "particles" : [
+        [ "ivrpg_alchemic_puff_green", "ivrpg_alchemic_puff_green", "ivrpg_alchemic_puff_green", "ivrpg_alchemic_puff_green", "ivrpg_alchemic_puff_green", "ivrpg_alchemic_puff_green" ]
+      ],
+      "sounds" : [
+        [ ]
+      ]
+    }
+  }
+}

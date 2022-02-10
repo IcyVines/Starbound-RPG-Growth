@@ -1,0 +1,11 @@
+{
+    "name": "ivrpg_alchemic_damagedown1",
+    "effectConfig": {},
+    "defaultDuration": 5,
+    "scripts": [
+        "ivrpgalchemiststatus.lua"
+    ],
+    "animationConfig": "ivrpgalchemiststatus.animation",
+    "label": "Damage Down 1",
+    "icon": "/professions/alchemist/status/alchemy.png"
+}

@@ -1,0 +1,11 @@
+{
+    "name": "ivrpg_alchemic_defensedown3",
+    "effectConfig": {},
+    "defaultDuration": 5,
+    "scripts": [
+        "ivrpgalchemiststatus.lua"
+    ],
+    "animationConfig": "ivrpgalchemiststatus.animation",
+    "label": "Defense Down 3",
+    "icon": "/professions/alchemist/status/alchemy.png"
+}

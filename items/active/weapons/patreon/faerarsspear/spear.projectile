@@ -1,0 +1,18 @@
+{
+  "projectileName" : "ivrpg_faerarsspear",
+  "image" : "spear_projectile.png",
+  "physics" : "laser",
+  "frameNumber" : 1,
+  "pointLight" : false,
+  "speed" : 60,
+  "power" : 10.0,
+  "piercing" : true,
+  "knockback" : 10,
+  "timeToLive" : 1,
+  "damageKind" : "electricspear",
+  "orientationLocked" : true,
+  "damagePoly" : [ [-5, 48], [5, 48], [5, -48], [-5, -48] ],
+  "emitters" : [ "electricplasma" ],
+  "scriptDelta" : 1,
+  "scripts" : ["spin.lua"]
+}

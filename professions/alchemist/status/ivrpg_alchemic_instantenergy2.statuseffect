@@ -1,0 +1,15 @@
+{
+    "name": "ivrpg_alchemic_instantenergy2",
+    "effectConfig": {
+        "onInit" : true,
+        "stat" : "energy",
+        "amount" : 0.1
+    },
+    "defaultDuration": 5,
+    "scripts": [
+        "ivrpgalchemiststatus.lua"
+    ],
+    "animationConfig": "ivrpgalchemiststatus.animation",
+    "label": "Instant Energy 2",
+    "icon": "/professions/alchemist/status/alchemy.png"
+}

@@ -9,9 +9,10 @@ function GunFire:init()
 
   self.cooldownTimer = self.fireTime
 
-  self.ACI = config.getParameter("rpg_ACI")
+  self.ACI = config.getParameter("rpg_ACI", {})
   self.charges = {}
   self.chargeToColor = root.assetJson("/professions/alchemist/potionHues.config")
+  self.hueToColor = root.assetJson("/professions/alchemist/hueToColor.config")
   self.potionConfig = root.assetJson("/professions/alchemist/ivrpg_potion.config")
 
   local count = 1
@@ -73,6 +74,7 @@ function GunFire:update(dt, fireMode, shiftHeld)
   if self.fireMode == (self.activatingFireMode or self.abilitySlot) and not self.shiftHeld
     and not self.weapon.currentAbility
     and self.cooldownTimer == 0
+    and self.potion
     and not status.resourceLocked("energy")
     and not world.lineTileCollision(mcontroller.position(), self:firePosition()) then
 
@@ -166,6 +168,17 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.speed = util.randomInRange(params.speed)
 
+  
+  for _,v in ipairs(params.actionOnReap) do
+    if v.type then v.type = v.type .. "_" .. self.hueToColor[self.potion.hue] end
+    if v.config then
+      v.config.statusEffects = {{effect = self.potion.effect}}
+      v.config.damageTeam = {type = (self.potion.bane and "friendly" or "environment")}
+    end
+  end
+
+  sb.logInfo(sb.printJson(self.potion))
+
   if not projectileType then
     projectileType = self.projectileType
   end
@@ -182,7 +195,7 @@ function GunFire:fireProjectile(projectileType, projectileParams, inaccuracy, fi
     projectileId = world.spawnProjectile(
         projectileType,
         firePosition or self:firePosition(),
-        activeItem.ownerEntityId(),
+        nil,
         self:aimVector(inaccuracy or self.inaccuracy),
         false,
         params

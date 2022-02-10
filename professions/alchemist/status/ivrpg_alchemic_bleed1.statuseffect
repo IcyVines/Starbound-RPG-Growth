@@ -1,0 +1,17 @@
+{
+    "name": "ivrpg_alchemic_bleed1",
+    "effectConfig": {
+        "stats" : {
+            "ivrpgBleedChance" : 0.05,
+            "powerMultiplier" : 0.05
+        },
+        "when" : "energyNotMaxed"
+    },
+    "defaultDuration": 5,
+    "scripts": [
+        "ivrpgalchemiststatus.lua"
+    ],
+    "animationConfig": "ivrpgalchemiststatus.animation",
+    "label": "Dragon's Breath 1",
+    "icon": "/professions/alchemist/status/alchemy.png"
+}

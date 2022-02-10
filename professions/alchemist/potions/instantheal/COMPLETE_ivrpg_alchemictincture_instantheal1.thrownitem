@@ -6,6 +6,7 @@
   "image" : "ivrpg_alchemicinstantred.png",
   "shortdescription" : "Tincture: Instant Heal I",
   "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
 
@@ -19,7 +20,7 @@
     "power" : 0,
     "parameters" : {
       "damageTeam" : { "type" : "environment" },
-      "statusEffects" : [ "regeneration2" ]
+      "statusEffects" : [ { "effect" : "ivrpg_alchemic_instantheal1", "duration" : 5 } ]
     },
     "periodicActions" : [
       {
@@ -27,6 +28,13 @@
         "repeat" : false,
         "action" : "sound",
         "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ],
+    "actionOnReap" : [
+      {
+        "action" : "projectile",
+        "type" : "ivrpg_alchemic_explosion_red",
+        "config" : {}
       }
     ]
   }

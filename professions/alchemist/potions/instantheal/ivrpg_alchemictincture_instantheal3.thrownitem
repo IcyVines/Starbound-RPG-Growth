@@ -13,10 +13,14 @@
   "windupTime" : 0.0,
   "cooldown" : 0.4,
 
-  "projectileType" : "snowball",
+  "projectileType" : "ivrpg_alchemictincture_red",
   "projectileConfig" : {
     "speed" : 40,
-    "power" : 0.75,
+    "power" : 0,
+    "parameters" : {
+      "damageTeam" : { "type" : "environment" },
+      "statusEffects" : [ "regeneration4" ]
+    },
     "periodicActions" : [
       {
         "time" : 0,

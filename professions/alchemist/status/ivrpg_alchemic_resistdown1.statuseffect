@@ -1,0 +1,11 @@
+{
+    "name": "ivrpg_alchemic_resistdown1",
+    "effectConfig": {},
+    "defaultDuration": 5,
+    "scripts": [
+        "ivrpgalchemiststatus.lua"
+    ],
+    "animationConfig": "ivrpgalchemiststatus.animation",
+    "label": "Resist Down 1",
+    "icon": "/professions/alchemist/status/alchemy.png"
+}

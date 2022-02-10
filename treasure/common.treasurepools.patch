@@ -121,7 +121,7 @@
 	},
 	{
 	"op": "add",
-	"path": "uniqueWeapon/2/1/pool/-",
+	"path": "/uniqueWeapon/2/1/pool/-",
 	"value": {"weight": 1.0, "item": "ivrpg_ziaslegacy"}
 	}
 ]

@@ -1,0 +1,11 @@
+{
+    "name": "ivrpg_alchemic_damage1",
+    "effectConfig": {},
+    "defaultDuration": 5,
+    "scripts": [
+        "ivrpgalchemiststatus.lua"
+    ],
+    "animationConfig": "ivrpgalchemiststatus.animation",
+    "label": "Dragon's Blood 1",
+    "icon": "/professions/alchemist/status/alchemy.png"
+}

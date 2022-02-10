@@ -1,0 +1,11 @@
+{
+    "name": "ivrpg_alchemic_defense2",
+    "effectConfig": {},
+    "defaultDuration": 5,
+    "scripts": [
+        "ivrpgalchemiststatus.lua"
+    ],
+    "animationConfig": "ivrpgalchemiststatus.animation",
+    "label": "Iron Skin 2",
+    "icon": "/professions/alchemist/status/alchemy.png"
+}

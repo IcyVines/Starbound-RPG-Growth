@@ -1,0 +1,11 @@
+{
+    "name": "ivrpg_alchemic_heal4",
+    "effectConfig": {},
+    "defaultDuration": 5,
+    "scripts": [
+        "ivrpgalchemiststatus.lua"
+    ],
+    "animationConfig": "ivrpgalchemiststatus.animation",
+    "label": "Auto Heal 4",
+    "icon": "/professions/alchemist/status/alchemy.png"
+}

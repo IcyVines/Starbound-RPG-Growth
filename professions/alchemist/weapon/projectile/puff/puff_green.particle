@@ -1,0 +1,18 @@
+{
+  "kind" : "ivrpg_alchemic_puff_green",
+  "definition" : {
+    "type" : "animated",
+    "animation" : "/professions/alchemist/weapon/projectile/puff/puff_green.animation",
+    "position" : [0, 0],
+    "finalVelocity" : [0, 0],
+    "approach" : [50, 50],
+    "size" : 1.0,
+    "destructionTime" : 0.425,
+    "layer" : "middle",
+    "variance" : {
+      "finalVelocity" : [1.5, 1.5],
+      "position" : [2, 2]
+    },
+    "collidesForeground" : false
+  }
+}

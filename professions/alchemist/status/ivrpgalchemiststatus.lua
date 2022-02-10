@@ -3,30 +3,29 @@ require "/scripts/util.lua"
 
 function init()
   _,self.damageUpdate = status.damageTakenSince()
-  self.colors = config.getParameter("colors", {})
-  self.elements = config.getParameter("elements", {})
   self.id = entity.id()
+  if config.getParameter("onInit") then
+    status.modifyResourcePercentage(config.getParameter("stat", "health"), config.getParameter("amount", 0))
+  end
 end
 
 function update(dt)
-  --While Underground, gain +10 Armor, +10% Physical Resistance, and +20% Fall Damage Resistance.
-  damageGiven()
-  reset()
-
-  local directives = ""
-  local directivesCount = 0
-  for element,timer in pairs(self.elements) do
-    if timer > 0 then
-      status.addPersistentEffect("ivrpgalchemiststatus", {stat = element .. "Resistance", amount = 0.5})
-      if directivesCount < 2 then
-        directives = directives .. "?border=1;" .. self.colors[element] .. ";" .. self.colors[element]
-        directivesCount = directivesCount + 1
-      end
-    end
-    self.elements[element] = math.max(self.elements[element] - dt, 0)
+  effects = {}
+  for stat,amount in pairs(config.getParameter("stats", {})) do
+    table.insert(effects, {stat = stat, amount = amount})
   end
-  effect.setParentDirectives(directives)
 
+  allowed = true
+  when = config.getParameter("when")
+  if when then
+    if when == "energyNotMaxed" and status.resource("energy") >= status.resourceMax("energy") then allowed = false end
+  end
+
+  if allowed then
+    status.setPersistentEffects("ivrpg_alchemist_status", effects)
+  else
+    effect.expire()
+  end
 end
 
 function uninit()
@@ -34,7 +33,7 @@ function uninit()
 end
 
 function reset()
-  status.clearPersistentEffects("ivrpgalchemiststatus")
+  status.clearPersistentEffects("ivrpg_alchemist_status")
 end
 
 function damageGiven()

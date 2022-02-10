@@ -1,0 +1,18 @@
+{
+  "projectileName" : "ivrpg_alchemic_explosion_purple",
+  "image" : "ivrpg_alchemic_explosion_purple.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 6,
+  "speed" : 0,
+  "lightColor" : [160, 80, 160],
+  "pointLight" : true,
+  "damagePoly" : [ [-37, 0], [-28, -28], [0, -37], [28, -28], [37, 0], [28, 28], [0, 37], [-28, 28] ],
+  "animationLoops" : false,
+  "bounces" : -1,
+  "flippable" : true,
+  "power" : 0,
+  "piercing" : true,
+  "damageType" : "IgnoresDef",
+  "damageKind" : "hidden",
+  "damageTeam" : { "type" : "indiscriminate" }
+}

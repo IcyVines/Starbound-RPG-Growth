@@ -1,0 +1,11 @@
+{
+    "name": "ivrpg_alchemic_fairy3",
+    "effectConfig": {},
+    "defaultDuration": 5,
+    "scripts": [
+        "ivrpgalchemiststatus.lua"
+    ],
+    "animationConfig": "ivrpgalchemiststatus.animation",
+    "label": "Fairy Dust 3",
+    "icon": "/professions/alchemist/status/alchemy.png"
+}
