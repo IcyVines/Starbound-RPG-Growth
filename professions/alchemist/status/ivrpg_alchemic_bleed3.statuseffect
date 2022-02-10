@@ -4,7 +4,8 @@
         "stats" : {
             "ivrpgBleedChance" : 0.15,
             "powerMultiplier" : 0.15
-        }
+        },
+        "when" : "energyNotMaxed"
     },
     "defaultDuration": 5,
     "scripts": [

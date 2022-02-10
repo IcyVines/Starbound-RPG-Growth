@@ -7,6 +7,7 @@ function init()
   if config.getParameter("onInit") then
     status.modifyResourcePercentage(config.getParameter("stat", "health"), config.getParameter("amount", 0))
   end
+  status.setStatusProperty("ivrpg_alchemy_active", true)
 end
 
 function update(dt)
@@ -26,10 +27,17 @@ function update(dt)
   else
     effect.expire()
   end
+
+  self.toxicity = status.statusProperty("ivrpg_alchemic_toxicity", 0)
+  status.setStatusProperty("ivrpg_alchemic_toxicity", self.toxicity + dt)
+  status.setPersistentEffects("ivrpg_alchemy_active", {
+    {stat = "ivrpg_alchemy_active", amount = 1}
+  })
 end
 
 function uninit()
   reset()
+  status.clearPersistentEffects("ivrpg_alchemy_active")
 end
 
 function reset()

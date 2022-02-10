@@ -196,6 +196,21 @@ function update(dt)
   end
   self.rpg_level = newLevel
 
+  -- Alchemist
+  toxicity = status.statusProperty("ivrpg_alchemic_toxicity", 0)
+  if not status.statPositive("ivrpg_alchemy_active") then
+    status.setStatusProperty("ivrpg_alchemic_toxicity", math.max(toxicity - dt * (toxicity + 20) / 20, 0))
+  end
+
+  if toxicity >= 30 then
+    status.setPersistentEffects("ivrpg_alchemic_toxicity", {
+      {stat = "maxEnergy", effectiveMultiplier = 30 / toxicity},
+      {stat = "powerMultiplier", effectiveMultiplier = 30 / toxicity},
+    })
+  else
+    status.clearPersistentEffects("ivrpg_alchemic_toxicity")
+  end
+
 end
 
 function updateLore()
