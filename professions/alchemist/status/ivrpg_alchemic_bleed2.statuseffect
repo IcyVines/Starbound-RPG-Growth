@@ -10,6 +10,6 @@
         "ivrpgalchemiststatus.lua"
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
-    "label": "Dragon's Breath 2",
+    "label": "Dragon's Breath II",
     "icon": "/professions/alchemist/status/alchemy.png"
 }

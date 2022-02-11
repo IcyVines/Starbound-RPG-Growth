@@ -1,11 +1,24 @@
 {
     "name": "ivrpg_alchemic_resistdown2",
-    "effectConfig": {},
-    "defaultDuration": 5,
+    "effectConfig": {
+        "stats" : {
+            "fireResistance" : -0.15,
+            "iceResistance" : -0.15,
+            "poisonResistance" : -0.15,
+            "electricResistance" : -0.15,
+            "novaResistance" : -0.15,
+            "holyResistance" : -0.15,
+            "demonicResistance" : -0.15,
+            "radioactiveResistance" : -0.15,
+            "shadowResistance" : -0.15,
+            "cosmicResistance" : -0.15
+        }
+    },
+    "defaultDuration": 30,
     "scripts": [
         "ivrpgalchemiststatus.lua"
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
-    "label": "Resist Down 2",
+    "label": "Resist Down II",
     "icon": "/professions/alchemist/status/alchemy.png"
 }

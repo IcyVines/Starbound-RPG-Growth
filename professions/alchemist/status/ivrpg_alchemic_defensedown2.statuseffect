@@ -1,11 +1,15 @@
 {
     "name": "ivrpg_alchemic_defensedown2",
-    "effectConfig": {},
-    "defaultDuration": 5,
+    "effectConfig": {
+        "stats" : {
+            "physicalResistance" : -0.15
+        }
+    },
+    "defaultDuration": 30,
     "scripts": [
         "ivrpgalchemiststatus.lua"
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
-    "label": "Defense Down 2",
+    "label": "Defense Down II",
     "icon": "/professions/alchemist/status/alchemy.png"
 }

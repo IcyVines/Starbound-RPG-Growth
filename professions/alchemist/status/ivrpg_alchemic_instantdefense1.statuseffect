@@ -1,11 +1,16 @@
 {
     "name": "ivrpg_alchemic_instantdefense1",
-    "effectConfig": {},
-    "defaultDuration": 5,
+    "effectConfig": {
+        "stats" : {
+            "protection" : 10
+        },
+        "toxicityModifier" : 6
+    },
+    "defaultDuration": 30,
     "scripts": [
         "ivrpgalchemiststatus.lua"
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
-    "label": "Instant Defense 1",
+    "label": "Instant Defense I",
     "icon": "/professions/alchemist/status/alchemy.png"
 }

@@ -1,11 +1,15 @@
 {
     "name": "ivrpg_alchemic_fairy1",
-    "effectConfig": {},
-    "defaultDuration": 5,
+    "effectConfig": {
+        "type" : "fairy",
+        "charges" : 1,
+        "toxicityModifier" : 6
+    },
+    "defaultDuration": 30,
     "scripts": [
         "ivrpgalchemiststatus.lua"
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
-    "label": "Fairy Dust 1",
+    "label": "Fairy Dust I",
     "icon": "/professions/alchemist/status/alchemy.png"
 }

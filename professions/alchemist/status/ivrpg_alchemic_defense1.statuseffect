@@ -1,11 +1,19 @@
 {
     "name": "ivrpg_alchemic_defense1",
-    "effectConfig": {},
-    "defaultDuration": 5,
+    "effectConfig": {
+        "type" : "defense",
+        "stats" : {
+            "physicalResistance" : 0.2
+        },
+        "when" : "notTakingDamage",
+        "charges" : 1,
+        "toxicityModifier" : 12
+    },
+    "defaultDuration": 60,
     "scripts": [
         "ivrpgalchemiststatus.lua"
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
-    "label": "Iron Skin 1",
+    "label": "Iron Skin I",
     "icon": "/professions/alchemist/status/alchemy.png"
 }
