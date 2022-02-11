@@ -1,7 +1,13 @@
 {
     "name": "ivrpg_alchemic_heal3",
-    "effectConfig": {},
-    "defaultDuration": 5,
+    "effectConfig": {
+        "type" : "heal",
+        "autoHeal" : 0.33,
+        "charges" : 3,
+        "when" : 0.5,
+        "toxicityModifier" : 12
+    },
+    "defaultDuration": 60,
     "scripts": [
         "ivrpgalchemiststatus.lua"
     ],

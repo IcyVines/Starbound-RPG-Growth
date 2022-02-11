@@ -1,7 +1,15 @@
 {
     "name": "ivrpg_alchemic_damage4",
-    "effectConfig": {},
-    "defaultDuration": 5,
+    "effectConfig": {
+        "type" : "damage",
+        "stats" : {
+            "powerMultiplier" : 1
+        },
+        "charges" : 4,
+        "when" : "notDealingDamage",
+        "toxicityModifier" : 12
+    },
+    "defaultDuration": 60,
     "scripts": [
         "ivrpgalchemiststatus.lua"
     ],

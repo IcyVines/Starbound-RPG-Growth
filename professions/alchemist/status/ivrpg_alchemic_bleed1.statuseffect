@@ -1,13 +1,11 @@
 {
     "name": "ivrpg_alchemic_bleed1",
     "effectConfig": {
-        "stats" : {
-            "ivrpgBleedChance" : 0.05,
-            "powerMultiplier" : 0.05
-        },
-        "when" : "energyNotMaxed"
+        "type" : "bleed",
+        "charges" : 1,
+        "toxicityModifier" : 12
     },
-    "defaultDuration": 5,
+    "defaultDuration": 60,
     "scripts": [
         "ivrpgalchemiststatus.lua"
     ],

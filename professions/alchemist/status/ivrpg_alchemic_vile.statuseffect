@@ -1,6 +1,11 @@
 {
     "name": "ivrpg_alchemic_vile",
-    "effectConfig": {},
+    "effectConfig": {
+        "stats" : {
+            "ivrpgstealth" : 1
+        },
+        "when" : "notDealingDamage"
+    },
     "defaultDuration": 5,
     "scripts": [
         "ivrpgalchemiststatus.lua"
