@@ -2,10 +2,11 @@
   "itemName" : "ivrpg_alchemictincture_instantenergy1",
   "rarity" : "Uncommon",
   "category" : "throwableItem",
-  "inventoryIcon" : "ivrpg_alchemicinstantgreen.png",
-  "image" : "ivrpg_alchemicinstantgreen.png",
-  "shortdescription" : "Tincture: Instant Energy I",
-  "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "inventoryIcon" : "ivrpg_alchemictincturegreen.png",
+  "image" : "ivrpg_alchemictincturegreen.png",
+  "shortdescription" : "Tincture: Energy I",
+  "description" : "Instantly restores 5% Maximum Energy.",
+  "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
 
@@ -13,13 +14,13 @@
   "windupTime" : 0.0,
   "cooldown" : 0.4,
 
-  "projectileType" : "ivrpg_alchemicpotion_friendly",
+  "projectileType" : "ivrpg_alchemictincture_green",
   "projectileConfig" : {
     "speed" : 40,
     "power" : 0,
     "parameters" : {
       "damageTeam" : { "type" : "environment" },
-      "statusEffects" : [ "regeneration2" ]
+      "statusEffects" : [ { "effect" : "ivrpg_alchemic_instantenergy1", "duration" : 5 } ]
     },
     "periodicActions" : [
       {
@@ -27,6 +28,13 @@
         "repeat" : false,
         "action" : "sound",
         "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ],
+    "actionOnReap" : [
+      {
+        "action" : "projectile",
+        "type" : "ivrpg_alchemic_explosion_green",
+        "config" : {}
       }
     ]
   }

@@ -6,6 +6,7 @@
   "image" : "ivrpg_alchemicpotionblue.png",
   "shortdescription" : "Potion: Status Resist III",
   "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
 
@@ -13,16 +14,27 @@
   "windupTime" : 0.0,
   "cooldown" : 0.4,
 
-  "projectileType" : "snowball",
+  "projectileType" : "ivrpg_alchemicpotion_blue",
   "projectileConfig" : {
     "speed" : 40,
-    "power" : 0.75,
+    "power" : 0,
+    "parameters" : {
+      "damageTeam" : { "type" : "environment" },
+      "statusEffects" : [ { "effect" : "ivrpg_alchemic_resist3", "duration" : 5 } ]
+    },
     "periodicActions" : [
       {
         "time" : 0,
         "repeat" : false,
         "action" : "sound",
         "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ],
+    "actionOnReap" : [
+      {
+        "action" : "projectile",
+        "type" : "ivrpg_alchemic_explosion_blue",
+        "config" : {}
       }
     ]
   }

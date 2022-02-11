@@ -1,0 +1,16 @@
+{
+  "projectileName" : "ivrpg_alchemicbane_green",
+  "speed" : 10,
+  "power" : 0,
+  "flippable" : true,
+  "physics" : "bowlder",
+  "image" : "ivrpg_alchemicbanegreen.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 1,
+  "damageKind" : "hidden",
+  "damagePoly" : [ [-7, 0], [-4.6, -4.6], [0, -7], [4.6, -4.6], [7, 0], [4.6, 4.6], [0, 7], [-4.6, 4.6] ],
+  "movementSettings" : {
+    "collisionPoly" : [ [0.5, 0.5], [-0.5, 0.5], [-0.5, -0.5], [0.5, 0.5] ]
+  },
+  "scripts" : ["/professions/alchemist/potions/potion.lua"]
+}

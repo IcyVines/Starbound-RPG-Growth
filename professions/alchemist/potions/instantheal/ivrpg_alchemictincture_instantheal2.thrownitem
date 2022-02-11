@@ -2,10 +2,11 @@
   "itemName" : "ivrpg_alchemictincture_instantheal2",
   "rarity" : "Rare",
   "category" : "throwableItem",
-  "inventoryIcon" : "ivrpg_alchemicinstantred.png",
-  "image" : "ivrpg_alchemicinstantred.png",
-  "shortdescription" : "Tincture: Instant Heal II",
-  "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "inventoryIcon" : "ivrpg_alchemictincturered.png",
+  "image" : "ivrpg_alchemictincturered.png",
+  "shortdescription" : "Tincture: Health II",
+  "description" : "Instantly restores 10% Maximum Health.",
+  "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
 
@@ -19,7 +20,7 @@
     "power" : 0,
     "parameters" : {
       "damageTeam" : { "type" : "environment" },
-      "statusEffects" : [ "regeneration3" ]
+      "statusEffects" : [ { "effect" : "ivrpg_alchemic_instantheal2", "duration" : 5 } ]
     },
     "periodicActions" : [
       {
@@ -27,6 +28,13 @@
         "repeat" : false,
         "action" : "sound",
         "options" : [ "/sfx/projectiles/throw_item_small.ogg" ]
+      }
+    ],
+    "actionOnReap" : [
+      {
+        "action" : "projectile",
+        "type" : "ivrpg_alchemic_explosion_red",
+        "config" : {}
       }
     ]
   }

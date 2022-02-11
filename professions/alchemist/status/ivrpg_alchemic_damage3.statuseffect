@@ -8,7 +8,7 @@
         "charges" : 3,
         "when" : "notDealingDamage",
         "toxicityModifier" : 12
-    },    },
+    },
     "defaultDuration": 60,
     "scripts": [
         "ivrpgalchemiststatus.lua"

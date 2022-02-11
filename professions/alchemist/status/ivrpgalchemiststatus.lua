@@ -7,8 +7,10 @@ function init()
   self.toxicity = status.statusProperty("ivrpg_alchemic_toxicity", 0)
 
   self.toxicityModifier = config.getParameter("toxicityModifier", 1)
-  self.lastMaxEnergy = status.resourceMax("energy")
-  self.lastEnergy = status.resource("energy")
+  if status.isResource("energy") then
+    self.lastMaxEnergy = status.resourceMax("energy")
+    self.lastEnergy = status.resource("energy")
+  end
   self.when = config.getParameter("when")
   self.type = config.getParameter("type")
   self.charges = config.getParameter("charges", 0)
@@ -69,8 +71,10 @@ function update(dt)
     end
   end
 
-  self.lastMaxEnergy = status.resourceMax("energy")
-  self.lastEnergy = status.resource("energy")
+  if status.isResource("energy") then
+    self.lastMaxEnergy = status.resourceMax("energy")
+    self.lastEnergy = status.resource("energy")
+  end
   damageGiven()
 
   -- Apply new toxicity
