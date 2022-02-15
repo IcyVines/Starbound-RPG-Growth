@@ -28,6 +28,22 @@
     }
   ],
 
+  "learnBlueprintsOnPickup" : [
+    "ivrpg_alchemicpotion_heal1",
+    "ivrpg_alchemicpotion_defense1",
+    "ivrpg_alchemicpotion_damage1",
+    "ivrpg_alchemicpotion_bleed1",
+    "ivrpg_alchemicpotion_fairy1",
+    "ivrpg_alchemicpotion_vile1",
+    "ivrpg_alchemicpotion_resist1",
+    "ivrpg_alchemicbane_defensedown1",
+    "ivrpg_alchemicbane_resistdown1",
+    "ivrpg_alchemicbane_damagedown1",
+    "ivrpg_alchemictincture_instantdefense1",
+    "ivrpg_alchemictincture_instantenergy1",
+    "ivrpg_alchemictincture_instantheal1"
+  ],
+
   "proftype" : 3,
 
   "scripts" : ["/professions/table.lua"],

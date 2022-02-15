@@ -4,8 +4,8 @@
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemicpotiongrey.png",
   "image" : "ivrpg_alchemicpotiongrey.png",
-  "shortdescription" : "Potion: Iron Skin I",
-  "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "shortdescription" : "Iron Skin I",
+  "description" : "Increases Physical Resistance by 20% for one hit.",
   "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
@@ -20,7 +20,7 @@
     "power" : 0,
     "parameters" : {
       "damageTeam" : { "type" : "environment" },
-      "statusEffects" : [ { "effect" : "ivrpg_alchemic_defense1", "duration" : 5 } ]
+      "statusEffects" : [ { "effect" : "ivrpg_alchemic_defense1", "duration" : 60 } ]
     },
     "periodicActions" : [
       {
@@ -37,6 +37,6 @@
         "config" : {}
       }
     ]
-  }
-
+  },
+  "learnBlueprintsOnPickup" : ["ivrpg_alchemicpotion_defense2"]
 }

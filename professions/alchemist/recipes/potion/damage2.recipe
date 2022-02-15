@@ -1,0 +1,21 @@
+{
+    "input": [
+        {
+            "item": "bottle",
+            "count": 1
+        },
+        {
+            "item": "salve",
+            "count": 1
+        }
+    ],
+    "output": {
+        "item": "ivrpg_alchemicpotion_damage2",
+        "count": 1
+    },
+    "groups": [
+        "ivrpgalchemiststation",
+        "potions",
+        "all"
+    ]
+}

@@ -4,8 +4,8 @@
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemicpotiongreen.png",
   "image" : "ivrpg_alchemicpotiongreen.png",
-  "shortdescription" : "Potion: Vile Vial",
-  "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "shortdescription" : "Vile Vial",
+  "description" : "Causes enemies to de-aggro for 5 Seconds.",
   "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,

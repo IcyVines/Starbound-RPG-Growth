@@ -4,8 +4,8 @@
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemicpotionred.png",
   "image" : "ivrpg_alchemicpotionred.png",
-  "shortdescription" : "Potion: Auto Heal I",
-  "description" : "Why does this smell like vodka and tears?",
+  "shortdescription" : "Auto Heal I",
+  "description" : "Regenerates 33% Max Health when Health falls below 50%, then expires.",
   "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
@@ -20,7 +20,7 @@
     "power" : 0,
     "parameters" : {
       "damageTeam" : { "type" : "environment" },
-      "statusEffects" : [ { "effect" : "ivrpg_alchemic_heal1", "duration" : 5 } ]
+      "statusEffects" : [ { "effect" : "ivrpg_alchemic_heal1", "duration" : 60 } ]
     },
     "periodicActions" : [
       {
@@ -37,6 +37,6 @@
         "config" : {}
       }
     ]
-  }
-
+  },
+  "learnBlueprintsOnPickup" : ["ivrpg_alchemicpotion_heal2"]
 }

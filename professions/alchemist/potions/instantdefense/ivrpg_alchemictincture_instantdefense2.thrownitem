@@ -4,8 +4,8 @@
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemictincturegrey.png",
   "image" : "ivrpg_alchemicinstantgrey.png",
-  "shortdescription" : "Tincture: Instant Defense II",
-  "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "shortdescription" : "Instant Defense II",
+  "description" : "Grants +15 Protection for 30 Seconds. Stacks with lower tiers.",
   "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
@@ -20,7 +20,7 @@
     "power" : 0,
     "parameters" : {
       "damageTeam" : { "type" : "environment" },
-      "statusEffects" : [ { "effect" : "ivrpg_alchemic_instantdefense2", "duration" : 5 } ]
+      "statusEffects" : [ { "effect" : "ivrpg_alchemic_instantdefense2", "duration" : 30 } ]
     },
     "periodicActions" : [
       {
@@ -37,6 +37,6 @@
         "config" : {}
       }
     ]
-  }
-
+  },
+  "learnBlueprintsOnPickup" : ["ivrpg_alchemictincture_instantdefense3"]
 }

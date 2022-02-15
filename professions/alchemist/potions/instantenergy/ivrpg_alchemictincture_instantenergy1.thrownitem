@@ -4,8 +4,8 @@
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemictincturegreen.png",
   "image" : "ivrpg_alchemictincturegreen.png",
-  "shortdescription" : "Tincture: Energy I",
-  "description" : "Instantly restores 5% Maximum Energy.",
+  "shortdescription" : "Instant Energy I",
+  "description" : "Instantly restores 5% Maximum Energy. Lasts for 5 Seconds.",
   "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
@@ -37,6 +37,6 @@
         "config" : {}
       }
     ]
-  }
-
+  },
+  "learnBlueprintsOnPickup" : ["ivrpg_alchemictincture_instantenergy2"]
 }

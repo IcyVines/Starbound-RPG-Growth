@@ -4,8 +4,8 @@
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemicpotionred.png",
   "image" : "ivrpg_alchemicpotionred.png",
-  "shortdescription" : "Potion: Auto Heal III",
-  "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "shortdescription" : "Auto Heal III",
+  "description" : "Regenerates 33% Max Health when Health falls below 50%, then expires. Applies Auto Heal II when effect expires.",
   "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
@@ -20,7 +20,7 @@
     "power" : 0,
     "parameters" : {
       "damageTeam" : { "type" : "environment" },
-      "statusEffects" : [ { "effect" : "ivrpg_alchemic_heal3", "duration" : 5 } ]
+      "statusEffects" : [ { "effect" : "ivrpg_alchemic_heal3", "duration" : 60 } ]
     },
     "periodicActions" : [
       {
@@ -37,6 +37,6 @@
         "config" : {}
       }
     ]
-  }
-
+  },
+  "learnBlueprintsOnPickup" : ["ivrpg_alchemicpotion_heal4"]
 }

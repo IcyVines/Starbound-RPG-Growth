@@ -16,7 +16,7 @@
     "fontSize" : 7,
     "hAnchor" : "left",
     "vAnchor" : "top",
-    "wrapWidth" : 122
+    "wrapWidth" : 120
   },
   "objectImage" : {
     "type" : "image",

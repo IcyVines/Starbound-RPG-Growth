@@ -4,8 +4,8 @@
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemicbaneblue.png",
   "image" : "ivrpg_alchemicbaneblue.png",
-  "shortdescription" : "Bane: Resist Down III",
-  "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "shortdescription" : "Resist Down III",
+  "description" : "Decreases Enemy Element Resistance by 25% for 30 Seconds. Stacks with lower tiers.",
   "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
@@ -19,8 +19,8 @@
     "speed" : 40,
     "power" : 0,
     "parameters" : {
-      "damageTeam" : { "type" : "environment" },
-      "statusEffects" : [ { "effect" : "ivrpg_alchemic_resistdown3", "duration" : 5 } ]
+      "damageTeam" : { "type" : "friendly" },
+      "statusEffects" : [ { "effect" : "ivrpg_alchemic_resistdown3", "duration" : 30 } ]
     },
     "periodicActions" : [
       {

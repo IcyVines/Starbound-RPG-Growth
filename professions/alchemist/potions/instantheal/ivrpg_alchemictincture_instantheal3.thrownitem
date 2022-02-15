@@ -4,8 +4,8 @@
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemictincturered.png",
   "image" : "ivrpg_alchemictincturered.png",
-  "shortdescription" : "Tincture: Health III",
-  "description" : "Instantly restores 20% Maximum Health.",
+  "shortdescription" : "Instant Health III",
+  "description" : "Instantly restores 20% Maximum Health. Lasts for 5 Seconds.",
   "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,

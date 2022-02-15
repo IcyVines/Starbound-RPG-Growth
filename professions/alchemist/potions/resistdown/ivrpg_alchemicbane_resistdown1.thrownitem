@@ -1,11 +1,11 @@
 {
   "itemName" : "ivrpg_alchemicbane_resistdown1",
-  "rarity" : "uncommon",
+  "rarity" : "Uncommon",
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemicbaneblue.png",
   "image" : "ivrpg_alchemicbaneblue.png",
-  "shortdescription" : "Bane: Resist Down I",
-  "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "shortdescription" : "Resist Down I",
+  "description" : "Decreases Enemy Element Resistance by 10% for 30 Seconds.",
   "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,
@@ -19,8 +19,8 @@
     "speed" : 40,
     "power" : 0,
     "parameters" : {
-      "damageTeam" : { "type" : "environment" },
-      "statusEffects" : [ { "effect" : "ivrpg_alchemic_resistdown1", "duration" : 5 } ]
+      "damageTeam" : { "type" : "friendly" },
+      "statusEffects" : [ { "effect" : "ivrpg_alchemic_resistdown1", "duration" : 30 } ]
     },
     "periodicActions" : [
       {
@@ -37,6 +37,6 @@
         "config" : {}
       }
     ]
-  }
-
+  },
+  "learnBlueprintsOnPickup" : ["ivrpg_alchemicbane_resistdown2"]
 }

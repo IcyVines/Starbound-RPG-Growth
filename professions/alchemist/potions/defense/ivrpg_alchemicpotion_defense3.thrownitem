@@ -4,8 +4,8 @@
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemicpotiongrey.png",
   "image" : "ivrpg_alchemicpotiongrey.png",
-  "shortdescription" : "Potion: Iron Skin III",
-  "description" : "I would say be careful not to drop it, but that would be dumb.",
+  "shortdescription" : "Iron Skin III",
+  "description" : "Increases Physical Resistance by 20% for one hit. Applies Iron Skin II when effect expires.",
   "tooltipKind" : "ivrpg_base",
 
   "ammoUsage" : 1,

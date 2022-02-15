@@ -9,7 +9,6 @@
             "weakpoison" : "poison"
         },
         "bonusResist" : 0.5,
-        "when" : "notTakingDamage",
         "charges" : 3,
         "toxicityModifier" : 12
     },

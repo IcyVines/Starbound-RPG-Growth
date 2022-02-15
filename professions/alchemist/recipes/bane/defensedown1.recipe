@@ -1,0 +1,21 @@
+{
+    "input": [
+        {
+            "item": "bottle",
+            "count": 1
+        },
+        {
+            "item": "salve",
+            "count": 1
+        }
+    ],
+    "output": {
+        "item": "ivrpg_alchemicbane_defensedown1",
+        "count": 1
+    },
+    "groups": [
+        "ivrpgalchemiststation",
+        "banes",
+        "all"
+    ]
+}
