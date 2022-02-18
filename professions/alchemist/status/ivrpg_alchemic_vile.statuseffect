@@ -1,6 +1,7 @@
 {
     "name": "ivrpg_alchemic_vile",
     "effectConfig": {
+        "type" : "vile",
         "stats" : {
             "ivrpgstealth" : 1
         },

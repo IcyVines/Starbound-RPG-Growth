@@ -29,7 +29,6 @@ function Parry:parry()
 	self.weapon:updateAim()
 	self.weapon:setStance(stance)
 
-  sb.logInfo(sb.printJson(self.shieldHealth))
   status.setPersistentEffects("broadswordParry", {{stat = "shieldHealth", amount = self.shieldHealth * (1 + status.statusProperty("ivrpgstrength") * 0.02)}})
 
   -- Needed to get the shield poly to line up proper. Don't ask why.

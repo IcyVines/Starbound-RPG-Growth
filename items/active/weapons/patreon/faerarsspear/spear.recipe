@@ -1,0 +1,10 @@
+{
+  "input" : [
+    { "item" : "durasteelbar", "count" : 4 },
+    { "item" : "refinedferozium", "count" : 2 },
+    { "item" : "staticcell", "count" : 2 },
+    { "item" : "solariumstar", "count" : 5 }
+  ],
+	"output" : { "item" : "ivrpgw_eldnir", "count" : 1 },
+	"groups" : [ "craftinganvil3", "weapons", "all" ]
+}

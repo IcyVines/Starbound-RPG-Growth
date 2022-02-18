@@ -4,7 +4,8 @@
   "rarity" : "Rare",
   "category" : "craftingMaterial",
   "inventoryIcon" : "platinumbar.png",
-  "description" : "An alloy made from Durasteel and Titanium that behaves quite like platinum. From RPG Growth.",
+  "description" : "An alloy made from Durasteel and Titanium that behaves quite like platinum.",
   "shortdescription" : "D-Platinum Bar",
+  "tooltipKind" : "ivrpg_base",
   "itemTags" : [ "reagent" ]
 }

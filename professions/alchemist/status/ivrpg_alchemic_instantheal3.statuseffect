@@ -1,6 +1,7 @@
 {
     "name": "ivrpg_alchemic_instantheal3",
     "effectConfig": {
+        "type" : "instantheal",
         "onInit" : true,
         "stat" : "health",
         "amount" : 0.2
@@ -10,6 +11,6 @@
         "ivrpgalchemiststatus.lua"
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
-    "label": "Instant Heal 3",
-    "icon": "/professions/alchemist/status/alchemy.png"
+    "label": "Instant Heal III",
+    "icon": "/professions/alchemist/status/alchemy3.png"
 }

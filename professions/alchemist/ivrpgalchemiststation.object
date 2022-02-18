@@ -41,7 +41,11 @@
     "ivrpg_alchemicbane_damagedown1",
     "ivrpg_alchemictincture_instantdefense1",
     "ivrpg_alchemictincture_instantenergy1",
-    "ivrpg_alchemictincture_instantheal1"
+    "ivrpg_alchemictincture_instantheal1",
+
+    "ivrpgw_alchemicpistol",
+    "ivrpga_portable_inserter",
+    "ivrpga_inserter"
   ],
 
   "proftype" : 3,

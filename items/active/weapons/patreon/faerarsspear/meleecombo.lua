@@ -125,7 +125,7 @@ function MeleeCombo:fire()
   animator.playSound(animStateKey)
 
   local swooshKey = self.animKeyPrefix .. (self.elementalType or self.weapon.elementalType) .. "swoosh"
-  animator.setParticleEmitterOffsetRegion(swooshKey, self.swooshOffsetRegions[self.comboStep])
+  animator.setParticleEmitterOffsetRegion(swooshKey, {2, 0, 5, 0})
   animator.burstParticleEmitter(swooshKey)
 
   util.wait(stance.duration, function()

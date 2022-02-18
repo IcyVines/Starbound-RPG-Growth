@@ -4,7 +4,8 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "electrumbar.png",
-  "description" : "A super-energetic alloy made from Silver and Gold. From RPG Growth.",
+  "description" : "A super-energetic alloy made from Silver and Gold. Required for smithing!",
   "shortdescription" : "Electrum Bar",
+  "tooltipKind" : "ivrpg_base",
   "itemTags" : [ "reagent" ]
 }

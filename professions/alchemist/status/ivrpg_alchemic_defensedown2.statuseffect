@@ -1,6 +1,7 @@
 {
     "name": "ivrpg_alchemic_defensedown2",
     "effectConfig": {
+        "type" : "defensedown2",
         "stats" : {
             "physicalResistance" : -0.15
         }
@@ -11,5 +12,5 @@
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
     "label": "Defense Down II",
-    "icon": "/professions/alchemist/status/alchemy.png"
+    "icon": "/professions/alchemist/status/alchemy2.png"
 }

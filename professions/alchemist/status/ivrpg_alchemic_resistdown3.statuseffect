@@ -1,6 +1,7 @@
 {
     "name": "ivrpg_alchemic_resistdown3",
     "effectConfig": {
+        "type" : "resistdown3",
         "stats" : {
             "fireResistance" : -0.25,
             "iceResistance" : -0.25,
@@ -20,5 +21,5 @@
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
     "label": "Resist Down III",
-    "icon": "/professions/alchemist/status/alchemy.png"
+    "icon": "/professions/alchemist/status/alchemy3.png"
 }

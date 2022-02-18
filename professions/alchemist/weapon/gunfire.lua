@@ -66,7 +66,7 @@ function GunFire:update(dt, fireMode, shiftHeld)
 
   if self.shiftHeld and self.fireMode == (self.activatingFireMode or self.abilitySlot) and self.fireMode ~= self.lastActiveFireMode
     and not self.weapon.currentAbility
-    and self.cooldownTimer == 0
+    --and self.cooldownTimer == 0
     and self.currentCharge then
       self:increment(1)
   end

@@ -1,9 +1,9 @@
 {
-  "itemName" : "ivrpgaportableinserter",
+  "itemName" : "ivrpga_portable_inserter",
   "printable" : false,
   "rarity" : "Essential",
   "description" : "A portable version of the Alchemic Inserter. How the heck does this even work?",
-  "shortdescription" : "Alchemic Inserter",
+  "shortdescription" : "^magenta;Alchemic Inserter",
   "race" : "generic",
   "twoHanded" : false,
   "price" : 0,

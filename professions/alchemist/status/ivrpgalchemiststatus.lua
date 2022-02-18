@@ -49,7 +49,7 @@ function update(dt)
 
   -- Remove effect if condition fails.
   if allowed then
-    status.setPersistentEffects("ivrpg_alchemist_status", effects)
+    status.setPersistentEffects("ivrpg_alchemist_status" .. (self.type or ""), effects)
   else
     effect.expire()
   end
@@ -111,7 +111,7 @@ function uninit()
 end
 
 function reset()
-  status.clearPersistentEffects("ivrpg_alchemist_status")
+  status.clearPersistentEffects("ivrpg_alchemist_status" .. (self.type or ""))
   status.clearPersistentEffects("ivrpg_alchemist_bleedstatus")
   status.clearPersistentEffects("ivrpg_alchemist_resiststatus")
 

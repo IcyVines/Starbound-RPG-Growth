@@ -12,6 +12,6 @@
         "ivrpgalchemiststatus.lua"
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
-    "label": "Auto Heal 5",
-    "icon": "/professions/alchemist/status/alchemy.png"
+    "label": "Auto Heal V",
+    "icon": "/professions/alchemist/status/alchemy5.png"
 }

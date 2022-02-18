@@ -4,7 +4,8 @@
   "rarity" : "Uncommon",
   "category" : "craftingMaterial",
   "inventoryIcon" : "steelbar.png",
-  "description" : "A useful alloy made from Iron and Coal. From RPG Growth.",
+  "description" : "A useful alloy made from Iron and Coal. Required for smithing!",
   "shortdescription" : "Steel Bar",
+  "tooltipKind" : "ivrpg_base",
   "itemTags" : [ "reagent" ]
 }

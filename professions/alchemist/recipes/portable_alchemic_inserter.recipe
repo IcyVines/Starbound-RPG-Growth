@@ -1,0 +1,21 @@
+{
+    "input": [
+        {
+            "item": "bottle",
+            "count": 3
+        },
+        {
+            "item": "ivrpgplatinumbar",
+            "count": 3
+        }
+    ],
+    "output": {
+        "item": "ivrpga_portable_inserter",
+        "count": 1
+    },
+    "groups": [
+        "ivrpgalchemiststation",
+        "misc",
+        "all"
+    ]
+}

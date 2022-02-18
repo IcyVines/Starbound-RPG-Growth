@@ -1,0 +1,25 @@
+{
+    "input": [
+        {
+            "item": "bottle",
+            "count": 3
+        },
+        {
+            "item": "ivrpggunparts",
+            "count": 3
+        },
+        {
+            "item": "durasteelbar",
+            "count": 4
+        }
+    ],
+    "output": {
+        "item": "ivrpgw_alchemicpistol",
+        "count": 1
+    },
+    "groups": [
+        "ivrpgalchemiststation",
+        "misc",
+        "all"
+    ]
+}

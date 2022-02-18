@@ -363,6 +363,14 @@ function updateProfessionEffects(dt)
         end
       end
     end
+  elseif proftype == 8 then
+    local blockPos = {entity.position()[1], entity.position()[2] - 3}
+    local block = world.material(blockPos, "foreground")
+    local mod = world.mod(blockPos, "foreground")
+    if block == "dirt" then
+      if mod ~= "tilled" then status.overConsumeResource("energy", 10) end
+      world.placeMod(blockPos, "foreground", "tilled")
+    end
   elseif proftype == 10 then
     if element then
       local time = getEphemeralDuration(status.activeUniqueStatusEffectSummary(), "ivrpgsmithstatusresistance")

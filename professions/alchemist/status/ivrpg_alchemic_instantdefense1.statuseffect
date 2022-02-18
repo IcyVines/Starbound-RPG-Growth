@@ -1,6 +1,7 @@
 {
     "name": "ivrpg_alchemic_instantdefense1",
     "effectConfig": {
+        "type" : "instantdefense1",
         "stats" : {
             "protection" : 10
         },
@@ -12,5 +13,5 @@
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
     "label": "Instant Defense I",
-    "icon": "/professions/alchemist/status/alchemy.png"
+    "icon": "/professions/alchemist/status/alchemy1.png"
 }

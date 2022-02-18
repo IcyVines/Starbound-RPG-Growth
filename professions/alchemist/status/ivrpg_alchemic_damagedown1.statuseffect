@@ -1,6 +1,7 @@
 {
     "name": "ivrpg_alchemic_damagedown1",
     "effectConfig": {
+        "type" : "damagedown1",
         "stats" : {
             "powerMultiplier" : -0.1
         }
@@ -11,5 +12,5 @@
     ],
     "animationConfig": "ivrpgalchemiststatus.animation",
     "label": "Damage Down I",
-    "icon": "/professions/alchemist/status/alchemy.png"
+    "icon": "/professions/alchemist/status/alchemy1.png"
 }

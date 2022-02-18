@@ -19,7 +19,7 @@ function leftClick(widgetName)
   -- Check swap item
   local new = player.swapSlotItem()
   local previous = widget.itemSlotItem(widgetName)
-  if widgetName == "itemSlot1" and ((new and new.name and new.name == "ivrpgwalchemicpistol") or not new) and (not previous or not new) then
+  if widgetName == "itemSlot1" and ((new and new.name and new.name == "ivrpgw_alchemicpistol") or not new) and (not previous or not new) then
     previous = setWeaponACI(previous)
     player.setSwapSlotItem(previous)
     widget.setItemSlotItem(widgetName, new)

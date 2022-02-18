@@ -5,7 +5,23 @@
             "count": 1
         },
         {
-            "item": "salve",
+            "item": "ivrpgplatinumbar",
+            "count": 1
+        },
+        {
+            "item": "cryonicextract",
+            "count": 1
+        },
+        {
+            "item": "venomsample",
+            "count": 1
+        },
+        {
+            "item": "scorchedcore",
+            "count": 1
+        },
+        {
+            "item": "staticcell",
             "count": 1
         }
     ],
