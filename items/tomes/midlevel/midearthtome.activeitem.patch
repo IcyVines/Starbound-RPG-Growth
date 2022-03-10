@@ -1,0 +1,17 @@
+[
+  {
+    "op": "replace",
+    "path": "/itemTags/1",
+    "value": "tome"
+  },
+  {
+    "op": "replace",
+    "path": "/itemTags/2",
+    "value": "grimoire"
+  },
+  {
+    "op": "add",
+    "path": "/itemTags/-",
+    "value": "magic"
+  }
+]
