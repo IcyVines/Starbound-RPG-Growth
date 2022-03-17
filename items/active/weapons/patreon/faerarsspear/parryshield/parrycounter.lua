@@ -129,6 +129,9 @@ function Parry:counter()
     local damageArea = partDamageArea("swoosh")
     self.weapon:setDamage(self.damageConfig, damageArea)
   end)
+  world.spawnProjectile("ivrpg_eldnirbolt", {mcontroller.xPosition() + mcontroller.facingDirection() * 2, mcontroller.yPosition()}, activeItem.ownerEntityId(), {mcontroller.facingDirection(), 0}, false, {
+    powerMultiplier = activeItem.ownerPowerMultiplier()
+  })
 
   self:setState(self.followUp)
   --[[self.cooldownTimer = self.cooldownTime

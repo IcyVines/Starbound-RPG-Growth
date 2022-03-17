@@ -3,7 +3,7 @@
   "rarity" : "Uncommon",
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemictincturegrey.png",
-  "image" : "ivrpg_alchemicinstantgrey.png",
+  "image" : "ivrpg_alchemictincturegrey.png",
   "shortdescription" : "Instant Defense I",
   "description" : "Grants +10 Protection for 30 Seconds.",
   "tooltipKind" : "ivrpg_base",

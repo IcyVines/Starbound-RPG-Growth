@@ -3,7 +3,7 @@
   "rarity" : "Legendary",
   "category" : "throwableItem",
   "inventoryIcon" : "ivrpg_alchemictincturegrey.png",
-  "image" : "ivrpg_alchemicinstantgrey.png",
+  "image" : "ivrpg_alchemictincturegrey.png",
   "shortdescription" : "Instant Defense III",
   "description" : "Grants +25 Protection for 30 Seconds. Stacks with lower tiers.",
   "tooltipKind" : "ivrpg_base",

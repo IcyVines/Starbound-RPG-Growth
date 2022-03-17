@@ -1,7 +1,7 @@
 {
 	"itemName": "ivrpgw_eldnir",
 	"price": 1500,
-	"level": 7,
+	"level": 2,
 	"maxStack": 1,
 	"rarity": "Essential",
 	"description": "Power surges from the center of the blade, releasing a hot plasma that cuts through everything. The source is unknown.",
@@ -9,7 +9,7 @@
 	"tooltipKind": "ivrpg_weapon",
 	"category": "spear",
 	"twoHanded": true,
-	"itemTags": ["weapon", "melee", "spear", "halberd", "shield"],
+	"itemTags": ["weapon", "melee", "spear", "halberd", "shield", "upgradeableWeapon"],
 
 	"inventoryIcon": "spear_sheet.png:1",
 
@@ -527,5 +527,10 @@
 		}
 	},
 
-	"builder": "/items/buildscripts/buildunrandweapon.lua"
+	"builder": "/items/buildscripts/buildunrandweapon.lua",
+
+	"upgradeParameters" : {
+		"inventoryIcon" : "spear_sheet.png:1",
+		"shortdescription" : "^orange;Eldnir"
+	}
 }

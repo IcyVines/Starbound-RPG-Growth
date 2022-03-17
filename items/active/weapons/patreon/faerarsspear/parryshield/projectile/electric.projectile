@@ -1,0 +1,18 @@
+{
+  "projectileName" : "ivrpg_eldnirbolt",
+  "image" : "electric.png",
+  "animationCycle" : 0.2,
+  "damageKindImage" : "icon.png",
+  "frameNumber" : 4,
+  "power" : 10,
+  "chainLimit" : 5,
+  "scripts" : ["seek.lua"],
+  "lightColor" : [155, 140, 80],
+  "speed" : 70,
+  "timeToLive" : 5,
+  "bounces" : 0,
+  "piercing" : true,
+  "damageRepeatTimeout" : 0.1,
+  "damagePoly" : [ [0, -8], [16, -8], [16, 8], [0, 8] ],
+  "damageKind" : "electricplasma"
+}
