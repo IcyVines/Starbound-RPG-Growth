@@ -294,27 +294,11 @@ function updateProfessionEffects(dt)
   self.rpg_jewelerExperience = (proftype == 9) and pPassive
   if not pPassive then return end
   if proftype == 1 then
-    if status.resource("health") / status.stat("maxHealth") < 0.25 and not hasEphemeralStats(status.activeUniqueStatusEffectSummary(), {"bandageheal","salveheal","nanowrapheal","medkitheal","ffs_heal_stimpak_1","ffs_heal_stimpak_2","ffs_heal_stimpak_3","ffs_heal_stimpak_4","ffs_heal_morphine","ffs_heal_dressing","knightfall_medkit","knightfall_medicalgauze","heal_tier6","heal_tier7","heal_long","heal_long2","heal_long3","heal_long4","honeysilkheal","mutaviskheal"}) then
+    if status.resource("health") / status.stat("maxHealth") < 0.25 and not hasEphemeralStats(status.activeUniqueStatusEffectSummary(), {"bandageheal","salveheal","nanowrapheal","medkitheal"}) then
       local healthItems = {
-      	{item = "ffs_stimpak_4", duration = 2},    
-      	{item = "ffs_stimpak_3", duration = 2},    
-      	{item = "knightfall_medkit", duration = 2},
-      	{item = "perfectelygenericmedkit", duration = 10},
-      	{item = "medkit4", duration = 10},
-      	{item = "medkit3", duration = 10},    
       	{item = "nanowrap", duration = 1},
-      	{item = "ffs_stimpak_2", duration = 2},    
-      	{item = "ffs_stimpak_1", duration = 2},        
-      	{item = "mutaviskbandage", duration = 1},
-      	{item = "genesiberry", duration = 2},        
-      	{item = "floralytcandy", duration = 2},      
-      	{item = "ffs_dressingkit", duration = 1}, 
       	{item = "bandage", duration = 1}, 
-      	{item = "knightfall_medicalgauze", duration = 5},    
-      	{item = "medkit2", duration = 10},
-      	{item = "fuhoneysilkbandage", duration = 20},
       	{item = "medkit", duration = 10},
-      	{item = "ffs_morphine", duration = 600},        
       	{item = "salve", duration = 10}
       }
       for _,v in ipairs(healthItems) do
