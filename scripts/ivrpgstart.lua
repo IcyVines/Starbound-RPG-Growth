@@ -294,7 +294,7 @@ function updateProfessionEffects(dt)
   self.rpg_jewelerExperience = (proftype == 9) and pPassive
   if not pPassive then return end
   if proftype == 1 then
-    if status.resource("health") / status.stat("maxHealth") < 0.25 and not hasEphemeralStats(status.activeUniqueStatusEffectSummary(), {"bandageheal","salveheal","nanowrapheal","medkitheal"}) then
+    if status.resource("health") / status.stat("maxHealth") < 0.25 and not hasEphemeralStats(status.activeUniqueStatusEffectSummary(), {"bandageheal","salveheal","nanowrapheal","medkitheal","ffs_heal_stimpak_1","ffs_heal_stimpak_2","ffs_heal_stimpak_3","ffs_heal_stimpak_4","ffs_heal_morphine","ffs_heal_dressing","knightfall_medkit","knightfall_medicalgauze","heal_tier6","heal_tier7","heal_long","heal_long2","heal_long3","heal_long4","honeysilkheal","mutaviskheal"}) then
       local healthItems = {
       	{item = "ffs_stimpak_4", duration = 2},    
       	{item = "ffs_stimpak_3", duration = 2},    
