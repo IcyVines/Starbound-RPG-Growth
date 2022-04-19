@@ -1,0 +1,496 @@
+[
+  //Class Weapons
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/knightaegissword",
+    "value": {
+      "minRange": 3,
+      "maxRange": 6
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/knightaegissword2",
+    "value": {
+      "minRange": 4,
+      "maxRange": 6
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/knightaegissword3",
+    "value": {
+      "minRange": 4,
+      "maxRange": 6
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/knightaegissword4",
+    "value": {
+      "minRange": 4,
+      "maxRange": 6
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aethertanto1",
+    "value": {
+      "minRange": 1.25,
+      "maxRange": 4
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aethertanto2",
+    "value": {
+      "minRange": 1.25,
+      "maxRange": 4
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/aethertanto3",
+    "value": {
+      "minRange": 1.25,
+      "maxRange": 4
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/roguesiphonclaw",
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 3.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/roguesiphonclaw2s",
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 3.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/roguesiphonclaw2v",
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 3.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/roguesiphonclaw3e",
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 3.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/roguesiphonclaw3s",
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 3.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/roguesiphonclaw3v",
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 3.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/soldierversagun", //they can only use it in shotgun mode, so it gets a range reduction.
+    "value": {
+      "minRange": 4.5,
+      "maxRange": 15,
+      "forceMoveRange": 12
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/soldierversagun2", //they typically charge it, so I'll treat it as a sniper.
+    "value": {
+      "minRange": 10,
+      "maxRange": 75,
+      "forceMoveRange": 70
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/soldierversagun3", //ditto.
+    "value": {
+      "minRange": 10,
+      "maxRange": 75,
+      "forceMoveRange": 70
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/wizardnovastaff", //they cannot use this normally, but FU and Suppers both allow you to use wands and staffs, so it's included.
+    "value": {
+      "minRange": 15,
+      "maxRange": 30,
+      "forceMoveRange": 27
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/wizardnovastaff2", //they cannot use this normally, but FU and Suppers both allow you to use wands and staffs, so it's included.
+    "value": {
+      "minRange": 18,
+      "maxRange": 35,
+      "forceMoveRange": 32
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/wizardnovastaff3", //they cannot use this normally, but FU and Suppers both allow you to use wands and staffs, so it's included.
+    "value": {
+      "minRange": 20,
+      "maxRange": 40,
+      "forceMoveRange": 37
+    }
+  },
+  //Specialization Weapons  
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwphaseshift", //they cannot use this normally, but FU and Suppers both allow you to use wands and staffs, so it's included.
+    "value": {
+      "minRange": 5,
+      "maxRange": 10,
+      "forceMoveRange": 9
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwheartstring", 
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 2
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwsolstice", 
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 6
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwmurderstick", // they won't use the hammer part of it.
+    "value": {
+      "minRange": 6,
+      "maxRange": 15,
+      "forceMoveRange": 12
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwmurderstick", // they won't use the hammer part of it.
+    "value": {
+      "minRange": 6,
+      "maxRange": 15
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwoutburst", // this weapon has very little wiggleroom to work with.
+    "value": {
+      "minRange": 16,
+      "maxRange": 17,
+      "forceMoveRange": 16.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwstormhowl", 
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 6
+    }
+  },
+  //Skipping Flag and Arquebus as they are unusable by NPCs.
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwoathkeeper", 
+    "value": {
+      "minRange": 3.5,
+      "maxRange": 6
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwheartless", 
+    "value": {
+      "minRange": 3.5,
+      "maxRange": 6
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwlotus",
+    "value": {
+      "minRange": 10,
+      "maxRange": 75,
+      "forceMoveRange": 70
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwdragonsbane", 
+    "value": {
+      "minRange": 4,
+      "maxRange": 11
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgweclipse",
+    "value": {
+      "minRange": 12,
+      "maxRange": 20,
+      "forceMoveRange": 17
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwchrysantha", 
+    "value": {
+      "minRange": 5,
+      "maxRange": 32
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwmida",
+    "value": {
+      "minRange": 20,
+      "maxRange": 50,
+      "forceMoveRange": 45
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwcleavingmeteor", 
+    "value": {
+      "minRange": 2,
+      "maxRange": 7
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwluxuria", 
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 4.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwwrench", 
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 4.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwexmechina",
+    "value": {
+      "minRange": 20,
+      "maxRange": 65,
+      "forceMoveRange": 60
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwshredder",
+    "value": {
+      "minRange": 10,
+      "maxRange": 40,
+      "forceMoveRange": 35
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwforusall", 
+    "value": {
+      "minRange": 3,
+      "maxRange": 6
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwbreathless",
+    "value": {
+      "minRange": 10,
+      "maxRange": 75,
+      "forceMoveRange": 70
+    }
+  },
+  // Skipping True Aegis as they don't know how to use the primary.
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwv-transform", // yes I know it's not out yet, but I might as well in order to get ahead.
+    "value": {
+      "minRange": 4,
+      "maxRange": 30,
+      "forceMoveRange": 25
+    }
+  },
+  // Skipping Nautilus, pointless.
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwovercharge", // yes I know it's not out yet, but I might as well in order to get ahead.
+    "value": {
+      "minRange": 5,
+      "maxRange": 25,
+      "forceMoveRange": 20
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwsarin", 
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 3
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwrapture", 
+    "value": {
+      "minRange": 1.5,
+      "maxRange": 5.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwsamuraiheart", 
+    "value": {
+      "minRange": 1,
+      "maxRange": 6
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwfear", // They don't know how to pull it back all the way so reduced range.
+    "value": {
+      "minRange": 10,
+      "maxRange": 25,
+      "forceMoveRange": 22
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwomniathrower", 
+    "value": {
+      "minRange": 10,
+      "maxRange": 20,
+      "forceMoveRange": 15
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwsiphonpurge", 
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 2.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwepimetheus",
+    "value": {
+      "minRange": 10,
+      "maxRange": 30,
+      "forceMoveRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwheadhunter",
+    "value": {
+      "minRange": 25,
+      "maxRange": 55,
+      "forceMoveRange": 50
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwgungnir", 
+    "value": {
+      "minRange": 3.5,
+      "maxRange": 7
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwdangerclose",
+    "value": {
+      "minRange": 3,
+      "maxRange": 15,
+      "forceMoveRange": 12
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwanne",
+    "value": {
+      "minRange": 5,
+      "maxRange": 25,
+      "forceMoveRange": 20
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgwmarie",
+    "value": {
+      "minRange": 5,
+      "maxRange": 25,
+      "forceMoveRange": 20
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwnomadicsoul", 
+    "value": {
+      "minRange": 1,
+      "maxRange": 4.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/rangedWeaponRanges/ivrpgworbital",
+    "value": {
+      "minRange": 7,
+      "maxRange": 28,
+      "forceMoveRange": 25
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgwsoullesswhisper", 
+    "value": {
+      "minRange": 0.5,
+      "maxRange": 2.5
+    }
+  },
+  {
+    "op": "add",
+    "path": "/npcCombat/meleeWeaponRanges/ivrpgw_eldnir", 
+    "value": {
+      "minRange": 3,
+      "maxRange": 8
+    }
+  }
+]
