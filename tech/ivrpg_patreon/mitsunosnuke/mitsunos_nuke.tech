@@ -1,0 +1,16 @@
+{
+  "name" : "ivrpg_mitsunosnuke",
+  "type" : "head",
+
+  "scripts" : ["mitsunos_nuke.lua"],
+  "animator" : "mitsunos_nuke.animation",
+
+  "description" : "Where'd the ground go?",
+  "shortDescription" : "Mitsuno's Nuke",
+  "rarity" : "Rare",
+  "icon" : "/tech/ivrpg_patreon/mitsunosnuke/mitsunos_nuke.png",
+
+  "chipCost" : 0,
+  "cooldown" : 2.5,
+  "power" : 20
+}

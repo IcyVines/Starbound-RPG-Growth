@@ -1,0 +1,25 @@
+{
+  "projectileName" : "ivrpg_mitsunosnuke",
+  "physics" : "grenade",
+  "bounces" : 0,
+  "image" : "nuke.png",
+  "timeToLive" : 10,
+  "fullbright" : false,
+  "power" : 20,
+  "speed" : 75,
+  "piercing" : true,
+  "knockback" : 50,
+  "damagePoly" : [[-8, 0], [-5,-5], [0,-8], [5,-5], [8, 0], [5, 5], [0, 8], [-5, 5]],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/ivrpg_specs/techs/cannoneer/impact_cannonball.ogg" ]
+    },
+    {
+      "action" : "config",
+      "file" : "/tech/ivrpg_patreon/mitsunosnuke/explosion.config"
+    }
+  ],
+  "damageKind" : "bluntforce",
+  "statusEffects" : [ {"effect" : "soldierstun", "duration" : 0.5} ]
+}
