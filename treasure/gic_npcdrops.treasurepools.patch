@@ -2056,7 +2056,7 @@
     },
     {
       "op": "add",
-      "path": "/guardianTreasure/0/1/fill/-",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill/-",
       "value": {
         "pool": "ivrpgbosspool"
       }
@@ -2462,21 +2462,21 @@
     },
     {
       "op": "add",
-      "path": "/guardianTreasure/0/1/fill/-",
+      "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill/-",
       "value": {
         "pool": "ivrpgbosspool"
       }
     },
     {
       "op": "add",
-      "path": "/guardianTreasure/0/1/fill/-",
+      "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill/-",
       "value": {
         "pool": "ivrpgbosspool"
       }
     },
     {
       "op": "add",
-      "path": "/guardianTreasure/0/1/fill/-",
+      "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill/-",
       "value": {
         "pool": "ivrpgbosspool"
       }
