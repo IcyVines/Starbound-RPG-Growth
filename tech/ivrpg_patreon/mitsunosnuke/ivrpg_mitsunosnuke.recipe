@@ -1,0 +1,14 @@
+{
+  "input" : [
+    {"item" : "ivrpgmeteoricmetalbar", "count" : 16},
+    {"item" : "solariumstar", "count" : 8},
+    {"item" : "ivrpg_energizedstar", "count" : 12},
+    {"item" : "volatilepowder", "count" : 200},
+    {"item" : "scorchedcore", "count" : 5},
+    {"item" : "ivrpgfiringmechanism", "count" : 1},
+    {"item" : "liquidfuel", "count" : 1000},
+    {"item" : "masterypoint", "count" : 10}
+  ],
+  "output" : { "item" : "ivrpg_mitsunosnuke", "count" : 1 },
+  "groups" : [ "ivrpgmasteryshop", "scrolls", "all" ]
+}

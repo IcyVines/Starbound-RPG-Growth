@@ -5,10 +5,10 @@ function init()
   self.cost = config.getParameter("cost", 30)
   self.cooldownTime = config.getParameter("cooldown", 1)
   self.cannonballSpeed = config.getParameter("cannonballSpeed", 50)
-  self.power = config.getParameter("power", 20)
+  self.power = config.getParameter("power", 250)
 
   self.hDirection = 0
-  self.cooldownTimer = self.cooldownTime
+  self.cooldownTimer = status.statusProperty("ivrpg_mitsunosnuke", 100)
   self.rechargeTimer = 0
   self.vDirection = 0
   self.shift = false
@@ -23,9 +23,10 @@ function launch()
   if self.hDirection == 0 and self.vDirection == 0 then self.hDirection = mcontroller.facingDirection() end
   animator.playSound("fire")
   animator.burstParticleEmitter("fireParticles")
-  local power = self.power + status.statusProperty("ivrpgdexterity")
-  world.spawnProjectile("ivrpg_mitsunosnuke", mcontroller.position(), entity.id(), self.aimDirection or {self.hDirection, self.vDirection*2}, false, {power = power, speed = self.cannonballSpeed})
+  local power = self.power
+  world.spawnProjectile("ivrpg_mitsunosnuke", mcontroller.position(), entity.id(), self.aimDirection or {self.hDirection, self.vDirection*2}, false, {power = power, speed = self.cannonballSpeed, powerMultiplier = status.stat("powerMultiplier")})
   self.cooldownTimer = self.cooldownTime
+  status.addEphemeralEffect("ivrpg_mitsunosnuke_cooldown", self.cooldownTime)
   --mcontroller.setYVelocity(0)
   --mcontroller.controlApproachVelocity(vec2.mul(self.aimDirection or {self.hDirection, self.vDirection*2}, -self.dashSpeed), self.controlForce * 1.2)
 end
@@ -35,6 +36,7 @@ function reset()
 end
 
 function uninit()
+  status.setStatusProperty("ivrpg_mitsunosnuke", self.cooldownTimer)
   reset()
 end
 

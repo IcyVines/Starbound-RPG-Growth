@@ -1,0 +1,8 @@
+{
+  "name" : "ivrpg_mitsunosnuke_cooldown",
+
+  "defaultDuration" : 10,
+
+  "label" : "Mitsuno's Nuke - Cooldown",
+  "icon" : "/tech/ivrpg_patreon/mitsunosnuke/cooldown.png"
+}

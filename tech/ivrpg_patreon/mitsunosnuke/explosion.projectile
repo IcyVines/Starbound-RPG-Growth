@@ -1,8 +1,8 @@
 {
   "projectileName" : "ivrpg_mitsunosexplosion",
-  "image" : "explosion.png",
-  "animationCycle" : 0.3,
-  "frameNumber" : 6,
+  "image" : "explosion_555.png",
+  "animationCycle" : 0.8,
+  "frameNumber" : 8,
   "speed" : 0,
   "lightColor" : [255, 255, 128],
   "scripts" : ["dropBlocks.lua"],
@@ -10,11 +10,13 @@
   "backgroundRadius" : 10, 
   "pointLight" : true,
   "statusEffects" : [ ],
-  "damagePoly" : [ [-37, 0], [-28, -28], [0, -37], [28, -28], [37, 0], [28, 28], [0, 37], [-28, 28] ],
+  "damagePoly" : [ [-200, 0], [-190, -190], [0, -200], [190, -190], [200, 0], [190, 190], [0, 200], [-190, 190] ],
   "animationLoops" : false,
   "piercing" : true,
   "bounces" : -1,
   "flippable" : true,
+  "fullbright" : true,
+  "renderLayer" : "ForegroundEntity+1",
   "damageKind" : "default",
   "knockback" : 30
 }
