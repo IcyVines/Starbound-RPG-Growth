@@ -1,0 +1,13 @@
+{
+  "projectileName" : "heavensgate_explosion",
+  "image" : "beamexplosion.png",
+	"renderLayer" : "player-1",
+  "frameNumber" : 11,
+  "animationLoops" : false,
+  "animationCycle" : 0.15,
+  "timeToLive" : 0.15,
+  "fullbright" : true,
+	"bounces" : -1,
+  "speed" : 0,
+	"damageType" : "NoDamage"
+}

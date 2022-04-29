@@ -10,6 +10,7 @@
   "itemTags" : ["weapon", "grimoire", "magic"],
   "tooltipKind" : "ivrpg_grimoire",
   "inventoryIcon" : "ziaslegacy_icon.png",
+  "level" : 6,
 
   "learnBlueprintsOnPickup" : [
     "ivrpg_grimoirepage"

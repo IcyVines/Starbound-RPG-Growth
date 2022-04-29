@@ -1,0 +1,51 @@
+{
+  "projectileName" : "heavensgate_rocket",
+  "image" : "rocket.png",
+  "animationCycle" : 0.2,
+  "frameNumber" : 4,
+  "damageKindImage" : "icon.png",
+	"fullbright" : true,
+  "pointLight" : true,
+  "lightColor" : [102, 32, 110],
+  "flippable" : true,
+  "power" : 10,
+  "speed" : 75,
+  "acceleration" : 25,
+	"timeToLive" : 3,
+  "physics" : "rocket",
+	"damageType" : "NoDamage",
+  "damageKind" : "electricplasma",
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+    }
+  ],
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : true,
+      "rotate" : true,
+      "action" : "particle",
+      "specification" : {
+        "type" : "animated",
+        "animation" : "/items/active/specweapons/crusader/heavensgate/projectiles/rocket.animation",
+        "layer" : "back",
+				"fade" : 0.5,
+        "timeToLive" : 0,
+        "destructionTime" : 0.1,
+        "destructionAction" : "fade",
+        "fullbright" : true
+      }
+    }
+  ],
+	
+	"movementSettings" : {
+		"gravityMultiplier" : 1
+	},
+	
+	"scripts" : ["rocket.lua"],
+	"homingDistance" : 50,
+	"rotationRate" : 7,
+	"trackingLimit" : 5
+}

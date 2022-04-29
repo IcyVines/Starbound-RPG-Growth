@@ -15,7 +15,7 @@ function init()
   self.activeTimer = 0
   self.pCooldownTimer = config.getParameter("cooldownTime")
   self.beamTimer = 0
-  self.perfectShieldBonus = 1
+  self.perfectShieldBonus = config.getParameter("perfectShieldBonus", 1)
   self.impactSoundTimer = 0
 
   self.muzzleOffset = config.getParameter("muzzleOffset")
@@ -146,6 +146,7 @@ function uninit()
   status.clearPersistentEffects(activeItem.hand().."Shield")
   activeItem.setItemShieldPolys({})
   activeItem.setItemDamageSources({})
+  activeItem.setInstanceValue("perfectShieldBonus", self.perfectShieldBonus)
   reset()
   incorrectWeapon(true)
 end

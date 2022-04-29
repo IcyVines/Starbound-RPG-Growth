@@ -11,6 +11,6 @@
   "icon" : "/tech/ivrpg_patreon/mitsunosnuke/mitsunos_nuke.png",
 
   "chipCost" : 0,
-  "cooldown" : 2.5,
-  "power" : 20
+  "cooldown" : 300,
+  "power" : 250
 }

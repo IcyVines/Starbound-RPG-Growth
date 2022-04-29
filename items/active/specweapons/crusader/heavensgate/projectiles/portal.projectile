@@ -1,0 +1,35 @@
+{
+  "projectileName" : "heavensgate_portal",
+  "physics" : "hover",
+  "image" : "portal.png",
+  "renderLayer" : "Projectile-1",
+  "fullbright" : true,
+  "pointLight" : true,
+  "lightColor" : [90, 90, 90],
+  "animationCycle" : 0.25,
+  "frameNumber" : 4,
+  "windupFrames" : 3,
+  "winddownFrames" : 3,
+  "orientationLocked" : true,
+  "onlyHitTerrain" : true,
+  "bounces" : -1,
+  "speed" : 0,
+  "power" : 0,
+  "damagePoly" : [],
+  "periodicActions" : [
+    {
+      "time" : 0,
+      "repeat" : false,
+      "action" : "sound",
+      "options" : [ "/sfx/melee/astraltear2.ogg" ]
+    }
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/astraltear_stop3.ogg" ]
+    }
+	],
+
+  "scripts" : [ "portal.lua" ]
+}

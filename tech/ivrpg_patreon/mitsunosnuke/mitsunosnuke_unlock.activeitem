@@ -1,0 +1,12 @@
+{
+  "itemName" : "ivrpg_mitsunosnuke",
+  "rarity" : "Essential",
+  "category" : "scroll",
+  "inventoryIcon" : "scroll.png",
+  "description" : "The recipe for an Ancient Technology that was said to have ended wars.",
+  "shortdescription" : "Mitsuno's Blueprints",
+  "tooltipKind" : "ivrpg_base",
+  "largeImage" : "scrolllarge.png",
+  "scripts" : ["/tech/ivrpg_patreon/mitsunosnuke/giveTech.lua"]
+  
+}
