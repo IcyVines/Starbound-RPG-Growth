@@ -9,7 +9,7 @@
       "op": "add",
       "path": "/gic_personalhumansmallTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -24,7 +24,7 @@
       "path": "/gic_personalhumansmallTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -39,7 +39,7 @@
       "op": "add",
       "path": "/gic_shockbanditTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -54,7 +54,7 @@
       "path": "/gic_shockbanditTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -69,7 +69,7 @@
       "op": "add",
       "path": "/gic_shockbanditeliteTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -84,7 +84,7 @@
       "path": "/gic_shockbanditeliteTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -99,7 +99,7 @@
       "op": "add",
       "path": "/gic_frostbanditTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -114,7 +114,7 @@
       "path": "/gic_frostbanditTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -129,7 +129,7 @@
       "op": "add",
       "path": "/gic_guardTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -144,7 +144,7 @@
       "path": "/gic_guardTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -159,7 +159,7 @@
       "op": "add",
       "path": "/gic_unitancitizenTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -174,7 +174,7 @@
       "path": "/gic_unitancitizenTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -189,7 +189,7 @@
       "op": "add",
       "path": "/gic_unitancityguardsmanTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -204,7 +204,7 @@
       "path": "/gic_unitancityguardsmanTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -219,7 +219,7 @@
       "op": "add",
       "path": "/gic_unitanastraldiverengineerTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -234,7 +234,7 @@
       "path": "/gic_unitanastraldiverengineerTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -249,7 +249,7 @@
       "op": "add",
       "path": "/gic_politicalunitanguardTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -264,7 +264,7 @@
       "path": "/gic_politicalunitanguardTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -279,7 +279,7 @@
       "op": "add",
       "path": "/gic_politicalundercoverguardTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -294,7 +294,7 @@
       "path": "/gic_politicalundercoverguardTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -309,7 +309,7 @@
       "op": "add",
       "path": "/gic_surfacecityspacecolonist_undercoverguardTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -324,7 +324,7 @@
       "path": "/gic_surfacecityspacecolonist_undercoverguardTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -339,7 +339,7 @@
       "op": "add",
       "path": "/gic_undercolony_militiaguardTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -354,7 +354,7 @@
       "path": "/gic_undercolony_militiaguardTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -369,7 +369,7 @@
       "op": "add",
       "path": "/gic_politicalprotectorateguardTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -384,7 +384,7 @@
       "path": "/gic_politicalprotectorateguardTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -399,7 +399,7 @@
       "op": "add",
       "path": "/gic_archivistprotectorTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -414,7 +414,7 @@
       "path": "/gic_archivistprotectorTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -429,7 +429,7 @@
       "op": "add",
       "path": "/gic_occasussoldierTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -444,7 +444,7 @@
       "path": "/gic_occasussoldierTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -459,7 +459,7 @@
       "op": "add",
       "path": "/gic_occasusadvisorTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -474,7 +474,7 @@
       "path": "/gic_occasusadvisorTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -489,7 +489,7 @@
       "op": "add",
       "path": "/gic_protectedrebelTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -504,7 +504,7 @@
       "path": "/gic_protectedrebelTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -519,7 +519,7 @@
       "op": "add",
       "path": "/gic_protecteddefenseforceguardTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -534,7 +534,7 @@
       "path": "/gic_protecteddefenseforceguardTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -549,7 +549,7 @@
       "op": "add",
       "path": "/gic_wartorninsurgentTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -564,7 +564,7 @@
       "path": "/gic_wartorninsurgentTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -579,7 +579,7 @@
       "op": "add",
       "path": "/gic_federalsoldierTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -594,7 +594,7 @@
       "path": "/gic_federalsoldierTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -609,7 +609,7 @@
       "op": "add",
       "path": "/gic_federalmercenaryTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -624,7 +624,7 @@
       "path": "/gic_federalmercenaryTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -639,7 +639,7 @@
       "op": "add",
       "path": "/gic_internalprisonofficerTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -654,7 +654,7 @@
       "path": "/gic_internalprisonofficerTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -669,7 +669,7 @@
       "op": "add",
       "path": "/gic_internalprisonguardTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -684,7 +684,7 @@
       "path": "/gic_internalprisonguardTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -699,7 +699,7 @@
       "op": "add",
       "path": "/gic_externalprisonguardTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -714,7 +714,7 @@
       "path": "/gic_externalprisonguardTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -729,7 +729,7 @@
       "op": "add",
       "path": "/gic_possessedprisonerTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -744,7 +744,7 @@
       "path": "/gic_possessedprisonerTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -759,7 +759,7 @@
       "op": "add",
       "path": "/gic_floranliberationfrontsoldierTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -774,7 +774,7 @@
       "path": "/gic_floranliberationfrontsoldierTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -789,7 +789,7 @@
       "op": "add",
       "path": "/gic_floranliberationfrontcommandoTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -804,7 +804,7 @@
       "path": "/gic_floranliberationfrontcommandoTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -819,7 +819,7 @@
       "op": "add",
       "path": "/gic_mindshakerTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -834,7 +834,7 @@
       "path": "/gic_mindshakerTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -849,7 +849,7 @@
       "op": "add",
       "path": "/gic_anomaly_stalkerTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -864,7 +864,7 @@
       "path": "/gic_anomaly_stalkerTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -879,7 +879,7 @@
       "op": "add",
       "path": "/gic_anomaly_stalkermicrocreditsTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -894,7 +894,7 @@
       "path": "/gic_anomaly_stalkermicrocreditsTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -909,7 +909,7 @@
       "op": "add",
       "path": "/gic_ghosttrainTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -924,7 +924,7 @@
       "path": "/gic_ghosttrainTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -949,7 +949,7 @@
       "op": "add",
       "path": "/gic_greenfingerdaimyoTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -970,7 +970,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -995,21 +995,7 @@
       "op": "add",
       "path": "/gic_greenfingerdaimyoTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_greenfingerdaimyoTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_greenfingerdaimyoTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic_flawless"
       }
     }
   ],
@@ -1030,13 +1016,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic_flawless"
         }
       ]
     }
@@ -1061,7 +1041,7 @@
       "op": "add",
       "path": "/gic_greenfingergeneralTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -1082,7 +1062,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -1101,7 +1081,14 @@
           "experienceorb",
           5000
         ]
+      },
+    {
+      "op": "add",
+      "path": "/gic_greenfingergeneralTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
       }
+    }
     }
   ],
   [
@@ -1119,6 +1106,9 @@
             "experienceorb",
             5000
           ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
         }
       ]
     }
@@ -1143,7 +1133,7 @@
       "op": "add",
       "path": "/gic_erchiuswarriorTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -1164,7 +1154,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -1189,21 +1179,7 @@
       "op": "add",
       "path": "/gic_erchiuswarrior_flawlessTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_erchiuswarrior_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_erchiuswarrior_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic_flawless"
       }
     }
   ],
@@ -1224,7 +1200,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -1249,7 +1225,7 @@
       "op": "add",
       "path": "/gic_armoredprotectorTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -1270,7 +1246,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -1295,21 +1271,7 @@
       "op": "add",
       "path": "/gic_armoredprotector_flawlessTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_armoredprotector_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_armoredprotector_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic_flawless"
       }
     }
   ],
@@ -1330,13 +1292,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic_flawless"
         }
       ]
     }
@@ -1351,7 +1307,7 @@
       "op": "add",
       "path": "/gic_surfacecityspacecolonist_guarddefector_crewTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -1366,7 +1322,7 @@
       "path": "/gic_surfacecityspacecolonist_guarddefector_crewTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -1381,7 +1337,7 @@
       "op": "add",
       "path": "/gic_wildlands_grimchaplain_crewTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -1396,7 +1352,7 @@
       "path": "/gic_wildlands_grimchaplain_crewTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -1411,7 +1367,7 @@
       "op": "add",
       "path": "/gic_floran_swordmasterTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -1426,7 +1382,7 @@
       "path": "/gic_floran_swordmasterTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -1441,7 +1397,7 @@
       "op": "add",
       "path": "/gic_colonial_gunpowderhunterTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -1456,7 +1412,7 @@
       "path": "/gic_colonial_gunpowderhunterTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -1471,7 +1427,7 @@
       "op": "add",
       "path": "/gic_colonial_demoknightTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -1486,7 +1442,7 @@
       "path": "/gic_colonial_demoknightTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -1501,7 +1457,7 @@
       "op": "add",
       "path": "/gic_possessed_foremanTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -1516,7 +1472,7 @@
       "path": "/gic_possessed_foremanTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -1531,7 +1487,7 @@
       "op": "add",
       "path": "/gic_possessed_forkliftTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -1546,7 +1502,7 @@
       "path": "/gic_possessed_forkliftTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -1561,7 +1517,7 @@
       "op": "add",
       "path": "/gic_metrowandererTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -1576,7 +1532,7 @@
       "path": "/gic_metrowandererTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -1591,7 +1547,7 @@
       "op": "add",
       "path": "/gic_khurtovyna_metrowanderer_crewTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -1606,7 +1562,7 @@
       "path": "/gic_khurtovyna_metrowanderer_crewTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -1703,7 +1659,7 @@
       "op": "add",
       "path": "/gic_whitewolfoftheworldsTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -1724,7 +1680,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -1749,21 +1705,7 @@
       "op": "add",
       "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic_flawless"
       }
     }
   ],
@@ -1784,13 +1726,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic_flawless"
         }
       ]
     }
@@ -1815,7 +1751,7 @@
       "op": "add",
       "path": "/gic_knightofnightsTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -1836,7 +1772,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -1861,21 +1797,7 @@
       "op": "add",
       "path": "/gic_knightofnights_flawlessTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic_flawless"
       }
     }
   ],
@@ -1896,13 +1818,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic_flawless"
         }
       ]
     }
@@ -1927,7 +1843,7 @@
       "op": "add",
       "path": "/gic_excultistTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -1948,7 +1864,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -1973,21 +1889,7 @@
       "op": "add",
       "path": "/gic_excultist_flawlessTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_excultist_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_excultist_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic_flawless"
       }
     }
   ],
@@ -2008,13 +1910,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic_flawless"
         }
       ]
     }
@@ -2058,7 +1954,7 @@
       "op": "add",
       "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -2082,7 +1978,7 @@
       "op": "add",
       "path": "/gic_falseprotectorTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -2103,7 +1999,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -2128,21 +2024,7 @@
       "op": "add",
       "path": "/gic_falseprotector_flawlessTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic_flawless"
       }
     }
   ],
@@ -2163,13 +2045,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic_flawless"
         }
       ]
     }
@@ -2194,7 +2070,7 @@
       "op": "add",
       "path": "/gic_protectoratedeserterTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -2215,7 +2091,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -2240,21 +2116,7 @@
       "op": "add",
       "path": "/gic_protectoratedeserter_flawlessTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_protectoratedeserter_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_protectoratedeserter_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic_flawless"
       }
     }
   ],
@@ -2275,13 +2137,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic_flawless"
         }
       ]
     }
@@ -2306,7 +2162,7 @@
       "op": "add",
       "path": "/gic_scatterspearsicarioTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -2327,7 +2183,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -2352,21 +2208,7 @@
       "op": "add",
       "path": "/gic_scatterspearsicario_flawlessTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_scatterspearsicario_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_scatterspearsicario_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic_flawless"
       }
     }
   ],
@@ -2387,13 +2229,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic_flawless"
         }
       ]
     }
@@ -2418,7 +2254,7 @@
       "op": "add",
       "path": "/gic_occasusassassinTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -2439,7 +2275,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -2464,21 +2300,7 @@
       "op": "add",
       "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic_flawless"
       }
     }
   ],
@@ -2499,13 +2321,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
-        },
-        {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic_flawless"
         }
       ]
     }
@@ -2520,7 +2336,7 @@
       "op": "add",
       "path": "/gic_protectorateknightTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -2535,7 +2351,7 @@
       "path": "/gic_protectorateknightTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -2632,7 +2448,7 @@
       "op": "add",
       "path": "/gic_bureaucraticallyisolatedrectificationbotTreasure/0/1/fill/-",
       "value": {
-        "pool": "ivrpgbosspool"
+        "pool": "ivrpgbosspool_gic"
       }
     }
   ],
@@ -2653,7 +2469,7 @@
           ]
         },
         {
-          "pool": "ivrpgbosspool"
+          "pool": "ivrpgbosspool_gic"
         }
       ]
     }
@@ -2704,7 +2520,7 @@
       "op": "add",
       "path": "/gic_alphaixolingTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -2719,7 +2535,7 @@
       "path": "/gic_alphaixolingTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -2734,7 +2550,7 @@
       "op": "add",
       "path": "/gic_afflictedheavygunnerTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -2749,7 +2565,7 @@
       "path": "/gic_afflictedheavygunnerTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -2872,7 +2688,7 @@
       "op": "add",
       "path": "/gic_traumatizedprotectorTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -2887,7 +2703,7 @@
       "path": "/gic_traumatizedprotectorTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -2902,7 +2718,7 @@
       "op": "add",
       "path": "/gic_traumatizedprotectorspawnTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -2917,7 +2733,7 @@
       "path": "/gic_traumatizedprotectorspawnTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -2932,7 +2748,7 @@
       "op": "add",
       "path": "/gic_vehiclesalvagedroneTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -2947,7 +2763,7 @@
       "path": "/gic_vehiclesalvagedroneTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -2962,7 +2778,7 @@
       "op": "add",
       "path": "/gic_vehiclesalvagecarTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -2977,7 +2793,7 @@
       "path": "/gic_vehiclesalvagecarTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -2992,7 +2808,7 @@
       "op": "add",
       "path": "/gic_vehiclesalvagetankTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3007,7 +2823,7 @@
       "path": "/gic_vehiclesalvagetankTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3022,7 +2838,7 @@
       "op": "add",
       "path": "/gic_vehiclesalvagearmoredtankTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3037,7 +2853,7 @@
       "path": "/gic_vehiclesalvagearmoredtankTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3052,7 +2868,7 @@
       "op": "add",
       "path": "/gic_shipcannonTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3067,7 +2883,7 @@
       "path": "/gic_shipcannonTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3082,7 +2898,7 @@
       "op": "add",
       "path": "/gic_heavycannonpartsTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3097,7 +2913,7 @@
       "path": "/gic_heavycannonpartsTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3112,7 +2928,7 @@
       "op": "add",
       "path": "/gic_targettingcomputerTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3127,7 +2943,7 @@
       "path": "/gic_targettingcomputerTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3142,7 +2958,7 @@
       "op": "add",
       "path": "/gic_cannonturretTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3157,7 +2973,7 @@
       "path": "/gic_cannonturretTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3172,7 +2988,7 @@
       "op": "add",
       "path": "/gic_missileturretTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3187,7 +3003,7 @@
       "path": "/gic_missileturretTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3202,7 +3018,7 @@
       "op": "add",
       "path": "/gic_missilelauncherHunting/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3217,7 +3033,7 @@
       "path": "/gic_missilelauncherHunting/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3232,7 +3048,7 @@
       "op": "add",
       "path": "/gic_letheiaspacesoldierTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3247,7 +3063,7 @@
       "path": "/gic_letheiaspacesoldierTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3406,7 +3222,7 @@
       "op": "add",
       "path": "/gic_redyancopTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3421,7 +3237,7 @@
       "path": "/gic_redyancopTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3436,7 +3252,7 @@
       "op": "add",
       "path": "/gic_loyalistprisonerTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3451,7 +3267,7 @@
       "path": "/gic_loyalistprisonerTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3466,7 +3282,7 @@
       "op": "add",
       "path": "/gic_rebelmachinegunnertrenchTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3481,7 +3297,7 @@
       "path": "/gic_rebelmachinegunnertrenchTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3496,7 +3312,7 @@
       "op": "add",
       "path": "/gic_civilianpilotTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3511,7 +3327,7 @@
       "path": "/gic_civilianpilotTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3526,7 +3342,7 @@
       "op": "add",
       "path": "/gic_spacecolonistTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3541,7 +3357,7 @@
       "path": "/gic_spacecolonistTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
@@ -3556,7 +3372,7 @@
       "op": "add",
       "path": "/gic_raremkmsTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool"
+        "pool": "experienceorbpool_gic"
       }
     }
   ],
@@ -3571,7 +3387,7 @@
       "path": "/gic_raremkmsTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool"
+          "pool": "experienceorbpool_gic"
         }
       ]
     }
