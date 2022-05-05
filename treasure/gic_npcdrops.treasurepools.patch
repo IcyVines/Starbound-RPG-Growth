@@ -1081,14 +1081,14 @@
           "experienceorb",
           5000
         ]
-      },
+      }
+    },
     {
       "op": "add",
       "path": "/gic_greenfingergeneralTreasure/0/1/fill/-",
       "value": {
         "pool": "ivrpgbosspool_gic_flawless"
       }
-    }
     }
   ],
   [
