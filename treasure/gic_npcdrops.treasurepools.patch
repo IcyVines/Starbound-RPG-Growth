@@ -1579,7 +1579,7 @@
       "value": {
         "item": [
           "experienceorb",
-          200
+          250
         ]
       }
     }
@@ -1597,7 +1597,7 @@
         {
           "item": [
             "experienceorb",
-            200
+            250
           ]
         }
       ]
@@ -1615,7 +1615,7 @@
       "value": {
         "item": [
           "experienceorb",
-          100
+          200
         ]
       }
     }
@@ -1633,7 +1633,7 @@
         {
           "item": [
             "experienceorb",
-            100
+            200
           ]
         }
       ]
@@ -2748,7 +2748,7 @@
       "op": "add",
       "path": "/gic_vehiclesalvagedroneTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool_gic"
+        "pool": "experienceorbpool_gic_vehicle"
       }
     }
   ],
@@ -2763,7 +2763,7 @@
       "path": "/gic_vehiclesalvagedroneTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool_gic"
+          "pool": "experienceorbpool_gic_vehicle"
         }
       ]
     }
@@ -2808,7 +2808,7 @@
       "op": "add",
       "path": "/gic_vehiclesalvagetankTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool_gic"
+        "pool": "experienceorbpool_gic_vehicle"
       }
     }
   ],
@@ -2823,7 +2823,7 @@
       "path": "/gic_vehiclesalvagetankTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool_gic"
+          "pool": "experienceorbpool_gic_vehicle"
         }
       ]
     }
@@ -2838,7 +2838,7 @@
       "op": "add",
       "path": "/gic_vehiclesalvagearmoredtankTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool_gic"
+        "pool": "experienceorbpool_gic_vehicle"
       }
     }
   ],
@@ -2853,7 +2853,7 @@
       "path": "/gic_vehiclesalvagearmoredtankTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool_gic"
+          "pool": "experienceorbpool_gic_vehicle"
         }
       ]
     }
