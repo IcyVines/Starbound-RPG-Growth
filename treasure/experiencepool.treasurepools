@@ -1068,5 +1068,24 @@
                 [0.15, 1]
             ]
         }]
+    ],
+    // custom ones for GiC since those are all technically tier 1 and would give paultry XP for their difficulty. For now it's just locked at the tier 4 eqivalent. Will have to seperate and refine them down the line.
+    "experienceorbpool_gic" : [
+        [0, {
+            "pool" : [
+                {"weight" : 0.33, "item" : ["experienceorb", 80]},
+                {"weight" : 0.34, "item" : ["experienceorb", 85]},
+                {"weight" : 0.33, "item" : ["experienceorb", 90]}
+            ]
+        }]
+    ],
+    "experienceorbpool_gic_vehicle" : [
+        [0, {
+            "pool" : [
+                {"weight" : 0.33, "item" : ["experienceorb", 240]},
+                {"weight" : 0.34, "item" : ["experienceorb", 255]},
+                {"weight" : 0.33, "item" : ["experienceorb", 270]}
+            ]
+        }]
     ]
 }
