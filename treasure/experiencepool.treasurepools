@@ -1087,5 +1087,39 @@
                 {"weight" : 0.33, "item" : ["experienceorb", 270]}
             ]
         }]
+    ],
+    "ivrpgbosspool_gic" : [
+        [0, {
+            "pool" : [
+                {"weight" : 0.22, "item" : ["ivrpgscrollresetstats", 1]},
+                {"weight" : 0.22, "item" : ["ivrpgscrollresetclass", 1]},
+                {"weight" : 0.23, "item" : ["ivrpgscrollresetaffinity", 1]},
+                {"weight" : 0.02, "item" : ["ivrpgscrollarc", 1]},
+                {"weight" : 0.02, "item" : ["ivrpgscrolladdstatpoint", 1]},
+                {"weight" : 0.02, "item" : ["ivrpgscrollinfernal", 1]},
+                {"weight" : 0.02, "item" : ["ivrpgscrolltoxic", 1]},
+                {"weight" : 0.25, "item" : ["ivrpgucfossilpool", 1]}
+            ],
+            "poolRounds" : [
+                [1, 1]
+            ]
+        }]
+    ],
+    "ivrpgbosspool_gic_flawless" : [
+        [0, {
+            "pool" : [
+                {"weight" : 0.10, "item" : ["ivrpgscrollresetstats", 1]},
+                {"weight" : 0.10, "item" : ["ivrpgscrollresetclass", 1]},
+                {"weight" : 0.10, "item" : ["ivrpgscrollresetaffinity", 1]},
+                {"weight" : 0.1125, "item" : ["ivrpgscrollarc", 1]},
+                {"weight" : 0.1125, "item" : ["ivrpgscrolladdstatpoint", 1]},
+                {"weight" : 0.1125, "item" : ["ivrpgscrollinfernal", 1]},
+                {"weight" : 0.1125, "item" : ["ivrpgscrolltoxic", 1]},
+                {"weight" : 0.25, "item" : ["ivrpgucfossilpool", 1]}
+            ],
+            "poolRounds" : [
+                [1, 3]
+            ]
+        }]
     ]
 }
