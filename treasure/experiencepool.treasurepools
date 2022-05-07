@@ -1091,14 +1091,14 @@
     "ivrpgbosspool_gic" : [
         [0, {
             "pool" : [
-                {"weight" : 0.22, "item" : ["ivrpgscrollresetstats", 1]},
-                {"weight" : 0.22, "item" : ["ivrpgscrollresetclass", 1]},
-                {"weight" : 0.23, "item" : ["ivrpgscrollresetaffinity", 1]},
+                {"weight" : 0.24, "item" : ["ivrpgscrollresetstats", 1]},
+                {"weight" : 0.24, "item" : ["ivrpgscrollresetclass", 1]},
+                {"weight" : 0.24, "item" : ["ivrpgscrollresetaffinity", 1]},
                 {"weight" : 0.02, "item" : ["ivrpgscrollarc", 1]},
                 {"weight" : 0.02, "item" : ["ivrpgscrolladdstatpoint", 1]},
                 {"weight" : 0.02, "item" : ["ivrpgscrollinfernal", 1]},
                 {"weight" : 0.02, "item" : ["ivrpgscrolltoxic", 1]},
-                {"weight" : 0.25, "item" : ["ivrpgucfossilpool", 1]}
+                {"weight" : 0.20, "pool" : "ivrpgucfossilpool"}
             ],
             "poolRounds" : [
                 [1, 1]
@@ -1115,7 +1115,7 @@
                 {"weight" : 0.1125, "item" : ["ivrpgscrolladdstatpoint", 1]},
                 {"weight" : 0.1125, "item" : ["ivrpgscrollinfernal", 1]},
                 {"weight" : 0.1125, "item" : ["ivrpgscrolltoxic", 1]},
-                {"weight" : 0.25, "item" : ["ivrpgucfossilpool", 1]}
+                {"weight" : 0.25, "pool" : "ivrpgucfossilpool"}
             ],
             "poolRounds" : [
                 [1, 3]
