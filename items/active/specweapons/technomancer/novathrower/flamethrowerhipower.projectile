@@ -1,0 +1,21 @@
+{
+  "projectileName" : "flamethrowerhipower",
+  "image" : "/projectiles/guns/unsorted/flamethrower/flamethrower.png",
+  "physics" : "flame",
+  "animationCycle" : 1,
+  "animationLoops" : false,
+  "frameNumber" : 12,
+  "winddownFrames" : 3,
+  "intangibleWinddown" : true,
+  "power" : 50,
+  "speed" : 62,
+  "knockback" : 10,
+  "timeToLive" : 1.0,
+  "bounces" : 4,
+  "piercing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [235, 126, 2],
+  "damageKind" : "flamethrower",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "hydrophobic" : true
+}
