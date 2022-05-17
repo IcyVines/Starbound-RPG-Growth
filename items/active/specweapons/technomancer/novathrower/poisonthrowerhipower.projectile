@@ -1,5 +1,5 @@
 {
-  "projectileName" : "poisonthrowerhighpower",
+  "projectileName" : "poisonthrowerhipower",
   "image" : "/projectiles/guns/unsorted/poisonthrower/poisonthrower.png",
   "physics" : "flame",
   "animationCycle" : 1,
