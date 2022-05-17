@@ -1,0 +1,31 @@
+{
+  "projectileName" : "icethrowersticky",
+  "image" : "/projectiles/guns/unsorted/icethrower/icethrower.png",
+  "physics" : "flame",
+  "animationCycle" : 1,
+  "animationLoops" : false,
+  "frameNumber" : 12,
+  "power" : 50,
+  "speed" : 25,
+  "timeToLive" : 0.98,
+  "bounces" : 4,
+  "piercing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [134, 176, 179],
+  "damageKind" : "ice",
+  "damageKindImage" : "/interface/statuses/ice.png",
+  "statusEffects" : [
+    {"effect" : "frostslow", "duration" : 10.0}  
+  ],
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "icestickyspikes",
+      "inheritDamageFactor" : 1.5,
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0,
+      "timeToLive" : 10
+    }
+  ],
+  "emitters" : [ "icethrowertrail" ]
+}
