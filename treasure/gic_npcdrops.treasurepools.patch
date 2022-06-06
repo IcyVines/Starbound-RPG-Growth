@@ -819,7 +819,7 @@
       "op": "add",
       "path": "/gic_mindshakerTreasure/0/1/fill/-",
       "value": {
-        [
+        "item": [
           "experienceorb",
           5000
         ]
@@ -915,7 +915,7 @@
       "op": "add",
       "path": "/gic_ghosttrainTreasure/0/1/fill/-",
       "value": {
-      [
+        "item": [
           "experienceorb",
           250
         ]
