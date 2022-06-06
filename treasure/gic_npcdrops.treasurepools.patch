@@ -819,7 +819,10 @@
       "op": "add",
       "path": "/gic_mindshakerTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool_gic"
+        [
+          "experienceorb",
+          5000
+        ]
       }
     }
   ],
@@ -834,7 +837,10 @@
       "path": "/gic_mindshakerTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool_gic"
+          "item": [
+            "experienceorb",
+            5000
+          ]
         }
       ]
     }
@@ -909,7 +915,10 @@
       "op": "add",
       "path": "/gic_ghosttrainTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool_gic"
+      [
+          "experienceorb",
+          250
+        ]
       }
     }
   ],
@@ -924,7 +933,10 @@
       "path": "/gic_ghosttrainTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool_gic"
+          "item": [
+            "experienceorb",
+            250
+          ]
         }
       ]
     }
@@ -941,7 +953,7 @@
       "value": {
         "item": [
           "experienceorb",
-          1000
+          1300
         ]
       }
     },
@@ -966,7 +978,7 @@
         {
           "item": [
             "experienceorb",
-            1000
+            1300
           ]
         },
         {
@@ -987,7 +999,7 @@
       "value": {
         "item": [
           "experienceorb",
-          5000
+          6500
         ]
       }
     },
@@ -1012,7 +1024,7 @@
         {
           "item": [
             "experienceorb",
-            5000
+            6500
           ]
         },
         {
@@ -1033,7 +1045,7 @@
       "value": {
         "item": [
           "experienceorb",
-          1000
+          1250
         ]
       }
     },
@@ -1058,7 +1070,7 @@
         {
           "item": [
             "experienceorb",
-            1000
+            1250
           ]
         },
         {
@@ -1079,7 +1091,7 @@
       "value": {
         "item": [
           "experienceorb",
-          5000
+          6250
         ]
       }
     },
@@ -1104,7 +1116,7 @@
         {
           "item": [
             "experienceorb",
-            5000
+            6250
           ]
         },
         {
@@ -1125,7 +1137,7 @@
       "value": {
         "item": [
           "experienceorb",
-          1000
+          750
         ]
       }
     },
@@ -1150,7 +1162,7 @@
         {
           "item": [
             "experienceorb",
-            1000
+            750
           ]
         },
         {
@@ -1171,7 +1183,7 @@
       "value": {
         "item": [
           "experienceorb",
-          5000
+          3000
         ]
       }
     },
@@ -1196,7 +1208,7 @@
         {
           "item": [
             "experienceorb",
-            2000
+            3000
           ]
         },
         {
@@ -1217,7 +1229,7 @@
       "value": {
         "item": [
           "experienceorb",
-          1000
+          1500
         ]
       }
     },
@@ -1242,7 +1254,7 @@
         {
           "item": [
             "experienceorb",
-            1000
+            1500
           ]
         },
         {
@@ -1263,7 +1275,7 @@
       "value": {
         "item": [
           "experienceorb",
-          5000
+          7500
         ]
       }
     },
@@ -1288,7 +1300,7 @@
         {
           "item": [
             "experienceorb",
-            5000
+            7500
           ]
         },
         {
@@ -1579,7 +1591,7 @@
       "value": {
         "item": [
           "experienceorb",
-          250
+          200
         ]
       }
     }
@@ -1597,7 +1609,7 @@
         {
           "item": [
             "experienceorb",
-            250
+            200
           ]
         }
       ]
@@ -1651,7 +1663,7 @@
       "value": {
         "item": [
           "experienceorb",
-          1000
+          1500
         ]
       }
     },
@@ -1676,7 +1688,7 @@
         {
           "item": [
             "experienceorb",
-            1000
+            1500
           ]
         },
         {
@@ -1694,325 +1706,6 @@
     {
       "op": "add",
       "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "item": [
-          "experienceorb",
-          5000
-        ]
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool_gic_flawless"
-      }
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill",
-      "value": [
-        {
-          "item": [
-            "experienceorb",
-            5000
-          ]
-        },
-        {
-          "pool": "ivrpgbosspool_gic_flawless"
-        }
-      ]
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_knightofnightsTreasure/0/1/fill",
-      "inverse": false
-    },
-    {
-      "op": "add",
-      "path": "/gic_knightofnightsTreasure/0/1/fill/-",
-      "value": {
-        "item": [
-          "experienceorb",
-          1000
-        ]
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_knightofnightsTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool_gic"
-      }
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_knightofnightsTreasure/0/1/fill",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/gic_knightofnightsTreasure/0/1/fill",
-      "value": [
-        {
-          "item": [
-            "experienceorb",
-            1000
-          ]
-        },
-        {
-          "pool": "ivrpgbosspool_gic"
-        }
-      ]
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill",
-      "inverse": false
-    },
-    {
-      "op": "add",
-      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "item": [
-          "experienceorb",
-          5000
-        ]
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool_gic_flawless"
-      }
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill",
-      "value": [
-        {
-          "item": [
-            "experienceorb",
-            5000
-          ]
-        },
-        {
-          "pool": "ivrpgbosspool_gic_flawless"
-        }
-      ]
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_excultistTreasure/0/1/fill",
-      "inverse": false
-    },
-    {
-      "op": "add",
-      "path": "/gic_excultistTreasure/0/1/fill/-",
-      "value": {
-        "item": [
-          "experienceorb",
-          1000
-        ]
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_excultistTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool_gic"
-      }
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_excultistTreasure/0/1/fill",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/gic_excultistTreasure/0/1/fill",
-      "value": [
-        {
-          "item": [
-            "experienceorb",
-            1000
-          ]
-        },
-        {
-          "pool": "ivrpgbosspool_gic"
-        }
-      ]
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_excultist_flawlessTreasure/0/1/fill",
-      "inverse": false
-    },
-    {
-      "op": "add",
-      "path": "/gic_excultist_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "item": [
-          "experienceorb",
-          5000
-        ]
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_excultist_flawlessTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool_gic_flawless"
-      }
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_excultist_flawlessTreasure/0/1/fill",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/gic_excultist_flawlessTreasure/0/1/fill",
-      "value": [
-        {
-          "item": [
-            "experienceorb",
-            5000
-          ]
-        },
-        {
-          "pool": "ivrpgbosspool_gic_flawless"
-        }
-      ]
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill",
-      "inverse": false
-    },
-    {
-      "op": "add",
-      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill/-",
-      "value": {
-        "item": [
-          "experienceorb",
-          2000
-        ]
-      }
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill",
-      "value": [
-        {
-          "item": [
-            "experienceorb",
-            2000
-          ]
-        }
-      ]
-    },
-    {
-      "op": "add",
-      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool_gic"
-      }
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_falseprotectorTreasure/0/1/fill",
-      "inverse": false
-    },
-    {
-      "op": "add",
-      "path": "/gic_falseprotectorTreasure/0/1/fill/-",
-      "value": {
-        "item": [
-          "experienceorb",
-          2000
-        ]
-      }
-    },
-    {
-      "op": "add",
-      "path": "/gic_falseprotectorTreasure/0/1/fill/-",
-      "value": {
-        "pool": "ivrpgbosspool_gic"
-      }
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_falseprotectorTreasure/0/1/fill",
-      "inverse": true
-    },
-    {
-      "op": "add",
-      "path": "/gic_falseprotectorTreasure/0/1/fill",
-      "value": [
-        {
-          "item": [
-            "experienceorb",
-            2000
-          ]
-        },
-        {
-          "pool": "ivrpgbosspool_gic"
-        }
-      ]
-    }
-  ],
-  [
-    {
-      "op": "test",
-      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill",
-      "inverse": false
-    },
-    {
-      "op": "add",
-      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill/-",
       "value": {
         "item": [
           "experienceorb",
@@ -2022,7 +1715,7 @@
     },
     {
       "op": "add",
-      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill/-",
+      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill/-",
       "value": {
         "pool": "ivrpgbosspool_gic_flawless"
       }
@@ -2031,12 +1724,12 @@
   [
     {
       "op": "test",
-      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill",
+      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill",
       "inverse": true
     },
     {
       "op": "add",
-      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill",
+      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill",
       "value": [
         {
           "item": [
@@ -2053,6 +1746,325 @@
   [
     {
       "op": "test",
+      "path": "/gic_knightofnightsTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnightsTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          2000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnightsTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_knightofnightsTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnightsTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            2000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          10000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            10000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_excultistTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultistTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          4000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultistTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_excultistTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultistTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            4000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_excultist_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultist_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          20000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultist_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_excultist_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultist_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            20000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          100
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            100
+          ]
+        }
+      ]
+    },
+    {
+      "op": "add",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_falseprotectorTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotectorTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          4000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotectorTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_falseprotectorTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotectorTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            4000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          20000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            20000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
       "path": "/gic_protectoratedeserterTreasure/0/1/fill",
       "inverse": false
     },
@@ -2062,7 +2074,7 @@
       "value": {
         "item": [
           "experienceorb",
-          1000
+          5000
         ]
       }
     },
@@ -2087,7 +2099,7 @@
         {
           "item": [
             "experienceorb",
-            1000
+            5000
           ]
         },
         {
@@ -2108,7 +2120,7 @@
       "value": {
         "item": [
           "experienceorb",
-          5000
+          50000
         ]
       }
     },
@@ -2133,7 +2145,7 @@
         {
           "item": [
             "experienceorb",
-            5000
+            50000
           ]
         },
         {
@@ -2154,7 +2166,7 @@
       "value": {
         "item": [
           "experienceorb",
-          1000
+          800
         ]
       }
     },
@@ -2179,7 +2191,7 @@
         {
           "item": [
             "experienceorb",
-            1000
+            800
           ]
         },
         {
@@ -2200,7 +2212,7 @@
       "value": {
         "item": [
           "experienceorb",
-          5000
+          4000
         ]
       }
     },
@@ -2225,7 +2237,7 @@
         {
           "item": [
             "experienceorb",
-            5000
+            4000
           ]
         },
         {
@@ -2246,7 +2258,7 @@
       "value": {
         "item": [
           "experienceorb",
-          1000
+          1375
         ]
       }
     },
@@ -2271,7 +2283,7 @@
         {
           "item": [
             "experienceorb",
-            1000
+            1375
           ]
         },
         {
@@ -2292,7 +2304,7 @@
       "value": {
         "item": [
           "experienceorb",
-          5000
+          6875
         ]
       }
     },
@@ -2317,7 +2329,7 @@
         {
           "item": [
             "experienceorb",
-            5000
+            6875
           ]
         },
         {
@@ -2618,7 +2630,7 @@
       "value": {
         "item": [
           "experienceorb",
-          1000
+          500
         ]
       }
     }
@@ -2636,7 +2648,7 @@
         {
           "item": [
             "experienceorb",
-            1000
+            500
           ]
         }
       ]
