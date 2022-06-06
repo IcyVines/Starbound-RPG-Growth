@@ -1,0 +1,14 @@
+[
+  {
+    "op": "add",
+    "path": "/baseParameters/dropPools",
+    "value": [
+      "experienceorbpool"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/scripts/-",
+    "value": "/monsters/ivrpgmonster.lua"
+  }
+]

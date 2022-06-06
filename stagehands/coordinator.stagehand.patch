@@ -316,8 +316,8 @@
     "path": "/npcCombat/rangedWeaponRanges/ivrpgwshredder",
     "value": {
       "minRange": 10,
-      "maxRange": 40,
-      "forceMoveRange": 35
+      "maxRange": 55,
+      "forceMoveRange": 50
     }
   },
   {

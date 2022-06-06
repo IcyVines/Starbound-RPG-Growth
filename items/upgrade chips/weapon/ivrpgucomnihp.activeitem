@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucomnihp",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Omnithrower Upgrade. \nOmnithrower shoots farther and has knockback at the cost of status effects.",
+  "shortdescription" : "Omnithrower High Pressure",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "weapon",
+  "stat" : "omnihp"
+}
