@@ -23,7 +23,8 @@ function init()
     { stat = "cosmicResistance", amount = self.resistance },
     { stat = "shadowResistance", amount = self.resistance },
     { stat = "ews_meleeResistance", amount = self.resistance },
-    { stat = "ews_smallarmsResistance", amount = self.resistance }
+    { stat = "ews_smallarmsResistance", amount = self.resistance },
+    { stat = "ews_psychicResistance", amount = self.resistance }
   })
 end
 
