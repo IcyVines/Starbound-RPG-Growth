@@ -1,5 +1,5 @@
 {
-  "projectileName" : "ivrpg_primednovacrystal",
+  "projectileName" : "ivrpg_primednovacrystal_highorbit",
   "image" : "primed_novacrystal.png",
   "pointLight" : false,
   "flippable" : true,
@@ -7,10 +7,10 @@
   "statusEffects" : [ ],
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
   "power" : 5.0,
-  "speed" : 90,
+  "speed" : 135,
   "damageKind" : "nova",
   "physics" : "laser",
-  "bounces" : -1,
+  "bounces" : 0,
   "piercing" : false,
   "timeToLive" : 3,
 
@@ -30,5 +30,9 @@
       "action" : "config",
       "file" : "/items/active/classweapons/wizardstaff/novaexplosionprojectiles/novaexplosionknockback.config"
     }
-  ]
+  ],
+  "scripts" : ["homing.lua"],
+	"homingDistance" : 100,
+	"rotationRate" : 16,
+	"trackingLimit" : 10
 }

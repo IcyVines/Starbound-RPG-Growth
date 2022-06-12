@@ -1,0 +1,17 @@
+{
+  "projectileName" : "ivrpg_primednovacrystal_phase",
+  "image" : "primed_novacrystal.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "statusEffects" : [ ],
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 5.0,
+  "speed" : 70,
+  "damageKind" : "nova",
+  "physics" : "illusion",
+  "bounces" : 0,
+  "piercing" : true,
+  "timeToLive" : 1,
+  "renderLayer" : "ForegroundOverlay+1"
+}

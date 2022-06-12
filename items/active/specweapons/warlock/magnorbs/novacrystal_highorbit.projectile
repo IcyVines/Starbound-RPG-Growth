@@ -1,17 +1,18 @@
 {
-  "projectileName" : "ivrpg_primednovacrystal",
-  "image" : "primed_novacrystal.png",
+  "projectileName" : "ivrpg_novacrystal_highorbit",
+  "image" : "novacrystal.png",
   "pointLight" : false,
   "flippable" : true,
   "orientationLocked" : true,
+  "actionOnReap" : [ ],
   "statusEffects" : [ ],
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
   "power" : 5.0,
-  "speed" : 90,
+  "speed" : 135,
   "damageKind" : "nova",
   "physics" : "laser",
   "bounces" : -1,
-  "piercing" : false,
+  "piercing" : true,
   "timeToLive" : 3,
 
   "actionOnCollide" : [
@@ -25,10 +26,5 @@
     }
   ],
 
-  "actionOnReap" : [
-    {
-      "action" : "config",
-      "file" : "/items/active/classweapons/wizardstaff/novaexplosionprojectiles/novaexplosionknockback.config"
-    }
-  ]
+  "scripts" : [ "/scripts/projectiles/boomerangprojectile.lua" ]
 }
