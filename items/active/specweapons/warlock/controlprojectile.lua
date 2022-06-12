@@ -234,7 +234,7 @@ function ControlProjectile:fire(timer)
 if self.phaseorbit then
 	ProjectiletypePrime = "ivrpg_novacrystal_phase"
 	ProjectiletypeAlt = "ivrpg_primednovacrystal_phase"
-elseif.highorbit then
+elseif self.highorbit then
 	ProjectiletypePrime = "ivrpg_novacrystal_highorbit"
 	ProjectiletypeAlt = "ivrpg_primednovacrystal_highorbit"
 else
