@@ -143,13 +143,27 @@
     ],
     [{
             "op": "test",
-            "path": "/bonedragonTreasure/0/1/fill",
+            "path": "/swansongTreasure/0/1/fill",
             "inverse": true
         }, {
             "op": "add",
-            "path": "/bonedragonTreasure/0/1/fill",
+            "path": "/swansongTreasure/0/1/fill",
             "value": [{
-                    "item": ["experienceorb", 1750]
+                    "item": ["experienceorb", 3000]
+                }
+            ]
+
+        }
+    ],
+    [{
+            "op": "test",
+            "path": "/swansongTreasure/0/1/fill",
+            "inverse": true
+        }, {
+            "op": "add",
+            "path": "/swansongTreasure/0/1/fill",
+            "value": [{
+                    "item": ["experienceorb", 3000]
                 }
             ]
 
