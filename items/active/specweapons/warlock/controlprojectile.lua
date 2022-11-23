@@ -238,7 +238,7 @@ elseif self.highorbit then
 	ProjectiletypePrime = "ivrpg_novacrystal_highorbit"
 	ProjectiletypeAlt = "ivrpg_primednovacrystal_highorbit"
 else
-	ProjectiletypePrime = self.Projectiletype
+	ProjectiletypePrime = "ivrpg_novacrystal"
 	ProjectiletypeAlt = "ivrpg_primednovacrystal"
 end
    while self.fireMode == "primary" or (self.fireMode == "alt" and self.shiftHeld) or magnorbTimer > 0 do
