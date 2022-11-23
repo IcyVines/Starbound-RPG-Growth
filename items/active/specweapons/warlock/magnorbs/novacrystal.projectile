@@ -1,5 +1,5 @@
 {
-  "projectileName" : "ivrpg_novacrystal_phase",
+  "projectileName" : "ivrpg_novacrystal",
   "image" : "novacrystal.png",
   "pointLight" : false,
   "flippable" : true,
@@ -8,7 +8,7 @@
   "statusEffects" : [ ],
   "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
   "power" : 5.0,
-  "speed" : 100,
+  "speed" : 90,
   "damageKind" : "nova",
   "physics" : "laser",
   "bounces" : -1,
