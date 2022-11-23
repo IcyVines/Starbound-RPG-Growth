@@ -2,6 +2,148 @@
   [
     {
       "op": "test",
+      "path": "/gic_protectorate_beluga_fighterTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorate_beluga_fighterTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          350
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectorate_beluga_fighterTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorate_beluga_fighterTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            350
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_unitan_gausshawk_fighterTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitan_gausshawk_fighterTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1250
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitan_gausshawk_fighterTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_unitan_gausshawk_fighterTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitan_gausshawk_fighterTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1250
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],  
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ], 
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
       "path": "/gic_personalhumansmallTreasure/0/1/fill",
       "inverse": false
     },
@@ -2258,7 +2400,7 @@
       "value": {
         "item": [
           "experienceorb",
-          1375
+          1450
         ]
       }
     },
@@ -2283,7 +2425,7 @@
         {
           "item": [
             "experienceorb",
-            1375
+            1450
           ]
         },
         {
@@ -2304,7 +2446,7 @@
       "value": {
         "item": [
           "experienceorb",
-          6875
+          7000
         ]
       }
     },
@@ -2329,7 +2471,7 @@
         {
           "item": [
             "experienceorb",
-            6875
+            7000
           ]
         },
         {
@@ -2348,7 +2490,10 @@
       "op": "add",
       "path": "/gic_protectorateknightTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool_gic"
+        "item": [
+          "experienceorb",
+          100
+        ]
       }
     }
   ],
@@ -2363,7 +2508,112 @@
       "path": "/gic_protectorateknightTreasure/0/1/fill",
       "value": [
         {
+          "item": [
+            "experienceorb",
+            100
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_rogueprotectorateknightTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_rogueprotectorateknightTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          100
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_rogueprotectorateknightTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_rogueprotectorateknightTreasure/0/1/fill",
+      "value": [
+        {
+			"item": [
+			"experienceorb",
+			100
+			]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill",
+      "value": [
+        {
           "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedstoneknightTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedstoneknightTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          50
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedstoneknightTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedstoneknightTreasure/0/1/fill",
+      "value": [
+        {
+			"item": [
+			"experienceorb",
+			50
+			]
         }
       ]
     }
@@ -2685,6 +2935,150 @@
           "item": [
             "experienceorb",
             1000
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchhuntercaptainTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchhuntercaptainTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1750
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchhuntercaptainTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchhuntercaptainTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1750
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchhuntercaptain_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchhuntercaptain_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          6000
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchhuntercaptain_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchhuntercaptain_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            6000
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_crusaderchampionTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_crusaderchampionTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1800
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1800
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          6500
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            6500
           ]
         }
       ]
