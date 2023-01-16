@@ -8,7 +8,7 @@ function init()
   self.power = config.getParameter("power", 250)
 
   self.hDirection = 0
-  self.cooldownTimer = status.statusProperty("ivrpg_mitsunosnuke", 100)
+  self.cooldownTimer = status.statusProperty("ivrpg_mitsunosnuke", 0)
   self.rechargeTimer = 0
   self.vDirection = 0
   self.shift = false
