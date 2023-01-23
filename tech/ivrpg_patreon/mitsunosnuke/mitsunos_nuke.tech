@@ -12,5 +12,5 @@
 
   "chipCost" : 0,
   "cooldown" : 300,
-  "power" : 250
+  "power" : 100
 }

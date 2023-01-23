@@ -4,6 +4,7 @@
   "bounces" : 0,
   "image" : "nuke.png",
   "timeToLive" : 10,
+  "lightColor" : [255, 0, 0],
   "fullbright" : false,
   "power" : 20,
   "speed" : 75,
