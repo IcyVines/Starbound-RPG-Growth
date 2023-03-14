@@ -1,7 +1,7 @@
 [
   {
     "op": "add",
-    "path": "/baseParameters/dropPools",
+    "path": "/dropPools/-",
     "value": [
       "experienceorbpool_gic"
     ]
