@@ -2,9 +2,7 @@
   {
     "op": "add",
     "path": "/dropPools/-",
-    "value": [
-      "experienceorbpool"
-    ]
+    "value": "experienceorbpool_gic"
   },
   {
     "op": "add",
