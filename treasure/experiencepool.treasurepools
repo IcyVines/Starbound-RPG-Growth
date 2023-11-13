@@ -1079,6 +1079,24 @@
             ]
         }]
     ],
+    "experienceorbpool_gic_med" : [
+        [0, {
+            "pool" : [
+                {"weight" : 0.33, "item" : ["experienceorb", 120]},
+                {"weight" : 0.34, "item" : ["experienceorb", 128]},
+                {"weight" : 0.33, "item" : ["experienceorb", 135]}
+            ]
+        }]
+    ],
+    "experienceorbpool_gic_hard" : [
+        [0, {
+            "pool" : [
+                {"weight" : 0.33, "item" : ["experienceorb", 160]},
+                {"weight" : 0.34, "item" : ["experienceorb", 170]},
+                {"weight" : 0.33, "item" : ["experienceorb", 180]}
+            ]
+        }]
+    ],
     "experienceorbpool_gic_vehicle" : [
         [0, {
             "pool" : [
