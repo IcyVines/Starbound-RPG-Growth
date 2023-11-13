@@ -998,6 +998,36 @@
   [
     {
       "op": "test",
+      "path": "/gic_protectorate_specialeliteTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorate_specialeliteTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_hard"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectorate_specialeliteTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorate_specialeliteTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_hard"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
       "path": "/gic_floranliberationfrontcommandoTreasure/0/1/fill",
       "inverse": true
     },
@@ -2626,6 +2656,42 @@
     {
       "op": "add",
       "path": "/gic_protectorateknightTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            100
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectoratesynthknightTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectoratesynthknightTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          100
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectoratesynthknightTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectoratesynthknightTreasure/0/1/fill",
       "value": [
         {
           "item": [
