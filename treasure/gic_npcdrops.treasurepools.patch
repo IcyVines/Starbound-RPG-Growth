@@ -1270,6 +1270,36 @@
   [
     {
       "op": "test",
+      "path": "/gic_erchiusgladiatorTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiusgladiatorTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_med"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiusgladiatorTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiusgladiatorTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_med"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
       "path": "/gic_erchiuswarriorTreasure/0/1/fill",
       "inverse": false
     },
@@ -1309,6 +1339,36 @@
         },
         {
           "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedstonesoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedstonesoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_med"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedstonesoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedstonesoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_med"
         }
       ]
     }
