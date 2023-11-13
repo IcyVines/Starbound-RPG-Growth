@@ -924,6 +924,66 @@
   [
     {
       "op": "test",
+      "path": "/gic_floranliberationfrontelitesoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_floranliberationfrontelitesoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_med"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_floranliberationfrontelitesoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_floranliberationfrontelitesoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_med"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingerguardsoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingerguardsoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_med"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingerguardsoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingerguardsoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_med"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
       "path": "/gic_floranliberationfrontcommandoTreasure/0/1/fill",
       "inverse": false
     },
@@ -931,7 +991,7 @@
       "op": "add",
       "path": "/gic_floranliberationfrontcommandoTreasure/0/1/fill/-",
       "value": {
-        "pool": "experienceorbpool_gic"
+        "pool": "experienceorbpool_gic_hard"
       }
     }
   ],
@@ -946,7 +1006,7 @@
       "path": "/gic_floranliberationfrontcommandoTreasure/0/1/fill",
       "value": [
         {
-          "pool": "experienceorbpool_gic"
+          "pool": "experienceorbpool_gic_hard"
         }
       ]
     }
