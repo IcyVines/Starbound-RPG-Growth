@@ -1,0 +1,7 @@
+[
+  {
+    "op": "add",
+    "path": "/dropPools/-",
+    "value": "experienceorbpool_gic"
+  }
+]
