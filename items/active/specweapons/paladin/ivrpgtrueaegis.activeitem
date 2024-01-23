@@ -164,7 +164,7 @@
   "beamTransitionFrames" : 10,
 
   "perfectBlockDirectives" : "?border=2;FFFDAAFF;00000000",
-  "perfectBlockTime" : 0.2,
+  "perfectBlockTime" : 1,
 
   "knockback" : 25,
 

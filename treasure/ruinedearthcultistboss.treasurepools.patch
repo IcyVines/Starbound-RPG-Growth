@@ -1,0 +1,38 @@
+[
+  [
+    {
+      "op": "test",
+      "path": "/ruinedearthcultistboss/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ruinedearthcultistboss/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          3000
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ruinedearthcultistboss/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ruinedearthcultistboss/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            3000
+          ]
+        }
+      ]
+    }
+  ]
+]

@@ -1,0 +1,33 @@
+{
+  "projectileName" : "flamethrowersticky",
+  "image" : "/projectiles/guns/unsorted/flamethrower/flamethrower.png",
+  "physics" : "flame",
+  "animationCycle" : 1,
+  "animationLoops" : false,
+  "frameNumber" : 12,
+  "winddownFrames" : 3,
+  "intangibleWinddown" : true,
+  "power" : 50,
+  "speed" : 25,
+  "timeToLive" : 1.0,
+  "bounces" : 4,
+  "piercing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [235, 126, 2],
+  "damageKind" : "flamethrower",
+  "damageKindImage" : "/interface/statuses/fire.png",
+  "statusEffects" : [
+    {"effect" : "burning", "duration" : 10.0}      
+  ],
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "firestickyspikes",
+      "inheritDamageFactor" : 1.5,
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0,
+      "timeToLive" : 10
+    }
+  ],
+  "hydrophobic" : true
+}

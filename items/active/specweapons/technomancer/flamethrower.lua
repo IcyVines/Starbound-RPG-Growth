@@ -45,8 +45,17 @@ function FlamethrowerAttack:fireProjectile(projectileType, projectileParams, ina
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.speed = util.randomInRange(params.speed)
 
-  projectileType = self.projectileNames[self.ammoIndex or 1] or "ivrpgnova"
+self.sticky = status.statPositive("ivrpgucomnisticky")
+self.hipower = status.statPositive("ivrpgucomnihp")
+projectileType = self.projectileNames[self.ammoIndex or 1] or "ivrpgnova"
+if self.hipower then
+  projectileType = projectileType .. "throwerhipower"
+elseif self.sticky then
+  projectileType = projectileType .. "throwersticky"
+  params.power = self:damagePerShot() * 0.2
+else
   projectileType = projectileType .. "thrower"
+end
 
   local projectileId = 0
   for i = 1, (projectileCount or self.projectileCount) do

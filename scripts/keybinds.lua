@@ -7,7 +7,7 @@ This file may be redistributed without including a copy of the license, as long 
 keybinds = {
   binds = {},
   initialized = false,
-  version = "1.3.4",
+  version = "1.3.5",
   debug = true
 }
 
@@ -245,7 +245,7 @@ function Bind:matches(input)
   -- For every bind, check every arg.
   -- If an arg does not match the current input, prevent the function for this bind from being called.
   for k,v in pairs(self.args) do
-    if keybinds.input[k] == v then
+    if keybinds.input[k:lower()] == v then
       matches = matches + 1
     else
       -- Value for this argument does not match expected value for keybind.

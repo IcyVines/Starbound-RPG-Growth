@@ -1,0 +1,38 @@
+{
+  "projectileName" : "ivrpg_primednovacrystal_highorbit",
+  "image" : "primed_novacrystal.png",
+  "pointLight" : false,
+  "flippable" : true,
+  "orientationLocked" : true,
+  "statusEffects" : [ ],
+  "damagePoly" : [[-3, 0], [0, 3], [3, 0], [0, -3]],
+  "power" : 5.0,
+  "speed" : 135,
+  "damageKind" : "nova",
+  "physics" : "laser",
+  "bounces" : 0,
+  "piercing" : false,
+  "timeToLive" : 3,
+
+  "actionOnCollide" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/projectiles/magnorb_impact1.ogg",
+        "/sfx/projectiles/magnorb_impact2.ogg",
+        "/sfx/projectiles/magnorb_impact3.ogg"
+      ]
+    }
+  ],
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/items/active/classweapons/wizardstaff/novaexplosionprojectiles/novaexplosionknockback.config"
+    }
+  ],
+  "scripts" : ["homing.lua"],
+	"homingDistance" : 100,
+	"rotationRate" : 16,
+	"trackingLimit" : 10
+}

@@ -33,7 +33,13 @@ function update(dt)
     {stat = "demonicResistance", amount = 0.2 - (self.nearbyAllies / 5)},
     {stat = "holyResistance", amount = 0.2 - (self.nearbyAllies / 5)},
     {stat = "novaResistance", amount = 0.2 - (self.nearbyAllies / 5)},
-    {stat = "cosmicResistance", amount = 0.2 - (self.nearbyAllies / 5)}
+    {stat = "cosmicResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "ews_meleeResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "ews_smallarmsResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "ews_heavyarmsResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "ews_explosiveResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "ews_antitankResistance", amount = 0.2 - (self.nearbyAllies / 5)},
+    {stat = "ews_psychicResistance", amount = 0.2 - (self.nearbyAllies / 5)}
   })
 
   if self.nearbyAggressiveNpcs >= 1 then

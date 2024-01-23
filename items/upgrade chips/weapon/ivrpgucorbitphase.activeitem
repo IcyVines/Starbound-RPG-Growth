@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucorbitphase",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Orbital Upgrade.\n Orbitals fly through walls. ^red;Range Reduced.",
+  "shortdescription" : "Nebula",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "weapon",
+  "stat" : "orbitphase"
+}

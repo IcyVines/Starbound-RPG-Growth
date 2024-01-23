@@ -1,0 +1,674 @@
+[
+  [
+    {
+      "op": "test",
+      "path": "/ffs_zombie_srs_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_zombie_srs_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpoolsmall"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_zombie_srs_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_zombie_srs_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolsmall"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_zombie_scientist_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_zombie_scientist_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpoolsmall"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_zombie_scientist_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_zombie_scientist_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_early_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_early_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_early_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_early_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_mid_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_mid_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_mid_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_mid_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_late_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_late_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_late_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_late_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_shotgun_early_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_shotgun_early_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_shotgun_early_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_shotgun_early_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_shotgun_mid_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_shotgun_mid_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_shotgun_mid_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_shotgun_mid_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_shotgun_late_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_shotgun_late_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_shotgun_late_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_shotgun_late_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_sniper_early_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_sniper_early_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_sniper_early_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_sniper_early_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_sniper_mid_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_sniper_mid_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_sniper_mid_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_sniper_mid_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_sniper_late_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_sniper_late_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_sniper_late_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_sniper_late_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_trooper_early_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_trooper_early_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_trooper_early_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_trooper_early_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_rpg_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_rpg_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_rpg_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_rpg_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_psycho_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_psycho_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpoolsmall"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_psycho_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_psycho_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolsmall"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_zealot_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_zealot_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpoolsmall"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_pirates_zealot_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_pirates_zealot_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolsmall"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_parasite_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_parasite_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpoolsmall"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_parasite_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_parasite_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolsmall"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_3boss_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs0_3boss_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolminiboss"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_4boss_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs0_4boss_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolminiboss"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_4boss_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs0_4boss_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolminiboss"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_lastboss_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs0_lastboss_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolboss"
+        }
+      ]
+    },
+    {
+      "op": "add",
+      "path": "/ffs0_lastboss_hc/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            2000
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs0_lastboss_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs0_lastboss_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolboss"
+        }
+      ]
+    },
+    {
+      "op": "add",
+      "path": "/ffs0_lastboss_hc/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            2000
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs1_lastboss_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs1_lastboss_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolboss"
+        }
+      ]
+    },
+    {
+      "op": "add",
+      "path": "/ffs1_lastboss_hc/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1500
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_cultist_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_cultist_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_vehicle_hc/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/ffs_cultist_vehicle_hc/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpoolminiboss"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_vehicle_hc/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/ffs_cultist_vehicle_hc/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpoolminiboss"
+        }
+      ]
+    }
+  ]
+]
