@@ -262,9 +262,9 @@ function aimDirection(inaccuracy)
 end
   
 -- Check if the Primary Projectile can be fired.
-function action1(skipCheck)
-  if (self.cooldownTimer > 0 or self.active) or ((not skipCheck)
-    and world.entityHandItem(self.id, "primary"))
+function action1()
+  if (self.cooldownTimer > 0 or self.active) or 
+    world.entityHandItem(self.id, "primary")
     or status.statPositive("activeMovementAbilities") then return end
     if self.shiftHeld and self.cooldownTimerU == 0 and self.percentList[self.elementMod] >= 15 then
       -- If statement to check if element is Fire and Ultimate is used. Don't want to go through walls.
