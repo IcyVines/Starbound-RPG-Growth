@@ -10,7 +10,9 @@ function init()
   animator.setParticleEmitterActive("posEmbers", true)
   effect.addStatModifierGroup({
     { stat = "powerMultiplier", effectiveMultiplier = self.power },
-    { stat = "protection", amount = self.armor }
+    { stat = "protection", amount = self.armor },
+    { stat = "ews_meleeResistance", amount = self.armor },
+    { stat = "ews_smallarmsResistance", amount = self.armor }
   })
 end
 

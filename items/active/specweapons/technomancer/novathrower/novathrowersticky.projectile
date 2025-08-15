@@ -1,0 +1,31 @@
+{
+  "projectileName" : "ivrpgnovathrowersticky",
+  "image" : "novathrower.png",
+  "physics" : "flame",
+  "animationCycle" : 1,
+  "animationLoops" : false,
+  "frameNumber" : 12,
+  "power" : 50,
+  "speed" : 25,
+  "timeToLive" : 0.98,
+  "bounces" : 4,
+  "piercing" : true,
+  "damagePoly" : [ [-9, 0], [-6, -6], [0, -9], [6, -6], [9, 0], [6, 6], [0, 9], [-6, 6] ],
+  "lightColor" : [166, 40, 166],
+  "damageKind" : "nova",
+  "damageKindImage" : "/interface/statuses/poison.png",
+  "statusEffects" : [
+    {"effect" : "ivrpgstarfall", "duration" : 10.0}    
+  ],
+  "actionOnCollide" : [
+    {
+      "action" : "projectile",
+      "type" : "novastickyspikes",
+      "inheritDamageFactor" : 1.5,
+      "fuzzAngle" : 0,
+      "angleAdjust" : 0,
+      "timeToLive" : 10
+    }
+  ],
+  "emitters" : [ "stargazer1", "stargazer2", "stargazer3" ]
+}

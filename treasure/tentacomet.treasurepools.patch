@@ -1,0 +1,28 @@
+[
+    [{
+            "op": "test",
+            "path": "/tentacomet/0/1/fill",
+            "inverse": false
+        }, {
+            "op": "add",
+            "path": "/tentacomet/0/1/fill/-",
+            "value": {
+                "item": ["experienceorb", 2500]
+            }
+        }
+    ],
+    [{
+            "op": "test",
+            "path": "/tentacomet/0/1/fill",
+            "inverse": true
+        }, {
+            "op": "add",
+            "path": "/tentacomet/0/1/fill",
+            "value": [{
+                    "item": ["experienceorb", 2500]
+                }
+            ]
+
+        }
+    ]
+]

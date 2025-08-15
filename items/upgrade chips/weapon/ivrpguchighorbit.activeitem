@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpguchighorbit",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Orbital Upgrade.\n Orbitals fly further at the cost of charge time.",
+  "shortdescription" : "High Orbit",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "weapon",
+  "stat" : "highorbit"
+}

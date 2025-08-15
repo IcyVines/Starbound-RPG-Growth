@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucomnisticky",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Omniathrower Upgrade. \nOmniathrower leaves elemental trails on terrain.",
+  "shortdescription" : "Omniapalm",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "weapon",
+  "stat" : "omnisticky"
+}

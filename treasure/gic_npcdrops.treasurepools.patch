@@ -1,0 +1,3987 @@
+[
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectorate_beluga_fighterTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorate_beluga_fighterTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          350
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectorate_beluga_fighterTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorate_beluga_fighterTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            350
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_unitan_gausshawk_fighterTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitan_gausshawk_fighterTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1250
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitan_gausshawk_fighterTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_unitan_gausshawk_fighterTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitan_gausshawk_fighterTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1250
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],  
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ], 
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchfreethinker_nationalguardsoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_personalhumansmallTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_personalhumansmallTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_personalhumansmallTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_personalhumansmallTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_shockbanditTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_shockbanditTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_shockbanditTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_shockbanditTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_shockbanditeliteTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_shockbanditeliteTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_shockbanditeliteTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_shockbanditeliteTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_frostbanditTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_frostbanditTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_frostbanditTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_frostbanditTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_guardTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_guardTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_guardTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_guardTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_unitancitizenTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitancitizenTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_unitancitizenTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitancitizenTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_unitancityguardsmanTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitancityguardsmanTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_unitancityguardsmanTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitancityguardsmanTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_unitanastraldiverengineerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitanastraldiverengineerTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_unitanastraldiverengineerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_unitanastraldiverengineerTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_politicalunitanguardTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_politicalunitanguardTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_politicalunitanguardTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_politicalunitanguardTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_politicalundercoverguardTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_politicalundercoverguardTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_politicalundercoverguardTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_politicalundercoverguardTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_surfacecityspacecolonist_undercoverguardTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_surfacecityspacecolonist_undercoverguardTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_surfacecityspacecolonist_undercoverguardTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_surfacecityspacecolonist_undercoverguardTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_undercolony_militiaguardTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_undercolony_militiaguardTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_undercolony_militiaguardTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_undercolony_militiaguardTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_politicalprotectorateguardTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_politicalprotectorateguardTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_politicalprotectorateguardTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_politicalprotectorateguardTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_archivistprotectorTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_archivistprotectorTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_archivistprotectorTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_archivistprotectorTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_occasussoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_occasussoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_occasussoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_occasussoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_occasusadvisorTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_occasusadvisorTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_occasusadvisorTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_occasusadvisorTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectedrebelTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectedrebelTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectedrebelTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectedrebelTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protecteddefenseforceguardTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protecteddefenseforceguardTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protecteddefenseforceguardTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protecteddefenseforceguardTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_wartorninsurgentTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_wartorninsurgentTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_wartorninsurgentTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_wartorninsurgentTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_federalsoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_federalsoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_federalsoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_federalsoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_federalmercenaryTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_federalmercenaryTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_federalmercenaryTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_federalmercenaryTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_internalprisonofficerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_internalprisonofficerTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_internalprisonofficerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_internalprisonofficerTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_internalprisonguardTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_internalprisonguardTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_internalprisonguardTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_internalprisonguardTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_externalprisonguardTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_externalprisonguardTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_externalprisonguardTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_externalprisonguardTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_possessedprisonerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_possessedprisonerTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_possessedprisonerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_possessedprisonerTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_floranliberationfrontsoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_floranliberationfrontsoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_floranliberationfrontsoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_floranliberationfrontsoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_floranliberationfrontelitesoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_floranliberationfrontelitesoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_med"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_floranliberationfrontelitesoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_floranliberationfrontelitesoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_med"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingerguardsoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingerguardsoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_med"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingerguardsoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingerguardsoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_med"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_floranliberationfrontcommandoTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_floranliberationfrontcommandoTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_hard"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectorate_specialeliteTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorate_specialeliteTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_hard"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectorate_specialeliteTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorate_specialeliteTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_hard"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_floranliberationfrontcommandoTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_floranliberationfrontcommandoTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_hard"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_mindshakerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_mindshakerTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          5000
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_mindshakerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_mindshakerTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            5000
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_anomaly_stalkerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_anomaly_stalkerTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_anomaly_stalkerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_anomaly_stalkerTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_anomaly_stalkermicrocreditsTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_anomaly_stalkermicrocreditsTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_anomaly_stalkermicrocreditsTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_anomaly_stalkermicrocreditsTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_ghosttrainTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_ghosttrainTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          250
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_ghosttrainTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_ghosttrainTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            250
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingerdaimyoTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingerdaimyoTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1300
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingerdaimyoTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingerdaimyoTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingerdaimyoTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1300
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingerdaimyo_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingerdaimyo_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          6500
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingerdaimyoTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingerdaimyo_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingerdaimyo_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            6500
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingergeneralTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingergeneralTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1250
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingergeneralTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingergeneralTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingergeneralTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1250
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingergeneral_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingergeneral_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          6250
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingergeneralTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_greenfingergeneral_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_greenfingergeneral_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            6250
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiusgladiatorTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiusgladiatorTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_med"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiusgladiatorTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiusgladiatorTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_med"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiuswarriorTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiuswarriorTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          750
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiuswarriorTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiuswarriorTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiuswarriorTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            750
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedstonesoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedstonesoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_med"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedstonesoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedstonesoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_med"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiuswarrior_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiuswarrior_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          3000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiuswarrior_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiuswarrior_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiuswarrior_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            3000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_armoredprotectorTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_armoredprotectorTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1500
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_armoredprotectorTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_armoredprotectorTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_armoredprotectorTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1500
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_armoredprotector_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_armoredprotector_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          7500
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_armoredprotector_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_armoredprotector_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_armoredprotector_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            7500
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_surfacecityspacecolonist_guarddefector_crewTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_surfacecityspacecolonist_guarddefector_crewTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_surfacecityspacecolonist_guarddefector_crewTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_surfacecityspacecolonist_guarddefector_crewTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_wildlands_grimchaplain_crewTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_wildlands_grimchaplain_crewTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_wildlands_grimchaplain_crewTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_wildlands_grimchaplain_crewTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_floran_swordmasterTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_floran_swordmasterTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_floran_swordmasterTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_floran_swordmasterTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_colonial_gunpowderhunterTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_colonial_gunpowderhunterTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_colonial_gunpowderhunterTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_colonial_gunpowderhunterTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_colonial_demoknightTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_colonial_demoknightTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_colonial_demoknightTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_colonial_demoknightTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_possessed_foremanTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_possessed_foremanTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_possessed_foremanTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_possessed_foremanTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_possessed_forkliftTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_possessed_forkliftTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_possessed_forkliftTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_possessed_forkliftTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_metrowandererTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_metrowandererTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_metrowandererTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_metrowandererTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_khurtovyna_metrowanderer_crewTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_khurtovyna_metrowanderer_crewTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_khurtovyna_metrowanderer_crewTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_khurtovyna_metrowanderer_crewTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_denizenofthedenTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_denizenofthedenTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          200
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_denizenofthedenTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_denizenofthedenTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            200
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_denizenoftheden_nightTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_denizenoftheden_nightTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          200
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_denizenoftheden_nightTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_denizenoftheden_nightTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            200
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_whitewolfoftheworldsTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_whitewolfoftheworldsTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1500
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_whitewolfoftheworldsTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_whitewolfoftheworldsTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_whitewolfoftheworldsTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1500
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          7500
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_whitewolfoftheworlds_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            7500
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_knightofnightsTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnightsTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          2000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnightsTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_knightofnightsTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnightsTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            2000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          10000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_knightofnights_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            10000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_excultistTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultistTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          4000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultistTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_excultistTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultistTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            4000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_excultist_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultist_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          20000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultist_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_excultist_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_excultist_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            20000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          100
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            100
+          ]
+        }
+      ]
+    },
+    {
+      "op": "add",
+      "path": "/gic_wartorn_excultist_crewTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_falseprotectorTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotectorTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          4000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotectorTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_falseprotectorTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotectorTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            4000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          20000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_falseprotector_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            20000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectoratedeserterTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectoratedeserterTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          5000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectoratedeserterTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectoratedeserterTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectoratedeserterTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            5000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectoratedeserter_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectoratedeserter_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          50000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectoratedeserter_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectoratedeserter_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectoratedeserter_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            50000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_scatterspearsicarioTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_scatterspearsicarioTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          800
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_scatterspearsicarioTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_scatterspearsicarioTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_scatterspearsicarioTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            800
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_scatterspearsicario_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_scatterspearsicario_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          4000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_scatterspearsicario_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_scatterspearsicario_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_scatterspearsicario_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            4000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_occasusassassinTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_occasusassassinTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1450
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_occasusassassinTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_occasusassassinTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_occasusassassinTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1450
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          7000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic_flawless"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_occasusassassin_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            7000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic_flawless"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectorateknightTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorateknightTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          100
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectorateknightTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorateknightTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            100
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectoratesynthknightTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectoratesynthknightTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          100
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectoratesynthknightTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectoratesynthknightTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            100
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_rogueprotectorateknightTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_rogueprotectorateknightTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          100
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_rogueprotectorateknightTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_rogueprotectorateknightTreasure/0/1/fill",
+      "value": [
+        {
+			"item": [
+			"experienceorb",
+			100
+			]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedstoneknightTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedstoneknightTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          50
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedstoneknightTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedstoneknightTreasure/0/1/fill",
+      "value": [
+        {
+			"item": [
+			"experienceorb",
+			50
+			]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectorateknight_minibossTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorateknight_minibossTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          500
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_protectorateknight_minibossTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_protectorateknight_minibossTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            500
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_exitcamperTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_exitcamperTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_exitcamperTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_exitcamperTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_bureaucraticallyisolatedrectificationbotTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_bureaucraticallyisolatedrectificationbotTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          2000
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/gic_bureaucraticallyisolatedrectificationbotTreasure/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgbosspool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_bureaucraticallyisolatedrectificationbotTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_bureaucraticallyisolatedrectificationbotTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            2000
+          ]
+        },
+        {
+          "pool": "ivrpgbosspool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedwalker_minibossTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedwalker_minibossTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          500
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedwalker_minibossTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedwalker_minibossTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            500
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_alphaixolingTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_alphaixolingTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_alphaixolingTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_alphaixolingTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedheavygunnerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedheavygunnerTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_afflictedheavygunnerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_afflictedheavygunnerTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1000
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchius_crystalsentinelTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1000
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiuscrystalcoordinatorTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiuscrystalcoordinatorTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          500
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiuscrystalcoordinatorTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiuscrystalcoordinatorTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            500
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiuscrystalcoordinator_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiuscrystalcoordinator_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1000
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_erchiuscrystalcoordinator_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_erchiuscrystalcoordinator_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1000
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchhuntercaptainTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchhuntercaptainTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1750
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchhuntercaptainTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchhuntercaptainTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1750
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchhuntercaptain_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchhuntercaptain_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          6000
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_glitchhuntercaptain_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_glitchhuntercaptain_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            6000
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_crusaderchampionTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_crusaderchampionTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1800
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1800
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          6500
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_crusaderchampion_flawlessTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            6500
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_traumatizedprotectorTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_traumatizedprotectorTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_traumatizedprotectorTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_traumatizedprotectorTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_traumatizedprotectorspawnTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_traumatizedprotectorspawnTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_traumatizedprotectorspawnTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_traumatizedprotectorspawnTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_vehiclesalvagedroneTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_vehiclesalvagedroneTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_vehicle"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_vehiclesalvagedroneTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_vehiclesalvagedroneTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_vehicle"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_vehiclesalvagecarTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_vehiclesalvagecarTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_vehiclesalvagecarTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_vehiclesalvagecarTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_vehiclesalvagetankTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_vehiclesalvagetankTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_vehicle"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_vehiclesalvagetankTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_vehiclesalvagetankTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_vehicle"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_vehiclesalvagearmoredtankTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_vehiclesalvagearmoredtankTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic_vehicle"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_vehiclesalvagearmoredtankTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_vehiclesalvagearmoredtankTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic_vehicle"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_shipcannonTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_shipcannonTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_shipcannonTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_shipcannonTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_heavycannonpartsTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_heavycannonpartsTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_heavycannonpartsTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_heavycannonpartsTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_targettingcomputerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_targettingcomputerTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_targettingcomputerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_targettingcomputerTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_cannonturretTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_cannonturretTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_cannonturretTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_cannonturretTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_missileturretTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_missileturretTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_missileturretTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_missileturretTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_missilelauncherHunting/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_missilelauncherHunting/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_missilelauncherHunting/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_missilelauncherHunting/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_letheiaspacesoldierTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_letheiaspacesoldierTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_letheiaspacesoldierTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_letheiaspacesoldierTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_rebelmutantbossTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_rebelmutantbossTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1000
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_rebelmutantbossTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_rebelmutantbossTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1000
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_eggbomberbossTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_eggbomberbossTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1750
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_eggbomberbossTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_eggbomberbossTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1750
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_odinbossTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_odinbossTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1750
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_odinbossTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_odinbossTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1750
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_luketvzbossTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_luketvzbossTreasure/0/1/fill/-",
+      "value": {
+        "item": [
+          "experienceorb",
+          1750
+        ]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_luketvzbossTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_luketvzbossTreasure/0/1/fill",
+      "value": [
+        {
+          "item": [
+            "experienceorb",
+            1750
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_redyancopTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_redyancopTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_redyancopTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_redyancopTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_loyalistprisonerTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_loyalistprisonerTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_loyalistprisonerTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_loyalistprisonerTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_rebelmachinegunnertrenchTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_rebelmachinegunnertrenchTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_rebelmachinegunnertrenchTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_rebelmachinegunnertrenchTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_civilianpilotTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_civilianpilotTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_civilianpilotTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_civilianpilotTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_spacecolonistTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_spacecolonistTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_spacecolonistTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_spacecolonistTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_raremkmsTreasure/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/gic_raremkmsTreasure/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool_gic"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/gic_raremkmsTreasure/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/gic_raremkmsTreasure/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool_gic"
+        }
+      ]
+    }
+  ]
+]

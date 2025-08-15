@@ -223,20 +223,31 @@ function ControlProjectile:nextOrb(start)
 end
 
 function ControlProjectile:fire(timer)
+  self.phaseorbit = status.statPositive("ivrpgucorbitphase")
+  self.highorbit = status.statPositive("ivrpguchighorbit")
   self.weapon:setStance(self.stances.fire)
   local params = copy(self.projectileParameters)
   params.powerMultiplier = activeItem.ownerPowerMultiplier()
   params.ownerAimPosition = activeItem.ownerAimPosition()
 
   local magnorbTimer = timer or self.stances.fire.duration
-
-  while self.fireMode == "primary" or (self.fireMode == "alt" and self.shiftHeld) or magnorbTimer > 0 do
+if self.phaseorbit then
+	ProjectiletypePrime = "ivrpg_novacrystal_phase"
+	ProjectiletypeAlt = "ivrpg_primednovacrystal_phase"
+elseif self.highorbit then
+	ProjectiletypePrime = "ivrpg_novacrystal_highorbit"
+	ProjectiletypeAlt = "ivrpg_primednovacrystal_highorbit"
+else
+	ProjectiletypePrime = "ivrpg_novacrystal"
+	ProjectiletypeAlt = "ivrpg_primednovacrystal"
+end
+   while self.fireMode == "primary" or (self.fireMode == "alt" and self.shiftHeld) or magnorbTimer > 0 do
     local orbIndex = self:nextOrb((self.shiftHeld and self:availableAdditionalOrbs() > 0) and 5 or 1)
     if orbIndex then
       local firePos = self:orbFirePosition(orbIndex)
       if magnorbTimer == 0 and orbIndex and not world.lineCollision(mcontroller.position(), firePos) and status.overConsumeResource("energy", (self.fireMode == "alt" and self.shiftHeld) and 10 or 5) then
         local projectileId = world.spawnProjectile(
-            orbIndex < 5 and self.projectileType or "ivrpg_primednovacrystal",
+            orbIndex < 5 and ProjectiletypePrime or ProjectiletypeAlt,
             self:orbFirePosition(orbIndex),
             activeItem.ownerEntityId(),
             self:orbAimVector(orbIndex),
