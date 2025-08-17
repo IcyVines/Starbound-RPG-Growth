@@ -1,7 +1,0 @@
-[
-  {
-    "op": "add",
-    "path": "/baseParameters/scripts/-",
-    "value": "/monsters/ivrpgmonster.lua"
-  }
-]
