@@ -66,15 +66,7 @@
       "ffs_miniknog_drone": true,
       "ffs_miniknog_heavydrone": true,
       "ffs_miniknog_omnicannon": true,
-      "ffs_miniknog_twigun": true,
-      "gic_protectorate_beluga_fighter": true,
-      "gic_protectorate_bobcat_awakened": true,
-      "gic_protectorate_bobcat_pacifier": true,
-      "gic_protectorate_skydancerdrone_assault": true,
-      "gic_protectorate_swarmerdrone_awakened": true,
-      "gic_protectorate_swarmerdrone_fighter": true,
-      "gic_protectorate_swarmerdrone_pacifier": true,
-      "gic_unitan_m5_assaultdrone": true      
+      "ffs_miniknog_twigun": true   
     }
   },
 
