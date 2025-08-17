@@ -5,11 +5,6 @@ function init()
   self.cooldownTime = 60
   effect.addStatModifierGroup({
     {stat = "physicalResistance", amount = 1},
-    {stat = "ews_meleeResistance", amount = 1},
-    {stat = "ews_smallarmsResistance", amount = 1},
-    {stat = "ews_heavyarmsResistance", amount = 1},
-    {stat = "ews_explosiveResistance", amount = 1},
-    {stat = "ews_antitankResistance", amount = 1},
     {stat = "grit", amount = 3}
   })
 end
