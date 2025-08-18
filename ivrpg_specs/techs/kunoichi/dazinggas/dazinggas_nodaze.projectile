@@ -1,0 +1,31 @@
+{
+  "projectileName" : "ivrpgdazinggas_nodaze",
+  "physics" : "statuspod",
+  "bounces" : -1,
+  "timeToLive" : 1,
+  "speed" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "dazinggasprojectile.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+      "time" : 0.0,
+      "repeat" : false,
+      "action" : "loop",
+      "count" : 1,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "ivrpgdazinggas"
+        }
+      ]
+    }
+   ],
+  "power" : 0,
+  "piercing" : true,
+  "damageKind" : "applystatus",
+  "damagePoly" : [ [-30, -30], [-30, 30], [30, 30], [30, -30]  ],
+  "flippable" : true,
+  "statusEffects" : [  ]
+}
