@@ -24,8 +24,7 @@
    ],
   "power" : 0,
   "piercing" : true,
-  "damageKind" : "applystatus",
-  "damagePoly" : [ [-30, -30], [-30, 30], [30, 30], [30, -30]  ],
+  "damageKind" : "nodamage",
   "flippable" : true,
   "statusEffects" : [  ]
 }
