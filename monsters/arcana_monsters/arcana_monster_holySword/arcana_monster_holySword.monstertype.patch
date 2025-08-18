@@ -1,0 +1,59 @@
+[
+  {
+    "op": "add",
+    "path": "/baseParameters/scripts/-",
+    "value": "/monsters/ivrpgmonster.lua"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/holyResistance",
+    "value": {
+      "baseValue": 1
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/demonicResistance",
+    "value": {
+      "baseValue": -1
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/holyStatusImmunity",
+    "value": {
+      "baseValue": 1
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/bleedStatusImmunity",
+    "value": {
+      "baseValue": 1
+    }
+  },
+  [
+    {
+      "op": "test",
+      "path": "/dropPools/0",
+      "inverse": false
+    },
+    {
+      "op": "replace",
+      "path": "/dropPools/0",
+      "value": "experienceorbpool"
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/dropPools/0",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/dropPools/-",
+      "value": "experienceorbpool"
+    }
+  ]
+]

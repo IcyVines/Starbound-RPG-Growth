@@ -1,0 +1,35 @@
+[
+  {
+    "op": "add",
+    "path": "/baseParameters/scripts/-",
+    "value": "/monsters/ivrpgmonster.lua"
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/holyResistance",
+    "value": {
+      "baseValue": -1
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/demonicResistance",
+    "value": {
+      "baseValue": 1
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/demonicStatusImmunity",
+    "value": {
+      "baseValue": 1
+    }
+  },
+  {
+    "op": "add",
+    "path": "/baseParameters/statusSettings/stats/bleedStatusImmunity",
+    "value": {
+      "baseValue": 1
+    }
+  }
+]
