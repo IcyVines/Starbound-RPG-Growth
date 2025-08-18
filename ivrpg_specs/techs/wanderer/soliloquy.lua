@@ -41,13 +41,7 @@ function update(args)
       {stat = "demonicResistance", amount = -0.05 * self.active},
       {stat = "holyResistance", amount = -0.05 * self.active},
       {stat = "novaResistance", amount = -0.05 * self.active},
-      {stat = "cosmicResistance", amount = -0.05 * self.active},
-      {stat = "ews_meleeResistance", amount = -0.05 * self.active},
-      {stat = "ews_smallarmsResistance", amount = -0.05 * self.active},
-      {stat = "ews_heavyarmsResistance", amount = -0.05 * self.active},
-      {stat = "ews_explosiveResistance", amount = -0.05 * self.active},
-      {stat = "ews_antitankResistance", amount = -0.05 * self.active},
-      {stat = "ews_antitankResistance", amount = -0.05 * self.active}
+      {stat = "cosmicResistance", amount = -0.05 * self.active}
     })
   else
     status.clearPersistentEffects("ivrpgsoliloquy")

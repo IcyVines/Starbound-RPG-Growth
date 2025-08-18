@@ -15,9 +15,7 @@ function init()
 
   effect.addStatModifierGroup({
     { stat = "powerMultiplier", effectiveMultiplier = self.effect == "power" and 1.25 or (self.effect == "speed" and 0.75 or 1) },
-    { stat = "protection", amount = self.effect == "armor" and 15 or (self.effect == "power" and -15 or 0) },
-    { stat = "ews_meleeResistance", amount = self.effect == "armor" and 15 or (self.effect == "power" and -15 or 0) },
-    { stat = "ews_smallarmsResistance", amount = self.effect == "armor" and 15 or (self.effect == "power" and -15 or 0) }
+    { stat = "protection", amount = self.effect == "armor" and 15 or (self.effect == "power" and -15 or 0) }
   })
 
   --[[
@@ -33,8 +31,7 @@ function update(dt)
     animator.setParticleEmitterActive("speed", mcontroller.onGround() and mcontroller.running())
     mcontroller.controlModifiers({
       speedModifier = 1.25,
-      airJumpModifier = 1.25,
-      gic_suppressedProtection = 1
+      airJumpModifier = 1.25
     })
   elseif self.effect == "armor" then
     mcontroller.controlModifiers({
