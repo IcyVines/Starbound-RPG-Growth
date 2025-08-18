@@ -61,9 +61,25 @@
         }],
         [7.9, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 250]},
-                {"weight" : 0.34, "item" : ["experienceorb", 255]},
-                {"weight" : 0.32, "item" : ["experienceorb", 260]},
+                {"weight" : 0.33, "item" : ["experienceorb", 300]},
+                {"weight" : 0.34, "item" : ["experienceorb", 315]},
+                {"weight" : 0.32, "item" : ["experienceorb", 320]},
+                {"weight" : 0.01, "pool" : "ivrpgscrollpool"}
+            ]
+        }],
+        [8.9, {
+            "pool" : [
+                {"weight" : 0.33, "item" : ["experienceorb", 400]},
+                {"weight" : 0.34, "item" : ["experienceorb", 450]},
+                {"weight" : 0.32, "item" : ["experienceorb", 500]},
+                {"weight" : 0.01, "pool" : "ivrpgscrollpool"}
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 0.33, "item" : ["experienceorb", 500]},
+                {"weight" : 0.34, "item" : ["experienceorb", 600]},
+                {"weight" : 0.32, "item" : ["experienceorb", 700]},
                 {"weight" : 0.01, "pool" : "ivrpgscrollpool"}
             ]
         }]
@@ -120,13 +136,25 @@
         }],
         [6.9, {
             "fill" : [
-                {"item" : ["experienceorb", 700]},
+                {"item" : ["experienceorb", 800]},
                 {"pool" : "ivrpgbosspool"}
             ]
         }],
         [7.9, {
             "fill" : [
-                {"item" : ["experienceorb", 800]},
+                {"item" : ["experienceorb", 1000]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }],
+        [8.9, {
+            "fill" : [
+                {"item" : ["experienceorb", 1500]},
+                {"pool" : "ivrpgbosspool"}
+            ]
+        }],
+        [9.9, {
+            "fill" : [
+                {"item" : ["experienceorb", 2000]},
                 {"pool" : "ivrpgbosspool"}
             ]
         }]
@@ -274,6 +302,42 @@
                 [0.65, 0],
                 [0.35, 1]
             ]
+        }],
+        [6.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgether", 1]}
+            ],
+            "poolRounds" : [
+                [0.60, 0],
+                [0.40, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgether", 1]}
+            ],
+            "poolRounds" : [
+                [0.55, 0],
+                [0.45, 1]
+            ]
+        }],
+        [8.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgether", 1]}
+            ],
+            "poolRounds" : [
+                [0.5, 0],
+                [0.5, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgether", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
+            ]
         }]
     ],
     "ivrpgmeteoricmetalpool" : [
@@ -311,6 +375,42 @@
             "poolRounds" : [
                 [0.65, 0],
                 [0.35, 1]
+            ]
+        }],
+        [6.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.60, 0],
+                [0.40, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.55, 0],
+                [0.45, 1]
+            ]
+        }],
+        [8.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.5, 0],
+                [0.5, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
             ]
         }]
     ],
@@ -350,6 +450,42 @@
                 [0.65, 0],
                 [0.35, 1]
             ]
+        }],
+        [6.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgdyingstar", 1]}
+            ],
+            "poolRounds" : [
+                [0.60, 0],
+                [0.40, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgdyingstar", 1]}
+            ],
+            "poolRounds" : [
+                [0.55, 0],
+                [0.45, 1]
+            ]
+        }],
+        [8.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgdyingstar", 1]}
+            ],
+            "poolRounds" : [
+                [0.5, 0],
+                [0.5, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgdyingstar", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
+            ]
         }]
     ],
     "ivrpggunpartspool" : [
@@ -387,6 +523,42 @@
             "poolRounds" : [
                 [0.65, 0],
                 [0.35, 1]
+            ]
+        }],
+        [6.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpggunparts", 1]}
+            ],
+            "poolRounds" : [
+                [0.60, 0],
+                [0.40, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpggunparts", 1]}
+            ],
+            "poolRounds" : [
+                [0.55, 0],
+                [0.45, 1]
+            ]
+        }],
+        [8.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpggunparts", 1]}
+            ],
+            "poolRounds" : [
+                [0.5, 0],
+                [0.5, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpggunparts", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
             ]
         }]
     ],
@@ -426,6 +598,42 @@
                 [0.65, 0],
                 [0.35, 1]
             ]
+        }],
+        [6.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgparasiticgoo", 1]}
+            ],
+            "poolRounds" : [
+                [0.60, 0],
+                [0.40, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgparasiticgoo", 1]}
+            ],
+            "poolRounds" : [
+                [0.55, 0],
+                [0.45, 1]
+            ]
+        }],
+        [8.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgparasiticgoo", 1]}
+            ],
+            "poolRounds" : [
+                [0.5, 0],
+                [0.5, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgparasiticgoo", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
+            ]
         }]
     ],
     "ivrpgspiralenergypool" : [
@@ -463,6 +671,42 @@
             "poolRounds" : [
                 [0.65, 0],
                 [0.35, 1]
+            ]
+        }],
+        [6.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgspiralenergy", 1]}
+            ],
+            "poolRounds" : [
+                [0.60, 0],
+                [0.40, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgspiralenergy", 1]}
+            ],
+            "poolRounds" : [
+                [0.55, 0],
+                [0.45, 1]
+            ]
+        }],
+        [8.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgspiralenergy", 1]}
+            ],
+            "poolRounds" : [
+                [0.5, 0],
+                [0.5, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgspiralenergy", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
             ]
         }]
     ],
@@ -502,6 +746,24 @@
                 [0.35, 0],
                 [0.65, 1]
             ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgether", 1]}
+            ],
+            "poolRounds" : [
+                [0.30, 0],
+                [0.70, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgether", 1]}
+            ],
+            "poolRounds" : [
+                [0.25, 0],
+                [0.75, 1]
+            ]
         }]
     ],
     "ivrpgmeteoricmetalhuntingpool" : [
@@ -539,6 +801,24 @@
             "poolRounds" : [
                 [0.35, 0],
                 [0.65, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.30, 0],
+                [0.70, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.25, 0],
+                [0.75, 1]
             ]
         }]
     ],
@@ -578,6 +858,24 @@
                 [0.35, 0],
                 [0.65, 1]
             ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgdyingstar", 1]}
+            ],
+            "poolRounds" : [
+                [0.30, 0],
+                [0.70, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgdyingstar", 1]}
+            ],
+            "poolRounds" : [
+                [0.25, 0],
+                [0.75, 1]
+            ]
         }]
     ],
     "ivrpggunpartshuntingpool" : [
@@ -615,6 +913,24 @@
             "poolRounds" : [
                 [0.35, 0],
                 [0.65, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpggunparts", 1]}
+            ],
+            "poolRounds" : [
+                [0.30, 0],
+                [0.70, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpggunparts", 1]}
+            ],
+            "poolRounds" : [
+                [0.25, 0],
+                [0.75, 1]
             ]
         }]
     ],
@@ -654,6 +970,24 @@
                 [0.35, 0],
                 [0.65, 1]
             ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgparasiticgoo", 1]}
+            ],
+            "poolRounds" : [
+                [0.3, 0],
+                [0.7, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgparasiticgoo", 1]}
+            ],
+            "poolRounds" : [
+                [0.25, 0],
+                [0.75, 1]
+            ]
         }]
     ],
     "ivrpgspiralenergyhuntingpool" : [
@@ -692,6 +1026,24 @@
                 [0.35, 0],
                 [0.65, 1]
             ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgspiralenergy", 1]}
+            ],
+            "poolRounds" : [
+                [0.3, 0],
+                [0.7, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgspiralenergy", 1]}
+            ],
+            "poolRounds" : [
+                [0.25, 0],
+                [0.75, 1]
+            ]
         }]
     ],
     "ivrpgethertargetpool" : [
@@ -729,6 +1081,24 @@
             "poolRounds" : [
                 [0.50, 0],
                 [0.50, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgether", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgether", 1]}
+            ],
+            "poolRounds" : [
+                [0.40, 0],
+                [0.60, 1]
             ]
         }]
     ],
@@ -795,6 +1165,42 @@
                 [0.35, 0],
                 [0.65, 1]
             ]
+        }],
+        [6.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.30, 0],
+                [0.70, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.25, 0],
+                [0.75, 1]
+            ]
+        }],
+        [8.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.20, 0],
+                [0.80, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgmeteoricmetal", 1]}
+            ],
+            "poolRounds" : [
+                [0.10, 0],
+                [0.90, 1]
+            ]
         }]
     ],
     "ivrpgdyingstartargetpool" : [
@@ -832,6 +1238,33 @@
             "poolRounds" : [
                 [0.50, 0],
                 [0.50, 1]
+            ]
+        }],
+        [5.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgdyingstar", 1]}
+            ],
+            "poolRounds" : [
+                [0.50, 0],
+                [0.50, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgdyingstar", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgdyingstar", 1]}
+            ],
+            "poolRounds" : [
+                [0.40, 0],
+                [0.60, 1]
             ]
         }]
     ],
@@ -871,6 +1304,24 @@
                 [0.50, 0],
                 [0.50, 1]
             ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpggunparts", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpggunparts", 1]}
+            ],
+            "poolRounds" : [
+                [0.40, 0],
+                [0.60, 1]
+            ]
         }]
     ],
     "ivrpgparasiticgootargetpool" : [
@@ -909,6 +1360,24 @@
                 [0.50, 0],
                 [0.50, 1]
             ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgparasiticgoo", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgparasiticgoo", 1]}
+            ],
+            "poolRounds" : [
+                [0.40, 0],
+                [0.60, 1]
+            ]
         }]
     ],
     "ivrpgspiralenergytargetpool" : [
@@ -946,6 +1415,24 @@
             "poolRounds" : [
                 [0.50, 0],
                 [0.50, 1]
+            ]
+        }],
+        [7.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgspiralenergy", 1]}
+            ],
+            "poolRounds" : [
+                [0.45, 0],
+                [0.55, 1]
+            ]
+        }],
+        [9.9, {
+            "pool" : [
+                {"weight" : 1, "item" : ["ivrpgspiralenergy", 1]}
+            ],
+            "poolRounds" : [
+                [0.40, 0],
+                [0.60, 1]
             ]
         }]
     ],
@@ -1067,76 +1554,25 @@
                 [0.85, 0],
                 [0.15, 1]
             ]
-        }]
-    ],
-    // custom ones for GiC since those are all technically tier 1 and would give paultry XP for their difficulty. For now it's just locked at the tier 4 eqivalent. Will have to seperate and refine them down the line.
-    "experienceorbpool_gic" : [
-        [0, {
+        }],
+        [8.9, {
             "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 80]},
-                {"weight" : 0.34, "item" : ["experienceorb", 85]},
-                {"weight" : 0.33, "item" : ["experienceorb", 90]}
-            ]
-        }]
-    ],
-    "experienceorbpool_gic_med" : [
-        [0, {
-            "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 120]},
-                {"weight" : 0.34, "item" : ["experienceorb", 128]},
-                {"weight" : 0.33, "item" : ["experienceorb", 135]}
-            ]
-        }]
-    ],
-    "experienceorbpool_gic_hard" : [
-        [0, {
-            "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 160]},
-                {"weight" : 0.34, "item" : ["experienceorb", 170]},
-                {"weight" : 0.33, "item" : ["experienceorb", 180]}
-            ]
-        }]
-    ],
-    "experienceorbpool_gic_vehicle" : [
-        [0, {
-            "pool" : [
-                {"weight" : 0.33, "item" : ["experienceorb", 240]},
-                {"weight" : 0.34, "item" : ["experienceorb", 255]},
-                {"weight" : 0.33, "item" : ["experienceorb", 270]}
-            ]
-        }]
-    ],
-    "ivrpgbosspool_gic" : [
-        [0, {
-            "pool" : [
-                {"weight" : 0.24, "item" : ["ivrpgscrollresetstats", 1]},
-                {"weight" : 0.24, "item" : ["ivrpgscrollresetclass", 1]},
-                {"weight" : 0.24, "item" : ["ivrpgscrollresetaffinity", 1]},
-                {"weight" : 0.02, "item" : ["ivrpgscrollarc", 1]},
-                {"weight" : 0.02, "item" : ["ivrpgscrolladdstatpoint", 1]},
-                {"weight" : 0.02, "item" : ["ivrpgscrollinfernal", 1]},
-                {"weight" : 0.02, "item" : ["ivrpgscrolltoxic", 1]},
-                {"weight" : 0.20, "pool" : "ivrpgucfossilpool"}
+                {"weight" : 1, "item" : ["ivrpgfeather", 1]},
+                {"weight" : 1, "item" : ["ivrpgfeather", 2]}
             ],
             "poolRounds" : [
-                [1, 1]
+                [0.825, 0],
+                [0.175, 1]
             ]
-        }]
-    ],
-    "ivrpgbosspool_gic_flawless" : [
-        [0, {
+        }],
+        [9.9, {
             "pool" : [
-                {"weight" : 0.10, "item" : ["ivrpgscrollresetstats", 1]},
-                {"weight" : 0.10, "item" : ["ivrpgscrollresetclass", 1]},
-                {"weight" : 0.10, "item" : ["ivrpgscrollresetaffinity", 1]},
-                {"weight" : 0.1125, "item" : ["ivrpgscrollarc", 1]},
-                {"weight" : 0.1125, "item" : ["ivrpgscrolladdstatpoint", 1]},
-                {"weight" : 0.1125, "item" : ["ivrpgscrollinfernal", 1]},
-                {"weight" : 0.1125, "item" : ["ivrpgscrolltoxic", 1]},
-                {"weight" : 0.25, "pool" : "ivrpgucfossilpool"}
+                {"weight" : 1, "item" : ["ivrpgfeather", 1]},
+                {"weight" : 1, "item" : ["ivrpgfeather", 2]}
             ],
             "poolRounds" : [
-                [1, 3]
+                [0.8, 0],
+                [0.2, 1]
             ]
         }]
     ]
