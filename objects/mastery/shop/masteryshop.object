@@ -18,7 +18,7 @@
   "inventoryIcon" : "masteryshop.png",
   "orientations" : [
     {
-      "dualImage" : "masteryshop.png:<color>",
+      "imageLayers" : [ { "image" : "masteryshop.png:<color>"}, { "image" : "masteryshopfullbright.png:<color>", "fullbright" : true  } ],
       "imagePosition" : [-24, 0],
       "frames" : 1,
       "animationCycle" : 0.5,
