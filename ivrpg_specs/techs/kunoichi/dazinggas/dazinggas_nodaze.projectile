@@ -25,6 +25,5 @@
   "power" : 0,
   "piercing" : true,
   "damageKind" : "nodamage",
-  "flippable" : true,
-  "statusEffects" : [  ]
+  "flippable" : true
 }
