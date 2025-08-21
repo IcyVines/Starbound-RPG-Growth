@@ -46,7 +46,7 @@
       "op": "add",
       "path": "/arcana_monsterdrops_skeleton/0/1/fill/-",
       "value": {
-        "pool": "ivrpgparasiticgoopool"
+        "pool": "experienceorbpool"
       }
     }
   ],
@@ -83,7 +83,7 @@
       "op": "add",
       "path": "/arcana_monsterdrops_pigmentPowder/0/1/fill/-",
       "value": {
-        "pool": "ivrpgparasiticgoopool"
+        "pool": "experienceorbpool"
       }
     }
   ],
