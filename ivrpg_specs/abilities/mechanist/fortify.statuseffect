@@ -66,7 +66,27 @@
       "ffs_miniknog_drone": true,
       "ffs_miniknog_heavydrone": true,
       "ffs_miniknog_omnicannon": true,
-      "ffs_miniknog_twigun": true   
+      "ffs_miniknog_twigun": true,
+      "arcana_monster_aeonkeeper": true,
+      "arcana_monster_bigexospider": true,
+      "arcana_monster_cepheid": true,
+      "arcana_monster_chemTurret": true,
+      "arcana_monster_exospider": true,
+      "arcana_monster_fairi": true,
+      "arcana_monster_GS8Scout": true,
+      "arcana_monster_horizonBasicTurret": true,
+      "arcana_monster_horizonElectricTurret": true,
+      "arcana_monster_locusTurret": true,
+      "arcana_monster_neoBomb": true,
+      "arcana_monster_orionDrone1": true,
+      "arcana_monster_orionDrone2": true,
+      "arcana_monster_orionDrone3": true,
+      "arcana_monster_pirateTurret": true,
+      "arcana_monster_sanguineLumoth": true,
+      "arcana_monster_timekeeper": true,
+      "arcana_monster_timekeepersummoned": true,
+      "arcana_monster_verdangle": true,
+      "arcana_monster_voidEye": true
     }
   },
 
