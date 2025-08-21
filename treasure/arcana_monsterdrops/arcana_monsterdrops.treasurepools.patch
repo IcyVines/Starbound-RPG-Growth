@@ -2,6 +2,73 @@
   [
     {
       "op": "test",
+      "path": "/arcana_monsterdrops_watchbones/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_watchbones/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_monsterdrops_watchbones/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_watchbones/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_monsterdrops_skeleton/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_skeleton/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_skeleton/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgparasiticgoopool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_monsterdrops_skeleton/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_skeleton/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
       "path": "/arcana_monsterdrops_pigmentPowder/0/1/fill",
       "inverse": false
     },
@@ -10,6 +77,13 @@
       "path": "/arcana_monsterdrops_pigmentPowder/0/1/fill/-",
       "value": {
         "pool": "experienceorbpool"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_pigmentPowder/0/1/fill/-",
+      "value": {
+        "pool": "ivrpgparasiticgoopool"
       }
     }
   ],
@@ -22,6 +96,96 @@
     {
       "op": "add",
       "path": "/arcana_monsterdrops_pigmentPowder/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_monsterdrops_orionDrone3/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_orionDrone3/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_monsterdrops_orionDrone3/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_orionDrone3/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_monsterdrops_neoBomb/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_neoBomb/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_monsterdrops_neoBomb/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_neoBomb/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_monsterdrops_fairi/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_fairi/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_monsterdrops_fairi/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_monsterdrops_fairi/0/1/fill",
       "value": [
         {
           "pool": "experienceorbpool"
