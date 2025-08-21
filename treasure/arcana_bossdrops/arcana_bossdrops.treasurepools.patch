@@ -1,0 +1,392 @@
+[
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_myriadTerror/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_myriadTerror/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 500]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_myriadTerror/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_myriadTerror/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 500]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_dheral/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_dheral/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 2000]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_dheral/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_dheral/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 2000]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_aeonTimepiece/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_aeonTimepiece/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 2000]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_aeonTimepiece/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_aeonTimepiece/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 2000]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_evolapis/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_evolapis/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 2000]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_evolapis/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_evolapis/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 2000]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_mageKing/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_mageKing/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 1250]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_mageKing/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_mageKing/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 1250]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_wanderingSpirit/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_wanderingSpirit/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 2500]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_wanderingSpirit/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_wanderingSpirit/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 2500]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_wanderingSpirit/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_wanderingSpirit/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 2500]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_wanderingSpirit/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_wanderingSpirit/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 2500]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_evolvedGleap/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_evolvedGleap/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 250]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_evolvedGleap/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_evolvedGleap/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 250]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_navigator/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_navigator/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 1750]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_navigator/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_navigator/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 1750]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_fireKnight/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_fireKnight/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 1750]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_fireKnight/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_fireKnight/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 1750]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_terminusReaper/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_terminusReaper/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 4500]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_terminusReaper/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_terminusReaper/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 4500]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_cosmoNemesis/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_cosmoNemesis/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 2000]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_cosmoNemesis/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_cosmoNemesis/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 2000]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_solarGuardian/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_solarGuardian/0/1/fill/-",
+      "value": {
+        "item": ["experienceorb", 4000]
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_bossdrops_solarGuardian/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_bossdrops_solarGuardian/0/1/fill",
+      "value": [
+        {
+          "item": ["experienceorb", 4000]
+        }
+      ]
+    }
+  ]
+]

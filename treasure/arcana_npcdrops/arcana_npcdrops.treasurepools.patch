@@ -1,0 +1,362 @@
+[
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_scavdiver/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_scavdiver/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_scavdiver/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_scavdiver/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_graverotten/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_graverotten/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_graverotten/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_graverotten/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_cryptspurn/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_cryptspurn/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_cryptspurn/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_cryptspurn/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_ice_iceElite/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_ice_iceElite/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_ice_iceElite/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_ice_iceElite/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_ice_iceMage/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_ice_iceMage/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_ice_iceMage/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_ice_iceMage/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_ice_iceKnight/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_ice_iceKnight/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_ice_iceKnight/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_ice_iceKnight/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_pirate/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_pirate/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_pirate/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_pirate/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_horizon_specialist/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_horizon_specialist/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_horizon_specialist/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_horizon_specialist/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_horizon_pyroHoplite/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_horizon_pyroHoplite/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_horizon_pyroHoplite/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_horizon_pyroHoplite/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_horizon_cryoHoplite/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_horizon_cryoHoplite/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_horizon_cryoHoplite/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_horizon_cryoHoplite/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_workshop_section8Elite/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_workshop_section8Elite/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_workshop_section8Elite/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_workshop_section8Elite/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_workshop_section8Officer/0/1/fill",
+      "inverse": false
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_workshop_section8Officer/0/1/fill/-",
+      "value": {
+        "pool": "experienceorbpool"
+      }
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/arcana_npcdrops_workshop_section8Officer/0/1/fill",
+      "inverse": true
+    },
+    {
+      "op": "add",
+      "path": "/arcana_npcdrops_workshop_section8Officer/0/1/fill",
+      "value": [
+        {
+          "pool": "experienceorbpool"
+        }
+      ]
+    }
+  ]
+]
