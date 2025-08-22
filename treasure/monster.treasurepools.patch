@@ -3066,5 +3066,104 @@
                 }
             ]
         }
+    ],
+    [{
+            "op": "test",
+            "path": "/m32beeswarmTreasure",
+            "inverse": false
+        }, {
+            "op": "test",
+            "path": "/m32beeswarmTreasure/0/1/fill",
+            "inverse": false
+        }, {
+            "op": "add",
+            "path": "/m32beeswarmTreasure/0/1/fill/-",
+            "value": {
+                "pool": "experienceorbpool"
+            }
+        }
+    ],
+    [{
+            "op": "test",
+            "path": "/m32beeswarmTreasure",
+            "inverse": false
+        }, {
+            "op": "test",
+            "path": "/m32beeswarmTreasure/0/1/fill",
+            "inverse": true
+        }, {
+            "op": "add",
+            "path": "/m32beeswarmTreasure/0/1/fill",
+            "value": [{
+                    "pool": "experienceorbpool"
+                }
+            ]
+        }
+    ],
+    [{
+            "op": "test",
+            "path": "/mosquitTreasure",
+            "inverse": false
+        }, {
+            "op": "test",
+            "path": "/mosquitTreasure/0/1/fill",
+            "inverse": false
+        }, {
+            "op": "add",
+            "path": "/mosquitTreasure/0/1/fill/-",
+            "value": {
+                "pool": "experienceorbpool"
+            }
+        }
+    ],
+    [{
+            "op": "test",
+            "path": "/mosquitTreasure",
+            "inverse": false
+        }, {
+            "op": "test",
+            "path": "/mosquitTreasure/0/1/fill",
+            "inverse": true
+        }, {
+            "op": "add",
+            "path": "/mosquitTreasure/0/1/fill",
+            "value": [{
+                    "pool": "experienceorbpool"
+                }
+            ]
+        }
+    ],
+    [{
+            "op": "test",
+            "path": "/mosquitHunting",
+            "inverse": false
+        }, {
+            "op": "test",
+            "path": "/mosquitHunting/0/1/fill",
+            "inverse": false
+        }, {
+            "op": "add",
+            "path": "/mosquitHunting/0/1/fill/-",
+            "value": {
+                "pool": "experienceorbpool"
+            }
+        }
+    ],
+    [{
+            "op": "test",
+            "path": "/mosquitHunting",
+            "inverse": false
+        }, {
+            "op": "test",
+            "path": "/mosquitHunting/0/1/fill",
+            "inverse": true
+        }, {
+            "op": "add",
+            "path": "/mosquitHunting/0/1/fill",
+            "value": [{
+                    "pool": "experienceorbpool"
+                }
+            ]
+        }
     ]
 ]

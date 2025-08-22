@@ -1,0 +1,267 @@
+{
+  "m32raidwarlordfodder" : [
+    [0, {
+    "fill" : [
+      {"item" : [ "Nuucomposite", 1] },
+      {"pool" : "m32souldrop"}
+    ],
+      "pool" : [
+        {"weight" : 0.1, "item" : "blindedbanner1"},
+        {"weight" : 0.1, "item" : "blindedbanner2"},
+        {"weight" : 0.4, "item" : [ "money", 30]},
+        {"weight" : 0.4, "item" : [ "money", 60]}
+      ],
+      "poolRounds" : [
+        [0.5, 0],
+        [0.5, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "m32raidwarlordspecial" : [
+    [0, {
+    "fill" : [
+      {"item" : [ "Nuucomposite", 1] },
+      {"pool" : "m32souldrop"}
+    ],
+      "pool" : [
+        {"weight" : 0.1, "item" : "blindedbanner1"},
+        {"weight" : 0.1, "item" : "blindedbanner2"},
+        {"weight" : 0.4, "item" : [ "money", 100]},
+        {"weight" : 0.4, "item" : [ "money", 200]}
+      ],
+      "poolRounds" : [
+        [0.5, 0],
+        [0.5, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "reanimatedcorpse" : [
+    [0, {
+    "fill" : [
+      {"item" : [ "patchworksoul", 1] },
+      {"item" : [ "bone", 9] },
+      {"item" : [ "nuumeat", 5] },
+      {"item" : [ "rottenfood", 11] },
+      {"item" : [ "larva", 1] },
+      {"item" : [ "nanosilk", 3] },
+      {"item" : [ "Nuucomposite", 2] },
+      {"item" : [ "compositewire", 40] },
+      {"item" : [ "verdinoctore", 1] },
+      {"pool" : "m32souldrop"}
+    ],
+      "pool" : [
+        {"weight" : 0.1, "item" : [ "Nuucomposite", 1]},
+        {"weight" : 0.1, "item" : [ "Nuucomposite", 2]},
+        {"weight" : 0.1, "item" : [ "Nuucomposite", 5]},
+        {"weight" : 0.1, "item" : [ "lifebottle", 1]},
+        {"weight" : 0.1, "item" : [ "lifebottle", 2]},
+        {"weight" : 0.1, "item" : [ "lifebottle", 5]},
+        {"weight" : 0.1, "item" : [ "deathbottle", 1]},
+        {"weight" : 0.1, "item" : [ "deathbottle", 2]},
+        {"weight" : 0.1, "item" : [ "deathbottle", 5]},
+        {"weight" : 0.1, "item" : [ "nanosilk", 1]},
+        {"weight" : 0.1, "item" : [ "nanosilk", 2]},
+        {"weight" : 0.1, "item" : [ "nanosilk", 5]},
+        {"weight" : 0.1, "item" : [ "nuumeat", 1]},
+        {"weight" : 0.1, "item" : [ "nuumeat", 2]},
+        {"weight" : 0.1, "item" : [ "bone", 1]},
+        {"weight" : 0.1, "item" : [ "bone", 2]},
+        {"weight" : 0.1, "item" : [ "larva", 1]}
+      ],
+      "poolRounds" : [
+        [0.1, 3],
+        [0.1, 4],
+        [0.1, 5]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+
+
+  "turpentinerset" : [
+    [0, {
+    "fill" : [
+      { "item" : [ "turpentinerhead", 1] },
+      { "item" : [ "turpentinerchest", 1] },
+      { "item" : [ "turpentinerpants", 1] }
+    ]
+    }]
+  ],
+
+  "turpentinerdrops" : [
+    [0, {
+    "fill" : [
+      {"item" : [ "m32oilcan", 1 ] },
+      {"pool" : "m32souldrop"}
+    ],
+    "pool" : [
+      {"weight" : 0.2, "pool" : "turpentinerset"},
+      {"weight" : 0.2, "item" : "flamethrower"},
+      { "weight": 0.2,  "item": [ "m32nectar", 5 ] },
+      { "weight": 0.2,  "item": [ "m32nectar", 10 ] },
+      { "weight": 0.2,  "item": [ "m32nectar", 15 ] }
+    ],
+    "poolRounds" : [
+      [0.3, 0],
+      [0.7, 1]
+    ]
+    }]
+  ],
+
+
+  "geyserninja" : [
+    [0, {
+    "fill" : [
+      {"item" : [ "money", 50 ] },
+      {"pool" : "m32souldrop"}
+    ],
+      "pool" : [
+        {"weight" : 0.05, "item" : "blindedbanner1"},
+        {"weight" : 0.05, "item" : "blindedbanner2"},
+        {"weight" : 0.18, "pool" : "lightstatset"},
+        {"weight" : 0.36, "item" : [ "money", 50]},
+        {"weight" : 0.36, "item" : [ "money", 100]}
+      ],
+      "poolRounds" : [
+        [0.9, 1],
+        [0.1, 2]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "lightstatset" : [
+    [0, {
+      "fill" : [
+        { "item" : "lightstatsuithead" },
+        { "item" : "lightstatsuitchest" },
+        { "item" : "lightstatsuitpants" }
+      ],
+      "pool" : [
+        {"weight" : 1, "item" : "parasol"}
+      ],
+      "poolRounds" : [
+        [0.9, 0],
+        [0.1, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+
+
+  "diverthug" : [
+    [0, {
+    "fill" : [
+      {"item" : [ "m32pearls", 1 ] },
+      {"pool" : "m32souldrop"}
+    ],
+      "pool" : [
+        {"weight" : 0.2, "pool" : "liquidstatset"},
+        {"weight" : 0.4, "item" : [ "m32pearls", 2]},
+        {"weight" : 0.4, "item" : [ "m32pearls", 4]}
+      ],
+      "poolRounds" : [
+        [0.9, 1],
+        [0.1, 2]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "liquidstatset" : [
+    [0, {
+      "fill" : [
+        { "item" : "liquidstatsuithead" },
+        { "item" : "liquidstatsuitchest" },
+        { "item" : "liquidstatsuitpants" }
+      ],
+      "pool" : [
+        {"weight" : 1, "item" : [ "money", 10]}
+      ],
+      "poolRounds" : [
+        [0.9, 0],
+        [0.1, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+
+  "nuubanditTreasure" : [
+    [0, {
+    "fill" : [
+      {"item" : [ "money", 50 ] },
+      {"pool" : "m32souldrop"}
+    ],
+      "pool" : [
+        {"weight" : 0.08, "pool" : "pangolinset"},
+        {"weight" : 0.46, "item" : [ "money", 100]},
+        {"weight" : 0.46, "item" : [ "money", 150]}
+      ],
+      "poolRounds" : [
+        [0.9, 1],
+        [0.1, 2]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "pangolinset" : [
+    [0, {
+      "fill" : [
+        { "item" : "pangolinsetchest" },
+        { "item" : "pangolinsetlegs" }
+      ],
+      "pool" : [
+        { "weight" : 0.6, "item" : "nuupangolinsethead" },
+        { "weight" : 0.4, "item" : "pangolinsethead" }
+      ],
+      "poolRounds" : [
+        [1, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "m32defaultnpcdrop" : [
+    [0, {
+      "fill" : [{"pool" : "m32souldrop"}],
+      "pool" : [
+        {"weight" : 1.0, "pool" : "money"}
+      ],
+      "poolRounds" : [
+        [0.7, 0],
+        [0.3, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "m32alpacanpcdrop" : [
+    [0, {
+      "fill" : [{"pool" : "m32souldrop"}],
+      "pool" : [
+        {"weight" : 0.80, "pool" : "money"},
+        {"weight" : 0.10, "pool" : "healingItem"},
+        {"weight" : 0.04, "item" : "commonaxe"},
+        {"weight" : 0.04, "item" : "uncommonaxe"},
+        {"weight" : 0.02, "item" : "rareaxe"}
+      ],
+      "poolRounds" : [
+        [0.5, 0],
+        [0.5, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ],
+  "m32souldrop" : [
+    [0, {
+      "fill" : [{"pool" : "m32holidaydrops"}],//CHANGE THIS IN HOLDIAYBAGS.TREASUREPOOLS TO OTHER SEASONAL DROP
+      "pool" : [
+        { "weight" : 0.5, "item" : "lifesoul" },
+        { "weight" : 0.5, "item" : "deathsoul" }
+      ],
+      "poolRounds" : [
+        [0.85, 0],
+        [0.15, 1]
+      ],
+      "allowDuplication" : false
+    }]
+  ]
+}
