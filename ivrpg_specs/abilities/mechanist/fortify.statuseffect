@@ -86,7 +86,15 @@
       "arcana_monster_timekeeper": true,
       "arcana_monster_timekeepersummoned": true,
       "arcana_monster_verdangle": true,
-      "arcana_monster_voidEye": true
+      "arcana_monster_voidEye": true,
+      "beepbot": true,
+      "beepbotheal": true,
+      "beepbotlucky": true,
+      "steamspidergreen": true,
+      "steamspiderred": true,
+      "droppy": true,
+      "seamineparatail": true,
+      "naper": true
     }
   },
 
