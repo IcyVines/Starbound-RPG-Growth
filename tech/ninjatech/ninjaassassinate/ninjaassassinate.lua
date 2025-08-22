@@ -22,7 +22,7 @@ end
 
 function assassinate()
   if self.dashCooldownTimer == 0 and not status.statPositive("activeMovementAbilities") and status.resource("energy") > 0 then--status.overConsumeResource("energy", self.cost) then
-    self.vanishTimer = self.vanishTime
+ 	self.vanishTimer = self.vanishTime
     self.vanished = true
     status.addEphemeralEffect("invisible", math.huge)
     tech.setToolUsageSuppressed(true)
@@ -34,6 +34,13 @@ function assassinate()
         {stat = "waterImmunity", amount = 1},
         {stat = "activeMovementAbilities", amount = 1}
       })
+	local projectileId = world.spawnProjectile(
+		"ninjasmoke",
+		{mcontroller.xPosition(), mcontroller.yPosition()-2},
+        entity.id(),
+        {0,0},
+        false
+     )
   end
 end
 
