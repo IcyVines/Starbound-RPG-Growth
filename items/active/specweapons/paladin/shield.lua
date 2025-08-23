@@ -6,7 +6,7 @@ require "/scripts/ivrpgutil.lua"
 
 function init()
   self.debug = true
-
+  
   self.aimAngle = 0
   self.aimDirection = 1
 
@@ -34,11 +34,16 @@ function init()
   self.baseShieldHealth = config.getParameter("baseShieldHealth", 1)
   self.knockback = config.getParameter("knockback", 0)
   self.perfectBlockDirectives = config.getParameter("perfectBlockDirectives", "")
-  self.perfectBlockTime = config.getParameter("perfectBlockTime", 0.2)
+  self.perfectBlockTime = config.getParameter("perfectBlockTime", 0.5)
   self.minActiveTime = config.getParameter("minActiveTime", 0)
   self.cooldownTime = config.getParameter("cooldownTime")
   self.pCooldownTime = config.getParameter("primaryCooldownTime")
   self.forceWalk = config.getParameter("forceWalk", false)
+  
+  self.gw = 0 
+  self.gwtimer = 0
+  
+  -- Chips
 
   self.beamActive = false
   self.fireMode = "none"
@@ -69,6 +74,26 @@ function init()
 end
 
 function update(dt, fireMode, shiftHeld)
+  --chips
+  self.parry = status.statPositive("ivrpgucparrythis") -- Parry This!
+  self.greatwall = status.statPositive("ivrpgucgreatwall") -- Great Wall
+  if self.parry then
+	self.baseShieldHealth = (config.getParameter("baseShieldHealth", 1) * 0.01)
+	self.perfectBlockTime = (config.getParameter("perfectBlockTime", 1) * 0.5) 
+  elseif self.greatwall then
+	self.baseShieldHealth = (config.getParameter("baseShieldHealth", 1) * 2)
+	self.perfectBlockTime = (config.getParameter("perfectBlockTime", 1) * 0)
+	self.gwtimer = self.gwtimer + dt
+	if self.gwtimer >= 1 then
+		self.gwtimer = 0
+		self.perfectShieldBonus = math.max(self.perfectShieldBonus - 0.25, 1) 
+	end	
+  else
+	self.baseShieldHealth = config.getParameter("baseShieldHealth", 1)
+	self.perfectBlockTime = config.getParameter("perfectBlockTime", 1)
+  end
+  
+  --end chips
   self.cooldownTimer = math.max(0, self.cooldownTimer - dt)
   self.pCooldownTimer = math.max(0, self.pCooldownTimer - dt)
   self.impactSoundTimer = math.max(0, self.impactSoundTimer - dt)
@@ -126,9 +151,12 @@ function update(dt, fireMode, shiftHeld)
       cooldown()
     end
   end
-
-  self.beamLength = math.min(self.origBeamLength + (self.perfectShieldBonus - 1) * 5, 35)
-
+  if self.parry then 
+	self.beamLength = math.min(self.origBeamLength + (self.perfectShieldBonus - 1) * 7, 60)
+  else
+	self.beamLength = math.min(self.origBeamLength + (self.perfectShieldBonus - 1) * 5, 35)
+  end
+	
   if status.resourceLocked("energy") then
     self.beamTimer = math.min(self.beamTimer, 0.25)
   end
@@ -194,15 +222,21 @@ function raiseShield()
   self.damageListener = damageListener("damageTaken", function(notifications)
     for _,notification in pairs(notifications) do
       if notification.hitType == "ShieldHit" then
-        if status.resourcePositive("perfectBlock") then
+        if status.resourcePositive("perfectBlock") and not self.greatwall  then
           animator.playSound("perfectBlock")
           animator.burstParticleEmitter("perfectBlock")
-          self.perfectShieldBonus = math.min(self.perfectShieldBonus + 0.25, 5)
+		  if self.parry then 
+			self.perfectShieldBonus = math.min(self.perfectShieldBonus + 0.375, 15)
+		  else
+			self.perfectShieldBonus = math.min(self.perfectShieldBonus + 0.25, 5)
+		  end
           status.addEphemeralEffect("regeneration4", 2 + (self.perfectShieldBonus / 2.5))
           refreshPerfectBlock()
         elseif status.resourcePositive("shieldStamina") then
           animator.playSound("block")
-          if not self.beamActive then self.perfectShieldBonus = math.max(self.perfectShieldBonus - 0.25, 1) end
+          if not self.beamActive and not self.greatwall then self.perfectShieldBonus = math.max(self.perfectShieldBonus - 0.25, 1) 
+		  elseif self.greatwall then self.perfectShieldBonus = math.max(self.perfectShieldBonus + 0.25, 0.5)
+		  end
         else
           self.perfectShieldBonus = 1
           animator.playSound("break")
@@ -312,9 +346,13 @@ function damageSource(damageConfig, damageArea, damageTimeout)
     if knockback and damageConfig.knockbackDirectional ~= false then
       knockback = knockbackMomentum(damageConfig.knockback, damageConfig.knockbackMode, 0, mcontroller.facingDirection())
     end
-    local damage = self.baseDps * activeItem.ownerPowerMultiplier() * self.perfectShieldBonus
+    local damage = self.baseDps * activeItem.ownerPowerMultiplier()
     --if knockback then knockback = knockback * (1 + self.perfectShieldBonus / 10) end
-
+	if self.parry then
+		damage = damage * (self.perfectShieldBonus * 2)
+	else
+		damage = damage * self.perfectShieldBonus
+	end	
     local damageLine, damagePoly
     if #damageArea == 2 then
       damageLine = damageArea

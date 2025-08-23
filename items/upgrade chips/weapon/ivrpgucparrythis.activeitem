@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucparrythis",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "True Aegis upgrade. More power from perfect blocks but ^red;reduced perfect block time and shield health. \n^orange;Not for noobs! ",
+  "shortdescription" : "Parry This!",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "weapon",
+  "stat" : "parrythis"
+}

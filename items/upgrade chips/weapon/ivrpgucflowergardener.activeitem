@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucflowergardener",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "Luxuria upgrade. When hit, targets will become seeded. When destroyed, a flower will bloom where they died. /n Flowers likewise seed and can cause a chain reaction.",
+  "shortdescription" : "Flower Gardener",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "weapon",
+  "stat" : "name"
+}
