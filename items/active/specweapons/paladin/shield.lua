@@ -84,9 +84,9 @@ function update(dt, fireMode, shiftHeld)
 	self.baseShieldHealth = (config.getParameter("baseShieldHealth", 1) * 2)
 	self.perfectBlockTime = (config.getParameter("perfectBlockTime", 1) * 0)
 	self.gwtimer = self.gwtimer + dt
-	if self.gwtimer >= 1 then
+	if self.gwtimer >= 0.5 then
 		self.gwtimer = 0
-		self.perfectShieldBonus = math.max(self.perfectShieldBonus - 0.25, 1) 
+		self.perfectShieldBonus = math.max(self.perfectShieldBonus - 0.15, 1) 
 	end	
   else
 	self.baseShieldHealth = config.getParameter("baseShieldHealth", 1)
@@ -460,4 +460,5 @@ function reset()
   --animator.setParticleEmitterActive("beamCollision", false)
   animator.stopAllSounds("fireStart")
   animator.stopAllSounds("fireLoop")
+
 end
