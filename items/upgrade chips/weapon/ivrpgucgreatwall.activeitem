@@ -1,0 +1,11 @@
+{
+  "itemName" : "ivrpgucgreatwall",
+  "rarity" : "Legendary",
+  "category" : "Upgrade Chip",
+  "inventoryIcon" : "upgradechip.png",
+  "description" : "True Aegis upgrade. Removes perfect block, increases shield health.",
+  "shortdescription" : "Great Wall",
+  "scripts" : ["/items/upgrade chips/upgrade.lua"],
+  "type" : "weapon",
+  "stat" : "greatwall"
+}

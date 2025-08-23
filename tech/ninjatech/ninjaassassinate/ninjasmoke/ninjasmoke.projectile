@@ -1,0 +1,37 @@
+{
+  "projectileName" : "ninjasmoke",
+  "physics" : "statuspod",
+  "bounces" : -1,
+  "timeToLive" : 1.6,
+  "speed" : 0,
+  "damageKindImage" : "icon.png",
+  "image" : "ninjasmoke.png",
+  "animationCycle" : 0.5,
+  "frameNumber" : 4,
+  "periodicActions" : [
+    {
+      "time" : 0.0,
+      "repeat" : false,
+      "action" : "loop",
+      "count" : 50,
+      "body" : [
+        {
+          "action" : "particle",
+          "specification" : "ninjasmokeparticle"
+        }
+      ]
+    },
+	{
+      "action" : "sound",
+      "options" : [ "/sfx/projectiles/fire_out.ogg" ],
+      "time" : 0,
+      "repeat" : false
+    }
+   ],
+  "power" : 0,
+  "piercing" : true,
+  "damageKind" : "applystatus",
+  "damagePoly" : [ [-30, -30], [-30, 30], [30, 30], [30, -30]  ],
+  "flippable" : true,
+  "statusEffects" : [ ]
+}
