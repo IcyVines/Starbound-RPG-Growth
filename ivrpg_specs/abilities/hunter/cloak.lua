@@ -25,7 +25,7 @@ function update(dt)
       self.cloakTimer = self.cloakTime
       self.crouchTimer = 0
       animator.playSound("cloak")
-      status.addEphemeralEffect("ivrpgcamouflagehunter", 5)
+      status.addEphemeralEffect("ivrpgcamouflagehunter", 3)
     end
   else
     self.crouchTimer = 0
@@ -35,7 +35,15 @@ function update(dt)
     if status.resource("energy") < self.energy then
       bleedChance()
     end
-    self.cloakTimer = math.max(self.cloakTimer - dt, 0)
+	--if crouch before end cloak, refresh, left initial duration alone to add a measure of skill to the ability,
+	if mcontroller.crouching() and not (status.resource("energy") < self.energy) then
+	   self.cloakTimer = math.max(self.cloakTimer - dt, 3)
+	   self.crouchTimer = 0
+     status.addEphemeralEffect("ivrpgcamouflagehunter", 3)
+	else
+       self.cloakTimer = math.max(self.cloakTimer - dt, 0)
+	end
+ 
   end
 
   if self.bleedTimer == 0 then
