@@ -202,13 +202,13 @@ function updateStats()
   }
   else  
   self.statBonuses = {
-    strength = 1 + (status.stat("ivrpgstrengthscaling") * 0.75),
-    agility = 1 + (status.stat("ivrpgagilityscaling") * 0.75),
-    vitality = 1 + (status.stat("ivrpgvitalityscaling") * 0.75),
-    vigor = 1 + (status.stat("ivrpgvigorscaling") * 0.75),
-    intelligence = 1 + (status.stat("ivrpgintelligencescaling") * 0.75),
-    endurance = 1 + (status.stat("ivrpgendurancescaling") * 0.75),
-    dexterity = 1 + (status.stat("ivrpgdexterityscaling") * 0.75)
+    strength = 1 + (status.stat("ivrpgstrengthscaling") * 0.5),
+    agility = 1 + (status.stat("ivrpgagilityscaling") * 0.5),
+    vitality = 1 + (status.stat("ivrpgvitalityscaling") * 0.5),
+    vigor = 1 + (status.stat("ivrpgvigorscaling") * 0.5),
+    intelligence = 1 + (status.stat("ivrpgintelligencescaling") * 0.5),
+    endurance = 1 + (status.stat("ivrpgendurancescaling") * 0.5),
+    dexterity = 1 + (status.stat("ivrpgdexterityscaling") * 0.5)
   }
   end
   self.classicBonuses = {
@@ -1209,4 +1209,5 @@ end
     targetMaterialKind
     sourceEntityId
     targetEntityId
+
 ]]
