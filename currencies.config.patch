@@ -108,7 +108,7 @@
     "path" : "/spectype",
     "value" : {
       "representativeItem" : "spectype",
-      "playerMax" : 9,
+      "playerMax" : 10,
 	    "sail_hidden" : true
     }
   },
