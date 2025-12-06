@@ -46,7 +46,9 @@ function update(dt, fireMode, shiftHeld)
   self.weapon:update(dt, fireMode, shiftHeld)
 
   setActive(self.primaryAbility.active)
-  incorrectWeapon()
+  if not ( (world.entityCurrency(activeItem.ownerEntityId(), "spectype") == 2 and world.entityCurrency(activeItem.ownerEntityId(), "classtype") == 2) or (world.entityCurrency(activeItem.ownerEntityId(), "spectype") == 10 and world.entityCurrency(activeItem.ownerEntityId(), "classtype") == 1)) then
+	incorrectWeapon()
+  end
 end
 
 function setActive(active)
