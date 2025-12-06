@@ -9,7 +9,7 @@
 	"tooltipKind": "ivrpg_weapon",
 	"category": "quarterstaff",
 	"twoHanded": true,
-	"itemTags": ["weapon", "melee", "staff", "quarterstaff", "mace", "ivgbattlemageknightbooster"],
+	"itemTags": ["weapon", "melee", "staff", "quarterstaff", "ivgbattlemageknightbooster"],
 
 	"inventoryIcon": "solstice.png",
 
