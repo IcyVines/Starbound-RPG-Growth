@@ -1,0 +1,65 @@
+[
+  {
+    "op": "add",
+    "path": "/m32raidwarlordfodder/0/1/fill/-",
+    "value": {
+      "pool": "experienceorbpool"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/m32raidwarlordspecial/0/1/fill/-",
+    "value": {
+      "pool": "experienceorbpool"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/reanimatedcorpse/0/1/fill/-",
+    "value": {
+      "pool": "experienceorbpool"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/turpentinerdrops/0/1/fill/-",
+    "value": {
+      "pool": "experienceorbpool"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/geyserninja/0/1/fill/-",
+    "value": {
+      "pool": "experienceorbpool"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/diverthug/0/1/fill/-",
+    "value": {
+      "pool": "experienceorbpool"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/nuubanditTreasure/0/1/fill/-",
+    "value": {
+      "pool": "experienceorbpool"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/m32defaultnpcdrop/0/1/fill/-",
+    "value": {
+      "pool": "experienceorbpool"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/m32alpacanpcdrop/0/1/fill/-",
+    "value": {
+      "pool": "experienceorbpool"
+    }
+  }
+]
