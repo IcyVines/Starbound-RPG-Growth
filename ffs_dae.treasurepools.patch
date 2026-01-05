@@ -123,6 +123,13 @@
       "value": {
       "pool": "experienceorbpool"
       } 
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_assault/1/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
     }
   ],
   [
@@ -134,6 +141,13 @@
     {
       "op": "add",
       "path": "/ffs_cultist_dae_assault/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_assault/1/1/fill",
       "value": [{
       "pool": "experienceorbpool"
       }]
@@ -151,6 +165,13 @@
       "value": {
       "pool": "experienceorbpool"
       } 
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_shotgun/1/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
     }
   ],
   [
@@ -162,6 +183,55 @@
     {
       "op": "add",
       "path": "/ffs_cultist_dae_shotgun/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_shotgun/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_dae_sniper/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_sniper/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_sniper/1/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_dae_sniper/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_sniper/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_dae_sniper/0/1/fill",
       "value": [{
       "pool": "experienceorbpool"
       }]
@@ -218,6 +288,118 @@
     {
       "op": "add",
       "path": "/ffs_cultist_dae_rpg/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_templar_dae/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_templar_dae/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_templar_dae/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_templar_dae/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_vehicle_lowpayout_dae/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_vehicle_lowpayout_dae/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_vehicle_lowpayout_dae/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_vehicle_lowpayout_dae/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_vehicle_goodpayout_dae/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_vehicle_goodpayout_dae/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_vehicle_goodpayout_dae/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_vehicle_goodpayout_dae/0/1/fill",
+      "value": [{
+      "pool": "experienceorbpool"
+      }]
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_vehicle_bigpayout_dae/0/1/fill",
+      "inverse": false
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_vehicle_bigpayout_dae/0/1/fill/-",
+      "value": {
+      "pool": "experienceorbpool"
+      } 
+    }
+  ],
+  [
+    {
+      "op": "test",
+      "path": "/ffs_cultist_vehicle_bigpayout_dae/0/1/fill",
+      "inverse": true
+    }, 
+    {
+      "op": "add",
+      "path": "/ffs_cultist_vehicle_bigpayout_dae/0/1/fill",
       "value": [{
       "pool": "experienceorbpool"
       }]
@@ -363,4 +545,5 @@
       }]
     }
   ]
+
  ]
