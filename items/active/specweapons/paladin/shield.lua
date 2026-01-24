@@ -235,7 +235,7 @@ function raiseShield()
         elseif status.resourcePositive("shieldStamina") then
           animator.playSound("block")
           if not self.beamActive and not self.greatwall then self.perfectShieldBonus = math.max(self.perfectShieldBonus - 0.25, 1) 
-		  elseif self.greatwall then self.perfectShieldBonus = math.max(self.perfectShieldBonus + 0.25, 0.5)
+		  elseif self.greatwall then self.perfectShieldBonus = math.min(self.perfectShieldBonus + 0.25, 5)
 		  end
         else
           self.perfectShieldBonus = 1
@@ -462,3 +462,4 @@ function reset()
   animator.stopAllSounds("fireLoop")
 
 end
+
